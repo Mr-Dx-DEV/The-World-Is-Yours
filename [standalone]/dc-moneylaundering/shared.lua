@@ -1,0 +1,3 @@
+--- Very simple item creation for you to paste in your shared.lua
+--- Still needs a description and picture
+-- ['launderingcard'] 			 = {['name'] = 'launderingcard', 			  	['label'] = 'Laundry Card', 			['weight'] = 600, 		['type'] = 'item', 		['image'] = 'placeholder.png', 	['unique'] = true, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'placeholder},
