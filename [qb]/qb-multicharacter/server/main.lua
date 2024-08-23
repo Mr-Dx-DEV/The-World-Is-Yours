@@ -16,9 +16,12 @@ local function GiveStarterItems(source)
             info.gender = Player.PlayerData.charinfo.gender
             info.nationality = Player.PlayerData.charinfo.nationality
         elseif v.item == "driver_license" then
+            info.citizenid = Player.PlayerData.citizenid
             info.firstname = Player.PlayerData.charinfo.firstname
             info.lastname = Player.PlayerData.charinfo.lastname
             info.birthdate = Player.PlayerData.charinfo.birthdate
+			info.gender = Player.PlayerData.charinfo.gender
+            info.nationality = Player.PlayerData.charinfo.nationality
             info.type = "Class C Driver License"
         end
         exports['qb-inventory']:AddItem(src, v.item, v.amount, false, info, 'qb-multicharacter:GiveStarterItems')

@@ -14,6 +14,9 @@ local Translations = {
         weaponlicense = 'Firearms License',
         new_job = 'Congratulations with your new job! (%{job})',
     },
+    fishinglicense = 'Deep Sea Fishing License',
+        huntinglicense = 'Hunting License',
+        waterslicense = 'Waters License',
     email = {
         jobAppSender = "%{job}",
         jobAppSub = "Thank you for applying to %(job).",

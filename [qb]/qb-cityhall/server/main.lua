@@ -29,10 +29,13 @@ local function giveStarterItems()
             info.gender = Player.PlayerData.charinfo.gender
             info.nationality = Player.PlayerData.charinfo.nationality
         elseif v.item == 'driver_license' then
+            info.citizenid = Player.PlayerData.citizenid
             info.firstname = Player.PlayerData.charinfo.firstname
             info.lastname = Player.PlayerData.charinfo.lastname
             info.birthdate = Player.PlayerData.charinfo.birthdate
-            info.type = 'Class C Driver License'
+            info.gender = Player.PlayerData.charinfo.gender
+            info.nationality = Player.PlayerData.charinfo.nationality
+            info.type = "Class C Driver License"
         end
         exports['qb-inventory']:AddItem(source, v.item, 1, false, info, 'qb-cityhall:giveStarterItems')
     end
@@ -61,14 +64,45 @@ RegisterNetEvent('qb-cityhall:server:requestId', function(item, hall)
         info.gender = Player.PlayerData.charinfo.gender
         info.nationality = Player.PlayerData.charinfo.nationality
     elseif item == 'driver_license' then
+        info.citizenid = Player.PlayerData.citizenid
         info.firstname = Player.PlayerData.charinfo.firstname
         info.lastname = Player.PlayerData.charinfo.lastname
         info.birthdate = Player.PlayerData.charinfo.birthdate
-        info.type = 'Class C Driver License'
-    elseif item == 'weaponlicense' then
+        info.gender = Player.PlayerData.charinfo.gender
+        info.nationality = Player.PlayerData.charinfo.nationality
+        info.type = "Class C Driver License"
+    elseif identityData.item == "weaponlicense" then
+        info.citizenid = Player.PlayerData.citizenid
         info.firstname = Player.PlayerData.charinfo.firstname
         info.lastname = Player.PlayerData.charinfo.lastname
         info.birthdate = Player.PlayerData.charinfo.birthdate
+        info.gender = Player.PlayerData.charinfo.gender
+        info.nationality = Player.PlayerData.charinfo.nationality
+        info.type = "Class One Weapon License"
+    elseif identityData.item == "huntinglicense" then
+        info.citizenid = Player.PlayerData.citizenid
+        info.firstname = Player.PlayerData.charinfo.firstname
+        info.lastname = Player.PlayerData.charinfo.lastname
+        info.birthdate = Player.PlayerData.charinfo.birthdate
+        info.gender = Player.PlayerData.charinfo.gender
+        info.nationality = Player.PlayerData.charinfo.nationality
+        info.type = "Hunting License"
+    elseif identityData.item == "fishinglicense" then
+        info.citizenid = Player.PlayerData.citizenid
+        info.firstname = Player.PlayerData.charinfo.firstname
+        info.lastname = Player.PlayerData.charinfo.lastname
+        info.birthdate = Player.PlayerData.charinfo.birthdate
+        info.gender = Player.PlayerData.charinfo.gender
+        info.nationality = Player.PlayerData.charinfo.nationality
+        info.type = "Deep Sea Fishing License"
+    elseif identityData.item == "waterslicense" then
+        info.citizenid = Player.PlayerData.citizenid
+        info.firstname = Player.PlayerData.charinfo.firstname
+        info.lastname = Player.PlayerData.charinfo.lastname
+        info.birthdate = Player.PlayerData.charinfo.birthdate
+        info.gender = Player.PlayerData.charinfo.gender
+        info.nationality = Player.PlayerData.charinfo.nationality
+        info.type = "Waters License"
     else
         return false -- DropPlayer(src, 'Attempted exploit abuse')
     end

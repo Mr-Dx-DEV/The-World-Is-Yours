@@ -383,6 +383,14 @@ QBShared.Items = {
     newsmic                      = { name = 'newsmic', label = 'News Microphone', weight = 100, type = 'item', image = 'newsmic.png', unique = true, useable = true, shouldClose = true, description = 'A microphone for the news' },
     newsbmic                     = { name = 'newsbmic', label = 'Boom Microphone', weight = 100, type = 'item', image = 'newsbmic.png', unique = true, useable = true, shouldClose = true, description = 'A Useable BoomMic' },
     
+    -- Required
+    ['id_scanner'] = {    ['name'] = 'id_scanner',    ['label'] = 'Card Scanner',    ['weight'] = 5000,    ['type'] = 'item',    ['image'] = 'id_scanner.png',    ['unique'] = true,    ['useable'] = true,    ['shouldClose'] = true,    ['combinable'] = nil,    ['description'] = 'Device used to scan cards & ids for any counterfit hints.'},
+    -- Optional
+	['fishinglicense'] = {    ['name'] = 'fishinglicense',    ['label'] = 'Fishing License',    ['weight'] = 0,    ['type'] = 'item',    ['image'] = 'fishinglicense.png',    ['unique'] = true,    ['useable'] = true,    ['shouldClose'] = false,    ['combinable'] = nil,    ['description'] = 'Permit to show you can Fish'},
+
+    ['huntinglicense'] = {    ['name'] = 'huntinglicense',    ['label'] = 'Hunting License',    ['weight'] = 0,    ['type'] = 'item',    ['image'] = 'huntinglicense.png',    ['unique'] = true,    ['useable'] = true,    ['shouldClose'] = false,    ['combinable'] = nil,    ['description'] = 'Permit to show you can Hunt'},
+
+    ['waterslicense'] = {    ['name'] = 'waterslicense',    ['label'] = 'Waters License',    ['weight'] = 0,    ['type'] = 'item',    ['image'] = 'waterslicense.png',    ['unique'] = true,    ['useable'] = true,    ['shouldClose'] = false,    ['combinable'] = nil,    ['description'] = 'Permit to show you can Drive a Boat'},
 
     ["kq_outfitbag"] 			 	 = {["name"] = "kq_outfitbag", 				    ["label"] = "Outfit bag",	 		    ["weight"] = 4000, 		["type"] = "item", 		["image"] = "kq_outfitbag.png", 	    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Holds different outfits"},
 
