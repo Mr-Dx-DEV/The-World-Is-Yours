@@ -1,5 +1,3 @@
-shared_script '@life_is_good/ai_module_fg-obfuscated.lua'
-shared_script '@life_is_good/shared_fg-obfuscated.lua'
 --[[ FX Information ]]--
 fx_version   'cerulean'
 lua54        'yes'

@@ -27,9 +27,11 @@ Config.GodRoles = {
 
 -- Original Permissions table for information on all possible available options
 Config.Permissions = {
-    ["license:0ffe4f6fac44db25240bbea4634e379b535f1a31"] = "god", -- UtshoBoy
+    ["license:a045ed84bc7b147ab67442c4be4c70a4bb7d0ad5"] = "god", -- UtshoBoy
     ["license:f90cd271ae404268c3728c7b32d31095b7092b5b"] = "god", -- SB-Demon
     ["license2:17c08e084f072db994a114b63ea05a8373230d0f"] = "god", -- SB-Demon
+
+    
     ["fivem:1234"] = "god",
     ["steam:1234"] = "god",
     ["124584938326312"] = "god", -- discord roles (copy the role id and paste it here) (If you want to use the discord roles, you need to add the bot token and server id in sv_perms.lua at the top)
