@@ -32,7 +32,7 @@ Config = {
 
     Framework = Framework.AUTO_DETECT,            -- [ND Framework - ND_Core | ESX - es_extended, QBCore - qb-core, QBOX - qbx_core, Standalone - standalone]
     Inventory = Inventories.AUTO_DETECT,          -- [OX - ox_inventory, QB - qb-inventory, QS - qs-sinventory, MF - mf-inventory, PS - ps-inventory, LJ - lj-inventory, CORE = core_inventory]
-    Target = Target.NONE,                         -- [NONE - none [pressing E], OX - ox_target, QB - qb-target, Q - qtarget]
+    Target = Target.OX,                         -- [NONE - none [pressing E], OX - ox_target, QB - qb-target, Q - qtarget]
     Database = Database.AUTO_DETECT,              -- [OX - ox_mysql, MYSQL_ASYNC - mysql-async, GHMATTI - ghmattimysql]
 
     -- Other script settings

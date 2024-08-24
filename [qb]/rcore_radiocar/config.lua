@@ -15,7 +15,7 @@ Config.MysqlType = -1
 -- 0 standalone
 -- 1 ESX
 -- 2 QBCore
-Config.FrameWork = 0
+Config.FrameWork = 2
 
 -- ###################################################################
 -- ##### read me if you want player choose their own radio style #####

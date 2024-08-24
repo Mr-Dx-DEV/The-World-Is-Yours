@@ -11,16 +11,16 @@ Config.Framework = {
         Target = "oxtarget", -- "qb-target" | "oxtarget"
         Key = "G" -- Key to press when interacting with things if not using targets (Default : G | See Config.KeyList to know which string to change this value to.)
     },
-    Menu = 'ox', -- qb/nh/ox
+    Menu = 'qb', -- qb/nh/ox
     Input = 'ox', -- qb/ox
 
     --Framework Overrides (You can change specific framework related functions to ones from other scripts.)
-    UseOxInv = false, -- For ESX and QBCore. Lets ESX users utilize the "uses" configuration on the usb (Uses Item Metadata)
+    UseOxInv = true, -- For ESX and QBCore. Lets ESX users utilize the "uses" configuration on the usb (Uses Item Metadata)
     CircleMinigame = "oxlib", -- "ps-ui" | "qb-lock" | "oxlib" | (You can use your own (See cl_framework)
-    Doorlocks = 'qb', --  'qb' = qb-doorlock | 'nui' = nui-doorlock | 'ox' = ox_doorlocks
+    Doorlocks = 'ox', --  'qb' = qb-doorlock | 'nui' = nui-doorlock | 'ox' = ox_doorlocks
     Notifications = "qb", -- "okok" | "mythic" | "tnj" | "oxlib" | "qb" | "ESX" | "chat" |
-    ProgressUI = "", -- "oxlib" | "mythic" | "rprogress" (Custom Settings at the bottom) |  Otherwise leave blank ("") to use Framework Settings.
-    DrawText = "", -- "oxlib" | "okok" | "psui" | Otherwise leave blank ("") to use Framework Settings.
+    ProgressUI = "oxlib", -- "oxlib" | "mythic" | "rprogress" (Custom Settings at the bottom) |  Otherwise leave blank ("") to use Framework Settings.
+    DrawText = "oxlib", -- "oxlib" | "okok" | "psui" | Otherwise leave blank ("") to use Framework Settings.
     Logs = false -- True = Logs Enabled | False = Logs Disabled
     -- *Important* All oxlib option requires oxlib to be enabled in the fxmanifest *Important*
 }

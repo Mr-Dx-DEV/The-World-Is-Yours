@@ -16,7 +16,7 @@ Config.VehicleKeys = "qb-vehiclekeys" -- or "qb-vehiclekeys", "MrNewbVehicleKeys
 Config.Notifications = "ox_lib" -- or "default", "okokNotify", "ox_lib", "ps-ui"
 
 -- Draw text UI prompts (key binding control IDs here: https://docs.fivem.net/docs/game-references/controls/)
-Config.DrawText = "jg-textui" -- or "jg-textui", "qb-DrawText", "okokTextUI", "ox_lib", "ps-ui"
+Config.DrawText = "ox_lib" -- or "jg-textui", "qb-DrawText", "okokTextUI", "ox_lib", "ps-ui"
 Config.OpenGarageKeyBind = 38
 Config.OpenGaragePrompt = "[E] Open Garage"
 Config.OpenImpoundKeyBind = 38

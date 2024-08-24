@@ -18,7 +18,7 @@ Config.ItemAdder = {
 Config.ItemRemover = "radiocar_dismounter"
 
 -- if you're using ox_inv
-Config.ox_inv = false
+Config.ox_inv = true
 
 -- ESX object
 Config.ESX = "esx:getSharedObject"

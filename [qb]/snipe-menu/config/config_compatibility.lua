@@ -5,7 +5,7 @@ Config.Debug = false -- set to true if you want to see debug messages in console
 -- use ox if you use ox inventory (should be above version 2.9)
 -- use qsv2 is for quasar v2 inventory
 -- chezza is for chezza inventory
-Config.Inventory = "qb" -- qb or qs or ox or qsv2
+Config.Inventory = "ox" -- qb or qs or ox or qsv2
 
 -- use qb-clothing if you use qb-clothing
 -- use fivem-appearance if you use fivem-appearance
