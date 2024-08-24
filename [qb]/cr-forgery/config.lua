@@ -12,7 +12,7 @@ Config.Framework = {
         Key = "G" -- Key to press when interacting with things if not using targets (Default : G | See Config.KeyList to know which string to change this value to.)
     },
     Menu = 'qb', -- qb/nh/ox
-    Input = 'ox', -- qb/ox
+    Input = 'qb', -- qb/ox
 
     --Framework Overrides (You can change specific framework related functions to ones from other scripts.)
     UseOxInv = true, -- For ESX and QBCore. Lets ESX users utilize the "uses" configuration on the usb (Uses Item Metadata)
