@@ -1,6 +1,4 @@
----@type promise?
 local alert = nil
-local alertId = 0
 
 ---@class AlertDialogProps
 ---@field header string;
@@ -12,13 +10,10 @@ local alertId = 0
 ---@field labels? {cancel?: string, confirm?: string}
 
 ---@param data AlertDialogProps
----@param timeout? number Force the window to timeout after `x` milliseconds.
 ---@return 'cancel' | 'confirm' | nil
-function lib.alertDialog(data, timeout)
+function lib.alertDialog(data)
     if alert then return end
 
-    local id = alertId + 1
-    alertId = id
     alert = promise.new()
 
     lib.setNuiFocus(false)
@@ -27,17 +22,10 @@ function lib.alertDialog(data, timeout)
         data = data
     })
 
-    if timeout then
-        SetTimeout(timeout, function()
-            if id == alertId then lib.closeAlertDialog('timeout') end
-        end)
-    end
-
     return Citizen.Await(alert)
 end
 
----@param reason? string An optional reason for the window to be closed.
-function lib.closeAlertDialog(reason)
+function lib.closeAlertDialog()
     if not alert then return end
 
     lib.resetNuiFocus()
@@ -45,17 +33,16 @@ function lib.closeAlertDialog(reason)
         action = 'closeAlertDialog'
     })
 
-    local p = alert
+    alert:resolve(nil)
     alert = nil
-
-    if reason then p:reject(reason) else p:resolve() end
 end
+
 
 RegisterNUICallback('closeAlert', function(data, cb)
     cb(1)
     lib.resetNuiFocus()
 
-    local promise = alert --[[@as promise]]
+    local promise = alert
     alert = nil
 
     promise:resolve(data)
