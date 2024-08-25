@@ -176,8 +176,14 @@ return {
 	 		cancel = true,
 	 		notification = 'You drank some refreshing water'
 	 	}
-	 },
+	},
 
+	['burnerphone'] = { label = 'Burner Phone', weight = 150, stack = false, close = true, description = 'Some kind of old phone?' },
+
+	['burnerphone_wep'] = { label = 'Burner Phone', weight = 150, stack = false, close = true, description = 'Some kind of old phone?' },
+	
+	['burnerphonevpn'] = { label = 'Soleware VPN', weight = 250, stack = false, close = true, description = 'Some kind of lost VPN from Soleware?' },
+	
 	['radio'] = {
 		label = 'Radio',
 		weight = 10,
