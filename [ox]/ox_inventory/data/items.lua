@@ -3808,7 +3808,7 @@ return {
 			export = 'VL-backpack.openBackpack'
 		}
 	},
-
+	
 	['gps_tracker'] = {
 		label = 'GPS Tracker',
 		weight = 1000,
@@ -9556,6 +9556,36 @@ return {
 		description = "Bag",
 		client = {
 			image = "bag.png",
+		}
+	},
+	["smallbackpack"] = {
+		label = "Small Backpack",
+		weight = 0,
+		stack = false,
+		close = true,
+		description = "smallbackpack",
+		client = {
+			image = "smallbackpack.png",
+		}
+	},
+	["mediumbackpack"] = {
+		label = "Medium Backpack",
+		weight = 0,
+		stack = false,
+		close = true,
+		description = "mediumbackpack",
+		client = {
+			image = "mediumbackpack.png",
+		}
+	},
+	["largebackpack"] = {
+		label = "Large Backpack",
+		weight = 0,
+		stack = false,
+		close = true,
+		description = "largebackpack",
+		client = {
+			image = "largebackpack.png",
 		}
 	},
 
