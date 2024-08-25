@@ -1,32 +1,23 @@
+shared_script '@life_is_good/shared_fg-obfuscated.lua'
 fx_version 'cerulean'
 game 'common'
-use_experimental_fxv2_oal 'yes'
-lua54 'yes'
-
 name 'oxmysql'
-author 'Overextended'
-version '2.9.1'
-license 'LGPL-3.0-or-later'
-repository 'https://github.com/overextended/oxmysql.git'
-description 'FXServer to MySQL communication via node-mysql2'
-
+description 'Database wrapper for FXServer utilising node-mysql2 offering improved performance and security.'
+version '2.7.7'
+url 'https://github.com/overextended/oxmysql'
+author 'overextended'
 dependencies {
-    '/server:7290',
+	'/server:5104',
 }
-
 client_script 'ui.lua'
 server_script 'dist/build.js'
-
 files {
 	'web/build/index.html',
 	'web/build/**/*'
 }
-
 ui_page 'web/build/index.html'
-
 provide 'mysql-async'
 provide 'ghmattimysql'
-
 convar_category 'OxMySQL' {
 	'Configuration',
 	{
