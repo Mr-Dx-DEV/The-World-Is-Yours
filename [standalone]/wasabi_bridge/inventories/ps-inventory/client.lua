@@ -3,17 +3,17 @@
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
 -- Use this file to add support for another inventory by simply copying the file and replacing the logic within the functions
-local found = GetResourceState('qb-inventory')
+local found = GetResourceState('ps-inventory')
 if found ~= 'started' and found ~= 'starting' then return end
 
-WSB.inventorySystem = 'qb-inventory'
+WSB.inventorySystem = 'ps-inventory'
 WSB.inventory = {}
 
 OldInventory = GetResourceMetadata(WSB.inventorySystem, 'version', 0)
 OldInventory = OldInventory:gsub('%.', '')
 OldInventory = tonumber(OldInventory)
 if not OldInventory or OldInventory >= 105 then OldInventory = false end
-local inventoryPrefix = OldInventory and 'inventory' or 'qb-inventory'
+local inventoryPrefix = OldInventory and 'inventory' or 'ps-inventory'
 
 function WSB.inventory.openPlayerInventory(targetId)
     TriggerServerEvent(inventoryPrefix .. ':server:OpenInventory', 'otherplayer', targetId)

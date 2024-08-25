@@ -1,0 +1,425 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.container {
+  font-family: "Nunito", sans-serif;
+  width: 475px;
+  height: 400px;
+  position: absolute;
+  left: 2%;
+  top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.toRight {
+  left: auto !important;
+  right: 2% !important;
+}
+.toLeft {
+  right: auto !important;
+  left: 2% !important;
+}
+
+.message-box {
+  max-height: 400px;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.message-box > div.col {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: end;
+  gap: 8px;
+}
+
+@keyframes InitChatInputPart {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes InitSuggestion {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes InitEmojiMenu {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes InitMessage {
+  0% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.notification {
+  width: 50px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.notification:hover {
+  background: #313131;
+  border-radius: 6px;
+}
+
+.notification img {
+  height: 20px;
+  width: 20px;
+}
+
+.chat-emoji-menu {
+  position: absolute;
+  cursor: default;
+  top: 80px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  right: 0px;
+  width: 210px;
+  height: 250px;
+  background-color: #00000098;
+  border: 1px solid #00000098;
+  border-radius: 5px;
+  z-index: 1000 !important;
+  animation: InitEmojiMenu 400ms forwards;
+}
+.chat-emoji-menu::-webkit-scrollbar {
+  width: 3px;
+}
+
+.chat-emoji-menu::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 64px;
+}
+
+.emoji-menu-emoji {
+  font-size: 20px;
+  margin: 3px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.emoji-menu-emoji:hover {
+  background-color: #9b9a9aa9;
+}
+
+.suggestion {
+  text-transform: uppercase;
+  font-size: 14px;
+  height: 18px;
+  color: #b6b6b6;
+  padding: 3px 6px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  animation: InitSuggestion 400ms forwards;
+  transition: background-color 0.3s;
+  margin-right: 6px;
+}
+
+.suggestion:hover {
+  background-color: rgb(220 38 38);
+  color: white;
+}
+
+.suggestions-container {
+  width: calc(100% - 70px);
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  margin-top: 8px;
+}
+
+.suggestions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.chat-textColor-0 {
+  color: #dddddd;
+}
+
+.chat-textColor-1 {
+  color: #ff4444;
+}
+
+.chat-textColor-2 {
+  color: #6dda25;
+}
+
+.chat-textColor-3 {
+  color: #ffbb33;
+}
+
+.chat-textColor-4 {
+  color: #0099cc;
+}
+
+.chat-textColor-5 {
+  color: #33b5e5;
+}
+
+.chat-textColor-6 {
+  color: #aa66cc;
+}
+
+.chat-textColor-8 {
+  color: #cc0000;
+}
+
+.chat-textColor-9 {
+  color: #cc0068;
+}
+
+.settings-menu {
+  font-family: system-ui;
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    rgba(18, 18, 18, 0.9) 10%,
+    rgba(15, 15, 15, 0.8) 100%
+  );
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-menu .relative {
+  padding: 12px;
+  padding-top: 8px;
+  position: relative;
+  width: 520px;
+  height: 180px;
+  background: linear-gradient(
+    210deg,
+    rgba(2, 2, 31, 1) 45%,
+    rgba(22, 1, 47, 1) 65%,
+    rgba(2, 2, 31, 1) 99%
+  );
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.settings-menu .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings-menu .header .title {
+  font-size: 32px;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: sans-serif;
+}
+
+.settings-menu .header .exit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.settings-menu .header .exit .text {
+  margin-right: 12px;
+}
+.settings-menu .header .exit .text :first-child {
+  font-size: 12px;
+  color: gray;
+}
+.settings-menu .header .exit .text :last-child {
+  font-size: 14px;
+  color: white;
+  margin-top: -6px;
+}
+.settings-menu .header .exit .x {
+  border: 2px solid #ff1130;
+  border-radius: 9999px;
+  padding: 6px;
+  display: flex;
+  cursor: pointer;
+}
+.settings-menu .header .exit .x:hover {
+  scale: 1.1;
+}
+
+.settings-menu .header img {
+  width: 16px;
+  height: 16px;
+}
+
+.settings-menu .body {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  text-align: center;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: white;
+}
+.settings-menu .body div {
+  background-color: rgb(28 4 81);
+  border-radius: 8px;
+  border: 1px rgba(0, 0, 0, 0) solid;
+  cursor: pointer;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.settings-menu .body div:hover {
+  border-color: white;
+}
+
+.settings-menu .bottom {
+  display: flex;
+  flex-direction: column;
+}
+.settings-menu .bottom > div {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: rgb(28 4 81);
+  border-radius: 8px;
+  padding: 8px;
+  padding-right: 0;
+}
+.settings-menu .bottom > div .title {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+.settings-menu .bottom > div .title img {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.settings-menu .bottom > div .input {
+  margin-right: 8px;
+}
+
+.settings-menu .bottom > div .input #checkboxInput {
+  display: none;
+}
+
+.settings-menu .bottom > div .input .toggleSwitch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 42px;
+  height: 25px;
+  background-color: gray;
+  border-radius: 20px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.settings-menu .bottom > div .input .toggleSwitch::after {
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  left: 3px;
+  background-color: transparent;
+  border-radius: 50%;
+  transition-duration: 0.2s;
+  box-shadow: 5px 2px 7px rgba(8, 8, 8, 0.26);
+  border: 5px solid white;
+}
+
+.settings-menu
+  .bottom
+  > div
+  .input
+  #checkboxInput:checked
+  + .toggleSwitch::after {
+  transform: translateX(100%);
+  transition-duration: 0.2s;
+  background-color: white;
+}
+/* Switch background change */
+.settings-menu .bottom > div .input #checkboxInput:checked + .toggleSwitch {
+  background-color: rgb(148, 118, 255);
+  transition-duration: 0.2s;
+}
+
+.song {
+  position: absolute;
+  top: 1%;
+  right: 2%;
+  background-color: rgba(241, 245, 249, 0.2);
+  padding: 2px 16px 2px 16px;
+  border-radius: 0.25rem;
+}
+
+.song div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.song .icon,
+.song .icon img {
+  width: 24px;
+}
+
+.song .song-title {
+  font-size: 14px;
+  color: white;
+  font-family: "Nunito", sans-serif;
+}

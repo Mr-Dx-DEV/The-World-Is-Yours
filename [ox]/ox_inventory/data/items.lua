@@ -11424,4 +11424,782 @@ return {
 	},
 
 	
+
+	["roadblock"] = {
+		label = "Road Block",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "A large sign to block off a road.",
+		client = {
+			image = "roadblock.png",
+		}
+	},
+
+	["storagecontract"] = {
+		label = "Storage Contract",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "A rental agreement for a storage container.",
+		client = {
+			image = "printerdocument.png",
+		}
+	},
+
+	["lean"] = {
+		label = "Cup of Lean",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "That Purple Sizzurp",
+		client = {
+			image = "lean.png",
+		}
+	},
+
+	["xanax"] = {
+		label = "Xanax",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "xanax.png",
+		}
+	},
+
+	["barricade"] = {
+		label = "Barricade",
+		weight = 5000,
+		stack = true,
+		close = true,
+		description = "A police barricade to close off entry",
+		client = {
+			image = "barricade.png",
+		}
+	},
+
+	["campfire"] = {
+		label = "Campfire Kit",
+		weight = 5000,
+		stack = true,
+		close = true,
+		description = "A bundle of logs and a firestarter",
+		client = {
+			image = "campfire.png",
+		}
+	},
+
+	["stoppedvehicles"] = {
+		label = "Caution Sign",
+		weight = 5000,
+		stack = true,
+		close = true,
+		description = "A sign to warn vehicles of other stopped vehicles ahead.",
+		client = {
+			image = "cautionsign.png",
+		}
+	},
+
+	["valium"] = {
+		label = "Valium",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "valium.png",
+		}
+	},
+
+	["hotdogbun"] = {
+		label = "hotdogbun",
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "A nice bun to hold that weiner",
+		client = {
+			image = "hotdogbun.png",
+		}
+	},
+
+	["mikrosil"] = {
+		label = "Mikrosil",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Two tubes of silicon casting material used to lift fingerprints from irregular surfaces",
+		client = {
+			image = "mikrosil.png",
+		}
+	},
+
+	["prescription"] = {
+		label = "Prescription Receipt",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "prescription.png",
+		}
+	},
+
+	["foldingchair2"] = {
+		label = "Folding Chair",
+		weight = 2000,
+		stack = true,
+		close = false,
+		description = "Take a load off",
+		client = {
+			image = "foldingchair2.png",
+		}
+	},
+
+	["diffusedbomb"] = {
+		label = "Diffused Bomb",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "An actual bomb, but with its wires cut and detonator disabled.",
+		client = {
+			image = "bomb.png",
+		}
+	},
+
+	["coldweiner"] = {
+		label = "coldweiner",
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "Just a single serving of cold weiner",
+		client = {
+			image = "coldweiner.png",
+		}
+	},
+
+	["light"] = {
+		label = "Mobile Lighting",
+		weight = 20000,
+		stack = true,
+		close = true,
+		description = "A portable construction light.",
+		client = {
+			image = "lighting.png",
+		}
+	},
+
+	["hotdog"] = {
+		label = "Hot Dog",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A sandwich",
+		client = {
+			image = "hotdog.png",
+		}
+	},
+
+	["cdplayer"] = {
+		label = "CD Player",
+		weight = 5000,
+		stack = true,
+		close = true,
+		description = "Looks like it came fresh from the goodwill",
+		client = {
+			image = "cdplayer.png",
+		}
+	},
+
+	["sprunk_bottle"] = {
+		label = "Bottle of Sprunk",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "sprunk_bottle.png",
+		}
+	},
+
+	["spikestrip"] = {
+		label = "Spike Strip",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "No tires for you!",
+		client = {
+			image = "spikestrip.png",
+		}
+	},
+
+	["fishinglicense"] = {
+		label = "Fishing License",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "Permit to show you can Fish",
+		client = {
+			image = "fishinglicense.png",
+		}
+	},
+
+	["umbrella3"] = {
+		label = "Beach Umbrella",
+		weight = 4000,
+		stack = true,
+		close = true,
+		description = "Just because you're outside doesn't mean you have to burn",
+		client = {
+			image = "umbrella.png",
+		}
+	},
+
+	["microfibercloth"] = {
+		label = "Microfiber Cloth",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Polyester, but fluffy",
+		client = {
+			image = "microfibercloth.png",
+		}
+	},
+
+	["kq_outfitbag"] = {
+		label = "Outfit bag",
+		weight = 4000,
+		stack = true,
+		close = true,
+		description = "Holds different outfits",
+		client = {
+			image = "kq_outfitbag.png",
+		}
+	},
+
+	["id_scanner"] = {
+		label = "Card Scanner",
+		weight = 5000,
+		stack = false,
+		close = true,
+		description = "Device used to scan cards & ids for any counterfit hints.",
+		client = {
+			image = "id_scanner.png",
+		}
+	},
+
+	["waterslicense"] = {
+		label = "Waters License",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "Permit to show you can Drive a Boat",
+		client = {
+			image = "waterslicense.png",
+		}
+	},
+
+	["bomb"] = {
+		label = "Bomb",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "An actual bomb.",
+		client = {
+			image = "bomb.png",
+		}
+	},
+
+	["sdcard"] = {
+		label = "SD Card",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "People still use these??",
+		client = {
+			image = "sdcard.png",
+		}
+	},
+
+	["wet__phone"] = {
+		label = "Wet Phone",
+		weight = 700,
+		stack = false,
+		close = true,
+		description = "Did you really think that swimming in the ocean with your phone was a good idea?",
+		client = {
+			image = "wet_classic_phone.png",
+		}
+	},
+
+	["cooler"] = {
+		label = "Drink Cooler",
+		weight = 5000,
+		stack = true,
+		close = true,
+		description = "Keep your drinks cool!",
+		client = {
+			image = "cooler.png",
+		}
+	},
+
+	["picnictable"] = {
+		label = "Folding Picnic Table",
+		weight = 4000,
+		stack = true,
+		close = true,
+		description = "A folding picnic table that will never be as good as a real one",
+		client = {
+			image = "picnictable.png",
+		}
+	},
+
+	["breathalyzer"] = {
+		label = "Breathalyzer",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A vintage 2000's WiWang breathalyzer engraved Property of LSPD",
+		client = {
+			image = "breathalyzer.png",
+		}
+	},
+
+	["bbq"] = {
+		label = "BBQ",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "Ooooh, we gonna have a cookout",
+		client = {
+			image = "bbq.png",
+		}
+	},
+
+	["narkan"] = {
+		label = "Narkan",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Administer to prevent fatalities in overdosing patients",
+		client = {
+			image = "narkan.png",
+		}
+	},
+
+	["drugtestkit"] = {
+		label = "Drug Test Kit",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A multipanel field test kit used to test for popular drugs in a suspects saliva, it's probably accurate.",
+		client = {
+			image = "drugtestkit.png",
+		}
+	},
+
+	["anglegrinder"] = {
+		label = "Angle Grinder",
+		weight = 10000,
+		stack = false,
+		close = false,
+		description = "\"A PowerMetal H420 Angle Grinder has never been used for an illegal activity. Ever.\" - Former CEO of PowerMetal Inc\"",
+		client = {
+			image = "anglegrinder.png",
+		}
+	},
+
+	["vehicletv"] = {
+		label = "TV Remote",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Vehicle TV",
+		client = {
+			image = "vehicletv.png",
+		}
+	},
+
+	["umbrella2"] = {
+		label = "Beach Umbrella",
+		weight = 4000,
+		stack = true,
+		close = true,
+		description = "Just because you're outside doesn't mean you have to burn",
+		client = {
+			image = "umbrella.png",
+		}
+	},
+
+	["accesstool"] = {
+		label = "Access Tool",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Snap into an access tool.",
+		client = {
+			image = "accesstool.png",
+		}
+	},
+
+	["cough_syrup"] = {
+		label = "Cough Syrup",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Warning: Contains Codeine and Promethazine",
+		client = {
+			image = "cough_syrup.png",
+		}
+	},
+
+	["camptent2"] = {
+		label = "Camping Tent",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "Your new home!",
+		client = {
+			image = "camptent2.png",
+		}
+	},
+
+	["dnatestkit"] = {
+		label = "DNA Field Swab Kit",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A field DNA swab kit containing several vials and swabs",
+		client = {
+			image = "dnatestkit.png",
+		}
+	},
+
+	["foldingtable"] = {
+		label = "Folding Table",
+		weight = 5000,
+		stack = true,
+		close = true,
+		description = "Just need some red solo cups",
+		client = {
+			image = "foldingtable.png",
+		}
+	},
+
+	["gsrtestkit"] = {
+		label = "GSR Field Test Kit",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A field GSR test kit containing several test strips",
+		client = {
+			image = "gsrtestkit.png",
+		}
+	},
+
+	["steroids"] = {
+		label = "Steroids",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "steroids.png",
+		}
+	},
+
+	["miniradio"] = {
+		label = "Mini Radio",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "A little portable radio",
+		client = {
+			image = "miniradio.png",
+		}
+	},
+
+	["camptent4"] = {
+		label = "Camping Tent",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "Your new home!",
+		client = {
+			image = "camptent4.png",
+		}
+	},
+
+	["blox"] = {
+		label = "Blox Multisurface",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Kills everything!",
+		client = {
+			image = "blox.png",
+		}
+	},
+
+	["burger_raw"] = {
+		label = "Hamburger Patty",
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "A raw, frozen hamburger patty",
+		client = {
+			image = "bs_patty_raw.png",
+		}
+	},
+
+	["containerkey"] = {
+		label = "Padlock Key",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "A generic padlock key stamped San Andreas Lock & Key",
+		client = {
+			image = "labkey.png",
+		}
+	},
+
+	["contract"] = {
+		label = "Contract",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "A contract",
+		client = {
+			image = "contract.png",
+		}
+	},
+
+	["prescription_pad"] = {
+		label = "Prescription Pad",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "prescription_pad.png",
+		}
+	},
+
+	["nikon"] = {
+		label = "Nikoff G900",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Caught in 4K",
+		client = {
+			image = "nikon.png",
+		}
+	},
+
+	["camptent3"] = {
+		label = "Camping Tent",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "Your new home!",
+		client = {
+			image = "camptent3.png",
+		}
+	},
+
+	["adrenaline"] = {
+		label = "Adrenaline",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "adrenaline.png",
+		}
+	},
+
+	["tent"] = {
+		label = "Canopy",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "A portable tent.",
+		client = {
+			image = "canopy.png",
+		}
+	},
+
+	["radiocar_blue"] = {
+		label = "radiocar blue style",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "radiocar",
+		client = {
+			image = "radiocar.png",
+		}
+	},
+
+	["umbrella"] = {
+		label = "Beach Umbrella",
+		weight = 4000,
+		stack = true,
+		close = true,
+		description = "Just because you're outside doesn't mean you have to burn",
+		client = {
+			image = "umbrella.png",
+		}
+	},
+
+	["taser_cartridge"] = {
+		label = "Taser Cartridge",
+		weight = 1500,
+		stack = true,
+		close = true,
+		description = "Ammo for your taser",
+	},
+
+	["fingerprintreader"] = {
+		label = "Pro Tech XFR8001",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "A Pro Tech mobile fingerprint reader that looks like it's seen better days, currently stuck in french.",
+		client = {
+			image = "fingerprintreader.png",
+		}
+	},
+
+	["beachtowel"] = {
+		label = "Beach Towel",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "Grants +5 to avoiding sand in places you don't wan it.",
+		client = {
+			image = "beachtowel.png",
+		}
+	},
+
+	["monobloc"] = {
+		label = "Monobloc Chair",
+		weight = 5000,
+		stack = true,
+		close = true,
+		description = "The classic white chair that looks bad everywhere",
+		client = {
+			image = "monobloc.png",
+		}
+	},
+
+	["camptent"] = {
+		label = "Camping Tent",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "Your new home!",
+		client = {
+			image = "camptent.png",
+		}
+	},
+
+	["generator"] = {
+		label = "Generator",
+		weight = 20000,
+		stack = true,
+		close = true,
+		description = "A portable generator to supply power in the field.",
+		client = {
+			image = "generator.png",
+		}
+	},
+
+	["tvremote"] = {
+		label = "TV Remote",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "TV Remote",
+		client = {
+			image = "tvremote.png",
+		}
+	},
+
+	["cone"] = {
+		label = "Cone",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "An orange safety cone, or a hat if you've had enough to drink.",
+		client = {
+			image = "cone.png",
+		}
+	},
+
+	["americancheese"] = {
+		label = "American Cheese",
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "The classic plastic cheese everyone loves",
+		client = {
+			image = "americancheese.png",
+		}
+	},
+
+	["fingerprintkit"] = {
+		label = "Fingerprint Kit",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "A small kit that includes fingerprint dust, chemicals, and a brush for developing fingerprints",
+		client = {
+			image = "fingerprintkit.png",
+		}
+	},
+
+	["fingerprinttape"] = {
+		label = "Fingerprint Tape",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Extra clear tape used to lift fingerprints from smooth, nonporous surfaces",
+		client = {
+			image = "fingerprinttape.png",
+		}
+	},
+
+	["lean_cup"] = {
+		label = "Styrofoam Cup",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "lean_cup.png",
+		}
+	},
+
+	["foldingchair"] = {
+		label = "Folding Chair",
+		weight = 2000,
+		stack = true,
+		close = false,
+		description = "Take a load off",
+		client = {
+			image = "foldingchair1.png",
+		}
+	},
+
+	["burger_bun"] = {
+		label = "Bun",
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "Minutes from being stale",
+		client = {
+			image = "bs_bun.png",
+		}
+	},
 }

@@ -151,7 +151,7 @@ function QBCore.Functions.IsWearingGloves()
 end
 
 -- NUI Calls
-
+--[[ 
 function QBCore.Functions.Notify(text, texttype, length, icon)
     local message = {
         action = 'notify',
@@ -171,6 +171,12 @@ function QBCore.Functions.Notify(text, texttype, length, icon)
     end
 
     SendNUIMessage(message)
+end
+ ]]
+ function QBCore.Functions.Notify(text, texttype, length)
+    local color = 0
+    if texttype == 'success' then color = 3 elseif texttype == 'error' then color = 2 else color = 1 end
+    TriggerEvent('notifications:sendNotification', color, text, 5000)
 end
 
 function QBCore.Functions.Progressbar(name, label, duration, useWhileDead, canCancel, disableControls, animation, prop, propTwo, onFinish, onCancel)
