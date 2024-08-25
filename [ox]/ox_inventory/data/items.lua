@@ -12010,6 +12010,46 @@ return {
 			image = "contract.png",
 		}
 	},
+	["insurance"] = {
+		label = "Car Insurance",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "A insurance",
+		client = {
+			image = "insurance.png",
+		}
+	},
+	["car_registration"] = {
+		label = "Car Registration",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "A Car Registration",
+		client = {
+			image = "car_registration.png",
+		}
+	},
+	["health_insurance"] = {
+		label = "Health Insurance",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "A Health Insurance",
+		client = {
+			image = "health_insurance.png",
+		}
+	},
+	["home_insurance"] = {
+		label = "Home Insurance",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "A Home Insurance",
+		client = {
+			image = "home_insurance.png",
+		}
+	},
 
 	["prescription_pad"] = {
 		label = "Prescription Pad",

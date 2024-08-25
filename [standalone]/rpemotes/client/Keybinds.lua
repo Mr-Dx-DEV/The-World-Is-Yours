@@ -17,7 +17,7 @@ if Config.SqlKeybinding then
     -- Commands / Events --------------------------------------------------------------------------------
     -----------------------------------------------------------------------------------------------------
 
-    Citizen.CreateThread(function()
+    CreateThread(function()
         while true do
             if NetworkIsPlayerActive(PlayerId()) and not Initialized then
                 if not Initialized then
@@ -27,6 +27,7 @@ if Config.SqlKeybinding then
             end
 
             if not IsPedSittingInAnyVehicle(PlayerPedId()) then
+
                 for k, v in pairs(Config.KeybindKeys) do
                     if IsControlJustReleased(0, v) then
                         if k == keyb1 then if emob1 ~= "" then EmoteCommandStart(nil, { emob1, 0 }) end end
@@ -38,8 +39,10 @@ if Config.SqlKeybinding then
                         Wait(1000)
                     end
                 end
+            else
+                Wait(500)
             end
-            Citizen.Wait(1)
+            Wait(0)
         end
     end)
 
@@ -71,8 +74,7 @@ if Config.SqlKeybinding then
 
     RegisterNetEvent("rp:ClientKeybindGetOne")
     AddEventHandler("rp:ClientKeybindGetOne", function(key, e)
-        SimpleNotify(Config.Languages[lang]['bound'] ..
-            "~y~" .. e .. "~w~ " .. Config.Languages[lang]['to'] .. " ~g~" .. firstToUpper(key) .. "~w~")
+        SimpleNotify(Translate('boundto', e, firstToUpper(key)))
         if key == "num4" then emob1 = e
             keyb1 = "num4"
         elseif key == "num5" then emob2 = e
@@ -93,7 +95,7 @@ if Config.SqlKeybinding then
     -----------------------------------------------------------------------------------------------------
 
     function EmoteBindsStart()
-        EmoteChatMessage(Config.Languages[lang]['currentlyboundemotes'] .. "\n"
+        EmoteChatMessage(Translate('currentlyboundemotes') .. "\n"
             .. firstToUpper(keyb1) .. " = '^2" .. emob1 .. "^7'\n"
             .. firstToUpper(keyb2) .. " = '^2" .. emob2 .. "^7'\n"
             .. firstToUpper(keyb3) .. " = '^2" .. emob3 .. "^7'\n"
@@ -103,26 +105,40 @@ if Config.SqlKeybinding then
     end
 
     function EmoteBindStart(source, args, raw)
-        if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] then
-            if #args > 0 then
-                local key = string.lower(args[1])
-                local emote = string.lower(args[2])
-                if (Config.KeybindKeys[key]) ~= nil then
-                    if RP.Emotes[emote] ~= nil
-                        or RP.Dances[emote] ~= nil
-                        or RP.PropEmotes[emote] ~= nil
-                        or RP.AnimalEmotes[emote] ~= nil
-                    then
-                        TriggerServerEvent("rp:ServerKeybindUpdate", key, emote)
-                    else
-                        EmoteChatMessage("'" .. emote .. "' " .. Config.Languages[lang]['notvalidemote'] .. "")
-                    end
+        if #args > 0 then
+            local key = string.lower(args[1])
+            local emote = string.lower(args[2])
+            if (Config.KeybindKeys[key]) ~= nil then
+                if RP.Emotes[emote] ~= nil
+                    or RP.Dances[emote] ~= nil
+                    or RP.PropEmotes[emote] ~= nil
+                    or RP.AnimalEmotes[emote] ~= nil
+                then
+                    TriggerServerEvent("rp:ServerKeybindUpdate", key, emote)
                 else
-                    EmoteChatMessage("'" .. key .. "' " .. Config.Languages[lang]['notvalidkey'])
+                    EmoteChatMessage("'" .. emote .. "' " .. Translate('notvalidemote') .. "")
                 end
             else
-                print("invalid")
+                EmoteChatMessage("'" .. key .. "' " .. Translate('notvalidkey'))
             end
+        else
+            print("invalid")
+        end
+    end
+
+    function DeleteEmote(source, args)
+        if #args > 0 then
+            local key = string.lower(args[1])
+            if (Config.KeybindKeys[key]) ~= nil then
+                TriggerServerEvent("rp:ServerKeybindDelete", key)
+                Wait(1000)
+                TriggerServerEvent("rp:ServerKeybindExist")
+
+            else
+                EmoteChatMessage("'"..key.."' "..Translate('notvalidkey'))
+            end
+        else
+            print("invalid")
         end
     end
 

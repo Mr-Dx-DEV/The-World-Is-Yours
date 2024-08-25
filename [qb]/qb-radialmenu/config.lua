@@ -25,7 +25,15 @@ Config.MenuItems = {
             type = 'client',
             event = 'qb-trunk:client:GetIn',
             shouldClose = true
-        }, {
+        },
+        {
+            id = 'checkinsurance',
+            title = 'Check Insurance',
+            icon = 'car',
+            type = 'client',
+            event = 'm-Insurance:Client:CheckVehicleInsurance',
+            shouldClose = true
+        },{
             id = 'cornerselling',
             title = 'Corner Selling',
             icon = 'cannabis',

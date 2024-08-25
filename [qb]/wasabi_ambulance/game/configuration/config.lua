@@ -268,7 +268,7 @@ Config.mInsurance = {
     --   If you use m-Insurance:     --
     -- https://marcinhu.tebex.io/    --
     -----------------------------------
-    enabled = false,      -- Enable to allow for discount on insured patient
+    enabled = true,      -- Enable to allow for discount on insured patient
     checkInDiscount = 500 --The amount to deduct from the configured check-price if player has insurance
 }
 

@@ -4,8 +4,10 @@ local function IsPlayerAiming(player)
     return IsPlayerFreeAiming(player) or IsAimCamActive() or IsAimCamThirdPersonActive()
 end
 
+--- Enabled pointing in a car, however hands up and pointing on a bike is broken until someone can give enough of a fuck to chime in and fix it. ---
+
 local function CanPlayerPoint(playerId, playerPed)
-    if not DoesEntityExist(playerPed) or not IsPedOnFoot(playerPed) or IsPlayerAiming(playerId) or IsPedFalling(playerPed) or IsPedInjured(playerPed) or IsPedInMeleeCombat(playerPed) or IsPedRagdoll(playerPed) then
+    if not DoesEntityExist(playerPed) or IsPedOnAnyBike(playerPed) or IsPlayerAiming(playerId) or IsPedFalling(playerPed) or IsPedInjured(playerPed) or IsPedInMeleeCombat(playerPed) or IsPedRagdoll(playerPed) or not IsPedHuman(playerPed) then
         return false
     end
 
@@ -21,6 +23,23 @@ local function PointingStopped()
         ClearPedSecondaryTask(playerPed)
     end
     RemoveAnimDict("anim@mp_point")
+    if Config.PersistentEmoteAfterPointing and IsInAnimation then
+        local emote = RP.Emotes[CurrentAnimationName]
+        if not emote then
+            emote = RP.PropEmotes[CurrentAnimationName]
+        end
+
+        if not emote then
+            return
+        end
+
+        emote.name = CurrentAnimationName
+
+        ClearPedSecondaryTask(playerPed)
+        Wait(400)
+        DestroyAllProps()
+        OnEmotePlay(emote, emote.name)
+    end
 end
 
 local function PointingThread()
@@ -70,9 +89,7 @@ local function PointingThread()
 end
 
 local function StartPointing()
-    -- Don't start to point if we are prone
-    if IsProne then
-        EmoteChatMessage("You can't point while crawling.")
+    if isInActionWithErrorMessage() then
         return
     end
 
@@ -87,7 +104,7 @@ local function StartPointing()
     if Pointing and LoadAnim("anim@mp_point") then
         SetPedConfigFlag(playerPed, 36, true)
         TaskMoveNetworkByName(playerPed, 'task_mp_pointing', 0.5, false, 'anim@mp_point', 24)
-
+        DestroyAllProps()
         -- Start thread
         PointingThread()
     end
@@ -97,14 +114,17 @@ end
 -- Commands & KeyMapping --
 if Config.PointingEnabled then
     RegisterCommand('pointing', function()
+        if IsPedInAnyVehicle(PlayerPedId(), false) and not Config.PointingKeybindInCarEnabled then
+            return
+        end
         StartPointing()
     end, false)
 
     if Config.PointingKeybindEnabled then
-        RegisterKeyMapping("pointing", "Finger pointing", "keyboard", Config.PointingKeybind)
+        RegisterKeyMapping("pointing", Translate('register_pointing'), "keyboard", Config.PointingKeybind)
     end
 
-    TriggerEvent('chat:addSuggestion', '/pointing', 'Finger pointing.')
+    TriggerEvent('chat:addSuggestion', '/pointing', Translate('pointing'))
 end
 
 
