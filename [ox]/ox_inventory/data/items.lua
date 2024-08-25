@@ -1045,7 +1045,14 @@ return {
 			image = "laptop.png",
 		}
 	},
-
+    ['lawyerid'] = {
+        label = 'Bar License ID Card.',
+        weight = 1,
+        consume = 0,
+        stack = false,
+        close = true,
+        description = nil
+    },
 	["lawyerpass"] = {
 		label = "Lawyer Pass",
 		weight = 0,
