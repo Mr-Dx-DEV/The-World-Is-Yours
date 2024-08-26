@@ -3864,7 +3864,7 @@ return {
 		}
 	},
 
-	['backpack'] = {
+	--[[ ['backpack'] = {
 		label = 'Backpack',
 		weight = 220,
 		stack = false,
@@ -3872,7 +3872,7 @@ return {
 		client = {
 			export = 'VL-backpack.openBackpack'
 		}
-	},
+	}, ]]
 	
 	['gps_tracker'] = {
 		label = 'GPS Tracker',
