@@ -25,7 +25,11 @@ return {
 		['WEAPON_GLOCK22'] 			  = { label = 'Glock 22',         weight = 1000,	durability = 0.0,	ammoname = 'ammo-45',},    
 		
 		['WEAPON_COLBATON'] 			= { label = 'PD Baton',         weight = 1000,	durability = 0.0},
-	
+		['WEAPON_THROWLINE'] = {
+			label = 'Throwbag',
+			weight = 1000,
+			throwable = true,
+		},
 		--CUSTOM knifes
 		['WEAPON_PERFORATOR']            = {label = 'The Perforator',    weight = 500,   durability = 0.1,},
 		['WEAPON_BAYONETKNIFE']          = {label = 'Bayonet Knife',     weight = 300,durability = 0.1,},
