@@ -1941,6 +1941,16 @@ return {
 			image = "digicamo_attachment.png",
 		}
 	},
+	["electronic_cuffs"] = {
+		label = "Electronic Cuffs",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "?",
+		client = {
+			image = "electronic_cuffs.png",
+		}
+	},
 
 	["handcuffs"] = {
 		label = "Handcuffs",
