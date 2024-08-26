@@ -377,7 +377,18 @@ return {
 			image = "veh_plates.png",
 		}
 	},
-
+	["megaphone"] = {
+		label = "Megaphone",
+		weight = 2000,
+		degrade = 43200,
+		decay = true,
+		stack = false,
+		close = false,
+		description = "A loudspeaker to yell at civilians.",
+		client = {
+			image = "megaphone.png",
+		}
+	},
 	["tactical_muzzle_brake"] = {
 		label = "Tactical Muzzle Brake",
 		weight = 1000,
