@@ -389,6 +389,27 @@ return {
 			image = "megaphone.png",
 		}
 	},
+	['fan'] = {
+		label = 'Fan',
+		weight = 220,
+		server = {
+			export = 'firetools.OxUseFan',
+		},
+	},
+	['spreaders'] = {
+		label = 'Spreaders',
+		weight = 220,
+		server = {
+			export = 'firetools.OxUseSpreaders',
+		},
+	},
+	['stabilisers'] = {
+		label = 'Stabilisers',
+		weight = 220,
+		server = {
+			export = 'firetools.OxUseStabiliser',
+		},
+	},
 	["tactical_muzzle_brake"] = {
 		label = "Tactical Muzzle Brake",
 		weight = 1000,
