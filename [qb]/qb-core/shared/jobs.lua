@@ -38,6 +38,19 @@ QBShared.Jobs = {
 			['4'] = { name = 'Chief', isboss = true, payment = 150 },
 		},
 	},
+	firefighter = {
+		label = 'Fire Fighter',
+		type = 'firefighter',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+			['0'] = { name = 'Recruit', payment = 50 },
+			['1'] = { name = 'Paramedic', payment = 75 },
+			['2'] = { name = 'Doctor', payment = 100 },
+			['3'] = { name = 'Surgeon', payment = 125 },
+			['4'] = { name = 'Chief', isboss = true, payment = 150 },
+		},
+	},
 	realestate = {
 		label = 'Real Estate',
 		defaultDuty = true,

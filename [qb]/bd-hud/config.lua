@@ -6,7 +6,7 @@ Config.MinimumStress = 70          -- Minimum Stress Level For Screen Shaking
 Config.MinimumSpeedUnbuckled = 150 -- Going Over This Speed Unbuckled Will Cause Stress
 Config.MinimumSpeed = 180          -- Going Over This Speed While Buckled Will Cause Stress
 Config.DisableStress = false       -- If true will disable stress completely for all players
-Config.FuelScript = "cdn-fuel"
+Config.FuelScript = "LegacyFuel"
 
 -- Stress
 Config.WhitelistedWeaponArmed = { -- Disable showing armed icon from weapons in this table
