@@ -389,6 +389,22 @@ return {
 			image = "megaphone.png",
 		}
 	},
+	['tripod'] = {
+		label = 'Tripod',
+		weight = 220,
+		server = {
+			export = 'roperescue.useRopeRescueItem',
+			name = "tripod"
+		},
+	},
+	['basket'] = {
+		label = 'Basket',
+		weight = 220,
+		server = {
+			export = 'roperescue.useRopeRescueItem',
+			name = "basket"
+		},
+	},
 	['fan'] = {
 		label = 'Fan',
 		weight = 220,
