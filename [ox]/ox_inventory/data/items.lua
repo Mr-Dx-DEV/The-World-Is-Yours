@@ -900,6 +900,58 @@ return {
 		}
 	},
 
+	["scratchcard01"] = {
+		label = "Scratch Card 01",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "A card",
+		client = {
+			image = "scratchcard01.png",
+		}
+	},
+	["scratchcard02"] = {
+		label = "Scratch Card 02",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "A card",
+		client = {
+			image = "scratchcard02.png",
+		}
+	},
+	["scratchcard03"] = {
+		label = "Scratch Card 03",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "card",
+		client = {
+			image = "scratchcard03.png",
+		}
+	},
+	["scratchcard04"] = {
+		label = "Scratch Card 04",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "card",
+		client = {
+			image = "scratchcard04.png",
+		}
+	},
+	["scratchcard05"] = {
+		label = "Scratch Card 05",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "card",
+		client = {
+			image = "scratchcard05.png",
+		}
+	},
+
+
 	["tosti"] = {
 		label = "Grilled Cheese Sandwich",
 		weight = 200,
