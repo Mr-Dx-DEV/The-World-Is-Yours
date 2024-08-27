@@ -198,6 +198,33 @@ return {
 		description = "Bomb to detonaite big things",
 	},
 
+	['mov_basic_ceramic'] = {
+        label = Config.Items["mov_basic_ceramic"].label,
+        description = Config.Items["mov_basic_ceramic"].description,
+        image = 'mov_basic_ceramic.png',
+        weight = 10,
+    },
+
+    ['mov_advanced_ceramic'] = {
+        label = Config.Items["mov_advanced_ceramic"].label,
+        description = Config.Items["mov_advanced_ceramic"].description,
+        image = 'mov_advanced_ceramic.png',
+        weight = 10,
+    },
+
+    ['mov_basic_wax'] = {
+        label = Config.Items["mov_basic_wax"].label,
+        description = Config.Items["mov_basic_wax"].description,
+        image = 'mov_basic_wax.png',
+        weight = 10,
+    },
+
+    ['mov_advanced_wax'] = {
+        label = Config.Items["mov_advanced_wax"].label,
+        description = Config.Items["mov_advanced_wax"].description,
+        image = 'mov_advanced_wax.png',
+        weight = 10,
+    },
 	['armour'] = {
 		label = 'Bulletproof Vest',
 		weight = 3000,
