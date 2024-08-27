@@ -83,3 +83,10 @@ export('qb-inventory.HasItem', function(items, amount)
         return Inventory.GetItemCount(items) >= amount
     end
 end)
+
+RegisterNetEvent('police:client:SetCuffState', function(bool)
+	PlayerData.cuffed = bool
+	LocalPlayer.state:set('invBusy', PlayerData.cuffed, false)
+	if not PlayerData.cuffed then return end
+	Weapon.Disarm()
+end)

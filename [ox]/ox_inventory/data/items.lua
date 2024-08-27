@@ -2777,6 +2777,7 @@ return {
 			image = "ziptie.png",
 		}
 	},
+	["alcoholtester"] = { label = "Alcohol Tester", weight = 400, stack = false, close = true, description = "For testing purposes..", client = {image = "alcoholtester.png",}},
 
 	["leo_gps"] = {
 		label = "LEO GPS",
