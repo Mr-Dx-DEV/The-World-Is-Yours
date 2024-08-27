@@ -1095,6 +1095,36 @@ return {
 			image = "printerdocument.png",
 		}
 	},
+	["document"] = {
+		label = "Document",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "A nice document",
+		client = {
+			image = "document.png",
+		}
+	},
+	["emptydocuments"] = {
+		label = "Empty Document",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "A nice document",
+		client = {
+			image = "emptydocuments.png",
+		}
+	},
+	["portablecopier"] = {
+		label = "portablecopier",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "A nice",
+		client = {
+			image = "portablecopier.png",
+		}
+	},
 
 	["10kgoldchain"] = {
 		label = "10k Gold Chain",
