@@ -136,6 +136,8 @@ RegisterNUICallback('closeMenu', function(_, cb)
     cb('ok')
 end)
 
+RegisterKeyMapping('menu', 'Open Menu', 'keyboard', config.OpenMenu)
+
 -- Reset hud
 local function restartHud()
     TriggerEvent('hud:client:playResetHudSounds')
@@ -150,6 +152,19 @@ local function restartHud()
     SendNUIMessage({ action = 'hudtick', show = true })
     Wait(2600)
     QBCore.Functions.Notify(Lang:t('notify.hud_start'), 'success')
+end
+
+
+-- Refresh Hud
+function refreshHud()
+    if refreshHudCalled then
+        return
+    else
+        Wait(50)
+        SendNUIMessage({ action = 'hudtick', show = false })
+        SendNUIMessage({ action = 'hudtick', show = true })
+        refreshHudCalled = true
+    end
 end
 
 RegisterNUICallback('restartHud', function(_, cb)
@@ -631,8 +646,6 @@ local function updatePlayerHud(data)
             cinematic = data[29],
             dev = data[30],
             radioActive = data[31],
-            gear = data[32],
-            rpm = data[33]
         })
     end
 end
@@ -661,9 +674,6 @@ local function updateVehicleHud(data)
             showSeatbelt = data[8],
             showSquareB = data[9],
             showCircleB = data[10],
-            gear = data[11],
-            rpm = data[12],
-            engine = data[13],
         })
     end
 end
@@ -675,13 +685,9 @@ local function getFuelLevel(vehicle)
     local updateTick = GetGameTimer()
     if (updateTick - lastFuelUpdate) > 2000 then
         lastFuelUpdate = updateTick
-        lastFuelCheck = math.floor(exports[Config.FuelScript]:GetFuel(vehicle))
+        lastFuelCheck = math.floor(exports['cdn-fuel']:GetFuel(vehicle))
     end
     return lastFuelCheck
-end
-
-function round(x)
-    return x >= 0 and math.floor(x + 0.5) or math.ceil(x - 0.5)
 end
 
 -- HUD Update loop
@@ -707,13 +713,12 @@ CreateThread(function()
                     armed = false
                 end
             end
-            playerDead = IsEntityDead(player) or PlayerData.metadata['inlaststand'] or PlayerData.metadata['isdead'] or
-                false
+            playerDead = IsEntityDead(player) or PlayerData.metadata['inlaststand'] or PlayerData.metadata['isdead'] or false
             parachute = GetPedParachuteState(player)
             -- Stamina
-            if not IsEntityInWater(player) then
-                oxygen = 100 - GetPlayerSprintStaminaRemaining(playerId)
-            end
+            --if not IsEntityInWater(player) then
+                --oxygen = 100 - GetPlayerSprintStaminaRemaining(playerId)
+            --end
             -- Oxygen
             if IsEntityInWater(player) then
                 oxygen = GetPlayerUnderwaterTimeRemaining(playerId) * 10
@@ -722,16 +727,14 @@ CreateThread(function()
             local talking = NetworkIsPlayerTalking(playerId)
             local voice = 0
             if LocalPlayer.state['proximity'] then
-                if LocalPlayer.state['proximity'].distance == 1.5 then
-                    voice = 33.3
-                elseif LocalPlayer.state['proximity'].distance == 3 then
-                    voice = 66.6
-                elseif LocalPlayer.state['proximity'].distance == 6 then
-                    voice = 100
-                end
+                voice = LocalPlayer.state['proximity'].distance
             end
             if IsPauseMenuActive() then
+                refreshHudCalled = false
                 show = false
+            else
+                refreshHud()
+                refreshHudCalled = true
             end
             local vehicle = GetVehiclePedIsIn(player)
             if not (IsPedInAnyVehicle(player) and not IsThisModelABicycle(vehicle)) then
@@ -817,16 +820,12 @@ CreateThread(function()
                     IsPauseMenuActive(),
                     seatbeltOn,
                     math.ceil(GetEntitySpeed(vehicle) * speedMultiplier),
-                    -- getFuelLevel(vehicle),
                     getFuelLevel(vehicle),
                     math.ceil(GetEntityCoords(player).z * 0.5),
                     showAltitude,
-                    not seatbeltOn,
+                    showSeatbelt,
                     showSquareB,
                     showCircleB,
-                    GetVehicleCurrentGear(vehicle),
-                    GetVehicleCurrentRpm(vehicle),
-                    (GetVehicleEngineHealth(vehicle) / 10),
                 })
                 showAltitude = false
                 showSeatbelt = true
@@ -860,7 +859,7 @@ CreateThread(function()
         if LocalPlayer.state.isLoggedIn then
             local ped = PlayerPedId()
             if IsPedInAnyVehicle(ped, false) and not IsThisModelABicycle(GetEntityModel(GetVehiclePedIsIn(ped, false))) then
-                if exports[Config.FuelScript]:GetFuel(GetVehiclePedIsIn(ped, false)) <= 20 then -- At 20% Fuel Left
+                if exports['cdn-fuel']:GetFuel(GetVehiclePedIsIn(ped, false)) <= 20 then -- At 20% Fuel Left
                     if Menu.isLowFuelChecked then
                         TriggerServerEvent('InteractSound_SV:PlayOnSource', 'pager', 0.10)
                         QBCore.Functions.Notify(Lang:t('notify.low_fuel'), 'error')
@@ -963,7 +962,7 @@ if not config.DisableStress then
                     Wait(1000)
                 end
             end
-            Wait(7)
+            Wait(0)
         end
     end)
 end
@@ -992,7 +991,29 @@ CreateThread(function()
     while true do
         local ped = PlayerPedId()
         local effectInterval = GetEffectInterval(stress)
-        if stress >= config.MinimumStress then
+        if stress >= 100 then
+            local BlurIntensity = GetBlurIntensity(stress)
+            local FallRepeat = math.random(2, 4)
+            local RagdollTimeout = FallRepeat * 1750
+            TriggerScreenblurFadeIn(1000.0)
+            Wait(BlurIntensity)
+            TriggerScreenblurFadeOut(1000.0)
+
+            if not IsPedRagdoll(ped) and IsPedOnFoot(ped) and not IsPedSwimming(ped) then
+                SetPedToRagdollWithFall(ped, RagdollTimeout, RagdollTimeout, 1, GetEntityForwardVector(ped), 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+            end
+
+            Wait(1000)
+            for _ = 1, FallRepeat, 1 do
+                Wait(750)
+                DoScreenFadeOut(200)
+                Wait(1000)
+                DoScreenFadeIn(200)
+                TriggerScreenblurFadeIn(1000.0)
+                Wait(BlurIntensity)
+                TriggerScreenblurFadeOut(1000.0)
+            end
+        elseif stress >= config.MinimumStress then
             local BlurIntensity = GetBlurIntensity(stress)
             TriggerScreenblurFadeIn(1000.0)
             Wait(BlurIntensity)
@@ -1001,6 +1022,14 @@ CreateThread(function()
         Wait(effectInterval)
     end
 end)
+
+-- Please don't remove me i wanna be here
+RegisterCommand('cuzwhynot', function()
+    print('Kane Github : rohKane')
+    print('Kane Discord : roh_kane')
+    print('Kane Github : rohKane')
+    print('Kane Discord : roh_kane')
+end, false)
 
 -- Minimap update
 CreateThread(function()
@@ -1037,7 +1066,7 @@ CreateThread(function()
                 show = false,
             })
         end
-        Wait(7)
+        Wait(0)
     end
 end)
 
@@ -1095,9 +1124,8 @@ CreateThread(function()
         if Menu.isChangeCompassFPSChecked then
             Wait(50)
         else
-            Wait(7)
+            Wait(0)
         end
-        local show = true
         local player = PlayerPedId()
         local camRot = GetGameplayCamRot(0)
         if Menu.isCompassFollowChecked then
@@ -1107,14 +1135,25 @@ CreateThread(function()
         end
         if heading == '360' then heading = '0' end
         if heading ~= lastHeading then
-            if IsPedInAnyVehicle(player) then
-                local crossroads = getCrossroads(player)
-                SendNUIMessage({
-                    action = 'update',
-                    value = heading
-                })
+            local show = IsPedInAnyVehicle(player)
+            local crossroads = getCrossroads(player)
+            SendNUIMessage({
+                action = 'update',
+                value = heading
+            })
+            if not Menu.isOutCompassChecked then
                 updateBaseplateHud({
                     show,
+                    show and crossroads[1] or "",
+                    show and crossroads[2] or "",
+                    Menu.isCompassShowChecked,
+                    Menu.isShowStreetsChecked,
+                    Menu.isPointerShowChecked,
+                    Menu.isDegreesShowChecked,
+                })
+            else
+                updateBaseplateHud({
+                    true,
                     crossroads[1],
                     crossroads[2],
                     Menu.isCompassShowChecked,
@@ -1122,45 +1161,34 @@ CreateThread(function()
                     Menu.isPointerShowChecked,
                     Menu.isDegreesShowChecked,
                 })
-            else
-                if Menu.isOutCompassChecked then
-                    SendNUIMessage({
-                        action = 'update',
-                        value = heading
-                    })
-                    SendNUIMessage({
-                        action = 'baseplate',
-                        show = true,
-                        showCompass = true,
-                    })
-                else
-                    SendNUIMessage({
-                        action = 'baseplate',
-                        show = false,
-                    })
-                end
             end
         end
         lastHeading = heading
     end
 end)
 
-RegisterCommand("hideallblips", function()
-    local blips = {}
-    for k = 0, 802, 1 do -- build 2372
-        local blip = GetFirstBlipInfoId(k)
-        if DoesBlipExist(blip) then
-            table.insert(blips, blip)
-            SetBlipDisplay(blip, 0)
-            while true do
-                local blip = GetNextBlipInfoId(k)
-                if DoesBlipExist(blip) then
-                    SetBlipDisplay(blip, 0)
-                    table.insert(blips, blip)
-                else
-                    break
-                end
-            end
+
+
+
+
+
+Citizen.CreateThread(function()
+    while true do
+        local player = GetPlayerPed(-1)
+        local vehicle = GetVehiclePedIsIn(player, false)
+
+        if IsPedInAnyVehicle(player, false) then
+        --print("is a car beu")
+            local rpmlol = GetVehicleCurrentRpm(vehicle)
+            local selectedgear = getSelectedGear()
+            local gearlol = getinfo(selectedgear)
+            --print("RPM: " .. rpm)  -- Debugging line
+
+            SendNUIMessage({
+                rpm = rpmlol,
+                gear = gearlol
+            })
         end
+        Citizen.Wait(100)
     end
 end)
