@@ -4,6 +4,16 @@
 if Config.Language ~= 'pl' then return end
 
 Strings = {
+    no_society_account = '[^3OSTRZEŻENIE^0] Konto społeczne nie istnieje dla: %s',
+    ems_worker = 'Pracownik karetki',
+    not_authorized = 'Nieautoryzowany',
+    not_authorized_desc = 'Nie masz uprawnień do korzystania z tego!',
+    not_on_duty = 'Poza służbą',
+    not_on_duty_desc = 'Nie jesteś na służbie!',
+    gps_enabled = 'GPS włączony',
+    gps_enabled_desc = 'Włączyłeś GPS',
+    gps_disabled = 'GPS wyłączony',
+    gps_disabled_desc = 'Wyłączyłeś GPS',
 
     possible_cause = 'Możliwa przyczyna',
 
@@ -200,10 +210,10 @@ Strings = {
     'Pacjent nie wydaje się potrzebować dodatkowego leczenia. Spróbuj użyć defibrylatora i miej nadzieję, że będzie dobrze!',
     player_injury = 'Osoba Ranna',
     player_injury_desc = 'Ta osoba wydaje się mieć ranę %s',
-    player_not_unconcious = 'Gracz Przytomny',
-    player_not_unconcious_desc = 'Wydaje się, że gracz jest przytomny',
-    player_unconcious = 'Gracz Nieprzytomny',
-    player_unconcious_desc = 'Pacjent musi być przytomny w celu przeprowadzenia tego leczenia!',
+    player_not_unconscious = 'Gracz Przytomny',
+    player_not_unconscious_desc = 'Wydaje się, że gracz jest przytomny',
+    player_unconscious = 'Gracz Nieprzytomny',
+    player_unconscious_desc = 'Pacjent musi być przytomny w celu przeprowadzenia tego leczenia!',
     player_reviving = 'Odrodzienie',
     player_reviving_desc = 'Trwa proces odradzania pacjenta',
     player_noitem = 'Brakujący Przedmiot',

@@ -4,6 +4,16 @@
 if Config.Language ~= 'cs' then return end
 
 Strings = {
+    no_society_account = '[^3VAROVÁNÍ^0] Společenský účet neexistuje: %s',
+    ems_worker = 'Zdravotník',
+    not_authorized = 'Neoprávněný',
+    not_authorized_desc = 'Nemáte oprávnění k použití tohoto!',
+    not_on_duty = 'Mimo službu',
+    not_on_duty_desc = 'Nejste ve službě!',
+    gps_enabled = 'GPS povoleno',
+    gps_enabled_desc = 'Povolili jste GPS',
+    gps_disabled = 'GPS zakázáno',
+    gps_disabled_desc = 'Zakázali jste GPS',
 
     possible_cause = 'Možná příčina',
 
@@ -200,10 +210,10 @@ Strings = {
     'Pacient se zdá, že nepotřebuje další léčbu. Zkuste použít defibrilátor a doufejte v to nejlepší!',
     player_injury = 'Osoba zraněna',
     player_injury_desc = 'Tato osoba se zdá, že má zranění typu %s',
-    player_not_unconcious = 'Hráč vědomý',
-    player_not_unconcious_desc = 'Zdá se, že hráč je vědomý',
-    player_unconcious = 'Hráč nevědomý',
-    player_unconcious_desc = 'Pro tuto léčbu je potřeba, aby pacient byl vědomý!',
+    player_not_unconscious = 'Hráč vědomý',
+    player_not_unconscious_desc = 'Zdá se, že hráč je vědomý',
+    player_unconscious = 'Hráč nevědomý',
+    player_unconscious_desc = 'Pro tuto léčbu je potřeba, aby pacient byl vědomý!',
     player_reviving = 'Oživování',
     player_reviving_desc = 'Probíhá oživování pacienta',
     player_noitem = 'Chybějící položka',

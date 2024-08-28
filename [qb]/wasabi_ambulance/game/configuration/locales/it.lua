@@ -4,6 +4,16 @@
 if Config.Language ~= 'it' then return end
 
 Strings = {
+    no_society_account = '[^3AVVISO^0] Il conto della società non esiste per: %s',
+    ems_worker = 'Operatore dell\'ambulanza',
+    not_authorized = 'Non autorizzato',
+    not_authorized_desc = 'Non sei autorizzato a utilizzare questo!',
+    not_on_duty = 'Non in servizio',
+    not_on_duty_desc = 'Non sei in servizio!',
+    gps_enabled = 'GPS abilitato',
+    gps_enabled_desc = 'Hai abilitato il tuo GPS',
+    gps_disabled = 'GPS disabilitato',
+    gps_disabled_desc = 'Hai disabilitato il tuo GPS',
 
     possible_cause = 'Causa possibile',
 

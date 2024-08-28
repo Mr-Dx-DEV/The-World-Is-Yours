@@ -4,6 +4,16 @@
 if Config.Language ~= 'ko' then return end
 
 Strings = {
+    no_society_account = '[^3경고^0] 사회 계정이 존재하지 않습니다: %s',
+    ems_worker = '구급차 근무자',
+    not_authorized = '승인되지 않음',
+    not_authorized_desc = '이것을 사용할 권한이 없습니다!',
+    not_on_duty = '근무 중이 아님',
+    not_on_duty_desc = '근무 중이 아닙니다!',
+    gps_enabled = 'GPS 활성화됨',
+    gps_enabled_desc = 'GPS를 활성화했습니다',
+    gps_disabled = 'GPS 비활성화됨',
+    gps_disabled_desc = 'GPS를 비활성화했습니다',
 
     possible_cause = '가능한 원인',
 

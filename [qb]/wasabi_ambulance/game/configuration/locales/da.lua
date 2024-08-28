@@ -4,6 +4,16 @@
 if Config.Language ~= 'da' then return end
 
 Strings = {
+    no_society_account = '[^3ADVARSEL^0] Samfundskonto eksisterer ikke for: %s',
+    ems_worker = 'Ambulancearbejder',
+    not_authorized = 'Ikke autoriseret',
+    not_authorized_desc = 'Du har ikke tilladelse til at bruge dette!',
+    not_on_duty = 'Ikke på vagt',
+    not_on_duty_desc = 'Du er ikke på vagt!',
+    gps_enabled = 'GPS aktiveret',
+    gps_enabled_desc = 'Du har aktiveret din GPS',
+    gps_disabled = 'GPS deaktiveret',
+    gps_disabled_desc = 'Du har deaktiveret din GPS',
 
     possible_cause = 'Mulig årsag',
 
@@ -200,10 +210,10 @@ Strings = {
     'Patienten ser ikke ud til at have brug for yderligere behandling. Prøv at bruge en hjertestarter og håb på det bedste!',
     player_injury = 'Person Skadet',
     player_injury_desc = 'Denne person ser ud til at have en %s sår',
-    player_not_unconcious = 'Spiller Bevidst',
-    player_not_unconcious_desc = 'Det ser ud til, at spilleren er ved bevidsthed',
-    player_unconcious = 'Spiller Bevidstløs',
-    player_unconcious_desc = 'Patienten skal være ved bevidsthed for denne behandling!',
+    player_not_unconscious = 'Spiller Bevidst',
+    player_not_unconscious_desc = 'Det ser ud til, at spilleren er ved bevidsthed',
+    player_unconscious = 'Spiller Bevidstløs',
+    player_unconscious_desc = 'Patienten skal være ved bevidsthed for denne behandling!',
     player_reviving = 'Genoplivning',
     player_reviving_desc = 'Genoplivning af patienten er i gang',
     player_noitem = 'Mangler Genstand',

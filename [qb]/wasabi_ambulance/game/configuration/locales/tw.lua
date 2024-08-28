@@ -4,6 +4,16 @@
 if Config.Language ~= 'tw' then return end
 
 Strings = {
+    no_society_account = '[^3警告^0] 社會賬戶不存在: %s',
+    ems_worker = '救護車工作人員',
+    not_authorized = '未授權',
+    not_authorized_desc = '您沒有授權使用這個！',
+    not_on_duty = '未值班',
+    not_on_duty_desc = '您沒有值班！',
+    gps_enabled = 'GPS已啟用',
+    gps_enabled_desc = '您已啟用GPS',
+    gps_disabled = 'GPS已禁用',
+    gps_disabled_desc = '您已禁用GPS',
 
     possible_cause = '可能原因',
 
@@ -199,10 +209,10 @@ Strings = {
     no_injury_dead_desc = '病人似乎不需要額外的治療。嘗試使用心臟電擊器，希望能夠好轉！',
     player_injury = '受傷的人',
     player_injury_desc = '這個人似乎有%s傷口',
-    player_not_unconcious = '玩家清醒',
-    player_not_unconcious_desc = '玩家似乎是清醒的',
-    player_unconcious = '玩家昏迷',
-    player_unconcious_desc = '病人需要清醒才能進行治療！',
+    player_not_unconscious = '玩家清醒',
+    player_not_unconscious_desc = '玩家似乎是清醒的',
+    player_unconscious = '玩家昏迷',
+    player_unconscious_desc = '病人需要清醒才能進行治療！',
     player_reviving = '復活中',
     player_reviving_desc = '正在復活病人',
     player_noitem = '物品不足',

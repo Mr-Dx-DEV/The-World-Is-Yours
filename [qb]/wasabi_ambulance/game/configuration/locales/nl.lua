@@ -4,6 +4,16 @@
 if Config.Language ~= 'nl' then return end
 
 Strings = {
+    no_society_account = '[^3WAARSCHUWING^0] De maatschappelijke rekening bestaat niet voor: %s',
+    ems_worker = 'Ambulancewerker',
+    not_authorized = 'Niet gemachtigd',
+    not_authorized_desc = 'Je bent niet gemachtigd om dit te gebruiken!',
+    not_on_duty = 'Niet in dienst',
+    not_on_duty_desc = 'Je bent niet in dienst!',
+    gps_enabled = 'GPS ingeschakeld',
+    gps_enabled_desc = 'Je hebt je GPS ingeschakeld',
+    gps_disabled = 'GPS uitgeschakeld',
+    gps_disabled_desc = 'Je hebt je GPS uitgeschakeld',
 
     possible_cause = 'Mogelijke oorzaak',
 
@@ -199,10 +209,10 @@ Strings = {
     'De patiënt lijkt geen aanvullende behandeling nodig te hebben. Probeer de defibrillator te gebruiken en hoop op het beste!',
     player_injury = 'Persoon Gewond',
     player_injury_desc = 'Deze persoon lijkt een %s wond te hebben',
-    player_not_unconcious = 'Speler Bewust',
-    player_not_unconcious_desc = 'Het lijkt erop dat de speler bij bewustzijn is',
-    player_unconcious = 'Speler Bewusteloos',
-    player_unconcious_desc = 'De patiënt moet bij bewustzijn zijn voor deze behandeling!',
+    player_not_unconscious = 'Speler Bewust',
+    player_not_unconscious_desc = 'Het lijkt erop dat de speler bij bewustzijn is',
+    player_unconscious = 'Speler Bewusteloos',
+    player_unconscious_desc = 'De patiënt moet bij bewustzijn zijn voor deze behandeling!',
     player_reviving = 'Bezig met reanimeren',
     player_reviving_desc = 'Bezig met reanimeren van de patiënt',
     player_noitem = 'Ontbrekend Item',

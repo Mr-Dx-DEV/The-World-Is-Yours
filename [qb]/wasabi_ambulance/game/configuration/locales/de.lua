@@ -4,6 +4,16 @@
 if Config.Language ~= 'de' then return end
 
 Strings = {
+    no_society_account = '[^3WARNUNG^0] Gesellschaftskonto existiert nicht für: %s',
+    ems_worker = 'Rettungsdienstmitarbeiter',
+    not_authorized = 'Nicht autorisiert',
+    not_authorized_desc = 'Sie sind nicht berechtigt, dies zu verwenden!',
+    not_on_duty = 'Nicht im Dienst',
+    not_on_duty_desc = 'Sie sind nicht im Dienst!',
+    gps_enabled = 'GPS aktiviert',
+    gps_enabled_desc = 'Sie haben Ihr GPS aktiviert',
+    gps_disabled = 'GPS deaktiviert',
+    gps_disabled_desc = 'Sie haben Ihr GPS deaktiviert',
 
     possible_cause = 'Mögliche Ursache',
 

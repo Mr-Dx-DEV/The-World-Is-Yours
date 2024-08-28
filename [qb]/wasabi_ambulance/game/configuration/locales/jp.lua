@@ -4,6 +4,16 @@
 if Config.Language ~= 'jp' then return end
 
 Strings = {
+    no_society_account = '[^3警告^0] 社会アカウントが存在しません: %s',
+    ems_worker = '救急隊員',
+    not_authorized = '権限がありません',
+    not_authorized_desc = 'これを使用する権限がありません！',
+    not_on_duty = '勤務中ではない',
+    not_on_duty_desc = '勤務中ではありません！',
+    gps_enabled = 'GPSが有効になっています',
+    gps_enabled_desc = 'GPSを有効にしました',
+    gps_disabled = 'GPSが無効になっています',
+    gps_disabled_desc = 'GPSを無効にしました',
 
     possible_cause = '可能性の原因',
 

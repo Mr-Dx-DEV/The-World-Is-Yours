@@ -4,6 +4,16 @@
 if Config.Language ~= 'pt' then return end
 
 Strings = {
+    no_society_account = '[^3AVISO^0] A conta da sociedade não existe para: %s',
+    ems_worker = 'Trabalhador de ambulância',
+    not_authorized = 'Não autorizado',
+    not_authorized_desc = 'Você não está autorizado a usar isto!',
+    not_on_duty = 'Fora de serviço',
+    not_on_duty_desc = 'Você não está de serviço!',
+    gps_enabled = 'GPS ativado',
+    gps_enabled_desc = 'Você ativou o seu GPS',
+    gps_disabled = 'GPS desativado',
+    gps_disabled_desc = 'Você desativou o seu GPS',
 
     possible_cause = 'Causa possível',
 
@@ -200,10 +210,10 @@ Strings = {
     'O paciente não parece precisar de tratamento adicional. Tente usar o desfibrilador e esperar pelo melhor!',
     player_injury = 'Pessoa Ferida',
     player_injury_desc = 'Esta pessoa parece ter uma ferida %s',
-    player_not_unconcious = 'Jogador Consciente',
-    player_not_unconcious_desc = 'Parece que o jogador está consciente',
-    player_unconcious = 'Jogador Inconsciente',
-    player_unconcious_desc = 'O paciente precisa estar consciente para este tratamento!',
+    player_not_unconscious = 'Jogador Consciente',
+    player_not_unconscious_desc = 'Parece que o jogador está consciente',
+    player_unconscious = 'Jogador Inconsciente',
+    player_unconscious_desc = 'O paciente precisa estar consciente para este tratamento!',
     player_reviving = 'Revivendo',
     player_reviving_desc = 'Revivendo o paciente em progresso',
     player_noitem = 'Item em Falta',

@@ -4,6 +4,17 @@
 if Config.Language ~= 'cn' then return end
 
 Strings = {
+    no_society_account = '[^3警告^0] 社会账户不存在: %s',
+    ems_worker = '救护车工作人员',
+    not_authorized = '未授权',
+    not_authorized_desc = '您没有授权使用这个！',
+    not_on_duty = '未值班',
+    not_on_duty_desc = '您没有值班！',
+    gps_enabled = 'GPS已启用',
+    gps_enabled_desc = '您已启用GPS',
+    gps_disabled = 'GPS已禁用',
+    gps_disabled_desc = '您已禁用GPS',
+
     possible_cause = '可能原因',
 
     full_name = '名字',

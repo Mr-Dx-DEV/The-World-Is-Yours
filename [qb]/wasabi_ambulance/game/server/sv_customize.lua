@@ -47,8 +47,20 @@ function ChargePlayer(src, account, cost, PayHospital)
                 exports[management]:AddMoney(PayHospital, newCost)
             else --wsb.framework == 'esx'
                 TriggerEvent('esx_addonaccount:getSharedAccount', PayHospital, function(account)
-                    account.addMoney(newCost)
+                    if account then
+                        account.addMoney(newCost)
+                        return true
+                    end
+                    -- if account doesn't exist, try adding society_ prefix
+                    TriggerEvent('esx_addonaccount:getSharedAccount', 'society_'..PayHospital, function(societyAccount)
+                        if not societyAccount then
+                            print(Strings.no_society_account:format(PayHospital))
+                            return false
+                        end
+                        societyAccount.addMoney(newCost)
+                    end)
                 end)
+
             end
         end
         return true

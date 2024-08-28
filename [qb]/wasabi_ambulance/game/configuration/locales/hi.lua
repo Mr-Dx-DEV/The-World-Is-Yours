@@ -4,6 +4,16 @@
 if Config.Language ~= 'hi' then return end
 
 Strings = {
+    no_society_account = '[^3चेतावनी^0] समाज खाता मौजूद नहीं है: %s',
+    ems_worker = 'एम्बुलेंस कर्मचारी',
+    not_authorized = 'अनधिकृत',
+    not_authorized_desc = 'आपको इसका उपयोग करने के लिए अधिकृत नहीं हैं!',
+    not_on_duty = 'ड्यूटी पर नहीं',
+    not_on_duty_desc = 'आप ड्यूटी पर नहीं हैं!',
+    gps_enabled = 'जीपीएस सक्षम',
+    gps_enabled_desc = 'आपने अपना जीपीएस सक्षम कर दिया है',
+    gps_disabled = 'जीपीएस अक्षम',
+    gps_disabled_desc = 'आपने अपना जीपीएस अक्षम कर दिया है',
 
     possible_cause = 'संभावित कारण',
 
@@ -200,10 +210,10 @@ Strings = {
     no_injury_dead_desc = 'रोगी को और उपचार की आवश्यकता नहीं है। कृपया डिफ़िब्रिलेटर का उपयोग करें और बेहतर की आशा करें!',
     player_injury = 'व्यक्ति घायल',
     player_injury_desc = 'इस व्यक्ति के पास ऐसा लगता है कि उसे %s घाव हुआ है',
-    player_not_unconcious = 'खिलाड़ी होशियार',
-    player_not_unconcious_desc = 'लगता है कि खिलाड़ी होशियार है',
-    player_unconcious = 'खिलाड़ी अचेत',
-    player_unconcious_desc = 'इस उपचार के लिए रोगी को होशियार होना चाहिए!',
+    player_not_unconscious = 'खिलाड़ी होशियार',
+    player_not_unconscious_desc = 'लगता है कि खिलाड़ी होशियार है',
+    player_unconscious = 'खिलाड़ी अचेत',
+    player_unconscious_desc = 'इस उपचार के लिए रोगी को होशियार होना चाहिए!',
     player_reviving = 'पुनर्जीवन',
     player_reviving_desc = 'रोगी का पुनर्जीवन प्रक्रिया में है',
     player_noitem = 'आवश्यक वस्त्र गुम',
