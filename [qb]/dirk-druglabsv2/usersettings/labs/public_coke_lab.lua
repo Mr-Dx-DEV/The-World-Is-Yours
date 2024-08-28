@@ -24,14 +24,14 @@ Config.Labs['Public Cocaine Lab'] = { --## Public
     },
   },
 
-  Blip = { --## Delete this blip table if you don't want a blip
+--[[   Blip = { --## Delete this blip table if you don't want a blip
     Scale   = 0.75, 
     Sprite  = 497, 
     Color   = 45,
     Display = 4,
     Close  = true, --## Will only show this on the minimap when you are close to the lab forcing players to drive around and try find it. 
   },
-
+ ]]
   Stages = {
     [1] = {
       Position      = vector4(-4.6897039413452,-0.55615234375,-0.95853424072266,359.3857421875),

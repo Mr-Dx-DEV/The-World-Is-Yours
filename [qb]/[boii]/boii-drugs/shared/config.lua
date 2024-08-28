@@ -26,39 +26,39 @@ Config.CoreSettings = {
 -- Blip settings
 Config.Blips = {
     -- Shared
-    {title = 'Hydrochloric Acid', colour = 5, id = 51, coords = vector3(2705.04, 1557.17, 26.04), scale = 0.6, useblip = true},
-    {title = 'Construction Site', colour = 5, id = 51, coords = vector3(-453.74, -983.82, 25.9), scale = 0.6, useblip = true},
+    {title = 'Hydrochloric Acid', colour = 5, id = 51, coords = vector3(2705.04, 1557.17, 26.04), scale = 0.6, useblip = false},
+    {title = 'Construction Site', colour = 5, id = 51, coords = vector3(-453.74, -983.82, 25.9), scale = 0.6, useblip = false},
     
     -- Weed
-    {title = 'Smoke On The Water', colour = 25, id = 496, coords = vector3(-1173.55, -1574.21, 5.38), scale = 0.6, useblip = true},
+    {title = 'Smoke On The Water', colour = 25, id = 496, coords = vector3(-1173.55, -1574.21, 5.38), scale = 0.6, useblip = false},
     
     -- Ketamine
-    {title = 'Suspicious Worker', colour = 7, id = 51, coords = vector3(569.32, 2796.66, 42.02), scale = 0.6, useblip = true},
-    {title = 'Ketamine Processing', colour = 7, id = 51, coords = vector3(-1358.46, -756.26, 22.3), scale = 0.6, useblip = true},
+    {title = 'Suspicious Worker', colour = 7, id = 51, coords = vector3(569.32, 2796.66, 42.02), scale = 0.6, useblip = false},
+    {title = 'Ketamine Processing', colour = 7, id = 51, coords = vector3(-1358.46, -756.26, 22.3), scale = 0.6, useblip = false},
 
     -- Heroin
-    {title = 'Pharmacist', colour = 10, id = 51, coords = vector3(95.23, -1607.81, 30.9), scale = 0.6, useblip = true}, 
-    {title = 'Opium Field', colour = 10, id = 51, coords = vector3(-2332.28, 2516.33, 3.43), scale = 0.6, useblip = true}, 
-    {title = 'Ether Barrels', colour = 10, id = 51, coords = vector3(453.47, -585.43, 28.50), scale = 0.6, useblip = true},
-    {title = 'Morphine Processing', colour = 10, id = 51, coords = vector3(166.04, 295.21, 111.84), scale = 0.6, useblip = true},
-    {title = 'Heroin Base Processing', colour = 10, id = 51, coords = vector3(-1125.46, 4895.55, 218.47), scale = 0.6, useblip = true}, 
-    {title = 'Heroin Processing', colour = 10, id = 51, coords = vector3(1963.15, 4639.16, 42.10), scale = 0.6, useblip = true},
+    {title = 'Pharmacist', colour = 10, id = 51, coords = vector3(95.23, -1607.81, 30.9), scale = 0.6, useblip = false}, 
+    {title = 'Opium Field', colour = 10, id = 51, coords = vector3(-2332.28, 2516.33, 3.43), scale = 0.6, useblip = false}, 
+    {title = 'Ether Barrels', colour = 10, id = 51, coords = vector3(453.47, -585.43, 28.50), scale = 0.6, useblip = false},
+    {title = 'Morphine Processing', colour = 10, id = 51, coords = vector3(166.04, 295.21, 111.84), scale = 0.6, useblip = false},
+    {title = 'Heroin Base Processing', colour = 10, id = 51, coords = vector3(-1125.46, 4895.55, 218.47), scale = 0.6, useblip = false}, 
+    {title = 'Heroin Processing', colour = 10, id = 51, coords = vector3(1963.15, 4639.16, 42.10), scale = 0.6, useblip = false},
 
     -- Meth
-    {title = 'Prospecting Zone', colour = 10, id = 365, coords = vector3(2823.87, -627.59, 5.19), scale = 0.8, useblip = true},
-    {title = 'Methymaline Barrels', colour = 1, id = 51, coords = vector3(3494.18, 3645.89, 42.6), scale = 0.6, useblip = true},
-    {title = 'Airport Boxes', colour = 1, id = 51, coords = vector3(-798.32, -2795.76, 13.95), scale = 0.6, useblip = true},
-    {title = 'Meth Processing', colour = 1, id = 51, coords = vector3(1389.87, 3600.18, 38.94), scale = 0.6, useblip = true},
+    {title = 'Prospecting Zone', colour = 10, id = 365, coords = vector3(2823.87, -627.59, 5.19), scale = 0.8, useblip = false},
+    {title = 'Methymaline Barrels', colour = 1, id = 51, coords = vector3(3494.18, 3645.89, 42.6), scale = 0.6, useblip = false},
+    {title = 'Airport Boxes', colour = 1, id = 51, coords = vector3(-798.32, -2795.76, 13.95), scale = 0.6, useblip = false},
+    {title = 'Meth Processing', colour = 1, id = 51, coords = vector3(1389.87, 3600.18, 38.94), scale = 0.6, useblip = false},
     
     -- Cocaine
-    {title = 'Cocaine Field', colour = 3, id = 51, coords = vector3(2829.24, -1468.1, 11.43), scale = 0.6, useblip = true},
-    {title = 'Gasoline Tankers', colour = 3, id = 51, coords = vector3(-1932.35, 3038.86, 32.81), scale = 0.6, useblip = true},
-    {title = 'Airport Carts', colour = 3, id = 51, coords = vector3(-1150.35, -2566.99, 13.94), scale = 0.6, useblip = true},
-    {title = 'Cocaine Processing', colour = 3, id = 51, coords = vector3(517.33, 172.95, 100.25), scale = 0.6, useblip = true},
-    {title = 'Crack Processing', colour = 3, id = 51, coords = vector3(-255.73, -1544.53, 31.90), scale = 0.6, useblip = true},
+    {title = 'Cocaine Field', colour = 3, id = 51, coords = vector3(2829.24, -1468.1, 11.43), scale = 0.6, useblip = false},
+    {title = 'Gasoline Tankers', colour = 3, id = 51, coords = vector3(-1932.35, 3038.86, 32.81), scale = 0.6, useblip = false},
+    {title = 'Airport Carts', colour = 3, id = 51, coords = vector3(-1150.35, -2566.99, 13.94), scale = 0.6, useblip = false},
+    {title = 'Cocaine Processing', colour = 3, id = 51, coords = vector3(517.33, 172.95, 100.25), scale = 0.6, useblip = false},
+    {title = 'Crack Processing', colour = 3, id = 51, coords = vector3(-255.73, -1544.53, 31.90), scale = 0.6, useblip = false},
 
     -- Bulk buyer
-    {title = 'Bulk Buyer', colour = 5, id = 51, coords = vector3(-1757.21, 427.49, 127.70), scale = 0.6, useblip = true}
+    {title = 'Bulk Buyer', colour = 5, id = 51, coords = vector3(-1757.21, 427.49, 127.70), scale = 0.6, useblip = false}
 }
 
 -- Ped settings

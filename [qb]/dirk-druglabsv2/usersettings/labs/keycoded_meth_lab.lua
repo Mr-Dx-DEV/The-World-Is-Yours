@@ -24,14 +24,14 @@ Config.Labs['Keycoded Meth Lab'] = { --## Keycoded to 1234
     },
   },
 
-  Blip = { --## Delete this blip table if you don't want a blip
+  --[[ Blip = { --## Delete this blip table if you don't want a blip
     Scale   = 0.75, 
     Sprite  = 499, 
     Color   = 45,
     Display = 4,
     Close  = true, --## Will only show this on the minimap when you are close to the lab forcing players to drive around and try find it. 
   },
-
+ ]]
   Stages = {
     [1] = {
       Position      = vector4(-2.2980346679688,-1.635498046875,-0.47295570373535,174.29225158691),

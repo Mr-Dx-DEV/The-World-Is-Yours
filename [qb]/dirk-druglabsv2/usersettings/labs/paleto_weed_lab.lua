@@ -13,14 +13,14 @@ Config.Labs['Paleto Weed Grow'] = { --## Private Owned $25000
     Jobs    = false, --## Gangs can access this lab
   },
 
-  Blip = { --## Delete this blip table if you don't want a blip
+--[[   Blip = { --## Delete this blip table if you don't want a blip
     Scale   = 0.75, 
     Sprite  = 496, 
     Color   = 45,
     Display = 2,
     Close  = true, --## Will only show this on the minimap when you are close to the lab forcing players to drive around and try find it. 
   },
-
+ ]]
 
   Stages = {
     [1] = {

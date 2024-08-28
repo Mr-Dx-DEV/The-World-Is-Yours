@@ -52,7 +52,237 @@ return {
 		consume = 0.3
 	},
 
-	
+	["redw"] = {
+        label = "Redwood Pack",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Take out your cigarettes",
+        client = {
+            image = "redw.png"
+        }
+    },
+    ["marlboro"] = {
+        label = "Marlboro Pack",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Take out your cigarettes",
+        client = {
+            image = "marlboro.png"
+        }
+    },
+    ["cubancigar"] = {
+        label = "Cuban Cigar",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Real cigar",
+        client = {
+            image = "cubancigar.png"
+        }
+    },
+    ["davidoffcigar"] = {
+        label = "Davidoff Cigar",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Real cigar",
+        client = {
+            image = "davidoffcigar.png"
+        }
+    },
+    ["redwcig"] = {
+        label = "Redwood Cigarette",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Smoking cigarette",
+        client = {
+            image = "redwcig.png"
+        }
+    },
+    ["marlborocig"] = {
+        label = "Marlboro Cigarette",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Smoking cigarette",
+        client = {
+            image = "marlborocig.png"
+        }
+    },
+    ["vape"] = {
+        label = "Vape",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Electronic cigarette",
+        client = {
+            image = "vape.png"
+        }
+    },
+    ["liquid"] = {
+        label = "Liquid",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Vape liquid",
+        client = {
+            image = "liquid.png"
+        }
+    },
+    ["lighter"] = {
+        label = "Lighter",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Cigarette lighter",
+        client = {
+            image = "lighter.png"
+        }
+    },
+    ["bong"] = {
+        label = "Bong",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Bong",
+        client = {
+            image = "bong.png"
+        }
+    },
+    ["ocb_paper"] = {
+        label = "Ocb Paper",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Ocb paper for rolling joints",
+        client = {
+            image = "ocb_paper.png"
+        }
+    },
+    ["og_kush_joint"] = {
+        label = "Og Kush Joint",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Good joint",
+        client = {
+            image = "og_kush_joint.png"
+        }
+    },
+    ["blue_dream_joint"] = {
+        label = "Blue Dream Joint",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Good joint",
+        client = {
+            image = "blue_dream_joint.png"
+        }
+    },
+    ["purple_haze_joint"] = {
+        label = "Purple Haze Joint",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Good joint",
+        client = {
+            image = "purple_haze_joint.png"
+        }
+    },
+    ["banana_kush_joint"] = {
+        label = "Banana Lush Joint",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Good joint",
+        client = {
+            image = "banana_kush_joint.png"
+        }
+    },
+    ["og_kush_bag"] = {
+        label = "Og Kush Bag",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Weed for packing",
+        client = {
+            image = "og_kush_bag.png"
+        }
+    },
+    ["blue_dream_bag"] = {
+        label = "Blue Dream Bag",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Weed for packing",
+        client = {
+            image = "blue_dream_bag.png"
+        }
+    },
+    ["purple_haze_bag"] = {
+        label = "Purple Haze Bag",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Weed for packing",
+        client = {
+            image = "purple_haze_bag.png"
+        }
+    },
+    ["banana_kush_bag"] = {
+        label = "Banana Kush Bag",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Weed for packing",
+        client = {
+            image = "banana_kush_bag.png"
+        }
+    },
+    ["og_kush_weed"] = {
+        label = "Og Kush Weed 1G",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Weed for packing",
+        client = {
+            image = "og_kush_weed.png"
+        }
+    },
+    ["blue_dream_weed"] = {
+        label = "Blue Dream Weed 1G",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Weed for packing",
+        client = {
+            image = "blue_dream_weed.png"
+        }
+    },
+    ["banana_kush_weed"] = {
+        label = "Banana Kush Weed 1G",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Weed for packing",
+        client = {
+            image = "banana_kush_weed.png"
+        }
+    },
+    ["purple_haze_weed"] = {
+        label = "Purple Haze Weed 1G",
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Weed for packing",
+        client = {
+            image = "purple_haze_weed.png"
+        }
+    },
+
 
 	['black_money'] = {
 		label = 'Dirty Money',

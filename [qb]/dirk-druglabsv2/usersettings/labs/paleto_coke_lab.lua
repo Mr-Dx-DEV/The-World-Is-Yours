@@ -25,14 +25,14 @@ Config.Labs['Paleto Cocaine Lab'] = { --## Tebex Package Example
     },
   },
 
-  Blip = { --## Delete this blip table if you don't want a blip
+--[[   Blip = { --## Delete this blip table if you don't want a blip
     Scale   = 0.75, 
     Sprite  = 497, 
     Color   = 45,
     Display = 2,
     Close  = true, --## Will only show this on the minimap when you are close to the lab forcing players to drive around and try find it. 
   },
-
+ ]]
   Stages = {
     [1] = {
       Position      = vector4(4.825562, -3.003174, -2.673802, 179.7306060791), 

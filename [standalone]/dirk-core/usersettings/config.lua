@@ -36,7 +36,7 @@ Config = {
     },
     TargetSystem   = {
       ['qtarget']   = false,
-      ['qb-target'] = false,
+      ['qb-target'] = true,
       ['ox_target'] = true,
     },
     TimeSystem     = {

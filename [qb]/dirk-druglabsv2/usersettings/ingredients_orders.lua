@@ -5,13 +5,13 @@ Config.IngredientsOrders = { --## Make it so there are armed players driving the
   TruckModel       = "rumpo",
   ToInventory      = true,  --## If true then ingredients will go into the players inventory upon completion rather than the labs
 
-  Blip = {
+ --[[  Blip = {
     Scale   = 0.75,
     Sprite  = 51,
     Color   = 1,
     Display = 4,
   },
-
+ ]]
   Missions    = { --## Locations players will need to go to collect orders
 
     ['Downtown Vinewood'] = {

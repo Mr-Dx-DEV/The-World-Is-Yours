@@ -22,7 +22,7 @@ Config.Labs['Paleto Meth Lab'] = { --## KeyCode Example - Code - 1234
       propelyeneglycol   = 50,   
     },
   },
-
+--[[ 
   Blip = { --## Delete this blip table if you don't want a blip
     Scale   = 0.75, 
     Sprite  = 499, 
@@ -30,7 +30,7 @@ Config.Labs['Paleto Meth Lab'] = { --## KeyCode Example - Code - 1234
     Display = 2,
     Close  = true, --## Will only show this on the minimap when you are close to the lab forcing players to drive around and try find it. 
   },
-
+ ]]
   Stages = {
     [1] = {
       Position      = vector4(-2.1496429443359,-2.3616943359375,-2.2236909866333,186.49963378906),

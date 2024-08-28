@@ -7,7 +7,7 @@ Config = {
 	System = {
 		Debug = false,
 
-		Menu = "qb",			-- "qb", "ox", "gta"
+		Menu = "ox",			-- "qb", "ox", "gta"
 		Notify = "qb",			-- "qb", "ox", "esx, "okok", "gta"
 		drawText = "qb",		-- "qb", "ox", "gta"
 		ProgressBar = "qb", 	-- "qb", "ox", "gta"

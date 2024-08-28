@@ -12,7 +12,7 @@ Config.Labs['Public Weed Grow'] = { -- ## Public
     Gangs   = false, --## Gangs can access this lab
     Jobs    = false, --## Gangs can access this lab
   },
-
+--[[ 
   Blip = { --## Delete this blip table if you don't want a blip
     Scale   = 0.75, 
     Sprite  = 496, 
@@ -20,7 +20,7 @@ Config.Labs['Public Weed Grow'] = { -- ## Public
     Display = 4,
     Close  = true, --## Will only show this on the minimap when you are close to the lab forcing players to drive around and try find it. 
   },
-
+ ]]
   Stages = {
     [1] = {
       Position      = vector4(6.3436584472656,-9.7176513671875,-2.0926952362061,268.46987915039),
