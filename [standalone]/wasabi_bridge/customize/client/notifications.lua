@@ -18,11 +18,10 @@ RegisterNetEvent('wasabi_bridge:notify', function(title, desc, style, icon, id)
     if GetResourceState('wasabi_notify') == 'started' then -- If using wasabi_notify, automatic detection
         if style == 'inform' then style = 'info' end
 
-        exports.wasabi_notify:notify(title, desc, Config.Notifications.defaults.time or 3500, style or 'info', Config.NotificationSound or Config.Notifications.defaults.sound or false, icon, id)
-        return
+        return exports.wasabi_notify:notify(title, desc, Config.Notifications.defaults.time or 3500, style or 'info', Config.NotificationSound or Config.Notifications.defaults.sound or false, icon, id)
     end
 
-    ShowNotification(title, desc, style, icon, id) -- Default bridge built-in notification system
+    return ShowNotification(title, desc, style, icon, id) -- Default bridge built-in notification system
 
     --[[
     if GetResourceState('ox_lib') == 'started' then -- If using ox_lib and not wasabi_notfy automatic detection

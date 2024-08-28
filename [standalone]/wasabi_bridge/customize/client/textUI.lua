@@ -21,8 +21,8 @@ function WSB.showTextUI(msg, options)
     -- }
 
     -- Remove under this to use your own text UI --
-    ShowTextUI(msg, options)
     textUI = msg
+    return ShowTextUI(msg, options)
     -- Remove above this if you are using your own menu system / want to use ox_lib
 
     --[[
@@ -40,8 +40,8 @@ end
 -- Hide text UI
 function WSB.hideTextUI()
     -- Remove under this to use your own text UI --
-    HideTextUI()
     textUI = false
+    return HideTextUI()
     -- Remove above this if you are using your own menu system / want to use ox_lib
 
     --[[

@@ -27,7 +27,7 @@ function WSB.alertDialog(data)
 
     -- Remove below this if you are using your own menu system / want to use ox_lib
 
-    AlertDialog(data)
+    return AlertDialog(data)
 
     -- Remove above this to use your own alert dialog or ox_lib
 

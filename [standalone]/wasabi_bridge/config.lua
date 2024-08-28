@@ -23,7 +23,7 @@ Config.Notifications = {
         iconSize = '2.2rem',                        -- Default icon size if shown and not defined. (Default is 1.5rem)
         fontColor = '#e5e5e5',                      -- Color, hex, etc (default: '#b5b3b3')
         backgroundColor = 'rgba(37, 38, 43, 0.60)', -- Background color of notification (default: 'rgba(80, 80, 80, 0.651)')
-        sound = true,                               -- Play a sound when the notification is shown
+        sound = false,                               -- Play a sound when the notification is shown
     },
     styles = {                           -- Notification styles (Feel free to edit and add, but don't remove any default styles completely)
 

@@ -25,7 +25,7 @@ function WSB.showContextMenu(data)
 
     -- Remove below this if you are using your own menu system / want to use ox_lib
 
-    ShowContextMenu(data)
+    return ShowContextMenu(data)
 
     -- Remove above this if you are using your own menu system / want to use ox_lib
 
@@ -46,7 +46,7 @@ function WSB.showMenu(data)
     -- data: the same as data is for wsb.showContextMenu
 
     -- Remove below this if you are using your own menu system / want to use ox_lib
-    ShowMenu(data)
+    return ShowMenu(data)
     -- Remove above this if you are using your own menu system / want to use ox_lib
 
     --[[
