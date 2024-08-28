@@ -52,16 +52,7 @@ return {
 		consume = 0.3
 	},
 
-	['bandage'] = {
-		label = 'Bandage',
-		weight = 115,
-		client = {
-			anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
-			prop = { model = `prop_rolled_sock_02`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
-			disable = { move = true, car = true, combat = true },
-			usetime = 2500,
-		}
-	},
+	
 
 	['black_money'] = {
 		label = 'Dirty Money',
@@ -197,34 +188,254 @@ return {
 		stack = true,
 		description = "Bomb to detonaite big things",
 	},
---[[ 
-	['mov_basic_ceramic'] = {
-        label = Config.Items["mov_basic_ceramic"].label,
-        description = Config.Items["mov_basic_ceramic"].description,
-        image = 'mov_basic_ceramic.png',
-        weight = 10,
-    },
-
-    ['mov_advanced_ceramic'] = {
-        label = Config.Items["mov_advanced_ceramic"].label,
-        description = Config.Items["mov_advanced_ceramic"].description,
-        image = 'mov_advanced_ceramic.png',
-        weight = 10,
-    },
-
-    ['mov_basic_wax'] = {
-        label = Config.Items["mov_basic_wax"].label,
-        description = Config.Items["mov_basic_wax"].description,
-        image = 'mov_basic_wax.png',
-        weight = 10,
-    },
-
-    ['mov_advanced_wax'] = {
-        label = Config.Items["mov_advanced_wax"].label,
-        description = Config.Items["mov_advanced_wax"].description,
-        image = 'mov_advanced_wax.png',
-        weight = 10,
-    }, ]]
+ 
+	['gummybearmould'] = {
+		label = 'Gummy Bear Mould',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'A BPA free mould, shaped like a bear!',
+		client = { image = 'gummybearmould.png' }
+	},
+	
+	['bbmenu'] = {
+		label = 'Best Buds Menu',
+		weight = 10,
+		stack = true,
+		close = true,
+		useable = true,
+		description = 'A menu for the best buds medical dispensary!',
+		client = { image = 'bbmenu.png' }
+	},
+	
+	-- Ingredients
+	['gelatine'] = {
+		label = 'Gelatine',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'A packet of gelatine, good for making sweets!',
+		client = { image = 'gelatine.png' }
+	},
+	
+	['rawhoney'] = {
+		label = 'Raw Honey',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'A jar of raw honey, good for making sweets!',
+		client = { image = 'rawhoney.png' }
+	},
+	
+	-- Crops
+	['weed_skunk_cbd_crop'] = {
+		label = 'CBD Skunk Crop',
+		weight = 1200,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'A crop of CBD Skunk!',
+		client = { image = 'weed_skunk_cbd_crop.png' }
+	},
+	
+	['weed_og-kush_cbd_crop'] = {
+		label = 'CBD OG Kush Crop',
+		weight = 1200,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'A crop of CBD OG Kush',
+		client = { image = 'weed_og-kush_cbd_crop.png' }
+	},
+	
+	['weed_white-widow_cbd_crop'] = {
+		label = 'CBD White Widow Crop',
+		weight = 1200,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'A crop of CBD White Widow',
+		client = { image = 'weed_white-widow_cbd_crop.png' }
+	},
+	
+	['weed_ak47_cbd_crop'] = {
+		label = 'CBD AK 47 Crop',
+		weight = 1200,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'A crop of CBD AK47!',
+		client = { image = 'weed_ak47_cbd_crop.png' }
+	},
+	
+	['weed_amnesia_cbd_crop'] = {
+		label = 'CBD Amnesia Crop',
+		weight = 1200,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'A crop of CBD Amnesia!',
+		client = { image = 'weed_amnesia_cbd_crop.png' }
+	},
+	
+	-- Bags
+	['weed_skunk_cbd'] = {
+		label = 'CBD Skunk 2g',
+		weight = 2,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'A 2g bag of CBD Skunk!',
+		client = { image = 'weed_skunk_cbd.png' }
+	},
+	
+	['weed_og-kush_cbd'] = {
+		label = 'CBD OG Kush 2g',
+		weight = 2,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'A 2g bag of CBD OG Kush!',
+		client = { image = 'weed_og-kush_cbd.png' }
+	},
+	
+	['weed_white-widow_cbd'] = {
+		label = 'CBD White Widow 2g',
+		weight = 2,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'A 2g bag of CBD White Widow!',
+		client = { image = 'weed_white-widow_cbd.png' }
+	},
+	
+	['weed_ak47_cbd'] = {
+		label = 'CBD AK47 2g',
+		weight = 2,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'A 2g bag of CBD AK47!',
+		client = { image = 'weed_ak47_cbd.png' }
+	},
+	
+	['weed_amnesia_cbd'] = {
+		label = 'CBD Amnesia 2g',
+		weight = 2,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'A 2g bag of CBD Amnesia!',
+		client = { image = 'weed_amnesia_cbd.png' }
+	},
+	
+	-- Joints
+	['weed_skunk_cbd_joint'] = {
+		label = 'CBD Skunk Joint',
+		weight = 1,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'Light up that skunk son!',
+		client = { image = 'weed_skunk_cbd_joint.png' }
+	},
+	
+	['weed_og-kush_cbd_joint'] = {
+		label = 'CBD OG Kush Joint',
+		weight = 1,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'Light up that og kush son!',
+		client = { image = 'weed_og-kush_cbd_joint.png' }
+	},
+	
+	['weed_white-widow_cbd_joint'] = {
+		label = 'CBD White Widow Joint',
+		weight = 1,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'Light up that white widow son!',
+		client = { image = 'weed_white-widow_cbd_joint.png' }
+	},
+	
+	['weed_ak47_cbd_joint'] = {
+		label = 'CBD AK 47 Joint',
+		weight = 1,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'Light up that ak47 son!',
+		client = { image = 'weed_ak47_cbd_joint.png' }
+	},
+	
+	['weed_amnesia_cbd_joint'] = {
+		label = 'CBD Amnesia Joint',
+		weight = 1,
+		stack = true,
+		close = false,
+		useable = true,
+		description = 'Light up that amnesia son!',
+		client = { image = 'weed_amnesia_cbd_joint.png' }
+	},
+	
+	-- Edibles
+	['gummy_skunk_cbd'] = {
+		label = 'CBD Skunk Gummy',
+		weight = 4,
+		stack = true,
+		close = true,
+		description = 'A edible cbd skunk gummy bear!',
+		client = { image = 'gummy_skunk_cbd.png' }
+	},
+	
+	['gummy_og-kush_cbd'] = {
+		label = 'CBD OG-Kush Gummy',
+		weight = 4,
+		stack = true,
+		close = true,
+		description = 'A edible cbd og kush gummy bear!',
+		client = { image = 'gummy_og-kush_cbd.png' }
+	},
+	
+	['gummy_white-widow_cbd'] = {
+		label = 'CBD White-Widow Gummy',
+		weight = 4,
+		stack = true,
+		close = true,
+		description = 'A edible cbd white widow gummy bear!',
+		client = { image = 'gummy_white-widow_cbd.png' }
+	},
+	
+	['gummy_ak47_cbd'] = {
+		label = 'CBD AK47 Gummy',
+		weight = 4,
+		stack = true,
+		close = true,
+		description = 'A edible cbd ak47 gummy bear!',
+		client = { image = 'gummy_ak47_cbd.png' }
+	},
+	
+	['gummy_amnesia_cbd'] = {
+		label = 'CBD Amnesia Gummy',
+		weight = 4,
+		stack = true,
+		close = true,
+		description = 'A edible cbd amnesia gummy bear!',
+		client = { image = 'gummy_amnesia_cbd.png' }
+	},
+	
+	['bandage'] = {
+		label = 'Bandage',
+		weight = 115,
+		client = {
+			anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
+			prop = { model = `prop_rolled_sock_02`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
+			disable = { move = true, car = true, combat = true },
+			usetime = 2500,
+		}
+	},
 	['armour'] = {
 		label = 'Bulletproof Vest',
 		weight = 3000,

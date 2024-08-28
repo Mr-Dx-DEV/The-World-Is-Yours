@@ -51,6 +51,21 @@ QBShared.Jobs = {
 			['4'] = { name = 'Chief', isboss = true, payment = 150 },
 		},
 	},
+	bestbuds = {
+		label = 'Best Buds',
+		type = 'bestbuds',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+			['0'] = { name = 'Trainee', payment = 50 },
+			['1'] = { name = 'Deliveries', payment = 75 },
+			['2'] = { name = 'Sales', payment = 100 },
+			['3'] = { name = 'Grower', payment = 125 },
+			['4'] = { name = 'Assistant Manager', isboss = true, payment = 150 },
+			['5'] = { name = 'Manager', isboss = true, payment = 150 },
+			['6'] = { name = 'Owner', isboss = true, payment = 150 },
+		},
+	},
 	realestate = {
 		label = 'Real Estate',
 		defaultDuty = true,
