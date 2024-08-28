@@ -436,6 +436,2191 @@ return {
 			usetime = 2500,
 		}
 	},
+
+
+	-- Items
+['clean_plate'] = {
+    label = 'Clean Plate',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A clean dinner plate!',
+    client = {
+        image = 'clean_plate.png'
+    }
+},
+['dirty_plate'] = {
+    label = 'Dirty Plate',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A dirty dinner plate!',
+    client = {
+        image = 'dirty_plate.png'
+    }
+},
+['clean_cup'] = {
+    label = 'Clean Cup',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A clean cup!',
+    client = {
+        image = 'clean_cup.png'
+    }
+},
+['dirty_cup'] = {
+    label = 'Dirty Cup',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A dirty cup!',
+    client = {
+        image = 'dirty_cup.png'
+    }
+},
+['clean_glass'] = {
+    label = 'Clean Glass',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A clean glass!',
+    client = {
+        image = 'clean_glass.png'
+    }
+},
+['dirty_glass'] = {
+    label = 'Dirty Glass',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A dirty glass!',
+    client = {
+        image = 'dirty_glass.png'
+    }
+},
+['clean_smallglass'] = {
+    label = 'Clean Small Glass',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A clean small glass!',
+    client = {
+        image = 'clean_smallglass.png'
+    }
+},
+['dirty_smallglass'] = {
+    label = 'Dirty Small Glass',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A dirty small glass!',
+    client = {
+        image = 'dirty_smallglass.png'
+    }
+},
+['clean_pintglass'] = {
+    label = 'Clean Pint Glass',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A clean pint glass!',
+    client = {
+        image = 'clean_pintglass.png'
+    }
+},
+['dirty_pintglass'] = {
+    label = 'Dirty Pint Glass',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A dirty pint glass!',
+    client = {
+        image = 'dirty_pintglass.png'
+    }
+},
+['clean_wineglass'] = {
+    label = 'Clean Wine Glass',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A clean wine glass!',
+    client = {
+        image = 'clean_wineglass.png'
+    }
+},
+['dirty_wineglass'] = {
+    label = 'Dirty Wine Glass',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A dirty wine glass!',
+    client = {
+        image = 'dirty_wineglass.png'
+    }
+},
+['clean_cocktailglass'] = {
+    label = 'Clean Cocktail Glass',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A clean cocktail glass!',
+    client = {
+        image = 'clean_cocktailglass.png'
+    }
+},
+['dirty_cocktailglass'] = {
+    label = 'Dirty Cocktail Glass',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A dirty cocktail glass!',
+    client = {
+        image = 'dirty_cocktailglass.png'
+    }
+},
+['livemouse'] = {
+    label = 'Live Mouse',
+    weight = 450,
+    stack = true,
+    close = false,
+    description = 'A mouse! A snake\'s favorite meal!',
+    client = {
+        image = 'livemouse.png'
+    }
+},
+
+-- Ingredients
+['cherry'] = {
+    label = 'Cherry',
+    weight = 20,
+    stack = true,
+    close = false,
+    description = 'Cherry!',
+    client = {
+        image = 'cherry.png'
+    }
+},
+['lime'] = {
+    label = 'Lime',
+    weight = 40,
+    stack = true,
+    close = false,
+    description = 'Lime!',
+    client = {
+        image = 'lime.png'
+    }
+},
+['lemon'] = {
+    label = 'Lemon',
+    weight = 40,
+    stack = true,
+    close = false,
+    description = 'Lemon!',
+    client = {
+        image = 'lemon.png'
+    }
+},
+['pineapple'] = {
+    label = 'Pineapple',
+    weight = 60,
+    stack = true,
+    close = false,
+    description = 'Pineapple!',
+    client = {
+        image = 'pineapple.png'
+    }
+},
+['coconut'] = {
+    label = 'Coconut',
+    weight = 80,
+    stack = true,
+    close = false,
+    description = 'Coconut!',
+    client = {
+        image = 'coconut.png'
+    }
+},
+['cranberry'] = {
+    label = 'Cranberry',
+    weight = 20,
+    stack = true,
+    close = false,
+    description = 'Cranberry!',
+    client = {
+        image = 'cranberry.png'
+    }
+},
+['apple'] = {
+    label = 'Apple',
+    weight = 100,
+    stack = true,
+    close = false,
+    description = 'A fresh apple!',
+    client = {
+        image = 'apple.png'
+    }
+},
+['orange'] = {
+    label = 'Orange',
+    weight = 100,
+    stack = true,
+    close = false,
+    description = 'A fresh orange!',
+    client = {
+        image = 'orange.png'
+    }
+},
+['tomato'] = {
+    label = 'Tomato',
+    weight = 100,
+    stack = true,
+    close = false,
+    description = 'A fresh tomato!',
+    client = {
+        image = 'tomato.png'
+    }
+},
+
+-- Drinks
+['cocacola'] = {
+    label = 'CocaCola',
+    weight = 330,
+    stack = true,
+    close = true,
+    description = 'CocaCola, Taste The Feeling!',
+    client = {
+        image = 'cocacola.png'
+    },
+    combine = {
+        accept = {'clean_glass'},
+        reward = 'glass_cocacola',
+        anim = {
+            dict = 'anim@amb@clubhouse@bar@drink@one',
+            lib = 'one_bartender',
+            text = 'Pouring a Glass Of CocaCola..',
+            time = math.random(3550, 6500)
+        }
+    }
+},
+['pepsi'] = {
+    label = 'Pepsi',
+    weight = 330,
+    stack = true,
+    close = true,
+    description = 'Every Pepsi Refreshes The World!',
+    client = {
+        image = 'pepsi.png'
+    },
+    combine = {
+        accept = {'clean_glass'},
+        reward = 'glass_pepsi',
+        anim = {
+            dict = 'anim@amb@clubhouse@bar@drink@one',
+            lib = 'one_bartender',
+            text = 'Pouring A Glass Of Pepsi..',
+            time = math.random(3550, 6500)
+        }
+    }
+},
+['drpepper'] = {
+    label = 'Dr Pepper',
+    weight = 330,
+    stack = true,
+    close = true,
+    description = 'Dr Pepper, what\'s the worst that can happen!',
+    client = {
+        image = 'drpepper.png'
+    },
+    combine = {
+        accept = {'clean_glass'},
+        reward = 'glass_drpepper',
+        anim = {
+            dict = 'anim@amb@clubhouse@bar@drink@one',
+            lib = 'one_bartender',
+            text = 'Pouring A Glass Of Dr Pepper..',
+            time = math.random(3550, 6500)
+        }
+    }
+},
+['mountaindew'] = {
+    label = 'Mountain Dew',
+    weight = 330,
+    stack = true,
+    close = true,
+    description = 'Do the DEW!',
+    client = {
+        image = 'mountaindew.png'
+    },
+    combine = {
+        accept = {'clean_glass'},
+        reward = 'glass_mountaindew',
+        anim = {
+            dict = 'anim@amb@clubhouse@bar@drink@one',
+            lib = 'one_bartender',
+            text = 'Pouring A Glass Of Mountain Dew..',
+            time = math.random(3550, 6500)
+        }
+    }
+},
+['lemonade'] = {
+    label = 'Lemonade',
+    weight = 330,
+    stack = true,
+    close = true,
+    description = 'The Secret Lemonade Drinker!',
+    client = {
+        image = 'lemonade.png'
+    },
+    combine = {
+        accept = {'clean_glass'},
+        reward = 'glass_lemonade',
+        anim = {
+            dict = 'anim@amb@clubhouse@bar@drink@one',
+            lib = 'one_bartender',
+            text = 'Pouring A Glass Of Lemonade..',
+            time = math.random(3550, 6500)
+        }
+    }
+},
+['water'] = {
+    label = 'Water',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Water the way nature intended.',
+    client = {
+        image = 'water.png'
+    },
+    combine = {
+        accept = {'clean_glass'},
+        reward = 'glass_water',
+        anim = {
+            dict = 'anim@amb@clubhouse@bar@drink@one',
+            lib = 'one_bartender',
+            text = 'Pouring A Glass Of Water..',
+            time = math.random(3550, 6500)
+        }
+    }
+},
+['glass_cocacola'] = {
+    label = 'Glass of CocaCola',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A refreshing glass of cocacola!',
+    client = {
+        image = 'glass_cocacola.png'
+    }
+},
+['glass_pepsi'] = {
+    label = 'Glass of Pepsi',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A refreshing glass of pepsi!',
+    client = {
+        image = 'glass_pepsi.png'
+    }
+},
+['glass_drpepper'] = {
+    label = 'Glass of Dr Pepper',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A refreshing glass of dr pepper!',
+    client = {
+        image = 'glass_drpepper.png'
+    }
+},
+['glass_mountaindew'] = {
+    label = 'Glass of Mountain Dew',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A refreshing glass of mountain dew!',
+    client = {
+        image = 'glass_mountaindew.png'
+    }
+},
+['glass_lemonade'] = {
+    label = 'Glass of Lemonade',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A refreshing glass of lemonade!',
+    client = {
+        image = 'glass_lemonade.png'
+    }
+},
+['glass_water'] = {
+    label = 'Glass of Water',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A refreshing glass of water!',
+    client = {
+        image = 'glass_water.png'
+    }
+},
+['cup_coffee'] = {
+    label = 'Cup of Coffee',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A cup of coffee.',
+    client = {
+        image = 'cup_coffee.png'
+    },
+    combine = {
+        accept = {'glass_whiskey'},
+        reward = 'irishcoffee',
+        anim = {
+            dict = 'anim@amb@clubhouse@bar@drink@one',
+            lib = 'one_bartender',
+            text = 'Making Irish Coffee..',
+            time = math.random(3550, 6500)
+        }
+    }
+},
+['cup_tea'] = {
+    label = 'Cup of Tea',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A cup of tea.',
+    client = {
+        image = 'cup_tea.png'
+    }
+},
+
+-- Alcohol
+['pint_ambeer'] = {
+    label = 'Pint of AM Beer',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Morning sun!',
+    client = {
+        image = 'pint_ambeer.png'
+    }
+},
+['pint_piswasser'] = {
+    label = 'Pint of Piswasser',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Your in for a good time!',
+    client = {
+        image = 'pint_piswasser.png'
+    }
+},
+['pint_logger'] = {
+    label = 'Pint of Logger',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'The beer that brings the forest down!',
+    client = {
+        image = 'pint_logger.png'
+    }
+},
+['pint_dusche'] = {
+    label = 'Pint of Dusche Gold',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Golden shower!',
+    client = {
+        image = 'pint_dusche.png'
+    }
+},
+['glass_whiskey'] = {
+    label = 'Glass of Whiskey',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A small glass of whiskey!',
+    client = {
+        image = 'glass_whiskey.png'
+    },
+    combine = {
+        accept = {'cocacola'},
+        reward = 'glass_whiskeycoke',
+        anim = {
+            dict = 'anim@amb@clubhouse@bar@drink@one',
+            lib = 'one_bartender',
+            text = 'Mixing Whiskey and Coke..',
+            time = 5500
+        }
+    }
+},
+['glass_vodka'] = {
+    label = 'Glass of Vodka',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A small glass of vodka!',
+    client = {
+        image = 'glass_vodka.png'
+    },
+    combine = {
+        accept = {'lemonade'},
+        reward = 'glass_vodkalemon',
+        anim = {
+            dict = 'anim@amb@clubhouse@bar@drink@one',
+            lib = 'one_bartender',
+            text = 'Mixing Vodka Lemonade..',
+            time = 5500
+        }
+    }
+},
+['glass_rum'] = {
+    label = 'Glass of Rum',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A small glass of rum!',
+    client = {
+        image = 'glass_rum.png'
+    },
+    combine = {
+        accept = {'lemonade'},
+        reward = 'glass_rumlemon',
+        anim = {
+            dict = 'anim@amb@clubhouse@bar@drink@one',
+            lib = 'one_bartender',
+            text = 'Mixing Rum and Lemonade..',
+            time = 5500
+        }
+    }
+},
+['glass_whiskeycoke'] = {
+    label = 'Glass of Whiskey Coke',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A small glass of whiskey and coke!',
+    client = {
+        image = 'glass_whiskeycoke.png'
+    }
+},
+['glass_rumlemon'] = {
+    label = 'Glass of Rum Lemonade',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A small glass of rum lemonade!',
+    client = {
+        image = 'glass_rumlemon.png'
+    }
+},
+['glass_vodkalemon'] = {
+    label = 'Glass of Vodka Lemonade',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A small glass of vodka lemonade!',
+    client = {
+        image = 'glass_vodkalemon.png'
+    }
+},
+['whiskeysour'] = {
+    label = 'Whiskey Sour',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Whiskey Sour!',
+    client = {
+        image = 'whiskeysour.png'
+    }
+},
+['whiskeysmash'] = {
+    label = 'Whiskey Smash',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Whiskey Smash!',
+    client = {
+        image = 'whiskeysmash.png'
+    }
+},
+['bloodandsand'] = {
+    label = 'Blood and Sand',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Blood & Sand!',
+    client = {
+        image = 'bloodandsand.png'
+    }
+},
+['pinacolada'] = {
+    label = 'Pina Colada',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Pina Colada!',
+    client = {
+        image = 'pinacolada.png'
+    }
+},
+['zombie'] = {
+    label = 'Zombie',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Zombie!',
+    client = {
+        image = 'zombie.png'
+    }
+},
+['maitai'] = {
+    label = 'Mai Tai',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Mai Tai!',
+    client = {
+        image = 'maitai.png'
+    }
+},
+['appletini'] = {
+    label = 'Appletini',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Appletini!',
+    client = {
+        image = 'appletini.png'
+    }
+},
+['cosmopolitan'] = {
+    label = 'Cosmopolitan',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Cosmopolitan!',
+    client = {
+        image = 'cosmopolitan.png'
+    }
+},
+['bloodymary'] = {
+    label = 'Bloody Mary',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'Bloody Mary!',
+    client = {
+        image = 'bloodymary.png'
+    }
+},
+['irishcoffee'] = {
+    label = 'Irish Coffee',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'A cup of irish coffee.',
+    client = {
+        image = 'irishcoffee.png'
+    }
+},
+['chardonnay'] = {
+    label = 'Chardonnay',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Chardonnay for after a really long, hard day.',
+    client = {
+        image = 'chardonnay.png'
+    }
+},
+['barolo'] = {
+    label = 'Barolo',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'The King of Wines and the Wine of Kings.',
+    client = {
+        image = 'barolo.png'
+    }
+},
+['pinotgrigio'] = {
+    label = 'Pinot Grigio',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'One should always be drunk. That\'s all that matters.',
+    client = {
+        image = 'pinotgrigio.png'
+    }
+},
+['pinotnoir'] = {
+    label = 'Pinot Noir',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'If you drink no noir, you will pinot noir.',
+    client = {
+        image = 'pinotnoir.png'
+    }
+},
+['glass_chardonnay'] = {
+    label = 'Glass of Chardonnay',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Chardonnay for after a really long, hard day.',
+    client = {
+        image = 'glass_chardonnay.png'
+    }
+},
+['glass_barolo'] = {
+    label = 'Glass of Barolo',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'The King of Wines and the Wine of Kings.',
+    client = {
+        image = 'glass_barolo.png'
+    }
+},
+['glass_pinotgrigio'] = {
+    label = 'Glass of Pinot Grigio',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'One should always be drunk. That\'s all that matters.',
+    client = {
+        image = 'glass_pinotgrigio.png'
+    }
+},
+['glass_pinotnoir'] = {
+    label = 'Glass of Pinot Noir',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'If you drink no noir, you will pinot noir.',
+    client = {
+        image = 'glass_pinotnoir.png'
+    }
+},
+
+-- Food
+['steakpie'] = {
+    label = 'Microwavable Steak Pie',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'A microwavable steak pie!',
+    client = {
+        image = 'steakpie.png'
+    }
+},
+['chickenpie'] = {
+    label = 'Microwavable Chicken Pie',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'A microwavable chicken and mushroom pie!',
+    client = {
+        image = 'chickenpie.png'
+    }
+},
+['meatpie'] = {
+    label = 'Microwavable Meat Pie',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'A microwavable meat pie!',
+    client = {
+        image = 'meatpie.png'
+    }
+},
+['cheesepie'] = {
+    label = 'Microwavable Cheese Pie',
+    weight = 400,
+    stack = true,
+    close = true,
+    description = 'A microwavable cheese and onion pie!',
+    client = {
+        image = 'cheesepie.png'
+    }
+},
+['cookedsteakpie'] = {
+    label = 'Steak Pie',
+    weight = 300,
+    stack = true,
+    close = true,
+    description = 'A cooked steak pie!',
+    client = {
+        image = 'cookedsteakpie.png'
+    }
+},
+['cookedchickenpie'] = {
+    label = 'Chicken Pie',
+    weight = 300,
+    stack = true,
+    close = true,
+    description = 'A cooked chicken and mushroom pie!',
+    client = {
+        image = 'cookedchickenpie.png'
+    }
+},
+['cookedmeatpie'] = {
+    label = 'Meat Pie',
+    weight = 300,
+    stack = true,
+    close = true,
+    description = 'A cooked meat pie!',
+    client = {
+        image = 'cookedmeatpie.png'
+    }
+},
+['cookedcheesepie'] = {
+    label = 'Cheese Pie',
+    weight = 300,
+    stack = true,
+    close = true,
+    description = 'A cooked cheese and onion pie!',
+    client = {
+        image = 'cookedcheesepie.png'
+    }
+},
+['mwburger'] = {
+    label = 'Microwave Burger',
+    weight = 300,
+    stack = true,
+    close = true,
+    description = 'A microwavable burger!',
+    client = {
+        image = 'mwburger.png'
+    }
+},
+['mwcburger'] = {
+    label = 'Microwave Cheeseburger',
+    weight = 300,
+    stack = true,
+    close = true,
+    description = 'A microwavable cheeseburger!',
+    client = {
+        image = 'mwcburger.png'
+    }
+},
+['mwbcburger'] = {
+    label = 'Microwave Bacon Burger',
+    weight = 300,
+    stack = true,
+    close = true,
+    description = 'A microwavable bacon cheeseburger!',
+    client = {
+        image = 'mwbcburger.png'
+    }
+},
+['cookedmwburger'] = {
+    label = 'Burger',
+    weight = 300,
+    stack = true,
+    close = true,
+    description = 'A cooked microwavable burger!',
+    client = {
+        image = 'cookedmwburger.png'
+    }
+},
+['cookedmwcburger'] = {
+    label = 'Cheeseburger',
+    weight = 300,
+    stack = true,
+    close = true,
+    description = 'A cooked microwavable cheeseburger!',
+    client = {
+        image = 'cookedmwcburger.png'
+    }
+},
+['cookedmwbcburger'] = {
+    label = 'Bacon Cheeseburger',
+    weight = 300,
+    stack = true,
+    close = true,
+    description = 'A cooked microwavable bacon cheeseburger!',
+    client = {
+        image = 'cookedmwbcburger.png'
+    }
+},
+
+
+
+
+ 
+-- Drugsales
+['burnerphone'] = {
+    label = 'Burner Phone',
+    weight = 250,
+    stack = true,
+    close = true,
+    description = 'A burner phone, what do you need one of these for?',
+    client = {
+        image = 'burnerphone.png'
+    }
+},
+
+-- Weed
+-- Tools
+['drug_shears'] = {
+    label = 'Trimming Shears',
+    weight = 200,
+    stack = true,
+    close = false,
+    description = 'A set of high quality trimming shears.',
+    client = {
+        image = 'drug_shears.png'
+    }
+},
+['drug_scales'] = {
+    label = 'Scale',
+    weight = 1500,
+    stack = true,
+    close = false,
+    description = 'A set of premium scales for weighing out decimals.',
+    client = {
+        image = 'drug_scales.png'
+    }
+},
+['drug_grinder'] = {
+    label = 'Grinder',
+    weight = 150,
+    stack = true,
+    close = false,
+    description = 'A grinder for grinding herbs.. or other things..',
+    client = {
+        image = 'drug_grinder.png'
+    }
+},
+['rollingpapers'] = {
+    label = 'Rolling Papers',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'Paper made specifically for encasing and smoking tobacco or cannabis.',
+    client = {
+        image = 'rollingpapers.png'
+    }
+},
+['lighter'] = {
+    label = 'Lighter',
+    weight = 100,
+    stack = true,
+    close = false,
+    description = 'A lighter, everybody has to have one of these on hand!',
+    client = {
+        image = 'lighter.png'
+    }
+},
+['empty_weed_bag'] = {
+    label = 'Resealable Bag',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'A small empty bag',
+    client = {
+        image = 'empty_weed_bag.png'
+    }
+},
+['weed_fertilizer'] = {
+    label = 'Big Bud Fertilizer',
+    weight = 1000,
+    stack = true,
+    close = false,
+    description = 'Get that big bud energy!',
+    client = {
+        image = 'weed_fertilizer.png'
+    }
+},
+['distilled_water'] = {
+    label = 'Distilled Water',
+    weight = 1000,
+    stack = true,
+    close = false,
+    description = 'Distilled water for your plants or other uses..',
+    client = {
+        image = 'distilled_water.png'
+    }
+},
+['trowel'] = {
+    label = 'Trowel',
+    weight = 1000,
+    stack = true,
+    close = false,
+    description = 'Small handheld garden shovel',
+    client = {
+        image = 'trowel.png'
+    }
+},
+
+-- Seeds
+-- Male
+['weed_skunk_seed_m'] = {
+    label = 'Skunk: Seed (M)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A male skunk seed!',
+    client = {
+        image = 'weed_skunk_seed_m.png'
+    }
+},
+['weed_og-kush_seed_m'] = {
+    label = 'OG-Kush: Seed (M)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A male og-kush seed!',
+    client = {
+        image = 'weed_og-kush_seed_m.png'
+    }
+},
+['weed_white-widow_seed_m'] = {
+    label = 'White-Widow: Seed (M)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A male white-widow seed!',
+    client = {
+        image = 'weed_white-widow_seed_m.png'
+    }
+},
+['weed_ak47_seed_m'] = {
+    label = 'AK47: Seed (M)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A male ak47 seed!',
+    client = {
+        image = 'weed_ak47_seed_m.png'
+    }
+},
+['weed_amnesia_seed_m'] = {
+    label = 'Amnesia: Seed (M)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A male amnesia seed!',
+    client = {
+        image = 'weed_amnesia_seed_m.png'
+    }
+},
+['weed_purple-haze_seed_m'] = {
+    label = 'Purple-Haze: Seed (M)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A male purple-haze seed!',
+    client = {
+        image = 'weed_purple-haze_seed_m.png'
+    }
+},
+['weed_gelato_seed_m'] = {
+    label = 'Gelato: Seed (M)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A male gelato seed!',
+    client = {
+        image = 'weed_gelato_seed_m.png'
+    }
+},
+['weed_zkittlez_seed_m'] = {
+    label = 'Zkittlez: Seed (M)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A male zkittlez seed!',
+    client = {
+        image = 'weed_zkittlez_seed_m.png'
+    }
+},
+
+-- Feminized
+['weed_skunk_seed_f'] = {
+    label = 'Skunk: Seed (F)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A feminized skunk seed.',
+    client = {
+        image = 'weed_skunk_seed_f.png'
+    }
+},
+['weed_og-kush_seed_f'] = {
+    label = 'OG-Kush: Seed (F)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A feminized og-kush seed.',
+    client = {
+        image = 'weed_og-kush_seed_f.png'
+    }
+},
+['weed_white-widow_seed_f'] = {
+    label = 'White-Widow: Seed (F)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A feminized white-widow seed.',
+    client = {
+        image = 'weed_white-widow_seed_f.png'
+    }
+},
+['weed_ak47_seed_f'] = {
+    label = 'AK47: Seed (F)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A feminized ak47 seed.',
+    client = {
+        image = 'weed_ak47_seed_f.png'
+    }
+},
+['weed_amnesia_seed_f'] = {
+    label = 'Amnesia: Seed (F)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A feminized amnesia seed.',
+    client = {
+        image = 'weed_amnesia_seed_f.png'
+    }
+},
+['weed_purple-haze_seed_f'] = {
+    label = 'Purple-Haze: Seed (F)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A feminized purple-haze seed.',
+    client = {
+        image = 'weed_purple-haze_seed_f.png'
+    }
+},
+['weed_gelato_seed_f'] = {
+    label = 'Gelato: Seed (F)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A feminized gelato seed.',
+    client = {
+        image = 'weed_gelato_seed_f.png'
+    }
+},
+['weed_zkittlez_seed_f'] = {
+    label = 'Zkittlez: Seed (F)',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A feminized zkittlez seed.',
+    client = {
+        image = 'weed_zkittlez_seed_f.png'
+    }
+},
+
+-- Crops
+['weed_skunk_crop'] = {
+    label = 'Skunk: Crop',
+    weight = 400,
+    stack = true,
+    close = false,
+    description = 'A freshly harvested crop of the finest skunk flower!',
+    client = {
+        image = 'weed_skunk_crop.png'
+    }
+},
+['weed_og-kush_crop'] = {
+    label = 'OG-Kush: Crop',
+    weight = 400,
+    stack = true,
+    close = false,
+    description = 'A freshly harvested crop of the finest og-kush flower!',
+    client = {
+        image = 'weed_og-kush_crop.png'
+    }
+},
+['weed_white-widow_crop'] = {
+    label = 'White-Widow: Crop',
+    weight = 400,
+    stack = true,
+    close = false,
+    description = 'A freshly harvested crop of the finest white-widow flower!',
+    client = {
+        image = 'weed_white-widow_crop.png'
+    }
+},
+['weed_ak47_crop'] = {
+    label = 'AK47: Crop',
+    weight = 400,
+    stack = true,
+    close = false,
+    description = 'A freshly harvested crop of the finest ak47 flower!',
+    client = {
+        image = 'weed_ak47_crop.png'
+    }
+},
+['weed_amnesia_crop'] = {
+    label = 'Amnesia: Crop',
+    weight = 400,
+    stack = true,
+    close = false,
+    description = 'A freshly harvested crop of the finest amnesia flower!',
+    client = {
+        image = 'weed_amnesia_crop.png'
+    }
+},
+['weed_purple-haze_crop'] = {
+    label = 'Purple-Haze: Crop',
+    weight = 400,
+    stack = true,
+    close = false,
+    description = 'A freshly harvested crop of the finest purple-haze flower!',
+    client = {
+        image = 'weed_purple-haze_crop.png'
+    }
+},
+['weed_gelato_crop'] = {
+    label = 'Gelato: Crop',
+    weight = 400,
+    stack = true,
+    close = false,
+    description = 'A freshly harvested crop of the finest gelato flower!',
+    client = {
+        image = 'weed_gelato_crop.png'
+    }
+},
+['weed_zkittlez_crop'] = {
+    label = 'Zkittlez: Crop',
+    weight = 400,
+    stack = true,
+    close = false,
+    description = 'A freshly harvested crop of the finest zkittlez flower!',
+    client = {
+        image = 'weed_zkittlez_crop.png'
+    }
+},
+
+-- Bags 
+['weed_skunk'] = {
+    label = 'Skunk: 2g',
+    weight = 2,
+    stack = true,
+    close = false,
+    description = 'A 2g bag of the finest skunk flower!',
+    client = {
+        image = 'weed_skunk.png'
+    }
+},
+['weed_og-kush'] = {
+    label = 'OG-Kush: 2g',
+    weight = 2,
+    stack = true,
+    close = false,
+    description = 'A 2g bag of the finest og-kush flower!',
+    client = {
+        image = 'weed_og-kush.png'
+    }
+},
+['weed_white-widow'] = {
+    label = 'White-Widow: 2g',
+    weight = 2,
+    stack = true,
+    close = false,
+    description = 'A 2g bag of the finest white-widow flower!',
+    client = {
+        image = 'weed_white-widow.png'
+    }
+},
+['weed_ak47'] = {
+    label = 'AK47: 2g',
+    weight = 2,
+    stack = true,
+    close = false,
+    description = 'A 2g bag of the finest ak47 flower!',
+    client = {
+        image = 'weed_ak47.png'
+    }
+},
+['weed_amnesia'] = {
+    label = 'Amnesia: 2g',
+    weight = 2,
+    stack = true,
+    close = false,
+    description = 'A 2g bag of the finest amnesia flower!',
+    client = {
+        image = 'weed_amnesia.png'
+    }
+},
+['weed_purple-haze'] = {
+    label = 'Purple-Haze: 2g',
+    weight = 2,
+    stack = true,
+    close = false,
+    description = 'A 2g bag of the finest purple-haze flower!',
+    client = {
+        image = 'weed_purple-haze.png'
+    }
+},
+['weed_gelato'] = {
+    label = 'Gelato: 2g',
+    weight = 2,
+    stack = true,
+    close = false,
+    description = 'A 2g bag of the finest gelato flower!',
+    client = {
+        image = 'weed_gelato.png'
+    }
+},
+['weed_zkittlez'] = {
+    label = 'Zkittlez: 2g',
+    weight = 2,
+    stack = true,
+    close = false,
+    description = 'A 2g bag of the finest zkittlez flower!',
+    client = {
+        image = 'weed_zkittlez.png'
+    }
+},
+
+-- Joint
+['weed_skunk_joint'] = {
+    label = 'Skunk: Joint',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'A 1g joint of the finest skunk!',
+    client = {
+        image = 'weed_skunk_joint.png'
+    }
+},
+['weed_og-kush_joint'] = {
+    label = 'OG-Kush: Joint',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'A 1g joint of the finest og-kush!',
+    client = {
+        image = 'weed_og-kush_joint.png'
+    }
+},
+['weed_white-widow_joint'] = {
+    label = 'White-Widow: Joint',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'A 1g joint of the finest white-widow!',
+    client = {
+        image = 'weed_white-widow_joint.png'
+    }
+},
+['weed_ak47_joint'] = {
+    label = 'AK47: Joint',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'A 1g joint of the finest ak47!',
+    client = {
+        image = 'weed_ak47_joint.png'
+    }
+},
+['weed_amnesia_joint'] = {
+    label = 'Amnesia: Joint',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'A 1g joint of the finest amnesia!',
+    client = {
+        image = 'weed_amnesia_joint.png'
+    }
+},
+['weed_purple-haze_joint'] = {
+    label = 'Purple-Haze: Joint',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'A 1g joint of the finest purple-haze!',
+    client = {
+        image = 'weed_purple-haze_joint.png'
+    }
+},
+['weed_gelato_joint'] = {
+    label = 'Gelato: Joint',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'A 1g joint of the finest gelato!',
+    client = {
+        image = 'weed_gelato_joint.png'
+    }
+},
+['weed_zkittlez_joint'] = {
+    label = 'Zkittlez: Joint',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'A 1g joint of the finest zkittlez!',
+    client = {
+        image = 'weed_zkittlez_joint.png'
+    }
+},
+
+-- Heroin
+-- Tools
+['razorblade'] = {
+    label = 'Razor Blade',
+    weight = 10,
+    stack = true,
+    close = true,
+    description = 'A sharp razorblade, be careful not to cut yourself!',
+    client = {
+        image = 'razorblade.png'
+    }
+},
+['syringe'] = {
+    label = 'Syringe',
+    weight = 50,
+    stack = true,
+    close = true,
+    description = 'A sterile syringe, don\'t share!',
+    client = {
+        image = 'syringe.png'
+    }
+},
+['plasticjerrycan'] = {
+    label = 'Plastic Jerrycan',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A empty jerry can for storing liquids.',
+    client = {
+        image = 'plasticjerrycan.png'
+    }
+},
+['emptyvial'] = {
+    label = 'Empty Vial',
+    weight = 50,
+    stack = true,
+    close = true,
+    description = 'A empty sterile vial for storing liquid meds.',
+    client = {
+        image = 'emptyvial.png'
+    }
+},
+['drug_scales'] = {
+    label = 'Scale',
+    weight = 1500,
+    stack = true,
+    close = false,
+    description = 'A set of premium scales for weighing out decimals.',
+    client = {
+        image = 'drug_scales.png'
+    }
+},
+['drug_cuttingkit'] = {
+    label = 'Cutting Kit',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A mirror, a razor blade.. obviously this is a make up kit..',
+    client = {
+        image = 'drug_cuttingkit.png'
+    }
+},
+
+-- Drug materials
+['cement'] = {
+    label = 'Cement',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Just a regular bag of builders cement.',
+    client = {
+        image = 'cement.png'
+    }
+},
+['slakedlime'] = {
+    label = 'Slaked Lime',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Supposed to be used in preparation of dry mixer for painting and white washing.. However..',
+    client = {
+        image = 'slakedlime.png'
+    }
+},
+['ammonia'] = {
+    label = 'Ammonia',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Ammonia is a colorless, highly irritating gas with a pungent, suffocating odor.',
+    client = {
+        image = 'ammonia.png'
+    }
+},
+['aceticacid'] = {
+    label = 'Acetic Acid',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Acetic Acid is a clear colourless liquid which has a pungent, vinegar-like odour.',
+    client = {
+        image = 'aceticacid.png'
+    }
+},
+['hydrochloricacid'] = {
+    label = 'Hydrochloric Acid',
+    weight = 1500,
+    stack = true,
+    close = false,
+    description = 'Dissolves food pretty well..',
+    client = {
+        image = 'hydrochloricacid.png'
+    }
+},
+['ether'] = {
+    label = 'Petroleum Ether',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Petroleum ether is the petroleum fraction consisting of aliphatic hydrocarbons, commonly used as a laboratory solvent.',
+    client = {
+        image = 'ether.png'
+    }
+},
+['sodiumcarbonate'] = {
+    label = 'Sodium Carbonate',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'Sodium Carbonate is the disodium salt of carbonic acid with alkalinizing property.',
+    client = {
+        image = 'sodiumcarbonate.png'
+    }
+},
+['opium'] = {
+    label = 'Opium Sap',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = 'Opium, do you know how to refine it?',
+    client = {
+        image = 'opium.png'
+    }
+},
+['morphinebase'] = {
+    label = 'Morphine Base',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Morphine base. You can turn this into morphine or heroin.',
+    client = {
+        image = 'morphinebase.png'
+    }
+},
+['heroinbase'] = {
+    label = 'Heroin Base',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Heroin base. Refine this into heroin powder.',
+    client = {
+        image = 'heroinbase.png'
+    }
+},
+['sterilewater'] = {
+    label = 'Sterile Water',
+    weight = 50,
+    stack = true,
+    close = true,
+    description = 'A vial of sterile water for injecting meds.',
+    client = {
+        image = 'sterilewater.png'
+    }
+},
+
+-- Drugs
+['morphine'] = {
+    label = 'Morphine',
+    weight = 10,
+    stack = true,
+    close = true,
+    description = 'Morphine. Good for pain but also a good time!',
+    client = {
+        image = 'morphine.png'
+    }
+},
+['morphinebaggy'] = {
+    label = 'Bag of Morphine',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'Morphine. Good for pain but also a good time!',
+    client = {
+        image = 'morphinebaggy.png'
+    }
+},
+['heroin_1oz'] = {
+    label = 'Ounce of Heroin',
+    weight = 280,
+    stack = true,
+    close = true,
+    description = 'A large amount of heroin.',
+    client = {
+        image = 'heroin_1oz.png'
+    }
+},
+['heroinbaggy'] = {
+    label = 'Bag of Heroin',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'Heroin. Destroying lives since 1898!',
+    client = {
+        image = 'heroinbaggy.png'
+    }
+},
+['liquidheroin'] = {
+    label = 'Liquid Heroin',
+    weight = 10,
+    stack = true,
+    close = true,
+    description = 'Heroin. Destroying lives since 1898!',
+    client = {
+        image = 'liquidheroin.png'
+    }
+},
+
+-- Meth
+-- Tools
+['plasticjerrycan'] = {
+    label = 'Plastic Jerrycan',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A empty jerry can for storing liquids.',
+    client = {
+        image = 'plasticjerrycan.png'
+    }
+},
+['trowel'] = {
+    label = 'Trowel',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Just a simple gardening tool.',
+    client = {
+        image = 'trowel.png'
+    }
+},
+['drug_scales'] = {
+    label = 'Scale',
+    weight = 1500,
+    stack = true,
+    close = false,
+    description = 'A set of premium scales for weighing out decimals.',
+    client = {
+        image = 'drug_scales.png'
+    }
+},
+['drug_cuttingkit'] = {
+    label = 'Cutting Kit',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A mirror, a razor blade.. obviously this is a make up kit..',
+    client = {
+        image = 'drug_cuttingkit.png'
+    }
+},
+['empty_weed_bag'] = {
+    label = 'Resealable Bags',
+    weight = 1,
+    stack = true,
+    close = true,
+    description = 'A small empty bag',
+    client = {
+        image = 'empty_weed_bag.png'
+    }
+},
+
+-- Drug Materials
+['hydrochloricacid'] = {
+    label = 'Hydrochloric Acid',
+    weight = 1500,
+    stack = true,
+    close = false,
+    description = 'Dissolves food pretty well..',
+    client = {
+        image = 'hydrochloricacid.png'
+    }
+},
+['acetone'] = {
+    label = 'Acetone',
+    weight = 1500,
+    stack = true,
+    close = false,
+    description = 'A highly volatile and flammable liquid..',
+    client = {
+        image = 'acetone.png'
+    }
+},
+['lithium'] = {
+    label = 'Lithium',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Lithium, for batteries or maybe or things?',
+    client = {
+        image = 'lithium.png'
+    }
+},
+['methylamine'] = {
+    label = 'Methylamine',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'Methylamine? What is this breaking bad?',
+    client = {
+        image = 'methylamine.png'
+    }
+},
+
+-- Drugs
+['meth'] = {
+    label = '1g of Meth',
+    weight = 10,
+    stack = true,
+    close = true,
+    description = 'A gram of the finest teeth rotting goodness!',
+    client = {
+        image = 'meth.png'
+    }
+},
+['meth_1oz'] = {
+    label = 'Ounce of Meth',
+    weight = 280,
+    stack = true,
+    close = true,
+    description = 'A ounce of the finest teeth rotting goodness!',
+    client = {
+        image = 'meth_1oz.png'
+    }
+},
+
+-- Cocaine
+-- Tools
+['drug_scales'] = {
+    label = 'Scale',
+    weight = 1500,
+    stack = true,
+    close = false,
+    description = 'A set of premium scales for weighing out decimals.',
+    client = {
+        image = 'drug_scales.png'
+    }
+},
+['drug_cuttingkit'] = {
+    label = 'Cutting Kit',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'A mirror, a razor blade.. obviously this is a make up kit..',
+    client = {
+        image = 'drug_cuttingkit.png'
+    }
+},
+['plasticjerrycan'] = {
+    label = 'Plastic Jerrycan',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A empty jerry can for storing liquids.',
+    client = {
+        image = 'plasticjerrycan.png'
+    }
+},
+['trowel'] = {
+    label = 'Trowel',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Small handheld garden shovel',
+    client = {
+        image = 'trowel.png'
+    }
+},
+['lighter'] = {
+    label = 'Lighter',
+    weight = 5,
+    stack = true,
+    close = true,
+    description = 'On new years eve a nice fire to stand next to',
+    client = {
+        image = 'lighter.png'
+    }
+},
+['empty_weed_bag'] = {
+    label = 'Empty Weed Bag',
+    weight = 0,
+    stack = true,
+    close = true,
+    description = 'A small empty bag',
+    client = {
+        image = 'weed_baggy_empty.png'
+    }
+},
+
+-- Drug materials
+['cement'] = {
+    label = 'Cement',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Just a regular bag of builders cement.',
+    client = {
+        image = 'cement.png'
+    }
+},
+['cocaleaf'] = {
+    label = 'Cocaine Leaf',
+    weight = 200,
+    stack = true,
+    close = false,
+    description = 'Makes that premium nose candy!',
+    client = {
+        image = 'cocaineleaf.png'
+    }
+},
+['sodiumbicarbonate'] = {
+    label = 'Baking Soda',
+    weight = 1000,
+    stack = true,
+    close = true,
+    description = 'Baking soda ey? What you cooking?',
+    client = {
+        image = 'sodiumbicarbonate.png'
+    }
+},
+['illegalgasoline'] = {
+    label = 'Illegal Gasoline',
+    weight = 2500,
+    stack = true,
+    close = true,
+    description = 'Stolen gasoline? What are you doing with this?',
+    client = {
+        image = 'illegalgasoline.png'
+    }
+},
+['benzocaine'] = {
+    label = 'Benzocaine',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Benzo? You got a toothache mate?',
+    client = {
+        image = 'benzocaine.png'
+    }
+},
+['water_jerrycan'] = {
+    label = 'Water Jerrycan',
+    weight = 3500,
+    stack = true,
+    close = false,
+    description = 'Water from a tanker.. it could be a dirty but who cares..',
+    client = {
+        image = 'water_jerrycan.png'
+    }
+},
+
+-- Drugs
+['cokebaggy'] = {
+    label = '1g Bag of Coke',
+    weight = 10,
+    stack = true,
+    close = true,
+    description = 'A gram of the finest nose candy!',
+    client = {
+        image = 'cocaine_baggy.png'
+    }
+},
+['coke_1oz'] = {
+    label = 'Ounce of Cocaine',
+    weight = 280,
+    stack = true,
+    close = true,
+    description = 'A ounce of the finest nose candy!',
+    client = {
+        image = 'coke_1oz.png'
+    }
+},
+['crack_1oz'] = {
+    label = 'Ounce of Crack',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'For all the thirsty out there',
+    client = {
+        image = 'crack_1oz.png'
+    }
+},
+['crack_baggy'] = {
+    label = '1g Bag of Crack',
+    weight = 10,
+    stack = true,
+    close = true,
+    description = 'Man your about to lose some teeth!',
+    client = {
+        image = 'crack_baggy.png'
+    }
+},
+
+--<!>-- KETAMINE --<!>--
+-- Tools
+['tracker_remover'] = {
+    label = 'Tracking Chip Remover',
+    weight = 1000,
+    stack = false,
+    close = true,
+    description = 'A tracking chip remover!',
+    client = {
+        image = 'tracker_remover.png'
+    }
+},
+
+-- Processing
+['liquidketamine'] = {
+    label = 'Liquid Ketamine',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A vial of liquid ketamine!',
+    client = {
+        image = 'liquidketamine.png'
+    }
+},
+
+-- Drugs
+['ketamine_1oz'] = {
+    label = 'Ounce of Ketamine',
+    weight = 2800,
+    stack = true,
+    close = true,
+    description = 'A ounce of ketamine!',
+    client = {
+        image = 'ketamine_1oz.png'
+    }
+},
+['ketamine'] = {
+    label = 'Bag of Ketamine',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = 'A bag of ketamine!',
+    client = {
+        image = 'ketamine.png'
+    }
+},
+
+	-- Tools
+
+['wwmenu'] = {
+    label = 'White Widow Menu',
+    weight = 10,
+    stack = true,
+    close = true,
+    description = 'A menu for the white widow medical dispensary!',
+    client = {
+        image = 'wwmenu.png',
+        usables = true,
+    }
+},
+
+
+
+-- Crops
+
+['weed_purple-haze_cbd_crop'] = {
+    label = 'CBD Purple-Haze Crop',
+    weight = 1200,
+    stack = true,
+    close = false,
+    description = 'A crop of CBD Purple-Haze!',
+    client = {
+        image = 'weed_purple-haze_cbd_crop.png',
+        usables = false,
+    }
+},
+
+['weed_gelato_cbd_crop'] = {
+    label = 'CBD Gelato Crop',
+    weight = 1200,
+    stack = true,
+    close = false,
+    description = 'A crop of CBD Gelato!',
+    client = {
+        image = 'weed_gelato_cbd_crop.png',
+        usables = false,
+    }
+},
+
+['weed_zkittlez_cbd_crop'] = {
+    label = 'CBD Zkittlez Crop',
+    weight = 1200,
+    stack = true,
+    close = false,
+    description = 'A crop of CBD Zkittlez!',
+    client = {
+        image = 'weed_zkittlez_cbd_crop.png',
+        usables = false,
+    }
+},
+
+-- Bags
+['weed_purple-haze_cbd'] = {
+    label = 'CBD Purple-Haze 2g',
+    weight = 2,
+    stack = true,
+    close = false,
+    description = 'A 2g bag of CBD Purple-Haze!',
+    client = {
+        image = 'weed_purple-haze_cbd.png',
+        usables = true,
+    }
+},
+
+['weed_gelato_cbd'] = {
+    label = 'CBD Gelato 2g',
+    weight = 2,
+    stack = true,
+    close = false,
+    description = 'A 2g bag of CBD Gelato!',
+    client = {
+        image = 'weed_gelato_cbd.png',
+        usables = true,
+    }
+},
+
+['weed_zkittlez_cbd'] = {
+    label = 'CBD Zkittlez 2g',
+    weight = 2,
+    stack = true,
+    close = false,
+    description = 'A 2g bag of CBD Zkittlez!',
+    client = {
+        image = 'weed_zkittlez_cbd.png',
+        usables = true,
+    }
+},
+
+-- Joints
+['weed_purple-haze_cbd_joint'] = {
+    label = 'CBD Purple-Haze Joint',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'Light up that Purple-Haze son!',
+    client = {
+        image = 'weed_purple-haze_cbd_joint.png',
+        usables = true,
+    }
+},
+
+['weed_gelato_cbd_joint'] = {
+    label = 'CBD Gelato Joint',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'Light up that Gelato son!',
+    client = {
+        image = 'weed_gelato_cbd_joint.png',
+        usables = true,
+    }
+},
+
+['weed_zkittlez_cbd_joint'] = {
+    label = 'CBD Zkittlez Joint',
+    weight = 1,
+    stack = true,
+    close = false,
+    description = 'Light up that Zkittlez son!',
+    client = {
+        image = 'weed_zkittlez_cbd_joint.png',
+        usables = true,
+    }
+},
+
+-- Edibles
+['weed_gummybears'] = {
+    label = 'Gummy Bears',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A delicious treat!',
+    client = {
+        image = 'weed_gummybears.png',
+        usables = true,
+    }
+},
+
+['weed_brownie'] = {
+    label = 'Pot Brownie',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A chocolatey treat!',
+    client = {
+        image = 'weed_brownie.png',
+        usables = true,
+    }
+},
+
+['weed_cookie'] = {
+    label = 'Space Cookie',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A crunchy treat!',
+    client = {
+        image = 'weed_cookie.png',
+        usables = true,
+    }
+},
+
+['weed_beer'] = {
+    label = 'Cannabis Beer',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A frothy treat!',
+    client = {
+        image = 'weed_beer.png',
+        usables = true,
+    }
+},
+
+['weed_milkshake'] = {
+    label = 'Cannabis Milkshake',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A creamy treat!',
+    client = {
+        image = 'weed_milkshake.png',
+        usables = true,
+    }
+},
+
+
+
+
+
+
+
 	['armour'] = {
 		label = 'Bulletproof Vest',
 		weight = 3000,
@@ -5932,6 +8117,405 @@ return {
 			image = "heroinbase.png",
 		}
 	},
+
+	-- Return items
+['empty_glass_bottle'] = {
+    label = 'Empty Glass Bottle',
+    weight = 750,
+    stack = true,
+    close = false,
+    description = 'A scrap glass drinking bottle..',
+    client = {
+        image = 'empty_glass_bottle.png'
+    }
+},
+['empty_plastic_bottle'] = {
+    label = 'Empty Plastic Bottle',
+    weight = 750,
+    stack = true,
+    close = false,
+    description = 'A scrap plastic drinking bottle..',
+    client = {
+        image = 'empty_plastic_bottle.png'
+    }
+},
+['empty_can'] = {
+    label = 'Empty Can',
+    weight = 450,
+    stack = true,
+    close = false,
+    description = 'A scrap aluminum drinks can..',
+    client = {
+        image = 'empty_can.png'
+    }
+},
+['cardboard'] = {
+    label = 'Cardboard',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'Some scrap cardboard..',
+    client = {
+        image = 'cardboard.png'
+    }
+},
+['wrapper'] = {
+    label = 'Wrapper',
+    weight = 50,
+    stack = true,
+    close = false,
+    description = 'A used candy wrapper..',
+    client = {
+        image = 'wrapper.png'
+    }
+},
+
+-- Alcohol
+['beer_am'] = {
+    label = 'AM Beer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A bottle of AM Beer!',
+    client = {
+        image = 'beer_am.png'
+    }
+},
+['beer_logger'] = {
+    label = 'Logger Beer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Logger!',
+    client = {
+        image = 'beer_logger.png'
+    }
+},
+['beer_piss'] = {
+    label = 'Pisswasser Beer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Pisswasser!',
+    client = {
+        image = 'beer_piss.png'
+    }
+},
+['beer_dusche'] = {
+    label = 'Dusche Gold Beer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Dusche Gold!',
+    client = {
+        image = 'beer_dusche.png'
+    }
+},
+['beer_patriot'] = {
+    label = 'Patriot Beer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Patriot!',
+    client = {
+        image = 'beer_patriot.png'
+    }
+},
+['beer_stz'] = {
+    label = 'Stronzo Beer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Stronzo!',
+    client = {
+        image = 'beer_stz.png'
+    }
+},
+['beer_pride'] = {
+    label = 'Pride Beer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Pride!',
+    client = {
+        image = 'beer_pride.png'
+    }
+},
+['beer_jakey'] = {
+    label = 'Jakeys Beer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Jakeys!',
+    client = {
+        image = 'beer_jakey.png'
+    }
+},
+['beer_bar'] = {
+    label = 'Barracho Beer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Barracho!',
+    client = {
+        image = 'beer_bar.png'
+    }
+},
+['beer_blr'] = {
+    label = 'Blarneys Beer',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Blarneys!',
+    client = {
+        image = 'beer_blr.png'
+    }
+},
+['whiskey_mount'] = {
+    label = 'Mount Whiskey',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Mount Whiskey!',
+    client = {
+        image = 'whiskey_mount.png'
+    }
+},
+['whiskey_macbeth'] = {
+    label = 'Macbeth Whiskey',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Macbeth Whiskey!',
+    client = {
+        image = 'whiskey_macbeth.png'
+    }
+},
+['whiskey_richards'] = {
+    label = 'Richards Whiskey',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Richards Whiskey!',
+    client = {
+        image = 'whiskey_richards.png'
+    }
+},
+['vodka'] = {
+    label = 'Vodka',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Vodka!',
+    client = {
+        image = 'vodka.png'
+    }
+},
+['rum'] = {
+    label = 'Rum',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Rum!',
+    client = {
+        image = 'rum.png'
+    }
+},
+['tequila'] = {
+    label = 'Tequila',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Tequila!',
+    client = {
+        image = 'tequila.png'
+    }
+},
+['brandy_cardi'] = {
+    label = 'Cardiaque Brandy',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Cardiaque Brandy!',
+    client = {
+        image = 'brandy_cardi.png'
+    }
+},
+['brandy_cognac'] = {
+    label = 'Cognac Brandy',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Cognac Brandy!',
+    client = {
+        image = 'brandy_cognac.png'
+    }
+},
+['wine_red'] = {
+    label = 'Red Wine',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Red Wine!',
+    client = {
+        image = 'wine_red.png'
+    }
+},
+['wine_rose'] = {
+    label = 'Rose Wine',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'A bottle of Rose Wine!',
+    client = {
+        image = 'wine_rose.png'
+    }
+},
+['wine_white'] = {
+    label = 'White Wine',
+    weight = 1500,
+    stack = true,
+    close = true,
+    description = 'A bottle of White Wine!',
+    client = {
+        image = 'wine_white.png'
+    }
+},
+
+-- Drinks
+['water'] = {
+    label = 'Water',
+    weight = 800,
+    stack = true,
+    close = true,
+    description = 'Water the way nature intended.',
+    client = {
+        image = 'water.png'
+    }
+},
+['dirtywater'] = {
+    label = 'Dirty Water',
+    weight = 800,
+    stack = true,
+    close = true,
+    description = 'Water the way nature intended. Sort of..',
+    client = {
+        image = 'dirtywater.png'
+    }
+},
+['ecola'] = {
+    label = 'E-Cola',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Deliciously Infectious!',
+    client = {
+        image = 'ecola.png'
+    }
+},
+['sprunk'] = {
+    label = 'Sprunk',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'The Essence of Life!',
+    client = {
+        image = 'sprunk.png'
+    }
+},
+['orangotang'] = {
+    label = 'Orang-O-Tang',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'The New Munkey Juice!',
+    client = {
+        image = 'orangotang.png'
+    }
+},
+['coffee'] = {
+    label = 'Coffee',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Free The Bean!',
+    client = {
+        image = 'coffee.png'
+    }
+},
+['tea'] = {
+    label = 'Tea',
+    weight = 500,
+    stack = true,
+    close = true,
+    description = 'Not as good as yorkshire tea..',
+    client = {
+        image = 'tea.png'
+    }
+},
+
+-- Food items
+['eggsandwich'] = {
+    label = 'Egg Sandwich',
+    weight = 380,
+    stack = true,
+    close = true,
+    description = 'A risky looking egg mayonnaise sandwich..',
+    client = {
+        image = 'eggsandwich.png'
+    }
+},
+['hamsandwich'] = {
+    label = 'Ham Sandwich',
+    weight = 380,
+    stack = true,
+    close = true,
+    description = 'A risky looking ham sandwich..',
+    client = {
+        image = 'hamsandwich.png'
+    }
+},
+['tunasandwich'] = {
+    label = 'Tuna Sandwich',
+    weight = 380,
+    stack = true,
+    close = true,
+    description = 'A risky looking tuna mayonnaise sandwich..',
+    client = {
+        image = 'tunasandwich.png'
+    }
+},
+['psnqs'] = {
+    label = 'Ps & Qs',
+    weight = 380,
+    stack = true,
+    close = true,
+    description = 'A packet of Ps & Qs!',
+    client = {
+        image = 'psnqs.png'
+    }
+},
+['meteorite'] = {
+    label = 'Meteorite',
+    weight = 380,
+    stack = true,
+    close = true,
+    description = 'A Meteorite chocolate bar!',
+    client = {
+        image = 'meteorite.png'
+    }
+},
+['egochaser'] = {
+    label = 'Egochaser',
+    weight = 380,
+    stack = true,
+    close = true,
+    description = 'A Egochaser chocolate bar!',
+    client = {
+        image = 'egochaser.png'
+    }
+},
+
 
 	["payticket"] = {
 		label = "Receipt",
