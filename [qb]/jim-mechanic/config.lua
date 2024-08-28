@@ -4,10 +4,10 @@ Config = {
 		Debug = false, -- Set to true to show green debug boxes to help track any issues
 
 		Menu = "ox",  				-- "qb", "ox", "gta"
-		Notify = "gta",				-- "qb", "ox", "gta", "esx"
-		ProgressBar = "gta", 		-- "qb", "ox", "gta", "esx"
+		Notify = "qb",				-- "qb", "ox", "gta", "esx"
+		ProgressBar = "qb", 		-- "qb", "ox", "gta", "esx"
 
-		distkph = false, 			-- Set to false to read distance travelled in Miles.
+		distkph = true, 			-- Set to false to read distance travelled in Miles.
 
 		RenewedBanking = false, 	-- This is used for manualrepair benches, enable to use
 	},
@@ -53,7 +53,7 @@ Config = {
 	},
 
 	Crafting = {
-		craftCam = true,
+		craftCam = false,
 		MultiCraft = true,
 		MultiCraftAmounts = { [1], [2], [3], [4], [5], [6], [7], [8], [9], [10] },
 		showItemBox = true,			-- toggle itemBox for adding/removing items, helpful if using custom item change events
@@ -61,8 +61,8 @@ Config = {
 
 	Harness = {
 		JobOnly = false,			-- Only allow job roles to add a Harness to vehicle
-		HarnessControl = true,		-- Enable harness AND seatbelt features of the script, requires edits to smallresources and hud scripts
-		seatbeltEasyLeave = true,	-- if true players can exit vehicled before removing seatbelt
+		HarnessControl = false,		-- Enable harness AND seatbelt features of the script, requires edits to smallresources and hud scripts
+		seatbeltEasyLeave = false,	-- if true players can exit vehicled before removing seatbelt
 		harnessEasyLeave = true,	-- if true players can exit vehicled before removing harness
 
 		progOn = true,				-- if true add a progressBar to buckle harness
@@ -74,7 +74,7 @@ Config = {
 		timeOff = 2000,				-- Time for the progress bar to take off harness
 
 		minimumSpeed = 70,			-- Minimum speed for crash logic to be triggered
-		minimumSeatBeltSpeed = 110, -- Minimuim speed for ejecting with a seatbelt attached
+		minimumSeatBeltSpeed = 1100, -- Minimuim speed for ejecting with a seatbelt attached
 		minimumDamage = 15.0, 		-- Minimum body damage for ejecting a player (default 15 = .15%)
 
 		crashKill = false,			-- Set to true if you want ejecting when crashing to kill/injure
@@ -167,7 +167,7 @@ Config = {
 
 	Previews = {
 		oldOxLibMenu = true,		-- Enable this to use default context menu for previews when using ox_lib
-		PreviewPhone = true, 		-- Enable this is preview menu generates an email, False if you want to give an item
+		PreviewPhone = false, 		-- Enable this is preview menu generates an email, False if you want to give an item
 		PreviewJob = false, 		-- Enable this if you want /preview to require a Job Role
 		PreviewLocation = false, 	-- Enable this if you want to lock /preview to a job location (ignored if LocationRequired is false)
 
@@ -186,7 +186,7 @@ Config = {
 	},
 
 	StoreCraft = {
-		Crafting = true, 				-- Set true to turn on crafting features
+		Crafting = false, 				-- Set true to turn on crafting features
 		StashCraft = false,  			-- Set true to grab materials from mechaincs stash for crafting
 		Stores = true, 					-- Set true to turn on shop store features
 	},
@@ -196,13 +196,13 @@ Config = {
 
 		ShowToAll = true,					-- Show Odometer to passengers aswell as driver
 		ShowPassengersAllIcons = false, 	-- Enabling this will only show passengers the buckle/harness icon
-		OdoAlwaysShowIcons = true, 			-- Enable this to show the icons even when not damaged
+		OdoAlwaysShowIcons = false, 			-- Enable this to show the icons even when not damaged
 		OdoShowLimit = 70,					-- If OdoAlwaysShowIcons, the damage icons only will be shown if below this percent
 
 		SeatbeltHideWhenBuckled = false, 	-- Hide seatlbelt icon when buckled
 		HarnessHideWhenBuckled = false, 	-- Hide Harness icon when buckled
 
-		showSpeedometer = true,
+		showSpeedometer = false,
 
 		OdoIconsToShow = {
 			["engine"] = true,
@@ -344,10 +344,11 @@ Config = {
 			["police"] = 0, -- Job and Job Grade
 			["ambulance"] = 0,
 			["mechanic"] = 0,
+			
 		},
 		LockEmergency = false,  -- Enable this to lock make only "Emergency" (Class 18) vehicles to be used with the bench
 		Locations = {
-			{ coords = vec4(451.05, -973.19, 25.7, 180.0), prop = true, }, -- MRPD UNDERGROUND PARKING
+			{ coords = vec4(435.7, -973.21, 25.7, 180), prop = true, }, -- MRPD UNDERGROUND PARKING
 			{ coords = vec4(342.51, -570.98, 28.8, 70.0), prop = true, }, -- PILL BOX GARAGE
 			{ coords = vec4(-1163.01, -2009.41, 13.18, 117.71), prop = true },
 		},
@@ -436,9 +437,9 @@ Config = {
 		NosRefillCharge = 1000, 	-- amount in dollars required to refill a nos can
 
 		NosBoostPower = { 			-- NOS boost acceleration power
-			20.0, -- Level 1
-			35.0, -- Level 2
-			50.0, -- Level 3
+		20.0, -- Level 1
+		35.0, -- Level 2
+		50.0, -- Level 3
 		},
 
 		NitrousUseRate = 0.3, 		-- How fast the nitrous drains (halved for level1, doubled for level3)
@@ -459,7 +460,7 @@ Config = {
 
 		EnableScreen = true, 		-- True adds screen effects while boosting
 
-		skillcheck = "qb-skillbar", -- When adding Nos to a vehicle there are three script options available
+		skillcheck = "ox_lib", -- When adding Nos to a vehicle there are three script options available
 									-- "qb-skillbar" "qb-lock" "ps-ui" "ox_lib"
 
 		explosiveFail = true, 		-- Better not fail that skill check. (1 in 10 chance of explosion)
