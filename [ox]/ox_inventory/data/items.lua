@@ -719,6 +719,7 @@ return {
 		}
 	},
 
+	
 	["empty_evidence_bag"] = {
 		label = "Empty Evidence Bag",
 		weight = 0,
