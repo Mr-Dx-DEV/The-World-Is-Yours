@@ -1,4 +1,3 @@
-shared_script '@life_is_good/shared_fg-obfuscated.lua'
 fx_version 'cerulean'
 game 'common'
 name 'oxmysql'

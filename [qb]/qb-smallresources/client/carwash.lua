@@ -1,3 +1,9 @@
+-- Script disabled by 17mov_VehicleDirtSystem
+local movScriptState = GetResourceState("17mov_VehicleDirtSystem")
+if movScriptState == "started" then
+    return
+end
+    
 local QBCore = exports['qb-core']:GetCoreObject()
 local washingVeh, listen = false, false
 local washPoly = {}

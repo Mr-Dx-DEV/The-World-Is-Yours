@@ -197,7 +197,7 @@ return {
 		stack = true,
 		description = "Bomb to detonaite big things",
 	},
-
+--[[ 
 	['mov_basic_ceramic'] = {
         label = Config.Items["mov_basic_ceramic"].label,
         description = Config.Items["mov_basic_ceramic"].description,
@@ -224,7 +224,7 @@ return {
         description = Config.Items["mov_advanced_wax"].description,
         image = 'mov_advanced_wax.png',
         weight = 10,
-    },
+    }, ]]
 	['armour'] = {
 		label = 'Bulletproof Vest',
 		weight = 3000,
@@ -12451,6 +12451,50 @@ return {
 		description = "Minutes from being stale",
 		client = {
 			image = "bs_bun.png",
+		}
+	},
+
+	["mov_advanced_wax"] = {
+		label = "Advanced Wax",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "After application on the car, the car is highly resistant to external dirt, such as driving on unpaved roads, etc. It will still get dirty, but much more slowly. It lasts about 7 days on the car, after which time reapplication is required to maintain the effect.",
+		client = {
+			image = "mov_advanced_wax.png",
+		}
+	},
+
+	["mov_basic_ceramic"] = {
+		label = "Basic Ceramic",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "After application on the car, dirt does not stick to the bodywork, making it much easier to wash off at the car wash. It lasts about 3 days on the car, after which time reapplication is required to maintain the effect.",
+		client = {
+			image = "mov_basic_ceramic.png",
+		}
+	},
+
+	["mov_basic_wax"] = {
+		label = "Basic Wax",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "After application on the car, the car is resistant to external dirt, such as driving on unpaved roads, etc. It will still get dirty, but much more slowly. It lasts about 3 days on the car, after which time reapplication is required to maintain the effect.",
+		client = {
+			image = "mov_basic_wax.png",
+		}
+	},
+
+	["mov_advanced_ceramic"] = {
+		label = "Premium Ceramic",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "After application on the car, dirt does not stick to the bodywork at all, so at the car wash, it only needs to be rinsed off. It lasts about 7 days on the car, after which time reapplication is required to maintain the effect.",
+		client = {
+			image = "mov_advanced_ceramic.png",
 		}
 	},
 }
