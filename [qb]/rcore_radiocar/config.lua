@@ -101,7 +101,7 @@ Config.EnableCommand = false
 Config.CommandLabel = "radiocar"
 
 -- Key to open radio
-Config.KeyForRadio = "G"
+Config.KeyForRadio = "F10"
 
 -- description of the key
 Config.KeyDescription = "this will open a radio vehicle (can be rebinded)"
