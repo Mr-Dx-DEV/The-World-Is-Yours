@@ -1,18 +1,23 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-RegisterNetEvent('fuel:pay', function(price)
-	local Player = QBCore.Functions.GetPlayer(source)
-	local amount = math.floor(price + 0.5)
+local function round(value, numDecimalPlaces)
+	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", value))
+end
 
-	if not Player or price <= 0 then return end
+RegisterNetEvent('fuel:pay', function(price, station, removefuel)
+	local src = source
+	local pData = QBCore.Functions.GetPlayer(src)
+	local amount = round(price)
+	if pData then
+    	pData.Functions.RemoveMoney('cash', amount, "bought-fuel")
 
-	Player.Functions.RemoveMoney('cash', amount)
+		if station then
+			exports['wert-fuelstations']:AddMoneyStation(station, amount)
+			exports['wert-fuelstations']:RemoveFuelStation(station, removefuel)
+		end
+	end
 end)
 
-RegisterNetEvent('fuel:addPetrolCan', function()
-	local Player = QBCore.Functions.GetPlayer(source)
-
-	if not Player then return end
-
-	Player.Functions.AddItem('weapon_petrolcan', 1)
+RegisterNetEvent('fuel:delete-nozzle', function(veh)
+	TriggerClientEvent("wert-fuel:delete-nozzle", -1, veh)
 end)
