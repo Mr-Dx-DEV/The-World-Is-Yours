@@ -13,6 +13,7 @@ local openContextMenu = nil
 ---@field description? string
 ---@field metadata? string | { [string]: any } | string[]
 ---@field disabled? boolean
+---@field readOnly? boolean
 ---@field event? string
 ---@field serverEvent? string
 ---@field args? any
@@ -56,6 +57,9 @@ function lib.showContext(id)
         action = 'showContext',
         data = {
             title = data.title,
+            description = data.description, --murai
+            background = data.background or GetConvarInt('ox:menuBackground', 0) == 1, --murai
+            backgroundColor = data.backgroundColor, --murai
             canClose = data.canClose,
             menu = data.menu,
             options = data.options

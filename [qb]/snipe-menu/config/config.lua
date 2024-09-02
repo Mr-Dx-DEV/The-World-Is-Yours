@@ -8,9 +8,9 @@ Config.CoreFolderName = "qb-core"  -- es_extended || qb-core
 Config.PlayerLoadedEvent = "QBCore:Client:OnPlayerLoaded" -- esx:playerLoaded || QBCore:Client:OnPlayerLoaded
 Config.PlayerUnloadEvent = "QBCore:Client:OnPlayerUnload" -- esx:onPlayerLogout || QBCore:Client:OnPlayerUnload     
 
-Config.Target = "qb-target" -- qb-target || ox_target || qtarget (Only these 3 targets are supported. You will have to edit in cl_customise if you want to use any other target other than this. No support is given to other target scripts)
+Config.Target = "ox_target" -- qb-target || ox_target || qtarget (Only these 3 targets are supported. You will have to edit in cl_customise if you want to use any other target other than this. No support is given to other target scripts)
 
-Config.Discord = "https://discord.gg/yourdiscord" -- discord link to show when you ban a player in the ban message
+Config.Discord = "https://discord.gg/TdKUp5bCG2" -- discord link to show when you ban a player in the ban message
 
 Config.ShowInGameNames = true -- to show the in game names of the players in player list (if your server lags a lot, please set this to false)
 

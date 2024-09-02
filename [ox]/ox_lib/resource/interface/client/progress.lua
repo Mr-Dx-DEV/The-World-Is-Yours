@@ -1,13 +1,15 @@
-local progress
+    local progress
 local DisableControlAction = DisableControlAction
 local DisablePlayerFiring = DisablePlayerFiring
 local playerState = LocalPlayer.state
+local createdProps = {}
 
 ---@class ProgressPropProps
 ---@field model string
 ---@field bone? number
 ---@field pos vector3
 ---@field rot vector3
+---@field rotOrder? number
 
 ---@class ProgressProps
 ---@field label? string
@@ -17,17 +19,18 @@ local playerState = LocalPlayer.state
 ---@field allowRagdoll? boolean
 ---@field allowCuffed? boolean
 ---@field allowFalling? boolean
+---@field allowSwimming? boolean
 ---@field canCancel? boolean
 ---@field anim? { dict?: string, clip: string, flag?: number, blendIn?: number, blendOut?: number, duration?: number, playbackRate?: number, lockX?: boolean, lockY?: boolean, lockZ?: boolean, scenario?: string, playEnter?: boolean }
 ---@field prop? ProgressPropProps | ProgressPropProps[]
 ---@field disable? { move?: boolean, sprint?: boolean, car?: boolean, combat?: boolean, mouse?: boolean }
 
-local function createProp(prop)
+local function createProp(ped, prop)
     lib.requestModel(prop.model)
-    local coords = GetEntityCoords(cache.ped)
-    local object = CreateObject(prop.model, coords.x, coords.y, coords.z, true, true, true)
+    local coords = GetEntityCoords(ped)
+    local object = CreateObject(prop.model, coords.x, coords.y, coords.z, false, false, false)
 
-    AttachEntityToEntity(object, cache.ped, GetPedBoneIndex(cache.ped, prop.bone or 60309), prop.pos.x, prop.pos.y, prop.pos.z, prop.rot.x, prop.rot.y, prop.rot.z, true, true, false, true, 0, true)
+    AttachEntityToEntity(object, ped, GetPedBoneIndex(ped, prop.bone or 60309), prop.pos.x, prop.pos.y, prop.pos.z, prop.rot.x, prop.rot.y, prop.rot.z, true, true, false, true, prop.rotOrder or 0, true)
     SetModelAsNoLongerNeeded(prop.model)
 
     return object
@@ -38,6 +41,7 @@ local function interruptProgress(data)
     if not data.allowRagdoll and IsPedRagdoll(cache.ped) then return true end
     if not data.allowCuffed and IsPedCuffed(cache.ped) then return true end
     if not data.allowFalling and IsPedFalling(cache.ped) then return true end
+    if not data.allowSwimming and IsPedSwimming(cache.ped) then return true end
 end
 
 local isFivem = cache.game == 'fivem'
@@ -75,17 +79,7 @@ local function startProgress(data)
     end
 
     if data.prop then
-        if data.prop.model then
-            data.prop1 = createProp(data.prop)
-        else
-            for i = 1, #data.prop do
-                local prop = data.prop[i]
-
-                if prop then
-                    data['prop'..i] = createProp(prop)
-                end
-            end
-        end
+        playerState:set('lib:progressProps', data.prop, true)
     end
 
     local disable = data.disable
@@ -131,14 +125,7 @@ local function startProgress(data)
     end
 
     if data.prop then
-        local n = #data.prop
-        for i = 1, n > 0 and n or 1 do
-            local prop = data['prop'..i]
-
-            if prop then
-                DeleteEntity(prop)
-            end
-        end
+        playerState:set('lib:progressProps', nil, true)
     end
 
     if anim then
@@ -165,16 +152,73 @@ end
 function lib.progressBar(data)
     while progress ~= nil do Wait(0) end
 
-    if not interruptProgress(data) then
-        SendNUIMessage({
-            action = 'progress',
-            data = {
-                label = data.label,
-                duration = data.duration
-            }
-        })
+    if GetResourceState("17mov_Hud") == "started" then
+        local prop = {}
+        local propTwo = {}
 
-        return startProgress(data)
+        if data.prop then
+            if data.prop[1] then
+                prop.model = data.prop[1].model
+                prop.bone = data.prop[1].bone
+                prop.coords = data.prop[1].pos
+                prop.rotation = data.prop[1].rot
+
+                if data.prop[2] then
+                    propTwo.model = data.prop[2].model
+                    propTwo.bone = data.prop[2].bone
+                    propTwo.coords = data.prop[2].pos
+                    propTwo.rotation = data.prop[2].rot
+                end
+            else
+                prop.model = data.prop.model
+                prop.bone = data.prop.bone
+                prop.coords = data.prop.pos
+                prop.rotation = data.prop.rot
+            end
+        end
+
+        local action = {
+            duration = data.duration,
+            label = data.label,
+            useWhileDead = data.useWhileDead,
+            canCancel = data.canCancel,
+            controlDisables = {
+                disableMovement = data.disable?.move,
+                disableCarMovement = data.disable?.car,
+                disableMouse = data.disable?.mouse,
+                disableCombat = data.disable?.combat,
+            },
+            animation = {
+                animDict = data.anim?.dict,
+                anim = data.anim?.clip,
+                flags = data.anim?.flag,
+                task = data.anim?.scenario,
+            },
+            prop = prop,
+            propTwo = propTwo,
+        }
+
+        local p = promise.new()
+        progress = action
+
+        exports["17mov_Hud"]:StartProgress(action, nil, nil, function(wasCanceled)
+            p:resolve(wasCanceled)
+            progress = false
+        end)
+
+        return Citizen.Await(p)
+    else
+        if not interruptProgress(data) then
+            SendNUIMessage({
+                action = 'progress',
+                data = {
+                    label = data.label,
+                    duration = data.duration
+                }
+            })
+
+            return startProgress(data)
+        end
     end
 end
 
@@ -202,6 +246,10 @@ function lib.cancelProgress()
         error('No progress bar is active')
     end
 
+    if GetResourceState("17mov_Hud") == "started" then
+        exports["17mov_Hud"]:StopProgress()
+    end
+
     progress = false
 end
 
@@ -219,4 +267,51 @@ RegisterCommand('cancelprogress', function()
     if progress?.canCancel then progress = false end
 end)
 
-RegisterKeyMapping('cancelprogress', 'Cancel current progress bar', 'keyboard', 'x')
+if isFivem then
+    RegisterKeyMapping('cancelprogress', locale('cancel_progress'), 'keyboard', 'x')
+end
+
+local function deleteProgressProps(serverId)
+    local playerProps = createdProps[serverId]
+    if not playerProps then return end
+    for i = 1, #playerProps do
+        local prop = playerProps[i]
+        if DoesEntityExist(prop) then
+            DeleteEntity(prop)
+        end
+    end
+    createdProps[serverId] = nil
+end
+
+RegisterNetEvent('onPlayerDropped', function(serverId)
+    deleteProgressProps(serverId)
+end)
+
+AddStateBagChangeHandler('lib:progressProps', nil, function(bagName, key, value, reserved, replicated)
+    if replicated then return end
+
+    local ply = GetPlayerFromStateBagName(bagName)
+    if ply == 0 then return end
+
+    local ped = GetPlayerPed(ply)
+    local serverId = GetPlayerServerId(ply)
+
+    if not value then
+        return deleteProgressProps(serverId)
+    end
+
+    createdProps[serverId] = {}
+    local playerProps = createdProps[serverId]
+
+    if value.model then
+        playerProps[#playerProps+1] = createProp(ped, value)
+    else
+        for i = 1, #value do
+            local prop = value[i]
+
+            if prop then
+                playerProps[#playerProps+1] = createProp(ped, prop)
+            end
+        end
+    end
+end)

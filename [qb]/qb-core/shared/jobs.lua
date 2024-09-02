@@ -66,6 +66,16 @@ QBShared.Jobs = {
 			['6'] = { name = 'Owner', isboss = true, payment = 150 },
 		},
 	},
+	tobacco = {
+		label = 'Tobacco Farmer',
+		type = 'Tobacco',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+			['0'] = { name = 'Farmhand', payment = 50 },
+			['1'] = { name = 'Owner', payment = 75, isboss = true },
+		},
+	},
 	billiards = {
 		label = 'billiards',
 		type = 'billiards',

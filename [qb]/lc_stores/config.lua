@@ -508,6 +508,33 @@ Config.market_locations = {
 			['store'] = 'bank',
 		}
 	},
+	["market_19"] = {
+		['buy_price'] = 70000,
+		['sell_price'] = 35000,
+		['coord'] = {157.84, -234.75, 54.42},
+		['garage_coord'] = {151.33, -212.34, 54.3, 35.45},
+		['truck_parking_location'] = {151.33, -212.34, 54.3, 35.45},
+		['map_blip_coord'] = {149.118, -234.618, 54.424},
+		['sell_blip_coords'] = {
+			{149.118, -234.618, 54.424},
+			
+		},
+		['deliveryman_coord'] = {157.05537414551,6641.224609375,31.605260848999},
+		['type'] = 'applestore',
+		['account'] = {
+			['item'] = {
+				[1] = {
+					['icon'] = 'img/credit_card.png',
+					['account'] = 'bank'
+				},
+				[2] = {
+					['icon'] = 'img/cash.png',
+					['account'] = 'cash'
+				}
+			},
+			['store'] = 'bank',
+		}
+	},
 	["ammunation_1"] = {
 		['buy_price'] = 2000000,
 		['sell_price'] = 500000,
@@ -589,10 +616,71 @@ Config.market_types = {
 		},
 		['max_purchasable_categories'] = 4,		-- The max amount of categories that can be purchased
 		['categories'] = {						-- Here you configure the categories available to purchase in your store
-			"food_market", "drink_market", "alcohol_market", "electronics_market", "utilities_market"
+			"food_market", "drink_market", "alcohol_market", "utilities_market"
 		},
 		['default_categories'] = {				-- Here you can configure the categories available when the store has no owner
-			"food_market", "drink_market", "alcohol_market", "electronics_market", "utilities_market"
+			"food_market", "drink_market", "alcohol_market", "utilities_market"
+		},
+		['blips'] = {							-- Create the blips on map
+			['id'] = 52,						-- Blip ID [Set this value 0 to dont have blip]
+			['name'] = "Market",				-- Blip Name [Will be replaced when the owner rename the store]
+			['color'] = 4,						-- Blip Color
+			['scale'] = 0.6,					-- Blip Scale
+		}
+	},
+	['applestore'] = {							-- Market type ID
+		['stock_capacity'] = 150,				-- Max stock capacity
+		['max_employees'] = 5,					-- Max employees
+		['required_job'] = {},					-- Required job do purchase goods in this store (set to {} to dont require any job here, or put the job name there like this: ['required_job'] = {'cop', 'gang', 'job_name'},)
+		['upgrades'] = {						-- Definition of each upgrade
+			['stock'] = {						-- Stock capacity
+				['price'] = 8000,				-- Price to upgrade
+				['level_reward'] = {			-- Reward of each level (max level: 5)
+					[0] = 0,
+					[1] = 50,
+					[2] = 100,
+					[3] = 150,
+					[4] = 200,
+					[5] = 300,
+				}
+			},
+			['truck'] = {						-- Truck capacity
+				['price'] = 12000,
+				['level_reward'] = {
+					[0] = 0,
+					[1] = 25,
+					[2] = 50,
+					[3] = 100,
+					[4] = 200,
+					[5] = 300,
+				}
+			},
+			['relationship'] = {				-- Relationship
+				['price'] = 11000,
+				['level_reward'] = {
+					[0] = 0,
+					[1] = 5,
+					[2] = 10,
+					[3] = 15,
+					[4] = 25,
+					[5] = 40,
+				}
+			},
+		},
+		['trucks'] = {							-- Trucks for each level when upgrade the truck cargo
+			[0] = 'speedo',
+			[1] = 'gburrito',
+			[2] = 'mule',
+			[3] = 'mule3',
+			[4] = 'pounder',
+			[5] = 'pounder2'
+		},
+		['max_purchasable_categories'] = 4,		-- The max amount of categories that can be purchased
+		['categories'] = {						-- Here you configure the categories available to purchase in your store
+			"electronics_market"
+		},
+		['default_categories'] = {				-- Here you can configure the categories available when the store has no owner
+			"electronics_market"
 		},
 		['blips'] = {							-- Create the blips on map
 			['id'] = 52,						-- Blip ID [Set this value 0 to dont have blip]
@@ -853,7 +941,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'phone.png',
 			},
-			['iphone'] = {
+			--[[ ['iphone'] = {
 				['name'] = "iPhone",
 				['price_to_customer'] = 1000,
 				['price_to_customer_min'] = 500,
@@ -874,7 +962,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'samsungphone.png',
-			},
+			}, ]]
 			['radio'] = {
 				['name'] = "Radio",
 				['price_to_customer'] = 200,
@@ -886,7 +974,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'radio.png',
 			},
-			['laptop'] = {
+			--[[ ['laptop'] = {
 				['name'] = "Laptop",
 				['price_to_customer'] = 700,
 				['price_to_customer_min'] = 350,
@@ -907,7 +995,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'tablet.png',
-			},
+			}, ]]
 		}
 	},
 
@@ -1738,6 +1826,7 @@ Config.NPCs = {
 		['emote'] = 'WORLD_HUMAN_COP_IDLES',
 		['pos'] = {
 			{23.0, -1105.67, 29.8, 162.91},
+			{149.118, -234.618, 54.424, 338.808},
 		}
 	},
 }

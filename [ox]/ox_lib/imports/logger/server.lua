@@ -84,6 +84,146 @@ local function formatTags(source, tags)
     return tags
 end
 
+if service == 'discord' then
+    -- start function
+    local DiscordLogQueue = {}
+    function lib.logger(source, event, type, message, ...)
+        if type == 'newitems' then
+            webhook = GetConvar('newitems:webhook', '')
+        elseif type == 'inventory' then
+            webhook = GetConvar('inventory:webhook', '')
+        elseif type == 'glovebox' then
+            webhook = GetConvar('glovebox:webhook', '')
+        elseif type == 'trunk' then
+            webhook = GetConvar('trunk:webhook', '')
+        elseif type == 'stash' then
+            webhook = GetConvar('stash:webhook', '')
+        elseif type == 'drop' then
+            webhook = GetConvar('drop:webhook', '')
+        elseif type == 'trade' then
+            webhook = GetConvar('trade:webhook', '')
+        elseif type == 'robbing' then
+            webhook = GetConvar('robbing:webhook', '')
+        elseif type == 'weapon' then
+            webhook = GetConvar('weapon:webhook', '')
+        else
+            webhook = ''
+        end
+        if event == 'Dropped Item' then
+            color = 16711680
+        elseif event == 'Add Item' then
+            color = 65323
+        elseif event == 'Add Inventory Item' then
+            color = 65323
+        elseif event == 'New Weapon' then
+            color = 65323
+        elseif event == 'Remove Inventory Item' then
+            color = 16711680
+        elseif event == 'Remove Item' then
+            color = 16711680
+        elseif event == 'Weapon' then
+            color = 16711680
+        else
+            color = 14221567
+        end
+        local embedData = {
+            {
+                ['title'] = '' .. event .. '',
+                ['color'] = '' .. color .. '',
+                ['footer'] = {
+                    ['text'] = '' .. os.date('%c') .. '',
+                },
+                ['description'] = 'Name: **' .. GetPlayerName(source) .. '**\n**' .. GetPlayerIdentifier(source, 'license') .. '**\nID: **' .. source .. '**\n\n' .. message .. ''
+            }
+        }
+
+        if not DiscordLogQueue[webhook] then DiscordLogQueue[webhook] = {} end
+        DiscordLogQueue[webhook][#DiscordLogQueue[webhook]+1] = {webhook = webhook, data = embedData}
+
+        if #DiscordLogQueue[webhook] >= 15 then
+            local postData = { username = 'ElevateRP Logs', embeds = {} }
+
+            for i = 1, #DiscordLogQueue[webhook] do
+                postData.embeds[#postData.embeds+1] = DiscordLogQueue[webhook][i].data[1]
+            end
+
+            PerformHttpRequest(DiscordLogQueue[webhook][1].webhook, function() end, 'POST', json.encode(postData), { ['Content-Type'] = 'application/json' })
+
+            DiscordLogQueue[webhook] = {}
+        end
+
+        --PerformHttpRequest(webhook, function() end, 'POST', json.encode({ username = 'ElevateRP Logs', embeds = embedData }), { ['Content-Type'] = 'application/json' })
+	end
+    -- end function
+    Citizen.CreateThread(function()
+        local timer = 0
+        while true do
+            Wait(1000)
+            timer = timer + 1
+            if timer >= 60 then -- If 60 seconds have passed, post the logs
+                timer = 0
+                for name, queue in pairs(DiscordLogQueue) do
+                    if #queue > 0 then
+                        local postData = { username = 'ElevateRP Logs', embeds = {} }
+                        for i = 1, #queue do
+                            postData.embeds[#postData.embeds+1] = queue[i].data[1]
+                        end
+                        PerformHttpRequest(queue[1].webhook, function() end, 'POST', json.encode(postData), { ['Content-Type'] = 'application/json' })
+                        DiscordLogQueue[name] = {}
+                    end
+                end
+            end
+        end
+    end)
+end
+
+if service == 'fivemanage' then
+    local key = GetConvar('fivemanage:key', '')
+
+    if key ~= '' then
+        local endpoint = 'https://api.fivemanage.com/api/logs/batch'
+
+        local headers = {
+            ['Content-Type'] = 'application/json',
+            ['Authorization'] = key,
+            ['User-Agent'] = 'ox_lib'
+        }
+
+        function lib.logger(source, event, message, ...)
+            if not buffer then
+                buffer = {}
+
+                SetTimeout(500, function()
+                    PerformHttpRequest(endpoint, function(status, _, _, response)
+                        if status ~= 200 then 
+                            if type(response) == 'string' then
+                                response = json.decode(response) or response
+                                badResponse(endpoint, status, response)
+                            end
+                        end
+                    end, 'POST', json.encode(buffer), headers)
+
+                    buffer = nil
+                    bufferSize = 0
+                end)
+            end
+
+            bufferSize += 1
+            buffer[bufferSize] = {
+                level = "info",
+                message = message,
+                resource = cache.resource,
+                metadata = {
+                    hostname = hostname,
+                    service = event,
+                    source = source,
+                    tags = formatTags(source, ... and string.strjoin(',', string.tostringall(...)) or nil),
+                }
+            }
+        end
+    end
+end
+
 if service == 'datadog' then
     local key = GetConvar('datadog:key', ''):gsub("[\'\"]", '')
 
@@ -131,6 +271,7 @@ if service == 'loki' then
     local lokiUser = GetConvar('loki:user', '')
     local lokiPassword = GetConvar('loki:password', GetConvar('loki:key', ''))
     local lokiEndpoint = GetConvar('loki:endpoint', '')
+    local lokiTenant = GetConvar('loki:tenant', '')
     local startingPattern = '^http[s]?://'
     local headers = {
         ['Content-Type'] = 'application/json'
@@ -138,6 +279,10 @@ if service == 'loki' then
 
     if lokiUser ~= '' then
         headers['Authorization'] = getAuthorizationHeader(lokiUser, lokiPassword)
+    end
+
+    if lokiTenant ~= '' then
+        headers['X-Scope-OrgID'] = lokiTenant
     end
 
     if not lokiEndpoint:find(startingPattern) then

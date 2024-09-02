@@ -14,7 +14,7 @@ Config.CoreSettings = {
 
 -- Blips
 Config.Blips = {
-    UseBlips = true, -- Enables map blips
+    UseBlips = false, -- Enables map blips
     Blips = { -- Blips for hunting stores
         {title='SA Hunting', colour=1, id=141, coords = vector3(-774.36, 5602.99, 34.31), scale = 0.6},
         {title='Sho Noodles', colour=1, id=141, coords = vector3(-639.31, -1251.77, 12.59), scale = 0.6}, 

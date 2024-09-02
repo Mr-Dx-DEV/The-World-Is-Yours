@@ -12,6 +12,43 @@
     })
 end) ]]
 
+
+-- If you use ox-inventory please add this codes in modules/items/client.lua
+--[[
+
+Item('kankart', function(data, slot)
+    local metadata = slot.metadata
+	if metadata and metadata.kankartdata then
+        TriggerEvent("wert-ambulancejob:use-blood-card", metadata.kankartdata)
+    else
+        print("Blood Card Not Have Data Please Buy A New Card!")
+    end
+end)
+
+Item('emptysyringe', function(data, slot)
+    TriggerEvent('wert-ambulancejob:take-blood')
+end)
+
+Item('xray', function(data, slot)
+    local metadata = slot.metadata
+	if metadata and metadata.plan and metadata.hasta then
+        TriggerServerEvent("wert-ambulancejob:server:ox-inventory-use-xray", metadata.plan, metadata.hasta)
+    else
+        print("Xray Display Not Have Data Please Make A New!")
+    end
+end)
+
+Item('mri', function(data, slot)
+    local metadata = slot.metadata
+	if metadata and metadata.plan and metadata.hasta then
+        TriggerServerEvent("wert-ambulancejob:server:ox-inventory-use-mri", metadata.plan, metadata.hasta)
+    else
+        print("MRI Display Not Have Data Please Make A New!")
+    end
+end)
+
+]]
+
 CreateThread(function()
     --SetNuiFocus(true, true)
     -- Duty, Patient System, Bill Targets
@@ -415,12 +452,12 @@ CreateThread(function()
     end
 
     --Blood targets
-    exports['qb-target']:AddBoxZone('EMSBloodPackaged', vector3(-1827.4, -352.08, 49.46), 1, 1, {
+    exports['qb-target']:AddBoxZone('EMSBloodPackaged', vector3(311.74, -565.86, 43.28), 1.2, 0.8, {
         name='EMSBloodPackaged',
-        heading=0,
+        heading=340,
         debugPoly=Config.DebugPoly,
-        minZ=48.66,
-        maxZ=50.26,
+        minZ = 42.28,
+        maxZ = 44.28,
         }, {
             options = {
                 {
@@ -438,12 +475,12 @@ CreateThread(function()
     })
 
 
-    exports['qb-target']:AddBoxZone('EMSBloodBank', vector3(-1834.95, -340.34, 49.46), 2.2, 1, {
+    exports['qb-target']:AddBoxZone('EMSBloodBank', vector3(309.95, -560.44, 43.28), 0.8, 0.8, {
         name='EMSBloodBank',
-        heading=320,
+        heading=340,
         debugPoly=Config.DebugPoly,
-        minZ=49.86,
-        maxZ=51.06,
+        minZ = 42.28,
+        maxZ = 44.28,
         }, {
             options = {
                 {
@@ -465,4 +502,16 @@ CreateThread(function()
             },
         distance = 1.5
     })
+end)
+
+RegisterNetEvent('wert-ambulancejob:client:open-custom-stash', function()
+    TriggerEvent("inventory:client:SetCurrentStash", "EmsStash")
+	TriggerServerEvent("inventory:server:OpenInventory", "stash", "EmsStash", {
+		maxweight = 2000000,
+		slots = 100,
+	})
+end)
+
+RegisterNetEvent('wert-ambulancejob:client:open-custom-shop', function()
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", "ambulance", Config.Items)
 end)

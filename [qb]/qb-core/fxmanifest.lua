@@ -48,3 +48,5 @@ files {
 }
 
 dependency 'oxmysql'
+
+client_script '17mov_functions.lua'
