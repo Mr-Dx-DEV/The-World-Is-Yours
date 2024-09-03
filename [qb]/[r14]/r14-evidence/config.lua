@@ -19,7 +19,7 @@ Config = {}
 -----------------------------------------------------------------------------------------------------------
 
 Config.Debug = {
-    DebugCommand = true, -- enable debug command
+    DebugCommand = false, -- enable debug command
     Evidence = {enabled = false, label = "Print evidence creation to console.", order = 1}, -- enable this to print debug information when normal evidence is created
     CarEvidence = {enabled = false, label = "Print car evidence creation to console.", order = 2}, -- enable this to print debug information when car evidence is created
     Database = {enabled = false, label = "Print database events to server console.", server = true, order = 3}, -- enable this to print debug information related to vehicle evidence being uploaded to the database

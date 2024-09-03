@@ -40,7 +40,7 @@ Config.AddStressWhileShooting = false -- Should add stress while shooting?
 Config.StressingSpeed = 150          -- Speed above which you start to get stressed
 Config.MinimumStressForEffects = 100  -- Minimum Stress amount to start effects
 
-Config.EnableRadarZoom = false       -- If your minimap is blurred, set this to true.
+Config.EnableRadarZoom = true       -- If your minimap is blurred, set this to true.
 Config.RadarZoom = 1000              -- Radar Zoom
 
 Config.ComponentsToHide = { 2, 6, 7, 8, 9, 22 }
