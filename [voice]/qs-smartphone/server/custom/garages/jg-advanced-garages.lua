@@ -1,4 +1,4 @@
-if Config.GarageScript ~= 'jg-advanced-garages' then
+if Config.GarageScript ~= 'jg-advancedgarages' then
     return 
 end
 

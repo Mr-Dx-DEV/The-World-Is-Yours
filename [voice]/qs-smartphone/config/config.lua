@@ -29,7 +29,7 @@ Locales = Locales or {}
 local esxHas = GetResourceState('es_extended') == 'started'
 local qbHas = GetResourceState('qb-core') == 'started'
 
-Config.Framework = 'qb' -- You can change to 'qb' or 'esx'
+Config.Framework = esxHas and 'esx' or qbHas and 'qb' or 'none' -- You can change to 'qb' or 'esx'
 
 --[[
     Put the language you want or just create your own in the locales/* folder
@@ -47,12 +47,12 @@ Config.esxVersion = 'new'
 local oxHas = GetResourceState('ox_inventory') == 'started'
 local codemHas = GetResourceState('codem_inventory') == 'started'
 
-Config.ox_inventory =  false
-Config.codem_inventory = false
+Config.ox_inventory = oxHas and 'esx' or false
+Config.codem_inventory = codemHas and 'esx' or false
 
 -- Target script
-Config.Target = false             -- Enable or disable target system
-Config.TargetScript = 'qb-target' -- 'ox_target' or 'qb-target' only!
+Config.Target = true             -- Enable or disable target system
+Config.TargetScript = 'ox_target' -- 'ox_target' or 'qb-target' only!
 
 -- Leave it as default if you dont know what you are doing
 Config.ScreenshotBasic = 'screenshot-basic'
@@ -214,7 +214,7 @@ Config.billingSystem = 'default'
     False if you are not using one
 ]]
 
-Config.billingpayBillEvent = 'nothing'
+Config.billingpayBillEvent = 'esx_billing:payBill'
 
 
 --░██████╗░░█████╗░██████╗░░█████╗░░██████╗░███████╗░██████╗
@@ -229,19 +229,44 @@ Config.ValetNPC = true         -- An NPC comes and leaves it next to you. If it 
 Config.ValetKeysBefore = false -- Does he give you the keys when you call the car, or when the car is delivered to you?
 Config.ValetPrice = 1000       -- Price to bring your vehicle to you
 
----@param This option is for impound system
--- 'default'
--- 'cd_garage'
--- 'loaf_garage'
--- 'qb-garages'
--- 'esx_garages'
--- 'okokGarage'
--- 'jg-advanced-garages'
--- 'rcore_garages'
--- 'qs-garages'
--- 'qs-advancedgarages'
+local function getGarage()
+    local cdHas = GetResourceState('cd_garage') == 'started'
+    local loafHas = GetResourceState('loaf_garage') == 'started'
+    local qbHas = GetResourceState('qb-garages') == 'started'
+    local esxHas = GetResourceState('esx_garages') == 'started'
+    local okokHas = GetResourceState('okokGarage') == 'started'
+    local jgHas = GetResourceState('jg-advancedgarages') == 'started'
+    local rcoreHas = GetResourceState('rcore_garages') == 'started'
+    local qsHas = GetResourceState('qs-garages') == 'started'
+    local qsAdvHas = GetResourceState('qs-advancedgarages') == 'started'
+    if cdHas then
+        return 'cd_garage'
+    elseif loafHas then
+        return 'loaf_garage'
+    elseif qbHas then
+        return 'qb-garages'
+    elseif esxHas then
+        return 'esx_garages'
+    elseif okokHas then
+        return 'okokGarage'
+        
+    elseif rcoreHas then
+        return 'jg-advancedgarages'
+        
+    elseif okokHas then
+        return 'rcore_garages'
+        
+    elseif qsHas then
+        return 'qs-garages'
+        
+    elseif qsAdvHas then
+        return 'qs-advancedgarages'
+    else
+        return 'default'
+    end
+end
 
-Config.GarageScript = 'jg-advanced-garages'
+Config.GarageScript = getGarage()
 
 -- ██╗░░░██╗███████╗██╗░░██╗██╗░█████╗░██╗░░░░░███████╗ ██╗░░██╗███████╗██╗░░░██╗░██████╗
 -- ██║░░░██║██╔════╝██║░░██║██║██╔══██╗██║░░░░░██╔════╝ ██║░██╔╝██╔════╝╚██╗░██╔╝██╔════╝
@@ -254,14 +279,19 @@ Config.GarageScript = 'jg-advanced-garages'
 ---@param hash Give the HASH of vehicle
 ---@param plate Return the plate of vehicle
 ---@param model Give the model IsNamedRendertargetLinked
+
 function VehicleKeys(vehicle, hash, plate, model)
-    if GetResourceState('qs-vehiclekeys') == 'started' then
+    local qsVehHas = GetResourceState('qs-vehiclekeys') == 'started'
+    local qbVehHas = GetResourceState('qb-vehiclekeys') == 'started'
+    local jakVehHas = GetResourceState('vehicles_keys') == 'started'
+    local monoVehHas = GetResourceState('mono_carkeys') == 'started'
+    if qsVehHas then
         exports['qs-vehiclekeys']:GiveKeys(plate, model)
-    elseif GetResourceState('qb-vehiclekeys') == 'started' then
+    elseif qbVehHas then
         TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(vehicle))
-    elseif GetResourceState('vehicles_keys') == 'started' then
+    elseif jakVehHas then
         TriggerServerEvent('vehicles_keys:selfGiveVehicleKeys', plate)
-    elseif GetResourceState('mono_carkeys') == 'started' then
+    elseif monoVehHas then
         exports.mono_carkeys:ClientInventoryKeys('add', plate)
     else
         print('^4[QS Smartphone] ^3[Debug]^0: If you have any vehiclekeys remember to add your vehiclekeys event in config.lua line 1249...') -- You can remove this.

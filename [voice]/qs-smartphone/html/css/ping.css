@@ -232,6 +232,7 @@ input[name="channel"]::-webkit-input-placeholder {
 }
 
 #ping-send {
+	margin-top: 6px;
 	background: limegreen;
 	border-radius: 9px
 }
