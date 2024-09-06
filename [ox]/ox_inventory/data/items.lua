@@ -369,7 +369,13 @@ return {
 			end
 		}
 	}, ]]
-
+	["broken_handcuffs"] = { label = "Broken handcuffs", weight = 100, stack = true, close = true, description = "It's broken, maybe you can repair it?", client = {image = "broken_handcuffs.png",}},
+    ["cuffkeys"] = { label = "Cuff Keys", weight = 75, stack = true, close = true, description = "Set them free !", client = {image = "cuffkeys.png",}},
+    ["ziptie"] = { label = "Ziptie", weight = 50, stack = true, close = true, description = "Comes in handy when people misbehave. Maybe it can be used for something else?", client = {image = "ziptie.png",}},
+    ["flush_cutter"] = { label = "Flush Cutter", weight = 50, stack = true, close = true, description = "Comes in handy when you want to cut zipties..", client = {image = "flush_cutter.png",}},
+    ["bolt_cutter"] = { label = "Bolt Cutter", weight = 50, stack = true, close = true, description = "Wanna cut some metal items ?", client = {image = "bolt_cutter.png",}},
+    ["leo_gps"] = { label = "LEO GPS", weight = 200, stack = true, close = true, description = "Show your gps location to others", client = {image = "leo-gps.png",}},
+    ["alcoholtester"] = { label = "Alcohol Tester", weight = 400, stack = false, close = true, description = "For testing purposes..", client = {image = "alcoholtester.png",}},
 	['money'] = {
 		label = 'Money',
 	},
@@ -6120,40 +6126,8 @@ return {
 	},
 
 
-	["cuffkeys"] = {
-		label = "Cuff Keys",
-		weight = 75,
-		stack = true,
-		close = true,
-		description = "Set them free !",
-		client = {
-			image = "cuffkeys.png",
-		}
-	},
-
-	["ziptie"] = {
-		label = "ZipTie",
-		weight = 50,
-		stack = true,
-		close = true,
-		description = "Comes in handy when people misbehave. Maybe it can be used for something else?",
-		client = {
-			image = "ziptie.png",
-		}
-	},
-	["alcoholtester"] = { label = "Alcohol Tester", weight = 400, stack = false, close = true, description = "For testing purposes..", client = {image = "alcoholtester.png",}},
-
-	["leo_gps"] = {
-		label = "LEO GPS",
-		weight = 2000,
-		stack = false,
-		close = true,
-		description = "Show your gps location to others",
-		client = {
-			image = "leo-gps.png",
-		}
-	},
-
+	
+	
 	["cuff_cutter"] = {
 		label = "Cuff Cutter",
 		weight = 50,
@@ -6162,28 +6136,6 @@ return {
 		description = "Wanna cut some metal items ?",
 		client = {
 			image = "cuff_cutter.png",
-		}
-	},
-
-	["broken_handcuffs"] = {
-		label = "Broken Handcuffs",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "It's broken, maybe you can repair it?",
-		client = {
-			image = "broken_handcuffs.png",
-		}
-	},
-
-	["flush_cutter"] = {
-		label = "Flush Cutter",
-		weight = 50,
-		stack = true,
-		close = true,
-		description = "Comes in handy when you want to cut zipties..",
-		client = {
-			image = "flush_cutter.png",
 		}
 	},
 
@@ -10787,16 +10739,7 @@ return {
 			image = "catcookie.png",
 		}
 	},
-	["bolt_cutter"] = {
-		label = "Bolt Cutter",
-		weight = 50,
-		stack = true,
-		close = true,
-		description = "Wanna cut some metal items ?",
-		client = {
-			image = "bolt_cutter.png",
-		}
-	},
+	
 
 	-- Custom Attachhment
 
