@@ -128,14 +128,7 @@ Item('parachute', function(data, slot)
 		end)
 	end
 end)
---- AP COURT STUFF ------
-Item('lawyerid', function(data, slot)
-	ox_inventory:useItem(data, function(data)
-	  if data ~= nil then
-		TriggerServerEvent('ap-court:server:usingLawyerCard', data)
-	  end
-	end)
-  end)
+
 Item('phone', function(data, slot)
 	local success, result = pcall(function()
 		return exports.npwd:isPhoneVisible()

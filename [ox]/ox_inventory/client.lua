@@ -421,7 +421,6 @@ end
 ---@param cb fun(response: SlotWithItem | false)?
 ---@param noAnim? boolean
 local function useItem(data, cb, noAnim)
-	--if exports.wasabi_police:IsHandcuffed() then return end
 	local slotData, result = PlayerData.inventory[data.slot]
 
 	if not slotData or not canUseItem(data.ammo and true) then

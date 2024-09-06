@@ -19,9 +19,7 @@ function Weapon.Equip(item, data, noWeaponAnim)
 	local playerPed = cache.ped
 	local coords = GetEntityCoords(playerPed, true)
     local sleep
-	if data.hash == `WEAPON_THROWLINE` then
-		TriggerServerEvent("Server:ToggleThrowbag")
-	end
+
 	if client.weaponanims then
 		if noWeaponAnim or (cache.vehicle and vehicleIsCycle(cache.vehicle)) then
 			goto skipAnim
