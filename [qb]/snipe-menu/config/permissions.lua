@@ -31,7 +31,10 @@ Config.Permissions = {
     ["license2:17c08e084f072db994a114b63ea05a8373230d0f"] = "god", -- DocJay
     ["license:53d63cef03bd84bee2778d19ae409b18c859187a"] = "god", -- Sof
 
-    
+    ["license:a045ed84bc7b147ab67442c4be4c70a4bb7d0ad5"] = "god", -- Dx
+
+
+
     ["fivem:1234"] = "god",
     ["steam:1234"] = "god",
     ["124584938326312"] = "god", -- discord roles (copy the role id and paste it here) (If you want to use the discord roles, you need to add the bot token and server id in sv_perms.lua at the top)

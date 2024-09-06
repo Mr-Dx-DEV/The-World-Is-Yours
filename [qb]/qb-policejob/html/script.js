@@ -61,7 +61,6 @@ const CameraApp = new Vue({
 HeliCam = {}
 Databank = {}
 Fingerprint = {}
-Alcoholtester = {}
 
 HeliCam.Open = function(data) {
     $("#helicontainer").css("display", "block");
@@ -108,19 +107,7 @@ Databank.Close = function() {
 
 Fingerprint.Open = function() {
     $(".fingerprint-container").fadeIn(150);
-    $(".fingerprint-id").html("");
-}
-
-Alcoholtester.Open = function(user) {
-    if (user) {
-        $(".take-alcoholtester").css("display", "none")
-        $('.blaaspijp').css('display', 'block')
-        $(".alcoholtester-id").html("<div><p>BLOW</p></div>");
-    } else {
-        $(".blaaspijp").css("display", "none")
-        $(".take-alcoholtester").css("display", "block")
-        $(".alcoholtester-id").html("<div><p>PRESS POWER</p></div>");
-    }
+    $(".fingerprint-id").html("Fingerprint ID<p>No result</p>");
 }
 
 Fingerprint.Close = function() {
@@ -128,42 +115,12 @@ Fingerprint.Close = function() {
     $.post('https://qb-policejob/closeFingerprint');
 }
 
-Alcoholtester.Close = function() {
-    $(".alcoholtester-container").fadeOut(150);
-    $.post('https://qb-policejob/closeAlcoholtester');
-}
-
 Fingerprint.Update = function(data) {
-    $(".fingerprint-id").html("<div class='fingerprint-screen'><img src="+data.Headshot+"></img><div class='line'></div><p style='padding-top:6vh'>Name:<br><b>"+data.Name+"</b></p><p>Fingerprint id:<br><b>"+data.Fingerprint+"</b></p><p>Citizenid:<br><b>"+data.Citizenid+"</b></p></div>");
-}
-
-Alcoholtester.Update = function(promille) {
-    $(".alcoholtester-id").html("<div><p>ANALYZING</p></div>");
-    setTimeout(function() {
-        $(".alcoholtester-id").html("<div><p>RESULT</p><p>"+promille+"</p></div>");
-        setTimeout(function(){
-            Alcoholtester.Close();
-        }, 6000);
-    }, 6000);
+    $(".fingerprint-id").html("Fingerprint ID<p>"+data.fingerprintId+"</p>");
 }
 
 $(document).on('click', '.take-fingerprint', function(){
     $.post('https://qb-policejob/doFingerScan');
-})
-
-$(document).on('click', '.take-alcoholtester', function(){
-    $('.take-alcoholtester').css('display', 'none')
-    $(".alcoholtester-id").html("<div><p>WAITING</p></div>");
-    $.post('https://qb-policejob/doAlcoholTest');
-})
-
-$(document).on('click', '.blaaspijp', function(){
-    $('.blaaspijp').css('display', 'none')
-    $(".alcoholtester-id").html("<div><p>BLOWING</p></div>");
-    setTimeout(function() {
-        $(".alcoholtester-id").html("<div><p>WAITING</p></div>");
-        $.post('https://qb-policejob/startBlowing');
-    }, 4000);
 })
 
 document.onreadystatechange = () => {
@@ -198,14 +155,6 @@ document.onreadystatechange = () => {
                 Fingerprint.Close();
             } else if (event.data.type == "updateFingerprintId") {
                 Fingerprint.Update(event.data);
-            } else if (event.data.type == "openAlcoholTester") {
-                var user = event.data.user
-                $(".alcoholtester-container").css("display", "block");
-                Alcoholtester.Open(user);
-            } else if (event.data.type == "closeAlcoholTester") {
-                Alcoholtester.Close();
-            } else if (event.data.type == "updateAlcoholTester") {
-                Alcoholtester.Update(event.data.promille);
             }
         });
     };
@@ -216,7 +165,6 @@ $(document).on('keydown', function() {
         case 27: // ESC
             Databank.Close();
             Fingerprint.Close();
-            Alcoholtester.Close();
             break;
     }
 });

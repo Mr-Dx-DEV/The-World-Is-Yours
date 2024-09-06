@@ -13,7 +13,6 @@ local openContextMenu = nil
 ---@field description? string
 ---@field metadata? string | { [string]: any } | string[]
 ---@field disabled? boolean
----@field readOnly? boolean
 ---@field event? string
 ---@field serverEvent? string
 ---@field args? any
