@@ -27,9 +27,9 @@ Config.GodRoles = {
 
 -- Original Permissions table for information on all possible available options
 Config.Permissions = {
-    ["license:a045ed84bc7b147ab67442c4be4c70a4bb7d0ad5"] = "god", -- UtshoBoy
     ["license:f90cd271ae404268c3728c7b32d31095b7092b5b"] = "god", -- SB-Demon
-    ["license2:17c08e084f072db994a114b63ea05a8373230d0f"] = "god", -- SB-Demon
+    ["license2:17c08e084f072db994a114b63ea05a8373230d0f"] = "god", -- DocJay
+    ["license:53d63cef03bd84bee2778d19ae409b18c859187a"] = "god", -- Sof
 
     
     ["fivem:1234"] = "god",
