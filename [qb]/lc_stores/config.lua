@@ -683,8 +683,8 @@ Config.market_types = {
 			"electronics_market"
 		},
 		['blips'] = {							-- Create the blips on map
-			['id'] = 52,						-- Blip ID [Set this value 0 to dont have blip]
-			['name'] = "Market",				-- Blip Name [Will be replaced when the owner rename the store]
+			['id'] = 817,						-- Blip ID [Set this value 0 to dont have blip]
+			['name'] = "Phone Market",				-- Blip Name [Will be replaced when the owner rename the store]
 			['color'] = 4,						-- Blip Color
 			['scale'] = 0.6,					-- Blip Scale
 		}
@@ -1037,7 +1037,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'white_phone.png',
 			},
-			
+			--[[ 
 			['wet_phone'] = {
 				['name'] = "Wet Phone",
 				['price_to_customer'] = 350,
@@ -1157,8 +1157,8 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'wet_white_phone.png',
 			},
-			
-			['phone_hack'] = {
+			 ]]
+			--[[ ['phone_hack'] = {
 				['name'] = "Phone Hack",
 				['price_to_customer'] = 350,
 				['price_to_customer_min'] = 175,
@@ -1168,7 +1168,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'phone_hack.png',
-			},
+			}, ]]
 			
 			['phone_module'] = {
 				['name'] = "Phone Module",
@@ -1348,7 +1348,7 @@ Config.market_categories = {
 				['img'] = 'firework4.png',
 			},
 			
-			['advancedrepairkit'] = {
+			--[[ ['advancedrepairkit'] = {
 				['name'] = "Advanced Repair Kit",
 				['price_to_customer'] = 350,
 				['price_to_customer_min'] = 175,
@@ -1358,7 +1358,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'advancedkit.png',
-			},
+			}, ]]
 			
 			['razorblade'] = {
 				['name'] = "Razor Blade",
@@ -1384,7 +1384,7 @@ Config.market_categories = {
 				['img'] = 'plasticjerrycan.png',
 			},
 			
-			['harness'] = {
+			--[[ ['harness'] = {
 				['name'] = "Harness",
 				['price_to_customer'] = 350,
 				['price_to_customer_min'] = 175,
@@ -1394,7 +1394,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'harness.png',
-			},
+			}, ]]
 			
 			['acetone'] = {
 				['name'] = "Acetone",

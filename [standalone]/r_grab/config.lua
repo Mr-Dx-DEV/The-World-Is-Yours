@@ -12,7 +12,7 @@ Config = {
 
     UseOutdatedVersion = false, -- Enable this parameter to suppress alert messages in the console if you wish to use an older version of the script.
 
-    CommandEnabled = false, -- Activate or not the system to take it via the command.
+    CommandEnabled = true, -- Activate or not the system to take it via the command.
     GrabCommand = 'grab', -- Command to take the person by the arm (modifiable from cl_utils.lua)
     PutCarCommand = 'putcar', -- Command to put the person into the vehicle. (modifiable from cl_utils.lua)
     ExitCarCommand = 'exitcar', -- Command to get the player out of a vehicle. (modifiable from cl_utils.lua)

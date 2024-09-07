@@ -16,7 +16,7 @@ Config = {
     DisableControls = false, -- Disable specific controls when menu is open, can be configured in NativeUI.lua:2452 (approximately)
 
     -- Menu Customization Options
-    MenuTitle = 'The World Is Yours', -- You can change the name of the menu here or leave it blank to remove the text in front of the custom banners
+    MenuTitle = '', -- You can change the name of the menu here or leave it blank to remove the text in front of the custom banners
     TitleOutline = true,
     TitleColour = {R = 255, G = 0, B = 255, A = 255}, --- The colour of the menu banner text in RGB. This is white by default aka 255, 255, 255. See https://www.rapidtables.com/web/color/RGB_Color.html for colours.
     MenuPosition = 'right', -- You can change the menu position here. Use 'left' or 'right'
