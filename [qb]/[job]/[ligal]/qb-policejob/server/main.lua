@@ -1094,6 +1094,19 @@ RegisterNetEvent('police:server:BillPlayer', function(playerId, price)
 end)
 
 RegisterNetEvent('police:server:JailPlayer', function(playerId, time)
+    
+            -- This part was added by rcore_prison!
+            -- Backward compatibility for this event is done by rcore_prison.
+            -- Path: rcore_prison/modules/base/server/api/sv-jailPlayer.lua
+    
+            local blockInvoke = true
+    
+            if blockInvoke then
+                return
+            end
+    
+                
+
     local src = source
     local playerPed = GetPlayerPed(src)
     local targetPed = GetPlayerPed(playerId)

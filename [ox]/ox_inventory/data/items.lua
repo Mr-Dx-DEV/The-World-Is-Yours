@@ -1,4 +1,256 @@
 return {
+
+    ['cigarrete'] = {
+        label = 'Cigarrete',
+        weight = 100,
+        stack = true,
+        close = true,
+        consume = 0,
+    },
+
+            
+
+
+    ['wire_cutter'] = {
+        label = 'cutter',
+        weight = 100,
+        stack = true,
+        close = true,
+        consume = 0,
+    },
+
+            
+
+    ['donut'] = {
+        label = 'Donut',
+        weight = 350,
+        client = {
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = { model = `prop_amb_donut`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
+            usetime = 2500,
+            notification = 'You eat Donut',
+        },
+    },
+            
+
+    ['chips'] = {
+        label = 'Chips',
+        weight = 350,
+        client = {
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
+            usetime = 2500,
+            notification = 'You eat Chips',
+        },
+    },
+            
+
+    ['pizza_ham'] = {
+        label = 'Pizza Ham',
+        weight = 350,
+        client = {
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
+            usetime = 2500,
+            notification = 'You eat Fries',
+        },
+    },
+            
+
+    ['fries'] = {
+        label = 'Fries',
+        weight = 350,
+        client = {
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
+            usetime = 2500,
+            notification = 'You eat Fries',
+        },
+    },
+            
+
+    ['coffee'] = {
+        label = 'Coffee',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
+            usetime = 2500,
+            notification = 'You quenched your thirst with a Coffee',
+        },
+    },
+            
+
+    ['ecola'] = {
+        label = 'Ecola',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
+            usetime = 2500,
+            notification = 'You quenched your thirst with a Coffee',
+        },
+    },
+            
+
+    ['ecola_light'] = {
+        label = 'Ecola light',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
+            usetime = 2500,
+            notification = 'You quenched your thirst with a Coffee',
+        },
+    },
+            
+
+    ['sludgie'] = {
+        label = 'Sludgie',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
+            usetime = 2500,
+            notification = 'You quenched your thirst with a Coffee',
+        },
+    },
+            
+
+
+    ['cigarrete'] = {
+        label = 'Cigarrete',
+        weight = 100,
+        stack = true,
+        close = true,
+        consume = 0,
+    },
+
+            
+
+
+    ['wire_cutter'] = {
+        label = 'cutter',
+        weight = 100,
+        stack = true,
+        close = true,
+        consume = 0,
+    },
+
+            
+
+    ['donut'] = {
+        label = 'Donut',
+        weight = 350,
+        client = {
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = { model = `prop_amb_donut`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
+            usetime = 2500,
+            notification = 'You eat Donut',
+        },
+    },
+            
+
+    ['chips'] = {
+        label = 'Chips',
+        weight = 350,
+        client = {
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
+            usetime = 2500,
+            notification = 'You eat Chips',
+        },
+    },
+            
+
+    ['pizza_ham'] = {
+        label = 'Pizza Ham',
+        weight = 350,
+        client = {
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
+            usetime = 2500,
+            notification = 'You eat Fries',
+        },
+    },
+            
+
+    ['fries'] = {
+        label = 'Fries',
+        weight = 350,
+        client = {
+            status = { hunger = 200000 },
+            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
+            usetime = 2500,
+            notification = 'You eat Fries',
+        },
+    },
+            
+
+    ['coffee'] = {
+        label = 'Coffee',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
+            usetime = 2500,
+            notification = 'You quenched your thirst with a Coffee',
+        },
+    },
+            
+
+    ['ecola'] = {
+        label = 'Ecola',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
+            usetime = 2500,
+            notification = 'You quenched your thirst with a Coffee',
+        },
+    },
+            
+
+    ['ecola_light'] = {
+        label = 'Ecola light',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
+            usetime = 2500,
+            notification = 'You quenched your thirst with a Coffee',
+        },
+    },
+            
+
+    ['sludgie'] = {
+        label = 'Sludgie',
+        weight = 350,
+        client = {
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
+            usetime = 2500,
+            notification = 'You quenched your thirst with a Coffee',
+        },
+    },
+            
+
 	['testburger'] = {
 		label = 'Test Burger',
 		weight = 220,
@@ -16206,4 +16458,8 @@ return {
 			image = "gummy_zkittlez_cbd.png",
 		}
 	},
+-- This part is generated by sv-deployer.lua from rcore_prison
+-- Do not edit this part manually unless you know what you are doing
+-- This part is generated by sv-deployer.lua from rcore_prison
+-- Do not edit this part manually unless you know what you are doing
 }

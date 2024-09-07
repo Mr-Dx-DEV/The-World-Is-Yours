@@ -93,13 +93,24 @@ Config.Disable = {
 Config.RelieveWeedStress = math.random(15, 20) -- stress relief amount (100 max)
 
 Config.Consumables = {
-    eat = { -- default food items
+    eat = {
+        ['fries'] = math.random(35, 54),
+        ['pizza_ham'] = math.random(35, 54),
+        ['chips'] = math.random(35, 54),
+        ['donut'] = math.random(35, 54),
+ -- default food items
         ['sandwich'] = math.random(35, 54),
         ['tosti'] = math.random(40, 50),
         ['twerks_candy'] = math.random(35, 54),
         ['snikkel_candy'] = math.random(40, 50)
     },
-    drink = { -- default drink items
+    drink = {
+        ['sprunk'] = math.random(35, 54),
+        ['sludgie'] = math.random(35, 54),
+        ['ecola_light'] = math.random(35, 54),
+        ['ecola'] = math.random(35, 54),
+        ['water'] = math.random(35, 54),
+ -- default drink items
         ['water_bottle'] = math.random(35, 54),
         ['kurkakola'] = math.random(35, 54),
         ['coffee'] = math.random(40, 50)
@@ -271,4 +282,5 @@ Config.CarWash = {
         [4] = { coords = vector3(1362.69, 3591.81, 34.5), length = 6.4, width = 8, heading = 21 },     -- Sandy Shores
         [5] = { coords = vector3(-699.84, -932.68, 18.59), length = 11.8, width = 5.2, heading = 0 }   -- Little Seoul Gas Station
     }
+-- Do not edit this part manually unless you know what you are doing
 }
