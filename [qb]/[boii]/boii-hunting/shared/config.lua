@@ -24,7 +24,7 @@ Config.Blips = {
 
 -- Hunting zones
 Config.Zones = {
-    UseZones = true, -- Enables map zones 
+    UseZones = false, -- Enables map zones 
     Zones = { -- Hunting circle zones you can add more here. These zones are purely visual we use them entirely in RP they do not affect the script in anyway.
         {title='Hunting Zone', colour=5, id=141, coords = vector3(-1186.72, 3853.52, 489.94), scale = 0.6, zonecolour = 2, radius = 950.00},
         {title='Hunting Zone', colour=5, id=141, coords = vector3(772.84, 5461.14, 560.18), scale = 0.6, zonecolour = 2, radius = 950.00}
