@@ -8,11 +8,11 @@ Config = {}
 --  ██████     ██    ██ ███████ ██    ██    ██ ███████ ███████
 
 Config.Job = "tobacco"                         -- Job Required
-Config.debug = false                           -- leave off unless needed.
-Config.polydebug = false                       -- leave off unless needed.
-Config.BridgeDebug = false                     -- leave off unless needed
-Config.SDAutoVersion = false                   -- Autodetect menu used
-Config.SDMenuVersion = 'ox'                    -- If above = false, define menu you want to use. (qb = qb_menu, ox = ox_lib)
+Config.debug = true                           -- leave off unless needed.
+Config.polydebug = true                       -- leave off unless needed.
+Config.BridgeDebug = true                     -- leave off unless needed
+Config.SDAutoVersion = true                   -- Autodetect menu used
+Config.SDMenuVersion = 'qb'                    -- If above = false, define menu you want to use. (qb = qb_menu, ox = ox_lib)
 Config.SDInputVersion = 'qb'                   -- input menu override
 Config.ClearBlood = true                       -- Removed blood from player when using sink.
 Config.ImagePath = Bridge.InventoryImagePath   -- This is set automatically

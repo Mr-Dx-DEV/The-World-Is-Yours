@@ -1,17 +1,19 @@
 INSERT INTO `items` (`name`, `label`) VALUES
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
  ('untrimmed_weed', 'Untrimmed Weed'),
  ('actionfigure', 'Action Figure'),
+=======
+>>>>>>> Stashed changes
  ('cutcocaine', 'Cut Cocaine'),
- ('raidtool', 'Raid Tool'),
- ('bakingsoda', 'Baking Soda'),
- ('propelyeneglycol', 'Propelyene Glycol'),
- ('lab-key', 'Lab Keys'),
  ('rawcocaine', 'Raw Cocaine'),
  ('cocainepackage', 'Cocaine Package'),
- ('boxmeth', 'Box of Meth'),
+ ('untrimmed_weed', 'Untrimmed Weed'),
  ('trimmed_weed', 'Trimmed Weed'),
+ ('bagmeth', 'Bag of Meth'),
+ ('propelyeneglycol', 'Propelyene Glycol'),
  ('sodiumbenzoate', 'Sodium Benzoate'),
+<<<<<<< Updated upstream
  ('bagmeth', 'Bag of Meth');
 =======
  ('trimmed_weed', 'Trimmed Weed'),
@@ -27,4 +29,11 @@ INSERT INTO `items` (`name`, `label`) VALUES
  ('cutcocaine', 'Cut Cocaine'),
  ('sodiumbenzoate', 'Sodium Benzoate'),
  ('cocainepackage', 'Cocaine Package');
+>>>>>>> Stashed changes
+=======
+ ('raidtool', 'Raid Tool'),
+ ('actionfigure', 'Action Figure'),
+ ('boxmeth', 'Box of Meth'),
+ ('lab-key', 'Lab Keys'),
+ ('bakingsoda', 'Baking Soda');
 >>>>>>> Stashed changes

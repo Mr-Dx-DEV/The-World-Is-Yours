@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ['untrimmed_weed'] = {
   ['label'] = 'Untrimmed Weed',
   ['weight'] = 100,
@@ -17,18 +18,15 @@
   ['description'] = 'A small figurine filled which something could be stored inside...',
 
 },
+=======
+>>>>>>> Stashed changes
 ['cutcocaine'] = {
-  ['label'] = 'Cut Cocaine',
-  ['weight'] = 100,
   ['client'] = {
     ['image'] = 'cutcocaine.png',
   },
   ['description'] = 'Cut Cocaine',
-
-},
-['sodiumbenzoate'] = {
-  ['label'] = 'Sodium Benzoate',
   ['weight'] = 100,
+<<<<<<< Updated upstream
 =======
 ['trimmed_weed'] = {
   ['client'] = {
@@ -202,24 +200,53 @@
     ['image'] = 'raidtool.png',
   },
   ['description'] = 'For beating the shit out of doors',
+=======
+  ['label'] = 'Cut Cocaine',
+>>>>>>> Stashed changes
 
 },
 ['bakingsoda'] = {
-  ['label'] = 'Baking Soda',
-  ['weight'] = 100,
   ['client'] = {
     ['image'] = 'bakingsoda.png',
   },
   ['description'] = 'Baking Soda',
+  ['weight'] = 100,
+  ['label'] = 'Baking Soda',
+
+},
+['cocainepackage'] = {
+  ['client'] = {
+    ['image'] = 'cocainepackage.png',
+  },
+  ['description'] = 'A small figurine filled with a white powdery substance...',
+  ['weight'] = 100,
+  ['label'] = 'Cocaine Package',
+
+},
+['untrimmed_weed'] = {
+  ['client'] = {
+    ['image'] = 'untrimmed_weed.png',
+  },
+  ['description'] = 'Untrimmed Weed',
+  ['weight'] = 100,
+  ['label'] = 'Untrimmed Weed',
+
+},
+['trimmed_weed'] = {
+  ['client'] = {
+    ['image'] = 'trimmed_weed.png',
+  },
+  ['description'] = 'Trimmed Weed',
+  ['weight'] = 100,
+  ['label'] = 'Trimmed Weed',
 
 },
 ['bagmeth'] = {
-  ['label'] = 'Bag of Meth',
-  ['weight'] = 100,
   ['client'] = {
     ['image'] = 'bagmeth.png',
   },
   ['description'] = 'Chemical Substance',
+<<<<<<< Updated upstream
 =======
   ['client'] = {
     ['image'] = 'cocainepackage.png',
@@ -227,6 +254,73 @@
   ['weight'] = 100,
   ['label'] = 'Cocaine Package',
   ['description'] = 'A small figurine filled with a white powdery substance...',
+>>>>>>> Stashed changes
+=======
+  ['weight'] = 100,
+  ['label'] = 'Bag of Meth',
+
+},
+['propelyeneglycol'] = {
+  ['client'] = {
+    ['image'] = 'propelyeneglycol.png',
+  },
+  ['description'] = 'Chemical Substance',
+  ['weight'] = 100,
+  ['label'] = 'Propelyene Glycol',
+
+},
+['sodiumbenzoate'] = {
+  ['client'] = {
+    ['image'] = 'sodiumbenzoate.png',
+  },
+  ['description'] = 'Chemical Substance',
+  ['weight'] = 100,
+  ['label'] = 'Sodium Benzoate',
+
+},
+['raidtool'] = {
+  ['client'] = {
+    ['image'] = 'raidtool.png',
+  },
+  ['description'] = 'For beating the shit out of doors',
+  ['weight'] = 100,
+  ['label'] = 'Raid Tool',
+
+},
+['actionfigure'] = {
+  ['client'] = {
+    ['image'] = 'actionfigure.png',
+  },
+  ['description'] = 'A small figurine filled which something could be stored inside...',
+  ['weight'] = 100,
+  ['label'] = 'Action Figure',
+
+},
+['boxmeth'] = {
+  ['client'] = {
+    ['image'] = 'boxmeth.png',
+  },
+  ['description'] = 'Chemical Substance',
+  ['weight'] = 100,
+  ['label'] = 'Box of Meth',
+
+},
+['lab-key'] = {
+  ['client'] = {
+    ['image'] = 'labkeys.png',
+  },
+  ['description'] = 'Keys for some sort of door?!?!',
+  ['weight'] = 100,
+  ['label'] = 'Lab Keys',
+
+},
+['rawcocaine'] = {
+  ['client'] = {
+    ['image'] = 'rawcocaine.png',
+  },
+  ['description'] = 'Uncut Cocaine',
+  ['weight'] = 100,
+  ['label'] = 'Raw Cocaine',
 >>>>>>> Stashed changes
 
 },

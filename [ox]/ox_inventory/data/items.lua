@@ -16301,7 +16301,7 @@ return {
 		close = true,
 		description = "TV Remote",
 		client = {
-			image = "tvremote.png",
+			image = "remote.png",
 		}
 	},
 
