@@ -59,14 +59,42 @@ Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 Config.GaragePedModel = "s_m_y_hwaycop_01"
 Config.Locations = {
     ["duty"] = {
-        [1] = vector3(441.85, -981.95, 31.88), -- LSPD
-        [2] = vector3(-447.73, 6015.58, 32.28), -- BCSO
-        [3] = vector3(1832.68, 3678.4, 34.28), -- Sandy
+        [1] = vector3(608.99, -14.48, 76.63), -- Vinewood PD
+        [2] = vector3(1817.9554, 3672.185, 34.195335), --BSCO Sandy
+        [3] = vector3(-446.86, 6012.61, 32.29), --BCSO Paleto
+        [4] = vector3(384.75, 795.04, 187.46), -- Game Warden nat 
+        [5] = vector3(1549.94, 838.89, 77.66), -- Highway Patrol 
+        [6] = vector3(837.17, -1289.87, 28.24), -- Popular Secret Service
+        [7] = vector3(115.34, -747.69, 45.76), -- FBI
+        [8] = vector3(-819.44, -702.16, 28.06), -- US Marshalls
+        [9] = vector3(428.2, -1090.18, 30.06), -- Training Center
+        [10] = vector3(-1237.64, -2810.87, 14.3), -- DHS Airport
+        [11] = vector3(1692.93, 4877.41, 42.3), -- Game Warden Grapeseed
+        [12] = vector3(479.25, -996.3, 30.69), -- Mrpd DHS
+        [13] = vector3(367.09, -1606.85, 29.29), -- Davis Street
+        [14] = vector3(-1076.5, -817.15, 15.64), -- Vesp
+        [15] = vector3(1840.28, 2579.26, 46.01), -- PRISON
     },
     ["vehicle"] = {
         [1] = vector4(442.1, -1013.92, 28.63, 184.47), -- LSPD
         [2] = vector4(-458.86, 6031.5, 31.34, 139.15), --BCSO
-        [3] = vector4(1858.95, 3681.95, 33.83, 219.83), -- Sandy
+       -- [3] = vector4(1858.95, 3681.95, 33.83, 219.83), -- Sandy
+
+
+        [3] = vector4(134.41, -732.76, 33.13, 247.69), -- FBI
+        [4] = vector4(-471.55, 6012.96, 31.34, 313.09), -- BCSO Paleto
+        --[5] = vector4(1541.7, 796.08, 76.74, 62.44), -- HIghway Patrol
+        [5] = vector4(373.03, 788.16, 186.91, 183.18), -- Game Warden nat
+        [6] = vector4(860.46, -1350.03, 26.07, 94.43), -- Popular Secret Service
+        --[8] = vector4(386.82, -1632.23, 29.29, 309.09), -- Davis street 
+       --[9] = vector4(1815.62, 3686.82, 33.97, 300.51), -- BCSO Sandy
+        [7] = vector4(-831.66, -746.5, 23.38, 100.68), -- US Marshalls
+        [8] = vector4(-1216.73, -2797.71, 13.95, 149.49), -- DHS Airport 
+        --[12] = vector4(1702.23, 4855.61, 42.07, 184.09), -- Game Warden Grapeseed
+        --[13] = vector4(442.82, -1014.86, 28.64, 98.96), -- MRPD DHS 
+        --[14] = vector4(-1117.73, -846.68, 13.38, 126.02), -- Vesp
+        [9] = vector4(-1308.35, -568.62, 20.8, 221.49), -- GOV Egress
+        [10] = vector4(1864.1, 2558.63, 45.67, 337.86), -- Prison
     },
     ["vehspawn"] = { -- The numbers [1] must match the numbers in [vehicle]
         [1] = vector4(442.4, -1025.02, 28.29, 4.11), -- LSPD
@@ -74,9 +102,22 @@ Config.Locations = {
         [3] = vector4(1850.89, 3673.04, 33.37, 211.26), -- Sandy
     },
     ["stash"] = {
-        [1] = vector3(461.13, -995.88, 30.69), -- LSPD
-        [2] = vector3(-438.73, 6008.25, 36.99), -- BCSO
-        [3] = vector3(1837.89, 3688.08, 34.19), -- Sandy
+        [1] = vector3(605.19, -16.67, 76.63), -- Vinewood PD
+        [2] = vector3(-445.44, 6019.05, 37.0), -- BCSO Paleto
+        [3] = vector3(1548.9, 841.03, 77.66), -- Highway Patrol 
+        [4] = vector3(387.72, 794.15, 190.49), -- Game Warden nat
+        [5] = vector3(-814.91, -720.16, 22.96), -- US Marshalls
+        [6] = vector3(433.04, -1076.54, 30.06), -- Training center
+        [7] = vector3(1837.57, 3684.82, 34.19), -- BCSO Sandy
+        [8] = vector3(-1241.74, -2811.83, 14.3), -- DHS Airport
+        [9] = vector3(1691.13, 4864.91, 42.3), -- Game Warden Grapeseed
+        [10] = vector3(486.5, -995.33, 30.69),-- MRPD DHS
+        [11] = vector3(362.69, -1607.02, 29.29), --Davis Street
+        [12] = vector3(857.87, -1294.59, 28.28), -- Popular Secret Service
+        [13] = vector3(152.78, -752.02, 45.75), -- FBI
+        [14] = vector3(-1067.79, -811.5, 15.64), -- Vesp
+        [15] = vector3(-1303.06, -557.24, 30.57),-- Secret Service Gov Office
+        [16] = vector3(1838.36, 2576.83, 46.36), -- Prison
     },
     ["impound"] = {
         [1] = vector3(479.08, -1022.54, 28.01),
@@ -91,30 +132,109 @@ Config.Locations = {
         [2] = vector4(-475.18, 5988.43, 31.72, 317.27), -- BCSO
     },
     ["armory"] = {
-        [1] = vector3(482.51, -995.62, 30.69), -- LSPD
-        [2] = vector3(-444.12, 6013.53, 37.00), -- BCSO
-        [3] = vector3(1836.2, 3687.01, 34.19), -- Sandy
+        [1] = vector3(607.92, -20.62, 76.63), -- Vinewood PD
+        [2] = vector3(1836.2866, 3686.9396, 34.189239), -- BCSO Sandy
+        [3] = vector3(-446.8, 6016.74, 37.0), -- BCSO Paleto
+        [4] = vector3(1553.86, 839.99, 77.66), -- Highway Patrol
+        [5] = vector3(386.97, 799.72, 187.46), -- Game Warden nat
+        [6] = vector3(836.76, -1287.34, 28.24), -- Popular Secret Service 
+        [7] = vector3(153.08, -757.41, 45.75), -- FBI
+        [8] = vector3(-1070.35, -816.46, 15.64), -- Vesp
+        [9] = vector3(-822.11, -717.56, 22.96), -- US Marshalls
+        [10] = vector3(438.22, -1116.37, 30.06), -- Training Center
+        [11] = vector3(-1238.59, -2813.7, 14.3), -- DHS Airport
+        [12] = vector3(1696.53, 4876.39, 42.3), -- Game Warden Grapseed
+        [13] = vector3(479.25, -996.3, 30.69), -- MRPD DHS
+        [14] = vector3(365.58, -1609.6, 29.29), -- Davis Street
+        [15] = vector3(-1300.77, -555.32, 30.57), -- Secret Service Gov office
+        [16] = vector3(-1306.4, -564.77, 41.19), -- Gov Safe Room
+        [17] = vector3(1841.63, 2573.82, 46.01), -- Prison
     },
     ["trash"] = {
-        [1] = vector3(440.15, -978.25, 30.66), -- LSPD
+        [1] = vector3(611.07, -8.68, 76.63), -- Vinewood PD 
+        [2] = vector3(1830.0455, 3684.0603, 34.189182), -- BCSO Sandy
+        [3] = vector3(598.58, 5.06, 76.63), -- Vinewood PD
+        [4] = vector3(1689.39, 4864.45, 42.3), -- Game Warden Grapeseed
+        [5] = vector3(479.02, -994.89, 30.69), -- MRPD DHS 
+        [6] = vector3(368.51, -1605.04, 29.29), -- Davis Street
+        [7] = vector3(-446.4, 6014.18, 37.0), -- BCSO Paleto 
+        [8] = vector3(382.4, 795.99, 190.49), -- Game Warden nat 
+        [9] = vector3(835.13, -1304.25, 28.24), -- Popular Secret Service 
+        [10] = vector3(147.55, -755.02, 50.14), -- FBI
+        [11] = vector3(-1074.76, -814.69, 15.64), -- Vesp
+        [12] = vector3(-1087.78, -837.56, 34.28), -- Vesp
     },
     ["fingerprint"] = {
-        [1] = vector3(473.12, -1007.48, 26.27), -- LSPD
-        [2] = vector3(-452.22, 5997.96, 27.58), --BCSO
+        [1] = vector3(603.37, -2.35, 76.63), -- Vinewood PD 
+        [2] = vector3(1817.4641, 3665.893, 34.189239), -- BCSO Sandy 
+        [3] = vector3(-452.39, 5997.86, 27.58), -- BCSO Paleto 
+        [4] = vector3(386.45, 795.29, 187.46), -- Game Warden nat 
+        [5] = vector3(835.35, -1300.7, 28.24), -- Popular Secret Service 
+        [6] = vector3(1555.2, 834.96, 77.66), -- Highway Patrol
+        [7] = vector3(360.64, -1613.27, 29.29), -- Davis Street 
+        [8] = vector3(-817.41, -716.39, 22.96), -- US Marshalls 
+        [9] = vector3(465.35, -1086.77, 35.45), -- Training Center 
+        [10] = vector3(468.01, -1086.8, 35.45), -- Training Center 
+        [11] = vector3(470.49, -1086.9, 35.45), -- Training Center 
+        [12] = vector3(472.81, -1086.78, 35.45), -- Training Center 
+        [13] = vector3(-1237.07, -2797.58, 20.05), -- DHS Airport 
+        [14] = vector3(1684.83, 4865.01, 37.32), -- Game Warden Grapeseed
+        [15] = vector3(474.43, -1013.37, 26.27), -- mrpd DHS
+        [16] = vector3(132.93, -744.41, 42.17), -- FBI
+        [17] = vector3(-1085.92, -830.4, 19.32), -- Vesp upper 
+        [18] = vector3(-1080.21, -826.73, 15.64), -- Vesp Lower
     },
     ["evidence"] = {
-        [1] = vector3(472.79, -993.10, 26.27), -- LSPD
-        [2] = vector3(-452.87, 5999.38, 37.00), -- BCSO
-        [3] = vector3(1817.97, 3672.25, 34.2), -- Sandy
+        [1] = vector3(619.75, -10.31, 76.63), -- Vinewood PD
+        [2] = vector3(616.34, -11.07, 76.63), -- Vinewood PD
+        [3] = vector3(619.6, -14.32, 76.63), -- Vinewood PD
+		[4] = vector3(1829.8619, 3679.2133, 38.859416), -- BCSO Sandy
+        [5] = vector3(1831.3439, 3680.1469, 38.859416), -- BCSO Sandy 
+        [6] = vector3(-452.89, 5999.62, 37.01), -- BCSO Paleto
+        [7] = vector3(1547.84, 827.01, 82.13), -- Highway Patrol
+        [8] = vector3(383.57, 799.86, 190.49), -- Game Warden nat 
+        [9] = vector3(847.78, -1312.47, 28.24), -- Popular Secret Service 
+        [10] = vector3(148.41, -762.34, 50.14), -- FBI
+        [11] = vector3(147.27, -765.45, 50.14), -- FBI
+        [12] = vector3(-815.35, -713.46, 22.96), -- US Marshalls
+        [13] = vector3(-812.89, -710.27, 28.06), -- US Marshalls 
+        [14] = vector3(-813.37, -705.64, 28.06), -- US Marshalls 
+        [15] = vector3(438.92, -1076.52, 30.06), -- Training Center 
+        [16] = vector3(1699.22, 4881.0, 42.3), -- Game Warden Grapeseed
+        [17] = vector3(1695.51, 4880.54, 42.3), -- Game Warden Grapeseed 
+        [18] = vector3(475.08, -996.53, 26.27), --MRPD DHS 1
+        [19] = vector3(475.11, -993.59, 26.27), --MRPD DHS 2
+        [20] = vector3(472.63, -997.27, 26.27), --MRPD DHS 3
+        [21] = vector3(383.7, -1599.77, 33.36), -- Davis Street
+        [22] = vector3(381.85, -1600.96, 33.36), -- Davis Street
+        [23] = vector3(-1083.91, -833.77, 23.46), -- Vesp
+        [24] = vector3(-1086.88, -833.56, 23.46), -- vesp
+        [25] = vector3(1843.98, 2574.21, 46.01), -- prison
     },
     ["labs"] = {
         [1] = vector3(483.49, -988.62, 31.06), -- LSPD
     },
-    ["stations"] = {
+    --[[ ["stations"] = {
         [1] = {label = "Los Santos Police Department", coords = vector4(428.23, -984.28, 29.76, 3.5), sprite= 137, scale= 0.7, colour= 29},
         [2] = {label = "San Andreas State Prison", coords = vector4(1845.903, 2585.873, 45.672, 272.249), sprite= 137, scale= 0.7, colour= 1},
         [3] = {label = "Blaine County Sheriffs Office", coords = vector4(-448.26, 6007.83, 44.01, 225.93), sprite= 137, scale= 0.7, colour= 47},
-    },
+    }, ]]
+    ["stations"] = {
+         [1] = {label = "Vinewood LSPD ", coords = vector4(601.13, -10.12, 70.63, 15.77), sprite= 137, scale= 0.7, colour= 29},
+--         [2] = {label = "SADOC Prison", coords = vector4(1845.903, 2585.873, 45.672, 272.249), sprite= 137, scale= 0.7, colour= 29},
+--         [3] = {label = "San Andreas Game Commission HQ", coords = vector4(1688.05, 4862.44, 42.3, 287.78), sprite= 137, scale= 0.7, colour= 29},
+--         [4] = {label = "San Andreas Game Commission 2", coords = vector4(386.07,796.89, 187.46, 356.02), sprite= 137, scale= 0.7, colour= 29},
+         [5] = {label = "San Andreas Highway Patrol", coords = vector4(1540.69, 817.67, 77.66, 12.06), sprite= 137, scale= 0.7, colour= 29},
+--         [6] = {label = "Popular US Secret Service Department", coords = vector4(826.88, -1290.45, 28.23, 295.56), sprite= 137, scale= 0.7, colour= 29},
+--         [7] = {label = "United States Marshal Services", coords = vector4(-831.12, -698.93, 27.36, 234.36), sprite= 137, scale= 0.7, colour= 29},
+--         [8] = {label = "DHS CBP/PIA Airport", coords = vector4(-1237.07, -2797.58, 20.05, 64.93), sprite= 137, scale= 0.7, colour= 29},
+--         [9] = {label = "DHS CBP/PIA HQ", coords = vector4(457.38, -984.78, 30.69, 174.19), sprite= 137, scale= 0.7, colour= 29},
+--         [10] = {label = "Vespucci LSPD HQ", coords = vector4(-1087.69, -821.95, 31.26, 114.57), sprite= 137, scale= 0.7, colour= 29},
+--         [11] = {label = "BCSO Paleto", coords = vector4(-443.01, 6005.9, 44.01, 121.9), sprite= 137, scale= 0.7, colour= 29},
+         [12] = {label = "BCSO HQ Sandy", coords = vector4(1827.05, 3674.93, 42.87, 317.18), sprite= 137, scale= 0.7, colour= 29},
+--         [13] = {label = "LSSO HQ Davis", coords = vector4(380.95, -1603.97, 39.85, 237.58), sprite= 137, scale= 0.7, colour= 29},
+--         [14] = {label = "FBI", coords = vector4(135.61, -749.22, 266.6, 66.23), sprite= 137, scale= 0.7, colour= 29},
+       },
 }
 
 Config.RepairStations = {
