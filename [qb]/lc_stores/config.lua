@@ -683,9 +683,9 @@ Config.market_types = {
 			"electronics_market"
 		},
 		['blips'] = {							-- Create the blips on map
-			['id'] = 817,						-- Blip ID [Set this value 0 to dont have blip]
+			['id'] = 267,						-- Blip ID [Set this value 0 to dont have blip]
 			['name'] = "Phone Market",				-- Blip Name [Will be replaced when the owner rename the store]
-			['color'] = 4,						-- Blip Color
+			['color'] = 5,						-- Blip Color
 			['scale'] = 0.6,					-- Blip Scale
 		}
 	},
