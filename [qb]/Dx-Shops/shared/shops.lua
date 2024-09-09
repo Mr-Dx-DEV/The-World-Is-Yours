@@ -1,7 +1,7 @@
 Locations = {
 
 
-	["petshop"] = {
+	--[[ ["petshop"] = {
         ["label"] = "Pet Shop",
 		["type"] = "items",
 		["model"] = {
@@ -17,9 +17,9 @@ Locations = {
         ["blipsprite"] = 267,
 		["blipcolour"] = 5,
 		["hideblip"] = false,
-    },
+    }, ]]
 
-	["weedshop"] = {
+	--[[ ["weedshop"] = {
         ["label"] = "Smoke On The Water",
 		["type"] = "items",
 		["model"] = {
@@ -37,7 +37,7 @@ Locations = {
 		["blipcolour"] = 0,
 		["hideblip"] = false,
     },
-
+ ]]
 	--[[ ["leisureshop"] = {
         ["label"] = "Leisure Shop",
 		["type"] = "items",

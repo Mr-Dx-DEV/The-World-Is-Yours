@@ -12,6 +12,558 @@ QBShared.Jobs = {
 	vineyard = { label = 'Vineyard', defaultDuty = true, offDutyPay = false, grades = { ['0'] = { name = 'Picker', payment = 50 } } },
 	hotdog = { label = 'Hotdog', defaultDuty = true, offDutyPay = false, grades = { ['0'] = { name = 'Sales', payment = 50 } } },
 
+
+	['lspd'] = {
+		label = 'LSPD',
+        type = "leo",
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Recruit',
+                payment = 350
+            },
+            ['1'] = {
+                name = 'Officer',
+                payment = 500
+            },
+            ['2'] = {
+                name = 'Senior Officer',
+                payment = 600
+            },
+            ['3'] = {
+                name = 'Corporal',
+                payment = 700
+            },
+            ['4'] = {
+                name = 'Sergeant',
+                payment = 800
+            },
+            ['5'] = {
+                name = 'Lieutenant',
+                payment = 900
+            },
+            ['6'] = {
+                name = 'Captain',
+                payment = 1000
+            },
+            ['7'] = {
+                name = 'Commander',
+                payment = 1500
+            },
+            ['8'] = {
+                name = 'Deputy Chief',
+                payment = 2000
+            },
+            ['9'] = {
+                name = 'Asst. Chief',
+                isboss = true,
+                payment = 2500
+            },
+            ['10'] = {
+                name = 'Chief',
+                isboss = true,
+                payment = 3500
+            },
+            ['11'] = {
+                name = 'Deputy Commissioner',
+                isboss = false,
+                payment = 4000
+            },
+            ['12'] = {
+                name = 'Commissioner',
+                isboss = false,
+                payment = 5000
+            },
+        },
+	},
+        ['bcso'] = {
+		label = 'BCSO',
+        type = "leo",
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Recruit',
+                payment = 350
+            },
+            ['1'] = {
+                name = 'Deputy',
+                payment = 500
+            },
+            ['2'] = {
+                name = 'Senior Deputy',
+                payment = 600
+            },
+            ['3'] = {
+                name = 'Corporal',
+                payment = 700
+            },
+            ['4'] = {
+                name = 'Sergeant',
+                payment = 800
+            },
+            ['5'] = {
+                name = 'Lieutenant',
+                payment = 900
+            },
+            ['6'] = {
+                name = 'Captain',
+                payment = 1000
+            },
+            ['7'] = {
+                name = 'Major',
+                payment = 1500
+            },
+            ['8'] = {
+                name = 'Chief Deputy',
+                payment = 2000
+            },
+            ['9'] = {
+                name = 'Under Sheriff',
+                isboss = true,
+                payment = 2500
+            },
+            ['10'] = {
+                name = 'Sheriff',
+                isboss = true,
+                payment = 3500
+            },
+        },
+	},
+        ['sahp'] = {
+		label = 'SAHP',
+        type = "leo",
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Recruit',
+                payment = 350
+            },
+            ['1'] = {
+                name = 'Officer',
+                payment = 500
+            },
+            ['2'] = {
+                name = 'Senior Officer',
+                payment = 600
+            },
+            ['3'] = {
+                name = 'Corporal',
+                payment = 700
+            },
+            ['4'] = {
+                name = 'Sergeant',
+                payment = 800
+            },
+            ['5'] = {
+                name = 'Lieutenant',
+                payment = 900
+            },
+            ['6'] = {
+                name = 'Captain',
+                payment = 1000
+            },
+            ['7'] = {
+                name = 'Commander',
+                payment = 1500
+            },
+            ['8'] = {
+                name = 'Major',
+                payment = 2000
+            },
+            ['9'] = {
+                name = 'Lt Colonel',
+                isboss = true,
+                payment = 2500
+            },
+            ['10'] = {
+                name = 'Colonel',
+                isboss = true,
+                payment = 3500
+            },
+        },
+	},
+        ['lsso'] = {
+		label = 'LSSO',
+        type = "leo",
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Recruit',
+                payment = 350
+            },
+            ['1'] = {
+                name = 'Deputy',
+                payment = 500
+            },
+            ['2'] = {
+                name = 'Senior Deputy',
+                payment = 600
+            },
+            ['3'] = {
+                name = 'Corporal',
+                payment = 700
+            },
+            ['4'] = {
+                name = 'Sergeant',
+                payment = 800
+            },
+            ['5'] = {
+                name = 'Lieutenant',
+                payment = 900
+            },
+            ['6'] = {
+                name = 'Captain',
+                payment = 1000
+            },
+            ['7'] = {
+                name = 'Major',
+                payment = 1500
+            },
+            ['8'] = {
+                name = 'Chief Deputy',
+                payment = 2000
+            },
+            ['9'] = {
+                name = 'Under Sheriff',
+                isboss = true,
+                payment = 2500
+            },
+            ['10'] = {
+                name = 'Sheriff',
+                isboss = true,
+                payment = 3500
+            },
+        },
+	},
+        ['safw'] = {
+		label = 'SAFW',
+        type = "leo",
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Recruit',
+                payment = 350
+            },
+            ['1'] = {
+                name = 'Officer',
+                payment = 500
+            },
+            ['2'] = {
+                name = 'Senior Officer',
+                payment = 600
+            },
+            ['3'] = {
+                name = 'Corporal',
+                payment = 700
+            },
+            ['4'] = {
+                name = 'Sergeant',
+                payment = 800
+            },
+            ['5'] = {
+                name = 'Lieutenant',
+                payment = 900
+            },
+            ['6'] = {
+                name = 'Captain',
+                payment = 1000
+            },
+            ['7'] = {
+                name = 'Commander',
+                payment = 1500
+            },
+            ['8'] = {
+                name = 'Deputy Chief',
+                payment = 2000
+            },
+            ['9'] = {
+                name = 'Asst. Chief',
+                isboss = true,
+                payment = 2500
+            },
+            ['10'] = {
+                name = 'Chief',
+                isboss = true,
+                payment = 3500
+            },
+        },
+	},
+        ['sadoc'] = {
+		label = 'SADOC',
+        type = "leo",
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'CO Recruit',
+                payment = 350
+            },
+            ['1'] = {
+                name = 'Correction Officer',
+                payment = 500
+            },
+            ['2'] = {
+                name = 'Senior Correction Officer',
+                payment = 600
+            },
+            ['3'] = {
+                name = 'Corporal',
+                payment = 700
+            },
+            ['4'] = {
+                name = 'Sergeant',
+                payment = 800
+            },
+            ['5'] = {
+                name = 'Lieutenant',
+                payment = 900
+            },
+            ['6'] = {
+                name = 'Captain',
+                payment = 1000
+            },
+            ['7'] = {
+                name = 'Major',
+                payment = 1500
+            },
+            ['8'] = {
+                name = 'Colonel',
+                payment = 2000
+            },
+            ['9'] = {
+                name = 'Deputy Warden',
+                isboss = true,
+                payment = 2500
+            },
+            ['10'] = {
+                name = 'Warden',
+                isboss = true,
+                payment = 3500
+            },
+        },
+	},
+        ['usms'] = {
+		label = 'USMS',
+        type = "leo",
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Recruit Marshal',
+                payment = 400
+            },
+            ['1'] = {
+                name = 'Marshal',
+                payment = 600
+            },
+            ['2'] = {
+                name = 'Senior Marshal',
+                payment = 900
+            },
+            ['3'] = {
+                name = 'Marshal In Charge',
+                payment = 1000
+            },
+            ['4'] = {
+                name = 'Tactical Opps Div',
+                payment = 1200
+            },
+            ['5'] = {
+                name = 'Investigation Div',
+                payment = 1200
+            },
+            ['6'] = {
+                name = 'Witness Security Div',
+                payment = 1200
+            },
+            ['7'] = {
+                name = 'Judicial Security Div',
+                payment = 1500
+            },
+            ['8'] = {
+                name = 'Associate Director',
+                payment = 2000
+            },
+            ['9'] = {
+                name = 'Deputy Director',
+                isboss = true,
+                payment = 2500
+            },
+            ['10'] = {
+                name = 'Director',
+                isboss = true,
+                payment = 3500
+            },
+        },
+	},
+        ['fbi'] = {
+		label = 'FBI',
+        type = "leo",
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Recruit Special Agent',
+                payment = 400
+            },
+            ['1'] = {
+                name = 'Special Agent ',
+                payment = 600
+            },
+            ['2'] = {
+                name = 'Senior Special Agent',
+                payment = 900
+            },
+            ['3'] = {
+                name = 'Supervisory Special Agent',
+                payment = 1000
+            },
+            ['4'] = {
+                name = 'Tactical/Training SAIC',
+                payment = 1200
+            },
+            ['5'] = {
+                name = 'Criminal Investigation SAIC',
+                payment = 1200
+            },
+            ['6'] = {
+                name = 'Labor/Finance SAIC',
+                payment = 1200
+            },
+            ['7'] = {
+                name = 'National Security SAIC',
+                payment = 1200
+            },
+            ['8'] = {
+                name = 'Associat Deputy Director',
+                payment = 2000
+            },
+            ['9'] = {
+                name = 'Deputy Director',
+                isboss = true,
+                payment = 2500
+            },
+            ['10'] = {
+                name = 'Director',
+                isboss = true,
+                payment = 3500
+            },
+        },
+	},
+        ['dhs'] = {
+		label = 'DHS',
+        type = "leo",
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Recruit BPA',
+                payment = 350
+            },
+            ['1'] = {
+                name = 'Senior Agent',
+                payment = 500
+            },
+            ['2'] = {
+                name = 'Lead Agent',
+                payment = 600
+            },
+            ['3'] = {
+                name = 'Supervisor Agent',
+                payment = 700
+            },
+            ['4'] = {
+                name = 'Field Opps Super ',
+                payment = 800
+            },
+            ['5'] = {
+                name = 'Special Operations Supervisor',
+                payment = 900
+            },
+            ['6'] = {
+                name = 'Special Agent in Charge',
+                payment = 1000
+            },
+            ['7'] = {
+                name = 'Deputy Chief',
+                payment = 1500
+            },
+            ['8'] = {
+                name = 'Chief',
+                payment = 2000
+            },
+            ['9'] = {
+                name = 'Deputy Diector',
+                isboss = true,
+                payment = 2500
+            },
+            ['10'] = {
+                name = 'Director',
+                isboss = true,
+                payment = 3500
+            },
+        },
+	},
+    ['ss'] = {
+		label = 'SS',
+        type = "leo",
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Recruit',
+                payment = 350
+            },
+            ['1'] = {
+                name = 'Officer',
+                payment = 500
+            },
+            ['2'] = {
+                name = 'Sergeant',
+                payment = 600
+            },
+            ['3'] = {
+                name = 'Lieutenant',
+                payment = 700
+            },
+            ['4'] = {
+                name = 'Agent IPO',
+                payment = 800
+            },
+            ['5'] = {
+                name = 'Special Agent',
+                payment = 900
+            },
+            ['6'] = {
+                name = 'Special special Agent',
+                payment = 1000
+            },
+            ['7'] = {
+                name = 'Deputy SAiC',
+                payment = 1500
+            },
+            ['8'] = {
+                name = 'Special Agent in Charge',
+                payment = 2000
+            },
+            ['9'] = {
+                name = 'Deputy Director',
+                isboss = true,
+                payment = 2500
+            },
+            ['10'] = {
+                name = 'Director',
+                isboss = true,
+                payment = 3500
+            },
+        },
+	},
+	
 	police = {
 		label = 'Law Enforcement',
 		type = 'leo',

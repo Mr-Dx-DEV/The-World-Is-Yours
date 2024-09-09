@@ -23,7 +23,7 @@ Config.custom_scripts_compatibility = {
 	['inventory'] = "ox_inventory",					-- [ox_inventory|qs-inventory|ps-inventory|default|other] Inventory script Compatibility
 	['keys'] = "default",						-- [qs-vehiclekeys|cd_garage|jaksam|wasabi_carlock|default|other] Keys script Compatibility
 	['mdt'] = "ps-mdt",						-- [ps-mdt|redutzu-mdt|default|other] MDT script Compatibility (to log weapon serial)
-	['target'] = "ox_target",					-- [qb-target|ox_target|disabled|other] Target script Compatibility (disabled will use markers)
+	['target'] = "qb-target",					-- [qb-target|ox_target|disabled|other] Target script Compatibility (disabled will use markers)
 	['notification'] = "default",				-- [okokNotify|qbcore|default|other] Notification script Compatibility
 }
 

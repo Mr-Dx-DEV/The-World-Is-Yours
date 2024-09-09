@@ -12,7 +12,7 @@ Products = {
         { name = "contract", price = 2000, amount = 50 },
         { name = "pdmcontract", price = 10000, amount = 50 },
     }, ]]
-    ["weedshop"] = {
+    --[[ ["weedshop"] = {
         { name = "empty_weed_bag", price = 10, amount = 250 },
         { name = "wateringcan", price = 500, amount = 250 },
         { name = "fertilizer", price = 100, amount = 250 },
@@ -28,7 +28,7 @@ Products = {
         { name = "trowel", price = 200, amount = 250 },
         { name = "razorblade", price = 200, amount = 250 },
         { name = "ammonia", price = 200, amount = 250 },
-    },
+    }, ]]
     ["customcaffe"] = {
         { name = "butter", price = 5, amount = 250 },
         { name = "sugar", price = 5, amount = 250 },
@@ -62,7 +62,7 @@ Products = {
         { name = "radiocar_dismounter", price = 300, amount = 50, },
         
     },
-
+--[[ 
     ["petshop"] = {
         { name = "keepcompanionwesty", price = 1000000, amount = 5 },
         { name = "keepcompanionshepherd", price = 1000000, amount = 5 },
@@ -84,7 +84,7 @@ Products = {
         { name = "keepcompanionhen", price = 1000000, amount = 50 },
         { name = "keepcompanioncoyote", price = 1000000, amount = 50 },
 
-    },
+    }, ]]
     --[[ ["weapons"] = {
         { name = "weapon_knife", price = 250, amount = 250, },
         { name = "weapon_bat", price = 250, amount = 250, },

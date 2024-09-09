@@ -2,8 +2,8 @@ Config = {}
 
 -- target resource (only one of these can be true)
 -------------------------------------------------------
-Config.qbtarget = false  
-Config.oxtarget = true  
+Config.qbtarget = true  
+Config.oxtarget = false  
 -------------------------------------------------------
 
 

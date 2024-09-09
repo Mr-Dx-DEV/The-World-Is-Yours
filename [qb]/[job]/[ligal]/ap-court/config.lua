@@ -13,7 +13,7 @@ Config = {
 	CourtJob = 'judge', -- This is the default job that comes with QBCore, Change if needed.
 	lawyerID = 'lawyerpass', -- Set this to the item players need in order to show there ID Card.
 	Phone = {GKSPhone = false, QBPhone = true, QuasarPhone = false, QSPRO = false, HighPhone = false, RoadPhone = false, LBPhone = false, Custom = false}, -- Set to the phone you use to true, if you do not have one of these phones then set Custom to true and edit the function in webhooks.lua.
-	Interactions = {qbTarget = false, qTarget = false, ox_target = true, drawText = false},
+	Interactions = {qbTarget = true, qTarget = false, ox_target = false, drawText = false},
 	Context = {QB = true, OX = false}, -- Set this to to "QB", More added soon.
 	Dialog = {QB = true, OX = false}, -- Set this to to "QB", More added soon.
 	useID_UI = true, -- Set to true if you want too use the UI Lawyer ID Card or false to use Advanced Notification.

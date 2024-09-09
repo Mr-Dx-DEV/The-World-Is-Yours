@@ -25,7 +25,7 @@ Config.TargetSystem = 'qb-target' -- Target system you want to use : qb-target /
 Config.ContextSystem = 'qb-menu' -- Menu system you want to use : qb-menu / ox_lib
 Config.DrawText = {sys = 'qb-core', position = 'left'} -- Drawtext system you want to use : qb-core / ox_lib  and position of the drawtext
 Config.ProgressBar = 'progressbar' -- Progressbar system : progressbar / ox_lib
-Config.Inventory = 'new-qb-inventory' -- Inventory system : qb-inventory / new-qb-inventory / ps-inventory / ox_inventory 
+Config.Inventory = 'ox_inventory' -- Inventory system : qb-inventory / new-qb-inventory / ps-inventory / ox_inventory 
 Config.StashSettings = {maxweight = 4000000, slots = 30,} -- Stash settings for qb / ps inventory
 Config.Debug = false -- Enable / Disable debugpoly 
 Config.CuffCooldown = 5 -- Sets a cooldown for cuffing, prevents cuff spamming

@@ -96,7 +96,7 @@ Config.Inventory = getInventory()
 	server/custom/phone/*.lua, if you have questions, contact the seller of your asset.
 ]]
 
-Config.UseTarget = false -- Set true/false (only qb-target or ox_target)
+Config.UseTarget = true -- Set true/false (only qb-target or ox_target)
 Config.TargetLength = 5.0
 Config.TargetWidth = 5.0
 
