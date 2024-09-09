@@ -1,4 +1,5 @@
 ['raidtool'] = {
+<<<<<<< Updated upstream
   ['unique'] = false,
   ['name'] = 'raidtool',
   ['description'] = 'For beating the shit out of doors',
@@ -91,11 +92,41 @@
   ['weight'] = 100,
   ['useable'] = false,
   ['image'] = 'cocainepackage.png',
+=======
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'raidtool.png',
+  ['description'] = 'For beating the shit out of doors',
+  ['name'] = 'raidtool',
+  ['weight'] = 100,
+  ['useable'] = false,
+  ['label'] = 'Raid Tool',
+
+},
+['cocainepackage'] = {
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'cocainepackage.png',
+  ['description'] = 'A small figurine filled with a white powdery substance...',
+  ['name'] = 'cocainepackage',
+  ['weight'] = 100,
+  ['useable'] = false,
+>>>>>>> Stashed changes
   ['label'] = 'Cocaine Package',
 
 },
 ['lab-key'] = {
+<<<<<<< Updated upstream
   ['unique'] = true,
+=======
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = true,
+  ['image'] = 'labkeys.png',
+  ['description'] = 'Keys for some sort of door?!?!',
+>>>>>>> Stashed changes
   ['name'] = 'lab-key',
   ['description'] = 'Keys for some sort of door?!?!',
   ['type'] = 'item',
@@ -104,6 +135,7 @@
   ['useable'] = true,
   ['image'] = 'labkeys.png',
   ['label'] = 'Lab Keys',
+<<<<<<< Updated upstream
 
 },
 ['untrimmed_weed'] = {
@@ -151,6 +183,127 @@
   ['weight'] = 100,
   ['useable'] = false,
   ['image'] = 'trimmed_weed.png',
+=======
+
+},
+['propelyeneglycol'] = {
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'propelyeneglycol.png',
+  ['description'] = 'Chemical Substance',
+  ['name'] = 'propelyeneglycol',
+  ['weight'] = 100,
+  ['useable'] = false,
+  ['label'] = 'Propelyene Glycol',
+
+},
+['cutcocaine'] = {
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'cutcocaine.png',
+  ['description'] = 'Cut Cocaine',
+  ['name'] = 'cutcocaine',
+  ['weight'] = 100,
+  ['useable'] = false,
+  ['label'] = 'Cut Cocaine',
+
+},
+['untrimmed_weed'] = {
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'untrimmed_weed.png',
+  ['description'] = 'Untrimmed Weed',
+  ['name'] = 'untrimmed_weed',
+  ['weight'] = 100,
+  ['useable'] = false,
+  ['label'] = 'Untrimmed Weed',
+
+},
+['actionfigure'] = {
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'actionfigure.png',
+  ['description'] = 'A small figurine filled which something could be stored inside...',
+  ['name'] = 'actionfigure',
+  ['weight'] = 100,
+  ['useable'] = false,
+  ['label'] = 'Action Figure',
+
+},
+['sodiumbenzoate'] = {
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'sodiumbenzoate.png',
+  ['description'] = 'Chemical Substance',
+  ['name'] = 'sodiumbenzoate',
+  ['weight'] = 100,
+  ['useable'] = false,
+  ['label'] = 'Sodium Benzoate',
+
+},
+['boxmeth'] = {
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'boxmeth.png',
+  ['description'] = 'Chemical Substance',
+  ['name'] = 'boxmeth',
+  ['weight'] = 100,
+  ['useable'] = false,
+  ['label'] = 'Box of Meth',
+
+},
+['bagmeth'] = {
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'bagmeth.png',
+  ['description'] = 'Chemical Substance',
+  ['name'] = 'bagmeth',
+  ['weight'] = 100,
+  ['useable'] = false,
+  ['label'] = 'Bag of Meth',
+
+},
+['bakingsoda'] = {
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'bakingsoda.png',
+  ['description'] = 'Baking Soda',
+  ['name'] = 'bakingsoda',
+  ['weight'] = 100,
+  ['useable'] = false,
+  ['label'] = 'Baking Soda',
+
+},
+['rawcocaine'] = {
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'rawcocaine.png',
+  ['description'] = 'Uncut Cocaine',
+  ['name'] = 'rawcocaine',
+  ['weight'] = 100,
+  ['useable'] = false,
+  ['label'] = 'Raw Cocaine',
+
+},
+['trimmed_weed'] = {
+  ['type'] = 'item',
+  ['shouldClose'] = false,
+  ['unique'] = false,
+  ['image'] = 'trimmed_weed.png',
+  ['description'] = 'Trimmed Weed',
+  ['name'] = 'trimmed_weed',
+  ['weight'] = 100,
+  ['useable'] = false,
+>>>>>>> Stashed changes
   ['label'] = 'Trimmed Weed',
 
 },

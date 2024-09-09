@@ -13,7 +13,7 @@ Config = {
 	},
 
 	General = {
-		JimShops = false,			-- Enable to open shops in jim-shops menu's
+		JimShops = true,			-- Enable to open shops in jim-shops menu's
 		showClockInTill = true,		-- Enable to show toggle duty options at payment tills
 		showBossMenuTill = true,	-- Enable to show bossmenu options at payment tills
 	},
@@ -23,8 +23,8 @@ Config = {
 		ItemRequiresJob = true, 	-- Do the specfic items require the mechanic job?
 		JobLocationRequired = true, -- Are the mecahanics locked to specific locations?
 		LocationBlips = true, 		-- Enable to grab the blip locations from locations.lua
-		CosmeticsJob = false, 		-- Do vehicle cosmetics require a mechanic job role?
-		JobRoles = { "mechanic", }, -- These are the job roles who can use items if RequiresJob is enabled.
+		CosmeticsJob = true, 		-- Do vehicle cosmetics require a mechanic job role?
+		JobRoles = { "mechanic", "urbanmechanic", "countymechanic" }, -- These are the job roles who can use items if RequiresJob is enabled.
 									-- Add your extra job roles here or just leave as "mechanic"
 									-- Example-- --JobRoles = { "mechanic", "tuner" }
 	},
@@ -137,7 +137,7 @@ Config = {
 
 	Repairs = {	--Repair Related
 		FreeRepair = false,  		-- Are repairs free? True means yes
-		StashRepair = true, 		-- Enable for repair materials to be removed from a job stash (disabled if RequiresJob = false)
+		StashRepair = false, 		-- Enable for repair materials to be removed from a job stash (disabled if RequiresJob = false)
 
 		ExtraDamages = true,		-- When enabled, it will use the built in extra damage systems (Like qb-mechanicjobs functions)
 
@@ -338,13 +338,14 @@ Config = {
 
 	},
 	Emergency = {
-		requireDutyCheck = false,	-- if true, when a mechanic is online, the repair button won't show
+		requireDutyCheck = true,	-- if true, when a mechanic is online, the repair button won't show
 									-- if false, the repair option will always be available
 		Jobs = {
 			["police"] = 0, -- Job and Job Grade
 			["ambulance"] = 0,
 			["mechanic"] = 0,
-			
+			["urbanmechanic"] = 0,
+			["countymechanic"] = 0,
 		},
 		LockEmergency = false,  -- Enable this to lock make only "Emergency" (Class 18) vehicles to be used with the bench
 		Locations = {
@@ -434,17 +435,17 @@ Config = {
 
 	NOS = { -- NOS STUF
 		JobOnly = false,			-- Only allow job roles to change NOS
-		NosRefillCharge = 1000, 	-- amount in dollars required to refill a nos can
+		NosRefillCharge = 350000, 	-- amount in dollars required to refill a nos can
 
 		NosBoostPower = { 			-- NOS boost acceleration power
-		20.0, -- Level 1
-		35.0, -- Level 2
-		50.0, -- Level 3
+			1.0, -- Level 1
+			3.0, -- Level 2
+			5.0, -- Level 3
 		},
 
-		NitrousUseRate = 0.3, 		-- How fast the nitrous drains (halved for level1, doubled for level3)
+		NitrousUseRate = 0.5, 		-- How fast the nitrous drains (halved for level1, doubled for level3)
 
-		NitrousCoolDown = 7, 		-- 7 Seconds for nitrous cooldown, set to 0 to disable
+		NitrousCoolDown = 15, 		-- 7 Seconds for nitrous cooldown, set to 0 to disable
 		CooldownConfirm = true, 	-- Will play a confirmation beep when cooldown is done
 
 		nosDamage = true, 			-- This enables NOS causing damage to engine while boosting
