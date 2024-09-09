@@ -1,27 +1,30 @@
 # ox_target
- 
-[Documentation](https://overextended.dev/ox_target/)
 
-A performant and flexible standalone "third-eye" targeting resource, with additional functionality when using ox_core, esx, or qb-core.
+![](https://img.shields.io/github/downloads/overextended/ox_target/total?logo=github)
+![](https://img.shields.io/github/downloads/overextended/ox_target/latest/total?logo=github)
+![](https://img.shields.io/github/contributors/overextended/ox_target?logo=github)
+![](https://img.shields.io/github/v/release/overextended/ox_target?logo=github) 
 
-ox_target is the successor to qtarget, which was a mostly-compatible fork of bt-target. To improve many design flaws, ox_target has been written from scratch and drops support for bt-target/qtarget standards, though partial compatibility is being implemented where possible.
 
-- Performance increased ~4x compared to qtarget.
-- Improved error handling protects against soft-locking.
-- Improved entity and world collision detection.
- - Options now stack, rather than overriding.
+A performant and flexible standalone "third-eye" targeting resource, with additional functionality for supported frameworks.
 
-# Previews
+ox_target is the successor to qtarget, which was a mostly-compatible fork of bt-target.
+To improve many design flaws, ox_target has been written from scratch and drops support for bt-target/qtarget standards, though partial compatibility is being implemented where possible.
 
-- Normal Target
-![immage](https://i.imgur.com/3AoMvBW.png)
 
-- Target with Sprite
-![image](https://i.imgur.com/VlJq7iv.png)
+## 📚 Documentation
 
-- Target on Object
-![image](https://i.imgur.com/N79mazN.png)
+https://overextended.dev/ox_target
 
-- Target on Object Selected
-![image](https://i.imgur.com/E4gLQjl.png)
+## 💾 Download
 
+https://github.com/overextended/ox_target/releases/latest/download/ox_target.zip
+
+## ✨ Features
+
+- Improved entity and world collision than its predecessor.
+- Improved error handling when running external code.
+- Menus for nested target options.
+- Partial compatibility for qtarget / qb-target.
+- Registering options no longer overrides existing options.
+- Groups and items checking for supported frameworks.
