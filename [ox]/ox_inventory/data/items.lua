@@ -19,7 +19,167 @@ return {
         consume = 0,
     },
 
-            
+       -- m-Hunting
+-- Meat
+['badmeat'] = {
+    name = 'badmeat',
+    label = 'Low Quality Meat',
+    weight = 20000, -- Weight in grams
+    stack = true, -- Can stack multiple items
+    close = true, -- Should inventory close after use
+    description = 'A piece of low quality meat from an animal.',
+},
+
+['medmeat'] = {
+    name = 'medmeat',
+    label = 'Medium Quality Meat',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'A piece of medium quality meat from an animal.',
+},
+
+['maxmeat'] = {
+    name = 'maxmeat',
+    label = 'Maximum Quality Meat',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'A piece of high quality meat from an animal.',
+},
+
+-- Leather
+['badleather'] = {
+    name = 'badleather',
+    label = 'Low Quality Leather',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'A piece of low quality leather from an animal.',
+},
+
+['medleather'] = {
+    name = 'medleather',
+    label = 'Medium Quality Leather',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'A piece of medium quality leather from an animal.',
+},
+
+['maxleather'] = {
+    name = 'maxleather',
+    label = 'Maximum Quality Leather',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'A piece of high quality leather from an animal.',
+},
+
+-- Horns
+['badhorns'] = {
+    name = 'badhorns',
+    label = 'Low Quality Horns',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'Low quality horns from an animal.',
+},
+
+['medhorns'] = {
+    name = 'medhorns',
+    label = 'Medium Quality Horns',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'Medium quality horns from an animal.',
+},
+
+['maxhorns'] = {
+    name = 'maxhorns',
+    label = 'Maximum Quality Horns',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'High quality horns from an animal.',
+},
+
+-- Knifes
+['knifelevel1'] = {
+    name = 'knifelevel1',
+    label = 'Knife Level 1',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'A basic hunting knife.',
+},
+
+['knifelevel2'] = {
+    name = 'knifelevel2',
+    label = 'Knife Level 2',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'A slightly better hunting knife.',
+},
+
+['knifelevel3'] = {
+    name = 'knifelevel3',
+    label = 'Knife Level 3',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'A decent quality hunting knife.',
+},
+
+['knifelevel4'] = {
+    name = 'knifelevel4',
+    label = 'Knife Level 4',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'A high quality hunting knife.',
+},
+
+['knifelevel5'] = {
+    name = 'knifelevel5',
+    label = 'Knife Level 5',
+    weight = 20000,
+    stack = true,
+    close = true,
+    description = 'The best quality hunting knife.',
+},
+
+-- Bait
+['huntingbait'] = {
+    name = 'huntingbait',
+    label = 'Animal Bait',
+    weight = 25000,
+    stack = true,
+    close = true,
+    description = 'Bait used to attract animals while hunting.',
+},
+
+-- Legal Bait
+['huntinglegalbait'] = {
+    name = 'huntinglegalbait',
+    label = 'Legal Bait',
+    weight = 25000,
+    stack = true,
+    close = true,
+    description = 'Legally obtained animal bait.',
+},
+
+-- Illegal Bait
+['huntingillegalbait'] = {
+    name = 'huntingillegalbait',
+    label = 'Illegal Bait',
+    weight = 25000,
+    stack = true,
+    close = true,
+    description = 'Illegally obtained animal bait.',
+},
+     
 
     ['donut'] = {
         label = 'Donut',
