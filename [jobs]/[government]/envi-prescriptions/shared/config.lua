@@ -80,7 +80,7 @@ Config.Pharmacies = {
   ['pharmacy2'] = {
       id = 2,  -- ID for this pharmacy
       PedModel = "s_m_m_scientist_01",
-      PedSpawnCoords = vector4(-490.534, -343.207, 42.321, 345.912),
+      PedSpawnCoords = vector4(-492.22, -342.66, 42.32, 350.23),
       PedBlip = {
           sprite = 51,
           scale = 0.75,
@@ -89,7 +89,7 @@ Config.Pharmacies = {
           name = 'Another Pharmacy',
           shortRange = true,
       },
-      PedWalkCoords = vector4(-488.96, -342.533, 42.321, 271.542),
+      PedWalkCoords = vector4(-492.22, -342.66, 42.32, 350.23),
       PharmacyAnimation = {
           dict = "anim@amb@business@bgen@bgen_inspecting@",
           anim = "inspecting_med_counting_02_inspector",
