@@ -25,9 +25,9 @@ Config.ResourcesToDisable = {
 
 Config.StoresBlips = {
     ["clothing"] = {
-        sprite = 366,
+        sprite = 73,
         scale = 0.7,
-        color = 0,
+        color = 3,
     },
     ["barber"] = {
         sprite = 71,
