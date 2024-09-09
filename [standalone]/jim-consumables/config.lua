@@ -16,21 +16,17 @@ Config = {
 		-- Default QB food and drink item override
 
 		--Effects can be applied here, like stamina on coffee for example
-<<<<<<< Updated upstream
 		["vodka"] = { 			emote = "vodkab", 		canRun = false, 	time = math.random(5000, 6000), stress = 0, heal = 0, armor = 0, type = "alcohol", stats = { effect = "heal", time = 5000, amount = 2, thirst = math.random(10,20), canOD = true }},
 		["beer"] = { 			emote = "beer", 		canRun = false, 	time = math.random(5000, 6000), stress = 0, heal = 0, armor = 0, type = "alcohol", stats = { effect = "heal", time = 5000, amount = 2, thirst = math.random(10,20), canOD = true }},
 		["whiskey"] = { 			emote = "whiskey", 		canRun = false, 	time = math.random(5000, 6000), stress = 0, heal = 0, armor = 0, type = "alcohol", stats = { effect = "heal", time = 5000, amount = 2, thirst = math.random(10,20), canOD = true }},
 	
-		
 
-		["sandwich"] = { 		emote = "sandwich", 	canRun = false, 	time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "food", stats = { hunger = math.random(10,20), }},
-=======
-		["vodka"] = { 			emote = "vodkab", 		canRun = false,  disableWalk = false, 	time = math.random(5000, 6000), stress = 0, heal = 0, armor = 0, type = "alcohol", stats = { effect = "stress", time = 5000, amount = 2, thirst = math.random(20,30), canOD = true }},
-		["beer"] = { 			emote = "beer", 		canRun = false, disableWalk = false, 	time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "alcohol", stats = { thirst = math.random(10,20), canOD = true }},
-		["whiskey"] = { 		emote = "whiskey",  	canRun = false, disableWalk = false, 	time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "alcohol", stats = { thirst = math.random(10,20), canOD = true }},
+	--	["vodka"] = { 			emote = "vodkab", 		canRun = false,  disableWalk = false, 	time = math.random(5000, 6000), stress = 0, heal = 0, armor = 0, type = "alcohol", stats = { effect = "stress", time = 5000, amount = 2, thirst = math.random(20,30), canOD = true }},
+	--	["beer"] = { 			emote = "beer", 		canRun = false, disableWalk = false, 	time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "alcohol", stats = { thirst = math.random(10,20), canOD = true }},
+	--	["whiskey"] = { 		emote = "whiskey",  	canRun = false, disableWalk = false, 	time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "alcohol", stats = { thirst = math.random(10,20), canOD = true }},
 		["grapejuice"] = { 		emote = "drink",  		canRun = false, disableWalk = false, 	time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "alcohol", stats = { thirst = math.random(10,20), canOD = true }},
 		["sandwich"] = { 		emote = "sandwich", 	canRun = false, disableWalk = false, 	time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "food", stats = { hunger = math.random(10,20), }},
->>>>>>> Stashed changes
+
 		["twerks_candy"] = { 	emote = "egobar", 		canRun = true, 		time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "food", stats = { hunger = math.random(10,20), }},
 		["snikkel_candy"] = { 	emote = "egobar", 		canRun = true, 		time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "food", stats = { hunger = math.random(10,20), }},
 		["tosti"] = { 			emote = "sandwich", 	canRun = false, disableWalk = false, 	time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "food", stats = { hunger = math.random(10,20), }},

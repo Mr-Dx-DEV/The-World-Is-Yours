@@ -1,6 +1,0 @@
-{
-    "Lua.workspace.library": [
-        ".vscode/types/",
-    ],
-    "Lua.completion.callSnippet": "Replace",
-}
