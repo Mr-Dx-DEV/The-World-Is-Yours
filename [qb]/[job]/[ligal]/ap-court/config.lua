@@ -1,6 +1,6 @@
 Config = {
 	FrameworkExport = "qb-core", -- Set this too your core name, only change this if you have a custom version of QBCore. 
-	DiscordWebhook = true, -- Set this too true if you want the cases to be posted in your discord channel, make sure to edit webhook in your server folder.
+	DiscordWebhook = false, -- Set this too true if you want the cases to be posted in your discord channel, make sure to edit webhook in your server folder.
 	CourtLocationName = "San Andres District Court", -- This is preset, Change name to suit your server.
 	Blip = {Active = true, Coords = vector3(-550.1532, -196.0362, 38.2270), Label = "Court", Sprite = 176, Display = 4, Scale = 0.60, Color = 0}, -- Blip settings for court.
 	BarLicensePrice = 8000, -- Set this to the cost you would like to charge for the bar license exam.
