@@ -82,8 +82,8 @@ Config.Stations = {
         interfaceRot = vec3(0.0, 0.0, -90.0),
         radius = 3.0,
         price = 10,
+        requiredJob = nil,
     },
-
     {
         cable = vector3(175.11, -1731.91687, 33.186),
         nozzle = vector3(174.521362, -1735.15283, 29.78719),
@@ -92,8 +92,8 @@ Config.Stations = {
         interfaceRot = vec3(0.0, 0.0, -90.0),
         radius = 3.0,
         price = 10,
+        requiredJob = nil,
     },
-
     {
         cable = vector3(175.11, -1725.17664, 33.186),
         nozzle = vector3(174.521362, -1728.395, 29.78719),
@@ -102,8 +102,8 @@ Config.Stations = {
         interfaceRot = vec3(0.0, 0.0, -90.0),
         radius = 3.0,
         price = 10,
+        requiredJob = nil,
     },
-
     {
         cable = vector3(175.11, -1718.56519, 33.186),
         nozzle = vector3(174.521362, -1721.6322, 29.78719),
@@ -112,8 +112,8 @@ Config.Stations = {
         interfaceRot = vec3(0.0, 0.0, -90.0),
         radius = 3.0,
         price = 10,
+        requiredJob = nil,
     },
-
     {
         cable = vector3(175.11, -1718.56519, 33.186),
         nozzle = vector3(174.521362, -1721.6322, 29.78719),
@@ -122,8 +122,8 @@ Config.Stations = {
         interfaceRot = vec3(0.0, 0.0, -90.0),
         radius = 3.0,
         price = 10,
+        requiredJob = nil,
     },
-
     -- CARWASH 2:
     {
         cable = vector3(44.2214165, -1394.796, 32.64741),
@@ -134,8 +134,8 @@ Config.Stations = {
         radius = 3.0,
         cableLenght = 4.6,
         price = 10,
+        requiredJob = nil,
     },
-
     {
         cable = vector3(38.1458054, -1394.796, 32.64741),
         nozzle = vector3(40.8294373, -1394.13647, 29.4840965),
@@ -145,8 +145,8 @@ Config.Stations = {
         radius = 3.0,
         cableLenght = 4.6,
         price = 10,
+        requiredJob = nil,
     },
-
     {
         cable = vector3(32.03471, -1394.78, 32.6475677),
         nozzle = vector3(34.71834, -1394.118, 29.3627453),
@@ -156,8 +156,8 @@ Config.Stations = {
         radius = 3.0,
         cableLenght = 4.6,
         price = 10,
+        requiredJob = nil,
     },
-
     {
         cable = vector3(25.9485321, -1394.78, 32.648468),
         nozzle = vector3(28.6332245, -1394.118, 29.4914017),
@@ -167,8 +167,8 @@ Config.Stations = {
         radius = 3.0,
         cableLenght = 4.6,
         price = 10,
+        requiredJob = nil,
     },
-
     {
         cable = vector3(19.75825, -1394.78418, 32.6408653),
         nozzle = vector3(22.5025635, -1394.08521, 29.3646641),
@@ -178,8 +178,8 @@ Config.Stations = {
         radius = 3.0,
         cableLenght = 4.6,
         price = 10,
+        requiredJob = nil,
     },
-
     {
         cable = vector3(13.6889715, -1394.78418, 32.63942),
         nozzle = vector3(16.4166565, -1394.1322, 29.481369),
@@ -189,8 +189,8 @@ Config.Stations = {
         radius = 3.0,
         cableLenght = 4.6,
         price = 10,
+        requiredJob = nil,
     },
-
     {
         cable = vector3(7.552761, -1394.77954, 32.6542549),
         nozzle = vector3(10.2783623, -1394.116, 29.3557968),
@@ -200,8 +200,8 @@ Config.Stations = {
         radius = 3.0,
         cableLenght = 4.6,
         price = 10,
+        requiredJob = nil,
     },
-
     {
         cable = vector3(1.47244394, -1394.77954, 32.6461),
         nozzle = vector3(4.206813, -1394.116, 29.4643211),
@@ -211,8 +211,8 @@ Config.Stations = {
         radius = 3.0,
         cableLenght = 4.6,
         price = 10,
+        requiredJob = nil,
     },
-
     -- CARWASH 3:
     {
         cable = vector3(-699.9154, -933.1925, 22.0808525),
@@ -223,6 +223,7 @@ Config.Stations = {
         radius = 3.0,
         cableLenght = 4.5,
         price = 10,
+        requiredJob = nil,
     },
 }
 

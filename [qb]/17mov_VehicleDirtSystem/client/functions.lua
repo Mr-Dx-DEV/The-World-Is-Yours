@@ -1,4 +1,5 @@
 local Core
+local PlayerData
 
 Config.Framework = "STANDALONE"
 
@@ -58,4 +59,53 @@ function DrawText3Ds(x, y, z, text)
     DrawText(_x, _y)
     local factor = (string.len(text)) / 500
     DrawRect(_x, _y + 0.0125, 0.030 + factor, 0.03, 0, 0, 0, 150)
+end
+
+-- Job
+CreateThread(function()
+    while Core == nil do
+        Wait(250)
+    end
+
+    while PlayerData == nil do
+        if Config.Framework == "QBCore" then
+            PlayerData = Core?.Functions?.GetPlayerData()
+        elseif Config.Framework == "ESX" then
+            PlayerData = Core?.GetPlayerData()
+        else
+            print(("STANDALONE - You need to configure %s/client/functions.lua by yourself"):format(GetCurrentResourceName()))
+        end
+
+        Wait(250)
+    end
+
+    if Config.Framework == "QBCore" then
+        RegisterNetEvent('QBCore:Client:OnJobUpdate', function(job)
+            if PlayerData == nil then return end
+            PlayerData.job = job
+        end)
+    elseif Config.Framework == "ESX" then
+        RegisterNetEvent('esx:setJob', function(job)
+            if PlayerData == nil then return end
+            PlayerData.job = job
+        end)
+    else
+        print(("STANDALONE - You need to configure %s/client/functions.lua by yourself"):format(GetCurrentResourceName()))
+    end
+end)
+
+function GetPlayerJobName()
+    if not PlayerData?.job then
+        return nil
+    end
+
+    if Config.Framework == "QBCore" then
+        return PlayerData.job.name
+    elseif Config.Framework == "ESX" then
+        return PlayerData.job.name
+    else
+        print(("STANDALONE - You need to configure GetPlayerJobName() in resource %s by yourself"):format(GetCurrentResourceName()))
+    end
+
+    return nil
 end

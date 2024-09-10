@@ -9,6 +9,7 @@ Locale["pl"] = {
     ["Carwash.NotEnoughMoney"] = "Nie masz wystarczającej ilości gotówki bądź to stanowisko jest zajęte",
     ["Carwash.NoVehicleFound"] = "Nie udało się znaleźc pojazdu na stanowisku",
     ["Carwash.NeedToExit"] = "Musisz wyjść",
+    ["Carwash.JobRequired"] = "Nie możesz umyć tutaj swojego pojazdu, bo nie masz wymaganej pracy",
     ["Carwash.ApplyingTutorial"] = "Podejdź do samochodu, który chcesz chronić i naciśnij E.\n\nAby anulować, naciśnij ~INPUT_FRONTEND_CANCEL~",
     ["VendingMachine.MaxOneProduct"] = "Jednorazowo możesz kupić tylko jeden produkt",
     ["VendingMachine.Interaction"] = "~r~[E] | ~s~Otwórz automat",
