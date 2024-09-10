@@ -1,5 +1,734 @@
 return {
 
+	-- HEROIN
+
+-- REQUIRED ITEMS
+['trowel'] = {
+    label = 'Trowel',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'trowel.png'
+    }
+},
+['plasticjerrycan'] = {
+    label = 'Empty Plastic Jerry Can',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'plasticjerrycan.png'
+    }
+},
+['dirtyneedle'] = {
+    label = 'Dirty Needle',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'dirtyneedle.png'
+    }
+},
+['heroinprocessingtable'] = {
+    label = 'Heroin Processing Table',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'heroinprocessingtable.png'
+    }
+},
+
+-- MATERIALS
+['opiumsap'] = {
+    label = 'Opium Sap',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'opiumsap.png'
+    }
+},
+['limepowder'] = {
+    label = 'Lime Powder',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'limepowder.png'
+    }
+},
+['hydrochloricacid'] = {
+    label = 'Hydrochloric Acid',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'hydrochloricacid.png'
+    }
+},
+['acetone'] = {
+    label = 'Acetone',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'acetone.png'
+    }
+},
+['noscapine'] = {
+    label = 'Noscapine',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'noscapine.png'
+    }
+},
+['papaverine'] = {
+    label = 'Papaverine',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'papaverine.png'
+    }
+},
+['heroin_base'] = {
+    label = 'Heroin Base',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'heroin_base.png'
+    }
+},
+['pure_heroin'] = {
+    label = 'Pure Heroin',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'pure_heroin.png'
+    }
+},
+['emptyvial'] = {
+    label = 'Empty Vial',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'emptyvial.png'
+    }
+},
+['scales'] = {
+    label = 'Scales',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'scales.png'
+    }
+},
+
+-- DRUGS
+['heroin_vial'] = {
+    label = 'Vial of Heroin',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'heroin_vial.png'
+    }
+},
+['overdosecure'] = {
+    label = 'Overdose Cure',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'overdosecure.png'
+    }
+},
+
+
+-- COCAINE
+
+-- REQUIRED ITEMS
+['trowel'] = {
+    label = 'Trowel',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'trowel.png'
+    }
+},
+['plasticjerrycan'] = {
+    label = 'Empty Plastic Jerry Can',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'plasticjerrycan.png'
+    }
+},
+['cokeprocessingtable'] = {
+    label = 'Coke Processing Table',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'cokeprocessingtable.png'
+    }
+},
+['lighter'] = {
+    label = 'Lighter',
+    weight = 0,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'lighter.png'
+    }
+},
+
+-- MATERIALS
+['cocaleaf'] = {
+    label = 'Coca Leaf',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'cocaleaf.png'
+    }
+},
+['cement'] = {
+    label = 'Cement',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'cement.png'
+    }
+},
+['gasoline'] = {
+    label = 'Gasoline',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'gasoline.png'
+    }
+},
+['hydrochloricacid'] = {
+    label = 'Hydrochloric Acid',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'hydrochloricacid.png'
+    }
+},
+['sodiumcarbonate'] = {
+    label = 'Sodium Carbonate',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'sodiumcarbonate.png'
+    }
+},
+['pure_cocaine'] = {
+    label = 'Pure Cocaine',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'pure_cocaine.png'
+    }
+},
+['pure_crack'] = {
+    label = 'Pure Crack',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'pure_crack.png'
+    }
+},
+['water_bottle'] = {
+    label = 'Bottled Water',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'water_bottle.png'
+    }
+},
+['emptybaggies'] = {
+    label = 'Empty Baggies',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'emptybaggies.png'
+    }
+},
+['scales'] = {
+    label = 'Scales',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'scales.png'
+    }
+},
+['acetone'] = {
+    label = 'Acetone',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'acetone.png'
+    }
+},
+['dimethylformamide'] = {
+    label = 'Dimethylformamide',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'dimethylformamide.png'
+    }
+},
+['iodine'] = {
+    label = 'Iodine',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'iodine.png'
+    }
+},
+['overdosecure'] = {
+    label = 'Overdose Cure',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'overdosecure.png'
+    }
+},
+
+-- DRUGS
+['coke_baggy'] = {
+    label = 'Bag of Cocaine',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'coke_baggy.png'
+    }
+},
+['crack_baggy'] = {
+    label = 'Bag of Crack',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'crack_baggy.png'
+    }
+},
+-- KETAMINE
+
+-- REQUIRED ITEMS
+['pickaxe'] = {
+    label = 'Pickaxe',
+    weight = 100,
+    stack = true,
+    close = false,
+    description = '',
+    client = {
+        image = 'pickaxe.png'
+    }
+},
+['ketprocessingtable'] = {
+    label = 'Ketamine Processing Table',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'ketprocessingtable.png'
+    }
+},
+['pressurecooker'] = {
+    label = 'Pressure Cooker',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'pressurecooker.png'
+    }
+},
+['mortarpestle'] = {
+    label = 'Mortar & Pestle',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'mortarpestle.png'
+    }
+},
+['butane_gas'] = {
+    label = 'Butane Gas',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'butane_gas.png'
+    }
+},
+['plasticjerrycan'] = {
+    label = 'Plastic Jerry Can',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'plasticjerrycan.png'
+    }
+},
+
+-- MATERIALS
+['quartz'] = {
+    label = 'Quartz',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'quartz.png'
+    }
+},
+['ether'] = {
+    label = 'Ether',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'ether.png'
+    }
+},
+['silica'] = {
+    label = 'Silica',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'silica.png'
+    }
+},
+['steviapowder'] = {
+    label = 'Stevia Powder',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'steviapowder.png'
+    }
+},
+['citricacid'] = {
+    label = 'Citric Acid',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'citricacid.png'
+    }
+},
+['polyethyleneglycol'] = {
+    label = 'Polyethylene Glycol',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'polyethyleneglycol.png'
+    }
+},
+['hydrochloricacid'] = {
+    label = 'Hydrochloric Acid',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'hydrochloricacid.png'
+    }
+},
+['noscapine'] = {
+    label = 'Noscapine',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'noscapine.png'
+    }
+},
+['papaverine'] = {
+    label = 'Papaverine',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'papaverine.png'
+    }
+},
+
+-- DRUGS
+['liquidketamine'] = {
+    label = 'Liquid Ketamine',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'liquidketamine.png'
+    }
+},
+['ketamine'] = {
+    label = 'Ketamine',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'ketamine.png'
+    }
+},
+['overdosecure'] = {
+    label = 'Overdose Cure',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'overdosecure.png'
+    }
+},
+-- ITEMS
+
+['suspiciouspackage'] = {
+    label = 'Suspicious Package',
+    weight = 0,
+    stack = true,  -- You can stack multiple suspicious packages.
+    close = true,
+    description = 'A Suspicious Package',
+    client = {
+        image = 'suspiciouspackage.png'
+    }
+},
+['burnerphone'] = {
+    label = 'Oxy Burner Phone',
+    weight = 0,
+    stack = false,  -- Unique item, cannot be stacked.
+    close = true,
+    unique = true,  -- Set to true since this is a unique item.
+    description = 'A Burner Phone Used To Sell Oxy',
+    client = {
+        image = 'burnerphone.png'
+    }
+},
+-- MAGIC MUSHROOMS
+
+-- REQUIRED ITEMS
+['libertycap_mushroom'] = {
+    label = 'Liberty Cap Mushroom',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'libertycap_mushroom.png'
+    }
+},
+['dried_libertycap_mushroom'] = {
+    label = 'Dried Liberty Cap Mushroom',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'dried_libertycap_mushroom.png'
+    }
+},
+['indigomilkcap_mushroom'] = {
+    label = 'Indigo Milk Cap Mushroom',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'indigomilkcap_mushroom.png'
+    }
+},
+['deathcap_mushroom'] = {
+    label = 'Death Cap Mushroom',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'deathcap_mushroom.png'
+    }
+},
+['indigo_mycota_cure'] = {
+    label = 'Indigo Mycota Cure',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'indigo_mycota_cure.png'
+    }
+},
+['magic_mushroom'] = {
+    label = 'Magic Mushroom',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'magic_mushroom.png'
+    }
+},
+['mushroom_baggy'] = {
+    label = 'Bag of Magic Mushroom',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'mushroom_baggy.png'
+    }
+},
+
+-- SUPPORTING ITEMS
+['dryingrack'] = {
+    label = 'Drying Rack',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'dryingrack.png'
+    }
+},
+['empty_weed_bag'] = {
+    label = 'Empty Baggies',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'empty_weed_bag.png'
+    }
+},
+['scales'] = {
+    label = 'Scales',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'scales.png'
+    }
+},
+['acetone'] = {
+    label = 'Acetone',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'acetone.png'
+    }
+},
+['dimethylformamide'] = {
+    label = 'Dimethylformamide',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'dimethylformamide.png'
+    }
+},
+['processingtable'] = {
+    label = 'Processing Table',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = '',
+    client = {
+        image = 'processingtable.png'
+    }
+},
+
+
+
+
+
+
+
+
     ['cigarrete'] = {
         label = 'Cigarrete',
         weight = 100,
