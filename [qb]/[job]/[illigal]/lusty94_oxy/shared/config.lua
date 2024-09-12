@@ -20,7 +20,7 @@ Config.CreateUseableBurnerPhone = true -- set to false if you have your own meth
 
 Config.CoreSettings = {
     Target = {
-        Type = 'qb', -- support for qb-target and ox_target    
+        Type = 'ox', -- support for qb-target and ox_target    
         --use 'qb' for qb-target
         --use 'ox' for ox_target
     },

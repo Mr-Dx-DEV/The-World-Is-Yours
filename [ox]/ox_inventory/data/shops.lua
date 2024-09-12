@@ -106,42 +106,66 @@ return {
 			{ loc = vec3(841.05, -1034.76, 28.31), length = 0.6, width = 0.5, heading = 360.0, minZ = 28.2, maxZ = 28.6, distance = 2.0 }
 		}
 	}, ]]
---[[ 
 	PoliceArmoury = {
 		name = 'Police Armoury',
-		groups = shared.police,
-		blip = {
-			id = 110, colour = 84, scale = 0.8
-		},
+		groups = shared.police, -- Define which job or group can access
 		inventory = {
-			{ name = 'ammo-9', price = 5, },
-			{ name = 'ammo-rifle', price = 5, },
-			{ name = 'WEAPON_FLASHLIGHT', price = 200 },
-			{ name = 'WEAPON_NIGHTSTICK', price = 100 },
-
-			{ name = 'heavyarmor', price = 25, },
-			{ name = 'handcuffs', price = 80, },
-			{ name = 'radio', price = 100, },
-
-			{ name = 'ifaks', price = 5, },
-			{ name = 'advancedrepairkit', price = 25, },
-			{ name = 'empty_evidence_bag', price = 5, },
-			{ name = 'police_stormram', price = 15, },
-			{ name = 'weapon_flashlight', price = 50, },
-			{ name = 'weapon_nightstick', price = 50, },
-			{ name = 'weapon_stungun', price = 50, },
-
-			{ name = 'WEAPON_PISTOL', price = 500, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-			{ name = 'WEAPON_CARBINERIFLE', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },
-			{ name = 'WEAPON_STUNGUN', price = 500, metadata = { registered = true, serial = 'POL'} }
-
-		}, 
-        locations = {
-			vec3(482.363, -995.165, 30.69)
-			--vec3(836.04, -1287.22, 29.26 - 1),
-			--vec3(1842.4128, 3698.2122, 34.4735 - 1),
-		}, 
-        targets = {
+			{ name = 'weapon_pistol', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'weapon_stungun', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'weapon_pumpshotgun', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'weapon_smg', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 9 },
+			{ name = 'weapon_carbinerifle', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 5 },
+			{ name = 'weapon_nightstick', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'pistol_ammo', price = 10, grade = 0 },
+			{ name = 'smg_ammo', price = 10, grade = 9 },
+			{ name = 'shotgun_ammo', price = 10, grade = 0 },
+			{ name = 'rifle_ammo', price = 10, grade = 5 },
+			{ name = 'handcuffs', price = 100, metadata = { registered = true, serial = 'POL' }, grade = 0 },
+			{ name = 'weapon_flashlight', price = 100, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'empty_evidence_bag', price = 100, grade = 0 },
+			{ name = 'police_stormram', price = 100, grade = 0 },
+			{ name = 'armor', price = 100, grade = 0 },
+			{ name = 'radio', price = 500, grade = 0 },
+			{ name = 'heavyarmor', price = 1000, grade = 0 },
+			{ name = 'parachute', price = 1000, grade = 5 },
+			{ name = 'weapon_combatpistol', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'ifaks', price = 100, grade = 0 },
+			{ name = 'advancedlockpick', price = 1000, grade = 0 },
+			{ name = 'painkillers', price = 100, grade = 0 },
+			{ name = 'weapon_fireextinguisher', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'diving_gear', price = 1000, grade = 0 },
+			{ name = 'firstaid', price = 100, grade = 0 },
+			{ name = 'bandage', price = 30, grade = 0 },
+			{ name = 'weapon_heavysniper_mk2', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 9 },
+			{ name = 'snp_ammo', price = 100, grade = 9 },
+			{ name = 'microfibercloth', price = 50, grade = 0 },
+			{ name = 'blox', price = 50, grade = 0 },
+			{ name = 'taser_cartridge', price = 50, grade = 0 },
+			{ name = 'weapon_pumpshotgun_mk2', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'emptydocuments', price = 100, grade = 0 },
+			{ name = 'defib', price = 1000, grade = 0 },
+			{ name = 'portablecopier', price = 1000, grade = 0 },
+			{ name = 'kq_outfitbag', price = 1000, grade = 0 },
+			{ name = 'electronic_cuffs', price = 1000, grade = 0 },
+			{ name = 'nikon', price = 1000, grade = 0 },
+			{ name = 'gsrtestkit', price = 1000, grade = 0 },
+			{ name = 'dnatestkit', price = 1000, grade = 0 },
+			{ name = 'drugtestkit', price = 1000, grade = 0 },
+			{ name = 'breathalyzer', price = 1000, grade = 0 },
+			{ name = 'accesstool', price = 1000, grade = 0 },
+			{ name = 'fingerprintreader', price = 1000, grade = 0 },
+			{ name = 'sdcard', price = 100, grade = 0 },
+			{ name = 'gpstracker', price = 100, grade = 0 },
+			{ name = 'fingerprintkit', price = 1000, grade = 0 },
+			{ name = 'fingerprinttape', price = 100, grade = 0 },
+			{ name = 'mikrosil', price = 100, grade = 0 },
+			{ name = 'keepcompanionshepherd', price = 1000, grade = 0 }
+		},
+		locations = {
+			vector3(607.92, -20.62, 76.63), -- Vinewood PD
+			-- Add other locations as needed
+		},
+		targets = {
 			{ 
                 loc = vec3(482.363, -995.165, 30.69 - 1), 
                 length = 0.5, 
@@ -157,10 +181,10 @@ return {
                 loc = vec3(482.363, -995.165, 30.69),
                 heading = 177.56,
             }
-			--{ loc = vec3(1842.4128, 3698.2122, 34.4735 - 1), length = 0.5, width = 3.0, heading = 270.0, minZ = 30.5, maxZ = 32.0, distance = 6 },
-			--{ loc = vec3(836.04, -1287.22, 29.26 - 1), length = 0.5, width = 3.0, heading = 92.26, minZ = 30.5, maxZ = 32.0, distance = 6 }
 		}
-	}, ]]
+	},
+	
+
 --[[ 
 	PoliceHrana = {
 		name = 'Данчо Хранителов',

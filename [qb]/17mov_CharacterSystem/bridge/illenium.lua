@@ -1,10 +1,8 @@
 if Skin.Enabled then
     function RegisterIlleniumExport(name, func)
-        RegisterNetEvent(string.format("__cfx_export_illenium-appearance_%s", name), function(setCB)
-            setCB(func)
-        end)
+        RegisterNetEvent(string.format("__cfx_export_illenium-%s", name), func)
     end
-
+    
     RegisterIlleniumExport("getPedModel", function(ped)
         local PlayerSkin = Skin.ConstructFromPed(ped)
         return TranslateHashToString(PlayerSkin.model)
@@ -110,7 +108,7 @@ if Skin.Enabled then
         local PlayerSkin = Skin.ConstructFromPed(ped)
         local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
 
-        for i = 1, #IlleniumDataFormat.components do
+        for i=1, #IlleniumDataFormat.components do
             local CurrentComponent = IlleniumDataFormat.components[i]
             if CurrentComponent.component_id == data.component_id then
                 CurrentComponent.drawable = data.drawable
@@ -125,8 +123,8 @@ if Skin.Enabled then
         local PlayerSkin = Skin.ConstructFromPed(ped)
         local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
 
-        for i = 1, #IlleniumDataFormat.components do
-            for i2 = 1, #data do
+        for i=1, #IlleniumDataFormat.components do
+            for i2=1, #data do
                 local CurrentComponent = IlleniumDataFormat.components[i]
                 if CurrentComponent.component_id == data[i2].component_id then
                     CurrentComponent.drawable = data[i2].drawable
@@ -142,7 +140,7 @@ if Skin.Enabled then
         local PlayerSkin = Skin.ConstructFromPed(ped)
         local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
 
-        for i = 1, #IlleniumDataFormat.props do
+        for i=1, #IlleniumDataFormat.props do
             local CurrentComponent = IlleniumDataFormat.props[i]
             if CurrentComponent.prop_id == data.prop_id then
                 CurrentComponent.drawable = data.drawable
@@ -157,8 +155,8 @@ if Skin.Enabled then
         local PlayerSkin = Skin.ConstructFromPed(ped)
         local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
 
-        for i = 1, #IlleniumDataFormat.props do
-            for i2 = 1, #data do
+        for i=1, #IlleniumDataFormat.props do
+            for i2=1, #data do
                 local CurrentComponent = IlleniumDataFormat.props[i]
                 if CurrentComponent.prop_id == data[i2].prop_id then
                     CurrentComponent.drawable = data[i2].drawable
@@ -173,8 +171,8 @@ if Skin.Enabled then
             local PlayerSkin = Skin.ConstructFromPed(ped)
             local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
 
-            for i = 1, #IlleniumDataFormat.props do
-                for i2 = 1, #data do
+            for i=1, #IlleniumDataFormat.props do
+                for i2=1, #data do
                     local CurrentComponent = IlleniumDataFormat.props[i]
                     if CurrentComponent.prop_id == data[i2].prop_id then
                         CurrentComponent.drawable = data[i2].drawable
@@ -218,8 +216,7 @@ RegisterNetEvent("17mov_CharacterSystem:PlayerSpawned", function(isNew)
                 TriggerEvent("qb-clothes:client:CreateFirstCharacter")
             end
         else
-            Functions.Print(
-            "Player spawned but 17Movement Skin menu has been disabled. Please configure ur own in /bridge/illenium.lua:210")
+            Functions.Print("Player spawned but 17Movement Skin menu has been disabled. Please configure ur own in /bridge/illenium.lua:210")
         end
     end
 end)

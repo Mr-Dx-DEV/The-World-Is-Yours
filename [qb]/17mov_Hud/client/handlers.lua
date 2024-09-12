@@ -687,3 +687,5 @@ RegisterNetEvent("17mov_Hud:GetSettings", GetSettings)
 -- end)
 
 -- { 17movement.net } --
+
+

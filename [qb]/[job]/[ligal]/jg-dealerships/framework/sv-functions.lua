@@ -28,9 +28,9 @@ function Framework.Server.GetSocietyBalance(society, societyType)
       return exports['qb-banking']:GetAccountBalance(society)
     else
       if societyType == "job" then
-        return exports['qb-management']:GetAccount(society)
+        return exports['Renewed-Banking']:GetAccount(society)
       elseif societyType == "gang" then
-        return exports['qb-management']:GetGangAccount(society)
+        return exports['Renewed-Banking']:GetGangAccount(society)
       end
     end
   elseif Config.Framework == "ESX" then

@@ -209,9 +209,9 @@ Framework.SocietyGetMoney = function(name, type)
     if IsQBBanking then return QBBanking end
 
     if type == "job" then
-        return exports['qb-management']:GetAccount(name)
+        return exports['Renewed-Banking']:GetAccount(name)
     elseif type == "gang" then
-        return exports['qb-management']:GetGangAccount(name)
+        return exports['Renewed-Banking']:GetGangAccount(name)
     end
     return 0
 end
@@ -227,10 +227,10 @@ Framework.SocietyAddMoney = function(name, type, amount)
     if IsQBBanking then return QBBanking end
 
     if type == "job" then
-        exports['qb-management']:AddMoney(name, amount)
+        exports['Renewed-Banking']:AddMoney(name, amount)
         return true
     elseif type == "gang" then
-        exports['qb-management']:AddGangMoney(name, amount)
+        exports['Renewed-Banking']:AddGangMoney(name, amount)
         return true
     end
     return false
@@ -246,9 +246,9 @@ Framework.SocietyRemoveMoney = function(name, type, amount)
     if IsQBBanking then return QBBanking end
 
     if type == "job" then
-        return exports['qb-management']:RemoveMoney(name, amount)
+        return exports['Renewed-Banking']:RemoveMoney(name, amount)
     elseif type == "gang" then
-        return exports['qb-management']:RemoveGangMoney(name, amount)
+        return exports['Renewed-Banking']:RemoveGangMoney(name, amount)
     end
     return false
 end

@@ -475,10 +475,10 @@ Replace with:
 
     if exports['m-Insurance']:haveHealthInsurance(citizenid) then 
         Player.Functions.RemoveMoney("bank", Config.BillCost - 500, "respawned-at-hospital") -- The "500" is the discount, you can change it
-        exports['qb-management']:AddMoney("ambulance", Config.BillCost - 500) -- The "500" is the discount, you can change it
+        exports['Renewed-Banking']:AddMoney("ambulance", Config.BillCost - 500) -- The "500" is the discount, you can change it
     else
         Player.Functions.RemoveMoney("bank", Config.BillCost , "respawned-at-hospital")
-        exports['qb-management']:AddMoney("ambulance", Config.BillCost)
+        exports['Renewed-Banking']:AddMoney("ambulance", Config.BillCost)
     end
         TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
     end)

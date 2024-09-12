@@ -17,10 +17,10 @@ Locale["en"] = {
     ["Store.barber.BlipLabel"] = "Barber",
     ["Store.surgeon.BlipLabel"] = "Surgeon",
     ["Store.tattoo.BlipLabel"] = "Tattoo Shop",
-    ["Store.Use"] = "Press ~INPUT_CONTEXT~ to use service ~g~[$%s]",
+    ["Store.Use"] = "Clothing Store",
     ["Store.NotEnoughMoney"] = "You don't have enough money",
 
-    ["OutfitChanger.Use"] = "Press ~INPUT_CONTEXT~ to browse your outfits",
+    ["OutfitChanger.Use"] = "Outfits Section",
     ["OutfitChanger.NoOutfits"] = "You don't have any saved outfits",
     ["ClothingRoom.Use"] = "Press ~INPUT_CONTEXT~ to toggle duty outfit",
     ["ClothingRoom.NoOutfit"] = "There's no item prepeared for your job's grade",

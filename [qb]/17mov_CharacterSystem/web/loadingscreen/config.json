@@ -1,26 +1,20 @@
 {
 	"Logo": {
-		"Enable": true,
+		"Enable": false,
 		"Src": "./loadingscreen/images/logo.webp",
 		"Size": {
 			"Width": "160px",
 			"Height": "auto"
 		}
 	},
-    "Video": {
-        "Enable": false,
-		"URL": "./loadingscreen/loading.mp4",
-		"Volume": 50,
-		"Muted": true
-    },
 	"YouTube": {
-		"Enable": false,
-		"URL": "https://www.youtube.com/embed/QdBZY2fkU-0?si=CO231dOBkVK6m8RO",
+		"Enable": true,
+		"URL": "https://www.youtube.com/embed/9xq3mnlBB3E?si=CO231dOBkVK6m8RO",
 		"Volume": 50,
-		"Muted": true
+		"Muted": false
 	},
 	"Slides": {
-		"Enable": true,
+		"Enable": false,
 		"BlurValue": 0,
 		"Images": [
 			{
@@ -51,7 +45,7 @@
 		]
 	},
 	"Music": {
-		"Enable": true,
+		"Enable": false,
 		"Songs": [
 			{
 				"Title": "Look at that",
@@ -88,10 +82,10 @@
 		]
 	},
 	"Locale": {
-		"MainTitle": "Loading",
-		"MainSubtitle": "Screen",
+		"MainTitle": "World Is Yours RP",
+		"MainSubtitle": "Loading into Server!",
 		"CardTitle": "Information!",
-		"CardDescription": "This is default configuration of loading screen. It's impossible to make loadingscreen config on lua side - that's why it's config is at /web/loadingscreen/config.json. You can play youtube video in background, change music, translate etc.. Also don't forget that you can change colors in /web/colors.css",
+		"CardDescription": "Owner: SBDemon | DocJay | DemonsAngel, Devoloper: Mr_Dx (Lead) |, World Is Yours Roleplay provides a comprehensive FiveM experience that includes a realistic economy, customizable employment, and dynamic roleplay scenarios. Join a welcoming community that will bring your tale to life. Whether you are a law-abiding citizen or a daring bandit, World Is Yours Roleplay provides limitless experiences in a dynamic, player-driven universe.",
 		"LoadingProgress": "Loading... %s",
 		"PauseMusic": "Press space to pause music",
 		"PlayMusic": "Press space to play music"

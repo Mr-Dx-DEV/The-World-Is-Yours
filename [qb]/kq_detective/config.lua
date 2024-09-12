@@ -28,7 +28,7 @@ Config.whitelist = {
 
 Config.target = {
     enabled = true,
-    system = 'qb-target' -- 'qtarget', 'qb-target' or 'ox_target'  (Other systems might work as well)
+    system = 'ox_target' -- 'qtarget', 'qb-target' or 'ox_target'  (Other systems might work as well)
 }
 
 -- Keybinds

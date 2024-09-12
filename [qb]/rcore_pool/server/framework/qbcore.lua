@@ -51,7 +51,7 @@ CreateThread(function()
             if Config.SocietySystem == 2 then
                 TriggerEvent('qb-bossmenu:server:removeAccountMoney', jobName, amount)
             elseif Config.SocietySystem == 3 then
-                exports['qb-management']:RemoveMoney(jobName, amount)
+                exports['Renewed-Banking']:RemoveMoney(jobName, amount)
             end
         end
 
@@ -59,7 +59,7 @@ CreateThread(function()
             if Config.SocietySystem == 2 then
                 TriggerEvent('qb-bossmenu:server:addAccountMoney', jobName, amount)
             elseif Config.SocietySystem == 3 then
-                return exports['qb-management']:AddMoney(jobName, amount)
+                return exports['Renewed-Banking']:AddMoney(jobName, amount)
             end
         end
     end

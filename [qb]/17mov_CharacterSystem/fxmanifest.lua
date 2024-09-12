@@ -3,7 +3,7 @@ game "gta5"
 lua54 "yes"
 
 author "17Movement"
-version "1.0.46"
+version "1.0.40"
 this_is_a_map 'yes'
 
 shared_scripts {

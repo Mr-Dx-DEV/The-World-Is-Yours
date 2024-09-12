@@ -95,41 +95,6 @@ function Notify(msg)
     end
 end
 
-function GetJob()
-    if Config.Framework == "QBCore" then
-        local playerData = Core?.Functions.GetPlayerData()
-        return playerData.job.name
-    elseif Config.Framework == "ESX" then
-        local playerData = Core?.GetPlayerData()
-        return playerData.job.name
-    end
-
-    return nil
-end
-
-function GetGang()
-    if Config.Framework == "QBCore" then
-        local playerData = Core?.Functions.GetPlayerData()
-        return playerData.gang.name
-    elseif Config.Framework == "ESX" then
-        -- No default gang system, need to implement at your own
-    end
-
-    return nil
-end
-
-function GetIdentifier()
-    if Config.Framework == "QBCore" then
-        local playerData = Core?.Functions.GetPlayerData()
-        return playerData.license
-    elseif Config.Framework == "ESX" then
-        local playerData = Core?.GetPlayerData()
-        return playerData.identifier
-    end
-
-    return nil
-end
-
 -- Target system
 if Config.UseTarget then
     if Config.Framework == "QBCore" then

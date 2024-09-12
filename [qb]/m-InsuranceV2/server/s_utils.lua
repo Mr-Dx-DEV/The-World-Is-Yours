@@ -18,7 +18,7 @@ end
 
 function SocietyAddMoney(society, price)
     if Config.Societys.management == "qb-management" then
-        exports['qb-management']:AddMoney(society, price)
+        exports['Renewed-Banking']:AddMoney(society, price)
     elseif Config.Societys.management == "qb-banking" then
         exports['qb-banking']:AddMoney(society, price)
     elseif Config.Societys.management == "okokBanking" then

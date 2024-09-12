@@ -1,117 +1,117 @@
-['cocainepackage'] = {
-  ['description'] = 'A small figurine filled with a white powdery substance...',
-  ['label'] = 'Cocaine Package',
-  ['weight'] = 100,
-  ['client'] = {
-    ['image'] = 'cocainepackage.png',
-  },
-
-},
-['cutcocaine'] = {
-  ['description'] = 'Cut Cocaine',
-  ['label'] = 'Cut Cocaine',
-  ['weight'] = 100,
-  ['client'] = {
-    ['image'] = 'cutcocaine.png',
-  },
-
-},
-['rawcocaine'] = {
-  ['description'] = 'Uncut Cocaine',
-  ['label'] = 'Raw Cocaine',
-  ['weight'] = 100,
-  ['client'] = {
-    ['image'] = 'rawcocaine.png',
-  },
-
-},
-['propelyeneglycol'] = {
-  ['description'] = 'Chemical Substance',
-  ['label'] = 'Propelyene Glycol',
-  ['weight'] = 100,
-  ['client'] = {
-    ['image'] = 'propelyeneglycol.png',
-  },
-
-},
-['bakingsoda'] = {
-  ['description'] = 'Baking Soda',
-  ['label'] = 'Baking Soda',
-  ['weight'] = 100,
-  ['client'] = {
-    ['image'] = 'bakingsoda.png',
-  },
-
-},
-['raidtool'] = {
-  ['description'] = 'For beating the shit out of doors',
-  ['label'] = 'Raid Tool',
-  ['weight'] = 100,
-  ['client'] = {
-    ['image'] = 'raidtool.png',
-  },
-
-},
-['untrimmed_weed'] = {
-  ['description'] = 'Untrimmed Weed',
-  ['label'] = 'Untrimmed Weed',
-  ['weight'] = 100,
-  ['client'] = {
-    ['image'] = 'untrimmed_weed.png',
-  },
-
-},
 ['actionfigure'] = {
-  ['description'] = 'A small figurine filled which something could be stored inside...',
-  ['label'] = 'Action Figure',
   ['weight'] = 100,
+  ['label'] = 'Action Figure',
   ['client'] = {
     ['image'] = 'actionfigure.png',
   },
+  ['description'] = 'A small figurine filled which something could be stored inside...',
+
+},
+['bakingsoda'] = {
+  ['weight'] = 100,
+  ['label'] = 'Baking Soda',
+  ['client'] = {
+    ['image'] = 'bakingsoda.png',
+  },
+  ['description'] = 'Baking Soda',
+
+},
+['cutcocaine'] = {
+  ['weight'] = 100,
+  ['label'] = 'Cut Cocaine',
+  ['client'] = {
+    ['image'] = 'cutcocaine.png',
+  },
+  ['description'] = 'Cut Cocaine',
+
+},
+['propelyeneglycol'] = {
+  ['weight'] = 100,
+  ['label'] = 'Propelyene Glycol',
+  ['client'] = {
+    ['image'] = 'propelyeneglycol.png',
+  },
+  ['description'] = 'Chemical Substance',
 
 },
 ['sodiumbenzoate'] = {
-  ['description'] = 'Chemical Substance',
-  ['label'] = 'Sodium Benzoate',
   ['weight'] = 100,
+  ['label'] = 'Sodium Benzoate',
   ['client'] = {
     ['image'] = 'sodiumbenzoate.png',
   },
+  ['description'] = 'Chemical Substance',
 
 },
 ['trimmed_weed'] = {
-  ['description'] = 'Trimmed Weed',
-  ['label'] = 'Trimmed Weed',
   ['weight'] = 100,
+  ['label'] = 'Trimmed Weed',
   ['client'] = {
     ['image'] = 'trimmed_weed.png',
   },
+  ['description'] = 'Trimmed Weed',
 
 },
-['boxmeth'] = {
-  ['description'] = 'Chemical Substance',
-  ['label'] = 'Box of Meth',
+['untrimmed_weed'] = {
   ['weight'] = 100,
+  ['label'] = 'Untrimmed Weed',
   ['client'] = {
-    ['image'] = 'boxmeth.png',
+    ['image'] = 'untrimmed_weed.png',
   },
+  ['description'] = 'Untrimmed Weed',
 
 },
 ['bagmeth'] = {
-  ['description'] = 'Chemical Substance',
-  ['label'] = 'Bag of Meth',
   ['weight'] = 100,
+  ['label'] = 'Bag of Meth',
   ['client'] = {
     ['image'] = 'bagmeth.png',
   },
+  ['description'] = 'Chemical Substance',
+
+},
+['cocainepackage'] = {
+  ['weight'] = 100,
+  ['label'] = 'Cocaine Package',
+  ['client'] = {
+    ['image'] = 'cocainepackage.png',
+  },
+  ['description'] = 'A small figurine filled with a white powdery substance...',
+
+},
+['boxmeth'] = {
+  ['weight'] = 100,
+  ['label'] = 'Box of Meth',
+  ['client'] = {
+    ['image'] = 'boxmeth.png',
+  },
+  ['description'] = 'Chemical Substance',
 
 },
 ['lab-key'] = {
-  ['description'] = 'Keys for some sort of door?!?!',
-  ['label'] = 'Lab Keys',
   ['weight'] = 100,
+  ['label'] = 'Lab Keys',
   ['client'] = {
     ['image'] = 'labkeys.png',
   },
+  ['description'] = 'Keys for some sort of door?!?!',
+
+},
+['rawcocaine'] = {
+  ['weight'] = 100,
+  ['label'] = 'Raw Cocaine',
+  ['client'] = {
+    ['image'] = 'rawcocaine.png',
+  },
+  ['description'] = 'Uncut Cocaine',
+
+},
+['raidtool'] = {
+  ['weight'] = 100,
+  ['label'] = 'Raid Tool',
+  ['client'] = {
+    ['image'] = 'raidtool.png',
+  },
+  ['description'] = 'For beating the shit out of doors',
 
 },

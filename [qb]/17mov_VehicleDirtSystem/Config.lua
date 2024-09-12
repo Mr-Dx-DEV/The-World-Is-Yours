@@ -1,15 +1,15 @@
 Config = {}
 Config.Lang = "en"
 Config.Debug = false
-Config.UseTarget = false
+Config.UseTarget = true
 Config.EnableTextureReplace = true         -- Turn this off if you don't want the custom dirt texture
 
 -- Settings for the installer.lua file.
 Config.Installer = {
-    AutoAddItems = true,
-    AutoAddInventoryImages = true,
-    AutoDisableOldCarWashScript = true,
-    AutoSearchForStreamConflict = true,
+    AutoAddItems = false,
+    AutoAddInventoryImages = false,
+    AutoDisableOldCarWashScript = false,
+    AutoSearchForStreamConflict = false,
 }
 
 Config.Blip = {

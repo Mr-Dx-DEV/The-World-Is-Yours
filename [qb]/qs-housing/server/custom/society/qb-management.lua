@@ -12,5 +12,5 @@ end
 
 function AddMoneyToSociety(src, societyName, societyPaid)
     Debug('Society system, id: ' .. src .. ', society name: ' .. societyName .. ', Paid: ' .. societyPaid)
-    exports['qb-management']:AddMoney(societyName, societyPaid)
+    exports['Renewed-Banking']:AddMoney(societyName, societyPaid)
 end

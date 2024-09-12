@@ -3,21 +3,21 @@ Register.Enable = true
 
 Register.Validation = {
     ["firstName"] = {
-        minLength = 1,
+        minLength = 2,
         maxLength = 15,
         letters = true,
         numbers = false,
         specialCharacters = false,
     },
     ["lastName"] = {
-        minLength = 1,
+        minLength = 2,
         maxLength = 15,
         letters = true,
         numbers = false,
         specialCharacters = false,
     },
     ["dateOfBirth"] = {
-        minAge = 18,
+        minAge = 12,
         maxAge = 80,
     },
     ["height"] = {

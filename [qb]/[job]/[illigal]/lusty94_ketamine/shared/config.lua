@@ -21,7 +21,7 @@ Config.CoreSettings = {
         Evidence = 'evidence:client:SetStatus', -- name of evidence event to set widepupils status when taking ketamine
     },
     Target = {
-        Type = 'qb', -- target script name support for qb-target and ox_target        
+        Type = 'ox', -- target script name support for qb-target and ox_target        
         --use 'qb' for qb-target
         --use 'ox' for ox_target 
     },
