@@ -759,7 +759,7 @@ QBShared.Jobs = {
 			['4'] = { name = 'Manager', isboss = true, payment = 150 },
 		},
 	},
-    Kittys = {
+    kittys = {
 		label = 'Kittys Motor Works',
 		type = 'mechanic',
 		defaultDuty = true,
@@ -770,6 +770,7 @@ QBShared.Jobs = {
 			['2'] = { name = 'Experienced', payment = 100 },
 			['3'] = { name = 'Advanced', payment = 125 },
 			['4'] = { name = 'Manager', isboss = true, payment = 150 },
+            ['5'] = { name = 'Owner', isboss = true, payment = 300 },
 		},
 	},
 	['catcafe'] = {
