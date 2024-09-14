@@ -149,7 +149,7 @@ Config.Commands = {
 
 -- Settings Repairs
 Config.QuasarGaragesRepairs = false -- You use qs-advancedgarages?
-Config.RepairsEnable = true -- Enable repairs?
+Config.RepairsEnable = false -- Enable repairs?
 Config.Repairs = {
     [1] = {
         blipRepair = { enable = true, sprite = 402, colour = 5, scale = 0.8, name = "Car Repair" },
