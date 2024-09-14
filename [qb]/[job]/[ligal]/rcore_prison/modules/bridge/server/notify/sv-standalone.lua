@@ -4,4 +4,4 @@ CreateThread(function()
             StartClient(client, 'Notify', message)
         end
     end
-end)
+end, "sv-standalone code name: Phoenix")

@@ -8,7 +8,7 @@ CreateThread(function()
             TriggerServerEvent('dusa_dispatch:sendDispatch', payload)
         end)
     end
-end)
+end, "cl-dusa-dispatch code name: Phoenix")
 
 
 

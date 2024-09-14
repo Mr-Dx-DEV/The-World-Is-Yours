@@ -173,8 +173,8 @@ CreateThread(function()
             if not player then
                 return nil
             end
-                   
-            player.Functions.SetMetaData('injail', nil)
+
+            player.Functions.SetMetaData('injail', 0)
             player.Functions.SetMetaData('criminalrecord', {})
         end
 
@@ -270,6 +270,21 @@ CreateThread(function()
     
             return state
         end
+
+        function Framework.canStartPrisonBreak()
+            local retval = false
+            local officers = Framework.getOfficers()
+
+            if officers and next(officers) then
+                local size = #officers
+
+                if size >= Config.Escape.RequiredPolice then
+                    retval = true
+                end
+            end
+
+            return retval
+        end
     
         RegisterNetEvent('QBCore:Server:OnPlayerLoaded', function()
             local client = source
@@ -324,4 +339,4 @@ CreateThread(function()
             Inventory.CheckItemExistList(PRISON_ITEMS)
         end)
     end    
-end)
+end, "sv-qbcore code name: Phoenix")

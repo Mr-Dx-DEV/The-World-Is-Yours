@@ -1,3 +1,26 @@
+function ExtractCashConfig(data)
+    if not data then
+        return nil, nil
+    end
+
+    local useCashAsItem = data:match("UseCashAsItem%s*=%s*(%a+)")
+
+    if useCashAsItem == "true" then
+        useCashAsItem = true
+    elseif useCashAsItem == "false" then
+        useCashAsItem = false
+    else
+        useCashAsItem = nil
+    end
+    
+    -- Extract the CashItem value
+    local cashItem = data:match("CashItem%s*=%s*'([^']+)'")
+    
+    return useCashAsItem, cashItem
+end
+    
+useCashAsItem, cashItem = nil, nil
+
 CreateThread(function()
     if isBridgeLoaded('Inventory', Inventories.QS) then
         Inventory.hasItem = function(client, itemName, amount)
@@ -13,18 +36,25 @@ CreateThread(function()
         
         Inventory.getInventoryItems = function(playerId)
             local player = Framework.getPlayer(playerId)
-    
-            if player == nil then return {} end
-    
+            local inventory = {}
+
+            if not player then
+                return inventory
+            end
+
             if isBridgeLoaded('Framework', Framework.QBCore) then
-                return player.PlayerData.items
+                inventory = player.PlayerData.items
             end
-    
+
             if isBridgeLoaded('Framework', Framework.ESX) then
-                return player.inventory
+                inventory = player.inventory
             end
-    
-            return {}
+
+            if not next(inventory) then
+                inventory = exports[Bridge.Inventory]:GetPlayerInventory(playerId)
+            end
+
+            return inventory
         end
     
         Inventory.registerUsableItem = function(itemName, cb)
@@ -44,22 +74,6 @@ CreateThread(function()
     
         --- @return boolean success
         Inventory.addItem = function(client, item, amount, data)
-            local player = Framework.getPlayer(client)
-    
-            if item == 'cash' or item == 'money' then
-                if player == nil then
-                    return false
-                end
-    
-                if isBridgeLoaded('Framework', Framework.QBCore) then
-                    return player.Functions.AddMoney('cash', amount)
-                end
-        
-                if isBridgeLoaded('Framework', Framework.ESX) then
-                    return player.addMoney(amount)
-                end
-            end
-    
             local match = string.match(item, "^WEAPON_(.*)")
     
             if match then
@@ -102,20 +116,34 @@ CreateThread(function()
         Inventory.removeItem = function(client, item, amount, data)
             local player = Framework.getPlayer(client)
     
-            if item == 'cash' or item == 'money' then
+            if useCashAsItem and cashItem then
                 if player == nil then
                     return false
                 end
     
                 if isBridgeLoaded('Framework', Framework.QBCore) then
-                    return player.Functions.RemoveMoney('cash', amount)
+                    player.Functions.RemoveMoney('cash', amount)
                 end
-        
+
                 if isBridgeLoaded('Framework', Framework.ESX) then
-                    return player.removeMoney(amount)
+                    player.removeMoney(amount)
+                end
+            else
+                if item == 'cash' or item == 'money' then
+                    if player == nil then
+                        return false
+                    end
+        
+                    if isBridgeLoaded('Framework', Framework.QBCore) then
+                        return player.Functions.RemoveMoney('cash', amount)
+                    end
+            
+                    if isBridgeLoaded('Framework', Framework.ESX) then
+                        return player.removeMoney(amount)
+                    end
                 end
             end
-    
+
             local match = string.match(item, "^WEAPON_(.*)")
     
             if match then
@@ -128,6 +156,22 @@ CreateThread(function()
         Inventory.clearInventory = function(playerId)
             local success, error_message = pcall(function()
                 if Config.Stash.KeepItemsState and Inventory.KeepSessionItems then
+                    if useCashAsItem and cashItem then
+                        local player = Framework.getPlayer(playerId)
+    
+                        if player == nil then
+                            return false
+                        end
+    
+                        if isBridgeLoaded('Framework', Framework.QBCore) then
+                            player.Functions.RemoveMoney('cash', player.Functions.GetMoney('cash'))
+                        end
+
+                        if isBridgeLoaded('Framework', Framework.ESX) then
+                            player.removeMoney(player.getMoney())
+                        end
+                    end
+
                     return exports[Bridge.Inventory]:ClearInventory(playerId, Inventory.KeepSessionItems)
                 else
                     return exports[Bridge.Inventory]:ClearInventory(playerId, {})
@@ -199,5 +243,9 @@ CreateThread(function()
             { 'sprunk', 'sludgie', 'ecola_light', 'ecola', 'coffee', 'water', 'fries', 'pizza_ham', 'chips', 'donut',
                 'wire_cutter', 'cigarrete' }
         )
+
+        local inventoryData = LoadScriptData('server/custom/framework/qb', Inventories.QS)
+
+        useCashAsItem, cashItem = ExtractCashConfig(inventoryData)
     end    
 end)

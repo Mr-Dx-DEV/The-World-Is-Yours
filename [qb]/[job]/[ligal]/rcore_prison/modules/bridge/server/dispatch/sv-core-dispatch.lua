@@ -5,7 +5,7 @@ CreateThread(function()
             local coords = vec3(SH.data.prisonYard.x,SH.data.prisonYard.y, SH.data.prisonYard.z)
             local data = {
                 message = text,     
-                coords = { coords },
+                coords = coords,
                 job = Config.Escape.NotifyJobs[0],
                 cooldown = 5000,
                 sprite = 488, 
@@ -13,12 +13,21 @@ CreateThread(function()
                 priority = true
             }
 
-            TriggerClientEvent('rcore_prison:client:setDispatch', -1, data)
+            if isResourceLoaded(THIRD_PARTY_RESOURCE.REDUTZU) then
+                TriggerEvent('redutzu-mdt:server:addDispatchToMDT', {
+                    code = '10-64',
+                    title = text,
+                    duration = 12 * 1000,
+                    coords = { x = coords.x, y = coords.y, z = coords.z },
+                })
+            end
+
+            TriggerClientEvent('rcore_prison:client:setDispatch', playerId, data)
 
             dbg.info('Dispatch.Breakout: Prison break started!')
         end
     end
-end)
+end, "sv-core code name: Phoenix")
 
 
 

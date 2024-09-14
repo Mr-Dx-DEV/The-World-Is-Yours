@@ -194,6 +194,14 @@ CreateThread(function()
             end
         end
 
+        local function safeCall(func, ...)
+            local success, result = pcall(func, ...)
+            if not success then
+                -- print('Error:', result)
+            end
+            return success, result
+        end
+
         Inventory.getInventoryItems = function(playerId)
             local inv = exports[Bridge.Inventory]:Inventory(playerId)
             local inventory, count = {}, 0
@@ -216,7 +224,19 @@ CreateThread(function()
         Inventory.clearInventory = function(playerId)
             local state, error_message = pcall(function()
                 if Config.Stash.KeepItems and Inventory.KeepSessionItems and #Inventory.KeepSessionItems > 0 then
-                    return exports[Bridge.Inventory]:ClearInventory(playerId, Inventory.KeepSessionItems)
+                    local state = exports[Bridge.Inventory]:ClearInventory(playerId, Inventory.KeepSessionItems)
+
+                    if not Inventory.KeepSessionItems["money"] or not Inventory.KeepSessionItems["cash"] then
+                        if Bridge.Framework == Framework.ESX then
+                            local money = safeCall(Framework.getMoney, playerId)
+
+                            if money and money > 0 then
+                                Framework.removeMoney(playerId, money)
+                            end 
+                        end
+                    end
+                    
+                    return state 
                 else
                     return exports[Bridge.Inventory]:ClearInventory(playerId, '')
                 end

@@ -65,26 +65,6 @@ return {
             coords = vec3(1656.21, 2578.69, 45.61),
             heading = 178.29,
         },
-        {
-            coords = vec3(1691.363, 2542.296, 45.632),
-            heading = 268.936,
-        },
-        {
-            coords = vec3(1691.179, 2545.784, 45.631),
-            heading = 268.936,
-        },
-        {
-            coords = vec3(1691.791, 2549.076, 45.631),
-            heading = 268.936,
-        },
-        {
-            coords = vec3(1692.100, 2552.498, 45.631),
-            heading = 268.936,
-        },
-        {
-            coords = vec3(1691.906, 2555.127, 45.631),
-            heading = 268.936,
-        },
     },
 
     [STRUCT_GUARDS] = {
@@ -813,17 +793,17 @@ return {
             access = INTERACT_ACCESS_TYPES.PRISONER_ONLY
         },
         {
-            coords = vec3(1775.73, 2553.60, 45.556),
+            coords = vec3(1738.12, 2589.1, 45.42),
             type = INTERACT_TYPES.CANTEEN,
             zone = {
                 size = vec3(1, 1, 1),
                 icon = "fa-solid fa-paper-plane",
                 label = 'Canteen',
-                distance = 3
+                distance = 5
             },
             npc = {
-                coords = vec3(1775.73, 2553.60, 45.556),
-                heading = 87.87,
+                coords = vec3(1738.12, 2589.1, 45.42),
+                heading = 182.0,
                 model = 's_m_m_armoured_01',
                 scenario = {
                     name = 'WORLD_HUMAN_CLIPBOARD',
@@ -1008,15 +988,16 @@ return {
             access = INTERACT_ACCESS_TYPES.PRISONER_ONLY
         },
         {
-            coords = vec3(1845.988, 2587.849, 45.672),
+            coords = vec3(1838.02, 2581.45, 45.89),
             type = INTERACT_TYPES.LOBBY,
             zone = {
                 size = vec3(1, 1, 1),
-                icon = "fa-solid fa-paper-plane"
+                icon = "fa-solid fa-paper-plane",
+                distance = 5.0
             },
             npc = {
-                coords = vec3(1845.988, 2587.849, 45.672),
-                heading = 222.48,
+                coords = vec3(1838.02, 2581.45, 45.89),
+                heading = 271.55,
                 model = 's_m_m_prisguard_01'
             },
             blip = {

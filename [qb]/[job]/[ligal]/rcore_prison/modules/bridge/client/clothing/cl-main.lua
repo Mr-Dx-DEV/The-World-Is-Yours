@@ -6,6 +6,8 @@ local ActionTypesList = {
     [HEARTBEAT_EVENTS.PRISONER_RELEASED] = PRISON_OUTFITS.CITIZEN,
 }
 
+local applyAppearanceTimeout = 1000
+
 NetworkService.EventListener('heartbeat', function(eventType, data)
     local actionType = ActionTypesList[eventType]
 
@@ -13,12 +15,22 @@ NetworkService.EventListener('heartbeat', function(eventType, data)
         return
     end
 
+    if isResourceLoaded('vms_clothestore') and isResourceLoaded('vms_charcreator') then
+        applyAppearanceTimeout = 3000
+    end
+
     if eventType == HEARTBEAT_EVENTS.PRISONER_LOADED then
-        SetTimeout(1000, function()
+        SetTimeout(applyAppearanceTimeout, function()
             OutfitService.SetAppearance(actionType)
         end)
-    else
-        OutfitService.SetAppearance(actionType)
+    else    
+        if isResourceLoaded('vms_clothestore') and isResourceLoaded('vms_charcreator') then
+            SetTimeout(applyAppearanceTimeout, function()
+                OutfitService.SetAppearance(actionType)
+            end)
+        else
+            OutfitService.SetAppearance(actionType)
+        end
     end
 end)
 
@@ -30,6 +42,14 @@ OutfitService.GetOufitByPlayerModel = function()
     local isMale = 'mp_m_freemode_01' == model
     local gender = isMale and 'Male' or 'Female'
     
+
+    -- CODEM - Load qb-clothing outfit when using QBCore
+    
+    if Bridge.Framework == Framework.QBCore and Bridge.Clothing == Clothing.CODEM then
+        Bridge.Clothing = Clothing.QB 
+        dbg.debugClothing('Server is running qb-core with codem-appearance, loading qb-clothing configuration.')
+    end
+
     if Bridge.Framework == Framework.QBOX and Bridge.Clothing == Clothing.IAPPEARANCE then
         Bridge.Clothing = Clothing.QB 
         dbg.debugClothing('Server is running QBX-Core with Illenium-appearance, loading qb-clothing configuration.')
@@ -42,16 +62,40 @@ OutfitService.GetOufitByPlayerModel = function()
 
     -- 17mov_CharacterSystem [12.08.2024] not any API exists for this resource.
 
-    if Bridge.Framework == Framework.QBCore and isResourceLoaded('17mov_CharacterSystem') then
+    if Bridge.Framework == Framework.QBCore and isResourceLoaded(Clothing.MOV) or Bridge.Clothing == Clothing.MOV and Bridge.Framework == Framework.QBCore then
         Bridge.Clothing = Clothing.QB
-        dbg.debugClothing('Server is running ESX with 17mov_CharacterSystem, loading qb-clothing configuration.')
+        dbg.debugClothing('Server is running QB with 17mov_CharacterSystem, loading qb-clothing configuration.')
     end
-    
-    if Bridge.Framework == Framework.ESX and isResourceLoaded('17mov_CharacterSystem') then
+
+    if Bridge.Framework == Framework.ESX and isResourceLoaded(Clothing.MOV) or Bridge.Clothing == Clothing.MOV and Bridge.Framework == Framework.ESX then
         Bridge.Clothing = Clothing.ESX
         dbg.debugClothing('Server is running ESX with 17mov_CharacterSystem, loading esx-skin configuration.')
     end
+
+    -- RCORE clothing emulation [18.08.2024]
     
+    if Bridge.Framework == Framework.ESX and isResourceLoaded(Clothing.RCORE) then
+        Bridge.Clothing = Clothing.ESX
+        dbg.debugClothing('Server is running ESX with rcore_clothing, loading esx-skin configuration.')
+    end
+
+    if Bridge.Framework == Framework.QBCore and isResourceLoaded(Clothing.RCORE) then
+        Bridge.Clothing = Clothing.QB
+        dbg.debugClothing('Server is running ESX with rcore_clothing, loading qb-clothing configuration.')
+    end
+
+    -- vms_charcreator emulation [22.08.2024] - not any API exists for this resource.
+
+    if Bridge.Framework == Framework.ESX and isResourceLoaded('vms_clothestore') and isResourceLoaded('vms_charcreator') then
+        Bridge.Clothing = Clothing.ESX
+        dbg.debugClothing('Server is running ESX with vms_clothestore, loading esx-skin configuration.')
+    end
+
+    if Bridge.Framework == Framework.QBCore and isResourceLoaded('vms_clothestore') and isResourceLoaded('vms_charcreator') then
+        Bridge.Clothing = Clothing.QB
+        dbg.debugClothing('Server is running QB with vms_clothestore, loading qb-clothing configuration.')
+    end
+
     local outfit = OUTFITS[Bridge.Clothing]
     
     if not outfit then
@@ -109,7 +153,7 @@ OutfitService.GetOufitByPlayerModel = function()
 end
 
 OutfitService.RestorePlayerOutfit = function()
-    if Bridge.Clothing == Clothing.ESX then
+    if (Bridge.Clothing == Clothing.MOV and Bridge.Framework == Framework.ESX) or Bridge.Clothing == Clothing.ESX then
         Framework.object.TriggerServerCallback(Config.FrameworkEvents['esx_skin:getPlayerSkin'], function(skin)
             repeat
                 Wait(1000)
@@ -119,7 +163,9 @@ OutfitService.RestorePlayerOutfit = function()
         end)
     elseif Bridge.Framework == Framework.QBOX and Bridge.Clothing == Clothing.IAPPEARANCE then -- QBOX which use Illenium-appearance with qb-clothing compatibility.
         ExecuteCommand('reloadskin')
-    elseif Bridge.Clothing == Clothing.QB then
+    elseif (Bridge.Clothing == Clothing.MOV and Bridge.Framework == Framework.QBCore) or Bridge.Clothing == Clothing.QB then
+        ExecuteCommand('reloadped')
+        ExecuteCommand('reloadskin')
         TriggerServerEvent("qb-clothes:loadPlayerSkin")
         TriggerServerEvent("qb-clothing:loadPlayerSkin")
     elseif Clothing.TGIANN and Bridge.Clothing == Clothing.TGIANN then
@@ -135,6 +181,10 @@ OutfitService.RestorePlayerOutfit = function()
     elseif Clothing.FAPPEARANCE and Bridge.Clothing == Clothing.FAPPEARANCE then
         ExecuteCommand('reloadskin')
         ExecuteCommand('reloadped')
+    elseif Clothing.RCORE and Bridge.Clothing == Clothing.RCORE then
+        ExecuteCommand('reloadskin')
+    elseif Clothing.CODEM and Bridge.Clothing == Clothing.CODEM then
+        TriggerEvent("codem-appearance:reloadSkin")
     else
         dbg.critical('Clothing resource not found: %s not going to restore player outfit!', Bridge.Clothing)
     end
@@ -153,7 +203,11 @@ OutfitService.SetAppearance = function(actionType)
     end
 
     dbg.debugClothing('Setting outfit via resource: %s >> with type: %s (%s)', Bridge.Clothing, actionType, Bridge.Framework)
-    
+
+    if Clothing.MOV and isResourceLoaded(Clothing.MOV) and actionType == PRISON_OUTFITS.CITIZEN and Config.Outfits.RestorePlayerOutfitOnRelease then
+        return OutfitService.RestorePlayerOutfit()
+    end
+
     if Clothing.CODEM and isResourceLoaded(Clothing.CODEM) and actionType == PRISON_OUTFITS.CITIZEN and Config.Outfits.RestorePlayerOutfitOnRelease then
         return TriggerEvent("codem-appearance:reloadSkin")
     end
@@ -171,6 +225,10 @@ OutfitService.SetAppearance = function(actionType)
     end
 
     if Clothing.IAPPEARANCE and isResourceLoaded(Clothing.IAPPEARANCE) and actionType == PRISON_OUTFITS.CITIZEN and Config.Outfits.RestorePlayerOutfitOnRelease then
+        return ExecuteCommand('reloadskin')
+    end
+
+    if Clothing.RCORE and isResourceLoaded(Clothing.RCORE) and actionType == PRISON_OUTFITS.CITIZEN and Config.Outfits.RestorePlayerOutfitOnRelease then
         return ExecuteCommand('reloadskin')
     end
 
@@ -201,6 +259,8 @@ OutfitService.SetAppearance = function(actionType)
 
             TriggerEvent('skinchanger:loadClothes', skin, currentOutfit)
         end)
+    elseif Bridge.Clothing == Clothing.CODEM then
+        TriggerEvent('skinchanger:loadPedSkin', outfit, PlayerPedId())
     elseif Bridge.Clothing == Clothing.ONEX then
         if not outfit then
             return dbg.critical('Outfit not found when using onex-creation clothing.')
@@ -209,6 +269,10 @@ OutfitService.SetAppearance = function(actionType)
         TriggerEvent('onex-creation:client:loadCustomOutfit', outfit)
     elseif Bridge.Clothing == Clothing.QB then
         if not outfit and Config.Outfits.RestorePlayerOutfitOnRelease then
+            return OutfitService.RestorePlayerOutfit()
+        end
+
+        if type(outfit) == nil or outfit == nil then
             return OutfitService.RestorePlayerOutfit()
         end
 

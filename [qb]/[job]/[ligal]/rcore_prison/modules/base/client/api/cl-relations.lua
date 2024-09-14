@@ -21,7 +21,7 @@ CreateThread(function()
             SetRelationGroup(COPAMNION_FLAG_NEUTRAL)
         end
     end
-end)
+end, "cl-relations code name: Phoenix")
 
 function SetRelationGroup(targetKey)
     SetRelationshipBetweenGroups(targetKey, GetHashKey(COMPANION_COP_KEY), GetHashKey(COMPANION_PLAYER_KEY))

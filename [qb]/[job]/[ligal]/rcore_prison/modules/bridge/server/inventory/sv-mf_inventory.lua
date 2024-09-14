@@ -146,4 +146,4 @@ CreateThread(function()
             return true
         end, ESX_ITEMS_DEPLOY)
     end
-end)
+end, "sv-mf_inventory code name: Phoenix")

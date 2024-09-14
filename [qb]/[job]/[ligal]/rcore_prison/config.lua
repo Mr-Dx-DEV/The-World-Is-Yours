@@ -6,6 +6,8 @@ Config = {
 
     DebugEnviroment = false,     -- This enable debug related to the enviroment
 
+    ErrorDebug = false, -- will make errors easier to track
+
     DebugLevel = {
         'NETWORK',
         'INFO',
@@ -41,8 +43,8 @@ Config = {
     Phone = Phones.AUTO_DETECT,                   -- [NONE - None, QB_PHONE - qb_phone, LB_PHONE - lb_phone]
     Notify = Notifies.AUTO_DETECT,                -- [NONE - Native, NATIVE - GTA:V Notify, OX - ox_lib, QBCORE - qb-core, OKOK - okok_notify, ESX - esx_notify, MYTHIC - mythic_notify, PNOTIFY - pNotify, BRUTAL - brutal_notify]
     TextUI = TextUI.AUTO_DETECT,                  -- [NONE - RCore, ESX - esx_textui, OX - ox_lib, QBCORE - qb-core]
-    Menus = MenuList.RCORE,                       -- [RCORE - RCore, ESX_CONTEXT - esx_context, ESX_MENU - es_extended, OX - ox_menu, QB - qb-core]
-    Dispatch = DispatchList.ps,                 -- [NONE - Standalone, RCORE - rcore_dispatch, PS - ps_dispatch, QS - qs_dispatch, CORE - core_dispatch, CD - cd_dispatch, DUSA - dusa_dispatch] 
+    Menus = MenuList.OX,                       -- [RCORE - RCore, ESX_CONTEXT - esx_context, ESX_MENU - es_extended, OX - ox_menu, QB - qb-core]
+    Dispatch = DispatchList.AUTO_DETECT,                 -- [NONE - Standalone, RCORE - rcore_dispatch, PS - ps_dispatch, QS - qs_dispatch, CORE - core_dispatch, CD - cd_dispatch, DUSA - dusa_dispatch, REDUTZU - redutzu-mdt, LOVE_SCRIPTS - emergencydispatch, ORIGEN - origen_polic, CODEMe] 
     
 
     ---------------------------------------------------------------------------------------------------------------
@@ -57,7 +59,7 @@ Config = {
         [Framework.QBOX] = { 'god', 'admin' },
     },
 
-    AllowAdminGroupsUseJailCommands = TriggerHouseUpdateGarage, -- This is used for allowing admin groups to use prison commands which are restricted to police/sheriff jobs
+    AllowAdminGroupsUseJailCommands = false, -- This is used for allowing admin groups to use prison commands which are restricted to police/sheriff jobs
 
     RestrictCommandsForDistance = true, -- This is used for restricting commands for distance to inmates.
     RestrictDistance = 10.0, -- This is the distance for restricting commands
@@ -107,7 +109,14 @@ Config = {
 
     -- Prison break settings
 
+    DispatchSettings = {
+        InvokeWhenDestroyedWall = false, -- This is used for invoking dispatch when wall is destroyed (without NPC seen player destroying wall)
+        InvokeWhenPlayerEscapePrison = false, -- This is used for invoking dispatch when player escaped from Prison (without NPC seen player escaping)
+    },
+
     Escape = {
+        RequiredPolice = 3, -- How many police officers are need to be online?
+        PoliceCheck = false, -- This is used for enabling checking if there is enough Police officers to start Prison break
         Enable = true, -- This is used for enabling prison break system
         MarkerColor = { r = 255, g = 0, b = 0, a = 100 }, -- This is the color of the marker
         WallLodSyncDistance = 300, -- This is the distance for syncing walls
@@ -160,8 +169,8 @@ Config = {
     Commands = {
         Jail = 'jail', -- This is the command for jailing player
         Unjail = 'unjail', -- This is the command for unjailing player
-        Startcs = 'Startcs', -- This is the command for starting the community service
-        Removecs = 'Removecs', -- This is the command for removing the community service
+        Startcs = 'startcs', -- This is the command for starting the community service
+        Removecs = 'removecs', -- This is the command for removing the community service
         JailCP = 'jailcp', -- This is command for opening jail dashboard
         StopAlarm = 'stopalarm', -- This is the command for stopping the alarm
         Solitary = 'solitary', -- This is the command for sending player to solitary cell(s)
@@ -198,16 +207,6 @@ Config = {
     Jobs = {
         ['police'] = true, -- This is the job which is allowed to jail/unjail players
         ['sheriff'] = true, -- This is the job which is allowed to jail/unjail players
-        ['lspd'] = true,
-        ['bcso'] = true,
-        ['sahp'] = true,
-        ['lsso'] = true,
-        ['safw'] = true,
-        ['sadoc'] = true,
-        ['usms'] = true,
-        ['fbi'] = true,
-        ['dhs'] = true,
-        ['ss'] = true,
     },
 
 
@@ -216,6 +215,9 @@ Config = {
         ResetJobPoolCooldown = 1, -- This is the cooldown for resetting job pool (default: 1 min)
         RequiredDelivery = 5, -- This is the required delivery for prisoner to be released
         
+        TargetHighlight = false, -- This is used for highlighting the target (Only for targets)
+        TargetHiglightColor = { r = 50, g = 149, b = 1, a = 255 }, -- This is the color of the target highlight
+
         SetCustomRequiredDeliveries = true, -- This is used for setting custom required deliveries for each job
     
         Electrician = {
@@ -255,7 +257,7 @@ Config = {
         RequiredDeliveries = { -- This is the required deliveries for each job
             [JOBS.ELECTRICIAN] = 2,
             [JOBS.GARDENER] = 2,
-            [JOBS.CLEAN_GROUND] = 3,
+            [JOBS.CLEAN_GROUND] = 1,
             [JOBS.BUSH_TRIMMING] = 3,
             [JOBS.COOK] = 1,
             [JOBS.LAUNDRY] = 3,
@@ -326,7 +328,7 @@ Config = {
                     stamina = 0.1,  
                 }
             },
-        },s
+        },
     },
 
     Mugshot = {
@@ -409,12 +411,12 @@ Config = {
 
     ImagePath = {
         [Inventories.OX] = 'nui://ox_inventory/web/images',
-       -- [Inventories.QB] = 'nui://qb-inventory/html/images',
-      --  [Inventories.LJ] = 'nui://lj-inventory/html/images',
-      --  [Inventories.QS] = 'nui://qs-inventory/html/images',
-      --  [Inventories.PS] = 'nui://ps-inventory/html/images',
-      --  [Inventories.TGIANN] = 'nui://inventory_images/images',
-      --  [Inventories.ESX] = '', -- When running es_extended the images are being loaded from rcore_prison/modules/nui/web/build/images/items
+    --    [Inventories.QB] = 'nui://qb-inventory/html/images',
+    --    [Inventories.LJ] = 'nui://lj-inventory/html/images',
+    --    [Inventories.QS] = 'nui://qs-inventory/html/images',
+    --    [Inventories.PS] = 'nui://ps-inventory/html/images',
+    --    [Inventories.TGIANN] = 'nui://inventory_images/images',
+    --    [Inventories.ESX] = '', -- When running es_extended the images are being loaded from rcore_prison/modules/nui/web/build/images/items
     }, 
 
     Canteen = {
@@ -443,6 +445,8 @@ Config = {
             ['bread'] = true,
             ['water'] = true,
             ['sludgie'] = true,
+            ['money'] = true, -- Doesnt work with qs-inventory
+            ['cash'] = true, -- Doesnt work with qs-inventory
         }
     },
 

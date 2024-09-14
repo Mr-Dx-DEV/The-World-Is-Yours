@@ -5,6 +5,10 @@ RegisterNetEvent('rcore_prison:server:JailPlayer', function(target, jailTime)
     JailPlayer(source, target, jailTime)
 end)
 
+RegisterNetEvent('rcore_prison:server:StartComs', function(target, jailTime)
+    JailPlayer(source, target, jailTime, 'rcore', 'coms')
+end)
+
 RegisterNetEvent('rcore_prison:server:JailPlayerByNPC', function(target, netId)
     JailPlayerByNPC(target, netId)
 end)
@@ -84,6 +88,22 @@ function JailPlayer(source, target, jailTime, resourceName, jailType)
         Framework.sendNotification(playerId, _U('GENERAL.YOU_NEED_TO_BE_IN_JOB'), 'error')
         dbg.info("Cannot perform this command - you are not job member!", playerId)
         return
+    end
+
+    if Config.RestrictCommandsForDistance and resourceName ~= 'qbcore' then
+        local mePed = GetPlayerPed(playerId)
+        local targetPed = GetPlayerPed(target)
+
+        local meCoords = GetEntityCoords(mePed)
+        local targetCoords = GetEntityCoords(targetPed)
+
+        local distance = #(meCoords - targetCoords)
+
+        if distance > Config.RestrictDistance then
+            Framework.sendNotification(playerId, _U('COMMANDS_MESSAGES.TOO_FAR_AWAY'), 'error')
+            dbg.debug('Failed to jail player since they are not closest to each other!')
+            return
+        end
     end
 
     if not jailType then

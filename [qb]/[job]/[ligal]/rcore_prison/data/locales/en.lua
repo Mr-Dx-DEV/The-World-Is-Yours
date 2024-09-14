@@ -84,6 +84,8 @@ Locales['en'] = {
     },
 
     PRISON_BREAK = {
+        NOT_ENOUGH_POLICE = 'Sorry but its not possible to Escape at current time!',
+
         INTERACT_CUTTERS = 'Use cutters',
         INTERACT_PLACE_WOODEN_BAR = 'Place wooden barricade',
         INTERACT_REPAIR_WALL = 'Repair wall',
@@ -267,6 +269,8 @@ Locales['en'] = {
         ARROW_LEFT = 'Move Left',
         ARROW_RIGHT = 'Move Right',
     },
+
+    RELEASE_COMS_MESSAGE = 'You have been released from community service!',
 
     COMS_MENU = {
         TITLE = 'Community service',

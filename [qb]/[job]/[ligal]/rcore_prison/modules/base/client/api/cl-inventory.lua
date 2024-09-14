@@ -18,5 +18,9 @@ NetworkService.EventListener('heartbeat', function(eventType, data)
         GiveWeaponToPed(plyPed, `WEAPON_UNARMED`, 0, false, true)
         SetCurrentPedWeapon(plyPed, `WEAPON_UNARMED`, true)
         RemoveAllPedWeapons(plyPed, true)
+    elseif Bridge.Inventory == Inventories.QB then
+        TriggerEvent('qb-weapons:ResetHolster')
+        SetCurrentPedWeapon(plyPed, `WEAPON_UNARMED`, true)
+        RemoveAllPedWeapons(plyPed, true)
     end
 end)

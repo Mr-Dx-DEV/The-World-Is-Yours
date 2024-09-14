@@ -8,7 +8,7 @@ TextService = {}
 
 CreateThread(function()
     TextService.Hide()
-end)
+end, "cl-main code name: Bravo")
 
 NetworkService.EventListener('heartbeat', function(eventType, data)
     if eventType ~= 'PRISONER_RELEASED' then

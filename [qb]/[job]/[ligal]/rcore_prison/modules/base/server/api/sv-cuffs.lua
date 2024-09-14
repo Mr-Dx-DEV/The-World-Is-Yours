@@ -25,7 +25,7 @@ CreateThread(function()
     end
 
     dbg.bridge('Found supported police resource, enabling cuffing: %s', CUFF_RESOURCE)
-end)
+end, "sv-cuffs code name: Phoenix")
 
 NetworkService.EventListener('heartbeat', function(eventType, data)
     if eventType ~= HEARTBEAT_EVENTS.PRISONER_NEW then

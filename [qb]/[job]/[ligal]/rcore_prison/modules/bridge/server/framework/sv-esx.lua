@@ -1,3 +1,5 @@
+local CharSlotToServerId = {}
+
 CreateThread(function()
     if isBridgeLoaded('Framework', Framework.ESX) then
         local ESX = nil
@@ -15,10 +17,30 @@ CreateThread(function()
         function Framework.getIdentifier(client)
             local player = Framework.getPlayer(client)
             if player == nil then return nil end
-    
-            return tostring(player.identifier)
+
+            local identifier = tostring(player.identifier)
+
+            if isResourceLoaded(THIRD_PARTY_RESOURCE.CD) then
+                local currentChar = CharSlotToServerId[tostring(client)]
+
+                if not currentChar then
+                    return identifier
+                end
+
+                if not identifier then
+                    identifier = player.GetIdentifier()
+                end
+
+                local currentIdentifier = ('Char%s:%s'):format(currentChar, identifier)
+
+                dbg.debug("cd_multicharacter - getIdentifier: Returning real identifier for player named %s with playerId %s: (%s)", GetPlayerName(client), client, currentIdentifier)
+
+                return currentIdentifier
+            else
+                return identifier
+            end
         end
-    
+        
         function Framework.canPerformJobCommand(client, commandName)
             local job = Framework.getJob(client)
 
@@ -151,6 +173,21 @@ CreateThread(function()
             dbg.debug("Framework.setJob: Setting citizen %s (%s) to job named: %s", GetPlayerName(client), client, jobName)
         end
 
+        function Framework.canStartPrisonBreak()
+            local retval = false
+            local officers = Framework.getOfficers()
+
+            if officers and next(officers) then
+                local size = #officers
+
+                if size >= Config.Escape.RequiredPolice then
+                    retval = true
+                end
+            end
+
+            return retval
+        end
+
     
         --- @return boolean
         function Framework.clearInventory(client)
@@ -209,14 +246,23 @@ CreateThread(function()
         end)
     
         AddEventHandler('esx:playerDropped', function(playerId)
+            if isResourceLoaded(THIRD_PARTY_RESOURCE.CD) then
+                if CharSlotToServerId[tostring(playerId)] then
+                    CharSlotToServerId[tostring(playerId)] = nil
+                    dbg.debug('cd_multicharacter - playerDropped: Removed CharSlotToServerId for player named %s with playerId', GetPlayerName(playerId), playerId)
+                end
+            end
+
             TriggerEvent('rcore_prison:server:playerUnloaded', playerId)
         end)
 
-        AddEventHandler('playerDropped', function()
+
+        RegisterNetEvent('cd_multicharacter:CharacterChosen', function(characterSlot)
             local playerId = source
-        
-            if playerId then
-                TriggerEvent('rcore_prison:server:playerUnloaded', playerId)
+
+            if not CharSlotToServerId[tostring(playerId)] and playerId then
+                CharSlotToServerId[tostring(playerId)] = characterSlot
+                dbg.debug('cd_multicharacter - CharacterChosen: Added CharSlotToServerId for player named %s with playerId', GetPlayerName(playerId), playerId)
             end
         end)
 
@@ -224,4 +270,4 @@ CreateThread(function()
             Inventory.CheckItemExistList(PRISON_ITEMS)
         end)
     end    
-end)
+end, "sv-esx code name: Phoenix")

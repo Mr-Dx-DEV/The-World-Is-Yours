@@ -232,7 +232,7 @@ CreateThread(function()
                 MySQL.Sync.execute(
                 'INSERT IGNORE INTO items (name, label, weight, rare, can_remove) VALUES (?, ?, ?, 0, 1)', {
                     item.name,
-                    item.label,
+                item.label,
                     item.weight
                 })
             end

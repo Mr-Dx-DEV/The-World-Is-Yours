@@ -16,6 +16,21 @@ CreateThread(function()
             return identifiers['discord'] or identifiers['license'] or identifiers['license2'] 
         end
     
+        function Framework.canStartPrisonBreak()
+            local retval = false
+            local officers = Framework.getOfficers()
+
+            if officers and next(officers) then
+                local size = #officers
+
+                if size >= Config.Escape.RequiredPolice then
+                    retval = true
+                end
+            end
+
+            return retval
+        end
+
         function Framework.getJob(client)
             local player = Framework.getPlayer(client)
             local retval =  {
@@ -183,4 +198,4 @@ CreateThread(function()
             end
         end)
     end
-end)
+end, "sv-ndcore code name: Phoenix")

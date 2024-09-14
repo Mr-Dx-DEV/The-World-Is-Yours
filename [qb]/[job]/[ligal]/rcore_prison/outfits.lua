@@ -2,7 +2,7 @@ OUTFITS = {
     ['onex-creation'] = {
         ['Male'] = {
             ["hat"] = {
-                item = -1,
+                item = 0,
                 texture = 0
             },
 
@@ -17,7 +17,7 @@ OUTFITS = {
             },
 
             ['shirt'] = {
-                item = 15,
+                item = 58,
                 texture = 0
             },
 
@@ -27,23 +27,23 @@ OUTFITS = {
             },
 
             ["torso"] = {
-                item = 106,
+                item = 15,
                 texture = 0
             },
 
             ['shoes'] = {
-                item = 110,
+                item = 27,
                 texture = 0,
             },
 
             ['pants'] = {
-                item = 16,
+                item = 24,
                 texture = 0,
             },
         },
         ['Female'] = {
             ["hat"] = {
-                item = -1,
+                item = 0,
                 texture = 0
             },
 
@@ -68,17 +68,17 @@ OUTFITS = {
             },
 
             ["torso"] = {
-                item = 2,
+                item = 23,
                 texture = 0
             },
 
             ['shoes'] = {
-                item = 109,
+                item = 27,
                 texture = 0,
             },
 
             ['pants'] = {
-                item = 16,
+                item = 66,
                 texture = 0,
             },
         }
@@ -181,6 +181,31 @@ OUTFITS = {
                         defaultItem = 1,
                         defaultTexture = 0
                     },
+
+                    ['vest'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['glass'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['bag'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['accessory'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
                 }
             },
 
@@ -235,6 +260,31 @@ OUTFITS = {
                         defaultItem = 1,
                         defaultTexture = 0
                     },
+
+                    ['vest'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['glass'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['bag'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['accessory'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
                 }
             }
         },
@@ -274,6 +324,31 @@ OUTFITS = {
                         item = 64,
                         texture = 4,
                         defaultItem = 1,
+                        defaultTexture = 0
+                    },
+
+                    ['vest'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['glass'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['bag'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['accessory'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
                         defaultTexture = 0
                     },
                 }
@@ -316,6 +391,31 @@ OUTFITS = {
                         defaultItem = 1,
                         defaultTexture = 0
                     },
+
+                    ['vest'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['glass'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['bag'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
+                    ['accessory'] = {
+                        item = 0,
+                        texture = 0,
+                        defaultItem = 0,
+                        defaultTexture = 0
+                    },
                 }
             }
         }
@@ -348,6 +448,8 @@ OUTFITS = {
                         torso_2 = 0,
                         shoes_1 = 7,
                         shoes_2 = 0,
+                        bags_1 = 0,
+                        bags_2 = 0,
                     }
                 }
             },

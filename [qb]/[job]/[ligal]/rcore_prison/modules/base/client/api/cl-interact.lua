@@ -36,7 +36,6 @@ CreateThread(function()
             local zoneCoords = place.coords
             local zoneType = place.type
 
-
             local zone = place.zone
             local zoneSize = zone and place.zone.size or vec3(1, 1, 1)
 
@@ -45,7 +44,7 @@ CreateThread(function()
                 return
             end
 
-            if place.booth and GetBridgeStateByType('Phone') then
+            if place.booth and Bridge.Phone == 'auto_detect' then
                 dbg.debug('Since failed to find supported phone for booths, skipping %s', zoneType)
                 goto skip
             end
@@ -67,15 +66,6 @@ CreateThread(function()
             local zoneIcon = zone.icon
             local zoneAccessType = place.access or INTERACT_ACCESS_TYPES.PRISONER_ONLY
 
-            if place.prop then
-                local prop = place.prop
-
-                Entity.SpawnPropAtCoords({
-                    model = prop.model,
-                    coords = prop.coords,
-                    heading = prop.heading
-                })
-            end
 
             if place.npc then
                 Interact.LoadNPC(place, id)
@@ -116,7 +106,40 @@ CreateThread(function()
             :: skip ::
         end
     end
-end)
+end, "cl-interact code name: Phoenix")
+
+CreateThread(function()
+    while true do
+        Wait(1000)
+
+        local ped = PlayerPedId()
+        local pos = GetEntityCoords(ped)
+
+        for id, place in pairs(SH.data.interaction) do
+            local zoneCoords = place.coords
+            local prop = place.prop
+
+            local dist = #(pos - zoneCoords)
+            
+            if dist < 150 and prop then
+                if not place.entityProp then
+                    place.entityProp = Entity.SpawnPropAtCoords({
+                        model = prop.model,
+                        coords = prop.coords,
+                        heading = prop.heading
+                    })
+                    dbg.debug('LOD - Spawning entity named %s', GetEntityArchetypeName(place.entityProp))
+                end
+            else
+                if place.entityProp then
+                    DeleteEntity(place.entityProp)
+                    place.entityProp = nil
+                    dbg.debug('LOD - Despawning entity named %s', GetEntityArchetypeName(place.entityProp))
+                end
+            end
+        end
+    end
+end, "cl-interact code name: Beta")
 
 
 Interact.EnterZone = function(id, place)
@@ -168,15 +191,6 @@ Interact.HandleZone = function()
             elseif #(pedCoords - zoneCoords) > (zoneDistance) and place.entered then
                 SH.data.interaction[id].entered = false
                 Interact.LeaveZone(id, place)
-            end
-
-            if place.prop and not place.propLoaded then
-                place.propLoaded = true
-                Entity.SpawnPropAtCoords({
-                    model = place.prop.model,
-                    coords = place.prop.coords,
-                    heading = place.prop.heading,
-                })
             end
 
             if place.npc and not place.npcLoaded then

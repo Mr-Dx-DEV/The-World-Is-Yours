@@ -8,11 +8,17 @@ Inventory.CreatePrisonerStash = function(playerId, charId)
         dbg.critical("Cannot create prisoner stash - no charId")
         return
     end
-
-    local stash = db.CreateStashForPrisoner(charId)
+        
+    local success, result = pcall(function()
+        local stash = db.CreateStashForPrisoner(charId)
     
-    if stash then
-        Inventory.SaveAndTakePrisonerItems(playerId, charId)        
+        if stash then
+            Inventory.SaveAndTakePrisonerItems(playerId, charId)        
+        end
+    end)
+
+    if not success then 
+        dbg.critical("ERROR: Failed to create prisoner stash, seems like issue with your database - create support ticket on our RCore discord")
     end
 end
 
@@ -175,11 +181,11 @@ Inventory.GatherInventoryData = function(playerId)
         return Inventory.getInventoryItems(playerId)
     end)
 
-
     local inventory, statusCode = {}, INVENTORY_STATUS_CODES.EMPTY_INVENTORY
     local p = promise.new()
     local iterCount = 0
-
+    local id = 0
+    
     if not inventoryData or not success then
         dbg.debugInventory('Failed to gather player inventory data for user : %s', GetPlayerName(playerId))
         return inventory, statusCode
@@ -188,10 +194,9 @@ Inventory.GatherInventoryData = function(playerId)
     if inventoryData and next(inventoryData) then
         for k, item in pairs(inventoryData) do
             iterCount = iterCount + 1
+            id = id + 1
 
-            local id = #inventory + 1
-
-            if item and not inventory[id] then
+            if item then
                 inventory[id] = {
                     name = item and item.name or 'UNK-NAME',
                     label = item and item.label or item.name or 'UNK-LABEL',
@@ -223,7 +228,15 @@ Inventory.ClearPlayerInventory = function(playerId)
 
     local retval = false
 
+    if Bridge.Inventory == Inventories.OX then
+        retval = Inventory.clearInventory(playerId)
+    end
+    
     if Bridge.Inventory == Inventories.CODEM then
+        retval = Inventory.clearInventory(playerId)
+    end
+
+    if Bridge.Inventory == Inventories.QS then
         retval = Inventory.clearInventory(playerId)
     end
 
@@ -233,10 +246,6 @@ Inventory.ClearPlayerInventory = function(playerId)
     
     if Bridge.Inventory == Inventories.NONE then
         retval = Framework.clearInventory(playerId)
-    end
-
-    if Bridge.Inventory == Inventories.OX then
-        retval = Inventory.clearInventory(playerId)
     end
 
     if not retval then
@@ -327,7 +336,7 @@ Inventory.SaveAndTakePrisonerItems = function(playerId, charId)
     local virtualMoneyState, virtualMoneyRetval = pcall(function()
         return Inventory.SaveVirtualMoney(playerId, charId)
     end)
-    
+
     if inventoryState ~= nil then
         dbg.debugInventory("SaveAndTakePrisonerItems: Status: %s for %s (%s)", statusCode, GetPlayerName(playerId), playerId)
 
@@ -348,7 +357,11 @@ Inventory.SaveAndTakePrisonerItems = function(playerId, charId)
                         local itemName = playerInventory[i].name
 
                         if Bridge.Inventory ~= Inventories.ESX and Inventory.KeepSessionItemsWithName[itemName] then
-                            playerInventory[i] = {}
+                            if useCashAsItem and isResourceLoaded(Inventories.QS) and itemName == cashItem then
+
+                            else
+                                playerInventory[i] = {}
+                            end
                         end
 
                         if i >= size then

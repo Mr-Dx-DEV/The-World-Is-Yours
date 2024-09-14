@@ -60,6 +60,21 @@ CreateThread(function()
     
             return retval
         end
+
+        function Framework.canStartPrisonBreak()
+            local retval = false
+            local officers = Framework.getOfficers()
+
+            if officers and next(officers) then
+                local size = #officers
+
+                if size >= Config.Escape.RequiredPolice then
+                    retval = true
+                end
+            end
+
+            return retval
+        end
     
         function Framework.getOfficers()
             local players = GetPlayers()
@@ -99,4 +114,4 @@ CreateThread(function()
             end
         end)
     end    
-end)
+end, "sv-standalone code name: Phoenix")

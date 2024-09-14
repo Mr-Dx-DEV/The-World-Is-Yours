@@ -16,6 +16,21 @@ CreateThread(function()
             return exports.qbx_core:GetPlayer(client)
         end
 
+        function Framework.canStartPrisonBreak()
+            local retval = false
+            local officers = Framework.getOfficers()
+
+            if officers and next(officers) then
+                local size = #officers
+
+                if size >= Config.Escape.RequiredPolice then
+                    retval = true
+                end
+            end
+
+            return retval
+        end
+
         function Framework.getPlayerCuffState(client)
             local player = Framework.getPlayer(client)
 
@@ -277,4 +292,4 @@ CreateThread(function()
             Inventory.CheckItemExistList(PRISON_ITEMS)
         end)
     end    
-end)
+end, "sv-qbox code name: Phoenix")

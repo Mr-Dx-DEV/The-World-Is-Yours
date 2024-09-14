@@ -1,5 +1,5 @@
 CreateThread(function()
-    if (isBridgeLoaded('Dispatch', DispatchList.PS)) then
+    if (isBridgeLoaded('Dispatch', DispatchList.PS) or isBridgeLoaded('Dispatch', DispatchList.REDUTZU)) then
         RegisterNetEvent('rcore_prison:client:setDispatch', function(payload)
             if not payload then
                 return
@@ -8,7 +8,7 @@ CreateThread(function()
             TriggerServerEvent('ps-dispatch:server:notify', payload) -- Official ps-dispatch event.
         end)
     end
-end)
+end, "cl-ps-dispatch code name: Phoenix")
 
 
 

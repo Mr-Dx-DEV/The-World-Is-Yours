@@ -78,4 +78,4 @@ CreateThread(function()
             return Citizen.Await(p)
         end
     end
-end)
+end, "sv-standalone code name: Phoenix")
