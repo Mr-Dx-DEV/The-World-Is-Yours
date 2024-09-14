@@ -1,8 +1,8 @@
 Config = {
-  UsingTarget         = false,     --## If you are using a target system then set this to true otherwise set to false and use my dirk-shn where possible ( not possible with every script ). 
+  UsingTarget         = true,     --## If you are using a target system then set this to true otherwise set to false and use my dirk-shn where possible ( not possible with every script ). 
   MenuMouseKey        = "LMENU",  --## Used to activate your mouse when close to my menu system prompts
   --## ITEM AUTO ADD
-  AutoAddItems        = false,     --## QBCore will automatically add these to the shared.lua if using an upto date version. ESX will add items to the table you configure below
+  AutoAddItems        = true,     --## QBCore will automatically add these to the shared.lua if using an upto date version. ESX will add items to the table you configure below
   ItemsDatabaseName   = "items",  --## ESX Users this will usually just be items its for autoadding items
   --## JOB EVENTS
   PoliceJobs          = {police = true, lspd = true},
@@ -29,7 +29,7 @@ Config = {
     Inventory = {
       ['qb-inventory'] = false,
       ['ps-inventory'] = false,
-      ['ox_inventory'] = true,
+      ['ox_inventory'] = false,
       ['mf-inventory'] = false,
       ['lj-inventory'] = false,
       ['qs-inventory'] = false,
@@ -37,53 +37,42 @@ Config = {
     TargetSystem   = {
       ['qtarget']   = false,
       ['qb-target'] = false,
-      ['ox_target'] = true,
+      ['ox_target'] = false,
     },
     TimeSystem     = {
       ['vSync'] = false,
       ['cd_easytime']    = false,
-      ['qb-weathersync'] = true,
+      ['qb-weathersync'] = false,
     },
     JailSystem     = {
       ['esx_jail']  = false,
       ['qb-prison'] = false,
-      ['rcore_prison'] = true,
+      ['rcore_prison'] = false,
     },
     ProgressBar    = {
       ['progressbar'] = false,
-      ['ox_lib']      = true,
+      ['ox_lib']      = false,
     },
     Framework      = {
       ['es_extended'] = false,
-      ['qb-core']     = true,
+      ['qb-core']     = false,
       ['vrp']         = false,
     },
     KeySystem      = {
-      ['qb-vehiclekeys'] = true,
-      ['qs-vehiclekeys'] = false,
-      ['okokGarage'] = false,
+      ['qb-vehiclekeys'] = false,
       ['cd_garage']      = false,
     },
     DispatchSystem = {
-      ['ps-dispatch'] = true,
+      ['ps-dispatch'] = false,
       ['cd_dispatch'] = false,
     },
     PhoneSystem    = {
-      ['qs-smartphone'] = true,
+      ['qs-smartphone'] = false,
       ['gks_phone']     = false,
       ['lb-phone']      = false,
       ['nwpd']          = false,
       ['qb-phone']      = false,
     },
-    FuelSystem      = {
-      ['ox_fuel']      = false,
-      ['x-fuel']       = false,
-      ['ti_fuel']      = false, 
-      ['ps-fuel']      = false,
-      ['cdn_fuel']     = false,
-      ['Renewed-Fuel'] = false,
-      ['LegacyFuel']   = true,
-    }
   },
 
   VehicleClassCapacities = {

@@ -5,8 +5,7 @@ Core.Inventory = {
   UseableItem = function(name, cb)
     if Config.Framework == "es_extended" then
       ESX.RegisterUsableItem(name, function(source,item,extra, mf)
-        -- cb(source,item,extra, mf)
-        cb(source,extra, mf)
+        cb(source,item,extra, mf)
       end)
     elseif Config.Framework == "qb-core" then
       QBCore.Functions.CreateUseableItem(name, function(source, item, extra)
@@ -14,6 +13,7 @@ Core.Inventory = {
       end)
     end
   end,
+
   GetItemLabel = function(name)
     if Config.Framework == "es_extended" then return ESX.GetItemLabel(name); end
     if Config.Framework == "qb-core" then
@@ -215,7 +215,6 @@ Core.Inventory = {
       end
     end
 
-    self.ClearInventory = self.clearInventory
     
     Core.Inventories[id] = self
     return self

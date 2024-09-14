@@ -5,88 +5,20 @@ Core.Vehicle = {
     cb(veh)
   end,
 
+  SetFuel = function(veh)
 
-  SetFuel = function(veh, val, _type)
-    if val > 100 then val = 100 end
-    if Config.FuelSystem == 'cdn-fuel' then
-      print('setting fuel for cdn')
-      return exports['cdn-fuel']:SetFuel(veh, val)
-    elseif Config.FuelSystem == 'LegacyFuel' then
-      return exports['LegacyFuel']:SetFuel(veh, val)
-    elseif Config.FuelSystem == 'ps-fuel' then
-      return exports['ps-fuel']:SetFuel(veh, val)
-    elseif Config.FuelSystem == 'Renewed-Fuel' then
-      return exports['Renewed-Fuel']:SetFuel(veh, val)
-    elseif Config.FuelSystem == 'ti_fuel' then 
-      return exports["ti_fuel"]:setFuel(veh, val, _type or "RON91")
-    elseif Config.FuelSystem == 'ox_fuel' then
-      Entity(veh).state.fuel = val
-      return true
-    elseif Config.FuelSystem == 'x-fuel' then 
-      return exports['x-fuel']:SetFuel(veh, val)
-    else
-      if (type(Config.FuelSystem) == 'string') and exports[Config.FuelSystem] and exports[Config.FuelSystem].SetFuel then
-        return exports[Config.FuelSystem]:SetFuel(veh, val)
-      else
-        return SetVehicleFuelLevel(veh, val)
-      end
-    end
-    return true
-  end,
+  end, 
 
-  AddFuel = function(veh, amount, _type)
-    local val = Core.Vehicle.GetFuel(veh)
-    if val < 0 then val = 0 end
-    val = val + amount
-    if val > 100 then val = 100 end
-    if Config.FuelSystem == 'cdn_fuel' then
-      return exports['cdn_fuel']:SetFuel(veh, val)
-    elseif Config.FuelSystem == 'LegacyFuel' then
-      return exports['LegacyFuel']:SetFuel(veh, val)
-    elseif Config.FuelSystem == 'ps-fuel' then
-      return exports['ps-fuel']:SetFuel(veh, val)
-    elseif Config.FuelSystem == 'Renewed-Fuel' then
-      return exports['Renewed-Fuel']:SetFuel(veh, val)
-    elseif Config.FuelSystem == 'ox_fuel' then
-      Entity(veh).state.fuel += amount
-      return true
-    elseif Config.FuelSystem == 'ti_fuel' then 
-      return exports["ti_fuel"]:setFuel(veh, amount, _type or "RON91")
-    elseif Config.FuelSystem == 'x-fuel' then 
-      return exports['x-fuel']:SetFuel(veh, val)
-    else
-      if exports[Config.FuelSystem] and exports[Config.FuelSystem].SetFuel then
-        return exports[Config.FuelSystem]:SetFuel(veh, val)
-      else
-        return SetVehicleFuelLevel(veh, val)
-      end
-    end
-    return true
+  AddFuel = function(veh)
+    local curFuel = Core.Vehicle.GetFuel(veh)
+    local newFuel = curFuel + 10
+    if newFuel > 100 then newFuel = 100 end
+    Core.Vehicle.SetFuel(veh, newFuel)
+    return true 
   end,
 
   GetFuel  = function(veh)
-    if Config.FuelSystem == 'cdn_fuel' then
-      return exports['cdn_fuel']:GetFuel(veh)
-    elseif Config.FuelSystem == 'LegacyFuel' then
-      return exports['LegacyFuel']:GetFuel(veh)
-    elseif Config.FuelSystem == 'ps-fuel' then
-      return exports['ps-fuel']:GetFuel(veh)
-    elseif Config.FuelSystem == 'Renewed-Fuel' then
-      return exports['Renewed-Fuel']:GetFuel(veh)
-    elseif Config.FuelSystem == 'ox_fuel' then
-      return Entity(veh).state.fuel
-    elseif Config.FuelSystem == 'x-fuel' then 
-      return exports['x-fuel']:GetFuel(veh)
-    elseif Config.FuelSystem == 'ti_fuel' then
-      local level,type = exports["ti_fuel"]:getFuel(veh)
-      return level, type
-    else
-      if exports[Config.FuelSystem] and exports[Config.FuelSystem].GetFuel then
-        return exports[Config.FuelSystem]:GetFuel(veh)
-      else
-        return GetVehicleFuelLevel(veh)
-      end
-    end
+    return GetVehicleFuelLevel(veh)
   end,
 
   AddKeys = function(veh,plate) --#' This is the function called to add keys for a vehicle you own. '
@@ -96,10 +28,6 @@ Core.Vehicle = {
       TriggerEvent('cd_garage:AddKeys', plate)
     elseif Config.KeySystem == "okokGarage" then
       TriggerServerEvent('okokGarage:GiveKeys', plate)
-    elseif Config.KeySystem == 'qs-vehiclekeys' then
-      local model = GetDisplayNameFromVehicleModel(GetEntityModel(veh))
-      local plate = GetVehicleNumberPlateText(veh)
-      exports['qs-vehiclekeys']:GiveKeys(plate, model, true)
     end
   end,
 
@@ -132,7 +60,7 @@ Core.Vehicle = {
       local plate = GetVehicleNumberPlateText(veh)
       return plate
     end
-  end,
+  end, 
 
   SetPlate = function(veh, plate, fw)
     if fw and Config.Framework == "es_extended" then
@@ -155,7 +83,7 @@ Core.Vehicle = {
       SetVehiclePetrolTankHealth(v, 1000)
       SetVehicleDirtLevel(v, 0)
       SetVehicleOilLevel(v, 100.0)
-    else
+    else 
       Core.UI.Notify("You are not in a vehicle")
     end
   end,
@@ -186,13 +114,12 @@ Core.Vehicle = {
   },
 
   GetVehicleClass = function(e)
-    local nClass = GetVehicleClass(e)
+    local nClass = GetVehicleClass(e) 
     return nClass, Core.Vehicle.VehClasses[nClass]
   end
 }
 
 
 RegisterNetEvent("Core:Vehicle:Fix", function()
-  --- :eyes: :eyes: 
   Core.Vehicle.Fix()
 end)

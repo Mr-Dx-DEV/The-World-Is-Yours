@@ -36,12 +36,9 @@ Core.Files = {
   end,
 
   TableToSQL = function(t)
-    local tableCount = Core.TC(t)
     local output = "INSERT INTO `"..Config.ItemsDatabaseName.."` (`name`, `label`) VALUES"
-    local currentNumber = 0
     for k,v in pairs(t) do
-      currentNumber = currentNumber + 1
-      output = output..string.format("\n ('%s', '%s')%s", k, v.label, currentNumber == tableCount and "" or ",")
+      output = output..string.format("\n ('%s', '%s'),", k, v.label)
     end
     output = output..";"
     return output
@@ -85,16 +82,12 @@ Core.Files = {
     for item,data in pairs(input) do
       ret[item] = {} 
       for k,v in pairs(data) do 
-        if k == "label" or k == "weight" or k == "stackable" or k == 'description' then 
+        if k == "label" or k == "weight" or k == "stackable" then 
           if k ~= "stackable" then 
             ret[item][k] = v
           else
             ret[item]["stack"] = v
           end
-        elseif k == 'image' then 
-          ret[item].client = {
-            image = v
-          }
         end
       end
     end

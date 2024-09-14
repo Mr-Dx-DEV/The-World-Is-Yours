@@ -27,18 +27,7 @@ Core.Objects = {
         if not self.CanSpawn() then return cb('cantSpawn'); end 
       end
       local Hash = self.Hash or GetHashKey(self.Model)
-      local start = GetGameTimer()
-      while not HasModelLoaded(Hash) do
-        if GetGameTimer() - start > 5000 then 
-
-
-          print(string.format("Failed to load model %s", self.Model))
-          return cb('failedToLoad'); 
-        end
-
-        RequestModel(Hash) 
-        Wait(0); 
-      end
+      while not HasModelLoaded(Hash) do RequestModel(Hash) Wait(0); end
       if self.Type == "object" then   
         self.Entity = CreateObject(Hash, self.Pos.x,self.Pos.y,self.Pos.z, self.Network, true, false)
       elseif self.Type == "ped" then 
@@ -63,7 +52,6 @@ Core.Objects = {
     end
 
     self.despawn = function()
-      if not self.Entity then return; end
       DeleteEntity(self.Entity)
       local oldEnt = self.Entity
       self.Entity = nil 
@@ -96,7 +84,6 @@ Core.Objects = {
 
     self.remove = function()
       self.despawn()
-      Core.Zones.RemoveZone(string.format("RenderSpawn:%s", self.ID))
       Core.Objects[id] = nil
     end
 

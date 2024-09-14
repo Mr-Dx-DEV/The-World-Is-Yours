@@ -106,8 +106,6 @@ Core.Player = {
       })
       TriggerClientEvent("police:client:SendToJail", OtherPlayer.PlayerData.source, time)
     elseif Config.JailSystem == "rcore_prison" then
-      print('id', id)
-      print('time', time)
       exports['rcore_prison']:Jail(id, time, "Bounty Hunter")
     elseif Config.JailSystem == "pickle_prisons" then
       exports["pickle_prisons"]:JailPlayer(id, time, "default")
@@ -164,11 +162,8 @@ Core.Player = {
       if Config.Framework == "es_extended" then
         ply.addInventoryItem(i,a, md or nil)
       elseif Config.Framework == "qb-core" then
-        local item = ply.Functions.GetItemBySlot(slot)
-        if item then 
-          if ply.Functions.RemoveItem(item.name,item.amount,slot) then 
-            ply.Functions.AddItem(item.name,item.amount, slot, new)
-          end
+        if ply.Functions.RemoveItem(i,a,slot) then 
+          ply.Functions.AddItem(i,a, slot, new)
         end
       end
     end
@@ -188,9 +183,7 @@ Core.Player = {
     elseif Config.Inventory == "mf-inventory" then
       exports["mf-inventory"]:addInventoryItem(Core.Player.Id(p), i, a, p, 100, md)
     elseif Config.Inventory == "core_inventory" then
-      local citizen_id = Core.Player.Id(p)
-      local my_inventory = string.format('content-%s', citizen_id)
-      exports['core_inventory']:addItem(my_inventory, i, a, md or nil, 'content')
+      exports['core_inventory']:addItem('primary-'..Core.Player.Id(p), i, a, md)
     else
       --## FALL BACK FOR MOST INVENTORIES
       -- OLD QS
@@ -208,10 +201,10 @@ Core.Player = {
 
   RemoveItem = function(p,i,a, md, slot)
     local ply = Core.Player.Get(p)
-    if Config.Inventory == 'qs-inventory' and Config.NewQSInventory then
+    if Config.NewQSInventory then
       return exports['qs-inventory']:RemoveItem(p, i, a, slot, md)
     elseif Config.Inventory == 'ox_inventory' then
-      return exports['ox_inventory']:RemoveItem(p, i, a or 1, md, slot)
+      return exports['ox_inventory']:RemoveItem(p, i, a, md, slot)
     else
       --## Framework Fallback
       if Config.Framework == "es_extended" then
@@ -243,8 +236,6 @@ Core.Player = {
     end
     return false
   end,
-
-
 
   GetJob = function(p)
     local ply = Core.Player.Get(tonumber(p))
@@ -296,15 +287,6 @@ Core.Player = {
       ply.Functions.SetJob(j,r)
     elseif Config.Framework == "vrp" then
       vRP.addUserGroup(ply, j)
-    end
-  end,
-
-  SetDuty = function(p,d)
-    local ply = Core.Player.Get(tonumber(p))
-    if Config.Framework == "es_extended" then
-      ply.setJobDuty(d)
-    elseif Config.Framework == "qb-core" then
-      ply.Functions.SetJobDuty(d)
     end
   end,
 
