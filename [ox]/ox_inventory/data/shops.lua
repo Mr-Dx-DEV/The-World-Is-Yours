@@ -162,26 +162,75 @@ return {
 			{ name = 'keepcompanionshepherd', price = 1000, grade = 0 }
 		},
 		locations = {
-			vector3(607.92, -20.62, 76.63), -- Vinewood PD
-			-- Add other locations as needed
+			vector3(607.97, -20.68, 76.63), -- Vinewood PD
+			vector3(1836.2866, 3686.9396, 34.189239), -- BCSO Sandy
+			vector3(-446.8, 6016.74, 37.0), -- BCSO Paleto
+			vector3(1553.86, 839.99, 77.66), -- Highway Patrol
+			vector3(386.97, 799.72, 187.46), -- Game Warden
+			vector3(836.76, -1287.34, 28.24), -- Popular Secret Service
+
+			
+			vector3(153.08, -757.41, 45.75), -- FBI
+			vector3(-1070.35, -816.46, 15.64), -- Vesp
+			vector3(-822.11, -717.56, 22.96), -- US Marshalls
+			vector3(438.22, -1116.37, 30.06), -- Training Center
+			vector3(-1238.59, -2813.7, 14.3), -- DHS Airport
+			vector3(1696.53, 4876.39, 42.3), -- Game Warden Grapeseed
+			vector3(479.25, -996.3, 30.69), -- MRPD DHS
+			vector3(365.58, -1609.6, 29.29), -- Davis Street
+			vector3(-1300.77, -555.32, 30.57), -- Secret Service Gov Office
+			vector3(-1306.4, -564.77, 41.19), -- Gov Safe Room
+			vector3(1841.63, 2573.82, 46.01), -- Prison
 		},
 		targets = {
 			{ 
-                loc = vec3(482.363, -995.165, 30.69 - 1), 
-                length = 0.5, 
-                width = 3.0, 
-                heading = 177.56, 
-                minZ = 30.45, 
-                maxZ = 32.50, 
-                distance = 6 
-                },
-                {
-                ped = `mp_m_shopkeep_01`,
-                scenario = 'WORLD_HUMAN_AA_COFFEE',
-                loc = vec3(482.363, -995.165, 30.69),
-                heading = 177.56,
-            }
+				loc = vec3(482.363, -995.165, 30.69 - 1), 
+				length = 0.5, 
+				width = 3.0, 
+				heading = 177.56, 
+				minZ = 30.45, 
+				maxZ = 32.50, 
+				distance = 6 
+			},
+			{ 
+				ped = `mp_m_shopkeep_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(607.97, -20.68, 76.63),
+				heading = 354.35
+			},
+			{
+				ped = `s_m_y_cop_01`, -- Sandy Shores BCSO
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(1836.2866, 3686.9396, 34.189239),
+				heading = 220.0
+			},
+			{
+				ped = `s_m_y_sheriff_01`, -- Paleto BCSO
+				scenario = 'WORLD_HUMAN_CLIPBOARD',
+				loc = vec3(-446.8, 6016.74, 37.0),
+				heading = 150.0
+			},
+			{
+				ped = `s_m_y_ranger_01`, -- Game Warden
+				scenario = 'WORLD_HUMAN_STAND_IMPATIENT',
+				loc = vec3(1553.86, 839.99, 77.66),
+				heading = 148.71
+			},
+			{
+				ped = `s_m_y_ranger_01`, -- Game Warden
+				scenario = 'WORLD_HUMAN_STAND_IMPATIENT',
+				loc = vec3(386.97, 799.72, 187.46),
+				heading = 60.0
+			},
+			{
+				ped = `s_m_y_ranger_01`, -- Game Warden
+				scenario = 'WORLD_HUMAN_STAND_IMPATIENT',
+				loc = vec3(836.76, -1287.34, 28.24),
+				heading = 278.12
+			},
+			-- Add more ped targets as needed for other locations
 		}
+		
 	},
 	
 
