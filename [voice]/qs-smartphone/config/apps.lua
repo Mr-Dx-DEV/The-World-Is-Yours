@@ -802,7 +802,7 @@ Config.StoreApps = {
             }
         }
     },
-    ['radio'] = {
+    --[[ ['radio'] = {
         custom = false,
         app = 'radio',
         color = 'img/apps/radio.png',
@@ -828,7 +828,7 @@ Config.StoreApps = {
                 textcolor = 'black'
             }
         }
-    },
+    }, ]]
 
     -- Temple for custom app!
     -- Check in docuementation for more info.
@@ -887,7 +887,7 @@ Config.StoreApps = {
             }
         }
     }, ]]
-    ['racing'] = { -- Racing DLC.
+    --[[ ['racing'] = { -- Racing DLC.
         custom = false,
         app = 'racing',
         color = 'img/apps/racing.png',
@@ -913,7 +913,7 @@ Config.StoreApps = {
                 textcolor = 'white'
             }
         }
-    },
+    }, ]]
 
     --[[ ["sellix"] = { -- Sellix DLC.
         custom = false,
