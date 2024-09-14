@@ -1037,7 +1037,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'white_phone.png',
 			},
-			--[[ 
+			 
 			['wet_phone'] = {
 				['name'] = "Wet Phone",
 				['price_to_customer'] = 350,
@@ -1157,7 +1157,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'wet_white_phone.png',
 			},
-			 ]]
+			
 			--[[ ['phone_hack'] = {
 				['name'] = "Phone Hack",
 				['price_to_customer'] = 350,
@@ -2204,7 +2204,7 @@ Config.export_locations = {
 
 -- Config for npcs that will stand in the stores
 Config.NPCs = {
-	{
+	--[[ {
 		['model'] = 'mp_m_shopkeep_01',				-- Ped model (https://docs.fivem.net/docs/game-references/ped-models/)
 		['emote'] = 'WORLD_HUMAN_STAND_MOBILE',		-- Ped emote (https://wiki.rage.mp/index.php?title=Scenarios)
 		['pos'] = {									-- Ped locations (vector4)
@@ -2235,7 +2235,7 @@ Config.NPCs = {
 			{23.0, -1105.67, 29.8, 162.91},
 			{149.118, -234.618, 54.424, 338.808},
 		}
-	},
+	}, ]]
 }
 
 Config.create_table = true
