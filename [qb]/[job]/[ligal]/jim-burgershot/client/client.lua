@@ -53,7 +53,7 @@ CreateThread(function()
 					{ coords = vec4(-1194.95, -893.15, 13.65, 35.0), minZ = 13.5, maxZ = 14.8, w = 0.6, d = 0.6, }, { coords = vec4(-1193.97, -894.67, 13.65, 35.0), minZ = 13.5, maxZ = 14.8, w = 0.6, d = 0.6, },
 					{ coords = vec4(-1192.93, -896.24, 13.65, 35.0), minZ = 13.5, maxZ = 14.8, w = 0.6, d = 0.6, },
 				},
-				BBag = { { coords = vec4(-1196.52, -902.07, 13.0, 305.0), minZ = 12.97, maxZ = 14.57, w = 0.7, d = 0.5, }, },
+				--BBag = { { coords = vec4(-1196.52, -902.07, 13.0, 305.0), minZ = 12.97, maxZ = 14.57, w = 0.7, d = 0.5, }, },
 				HandWash = {
 					{ coords = vec4(-1197.61, -902.73, 12.98, 215.0), minZ = 13.3, maxZ = 14.5, w = 0.6, d = 0.8, }, { coords = vec4(-1205.24, -893.9, 12.98, 215.0), minZ = 13.3, maxZ = 14.5, w = 0.6, d = 0.8, },
 					{ coords = vec4(-1206.01, -892.84, 12.98, 215.0), minZ = 13.3, maxZ = 14.5, w = 0.6, d = 0.8, }, { coords = vec4(-1201.96, -890.09, 12.98, 215.0), minZ = 13.3, maxZ = 14.5, w = 0.6, d = 0.8, },
@@ -94,7 +94,7 @@ CreateThread(function()
 					{ coords = vec4(-1196.04, -891.38, 13.65, 35.0), minZ = 13.5, maxZ = 14.8, w = 0.6, d = 0.6, }, { coords = vec4(-1194.70, -893.32, 13.65, 35.0), minZ = 13.5, maxZ = 14.8, w = 0.6, d = 0.6, },
 					{ coords = vec4(-1193.42, -895.22, 13.65, 35.0), minZ = 13.5, maxZ = 14.8, w = 0.6, d = 0.6, },
 				},
-				BBag = { { coords = vec4(-1200.51, -896.17, 13.5, 304.0), minZ = 13.6, maxZ = 14.6, w = 0.5, d = 0.7, }, },
+				--[[ BBag = { { coords = vec4(-1200.51, -896.17, 13.5, 304.0), minZ = 13.6, maxZ = 14.6, w = 0.5, d = 0.7, }, }, ]]
 				HandWash = {
 					{ coords = vec4(-1197.12, -902.07, 12.98, 215.0), minZ = 13.3, maxZ = 14.5, w = 0.6, d = 1.0, }, { coords = vec4(-1198.23, -902.78, 12.98, 215.0), minZ = 13.3, maxZ = 14.5, w = 1.1, d = 0.8, },
 					{ coords = vec4(-1200.70, -888.98, 12.98, 35.00), minZ = 13.3, maxZ = 14.5, w = 0.6, d = 0.6, }, { coords = vec4(-1198.57, -887.54, 12.98, 215.0), minZ = 13.3, maxZ = 14.5, w = 0.6, d = 0.6, },
@@ -115,13 +115,13 @@ CreateThread(function()
 			for i = 1, #ModelHide do CreateModelHide(ModelHide[i].coords, 1.5, tonumber(ModelHide[i].id), true)	Wait(10) end
 
 			--ADD JOB RELATED PROPS
-			propTable[#propTable+1] = { prop = "prop_food_bs_tray_02", coords = vec4(-1196.3, -890.7, 15.05, 305.0) }
+			--[[ propTable[#propTable+1] = { prop = "prop_food_bs_tray_02", coords = vec4(-1196.3, -890.7, 15.05, 305.0) }
 			propTable[#propTable+1] = { prop = "prop_food_bs_tray_01", coords = vec4(-1195.0, -892.68, 15.05, 305.0) }
 			propTable[#propTable+1] = { prop = "prop_food_bs_bag_04", coords = vec4(-1200.44, -896.36, 13.91+1.03, 300.0) }
 			propTable[#propTable+1] = { prop = "prop_food_bs_bag_04", coords = vec4(-1200.44, -896.16, 13.91+1.03, 180.0) }
 			propTable[#propTable+1] = { prop = "prop_food_bs_bag_04", coords = vec4(-1200.64, -896.06, 13.91+1.03, 250.0) }
 			propTable[#propTable+1] = { prop = "prop_atm_01", coords = vec4(-1184.53, -882.85, 13.94-0.22, 122.53) }
-			propTable[#propTable+1] = { prop = "prop_atm_01", coords = vec4(-1199.6, -884.99, 13.50-0.22, 215.0) }
+			propTable[#propTable+1] = { prop = "prop_atm_01", coords = vec4(-1199.6, -884.99, 13.50-0.22, 215.0) } ]]
 
 		elseif loc.MLO == "NP" then
 			CoordTables = {
@@ -142,7 +142,7 @@ CreateThread(function()
 					{ coords = vec4(-1194.23, -893.87, 13.98, 35.0), minZ = 13.98, maxZ = 14.58, w = 0.354, d = 1.0, }, { coords = vec4(-1195.28, -892.35, 13.98, 35.0), minZ = 13.98, maxZ = 14.58, w = 0.35, d = 1.0, },
 					{ coords = vec4(-1196.29, -890.82, 13.98, 35.0), minZ = 13.98, maxZ = 14.58, w = 0.55, d = 1.0, }, { coords = vec4(-1192.74, -906.44, 13.98, 324.0), minZ = 13.98, maxZ = 14.58, w = 0.55, d = 1.0, },
 				},
-				BBag = { { coords = vec4(-1197.78, -891.46, 13.98, 304.0), minZ = 13.38, maxZ = 14.38, w = 2.1, d = 0.7, }, { coords = vec4(-1196.19, -905.02, 13.98, 34.0), minZ = 13.18, maxZ = 14.78, w = 2.5, d = 0.7, }, },
+				--BBag = { { coords = vec4(-1197.78, -891.46, 13.98, 304.0), minZ = 13.38, maxZ = 14.38, w = 2.1, d = 0.7, }, { coords = vec4(-1196.19, -905.02, 13.98, 34.0), minZ = 13.18, maxZ = 14.78, w = 2.5, d = 0.7, }, },
 				HandWash = {
 					{ coords = vec4(-1199.41, -886.27, 13.48, 305.0), minZ = 13.18, maxZ = 14.38, w = 0.9, d = 0.6, }, { coords = vec4(-1201.92, -887.98, 13.48, 305.0), minZ = 13.18, maxZ = 14.38, w = 0.9, d = 0.6, },
 					{ coords = vec4(-1200.24, -901.13, 13.48, 304.0), minZ = 13.18, maxZ = 14.38, w = 0.9, d = 0.6, }, { coords = vec4(-1191.73, -901.48, 13.48, 34.0), minZ = 13.18, maxZ = 14.38, w = 0.9, d = 0.6, },
@@ -170,7 +170,7 @@ CreateThread(function()
 					{ coords = vec4(-1193.38, -895.19, 13.5, 35.0), minZ = 13.98, maxZ = 14.58, w = 0.6, d = 0.6, }, { coords = vec4(-1194.67, -893.29, 13.5, 35.0), minZ = 13.98, maxZ = 14.58, w = 0.6, d = 0.6, },
 					{ coords = vec4(-1196.03, -891.30, 13.5, 35.0), minZ = 13.98, maxZ = 14.58, w = 0.6, d = 0.6, }, { coords = vec4(-1192.52, -906.67, 13.5, 350.0), minZ = 13.98, maxZ = 14.58, w = 0.6, d = 0.6, },
 				},
-				BBag = { { coords = vec4(-1197.56, -894.27, 14.0, 34.0), minZ = 13.78, maxZ = 14.78, w = 1.5, d = 1.3, }, { coords = vec4(-1188.71, -897.78, 13.8, 34.0), minZ = 13.13, maxZ = 14.78, w = 2.5, d = 0.7, }, },
+				--BBag = { { coords = vec4(-1197.56, -894.27, 14.0, 34.0), minZ = 13.78, maxZ = 14.78, w = 1.5, d = 1.3, }, { coords = vec4(-1188.71, -897.78, 13.8, 34.0), minZ = 13.13, maxZ = 14.78, w = 2.5, d = 0.7, }, },
 				HandWash = { { coords = vec4(-1197.04, -902.23, 13.0, 216.5), minZ = 13.18, maxZ = 14.38, w = 0.6, d = 0.6, }, },
 				Toilets = {	},
 				Clockin = { { coords = vec4(-1196.8, -902.89, 14.0, 304.0), minZ = 14.18, maxZ = 15.38, w = 1.4, d = 0.2, }, { coords = vec4(-1191.97, -901.06, 14.0, 34.0), minZ = 13.78, maxZ = 14.58, w = 0.8, d = 0.5, }, },
@@ -212,7 +212,7 @@ CreateThread(function()
 					{ coords = vec4(-1194.77, -905.16, 13.8, 350.0), minZ = 13.45, maxZ = 14.45, w = 0.5, d = 0.5, }, { coords = vec4(-1190.58, -895.65, 13.8, 304.0), minZ = 13.8, maxZ = 14.5, w = 0.5, d = 0.5, },
 					{ coords = vec4(-1189.08, -894.63, 13.8, 304.0), minZ = 13.8, maxZ = 14.5, w = 0.5, d = 0.5, }, { coords = vec4(-1187.61, -893.6, 13.8, 304.0), minZ = 13.8, maxZ = 14.5, w = 0.5, d = 0.5, },
 				},
-				BBag = { { coords = vec4(-1188.71, -897.78, 13.8, 305.0), minZ = 13.97, maxZ = 14.57, w = 0.9, d = 0.5, }, },
+				--BBag = { { coords = vec4(-1188.71, -897.78, 13.8, 305.0), minZ = 13.97, maxZ = 14.57, w = 0.9, d = 0.5, }, },
 				HandWash = {
 					{ coords = vec4(-1200.2, -889.54, 13.3, 34.0), minZ = 13.3, maxZ = 14.5, w = 0.6, d = 0.6, }, { coords = vec4(-1202.13, -895.92, 13.3, 34.0), minZ = 13.3, maxZ = 14.5, w = 0.6, d = 0.6, },
 					{ coords = vec4(-1202.87, -896.44, 13.3, 34.0), minZ = 13.3, maxZ = 14.5, w = 0.6, d = 0.6, }, { coords = vec4(-1186.55, -903.01, 13.3, 34.0), minZ = 13.3, maxZ = 14.5, w = 0.6, d = 0.6, },
@@ -252,9 +252,9 @@ CreateThread(function()
 					{ coords = vec4(-1197.46, -892.49, 13.89, 345.0), minZ = 13.8, maxZ = 14.5, w = 0.5, d = 0.6, }, { coords = vec4(-1195.46, -893.09, 13.89, 345.0), minZ = 13.8, maxZ = 14.5, w = 0.5, d = 0.6, },
 					{ coords = vec4(-1193.44, -893.66, 13.89, 345.0), minZ = 13.8, maxZ = 14.5, w = 0.5, d = 0.6, }, { coords = vec4(-1191.53, -894.18, 13.89, 345.0), minZ = 13.8, maxZ = 14.5, w = 0.5, d = 0.6, },
 				},
-				BBag = {
+				--[[ BBag = {
 					{ coords = vec4(-1200.75, -895.08, 12.89, 124.0), minZ = 12.89, maxZ = 14.69, w = 0.8, d = 0.8, },
-				},
+				}, ]]
 				HandWash = { { coords = vec4(-1201.19, -890.91, 12.89, 124.0), minZ = 12.89, maxZ = 14.69, w = 0.8, d = 0.5, }, { coords = vec4(-1205.18, -893.61, 12.89, 124.0), minZ = 12.89, maxZ = 14.69, w = 0.8, d = 0.5, }, },
 				Toilets = { { coords = vec4(-1204.23, -894.99, 12.89, 34.0), minZ = 12.89, maxZ = 14.69, w = 0.6, d = 0.5, }, { coords = vec4(-1200.24, -892.3, 12.89, 34.0), minZ = 12.89, maxZ = 14.69, w = 0.6, d = 0.5, }, },
 				Clockin = {},
@@ -276,7 +276,7 @@ CreateThread(function()
 					Targets[tName] =
 					exports['qb-target']:AddBoxZone(tName, Curr.coords.xyz, Curr.w, Curr.d, { name=tName, heading = Curr.coords.w, debugPoly=Config.Debug, minZ = Curr.minZ, maxZ = Curr.maxZ, },
 						{ options = { { event = "jim-burgershot:Stash", icon = "fas fa-temperature-low", label = Loc[Config.Lan].targetinfo["open_fridge"]..debug,
-										job = Config.Locations[1].job, id = tname, coords = Curr.coords.xyz }, },
+										job = Config.Locations[1].job, id = "BSFridge", coords = Curr.coords.xyz }, },
 											distance = 1.5 })
 				end
 			--[[Stores]]--
@@ -412,7 +412,7 @@ CreateThread(function()
 								distance = 1.2 })
 				end
 			--[[BBag]]--
-				for i = 1, #CoordTables.BBag do local Curr = CoordTables.BBag[i] local tName = "BBag"..i local debug = ""
+				--[[ for i = 1, #CoordTables.BBag do local Curr = CoordTables.BBag[i] local tName = "BBag"..i local debug = ""
 					if Config.Debug then debug = " [".."BBag"..i.."]"
 						print("^5Debug^7: ^1Target ^2Created^7: '^6"..tName.."^7' | ^2Coord^7: ^5vec4^7(^6"..(Curr.coords[1]).."^7, ^6"..(Curr.coords[2]).."^7, ^6"..(Curr.coords[3]).."^7, ^6"..(Curr.coords[4]).."^7)")
 					end
@@ -421,7 +421,7 @@ CreateThread(function()
 							{ options = { { event = "jim-burgershot:client:GrabBag", icon = "fas fa-bag-shopping", label = Loc[Config.Lan].targetinfo["grab_murderbag"]..debug,
 											job = Config.Locations[1].job, }, },
 												distance = 2.0 })
-				end
+				end ]]
 			--[[Clockin]]--
 				for i = 1, #CoordTables.Clockin do local Curr = CoordTables.Clockin[i] local tName = "BSClockin"..i local debug = ""
 					if Config.Debug then debug = " [".."BSClockin"..i.."]"
@@ -474,11 +474,11 @@ CreateThread(function()
 			{ options = { { event = "jim-burgershot:Shop", icon = "fas fa-temperature-low", label = Loc[Config.Lan].targetinfo["open_storage"], job = loc.job, id = "BSMShop", shop = Config.Items, coords = vec3(1255.54, -348.84, 68.21) }, },
 				distance = 1.5 })
 
-		Targets["BSMBag"] =
+		--[[ Targets["BSMBag"] =
 		exports['qb-target']:AddBoxZone("BSMBag", vec3(1251.9, -358.86, 69.01), 1.0, 0.5, { name="BSMBag", heading = 75.0, debugPoly=Config.Debug, minZ=69.01, maxZ=70.01 },
 			{ options = { { event = "jim-burgershot:client:GrabBag", icon = "fas fa-bag-shopping", label = Loc[Config.Lan].targetinfo["grab_murderbag"], job = loc.job, }, },
 				distance = 2.0 })
-
+ ]]
 		--Food Making
 		Targets["BSMGrill"] =
 		exports['qb-target']:AddBoxZone("BSMGrill", vec3(1253.42, -355.18, 68.21), 1.6, 0.6, { name="BSMGrill", heading = 345.0, debugPoly=Config.Debug, minZ = 68.21, maxZ = 69.41, },
@@ -591,10 +591,10 @@ CreateThread(function()
 			{ options = { { event = "jim-burgershot:Shop", icon = "fas fa-temperature-low", label = Loc[Config.Lan].targetinfo["open_storage"], job = loc.job, id = "BSSShop", shop = Config.Items, coords = vec3(1600.46, 3752.17, 34.44) }, },
 				distance = 1.5 })
 
-		Targets["BSSBag"] =
+		--[[ Targets["BSSBag"] =
 		exports['qb-target']:AddBoxZone("BSSBag", vec3(1591.43, 3746.62, 34.43-0.4), 1.0, 0.5, { name="BSSBag", heading = 36.0, debugPoly=Config.Debug, minZ = 34.03, maxZ = 35.03 },
 			{ options = { { event = "jim-burgershot:client:GrabBag", icon = "fas fa-bag-shopping", label = Loc[Config.Lan].targetinfo["grab_murderbag"], job = loc.job, }, },
-				distance = 2.0 })
+				distance = 2.0 }) ]]
 
 		--Food Making
 		Targets["BSSGrill"] =
@@ -684,19 +684,18 @@ RegisterNetEvent('jim-burgershot:washHands', function(data)
 	ClearPedTasks(Ped)
 end)
 
-RegisterNetEvent('jim-burgershot:client:GrabBag', function(data)
+--[[ RegisterNetEvent('jim-burgershot:client:GrabBag', function(data)
 	if progressBar({ label = Loc[Config.Lan].progressbar["grab_murder_bag"], time = 2000, cancel = true, dict = "anim@heists@prison_heiststation@cop_reactions", anim = "cop_b_idle", flag = 8}) then
 		TriggerServerEvent("jim-burgershot:server:GrabBag")
 	else
 		TriggerEvent('inventory:client:busy:status', false) triggerNotify(nil, Loc[Config.Lan].error["cancelled"], 'error')
 	end
 	ClearPedTasks(Ped)
-end)
+end) ]]
 
 --[[CRAFTING]]--
 RegisterNetEvent('jim-burgershot:Crafting:MakeItem', function(data)
 	if not CraftLock then CraftLock = true else return end
-	print(data.header, Loc[Config.Lan].menu["drinks_dispenser"])
 	if data.header == Loc[Config.Lan].menu["drinks_dispenser"] then
 		bartext = Loc[Config.Lan].progress["pouring"]..QBCore.Shared.Items[data.item].label	bartime = 3500
 		animDictNow = "mp_ped_interaction" animNow = "handshake_guy_a"
@@ -707,7 +706,7 @@ RegisterNetEvent('jim-burgershot:Crafting:MakeItem', function(data)
 		bartext = Loc[Config.Lan].progress["slicing"]..QBCore.Shared.Items[data.item].label bartime = 3000
 		animDictNow = "anim@heists@prison_heiststation@cop_reactions" animNow = "cop_b_idle"
 	elseif data.item == "cheesewrap" or data.item == "chickenwrap" then
-		bartext = Loc[Config.Lan].progress["preparing"]..QBCore.Shared.Items[data.item].label bartime = 8000
+		bartext = Loc[Config.Lan].progress["preparing"]..QBCore.Shared.Items[data.item].label bartime = 5000
 		animDictNow = "anim@heists@prison_heiststation@cop_reactions" animNow = "cop_b_idle"
 	elseif data.header == Loc[Config.Lan].targetinfo["use_deepfryer"] then
 		bartext = Loc[Config.Lan].progress["frying"]..QBCore.Shared.Items[data.item].label bartime = 5000
@@ -716,10 +715,10 @@ RegisterNetEvent('jim-burgershot:Crafting:MakeItem', function(data)
 		bartext = Loc[Config.Lan].progress["cooking"]..QBCore.Shared.Items[data.item].label bartime = 5000
         animDictNow = "amb@prop_human_bbq@male@base" animNow = "base"
 	elseif data.header == Loc[Config.Lan].menu["prepare_food"] then
-		bartext = Loc[Config.Lan].progress["preparing"]..QBCore.Shared.Items[data.item].label bartime = 12500
+		bartext = Loc[Config.Lan].progress["preparing"]..QBCore.Shared.Items[data.item].label bartime = 5000
 		animDictNow = "mini@repair" animNow = "fixing_a_ped"
 	else
-		bartext = Loc[Config.Lan].progress["preparing"]..QBCore.Shared.Items[data.item].label bartime = 12500
+		bartext = Loc[Config.Lan].progress["preparing"]..QBCore.Shared.Items[data.item].label bartime = 5000
 		animDictNow = "mini@repair"	animNow = "fixing_a_ped"
 	end
 	if (data.amount and data.amount ~= 1) then data.craft["amount"] = data.amount

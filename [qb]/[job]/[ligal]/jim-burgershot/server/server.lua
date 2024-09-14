@@ -1,9 +1,9 @@
 AddEventHandler('onResourceStart', function(r) if GetCurrentResourceName() ~= r then return end
 	for k, v in pairs(Config.Locations) do
 		if not QBCore.Shared.Jobs[v.job] then print("Error: Job role not found - '"..v.job.."'") end
-		if v.garage then
+		--[[ if v.garage then
 			TriggerEvent("jim-jobgarage:server:syncAddLocations", { job = v.job, garage = v.garage }) -- Job Garage creation
-		end
+		end ]]
 	end
 	for _, v in pairs(Crafting) do
 		for i = 1, #v do
@@ -17,13 +17,13 @@ AddEventHandler('onResourceStart', function(r) if GetCurrentResourceName() ~= r 
 end)
 
 if not Config.JimConsumables then
-	CreateThread(function()
+	--[[ CreateThread(function()
 		local drinks = { "bscoke", "bscoffee", "milkshake", "milk", }
 		for _, v in pairs(drinks) do  QBCore.Functions.CreateUseableItem(v, function(source, item) TriggerClientEvent('jim-burgershot:client:Consume', source, item.name, "drink") end) end
 
 		local food = { "heartstopper", "shotfries", "shotnuggets", "shotrings", "moneyshot", "meatfree", "bleeder", "torpedo", "rimjob", "creampie", "cheesewrap", "chickenwrap" }
 		for _, v in pairs(food) do QBCore.Functions.CreateUseableItem(v, function(source, item) TriggerClientEvent('jim-burgershot:client:Consume', source, item.name, "food") end) end
-	end)
+	end) ]]
 else
 	local foodTable = {
 		["bscoffee"] = { emote = "bscoffee", canRun = false, time = math.random(5000, 6000), stress = math.random(2, 4), heal = 0, armor = 0, type = "drink", stats = { thirst = math.random(55,65), }},
@@ -103,7 +103,7 @@ end)
 if Config.Inv == "ox" then
 	--Default Loc
 	exports.ox_inventory:RegisterStash("BSShelf", "BurgerShot Shelf", 20, 400000)
-	exports.ox_inventory:RegisterStash("BSFridge", "BurgerShot Fridge", 20, 400000)
+	exports.ox_inventory:RegisterStash("BSFridge", "BurgerShot Fridge", 40, 400000)
 	exports.ox_inventory:RegisterStash("BSTray1", "BurgerShot Tray 1", 20, 400000)
 	exports.ox_inventory:RegisterStash("BSTray2",  "BurgerShot Tray 2", 20, 400000)
 	exports.ox_inventory:RegisterStash("BSTray3", "BurgerShot Tray 3", 20, 400000)
