@@ -62,14 +62,14 @@ local function SpawnVendors()
         count = count + 1
     end
 
-    exports['ox_target']:SpawnPed(vendors)
+    exports['qb-target']:SpawnPed(vendors)
 end
 
 local function DeleteVendors()
     if (GetCurrentResourceName() == resourceName) then
         local DeleteList = {}
 
-        CurrentPeds = exports['ox_target']:GetPeds()
+        CurrentPeds = exports['qb-target']:GetPeds()
 
         for k, v in pairs(CurrentPeds) do
             if SpawnedVendors[v.currentpednumber] then
@@ -77,7 +77,7 @@ local function DeleteVendors()
             end
         end
 
-        exports['ox_target']:RemoveSpawnedPed(DeleteList)
+        exports['qb-target']:RemoveSpawnedPed(DeleteList)
     end
 end
 
@@ -93,7 +93,7 @@ AddEventHandler('onResourceStop', function(resourceName) -- deletes peds so they
     if (GetCurrentResourceName() == resourceName) then
         local DeleteList = {}
 
-        CurrentPeds = exports['ox_target']:GetPeds()
+        CurrentPeds = exports['qb-target']:GetPeds()
 
         for k, v in pairs(CurrentPeds) do
             if SpawnedVendors[v.currentpednumber] then
@@ -101,7 +101,7 @@ AddEventHandler('onResourceStop', function(resourceName) -- deletes peds so they
             end
         end
 
-        exports['ox_target']:RemoveSpawnedPed(DeleteList)
+        exports['qb-target']:RemoveSpawnedPed(DeleteList)
     end
 end)
 
