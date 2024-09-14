@@ -59,7 +59,7 @@ CreateThread(function()
 
     local vehReplacenent = createMarker()
     vehReplacenent.setType(36)
-    vehReplacenent.setPosition(vector3(934.481, -1.952, 78.764))
+    vehReplacenent.setPosition(vehicleReplacementCoords)
     vehReplacenent.setScale(vector3(1, 1, 1))
     vehReplacenent.setRotation(true)
     vehReplacenent.setOnlyVehicle(1)

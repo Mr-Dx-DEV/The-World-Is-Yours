@@ -6,10 +6,10 @@ dependencies {
     '/onesync',
     '/gameBuild:2060',
     'rcore_casino_assets',
-    'rcore_casino_interior'
+   -- 'rcore_casino_interior'
 }
 
-version '1.4.1'
+version '1.4.2'
 
 client_scripts {
     '@ox_lib/init.lua', -- for ox_notify

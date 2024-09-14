@@ -35,7 +35,7 @@ AddEventHandler("Casino:XmasUseTree", function(treeId, randomItem, randomAmount,
         ScenePed_AnnounceEnd()
         ClearPedTasks(PlayerPedId())
         FullscreenPrompt(Translation.Get("XMAS_TREE"), m, nil, nil)
-        PlaySoundFrontend(-1, "Enter_1st", "GTAO_Magnate_Boss_Modes_Soundset", true)
+        PlaySound("Enter_1st", "GTAO_Magnate_Boss_Modes_Soundset")
     end, "xmas tree use")
 end)
 

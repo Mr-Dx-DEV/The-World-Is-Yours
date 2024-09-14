@@ -2,6 +2,7 @@
 -- (unload only Casino stuff, don't unload casino-used anims that were already loaded before entering)
 -- (not to break other resources?)
 local CasinoAssets = {}
+local CasinoSounds = {}
 local RequestTimeout = 2000
 local SceneTimeout = 10000
 
@@ -1305,7 +1306,7 @@ function ShowFullscreenBonusNotify(captionText, mainText, descriptionText, color
         local timeout = GAME_TIMER + 3000
         CreateThread(function()
             Wait(500)
-            PlaySoundFrontend(-1, "MEDAL_UP", "HUD_MINI_GAME_SOUNDSET", 1)
+            PlaySound("MEDAL_UP", "HUD_MINI_GAME_SOUNDSET")
             StartScreenEffect("HeistCelebToast")
         end)
 
@@ -1858,4 +1859,29 @@ function FullscreenPrompt(caption, message, onclose, bottomText)
         Wait(1000)
         PROMPT_ACTIVE = false
     end)
+end
+
+function PlaySound(soundName, soundDict, entity, isNetwork)
+    local sound = GetSoundId()
+    if not isNetwork then
+        isNetwork = false
+    end
+    if not entity then
+        PlaySoundFrontend(sound, soundName, soundDict, true)
+    else
+        PlaySoundFromEntity(sound, soundName, entity, soundDict, isNetwork, 20)
+    end
+    CasinoSounds[sound] = {
+        time = GetGameTimer()
+    }
+end
+
+function ReleaseSounds()
+    for k, v in pairs(CasinoSounds) do
+        if GetGameTimer() - v.time > 2000 then
+            StopSound(k)
+            ReleaseSoundId(k)
+            CasinoSounds[k] = nil
+        end
+    end
 end

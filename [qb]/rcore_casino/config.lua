@@ -3,7 +3,7 @@ Config = {
     Locale = "en", -- en
 
     -- Map
-    MapType = 5,
+    MapType = 2,
     -- 1: UncleJust Casino / DlcIplLoader
     -- 2: Gabz Casino
     -- 3: NoPixel Casino
@@ -35,7 +35,7 @@ Config = {
     Xmas = false,
 
     -- Target
-    UseTarget = true, -- whether to use target zones or not
+    UseTarget = false, -- whether to use target zones or not
     TargetZoneType = 4, -- 1: q_target, 2: bt_target, 3: qb-target, 4: ox_target
 
     -- Chips, Inventory Settings
@@ -181,6 +181,7 @@ Config = {
     Society.Management710
     Society.FdBanking
     Society.EsxAddonAccount
+    Society.SnipeBanking
     ]]
     -- visit /server/main/society.lua for custom society frameworks
 
@@ -222,7 +223,9 @@ Config = {
     VoiceTweak = false, -- keep it false, if you don't have amy voice problems inside casino
     VehicleRGBTweak = false, -- save podium vehicle colors as RGB array (color1, color2), instead of numbers
     -- Enable rcore_stats? (https://store.rcore.cz/package/6273968)
-    Rcore_Stats = GetResourceState("rcore_stats") ~= "missing"
+    Rcore_Stats = GetResourceState("rcore_stats") ~= "missing",
+    ForceNormalKeyLabels = false, -- whether to replace blip icon codes (~INPUT_TALK~) with text ([E], [F], [G], etc.)
+    TargetUsePeds = false, -- use peds instead of zones for target zones, set to false, if you want to use zones
 }
 
 Framework = {

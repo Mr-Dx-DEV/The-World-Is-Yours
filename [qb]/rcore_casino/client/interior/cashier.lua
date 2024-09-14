@@ -219,7 +219,7 @@ function Cashier_Load()
 
             -- target
             local targetOffset = GetObjectOffsetFromCoords(coords, head, 0.0, 0.2, 0.5)
-            CreateTargetEntity(cashier.ped, {{
+            local targetData = {{
                 num = 1,
                 type = "client",
                 event = "Casino:Target",
@@ -233,8 +233,12 @@ function Cashier_Load()
                 successDrawColor = {30, 144, 255, 255},
                 eventAction = "cashier_enter",
                 cashierCoords = coords
-            }})
-
+            }}
+            if Config.TargetUsePeds then
+                CreateTargetEntity(cashier.ped, targetData)
+            else
+                CreateTargetZone(vector3(targetOffset.x, targetOffset.y, targetOffset.z), 3.5, 6.0, 0.0, targetData)
+            end
         end
     end
     SetCasinoBlip(cashiers[1].coords, 683, Translation.Get("BLIP_CASHIER"), false)
@@ -308,7 +312,7 @@ AddEventHandler("Casino:TradeResults", function(chipsNow, moneyNow, comment, mon
         local societyMoney = moneyNow
         FullscreenPrompt(Translation.Get("CASHIER_TRADEIN_FAILED_CAPT"), Translation.Get("CASHIER_TRADEIN_FAILED_MSG"),
             nil, string.format(Translation.Get("CASHIER_SOCIETY_BALANCE"), FormatPrice(societyMoney)))
-        PlaySoundFrontend(-1, "CHECKPOINT_MISSED", "HUD_MINI_GAME_SOUNDSET", true)
+        PlaySound("CHECKPOINT_MISSED", "HUD_MINI_GAME_SOUNDSET")
     end
 end)
 

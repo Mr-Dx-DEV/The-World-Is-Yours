@@ -361,10 +361,14 @@ function ForgotLastStartedGameType(ifGame)
     end
 end
 
-function Podium_ShowFullscreenInfo()
+function Podium_ShowFullscreenInfo(pauseMenu)
     if (IsAtJob(Config.JobName, nil, 1, Config.BossGrade) or PLAYER_IS_ADMIN) then
         FullscreenPrompt(Translation.Get("BOSS_FULLSCREEN_PODIUM_CAPT"), Translation.Get("PODIUM_INFO_4"), nil, nil)
         SetNewWaypoint(934.481, -1.952)
+        if pauseMenu then
+            ActivateFrontendMenu(GetHashKey('FE_MENU_VERSION_MP_PAUSE'), 0, -1)
+            PauseMenuceptionGoDeeper(0)
+        end
     else
         local m
         if PODIUM_PROPS then
@@ -590,7 +594,7 @@ function InfoPanel_Update(txtDict, txtName, label, description, description2, so
     GAME_INFO_PANEL = panel
 
     if sound then
-        PlaySoundFrontend(-1, "DLC_VW_RULES", "dlc_vw_table_games_frontend_sounds", true)
+        PlaySound("DLC_VW_RULES", "dlc_vw_table_games_frontend_sounds")
     end
 
     return panel
@@ -1171,6 +1175,9 @@ CreateThread(function()
             else
                 OnLeaveInsideTrack()
             end
+            
+            -- release sounds
+            ReleaseSounds()
         end
     end
 end, true)
@@ -1374,7 +1381,7 @@ local function CasinoGarage_ReplaceCallback(state)
 
         if Config.MapType == 1 and not IsEntityInCasino(PlayerPedId()) then
             Garage_AnimateCamera(500)
-            PlaySoundFrontend(-1, "Garage_Door_Open", "GTAO_Script_Doors_Faded_Screen_Sounds", true)
+            PlaySound("Garage_Door_Open", "GTAO_Script_Doors_Faded_Screen_Sounds")
             SetVehicleDoorsLocked(myVeh, 2)
             SetEntityHeading(myVeh, 329.0)
             Wait(2000)
@@ -1474,8 +1481,7 @@ function OnEnterCasino()
     Debug("Entered casino. Loading stuff")
     -- delete unused/extra objects from maps
     if Config.MapType == 10 then
-        local jWheel = GetClosestObjectOfType(941.064, 16.61, 75.47, 2.0,
-            2064258414)
+        local jWheel = GetClosestObjectOfType(941.064, 16.61, 75.47, 2.0, 2064258414)
         if jWheel ~= 0 then
             ForceDeleteEntity(jWheel)
         end
@@ -2112,7 +2118,7 @@ end)
 RegisterNetEvent("Casino:ElectricityBroke")
 AddEventHandler("Casino:ElectricityBroke", function()
     ELECTRICITY_BROKEN = true
-    PlaySoundFrontend(-1, "FLIGHT_SCHOOL_LESSON_PASSED", "HUD_AWARDS", false)
+    PlaySound("FLIGHT_SCHOOL_LESSON_PASSED", "HUD_AWARDS")
     SetArtificialLightsState(true)
     StopStream()
     Casino_CreateFuseBox()
@@ -2121,7 +2127,7 @@ end)
 RegisterNetEvent("Casino:WallBroke")
 AddEventHandler("Casino:WallBroke", function()
     DigitalWall_Broken = true
-    PlaySoundFrontend(-1, "FLIGHT_SCHOOL_LESSON_PASSED", "HUD_AWARDS", false)
+    PlaySound("FLIGHT_SCHOOL_LESSON_PASSED", "HUD_AWARDS")
     DigitalWall_SetTheme(4, false, 255)
     Casino_CreateFuseBox()
 end)
@@ -2300,6 +2306,10 @@ RegisterCommand("casinoveh", function(source, args, rawCommand)
     CasinoGarage_OnInteraction()
 end)
 
+RegisterCommand("casinocar", function(source, args, rawCommand)
+    Podium_ShowFullscreenInfo(true)
+end)
+
 RegisterCommand("casinovehremove", function(source, args, rawCommand)
     TriggerServerEvent("Casino:PodiumRemove")
 end)
@@ -2316,7 +2326,7 @@ AddEventHandler("Casino:StartFuseBox", function(state)
         board.LoadAndStart(d.CircuitBoardLevel, d.CircuitBoardLifes, function(succ)
             if succ then
                 TriggerServerEvent("Casino:FuseBoxFixed")
-                PlaySoundFromEntity(-1, 'MP_WAVE_COMPLETE', PlayerPedId(), "HUD_FRONTEND_DEFAULT_SOUNDSET", true, 20)
+                PlaySound('MP_WAVE_COMPLETE', "HUD_FRONTEND_DEFAULT_SOUNDSET", PlayerPedId(), true)
             end
             UnblockPlayerInteraction()
         end)
@@ -2339,7 +2349,7 @@ AddEventHandler("Casino:FuseBoxStateChanged", function(wallBroken, electricityBr
 
     if electricityBroken ~= ELECTRICITY_BROKEN then
         ELECTRICITY_BROKEN = electricityBroken
-        PlaySoundFrontend(-1, "FLIGHT_SCHOOL_LESSON_PASSED", "HUD_AWARDS", false)
+        PlaySound("FLIGHT_SCHOOL_LESSON_PASSED", "HUD_AWARDS")
         SetArtificialLightsState(electricityBroken)
 
         if electricityBroken then
@@ -2549,7 +2559,7 @@ function StartElevatorScene(elevator)
 
         local s = PlaySynchronizedScene(animOffset, animRotation, "anim@apt_trans@elevator", "elev_2", false)
         WaitSynchronizedSceneToReachTime(s, 0.30, 5000, 500)
-        PlaySoundFrontend(-1, "FAKE_ARRIVE", "MP_PROPERTIES_ELEVATOR_DOORS", 1)
+        PlaySound("FAKE_ARRIVE", "MP_PROPERTIES_ELEVATOR_DOORS")
         WaitSynchronizedSceneToReachTime(s, 0.75, 5000, 500)
 
         for k, v in pairs(elevDoors) do
@@ -2573,7 +2583,7 @@ function StartElevatorScene(elevator)
 
         DoScreenFadeIn(500)
         Wait(500)
-        PlaySoundFrontend(-1, "FAKE_ARRIVE", "MP_PROPERTIES_ELEVATOR_DOORS", 1)
+        PlaySound("FAKE_ARRIVE", "MP_PROPERTIES_ELEVATOR_DOORS")
     end, true)
 end
 

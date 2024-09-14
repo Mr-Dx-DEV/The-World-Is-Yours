@@ -1,4 +1,15 @@
 SocietyBanking = {
+    [Society.SnipeBanking] = {
+        AddMoney = function(money)
+            exports["snipe-banking"]:AddMoneyToAccount(Config.SocietyName, money)
+        end,
+        RemoveMoney = function(money)
+            exports["qb-banking"]:RemoveMoneyFromAccount(Config.SocietyName, money)
+        end,
+        GetBalance = function()
+            return exports['qb-banking']:GetAccountBalance(Config.SocietyName)
+        end
+    },
     [Society.QbBanking] = {
         AddMoney = function(money)
             exports["qb-banking"]:AddMoney(Config.SocietyName, money)
@@ -29,7 +40,7 @@ SocietyBanking = {
             exports["qb-management"]:RemoveMoney(Config.SocietyName, money)
         end,
         GetBalance = function()
-            return exports['Renewed-Banking']:GetAccount(Config.SocietyName)
+            return exports['qb-management']:GetAccount(Config.SocietyName)
         end
     },
     [Society.RenewedBanking] = {
@@ -67,13 +78,13 @@ SocietyBanking = {
     },
     [Society.FdBanking] = {
         AddMoney = function(money)
-            exports['fd-banking']:AddMoney(Config.SocietyName, money, 'Society add')
+            exports['fd_banking']:AddMoney(Config.SocietyName, money, 'Society add')
         end,
         RemoveMoney = function(money)
-            exports['fd-banking']:RemoveMoney(Config.SocietyName, money, 'Society remove')
+            exports['fd_banking']:RemoveMoney(Config.SocietyName, money, 'Society remove')
         end,
         GetBalance = function()
-            return exports['fd-banking']:GetAccount(Config.SocietyName)
+            return exports['fd_banking']:GetAccount(Config.SocietyName)
         end
     },
     [Society.EsxAddonAccount] = {

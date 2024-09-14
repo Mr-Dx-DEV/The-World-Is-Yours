@@ -613,7 +613,7 @@ local function Framework_Check()
     -- check for inventory items
     if not Config.UseOnlyMoney then
         if Framework.Active == 1 then
-            if ESX and ESX.GetItemLabel then
+            if ESX and type(ESX.GetItemLabel) == "function" then
                 local label = ESX.GetItemLabel(Config.ChipsInventoryItem)
                 if not label then
                     print("^3[Casino][Warning] It looks like the '" .. Config.ChipsInventoryItem ..
