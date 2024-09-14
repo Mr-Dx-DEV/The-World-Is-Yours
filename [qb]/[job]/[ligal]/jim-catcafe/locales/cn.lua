@@ -1,5 +1,3 @@
-Loc = Loc or {}
-
 Loc["cn"] = {
     error = {
         ["cancel"] = "取消",
@@ -10,6 +8,11 @@ Loc["cn"] = {
     },
     success = {
         ["washed_hands"] = "你的手洗干净了!",
+        ["retrieved"] = "已取回",
+        ["marked"] = "工作车辆标记在地图上",
+    },
+    mark = {
+        ["veh_mark"] = "工作车辆",
     },
     target = {
         ["pet"] = "摸摸猫咪",
@@ -19,7 +22,6 @@ Loc["cn"] = {
         ["store"] = "查看商店",
         ["hands"] = "洗手",
         ["oven"] = "使用烤箱",
-        ["chopping"] = "Use Chopping Board",
         ["hob"] = "使用炉灶",
         ["counter"] = "查看柜台",
         ["charge"] = "收费",
@@ -27,21 +29,24 @@ Loc["cn"] = {
         ["table"] = "查看桌面",
         ["duty"] = "上/下班打卡",
         ["boss"] = "打开老板菜单",
+        ["job_veh"] = "工作车辆",
     },
     menu = {
-        ["close"] = "关闭",
-        ["back"] = "Back",
         ["header_oven"] = "烤箱菜单",
         ["header_hob"] = "炉灶菜单",
         ["header_coffee"] = "咖啡菜单",
         ["header_chop"] = "菜板",
+        ["close"] = "关闭",
+        ["garage"] = "工作车库",
+        ["out_veh"] = "车辆已出库",
+        ["remove_veh"] = "移除车辆",
+        ["plate"] = "<br> 车牌号: ",
     },
     progressbar = {
         ["progress_washing"] = "洗手中",
-        ["progress_mix"] = "Mixing a ",
         ["progress_pour"] = "倒入",
         ["progress_drink"] = "引用",
         ["progress_eat"] = "食用",
         ["progress_make"] = "制作",
     },
-}
+} 

@@ -1,15 +1,18 @@
-Loc = Loc or {}
-
 Loc["en"] = {
     error = {
         ["cancel"] = "Cancelled",
         ["seat_taken"] = "Someone is already sitting there..",
-        ["not_clockedin"] = "Not clocked in!",
+        ["not_clockin"] = "Not clocked in!",
         ["wrong_ingred"] = "You don't have the correct ingredients",
         ["inway"] = " in the way",
     },
     success = {
         ["washed_hands"] = "You've washed your hands!",
+        ["retrieved"] = "Retrieved ",
+        ["marked"] = "Job Vehicle Marked on Map",
+    },
+    mark = {
+        ["veh_mark"] = "Job Vehicle",
     },
     target = {
         ["pet"] = "Pet the Cat",
@@ -27,21 +30,26 @@ Loc["en"] = {
         ["table"] = "Search Table",
         ["duty"] = "Toggle Duty",
         ["boss"] = "Open Bossmenu",
+        ["job_veh"] = "Job Vehicles",
     },
     menu = {
-        ["close"] = "Close",
-        ["back"] = "Back",
         ["header_oven"] = "Oven Menu",
         ["header_hob"] = "Hob Menu",
         ["header_coffee"] = "Coffee Menu",
         ["header_chop"] = "Chopping Board",
+        ["close"] = "Close",
+        ["job_garage"] = "Job Garage",
+        ["vehicle_out_of_garage"] = "Vehicle out of Garage",
+        ["remove_vehicle"] = "Remove Vehicle",
+        ["plate"] = "<br> Plate: [",
+        ["vehicle"] = "Vehicle: ",
+        ["back"] = "Back",
     },
     progressbar = {
         ["progress_washing"] = "Washing hands",
-        ["progress_mix"] = "Mixing a ",
-        ["progress_pour"] = "Pouring a ",
-        ["progress_drink"] = "Drinking a ",
-        ["progress_eat"] = "Eating a ",
-        ["progress_make"] = "Making a ",
+        ["progress_pour"] = "Pouring ",
+        ["progress_drink"] = "Drinking ",
+        ["progress_eat"] = "Eating ",
+        ["progress_make"] = "Making ",
     },
 }
