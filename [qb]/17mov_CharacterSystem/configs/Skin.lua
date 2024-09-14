@@ -54,7 +54,7 @@ Skin.BlacklistedInputValues = { -- Here you can blacklist some clothes (inputs v
 
 Skin.Presets = { -- This is list of predefined presets. You can create some preset and use them while opening skin menu (must be Skin.Components[i].name)
     ["barber"] = {
-        "hair", "beard", "eyebrows", "chest", "makeup"
+        "hair", "beard", "eyebrows", "chest", "makeup", "lipstick", "blush",
     },
     
     ["clothing"] = {
