@@ -85,9 +85,9 @@ Config.CoreSettings = {
         ProcessItems = 5000, -- this is per item if processing multiple then this number is multiplied by the amount the player inputs
         Consume = 5000, -- time to take drugs or overdose cure
         SearchBody = 5000, -- time to search bodies for items
-        SearchCooldown = 10 * 1000, -- searching objects cooldown
-        RequestMission = 30 * 1000 * 60, -- requesting mission cooldown -- 30 minutes by default change the first number in the sequence to increase or decrease the amount of minutes you have to wait
-        RespawnObjects = 30 * 1000 * 60, -- time in minutes for objects to respawn
+        SearchCooldown = 1 * 1000, -- searching objects cooldown
+        RequestMission = 10 * 1000 * 60, -- requesting mission cooldown -- 30 minutes by default change the first number in the sequence to increase or decrease the amount of minutes you have to wait
+        RespawnObjects = 1 * 1000 * 60, -- time in minutes for objects to respawn
     },
     Chances = {
         MineQuartz = 75, -- chance to collect quartz

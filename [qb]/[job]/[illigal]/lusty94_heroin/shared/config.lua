@@ -81,11 +81,11 @@ Config.CoreSettings = {
 		SearchGuards = 5000, -- time it takes to take search guards for chemical supply mission
     },
     CoolDownTimers = {
-        Lime = 10000, -- cooldown timer in MS for getting lime
-        Ether = 10000, -- cooldown timer in MS for getting ether
-        HydrochloricAcid = 10000, -- cooldown timer in MS for getting hydrochloric acid
+        Lime = 1000, -- cooldown timer in MS for getting lime
+        Ether = 2000, -- cooldown timer in MS for getting ether
+        HydrochloricAcid = 3000, -- cooldown timer in MS for getting hydrochloric acid
         Mission = 60000, -- cooldown timer in MS for getting chemicals mission
-        RespawnPlants = 30 * 1000 * 60 -- timer to respawn opium plants - 30 mins by default - EDIT THE FIRST NUMBER TO CHANGE THE RESPAWN TIMER DURATOIN
+        RespawnPlants = 1 * 1000 * 60 -- timer to respawn opium plants - 30 mins by default - EDIT THE FIRST NUMBER TO CHANGE THE RESPAWN TIMER DURATOIN
     }, 
     Chances = { -- chances for individual events
         CallPolice = 90, -- chance to call police when searching for items

@@ -114,10 +114,10 @@ Config.CoreSettings = {
         },
     },
     CoolDownTimers = {
-        Cement = 10000, -- cooldown timer in MS for getting cement
-        Gasoline = 10000, -- cooldown timer in MS for getting gasoline
-        HydrochloricAcid = 10000, -- cooldown timer in MS for getting hydrochloric acid
-        RespawnLeaves = 30 * 1000 * 60 -- timer to respawn coke leaves - 30 mins by default - EDIT THE FIRST NUMBER TO CHANGE THE RESPAWN TIMER DURATOIN
+        Cement = 1000, -- cooldown timer in MS for getting cement
+        Gasoline = 2000, -- cooldown timer in MS for getting gasoline
+        HydrochloricAcid = 5000, -- cooldown timer in MS for getting hydrochloric acid
+        RespawnLeaves = 1 * 1000 * 60 -- timer to respawn coke leaves - 30 mins by default - EDIT THE FIRST NUMBER TO CHANGE THE RESPAWN TIMER DURATOIN
     }, 
     Chances = { -- chances for individual events
         CallPolice = 90, -- chance to call police when searching for items
