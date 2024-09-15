@@ -1,0 +1,153 @@
+r14-objects changelong
+     ___                        ___                     ___           ___           ___      
+    /\  \         __ __        /\__\                   /\  \         /\  \         /\__\     
+   /::\  \       /::\  \      /:/  /                  /::\  \       /::\  \       /:/  /     
+  /:/\:\  \      \:::\  \    /:/__/                  /:/\:\  \     /:/\:\  \     /:/  /      
+ /::\~\:\  \   __ \:::\__\   \:\  \ ___             /:/  \:\__\   /::\~\:\  \   /:/__/   ___ 
+/:/\:\ \:\__\ /\ \/:::/  /    \:\  V\__\           /:/__/ \:|__| /:/\:\ \:\__\  |:|  |  /\__\
+\/_|::\/:/  / \:\/:::/  /      \:\/:/  /           \:\  \ /:/  / \:\~\:\ \/__/  |:|  | /:/  /
+   |:|::/  /   \::::/  /        \::/  /             \:\  /:/  /   \:\ \:\__\    |:|  |/:/  / 
+   |:|\/__/     \::/  /         /:/  /               \:\/:/  /     \:\ \/__/    |:|__/:/  / 
+   |:|  |        \:\__\        /:/  /                 \::/  /       \:\__\       \::::/  /    
+    \|__|         \/__/        \/__/                   \/__/         \/__/        \__/__/      
+
+v2.54 update (1/20/2023)
+- fixed spike strips persisting for players who were not in scope when they were removed
+- fixed bomb objects not being properly removed from the gameworld when detonating on their own
+- script start event now properly filters for resource name to prevent infinite vendor spawn
+- vendor records should now be properly available at regular vendors
+- norecord config field for vendors should now properly disable records for that vendor
+
+v2.53 update (12/1/2022)
+- doors should now open properly for all clients
+- fixed issue with doors not registering as opened on restart due to misnamed variable
+- players should no longer be able to pick up objects when they do not have inventory space for them
+- added version check to startup, will notify if out of date
+- objects will now shame you if you have not run the included SQL
+- objects will now generate the rows used for object persistence and overnight objects if they do not exist on startup
+- container inventories are no longer accessible while standing outside of the container
+- container locks are no longer interactable while inside the container
+- fixed rare issue where subtarget information would 'beat' an object being added to AllObjects table causing an error
+- added vehicle storage container, players can store any vehicle that will fit in their container, whether it's there's or not
+- added safes for item and cash storage, added safe vendor
+- added animations and sounds for interacting with locks
+- added ability for police to open safes
+- updated authorizedjobs function for serverside use
+
+v2.52 update (10/24/2022)
+- fixed non-existent entity ID being sit to qb-sit when a chair object was spawned out of scope
+- fixed issue with spikestrips not calculating the position of tires while on a downward slope
+- spikestrips can now be set to multilength via the config, recommended not to go beyond 2
+- spikestrips should now deploy more naturally across a roadway rather than clipping beneath it
+- spikestrips will reject being deployed on uneven terrain, you must deploly them on a relatively level surface
+- fixed being able to manage all owned units from any vendor, vendors will now only show you units you rent through them
+- optional vendor email text fields added to config for customized messages
+- fixed spikes not loading in on join due to misnamed event preventing them from being added to the server table
+- added check to prevent pending objectId's in the server spikestrip table from being sent clientside
+- spikes throw animation will now longer play when flying in around existing spikestrips
+- container vendors will now email player when their contract is expiring, and when it expires
+- when restarted, vendors will be correctly deleted and recreated
+- fixed broken LEO check for qb-target vendor options
+
+v2.51 hotfix/update (10/22/2022)
+- breaking leases is now properly fixed and will charge you the correct amount
+- removed /r14objvendor and added ability to access any vendor through the /r14obj command
+- added back /object debug command that properly initiates the spawn sequence for an object
+- added ability to create and spawn custom objects from the admin menu
+- added ability to change debug variables in run time to /r14obj 
+- config option added that allows containers to be closed or locked on script restart
+- added new job checking function to spike strips
+- fixed issue with objects without subentities or inventory field in config breaking admin menu
+- toggling object view will no longer close admin menu
+
+v2.5 hotfix (10/22/22)
+- added police check to target option for vendor
+- unit info callback will now properly checks the time left on contractand properly return whether or not you can renew a container's lease 
+- fixed break lease in unit mangagement skipping the payment selection event and breaking
+- added new SQL statement to update guide and install sql, you must have two lines in your objects table, whatever it is named
+- attempt to implement fix for report of containers not persisting, additional checks should make sure the objects expiration time is properly set
+- new debug command variable in config, added /r14objvendor test command for easily testing vendors (please disable when not in use!)
+- added optional dialogue text for vendors, modified vendor placement text to indicate next business day rather than soon
+- when managing units or requesting records, no results will now show a proper no results menu option rather than a blank menu
+- container doors should now be properly opened/closed when flying in, rather than being loaded with closed doors
+- serverside subentity information is now saved on reset
+- fixed config info being loaded into databse for non-third party items, will only be loaded when needed now
+
+v2.5 update (10/21/22)
+
+- general bugfixes
+    - fixed issue with objects not being removed from database properly, objects should now persist only for as long as they are specified to
+    - object rotation is now smaller allowing more precise placement
+    - restart in runtime now properly deletes existing objects and then properly loads persistent objects
+    - renamed maxdist to maxplacedist to more clearly delineate it's usage
+    - updated routing buckets to be pushed from the server when it changes rather than constantly fetched from the server
+
+- admin menu improvements
+    - admin menu command now changed to /r14obj, admin menu will now display CID of the person who placed it
+    - added new options to teleport to objects
+    - added ability to look in an object's inventory from the admin menu
+    - added new object view mode to the admin menu, objects will be outlined and will have their objectId displayed
+
+- new features
+    - added new job checking function that will allow you to check by job type or job name
+    - objects can now be created as entity groups, meaning you can spawn several props together which can inherit the parent object's target info or have unique target info
+    - added new maxtime variable for config that will set a maximum limit for any object to exist
+    - added guides for object creation and vendor creation in config
+    - max placement distance can now be overridden with a config option
+    - added a configurable option for large items to check if the ground is level, and reject placement if it is not
+    - added ability for police to remove objects that are not able to be picked up
+    - moved notification functions to config side, by default these will use qb-notify and standard chat, but can be modified for third party ones
+
+- third party support
+    - added new events for object creation, removal, and temporary deletion (when out of range) for easier integration with 3rd party resources
+    - added new server event that allows 3rd party resources to create custom objects
+    - added ability to supply target options through an items config so developers do not need to edit the resource directly to add custom object functionality
+    - added ability for items to trigger custom functions and events from the config
+
+- vendors & containers
+    - added new shipping container objects, with functional doors and locks
+    - added storage container, gun workshop 
+    - added new vendor system to sell containers, players can rent containers and upgrade them to legal or illegal versions
+    - created record system for vendors, allowing police to identify containers and request records from vendors
+
+v2.1 update (9/15/21)
+    - removed deprecated add/remove item events from client/main.lua
+    - added new, more secure events for items to server/main.lua
+    - refactor on how item target options are generated, they are now built entirely on what is specified in the config
+    - items which give items (medbag) or allow crafting (bbq) now use a easily configurable crafting menu
+    - removed callbacks for items/crafting, will now use an event flow that should be less prone to delays/issues
+    - fixed items being lost if canceling placement
+    - reduced unnecessary network event traffic
+    - added database persistence, configurable in config
+    - object loading will now package objects in smaller packets to reduce network traffic and packet size
+    - object ids are now created when an object is used, and checked after placement to prevent exploiting
+    - qb-sit now no longer conflicts with chair objects and should not prevent picking them up
+
+v2.011 hotfix
+    - actually fixed invisible spike strips
+    - spikestrips should now deploy correctly when thrown from an elevated edge/cliff
+    - fixed issue with polyzones not being deleted properly when picking up an object after leaving its area and returning
+    - admin menu will now sort objects and spikestrips by distance
+
+v2.01 update
+    - spikestrips now have a secondary 'high-speed' zone that should better account for lag and pop tires on vehicles 
+      travelling at high speeds better
+    - fixed issue with spikestrips not being set visible when leaving the area after deployment or entering area with the spike strip
+      for the first time
+    - added a server sync function that will push the server object/spike list to all clients, and check for any objects
+      that exist despite having been deleted, then deletes them and creates a console print
+    - database persistence coming in the next update
+
+v2.0 update
+    - object entities will now be spawned locally across all connected clients, this should resolve issues with networkids migrating due to onesync
+    - objects will no longer delete peds/cars when being placed down
+    - grill now properly displays no ingredients notification
+    - fixed clearobjects and admin menus not displaying objects correctly
+    - fixed zoffsets for multiple objects, removed native improperly adjusting entity height after placement
+    - bombs will now detonate after a configurable number of wires have been cut by someone attempting to diffuse it
+    - moved all key messages to config
+    - music players now use on resource events to interact with xsound, no longer requires qb-djbooth
+    - music players menu updated to be cleaner
+    - music players now have configurable default volume
+    - music players now save music volume between songs, can be adjusted even when a song is not being played
+    - music players will now stop playing music after resource has stopped or restarted

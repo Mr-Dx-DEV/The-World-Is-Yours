@@ -1,43 +1,31 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'r14-objects'
-version '2.54'
+description 'R14-OBJECTS HAS BEEN INCORRECTLY INSTALLED, PLEASE INSTALL THE SUBFOLDER'
+version '0.0'
 
-shared_scripts {
-	'@PolyZone/client.lua',
-	'@PolyZone/BoxZone.lua',
-	'@PolyZone/EntityZone.lua',
-	'@PolyZone/CircleZone.lua',
-	'@PolyZone/ComboZone.lua',
-    'config.lua',
-}
-
-client_scripts {
-	'config.lua',
-	'client/*.lua',
-	'@PolyZone/client.lua',
-	'@PolyZone/BoxZone.lua',
-	'@PolyZone/EntityZone.lua',
-	'@PolyZone/CircleZone.lua',
-	'@PolyZone/ComboZone.lua',
-}
-
-server_scripts {
-    '@oxmysql/lib/MySQL.lua',
-    'server/*.lua'
-}
-
-ui_page 'html/index.html'
-
-files {
-	'html/index.html',
-	'html/vue.min.js',
-	'html/script.js',
-	'html/tablet-frame.png',
-	'html/fingerprint.png',
-	'html/main.css',
-	'html/vcr-ocd.ttf'
+escrow_ignore {
+  'r14-objects/*.lua', -- ignore all lua
+  'r14-objects/client/*.lua', -- ignore all lua
+  'r14-objects/server/*.lua', -- ignore all lua
+  'r14-objects/stream/*.ytd', -- ignore all lua
+  'r14-objects/stream/*.yft', -- ignore all lua
+  'sounds/*.oog', -- ignore all sounds
+  'inventory/*.png', -- ignore all images
+  'optionalresources/*.txt', -- ignore all txt
+  'optionalresources/**/*.txt', -- ignore all txt
+  'optionalresources/**/*.lua', -- ignore all lua
+  'optionalresources/**/**/*.lua', -- ignore all lua
+  'optionalresources/**/**/*.lua', -- ignore all lua
+  'optionalresources/**/**/*.js', -- ignore all lua
+  'optionalresources/**/**/*.html', -- ignore all lua
+  'optionalresources/**/**/*.css', -- ignore all lua
+  'script/*.lua', -- ignore all lua
+  'script/*.txt', -- ignore all txt
 }
 
 lua54 'yes'
+dependency '/assetpacks'
+dependency '/assetpacks'
+
+dependency '/assetpacks'

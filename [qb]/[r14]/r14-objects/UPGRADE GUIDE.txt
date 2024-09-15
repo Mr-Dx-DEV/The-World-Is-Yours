@@ -1,0 +1,81 @@
+     ___                        ___                     ___           ___           ___      
+    /\  \         __ __        /\__\                   /\  \         /\  \         /\__\     
+   /::\  \       /::\  \      /:/  /                  /::\  \       /::\  \       /:/  /     
+  /:/\:\  \      \:::\  \    /:/__/                  /:/\:\  \     /:/\:\  \     /:/  /      
+ /::\~\:\  \   __ \:::\__\   \:\  \ ___             /:/  \:\__\   /::\~\:\  \   /:/__/   ___ 
+/:/\:\ \:\__\ /\ \/:::/  /    \:\  V\__\           /:/__/ \:|__| /:/\:\ \:\__\  |:|  |  /\__\
+\/_|::\/:/  / \:\/:::/  /      \:\/:/  /           \:\  \ /:/  / \:\~\:\ \/__/  |:|  | /:/  /
+   |:|::/  /   \::::/  /        \::/  /             \:\  /:/  /   \:\ \:\__\    |:|  |/:/  / 
+   |:|\/__/     \::/  /         /:/  /               \:\/:/  /     \:\ \/__/    |:|__/:/  / 
+   |:|  |        \:\__\        /:/  /                 \::/  /       \:\__\       \::::/  /    
+    \|__|         \/__/        \/__/                   \/__/         \/__/        \__/__/      
+
+v2.52 to 2.53 (12/1/2022)
+
+Update server/main.lua and client/main.lua. 
+
+------------------------------------------------------
+
+v2.52 to 2.53 (12/1/2022)
+
+Update server/main.lua and client/main.lua. 
+
+------------------------------------------------------
+
+v2.51 to 2.52 (10/24/22)
+
+Update server/main.lua, client/main.lua, and minor updates to config.lua. Either replace, or diffcheck.
+
+------------------------------------------------------
+
+v2.5 to v2.51 (10/22/22)
+
+Update server/main.lua, client/main.lua, and config.lua
+
+------------------------------------------------------
+
+v2.1 to 2.5 (10/21/22)
+
+Checklist:
+    ☐ add anglegrinder.oog to your interact-sound
+    ☐ update the r14-object resource entire, config and server/client folders
+    ☐ add anglegrinder.png to your inventory script
+    ☐ add the new items from the instructions to your qb-core shared/items.lua: (containerkey, storagecontract, and anglegrinder)
+    ☐ run the following sql to add a second row to your objects table
+
+INSERT INTO objects (list)
+VALUES ('ignore');
+
+------------------------------------------------------
+
+pre-v2.1 to v2.1 (9/15/22)
+
+Major change to r14-objects, will require a complete reinstall. Any custom objects you have created will
+need to be recreated within the new config, and code altered to fit how object target options are now
+generated. If you need an explainer on this, I will be happy to help, but am not going to rewrite your code
+for you, just make sure you understand how the new system works.
+
+You will need to update your inventory:server:CreateDrop event, this update adds in the new creation time used
+by qb-inventory, and changes the creating function from RegisterNetEvent to AddEventHandler. This means that it
+can only be triggered SERVER SIDE, and cannot be triggered CLIENT SIDE. If you use this event elsewhere in a client
+script, you will need to modify it to be triggered from the serverside, otherwise someone could use it to create drops
+full of whatever items they want.
+
+You will need to update your qb-sit resource as well.
+
+RUN THE SQL
+
+---------- replace inventory:server:CreateDrop with following code -----------------
+
+AddEventHandler('inventory:server:CreateDrop', function(items, coords, player)
+	local src = source
+
+	local dropId = CreateDropId()
+	Drops[dropId] = {}
+	Drops[dropId].coords = coords
+	Drops[dropId].createdTime = os.time()
+
+	Drops[dropId].items = items
+
+	TriggerClientEvent("inventory:client:AddDropItem", -1, dropId, player, coords)
+end)
