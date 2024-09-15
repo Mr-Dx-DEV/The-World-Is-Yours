@@ -68,17 +68,37 @@ Config = {
         Companion = true, -- This is used for enabling companion system, player with the specific job are not going to be attacked by Prison Guards
         CompanionRefreshCycleTime = 1.5, -- This is the time for refreshing prisoners (default in sec)
         CompanionJobList = {
+            ['lspd'] = true,
+            ['bcso'] = true,
+            ['sahp'] = true,
+            ['lsso'] = true,
+            ['safw'] = true,
+            ['sadoc'] = true,
+            ['usms'] = true,
+            ['fbi'] = true,
+            ['dhs'] = true,
+            ['ss'] = true,
             ['police'] = true,
             ['sheriff'] = true,
             ['ambulance'] = true,
         },
-
+        
         RemovePlayerJobWhenJailed = false, -- This is used for removing player job when citizen is jailed (supports: ESX, QBCore)
         RemovePlayerSetDefaultJob = 'unemployed', -- This is the default job set when RemovePlayerJobWhenJailed is enabled
         RemoveJobList = {
-            ['police'] = true, -- 
-            ['ambulance'] = true,
+            ['lspd'] = true,
+            ['bcso'] = true,
+            ['sahp'] = true,
+            ['lsso'] = true,
+            ['safw'] = true,
+            ['sadoc'] = true,
+            ['usms'] = true,
+            ['fbi'] = true,
+            ['dhs'] = true,
+            ['ss'] = true,
+            ['police'] = true,
             ['sheriff'] = true,
+            ['ambulance'] = true,
         }
     },
 
