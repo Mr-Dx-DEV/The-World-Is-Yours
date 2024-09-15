@@ -1,15 +1,15 @@
 main = {
     -- This section allows you to define your server framework. By default, standalone is enabled
     framework = { -- Incorrectly named but kept for backwards compatibility
-        standalone = true,
+        standalone = false,
         ESX = false,
-        QBCore = false,
+        QBCore = true,
         alternativeQBCoreItemRemoval = {
             enabled = false,
             eventToTrigger = ""
         },
         vRP = false,
-        oxInv = false,
+        oxInv = true,
         quasarInv = false, -- Also enable ESX/QB above
         coreInv = false, -- Also enable ESX/QB above
         cartridgeItemName = "taser_cartridge"
