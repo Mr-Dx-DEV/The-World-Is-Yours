@@ -62,7 +62,7 @@ Config.CoreSettings = {
 		CreateCure = 20000, -- time it takes to create overdose cure -- THIS IS PURPOSELY SET HIGH TO SIMULATE BREWING INGREDIENTS
 		TakeCure = 5000, -- time it takes to take overdose cure
 		TakeDeathCap = 5000, -- time it takes to eat death cap mushroom		
-        RespawnShrooms = 60 * 1000 * 60, -- time to respawn mushrooms default is 60 minutes
+        RespawnShrooms = 0 * 1000 * 60, -- time to respawn mushrooms default is 60 minutes
     },
     Chances = {
         Pick = 90, -- chance to pick mushrooms
