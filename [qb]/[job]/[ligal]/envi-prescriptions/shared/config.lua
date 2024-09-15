@@ -86,7 +86,7 @@ Config.Pharmacies = {
           scale = 0.75,
           colour = 38,
           display = 2,
-          name = 'Another Pharmacy',
+          name = 'Pharmacy',
           shortRange = true,
       },
       PedWalkCoords = vector4(-492.22, -342.66, 42.32, 350.23),
