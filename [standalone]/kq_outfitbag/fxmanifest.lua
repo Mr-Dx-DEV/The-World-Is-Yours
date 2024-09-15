@@ -1,10 +1,10 @@
 fx_version 'cerulean'
-games { 'gta5' }
+games      { 'gta5' }
 lua54 'yes'
 
 author 'KuzQuality | Kuzkay'
 description 'Outfit bag script by KuzQuality'
-version '1.4.1'
+version '1.2.4'
 
 
 ui_page 'html/index.html'

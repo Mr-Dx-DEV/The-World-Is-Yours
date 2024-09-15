@@ -1,10 +1,9 @@
-function EnsureTarget()
-    if (Config.target.enabled and Config.target.system) then
+if (Config.target.enabled and Config.target.system) then
 
-        local system = Config.target.system
+    local system = Config.target.system
 
-
-        local options = {
+    exports[system]:AddTargetModel({GetHashKey(Config.bagObject)}, {
+        options = {
             {
                 type = "client",
                 event = "kq_outfitbag:targetOpen",
@@ -13,7 +12,6 @@ function EnsureTarget()
                 canInteract = function(entity)
                     return IsEntityAMissionEntity(entity) and (Entity(entity).state.public or Entity(entity).state.owner == GetPlayerServerId(PlayerId()))
                 end,
-                distance = 1.75,
             },
             {
                 type = "client",
@@ -23,7 +21,6 @@ function EnsureTarget()
                 canInteract = function(entity)
                     return IsEntityAMissionEntity(entity) and (Entity(entity).state.owner == GetPlayerServerId(PlayerId()))
                 end,
-                distance = 1.75,
             },
             {
                 type = "client",
@@ -33,7 +30,6 @@ function EnsureTarget()
                 canInteract = function(entity)
                     return IsEntityAMissionEntity(entity) and (Entity(entity).state.owner == GetPlayerServerId(PlayerId())) and not Entity(entity).state.public
                 end,
-                distance = 1.75,
             },
             {
                 type = "client",
@@ -43,22 +39,8 @@ function EnsureTarget()
                 canInteract = function(entity)
                     return IsEntityAMissionEntity(entity) and (Entity(entity).state.owner == GetPlayerServerId(PlayerId())) and Entity(entity).state.public
                 end,
-                distance = 1.75,
             },
-        }
-
-        if system == 'ox_target' then
-            exports[system]:addModel({GetHashKey(Config.bagObject)}, options)
-        else
-            exports[system]:AddTargetModel({GetHashKey(Config.bagObject)}, {
-                options = options,
-                distance = 1.75,
-            })
-        end
-    end
+        },
+        distance = 1.75
+    })
 end
-
-Citizen.CreateThread(function()
-    Citizen.Wait(1000)
-    EnsureTarget()
-end)

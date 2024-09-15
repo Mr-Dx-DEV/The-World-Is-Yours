@@ -26,7 +26,7 @@ Config.qbSettings = {
 
 Config.target = {
     enabled = true,
-    system = 'ox_target' -- 'qtarget' or 'qb-target' or 'ox_target' (Other systems might work as well)
+    system = 'qtarget' -- 'qtarget' or 'qb-target'  (Other systems might work as well)
 }
 
 -- Outfitbag command settings
@@ -83,6 +83,3 @@ Config.keybinds = {
     open = 'E',
     pickup = 'G',
 }
-
--- Whether to save outfits using Illenium-appearance (this will make players their outfit upon relog)
-Config.illeniumSaving = false

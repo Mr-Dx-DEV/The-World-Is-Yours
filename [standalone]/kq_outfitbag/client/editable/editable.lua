@@ -1,11 +1,6 @@
-local cooldown = 0
-
 RegisterNetEvent('kq_outfitbag:placeBag')
 AddEventHandler('kq_outfitbag:placeBag', function(bag)
-    if cooldown + 2000 < GetGameTimer() then
-        cooldown = GetGameTimer()
-        CreateBagObject(bag)
-    end
+    CreateBagObject(bag)
 end)
 
 -- This function is responsible for creating the text shown on the bottom of the screen
@@ -14,21 +9,6 @@ function DrawMissionText(text, time)
     AddTextComponentString(text)
     DrawSubtitleTimed(time or 30000, 1)
 end
-
-
-function TextInput(maxLen)
-    DisplayOnscreenKeyboard(1, "FMMC_KEY_TIP9N", "", "", "", "", "", maxLen or 16)
-    while (UpdateOnscreenKeyboard() == 0) do
-        DisableAllControlActions(0);
-        Wait(1);
-    end
-    if (GetOnscreenKeyboardResult()) then
-        return GetOnscreenKeyboardResult()
-    end
-    
-    return nil
-end
-
 
 -- This function is responsible for drawing all the 3d texts ('Press [E] to prepare for an engine swap' e.g)
 function Draw3DText(x, y, z, textInput, fontId, scaleX, scaleY)
@@ -81,9 +61,5 @@ This is how the script applies the outfit internally
 ------------------------------------------------------------
 ]]--
 function OnPlayerApplyOutfit(outfitData, name)
-    if Config.illeniumSaving then
-        local appearance = exports['illenium-appearance']:getPedAppearance(PlayerPedId())
 
-        TriggerServerEvent("illenium-appearance:server:saveAppearance", appearance)
-    end
 end

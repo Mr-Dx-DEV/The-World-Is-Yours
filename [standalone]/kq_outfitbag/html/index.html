@@ -86,7 +86,7 @@
 
         function logKey(e) {
             if (e.key === 'Escape' || e.key === 'Backspace' || e.key === 'e' || e.key === ' ') {
-                fetch(`https://${GetParentResourceName()}/CloseBag`, {
+                fetch(`https://kq_outfitbag/CloseBag`, {
                     method: 'POST',
                 })
             }
@@ -96,7 +96,7 @@
             const id = $(this).parent().attr('outfitId');
             const index = $(this).parent().attr('outfitIndex');
 
-            fetch(`https://${GetParentResourceName()}/LoadOutfit`, {
+            fetch(`https://kq_outfitbag/LoadOutfit`, {
                 method: 'POST',
                 body: JSON.stringify({
                     id: id,
@@ -108,7 +108,7 @@
         $(document).on('click', '.delete-btn', function () {
             const index = $(this).parent().attr('outfitIndex');
 
-            fetch(`https://${GetParentResourceName()}/DeleteOutfit`, {
+            fetch(`https://kq_outfitbag/DeleteOutfit`, {
                 method: 'POST',
                 body: JSON.stringify({
                     index: index
@@ -117,12 +117,12 @@
         })
 
         $(document).on('click', '#save-outfit', function () {
-            fetch(`https://${GetParentResourceName()}/SaveOutfit`, {
+            fetch(`https://kq_outfitbag/SaveOutfit`, {
                 method: 'POST',
             });
         });
 
-        fetch(`https://${GetParentResourceName()}/UILoaded`, {
+        fetch(`https://kq_outfitbag/UILoaded`, {
             method: 'POST',
         });
     });
