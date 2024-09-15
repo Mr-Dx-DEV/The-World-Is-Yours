@@ -1188,4 +1188,5 @@ Config.DoorList = {
 		pickable = false,
 		distance = 2.0
 	},
+-- Do not edit this part manually unless you know what you are doing
 }
