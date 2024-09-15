@@ -193,39 +193,39 @@ return {
 				distance = 6 
 			},
 			{ 
-				ped = `mp_m_shopkeep_01`,
+				ped = `u_m_m_doa_01`,
 				scenario = 'WORLD_HUMAN_AA_COFFEE',
-				loc = vec3(607.97, -20.68, 76.63),
+				loc = vec3(607.97, -20.68, 75.63),
 				heading = 354.35
 			},
 			{
-				ped = `s_m_y_cop_01`, -- Sandy Shores BCSO
+				ped = `u_m_m_doa_01`, -- Sandy Shores BCSO
 				scenario = 'WORLD_HUMAN_AA_COFFEE',
-				loc = vec3(1836.2866, 3686.9396, 34.189239),
+				loc = vec3(1836.2866, 3686.9396, 33.189239),
 				heading = 220.0
 			},
 			{
-				ped = `s_m_y_sheriff_01`, -- Paleto BCSO
+				ped = `u_m_m_doa_01`, -- Paleto BCSO
 				scenario = 'WORLD_HUMAN_CLIPBOARD',
-				loc = vec3(-446.8, 6016.74, 37.0),
+				loc = vec3(-446.8, 6016.74, 36.0),
 				heading = 150.0
 			},
 			{
-				ped = `s_m_y_ranger_01`, -- Game Warden
+				ped = `u_m_m_doa_01`, -- Game Warden
 				scenario = 'WORLD_HUMAN_STAND_IMPATIENT',
-				loc = vec3(1553.86, 839.99, 77.66),
+				loc = vec3(1553.86, 839.99, 76.66),
 				heading = 148.71
 			},
 			{
-				ped = `s_m_y_ranger_01`, -- Game Warden
+				ped = `u_m_m_doa_01`, -- Game Warden
 				scenario = 'WORLD_HUMAN_STAND_IMPATIENT',
-				loc = vec3(386.97, 799.72, 187.46),
+				loc = vec3(386.97, 799.72, 186.46),
 				heading = 60.0
 			},
 			{
-				ped = `s_m_y_ranger_01`, -- Game Warden
+				ped = `u_m_m_doa_01`, -- Game Warden
 				scenario = 'WORLD_HUMAN_STAND_IMPATIENT',
-				loc = vec3(836.76, -1287.34, 28.24),
+				loc = vec3(836.76, -1287.34, 27.24),
 				heading = 278.12
 			},
 			-- Add more ped targets as needed for other locations
