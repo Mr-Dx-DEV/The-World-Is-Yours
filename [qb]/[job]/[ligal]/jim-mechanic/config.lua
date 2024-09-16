@@ -24,7 +24,7 @@ Config = {
 		JobLocationRequired = true, -- Are the mecahanics locked to specific locations?
 		LocationBlips = true, 		-- Enable to grab the blip locations from locations.lua
 		CosmeticsJob = true, 		-- Do vehicle cosmetics require a mechanic job role?
-		JobRoles = { "mechanic", "urbanmechanic", "countymechanic" }, -- These are the job roles who can use items if RequiresJob is enabled.
+		JobRoles = { "mechanic", "urbanmechanic", "countymechanic", "kittys" }, -- These are the job roles who can use items if RequiresJob is enabled.
 									-- Add your extra job roles here or just leave as "mechanic"
 									-- Example-- --JobRoles = { "mechanic", "tuner" }
 	},
@@ -53,7 +53,7 @@ Config = {
 	},
 
 	Crafting = {
-		craftCam = false,
+		craftCam = true,
 		MultiCraft = true,
 		MultiCraftAmounts = { [1], [2], [3], [4], [5], [6], [7], [8], [9], [10] },
 		showItemBox = true,			-- toggle itemBox for adding/removing items, helpful if using custom item change events
@@ -186,7 +186,7 @@ Config = {
 	},
 
 	StoreCraft = {
-		Crafting = false, 				-- Set true to turn on crafting features
+		Crafting = true, 				-- Set true to turn on crafting features
 		StashCraft = false,  			-- Set true to grab materials from mechaincs stash for crafting
 		Stores = true, 					-- Set true to turn on shop store features
 	},
@@ -343,6 +343,7 @@ Config = {
 		Jobs = {
 			["police"] = 0, -- Job and Job Grade
 			["ambulance"] = 0,
+			["kittys"] = 0,
 			["mechanic"] = 0,
 			["urbanmechanic"] = 0,
 			["countymechanic"] = 0,

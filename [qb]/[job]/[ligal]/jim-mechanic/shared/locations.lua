@@ -2,7 +2,7 @@ Config.Locations = Config.Locations or {}
 
 Config.Locations[#Config.Locations+1] = { --[[ GABZ ALTA STREET BENNYS ]]--
 	Enabled = true,
-	job = "mechanic",
+	job = "kittys",
 	zones = {
 		vec2(-249.339, -1152.002),
 		vec2(-248.799, -1185.063),
@@ -22,7 +22,7 @@ Config.Locations[#Config.Locations+1] = { --[[ GABZ ALTA STREET BENNYS ]]--
 		{ coords = vec4(-175.5, -1175.34, 23.03, 90.0), w = 8.0, d = 3.0 },
 	},
 	crafting = {
-		{ coords = vec4(-214.82, -1339.74, 31.46, 90.0), w = 2.8, d = 1.5 },
+		{ coords = vec4(-217.67, -1165.26, 23.03, 00.0), w = 2.0, d = 1.0 },
 	},
 	clockin = {
 		{ coords = vec4(-210.33, -1162.56, 23.03, 0.0), prop = false },
@@ -50,7 +50,7 @@ Config.Locations[#Config.Locations+1] = { --[[ GABZ ALTA STREET BENNYS ]]--
 	},
 	blip = {
 		coords = vec3(-210.123, -1171.293, 23.034),
-		label = "Mechanic",
+		label = "Kitty's Customs",
 		color = 1,
 		sprite = 446,
 		disp = 6,
