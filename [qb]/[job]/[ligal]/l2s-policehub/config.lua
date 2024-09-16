@@ -14,8 +14,19 @@ Config['Settings'] = {
     TabletAnim = true, -- Tablet prop when the officer open dashboard 
     StreetMouse = false, -- Shows the street name when you place the mouse on any point of the map    https://prnt.sc/SCcnDtah4o7L
     PoliceJobs = {
-        ['police'] = true,
-        ['sheriff'] = false,
+        
+        ['lspd'] = true,
+    ['bcso'] = true,
+    ['sahp'] = true,
+    ['lsso'] = true,
+    ['safw'] = true,
+    ['sadoc'] = true,
+    ['usms'] = true,
+    ['fbi'] = true,
+    ['dhs'] = true,
+    ['ss'] = true,
+    ['police'] = true,
+    ['sheriff'] = true,
     },
     -- Exports & Events 
     OpenMdtEvent = 'mdt:client:openmetdash', -- Open MDT Event (client)
