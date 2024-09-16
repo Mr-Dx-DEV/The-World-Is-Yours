@@ -2,8 +2,8 @@ config = {
 
     -- Maximum of 10 characters per line
     textLines = {
-        [1] = "WORLD", -- Line 1 of text (top)
-        [2] = "IS YOUR", -- Line 2 of text (bottom)
+        [1] = "THE WORLD", -- Line 1 of text (top)
+        [2] = "IS YOURS", -- Line 2 of text (bottom)
         
     },
 
