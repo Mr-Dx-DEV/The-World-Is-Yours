@@ -113,13 +113,14 @@ return {
 			{ name = 'weapon_pistol', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'weapon_stungun', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'weapon_pumpshotgun', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
-			{ name = 'weapon_smg', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 9 },
-			{ name = 'weapon_carbinerifle', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 5 },
+			{ name = 'weapon_smg', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'weapon_carbinerifle', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'weapon_nightstick', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'pistol_ammo', price = 10, grade = 0 },
-			{ name = 'smg_ammo', price = 10, grade = 9 },
+			{ name = 'smg_ammo', price = 10, grade = 0 },
 			{ name = 'shotgun_ammo', price = 10, grade = 0 },
-			{ name = 'rifle_ammo', price = 10, grade = 5 },
+			{ name = 'rifle_ammo', price = 10, grade = 0 },
+			{ name = 'sniper_ammo', price = 10, grade = 0 },
 			{ name = 'handcuffs', price = 100, metadata = { registered = true, serial = 'POL' }, grade = 0 },
 			{ name = 'weapon_flashlight', price = 100, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'empty_evidence_bag', price = 100, grade = 0 },
@@ -127,7 +128,7 @@ return {
 			{ name = 'armor', price = 100, grade = 0 },
 			{ name = 'radio', price = 500, grade = 0 },
 			{ name = 'heavyarmor', price = 1000, grade = 0 },
-			{ name = 'parachute', price = 1000, grade = 5 },
+			{ name = 'parachute', price = 1000, grade = 0 },
 			{ name = 'weapon_combatpistol', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'ifaks', price = 100, grade = 0 },
 			{ name = 'advancedlockpick', price = 1000, grade = 0 },
@@ -136,8 +137,8 @@ return {
 			{ name = 'diving_gear', price = 1000, grade = 0 },
 			{ name = 'firstaid', price = 100, grade = 0 },
 			{ name = 'bandage', price = 30, grade = 0 },
-			{ name = 'weapon_heavysniper_mk2', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 9 },
-			{ name = 'snp_ammo', price = 100, grade = 9 },
+			{ name = 'weapon_heavysniper_mk2', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'snp_ammo', price = 100, grade = 0 },
 			{ name = 'microfibercloth', price = 50, grade = 0 },
 			{ name = 'blox', price = 50, grade = 0 },
 			{ name = 'taser_cartridge', price = 50, grade = 0 },
@@ -159,7 +160,31 @@ return {
 			{ name = 'fingerprintkit', price = 1000, grade = 0 },
 			{ name = 'fingerprinttape', price = 100, grade = 0 },
 			{ name = 'mikrosil', price = 100, grade = 0 },
-			{ name = 'keepcompanionshepherd', price = 1000, grade = 0 }
+			{ name = 'keepcompanionshepherd', price = 1000, grade = 0 },
+
+
+
+
+			{ name = 'WEAPON_PDBATON', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_BTASER', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_YTASER', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_PDG19', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_PD870', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_PDM700', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_HK417', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_PDCM607', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_PDC7', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_PDG22', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_PDBM3', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_PDP88', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_PDHK45', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_PDHK33', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_PDHKUSP', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 }
+			
+
+
+
+
 		},
 		locations = {
 			vector3(607.97, -20.68, 76.63), -- Vinewood PD
