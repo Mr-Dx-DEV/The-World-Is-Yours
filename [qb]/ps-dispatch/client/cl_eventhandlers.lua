@@ -30,7 +30,7 @@ end
 ---@param ped number | The Ped ID of the shooter
 ---@param coords table | The Coords of the shooter
 AddEventHandler('CEventShockingGunshotFired', function(witnesses, ped, coords)
-    if not exports["pug-paintball"]:IsInPaintball() then
+   -- if not exports["pug-paintball"]:IsInPaintball() then
         local coords = vector3(coords[1][1], coords[1][2], coords[1][3])
         -- Use the timer to prevent the event from being triggered multiple times.
         if Config.Timer['Shooting'] ~= 0 then return end
