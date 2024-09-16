@@ -932,7 +932,7 @@ Config.market_categories = {
 		['items'] = {
 			['classic_phone'] = {
 				['name'] = "Classic Phone",
-				['price_to_customer'] = 350,
+				['price_to_customer'] = 1000,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 315,
@@ -944,7 +944,7 @@ Config.market_categories = {
 			
 			['black_phone'] = {
 				['name'] = "Black Phone",
-				['price_to_customer'] = 350,
+				['price_to_customer'] = 1300,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 315,
@@ -956,7 +956,7 @@ Config.market_categories = {
 			
 			['blue_phone'] = {
 				['name'] = "Blue Phone",
-				['price_to_customer'] = 350,
+				['price_to_customer'] = 1300,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 315,
@@ -968,7 +968,7 @@ Config.market_categories = {
 			
 			['gold_phone'] = {
 				['name'] = "Gold Phone",
-				['price_to_customer'] = 350,
+				['price_to_customer'] = 1300,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 315,
@@ -980,7 +980,7 @@ Config.market_categories = {
 			
 			['red_phone'] = {
 				['name'] = "Red Phone",
-				['price_to_customer'] = 350,
+				['price_to_customer'] = 1300,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 315,
@@ -992,7 +992,7 @@ Config.market_categories = {
 			
 			['green_phone'] = {
 				['name'] = "Green Phone",
-				['price_to_customer'] = 350,
+				['price_to_customer'] = 1300,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 315,
@@ -1004,7 +1004,7 @@ Config.market_categories = {
 			
 			['greenlight_phone'] = {
 				['name'] = "Green Light Phone",
-				['price_to_customer'] = 350,
+				['price_to_customer'] = 1300,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 315,
@@ -1016,7 +1016,7 @@ Config.market_categories = {
 			
 			['pink_phone'] = {
 				['name'] = "Pink Phone",
-				['price_to_customer'] = 350,
+				['price_to_customer'] = 1300,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 315,
@@ -1028,7 +1028,7 @@ Config.market_categories = {
 			
 			['white_phone'] = {
 				['name'] = "White Phone",
-				['price_to_customer'] = 350,
+				['price_to_customer'] = 1300,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 315,
@@ -1037,7 +1037,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'white_phone.png',
 			},
-			 
+			--[[  
 			['wet_phone'] = {
 				['name'] = "Wet Phone",
 				['price_to_customer'] = 350,
@@ -1157,7 +1157,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'wet_white_phone.png',
 			},
-			
+			 ]]
 			--[[ ['phone_hack'] = {
 				['name'] = "Phone Hack",
 				['price_to_customer'] = 350,
@@ -1169,7 +1169,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'phone_hack.png',
 			}, ]]
-			
+			--[[ 
 			['phone_module'] = {
 				['name'] = "Phone Module",
 				['price_to_customer'] = 350,
@@ -1181,7 +1181,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'phone_module.png',
 			},
-			
+			 ]]
 			['powerbank'] = {
 				['name'] = "Power Bank",
 				['price_to_customer'] = 350,
