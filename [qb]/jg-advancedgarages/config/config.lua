@@ -359,7 +359,7 @@ Config.GangGarageLocations = { -- IMPORTANT - Every garage name must be unique
 
 -- Impound
 Config.ImpoundCommand = "iv"
-Config.ImpoundFeesSocietyFund = "police" -- Job name of society fund to pay impound fees into (optional)
+Config.ImpoundFeesSocietyFund = { 'lspd', 'bcso', 'sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police' } -- Job name of society fund to pay impound fees into (optional)
 Config.ImpoundShowBlips = true
 Config.ImpoundUniqueBlips = false
 Config.ImpoundTimeOptions = {0, 1, 4, 12, 24, 72, 168} -- in hours
