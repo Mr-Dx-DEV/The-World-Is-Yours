@@ -3,7 +3,7 @@ local ESX = GetResourceState('es_extended') == 'started' and exports.es_extended
 local ox_inventory = GetResourceState('ox_inventory') == 'started' and exports.ox_inventory
 
 local Evidence, CarEvidence, NetImpactEvidence, PlayerPedImpacts, NetPedImpacts = setmetatable({}, ev_meta), {}, {}, {}, {}
-local AddPacket, EvBuckets = {}, {}
+local AddPacket = {}
 local PlayerGSR, PlayerBAC, PlayerStatus, PlayerDrugs = {}, {}, {}, {}
 local LoadedCars, CarFingerprints, Update, Models = {}, {}, {}, {}
 local VehicleExtTampers, VehicleInteriorTampers = {}, {}
@@ -455,25 +455,11 @@ local function SendEvidence()
 end
 
 local function SendRemove()
-    if not next(RemovePackage) then return end
+    local removepackage = table.clone(RemovePackage)
+    RemovePackage = {}
 
-    local removepackage = {}
-    local count = 0
-    
-    for k, v in pairs(RemovePackage) do
-        if count < 15 then
-            removepackage[k] = v
-
-            count = count + 1
-
-            RemovePackage[k] = nil
-        end
-    end
-
-    for k, v in pairs(ActivePlayers) do
-        if v.sync then
-            TriggerClientEvent("evidence:client:RemoveEvidence", k, removepackage)
-        end
+    if next(removepackage) then
+        TriggerClientEvent("evidence:client:RemoveEvidence", -1, removepackage)
     end
 end
 
@@ -981,35 +967,18 @@ end)
 ----------- evidence creation events --------------------------
 
 RegisterNetEvent('evidence:server:CreateEvidence', function(data) -- security vulnerability patched 11/26/2022   
-    EvBuckets = {}
-
     for k, v in pairs(data) do
         v.src = source
         TriggerEvent(('evidence:server:Create%s'):format(v.event), v)
     end
 end)
 
-function GetBucket(src)
-    local curbucket = nil
-
-    if EvBuckets[src] then
-        curbucket = EvBuckets[src]
-    else
-        curbucket = GetPlayerRoutingBucket(tostring(src))
-        EvBuckets[src] = curbucket
-    end
-
-    print(curbucket, 'here')
-
-    return curbucket
-end
-
 RegisterNetEvent('evidence:server:CreateCasing', function(data)
     if type(data) ~= 'table' then print('Received casing from outdated event trigger. Please check your resources for duplicated code containing the \'evidence:server:CreateCasing\' event.') return end
 
     local src = data.src or source
     local evidenceId = CreateEvidenceId()
-    local bucket = GetBucket(src)
+    local bucket = GetPlayerRoutingBucket(tostring(src))
     local time = os.time() + (Config.EvidenceFadeTime.Casings * 60)    
     local serialNumber = nil
 
@@ -1039,7 +1008,7 @@ end)
 RegisterNetEvent('evidence:server:CreateBulletImpact', function(data)
     local src = data.src or source
     local evidenceId = CreateEvidenceId()
-    local bucket = GetBucket(src)
+    local bucket = GetPlayerRoutingBucket(tostring(src))
     local time = os.time() + (Config.EvidenceFadeTime.Impact * 60)
 
     Evidence[evidenceId] = {
@@ -1056,7 +1025,7 @@ end)
 RegisterNetEvent('evidence:server:CreateVehicleFragment', function(data)
     local src = data.src or source
     local evidenceId = CreateEvidenceId()
-    local bucket = GetBucket(src)
+    local bucket = GetPlayerRoutingBucket(tostring(src))
     local time = os.time() + (Config.EvidenceFadeTime.Fragment * 60)
 
     Evidence[evidenceId] = {
@@ -1139,7 +1108,7 @@ end)
 RegisterNetEvent('evidence:server:CreateBlood', function(data)
     local src = data.src or source
     local evidenceId = CreateEvidenceId()
-    local bucket = GetBucket(src)
+    local bucket = GetPlayerRoutingBucket(tostring(src))
     local time = os.time() + (Config.EvidenceFadeTime.Blood * 60)
     local PlayerData = GetPlayerIdentifiers(src)
     local citizenid = data.citizenid or PlayerData.citizenid
@@ -1164,7 +1133,7 @@ end)
 RegisterNetEvent('evidence:server:CreateFingerprint', function(coords)
     local src = source
     local evidenceId = CreateEvidenceId()
-    local bucket = GetBucket(src)
+    local bucket = GetPlayerRoutingBucket(tostring(src))
     local time = os.time() + (Config.EvidenceFadeTime.Fingerprint * 60)
     Evidence[evidenceId] = {
         bucket = bucket,
@@ -1181,7 +1150,7 @@ RegisterNetEvent('evidence:server:CreateLockTampering', function(coords)
     local src = source
     local evidenceId = CreateEvidenceId()
     local time = os.time()
-    local bucket = GetBucket(src)
+    local bucket = GetPlayerRoutingBucket(tostring(src))
     local time = os.time() + (Config.EvidenceFadeTime.Tampering * 60)
     Evidence[evidenceId] = {
         bucket = bucket,
@@ -2196,16 +2165,12 @@ CreateThread(function()
 
         for k, v in pairs(srclist) do
             local cursrc = k
+            local bucket = GetPlayerRoutingBucket(tostring(cursrc))
 
             if not ActivePlayers[cursrc] then ActivePlayers[cursrc] = {bucket = bucket, sync = CheckSync(cursrc)} else ActivePlayers[cursrc].sync = ActivePlayers[cursrc].sync or CheckSync(cursrc) end
 
-            if ActivePlayers[cursrc] and ActivePlayers[cursrc].sync then
-
-                bucket = GetPlayerRoutingBucket(tostring(cursrc))
-
-                if bucket ~= ActivePlayers[cursrc].bucket then
-                    TriggerClientEvent('evidence:client:SetBucket', cursrc, bucket)
-                end
+            if ActivePlayers[cursrc] and ActivePlayers[cursrc].bucket and bucket ~= ActivePlayers[cursrc].bucket then
+                TriggerClientEvent('evidence:client:SetBucket', cursrc, bucket)
             end
 
             ActivePlayers[cursrc].bucket = bucket
@@ -2219,7 +2184,7 @@ CreateThread(function()
             end
         end
 
-        Wait(2000)
+        Wait(3500)
     end
 end)
 

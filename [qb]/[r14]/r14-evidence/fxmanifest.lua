@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'R14 Development (Owner: cjsjs#2964) (Invite: https://discord.gg/Dj3nXTaUYZ)'
 description 'r14-evidence'
-version '1.65'
+version '1.642 hotfix'
 
 
 shared_scripts {

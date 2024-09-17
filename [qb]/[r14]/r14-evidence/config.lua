@@ -19,7 +19,7 @@ Config = {}
 -----------------------------------------------------------------------------------------------------------
 
 Config.Debug = {
-    DebugCommand = false, -- enable debug command
+    DebugCommand = true, -- enable debug command
     Evidence = {enabled = false, label = "Print evidence creation to console.", order = 1}, -- enable this to print debug information when normal evidence is created
     CarEvidence = {enabled = false, label = "Print car evidence creation to console.", order = 2}, -- enable this to print debug information when car evidence is created
     Database = {enabled = false, label = "Print database events to server console.", server = true, order = 3}, -- enable this to print debug information related to vehicle evidence being uploaded to the database
@@ -83,7 +83,7 @@ Config.Context = {
 }
 
 Config.MDT = { -- this config sets up OPTIONAL photo upload to MDT systems/reports
-    DRX = false, -- this uploads photos to DRX evidence & specific reports
+    DRX = true, -- this uploads photos to DRX evidence & specific reports
     PS = false, -- this uploads photos to ps-mdt reports
 }
 
@@ -344,7 +344,7 @@ Config.Notification = {
 
 Config.AuthorizedJobs = {
     LEO = { -- this is for job checks which should only return true for police officers
-        Jobs = {['police'] = true, ['offpolice'] = true, ['fib'] = true},
+    Jobs = {['police'] = true, ['lspd'] = true, ['bcso'] = true, ['lsso'] = true, ['sahp'] = true, ['safw'] = true, ['sadoc'] = true, ['usms'] = true, ['dhs'] = true, ['fbi'] = true, ['ss'] = true, ['ambulance'] = true,},
         Types = {['police'] = true, ['leo'] = true},
         Check = function(source)
             local PlyData = nil
@@ -380,7 +380,7 @@ Config.AuthorizedJobs = {
     },
     Frisk = { -- this is for configuring the frisk job check, you can enable it for all civlians, or specific jobs
         All = false, -- set this to true if you want everyone to have access to frisk
-        Jobs = {['police'] = true, ['fib'] = true, ['sheriff'] = true, ['ambulance'] = {['1'] = true, ['2'] = true,},}, -- you can add a rank table here to give the option to only specific job ranks, like bounchers
+        Jobs = {['police'] = true, ['lspd'] = true, ['bcso'] = true, ['lsso'] = true, ['sahp'] = true, ['safw'] = true, ['sadoc'] = true, ['usms'] = true, ['dhs'] = true, ['fbi'] = true, ['ss'] = true, ['ambulance'] = true,}, -- you can add a rank table here to give the option to only specific job ranks, like bounchers
         Types = {['police'] = true, ['leo'] = true},
         Check = function(source)
             local PlyData = nil
@@ -1011,8 +1011,8 @@ Config.CarWash = {
     Settings = {
         usePoly = true, -- will use polyzone to create car washes, false it will distance check
         use3Dtext = false, -- will use 3D world text to draw carwash
-        useQBdrawtext = false, -- will use built in QB draw text function
-        useOXdrawtext = true, -- will use ox_lib text UI
+        useQBdrawtext = true, -- will use built in QB draw text function
+        useOXdrawtext = false, -- will use ox_lib text UI
         Price = 20,
         Label3D = '~g~E ~w~- Use Car Wash',
         Label2D = '[E] - Use Car Wash',

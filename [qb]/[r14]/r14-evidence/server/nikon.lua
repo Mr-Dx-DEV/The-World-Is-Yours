@@ -11,13 +11,13 @@ local inventoryMetadata = Config.Inventory.CustomMetadata.Enabled and Config.Inv
 -----------------------------------------------------------------------------------------------------------
 
 local Webhooks = { -- these webhooks keys MUST MATCH your config keys
-    [1] = 'https://discord.com/api/webhooks/1277093587695304798/Iv7TVmzp4Pu3JGGdEvC8PHR63ZshaLpyWKsVeT83ZmQGrbTtj2ElBTG9468Mvzz4S0y1',
-    [2] = 'https://discord.com/api/webhooks/1277093587695304798/Iv7TVmzp4Pu3JGGdEvC8PHR63ZshaLpyWKsVeT83ZmQGrbTtj2ElBTG9468Mvzz4S0y1',
-    [3] = 'https://discord.com/api/webhooks/1277093587695304798/Iv7TVmzp4Pu3JGGdEvC8PHR63ZshaLpyWKsVeT83ZmQGrbTtj2ElBTG9468Mvzz4S0y1',
-    [4] = 'https://discord.com/api/webhooks/1277093587695304798/Iv7TVmzp4Pu3JGGdEvC8PHR63ZshaLpyWKsVeT83ZmQGrbTtj2ElBTG9468Mvzz4S0y1',
-    [5] = 'https://discord.com/api/webhooks/1277093587695304798/Iv7TVmzp4Pu3JGGdEvC8PHR63ZshaLpyWKsVeT83ZmQGrbTtj2ElBTG9468Mvzz4S0y1',
-    [6] = 'https://discord.com/api/webhooks/1277093587695304798/Iv7TVmzp4Pu3JGGdEvC8PHR63ZshaLpyWKsVeT83ZmQGrbTtj2ElBTG9468Mvzz4S0y1',
-    [7] = 'https://discord.com/api/webhooks/1277093587695304798/Iv7TVmzp4Pu3JGGdEvC8PHR63ZshaLpyWKsVeT83ZmQGrbTtj2ElBTG9468Mvzz4S0y1',
+    [1] = 'https://discord.com/api/webhooks/1086977491350069269/DdpivDpsc43v5ILRhNu9WPZhCOn7FwGOS-Dz1TS9eb6EzzNCM8MFQ8dNQRqEfgfwv_Sp',
+    [2] = 'https://discord.com/api/webhooks/1086977491350069269/DdpivDpsc43v5ILRhNu9WPZhCOn7FwGOS-Dz1TS9eb6EzzNCM8MFQ8dNQRqEfgfwv_Sp',
+    [3] = 'https://discord.com/api/webhooks/1086977491350069269/DdpivDpsc43v5ILRhNu9WPZhCOn7FwGOS-Dz1TS9eb6EzzNCM8MFQ8dNQRqEfgfwv_Sp',
+    [4] = 'https://discord.com/api/webhooks/1086977491350069269/DdpivDpsc43v5ILRhNu9WPZhCOn7FwGOS-Dz1TS9eb6EzzNCM8MFQ8dNQRqEfgfwv_Sp',
+    [5] = 'https://discord.com/api/webhooks/1086977491350069269/DdpivDpsc43v5ILRhNu9WPZhCOn7FwGOS-Dz1TS9eb6EzzNCM8MFQ8dNQRqEfgfwv_Sp',
+    [6] = 'https://discord.com/api/webhooks/1086977491350069269/DdpivDpsc43v5ILRhNu9WPZhCOn7FwGOS-Dz1TS9eb6EzzNCM8MFQ8dNQRqEfgfwv_Sp',
+    [7] = 'https://discord.com/api/webhooks/1086977491350069269/DdpivDpsc43v5ILRhNu9WPZhCOn7FwGOS-Dz1TS9eb6EzzNCM8MFQ8dNQRqEfgfwv_Sp',
 }
 
 -----------------------------------------------------------------------------------------------------------
@@ -233,6 +233,8 @@ Config.Functions.CreateUseableItem("nikon", function(source, item, inv, slot, da
     if Config.Inventory.Ox then item = inv.items[slot] src = inv.id if type(source) == 'string' and source ~= 'usingItem' then return end end  
 
     ActiveCameras[src] = true
+
+    print('here')
 
     TriggerClientEvent("nikon:Toggle", src, item.slot, items or Config.Functions.GetInventoryServer(src), item.id)
 end)
