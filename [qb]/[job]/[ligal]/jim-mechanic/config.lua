@@ -4,10 +4,10 @@ Config = {
 		Debug = false, -- Set to true to show green debug boxes to help track any issues
 
 		Menu = "ox",  				-- "qb", "ox", "gta"
-		Notify = "qb",				-- "qb", "ox", "gta", "esx"
+		Notify = "ox",				-- "qb", "ox", "gta", "esx"
 		ProgressBar = "qb", 		-- "qb", "ox", "gta", "esx"
 
-		distkph = true, 			-- Set to false to read distance travelled in Miles.
+		distkph = false, 			-- Set to false to read distance travelled in Miles.
 
 		RenewedBanking = false, 	-- This is used for manualrepair benches, enable to use
 	},
@@ -23,8 +23,8 @@ Config = {
 		ItemRequiresJob = true, 	-- Do the specfic items require the mechanic job?
 		JobLocationRequired = true, -- Are the mecahanics locked to specific locations?
 		LocationBlips = true, 		-- Enable to grab the blip locations from locations.lua
-		CosmeticsJob = true, 		-- Do vehicle cosmetics require a mechanic job role?
-		JobRoles = { "mechanic", "urbanmechanic", "countymechanic", "kittys" }, -- These are the job roles who can use items if RequiresJob is enabled.
+		CosmeticsJob = false, 		-- Do vehicle cosmetics require a mechanic job role?
+		JobRoles = { "mechanic", "kittys", }, -- These are the job roles who can use items if RequiresJob is enabled.
 									-- Add your extra job roles here or just leave as "mechanic"
 									-- Example-- --JobRoles = { "mechanic", "tuner" }
 	},
@@ -61,8 +61,8 @@ Config = {
 
 	Harness = {
 		JobOnly = false,			-- Only allow job roles to add a Harness to vehicle
-		HarnessControl = false,		-- Enable harness AND seatbelt features of the script, requires edits to smallresources and hud scripts
-		seatbeltEasyLeave = false,	-- if true players can exit vehicled before removing seatbelt
+		HarnessControl = true,		-- Enable harness AND seatbelt features of the script, requires edits to smallresources and hud scripts
+		seatbeltEasyLeave = true,	-- if true players can exit vehicled before removing seatbelt
 		harnessEasyLeave = true,	-- if true players can exit vehicled before removing harness
 
 		progOn = true,				-- if true add a progressBar to buckle harness
@@ -74,7 +74,7 @@ Config = {
 		timeOff = 2000,				-- Time for the progress bar to take off harness
 
 		minimumSpeed = 70,			-- Minimum speed for crash logic to be triggered
-		minimumSeatBeltSpeed = 1100, -- Minimuim speed for ejecting with a seatbelt attached
+		minimumSeatBeltSpeed = 210, -- Minimuim speed for ejecting with a seatbelt attached
 		minimumDamage = 15.0, 		-- Minimum body damage for ejecting a player (default 15 = .15%)
 
 		crashKill = false,			-- Set to true if you want ejecting when crashing to kill/injure
@@ -137,7 +137,7 @@ Config = {
 
 	Repairs = {	--Repair Related
 		FreeRepair = false,  		-- Are repairs free? True means yes
-		StashRepair = false, 		-- Enable for repair materials to be removed from a job stash (disabled if RequiresJob = false)
+		StashRepair = true, 		-- Enable for repair materials to be removed from a job stash (disabled if RequiresJob = false)
 
 		ExtraDamages = true,		-- When enabled, it will use the built in extra damage systems (Like qb-mechanicjobs functions)
 
@@ -167,7 +167,7 @@ Config = {
 
 	Previews = {
 		oldOxLibMenu = true,		-- Enable this to use default context menu for previews when using ox_lib
-		PreviewPhone = false, 		-- Enable this is preview menu generates an email, False if you want to give an item
+		PreviewPhone = true, 		-- Enable this is preview menu generates an email, False if you want to give an item
 		PreviewJob = false, 		-- Enable this if you want /preview to require a Job Role
 		PreviewLocation = false, 	-- Enable this if you want to lock /preview to a job location (ignored if LocationRequired is false)
 
@@ -338,19 +338,17 @@ Config = {
 
 	},
 	Emergency = {
-		requireDutyCheck = true,	-- if true, when a mechanic is online, the repair button won't show
+		requireDutyCheck = false,	-- if true, when a mechanic is online, the repair button won't show
 									-- if false, the repair option will always be available
 		Jobs = {
 			["police"] = 0, -- Job and Job Grade
 			["ambulance"] = 0,
-			["kittys"] = 0,
 			["mechanic"] = 0,
-			["urbanmechanic"] = 0,
-			["countymechanic"] = 0,
+			["kittys"] = 0,
 		},
 		LockEmergency = false,  -- Enable this to lock make only "Emergency" (Class 18) vehicles to be used with the bench
 		Locations = {
-			{ coords = vec4(435.7, -973.21, 25.7, 180), prop = true, }, -- MRPD UNDERGROUND PARKING
+			{ coords = vec4(451.05, -973.19, 25.7, 180.0), prop = true, }, -- MRPD UNDERGROUND PARKING
 			{ coords = vec4(342.51, -570.98, 28.8, 70.0), prop = true, }, -- PILL BOX GARAGE
 			{ coords = vec4(-1163.01, -2009.41, 13.18, 117.71), prop = true },
 		},
@@ -436,17 +434,17 @@ Config = {
 
 	NOS = { -- NOS STUF
 		JobOnly = false,			-- Only allow job roles to change NOS
-		NosRefillCharge = 350000, 	-- amount in dollars required to refill a nos can
+		NosRefillCharge = 1000, 	-- amount in dollars required to refill a nos can
 
 		NosBoostPower = { 			-- NOS boost acceleration power
-			1.0, -- Level 1
-			3.0, -- Level 2
-			5.0, -- Level 3
+			20.0, -- Level 1
+			35.0, -- Level 2
+			50.0, -- Level 3
 		},
 
-		NitrousUseRate = 0.5, 		-- How fast the nitrous drains (halved for level1, doubled for level3)
+		NitrousUseRate = 0.3, 		-- How fast the nitrous drains (halved for level1, doubled for level3)
 
-		NitrousCoolDown = 15, 		-- 7 Seconds for nitrous cooldown, set to 0 to disable
+		NitrousCoolDown = 7, 		-- 7 Seconds for nitrous cooldown, set to 0 to disable
 		CooldownConfirm = true, 	-- Will play a confirmation beep when cooldown is done
 
 		nosDamage = true, 			-- This enables NOS causing damage to engine while boosting
