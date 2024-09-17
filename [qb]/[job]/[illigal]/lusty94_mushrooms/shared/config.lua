@@ -62,7 +62,7 @@ Config.CoreSettings = {
 		CreateCure = 20000, -- time it takes to create overdose cure -- THIS IS PURPOSELY SET HIGH TO SIMULATE BREWING INGREDIENTS
 		TakeCure = 5000, -- time it takes to take overdose cure
 		TakeDeathCap = 5000, -- time it takes to eat death cap mushroom		
-        RespawnShrooms = 0 * 1000 * 60, -- time to respawn mushrooms default is 60 minutes
+        RespawnShrooms = 1 * 1000 * 60, -- time to respawn mushrooms default is 60 minutes
     },
     Chances = {
         Pick = 90, -- chance to pick mushrooms
@@ -88,7 +88,7 @@ Config.CoreSettings = {
 }
 
 Config.Blips = {
-    {title = 'Mushroom Field', colour = 5, id = 78, coords = vector3(-2250.98, 2539.12, 4.51), scale = 0.6, useblip = true,}, -- BLIP FOR MUSHROOM FIELD
+    {title = 'Mushroom Field', colour = 5, id = 78, coords = vector3(-2250.98, 2539.12, 4.51), scale = 0.6, useblip = false,}, -- BLIP FOR MUSHROOM FIELD
 }
 
 
@@ -196,7 +196,7 @@ Config.DrugSettings = {
         TeleportLocation = vector3(501.75, 5604.69, 797.91), -- teleport location when screen fades during drug effects animation
         GraveLocation = vector3(-1762.99, -262.61, 48.22), -- location of graveyard to teleport player if taken a bad trip from a death cap mushroom
         SpawnPed = true, -- spawn an agry ped when tripping from drug effects
-        SpawnChance = 50, -- spawn chance of angry ped
+        SpawnChance = 80, -- spawn chance of angry ped
         PedModel = "s_m_m_movalien_01", -- ped model of angry ped that spawns
         UseSound = false, -- uses sound effects when taking drugs - REQUIRES INTERACT SOUND TO WORK PROPERPLY
         SoundName = 'MushroomTripEffect', -- name of sound file for drug effects

@@ -144,10 +144,10 @@ Config.CoreSettings = {
 }
 
 Config.Blips = {
-    {title = 'Opium Plants', colour = 5, id = 270, coords = vector3(242.67, 3574.86, 34.18), scale = 0.8, useblip = true,}, -- BLIP FOR OPIUM PLANTS
-    {title = 'Ether Barrels', colour = 5, id = 648, coords = vector3(463.64, -578.81, 28.50), scale = 0.8, useblip = true,}, -- BLIP FOR ETHER BARRELS
-    {title = 'Construction Site', colour = 5, id = 478, coords = vector3(-489.18, -990.85, 29.13), scale = 0.8, useblip = true,}, -- BLIP FOR CONSTRUCTION SITE
-    {title = 'Hydrochloric Acid', colour = 5, id = 415, coords = vector3(2710.09, 1532.11, 20.82), scale = 0.8, useblip = true,}, -- BLIP FOR HYDROCHLORIC ACID
+    {title = 'Opium Plants', colour = 5, id = 270, coords = vector3(242.67, 3574.86, 34.18), scale = 0.8, useblip = false,}, -- BLIP FOR OPIUM PLANTS
+    {title = 'Ether Barrels', colour = 5, id = 648, coords = vector3(463.64, -578.81, 28.50), scale = 0.8, useblip = false,}, -- BLIP FOR ETHER BARRELS
+    {title = 'Construction Site', colour = 5, id = 478, coords = vector3(-489.18, -990.85, 29.13), scale = 0.8, useblip = false,}, -- BLIP FOR CONSTRUCTION SITE
+    {title = 'Hydrochloric Acid', colour = 5, id = 415, coords = vector3(2710.09, 1532.11, 20.82), scale = 0.8, useblip = false,}, -- BLIP FOR HYDROCHLORIC ACID
 }
 
 

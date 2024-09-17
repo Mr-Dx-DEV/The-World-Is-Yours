@@ -130,10 +130,10 @@ Config.CoreSettings = {
 }
 
 Config.Blips = {-- if adding more coca leaves in random locations then make sure to add a blip for their general location here too
-    {title = 'Coca Leaves',         colour = 5, id = 89,    coords = vector3(-1941.44, 4539.38, 10.28),     scale = 0.8, useblip = true,}, -- BLIP FOR COCAINE LEAVES 
-    {title = 'Construction Site',   colour = 5, id = 478,   coords = vector3(-489.18, -990.85, 29.13),      scale = 0.8, useblip = true,}, -- BLIP FOR CONSTRUCTION SITE
-    {title = 'Hydrochloric Acid',   colour = 5, id = 415,   coords = vector3(1688.40, -1666.45, 111.49),    scale = 0.8, useblip = true,}, -- BLIP FOR HYDROCHLORIC ACID
-    {title = 'Gasoline Barrels',    colour = 5, id = 648,   coords = vector3(463.64, -578.81, 28.50),       scale = 0.8, useblip = true,}, -- BLIP FOR GASOLINE BARRELS
+    {title = 'Coca Leaves',         colour = 5, id = 89,    coords = vector3(-1941.44, 4539.38, 10.28),     scale = 0.8, useblip = false,}, -- BLIP FOR COCAINE LEAVES 
+    {title = 'Construction Site',   colour = 5, id = 478,   coords = vector3(-489.18, -990.85, 29.13),      scale = 0.8, useblip = false,}, -- BLIP FOR CONSTRUCTION SITE
+    {title = 'Hydrochloric Acid',   colour = 5, id = 415,   coords = vector3(1688.40, -1666.45, 111.49),    scale = 0.8, useblip = false,}, -- BLIP FOR HYDROCHLORIC ACID
+    {title = 'Gasoline Barrels',    colour = 5, id = 648,   coords = vector3(463.64, -578.81, 28.50),       scale = 0.8, useblip = false,}, -- BLIP FOR GASOLINE BARRELS
 }
 
 
