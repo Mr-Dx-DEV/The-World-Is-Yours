@@ -22,7 +22,8 @@ Config.Locations[#Config.Locations+1] = { --[[ GABZ ALTA STREET BENNYS ]]--
 		{ coords = vec4(-175.5, -1175.34, 23.03, 90.0), w = 8.0, d = 3.0 },
 	},
 	crafting = {
-		{ coords = vec4(-217.67, -1165.26, 23.03, 00.0), w = 2.0, d = 1.0 },
+		{ coords = vec4(-203.687, -1159.738, 23.034, 0.0), w = 2.0, d = 1.0 },
+		{ coords = vec4(-174.74, -1163.279, 23.036, 0.0), w = 2.0, d = 1.0 },
 	},
 	clockin = {
 		{ coords = vec4(-210.33, -1162.56, 23.03, 0.0), prop = false },
