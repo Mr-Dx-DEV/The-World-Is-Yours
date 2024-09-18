@@ -153,7 +153,7 @@ Config.Blips = {
 
 Config.Peds = {
     -- if setting useped to false make sure to set useblip to false also and add your own methods of obtaining the items required
-    {name = 'supplies_ped',  useped = true, coords = vector4(962.00, -2189.64, 30.51, 85.25),   model = 'g_m_y_salvagoon_01',   playanim = true,  scenario = 'WORLD_HUMAN_CLIPBOARD', useblip = true, title = 'Supplier', colour = 5, id = 51, scale = 0.8, targeticon = 'fa-solid fa-boxes-packing', targetlabel = 'Speak With Supplier', targetdistance = 2.0,}, -- ped spawned for crafting supplies
+    {name = 'supplies_ped',  useped = true, coords = vector4(962.00, -2189.64, 30.51, 85.25),   model = 'g_m_y_salvagoon_01',   playanim = true,  scenario = 'WORLD_HUMAN_CLIPBOARD', useblip = false, title = 'Supplier', colour = 5, id = 51, scale = 0.8, targeticon = 'fa-solid fa-boxes-packing', targetlabel = 'Speak With Supplier', targetdistance = 2.0,}, -- ped spawned for crafting supplies
 }
 
 

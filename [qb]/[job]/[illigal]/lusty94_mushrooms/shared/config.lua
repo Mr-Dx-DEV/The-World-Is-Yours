@@ -94,7 +94,7 @@ Config.Blips = {
 
 Config.Peds = {
     -- if setting useped to false make sure to set useblip to false also and add your own methods of obtaining the items below
-    {name = 'supplies_ped',  useped = true, coords = vector4(92.01, -1603.14, 30.90, 227.31),   model = 's_m_m_scientist_01',   playanim = true,  scenario = 'WORLD_HUMAN_CLIPBOARD', useblip = true, title = 'Supplies', colour = 5, id = 51, scale = 0.8, targeticon = 'fa-solid fa-boxes-packing', targetlabel = 'Open Supplies Shop', targetdistance = 2.0,}, -- ped spawned for crafting supplies
+    {name = 'supplies_ped',  useped = true, coords = vector4(92.01, -1603.14, 30.90, 227.31),   model = 's_m_m_scientist_01',   playanim = true,  scenario = 'WORLD_HUMAN_CLIPBOARD', useblip = false, title = 'Supplies', colour = 5, id = 51, scale = 0.8, targeticon = 'fa-solid fa-boxes-packing', targetlabel = 'Open Supplies Shop', targetdistance = 2.0,}, -- ped spawned for crafting supplies
 }
 
 

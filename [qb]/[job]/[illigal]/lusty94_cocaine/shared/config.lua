@@ -140,7 +140,7 @@ Config.Blips = {-- if adding more coca leaves in random locations then make sure
 
 Config.Peds = {
     -- if setting useped to false make sure to set useblip to false also and add your own methods of obtaining the items for the supplier store
-    {name = 'supplies_ped',  useped = true, coords = vector4(91.11, -1604.26, 30.9, 233.24),   model = 'g_m_m_chicold_01',   playanim = true,  scenario = 'WORLD_HUMAN_CLIPBOARD', useblip = true, title = 'Supplier', colour = 5, id = 51, scale = 0.8, targeticon = 'fa-solid fa-boxes-packing', targetlabel = 'Speak With Supplier', targetdistance = 2.0,}, -- ped spawned for crafting supplies
+    {name = 'supplies_ped',  useped = true, coords = vector4(91.11, -1604.26, 30.9, 233.24),   model = 'g_m_m_chicold_01',   playanim = true,  scenario = 'WORLD_HUMAN_CLIPBOARD', useblip = false, title = 'Supplier', colour = 5, id = 51, scale = 0.8, targeticon = 'fa-solid fa-boxes-packing', targetlabel = 'Speak With Supplier', targetdistance = 2.0,}, -- ped spawned for crafting supplies
 }
 
 
