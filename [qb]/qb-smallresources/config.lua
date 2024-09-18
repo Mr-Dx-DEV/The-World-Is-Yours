@@ -283,7 +283,7 @@ Config.Teleports = {
     }
 }
 
-Config.CarWash = {
+--[[ Config.CarWash = {
     dirtLevel = 0.1,                                                                                   -- threshold for the dirt level to be counted as dirty
     defaultPrice = 20,                                                                                 -- default price for the carwash
     locations = {
@@ -295,4 +295,4 @@ Config.CarWash = {
     }
 -- Do not edit this part manually unless you know what you are doing
 -- Do not edit this part manually unless you know what you are doing
-}
+} ]]
