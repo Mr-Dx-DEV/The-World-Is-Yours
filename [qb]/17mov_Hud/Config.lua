@@ -1,6 +1,6 @@
 -- { 17movement.net } --
 Config = {}
-Config.Autoinstall = true -- Automatic install to another scritps (qb-core, ex_extended)
+Config.Autoinstall = false -- Automatic install to another scritps (qb-core, ex_extended)
 Config.UseMPH = false
 Config.CompassFollowGameCam = true
 Config.SoundVolume = 1.0

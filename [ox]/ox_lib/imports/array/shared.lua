@@ -1,10 +1,10 @@
 ---@class Array : OxClass
-lib.array = lib.class('Array')
+local Array = lib.class('Array')
 
 ---@alias ArrayLike<T> Array | { [number]: T }
 
 ---@private
-function lib.array:constructor(...)
+function Array:constructor(...)
     local arr = { ... }
 
     for i = 1, #arr do
@@ -13,7 +13,7 @@ function lib.array:constructor(...)
 end
 
 ---@private
-function lib.array:__newindex(index, value)
+function Array:__newindex(index, value)
     if type(index) ~= 'number' then error(("Cannot insert non-number index '%s' into an array."):format(index)) end
 
     rawset(self, index, value)
@@ -21,7 +21,7 @@ end
 
 ---Create a new array containing the elements from two arrays.
 ---@param arr ArrayLike
-function lib.array:merge(arr)
+function Array:merge(arr)
     local newArr = table.clone(self)
     local length = #self
 
@@ -30,12 +30,12 @@ function lib.array:merge(arr)
         newArr[length] = arr[i]
     end
 
-    return lib.array:new(table.unpack(newArr))
+    return Array:new(table.unpack(newArr))
 end
 
 ---Tests if all elements in an array succeed in passing the provided test function.
 ---@param testFn fun(element: unknown): boolean
-function lib.array:every(testFn)
+function Array:every(testFn)
     for i = 1, #self do
         if not testFn(self[i]) then
             return false
@@ -47,7 +47,7 @@ end
 
 ---Creates a new array containing the elements from an array thtat pass the test of the provided function.
 ---@param testFn fun(element: unknown): boolean
-function lib.array:filter(testFn)
+function Array:filter(testFn)
     local newArr = {}
     local length = 0
 
@@ -60,13 +60,13 @@ function lib.array:filter(testFn)
         end
     end
 
-    return lib.array:new(table.unpack(newArr))
+    return Array:new(table.unpack(newArr))
 end
 
 ---Returns the first or last element of an array that passes the provided test function.
 ---@param testFn fun(element: unknown): boolean
 ---@param last? boolean
-function lib.array:find(testFn, last)
+function Array:find(testFn, last)
     local a = last and #self or 1
     local b = last and 1 or #self
     local c = last and -1 or 1
@@ -83,7 +83,7 @@ end
 ---Returns the first or last index of the first element of an array that passes the provided test function.
 ---@param testFn fun(element: unknown): boolean
 ---@param last? boolean
-function lib.array:findIndex(testFn, last)
+function Array:findIndex(testFn, last)
     local a = last and #self or 1
     local b = last and 1 or #self
     local c = last and -1 or 1
@@ -100,7 +100,7 @@ end
 ---Returns the first or last index of the first element of an array that matches the provided value.
 ---@param value unknown
 ---@param last? boolean
-function lib.array:indexOf(value, last)
+function Array:indexOf(value, last)
     local a = last and #self or 1
     local b = last and 1 or #self
     local c = last and -1 or 1
@@ -116,7 +116,7 @@ end
 
 ---Executes the provided function for each element in an array.
 ---@param cb fun(element: unknown)
-function lib.array:forEach(cb)
+function Array:forEach(cb)
     for i = 1, #self do
         cb(self[i])
     end
@@ -124,18 +124,18 @@ end
 
 ---Concatenates all array elements into a string, seperated by commas or the specified seperator.
 ---@param seperator? string
-function lib.array:join(seperator)
+function Array:join(seperator)
     return table.concat(self, seperator or ',')
 end
 
 ---Removes the last element from an array and returns the removed element.
-function lib.array:pop()
+function Array:pop()
     return table.remove(self)
 end
 
 ---Adds the given elements to the end of an array and returns the new array length.
 ---@param ... any
-function lib.array:push(...)
+function Array:push(...)
     local elements = { ... }
     local length = #self
 
@@ -148,7 +148,7 @@ function lib.array:push(...)
 end
 
 ---Removes the first element from an array and returns the removed element.
-function lib.array:shift()
+function Array:shift()
     return table.remove(self, 1)
 end
 
@@ -158,7 +158,7 @@ end
 ---@param reducer fun(accumulator: T, currentValue: T, index?: number): T
 ---@param initialValue? T
 ---@return T
-function lib.array:reduce(reducer, initialValue)
+function Array:reduce(reducer, initialValue)
     local initialIndex = initialValue and 1 or 2
     local accumulator = initialValue or self[1]
 
@@ -172,16 +172,18 @@ end
 ---Returns true if the given table is an instance of array or an array-like table.
 ---@param tbl ArrayLike
 ---@return boolean
-function lib.array.isArray(tbl)
+function Array.isArray(tbl)
     if not type(tbl) == 'table' then return false end
 
     local tableType = table.type(tbl)
 
-    if tableType == 'array' or tableType == 'empty' or lib.array.instanceOf(tbl, lib.array) then
+    if tableType == 'array' or tableType == 'empty' or Array.instanceOf(tbl, Array) then
         return true
     end
 
     return false
 end
+
+lib.array = Array
 
 return lib.array

@@ -22,7 +22,7 @@ QBCore.Functions.Notify = function(text, texttype, length)
         oldShowNotification(text, texttype, length)
     end
 end
-
+--[[ 
 local oldProgressbar = QBCore.Functions.Progressbar
 
 QBCore.Functions.Progressbar = function(name, label, duration, useWhileDead, canCancel, disableControls, animation, prop, propTwo, onFinish, onCancel)
@@ -51,7 +51,7 @@ QBCore.Functions.Progressbar = function(name, label, duration, useWhileDead, can
         oldProgressbar(name, label, duration, useWhileDead, canCancel, disableControls, animation, prop, propTwo, onFinish, onCancel)
     end
 end
-
+ ]]
 local function hideText()
     if GetResourceState("17mov_Hud") == "started" then
         exports["17mov_Hud"]:HideHelpNotification()

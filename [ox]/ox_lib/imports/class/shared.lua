@@ -1,6 +1,10 @@
 ---@diagnostic disable: invisible
 local getinfo = debug.getinfo
 
+if not getinfo(1, 'S').source:match('^@@ox_lib') then
+    lib.print.warn('ox_lib\'s class module is experimental and may break without warning.')
+end
+
 ---Ensure the given argument or property has a valid type, otherwise throwing an error.
 ---@param id number | string
 ---@param var any
@@ -128,10 +132,8 @@ end
 
 ---Creates a new class.
 ---@generic S : OxClass
----@generic T : string
----@param name `T`
+---@param name string
 ---@param super? S
----@return `T`
 function lib.class(name, super)
     assertType(1, name, 'string')
 

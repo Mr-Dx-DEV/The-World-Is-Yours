@@ -91,6 +91,9 @@ end
 local lib = setmetatable({
     name = ox_lib,
     context = context,
+    onCache = function(key, cb)
+        AddEventHandler(('ox_lib:cache:%s'):format(key), cb)
+    end
 }, {
     __index = call,
     __call = call,
@@ -170,27 +173,14 @@ end
 ---Caches the result of a function, optionally clearing it after timeout ms.
 function cache(key, func, timeout) end
 
-local cacheEvents = {}
-
 local cache = setmetatable({ game = GetGameName(), resource = resourceName }, {
-    __index = function(self, key)
-        cacheEvents[key] = {}
-
+    __index = context == 'client' and function(self, key)
         AddEventHandler(('ox_lib:cache:%s'):format(key), function(value)
-            local oldValue = self[key]
-            local events = cacheEvents[key]
-
-            for i = 1, #events do
-                Citizen.CreateThreadNow(function()
-                    events[i](value, oldValue)
-                end)
-            end
-
             self[key] = value
         end)
 
         return rawset(self, key, export.cache(nil, key) or false)[key]
-    end,
+    end or nil,
 
     __call = function(self, key, func, timeout)
         local value = rawget(self, key)
@@ -206,14 +196,6 @@ local cache = setmetatable({ game = GetGameName(), resource = resourceName }, {
         return value
     end,
 })
-
-function lib.onCache(key, cb)
-    if not cacheEvents[key] then
-        getmetatable(cache).__index(cache, key)
-    end
-
-    table.insert(cacheEvents[key], cb)
-end
 
 _ENV.cache = cache
 
