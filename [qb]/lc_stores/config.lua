@@ -2236,6 +2236,14 @@ Config.NPCs = {
 			{149.118, -234.618, 54.424, 338.808},
 		}
 	}, ]]
+	{
+		['model'] = 's_m_y_ammucity_01',
+		['emote'] = 'WORLD_HUMAN_COP_IDLES',
+		['pos'] = {
+			{412.111, 315.204, 103.133, 205.671},
+			
+		}
+	},
 }
 
 Config.create_table = true
