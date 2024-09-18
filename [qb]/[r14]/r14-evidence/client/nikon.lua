@@ -451,6 +451,8 @@ function SelectImageSpace()
                                     },
                                 }, 'Enter Password')
 
+                                if not input then return end -- sanitize no input
+
                                 if input.password == v.Password then
                                     curImageSpace = k
                                     curPage = 1
@@ -486,6 +488,7 @@ function SelectImageSpace()
                                 },
                             }, 'Enter Password')
 
+                            if not input then return end -- sanitize no input
 
                             if input.password == v.Password then
                                 curImageSpace = k

@@ -344,7 +344,7 @@ Config.Notification = {
 
 Config.AuthorizedJobs = {
     LEO = { -- this is for job checks which should only return true for police officers
-    Jobs = {['police'] = true, ['lspd'] = true, ['bcso'] = true, ['lsso'] = true, ['sahp'] = true, ['safw'] = true, ['sadoc'] = true, ['usms'] = true, ['dhs'] = true, ['fbi'] = true, ['ss'] = true, ['ambulance'] = true,},
+        Jobs = {['police'] = true, ['offpolice'] = true, ['fib'] = true},
         Types = {['police'] = true, ['leo'] = true},
         Check = function(source)
             local PlyData = nil
@@ -380,7 +380,7 @@ Config.AuthorizedJobs = {
     },
     Frisk = { -- this is for configuring the frisk job check, you can enable it for all civlians, or specific jobs
         All = false, -- set this to true if you want everyone to have access to frisk
-        Jobs = {['police'] = true, ['lspd'] = true, ['bcso'] = true, ['lsso'] = true, ['sahp'] = true, ['safw'] = true, ['sadoc'] = true, ['usms'] = true, ['dhs'] = true, ['fbi'] = true, ['ss'] = true, ['ambulance'] = true,}, -- you can add a rank table here to give the option to only specific job ranks, like bounchers
+        Jobs = {['police'] = true, ['fib'] = true, ['sheriff'] = true, ['ambulance'] = {['1'] = true, ['2'] = true,},}, -- you can add a rank table here to give the option to only specific job ranks, like bounchers
         Types = {['police'] = true, ['leo'] = true},
         Check = function(source)
             local PlyData = nil

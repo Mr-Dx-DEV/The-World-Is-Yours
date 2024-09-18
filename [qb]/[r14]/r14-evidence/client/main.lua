@@ -145,6 +145,10 @@ if Config.Framework.QB then
         vehlookup[v.hash or joaat(k)] = ('%s %s'):format(v.brand, v.name)
         if not v.hash then print(('%s vehicle is missing a hash in your QBShared.Vehicles table, hashed name temporarily'):format(k)) end
     end
+
+    if not QBCore.Shared then print('Cannot access QBCore.Shared object, something has gone terribly wrong!!!! Please make sure your qb-core resources starts without errors.') end
+
+    if not QBCore.Shared.Weapons then print('Cannot read your qb-core/shared/weapons.lua, something has gone terribly wrong!!!! If you added calibers you may have done something wrong, please make sure your qb-core resources starts without errors.') end
 elseif Config.Framework.ESX then
     events = {
         ['esx:playerLoaded'] = true,
@@ -1154,7 +1158,7 @@ if Config.Breathalyzer.Enabled and Config.Breathalyzer.EventTriggers and next(Co
 end
 
 if Config.Breathalyzer.UsingESX then
-    AddEventHandler('esx_status:add', function(name, value)
+    RegisterNetEvent('esx_status:add', function(name, value)
         if name == 'drunk' then
             TriggerEvent('evidence:client:SetStatus', 'alcohol', 200, 15)
         end
@@ -3685,7 +3689,7 @@ CreateThread(function() -- optimized flashlight thread, enables police to use fl
                         for k, v in pairs(AreaEvidence) do
                             local dist = #(pos - vector3(v.coords.x, v.coords.y, v.coords.z))
 
-                            if ActiveLEO and (dist < pudist and v.pickup) then
+                            if ActiveLEO and (dist < pudist and v.pickup) and v.bucket == curbucket then
                                 if not CurEv or (CurEv and dist < CurEv) then
                                     CurEv = dist
                                     CurEvId = k
