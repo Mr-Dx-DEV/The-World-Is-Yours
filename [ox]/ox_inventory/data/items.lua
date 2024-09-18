@@ -6498,17 +6498,146 @@ return {
 			image = "sandwich.png",
 		}
 	},
+    ['filled_evidence_bag'] = {
+        consume = 0.0,
+        label = 'Collected Evidence',
+        weight = 0,
+        stack = false,
+        description = 'This is police evidence.',
+        server = {export = 'r14-evidence.filled_evidence_bag'},
+    },
 
-	["filled_evidence_bag"] = {
-		label = "Evidence Bag",
-		weight = 200,
-		stack = false,
-		close = false,
-		description = "A filled evidence bag to see who committed the crime >:(",
-		client = {
-			image = "evidence.png",
-		}
-	},
+
+    ['empty_evidence_bag'] = {
+        consume = 0.0,
+        label = 'Empty Evidence Bag',
+        weight = 0,
+        stack = true,
+        description = 'This is an evidence bag.',
+    },
+
+    ['nikon'] = {
+        consume = 0.0,
+        label = 'Nikoff G600',
+        weight = 500,
+        stack = false,
+        description = 'Caught in 4k',
+        server = {export = 'r14-evidence.nikon'},
+    },
+
+    ['sdcard'] = {
+        consume = 0.0,
+        label = 'SD Card',
+        weight = 100,
+        stack = false,
+        description = 'People still use these??',
+        server = {export = 'r14-evidence.sdcard'},
+    },
+
+    ['gsrtestkit'] = {
+        consume = 0.0,
+        label = 'GSR Field Test Kit',
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A field GSR test kit containing several test strips",
+        server = {export = 'r14-evidence.gsrtestkit'},
+    },
+
+    ['dnatestkit'] = {
+        consume = 0.0,
+        label = 'DNA Field Swab Kit',
+        weight = 100,
+        stack = true,
+        close = true,
+        description = "A field DNA swab kit containing several vials and swabs",
+        server = {export = 'r14-evidence.dnatestkit'},
+    },
+
+
+    ['drugtestkit'] = {
+        consume = 0.0,
+        label = 'DNA Field Swab Kit',
+        weight = 100,
+        stack = true,
+        description = 'A multipanel oral drug test kit like the one your lame dad or boss buys... but for cops.',
+        server = {export = 'r14-evidence.drugtestkit'},
+    },
+
+    ['breathalyzer'] = {
+        consume = 0.0,
+        label = 'Breathalyzer',
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "A vintage 2000's WiWang breathalyzer engraved Property of LSPD",
+        server = {export = 'r14-evidence.breathalyzer'},
+    },
+
+    ['fingerprintreader'] = {
+        consume = 0.0,
+        label = 'Pro Tech XFR8001',
+        weight = 200,
+        stack = false,
+        close = true,
+        description = "A Pro Tech mobile fingerprint reader that looks like it's seen better days, currently stuck in french.",
+        server = {export = 'r14-evidence.fingerprintreader'},
+    },
+
+    ['accesstool'] = {
+        consume = 0.0,
+        label = 'Access Tool',
+        weight = 200,
+        stack = false,
+        description = 'Snap into an access tool.',
+        server = {export = 'r14-evidence.accesstool'},
+    },
+
+    ['fingerprintkit'] = {
+        consume = 0.0,
+        label = 'Fingerprint Kit',
+        weight = 1000,
+        stack = true,
+        close = true,
+        description = "A small kit that includes fingerprint dust, chemicals, and a brush for developing fingerprints",
+    },
+
+    ['mikrosil'] = {
+        consume = 0.0,
+        label = 'Mikrosil',
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Two tubes of silicon casting material used to lift fingerprints from irregular surfaces",
+    },
+
+    ['fingerprinttape'] = {
+        consume = 0.0,
+        label = 'Fingerprint Tape',
+        weight = 200,
+        stack = true,
+        close = true,
+        description = "Extra clear tape used to lift fingerprints from smooth, nonporous surfaces",
+    },
+
+    ['blox'] = {
+        consume = 0.0,
+        label = 'Blox Multisurface',
+        weight = 200,
+        stack = true,
+        close = true,
+        description = 'Kills everything!',
+    },
+
+    ['microfibercloth'] = {
+        consume = 0.0,
+        label = 'Microfiber Cloth',
+        weight = 200,
+        stack = true,
+        description = 'Polyester, but fluffy',
+        server = {export = 'r14-evidence.microfibercloth'},
+        allowArmed = true,
+    },
 
 	["nvscope_attachment"] = {
 		label = "Night Vision Scope",
@@ -16988,83 +17117,16 @@ return {
 			image = "vehicletv.png",
 		}
 	},
-	['nikon'] = {
-		label = 'Nikoff G900',
-		weight = 1000,
-		stack = false,
-		close = true,
-		description = 'Caught in 4K',
-		client = {
-			image = 'nikon.png',
-			useable = true
-		}
-	},
-	['gsrtestkit'] = {
-		label = 'GSR Field Test Kit',
-		weight = 200,
-		stack = true,
-		close = true,
-		description = 'A field GSR test kit containing several test strips',
-		client = {
-			image = 'gsrtestkit.png',
-			useable = true
-		}
-	},
-	['dnatestkit'] = {
-		label = 'DNA Field Swab Kit',
-		weight = 200,
-		stack = true,
-		close = true,
-		description = 'A field DNA swab kit containing several vials and swabs',
-		client = {
-			image = 'dnatestkit.png',
-			useable = true
-		}
-	},
-	['drugtestkit'] = {
-		label = 'Drug Test Kit',
-		weight = 200,
-		stack = true,
-		close = true,
-		description = 'A multipanel field test kit used to test for popular drugs in a suspects saliva, it\'s probably accurate.',
-		client = {
-			image = 'drugtestkit.png',
-			useable = true
-		}
-	},
-	['breathalyzer'] = {
-		label = 'Breathalyzer',
-		weight = 200,
-		stack = true,
-		close = true,
-		description = 'A vintage 2000\'s WiWang breathalyzer engraved Property of LSPD',
-		client = {
-			image = 'breathalyzer.png',
-			useable = true
-		}
-	},
-	['accesstool'] = {
-		label = 'Access Tool',
-		weight = 500,
-		stack = false,
-		close = true,
-		description = 'Snap into an access tool.',
-		client = {
-			image = 'accesstool.png',
-			useable = true
-		}
-	},
-	['fingerprintreader'] = {
-		label = 'Pro Tech XFR8001',
-		weight = 200,
-		stack = false,
-		close = true,
-		description = 'A Pro Tech mobile fingerprint reader that looks like it\'s seen better days, currently stuck in french.',
-		client = {
-			image = 'fingerprintreader.png',
-			useable = true
-		}
-	},
+	['dirtyrag'] = {
+        consume = 0.0,
+        label = 'Dirty Ol Rag',
+        weight = 200,
+        stack = true,
+        description = 'Gross, but probably fine.',
+        allowArmed = true,
+        server = {export = 'r14-evidence.dirtyrag'},
+    },
+	
 	['sdcard'] = {
 		label = 'SD Card',
 		weight = 1000,
@@ -17076,61 +17138,8 @@ return {
 			useable = true
 		}
 	},
-	['microfibercloth'] = {
-		label = 'Microfiber Cloth',
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = 'Polyester, but fluffy',
-		client = {
-			image = 'microfibercloth.png',
-			useable = true
-		}
-	},
-	['blox'] = {
-		label = 'Blox Multisurface',
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = 'Kills everything!',
-		client = {
-			image = 'blox.png',
-			useable = true
-		}
-	},
-	['fingerprintkit'] = {
-		label = 'Fingerprint Kit',
-		weight = 1000,
-		stack = false,
-		close = true,
-		description = 'A small kit that includes fingerprint dust, chemicals, and a brush for developing fingerprints',
-		client = {
-			image = 'fingerprintkit.png',
-			useable = true
-		}
-	},
-	['mikrosil'] = {
-		label = 'Mikrosil',
-		weight = 1000,
-		stack = false,
-		close = true,
-		description = 'Two tubes of silicon casting material used to lift fingerprints from irregular surfaces',
-		client = {
-			image = 'mikrosil.png',
-			useable = true
-		}
-	},
-	['fingerprinttape'] = {
-		label = 'Fingerprint Tape',
-		weight = 1000,
-		stack = false,
-		close = true,
-		description = 'Extra clear tape used to lift fingerprints from smooth, nonporous surfaces',
-		client = {
-			image = 'fingerprinttape.png',
-			useable = true
-		}
-	},
+	
+	
 	
 	["umbrella2"] = {
 		label = "Beach Umbrella",
