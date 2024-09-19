@@ -1,4 +1,173 @@
 return {
+	['b-burger'] = {
+		label = 'Beef Burger',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'A Juicy Beef Burger',
+		client = {
+			image = 'b-burger.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+	
+	['b-uc-burger'] = {
+		label = 'Raw Burger',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'A Raw Patty of Beef',
+		client = {
+			image = 'b-uc-burger.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+	
+	['b-chicken'] = {
+		label = 'Chicken Burger',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'A Tender Chicken Burger',
+		client = {
+			image = 'b-chicken.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+	
+	['b-uc-chicken'] = {
+		label = 'Raw Chicken Burger',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'A Raw Chicken Patty',
+		client = {
+			image = 'b-uc-chicken.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+	
+	['b-hotdog'] = {
+		label = 'HotDog',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'Topped HotDog',
+		client = {
+			image = 'b-hotdog.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+	
+	['b-uc-hotdog'] = {
+		label = 'Raw HotDog',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'A Raw HotDog',
+		client = {
+			image = 'b-uc-hotdog.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+	
+	['b-ribs'] = {
+		label = 'Spare Ribs',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'A Tangy Rack of Ribs',
+		client = {
+			image = 'b-ribs.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+	
+	['b-uc-ribs'] = {
+		label = 'Raw Ribs',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'A Raw Rack of Ribs',
+		client = {
+			image = 'b-uc-ribs.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+	
+	['b-brisket'] = {
+		label = 'Brisket Joint',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'Nicely Cooked Brisket',
+		client = {
+			image = 'b-brisket.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+	
+	['b-uc-brisket'] = {
+		label = 'Raw Brisket',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'Raw Brisket Joint',
+		client = {
+			image = 'b-uc-brisket.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+	
+	['b-jacket'] = {
+		label = 'Loaded Jacket',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'A Fully Loaded Jacket Potato',
+		client = {
+			image = 'b-jacket.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+	
+	['b-uc-jacket'] = {
+		label = 'Raw Jacket',
+		weight = 500,
+		stack = true,
+		close = true,
+		description = 'A Raw Jacket Potato',
+		client = {
+			image = 'b-uc-jacket.png',
+			use = function(item)
+				-- Add any use logic here if applicable
+			end
+		}
+	},
+
+	
 
     ['cigarrete'] = {
         label = 'Cigarrete',
@@ -19,7 +188,16 @@ return {
         consume = 0,
     },
 
-            
+	['gun_table'] = {
+        label = 'Gun Table',
+        weight = 10000,
+        stack = true,
+        close = true,
+        description = "Portable table to fix-up on the go...",
+        client = {
+            event = 'alv_repairtable:placeTable'
+        }
+    },
 
     ['donut'] = {
         label = 'Donut',
