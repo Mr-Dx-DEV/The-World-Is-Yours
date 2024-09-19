@@ -107,7 +107,15 @@ Config.Consumables = {
         ['sandwich'] = math.random(35, 54),
         ['tosti'] = math.random(40, 50),
         ['twerks_candy'] = math.random(35, 54),
-        ['snikkel_candy'] = math.random(40, 50)
+        ['snikkel_candy'] = math.random(40, 50),
+
+        ["b-hotdog"] = math.random(35, 54),
+        ["b-burger"] = math.random(35, 54),
+        ["b-brisket"] = math.random(35, 54),
+        ["b-chicken"] = math.random(35, 54),
+        ["b-ribs"] = math.random(35, 54),
+        ["b-jacket"] = math.random(35, 54)
+
     },
     drink = {
         ['sprunk'] = math.random(35, 54),
@@ -127,9 +135,9 @@ Config.Consumables = {
         ['coffee'] = math.random(40, 50)
     },
     alcohol = { -- default alcohol items
-        ['whiskey'] = math.random(20, 30),
-        ['beer'] = math.random(30, 40),
-        ['vodka'] = math.random(20, 40),
+    --    ['whiskey'] = math.random(20, 30),
+    --    ['beer'] = math.random(30, 40),
+    --    ['vodka'] = math.random(20, 40),
     },
     custom = { -- put any custom items here
         -- ['newitem'] = {
