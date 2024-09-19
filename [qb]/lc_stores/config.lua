@@ -535,6 +535,33 @@ Config.market_locations = {
 			['store'] = 'bank',
 		}
 	},
+	["market_20"] = {
+		['buy_price'] = 70000,
+		['sell_price'] = 35000,
+		['coord'] = {-90.49, 24.19, 0.37},
+		['garage_coord'] = {151.33, -212.34, 54.3, 35.45},
+		['truck_parking_location'] = {151.33, -212.34, 54.3, 35.45},
+		['map_blip_coord'] = {-88.8, 30.32, 71.95},
+		['sell_blip_coords'] = {
+			{-88.8, 30.32, 71.95},
+			
+		},
+		['deliveryman_coord'] = {-89.8, 27.41, 76.37},
+		['type'] = 'electronics',
+		['account'] = {
+			['item'] = {
+				[1] = {
+					['icon'] = 'img/credit_card.png',
+					['account'] = 'bank'
+				},
+				[2] = {
+					['icon'] = 'img/cash.png',
+					['account'] = 'cash'
+				}
+			},
+			['store'] = 'bank',
+		}
+	},
 	["ammunation_1"] = {
 		['buy_price'] = 2000000,
 		['sell_price'] = 500000,
@@ -628,7 +655,7 @@ Config.market_types = {
 			['scale'] = 0.6,					-- Blip Scale
 		}
 	},
-	['applestore'] = {							-- Market type ID
+	['electronics'] = {							-- Market type ID
 		['stock_capacity'] = 150,				-- Max stock capacity
 		['max_employees'] = 5,					-- Max employees
 		['required_job'] = {},					-- Required job do purchase goods in this store (set to {} to dont require any job here, or put the job name there like this: ['required_job'] = {'cop', 'gang', 'job_name'},)
@@ -681,6 +708,67 @@ Config.market_types = {
 		},
 		['default_categories'] = {				-- Here you can configure the categories available when the store has no owner
 			"electronics_market"
+		},
+		['blips'] = {							-- Create the blips on map
+			['id'] = 816,						-- Blip ID [Set this value 0 to dont have blip]
+			['name'] = "Electronics Market",				-- Blip Name [Will be replaced when the owner rename the store]
+			['color'] = 26,						-- Blip Color
+			['scale'] = 0.6,					-- Blip Scale
+		}
+	},
+	['applestore'] = {							-- Market type ID
+		['stock_capacity'] = 150,				-- Max stock capacity
+		['max_employees'] = 5,					-- Max employees
+		['required_job'] = {},					-- Required job do purchase goods in this store (set to {} to dont require any job here, or put the job name there like this: ['required_job'] = {'cop', 'gang', 'job_name'},)
+		['upgrades'] = {						-- Definition of each upgrade
+			['stock'] = {						-- Stock capacity
+				['price'] = 8000,				-- Price to upgrade
+				['level_reward'] = {			-- Reward of each level (max level: 5)
+					[0] = 0,
+					[1] = 50,
+					[2] = 100,
+					[3] = 150,
+					[4] = 200,
+					[5] = 300,
+				}
+			},
+			['truck'] = {						-- Truck capacity
+				['price'] = 12000,
+				['level_reward'] = {
+					[0] = 0,
+					[1] = 25,
+					[2] = 50,
+					[3] = 100,
+					[4] = 200,
+					[5] = 300,
+				}
+			},
+			['relationship'] = {				-- Relationship
+				['price'] = 11000,
+				['level_reward'] = {
+					[0] = 0,
+					[1] = 5,
+					[2] = 10,
+					[3] = 15,
+					[4] = 25,
+					[5] = 40,
+				}
+			},
+		},
+		['trucks'] = {							-- Trucks for each level when upgrade the truck cargo
+			[0] = 'speedo',
+			[1] = 'gburrito',
+			[2] = 'mule',
+			[3] = 'mule3',
+			[4] = 'pounder',
+			[5] = 'pounder2'
+		},
+		['max_purchasable_categories'] = 4,		-- The max amount of categories that can be purchased
+		['categories'] = {						-- Here you configure the categories available to purchase in your store
+			"phones_market"
+		},
+		['default_categories'] = {				-- Here you can configure the categories available when the store has no owner
+			"phones_market"
 		},
 		['blips'] = {							-- Create the blips on map
 			['id'] = 267,						-- Blip ID [Set this value 0 to dont have blip]
@@ -924,6 +1012,78 @@ Config.market_categories = {
 
 	['electronics_market'] = {
 		['page_name'] = "Electronics",
+		['page_desc'] = "Experience the latest in technology with our wide range of cutting-edge electronics, from smartphones to home entertainment systems, available at our supermarket",
+		['page_icon'] = '<img src="img/categories/electronics-icon.png" style="padding:15px">',
+		['page_img'] = 'img/categories/electronics.png',
+		['category_buy_price'] = 5000,
+		['category_sell_price'] = 2500,
+		['items'] = {
+			['fitbit'] = {
+				['name'] = "Fitbit",
+				['price_to_customer'] = 400,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'fitbit.png',
+			},
+			['radio'] = {
+				['name'] = "Radio",
+				['price_to_customer'] = 250,
+				['price_to_customer_min'] = 100,
+				['price_to_customer_max'] = 400,
+				['price_to_export'] = 150,
+				['price_to_owner'] = 100,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'radio.png',
+			},
+			['radioscanner'] = {
+				['name'] = "Radio Scanner",
+				['price_to_customer'] = 5000,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'radioscanner.png',
+			},
+			
+			['camera'] = {
+				['name'] = "Camera",
+				['price_to_customer'] = 2500,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'camera.png',
+			},
+			
+			['laptop'] = {
+				['name'] = "Laptop",
+				['price_to_customer'] = 15000,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'laptop.png',
+			},
+			
+			
+			
+			
+		}
+	},
+
+	['phones_market'] = {
+		['page_name'] = "Phones",
 		['page_desc'] = "Experience the latest in technology with our wide range of cutting-edge electronics, from smartphones to home entertainment systems, available at our supermarket",
 		['page_icon'] = '<img src="img/categories/electronics-icon.png" style="padding:15px">',
 		['page_img'] = 'img/categories/electronics.png',
@@ -1195,7 +1355,7 @@ Config.market_categories = {
 			},
 			
 			
-			['radio'] = {
+			--[[ ['radio'] = {
 				['name'] = "Radio",
 				['price_to_customer'] = 200,
 				['price_to_customer_min'] = 100,
@@ -1205,7 +1365,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'radio.png',
-			},
+			}, ]]
 			
 		}
 	},
