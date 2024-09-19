@@ -2,10 +2,10 @@ Config = {}
 
 Config.Core = "qb-core" -- Your qb-core folder name
 Config.TargetName = "qb-target" -- If you use ox, ignore this
-Config.Target = "qb" -- "qb" or "ox"
-Config.Inventory = "qb" -- "qb" or "ox"
+Config.Target = "ox" -- "qb" or "ox"
+Config.Inventory = "ox" -- "qb" or "ox"
 Config.MenuName = "qb-menu" -- If you use ox, ignore this
-Config.Menu = "qb" -- "qb" or "ox"
+Config.Menu = "ox" -- "qb" or "ox"
 Config.EmoteMenu = "rp" -- "rp" or "dp" or "scully" or "aty_emote" or "cylex_animmenuv2"
 Config.SpacePlate = false -- If true if your plate has space | Example: QQS 224
 Config.Debug = false -- If true, some prints happen on console
