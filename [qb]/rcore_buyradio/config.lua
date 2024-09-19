@@ -48,7 +48,7 @@ Config.MarkerList = {
         -- if left nil everyone will be able to open this.
         --job = "dealer",
 
-        pos = vector3(235.89, -788.46, 30.61),
+        pos = vector3(-172.37, -1163.07, 23.03),
         onlyInVehicle = false, -- if true the marker will be displayed only if player is in vehicle
         style = 6, -- appearance of the marker
 
