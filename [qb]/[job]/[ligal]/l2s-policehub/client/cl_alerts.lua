@@ -1151,7 +1151,7 @@ RegisterNUICallback('AreaHaveShotFire', function(data, cb)
 end)
 ----------------------- Gun Fire Loop
 
-local alerted = false
+--[[ local alerted = false
 Citizen.CreateThread(function()
     local ped = PlayerPedId()
     while true do
@@ -1174,7 +1174,7 @@ Citizen.CreateThread(function()
 
         Citizen.Wait(8)
     end
-end)
+end) ]]
 
 function GetBlipsStreetName(x,y)
     local s1, s2 = Citizen.InvokeNative( 0x2EB41072B4C1E4C0, x,y, 30, Citizen.PointerValueInt(), Citizen.PointerValueInt() )

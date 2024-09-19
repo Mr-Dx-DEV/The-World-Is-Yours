@@ -14,7 +14,6 @@ Config['Settings'] = {
     TabletAnim = true, -- Tablet prop when the officer open dashboard 
     StreetMouse = false, -- Shows the street name when you place the mouse on any point of the map    https://prnt.sc/SCcnDtah4o7L
     PoliceJobs = {
-        
         ['lspd'] = true,
     ['bcso'] = true,
     ['sahp'] = true,
@@ -27,20 +26,22 @@ Config['Settings'] = {
     ['ss'] = true,
     ['police'] = true,
     ['sheriff'] = true,
+        
+        ['sasp'] = false,
     },
     -- Exports & Events 
     OpenMdtEvent = 'mdt:client:openmetdash', -- Open MDT Event (client)
     JoinRadioEvent = 'l2s-policehub:client:JoinChannel', -- Join radio frequency event (client) args : channel number
-    ActivePriorityEvent = 'qb-radialmenu:Server:startPrio',-- Active Priority Event (Server) args : time 
-    StopPriorityEvent = 'qb-radialmenu:Server:stopPrio', -- Stop Priority Event (Server)
+    ActivePriorityEvent = 'l2s-radialmenu:Server:startPrio',-- Active Priority Event (Server) args : time 
+    StopPriorityEvent = 'l2s-radialmenu:Server:stopPrio', -- Stop Priority Event (Server)
 }
 
 Config['WebHooks'] = {
-    ['ScreenShots'] = 'https://discord.com/api/webhooks/1026532327192535100/dh2dZmUuFtFjuSsrAZCAKPQDmiDCxosoN6yTN-pJg4motnBFp015v03kFfGiPJOYXEAc',
-    ['FlagPlate'] = '',
-    ['OfficerActions'] = '',
-    ['GlobalActions'] = '',
-    ['Wings'] = '',
+    ['ScreenShots'] = 'https://discord.com/api/webhooks/1195718992434827375/mUon_ydecW9gzV_r-Yskekx_DL7L7XcRg2vwRFx-z6Z6AW1W9Ws4EOZ0ytQrY5dGd3KH',
+    ['FlagPlate'] = 'https://discord.com/api/webhooks/1195719334174130226/Di75U-BPs-zhdL1x-eOFbGafnMdV8FbMC6GlW4gMqmhz_OTREGLi4vFkOiNmR-rbEn4p',
+    ['OfficerActions'] = 'https://discord.com/api/webhooks/1195719594921439342/_Zlfq-4D26CPfgrEe0Ze5lPDVY6tBzriqxGixvomTNJ-VBkoSbmwXtFbfcST6OJBwAQm',
+    ['GlobalActions'] = 'https://discord.com/api/webhooks/1195719853676449802/FiUTaynmEAz-9ab1sysrYHiGJwU2JcxSj5kt3d5DVhHo-K1JE-Nbth3C5w5k4p3fbkmZ',
+    ['Wings'] = 'https://discord.com/api/webhooks/1195720041870659694/bwy5EOzw_lK3K0Ojef-q2iKGkQsouwaHJtsyqEbZ3w7c5bUHOB9bYrCwbQW4TAtNEejg',
 }
 
 
@@ -77,53 +78,52 @@ Config['Wings'] = { -- Officers Wings
     [1] = {
         name = 'Air-1',
         shortname = 'AIR',
-        image = 'https://i.imgur.com/Ci6nTVh.png',
+        image = 'https://cdn.discordapp.com/attachments/817128482806300703/880355338149314630/Air_Cert.png',
         ifhave = false,
     },
     [2] = {
         name = 'Highwaymen',
         shortname = 'HWN',
-        image = 'https://i.imgur.com/7an5Khh.png',
+        image = 'https://cdn.discordapp.com/attachments/817128482806300703/880355340384878592/Backgroundxxxxxxxxx.png',
         ifhave = false,
     },
     [3] = {
         name = 'SWAT',
         shortname = 'SWT',
-        image = 'https://i.imgur.com/OtU5PNr.png',
+        image = 'https://cdn.discordapp.com/attachments/817128482806300703/880355351751446558/SWAT_Cert.png',
         ifhave = false,
     },
     [4] = {
         name = 'Basic Field Training',
         shortname = 'BFT',
-        image = 'https://i.imgur.com/7dUxFzr.png',
+        image = 'https://cdn.discordapp.com/attachments/817128482806300703/880355343333466182/FTO_Cert.png',
         ifhave = false,
     },
     [5] = {
         name = 'Interceptor',
         shortname = 'INC',
-        image = 'https://i.imgur.com/N5kwi6w.png',
+        image = 'https://cdn.discordapp.com/attachments/817128482806300703/880355347280330804/Interceptor_Cert.png',
         ifhave = false,
     },
     [6] = {
         name = 'Motorcycle',
         shortname = 'MC',
-        image = 'https://i.imgur.com/gzl8uPB.png',
+        image = 'https://cdn.discordapp.com/attachments/793201235909935124/938165882276954152/Motorcycle_Cert.png',
         ifhave = false,
     },
     [7] = {
         name = 'K9 Unit',
         shortname = 'K9',
-        image = 'https://i.imgur.com/107HaHL.png',
+        image = 'https://cdn.discordapp.com/attachments/817128482806300703/880355350325366844/K9_Cert.png',
         ifhave = false,
     },
     [8] = {
         name = 'CID',
         shortname = 'CID',
-        image = 'https://i.imgur.com/NipjUVV.png',
+        image = 'https://cdn.discordapp.com/attachments/817128482806300703/880355342385569842/CID_Cert.png',
         ifhave = false,
     },
 }
-
 
 
 
