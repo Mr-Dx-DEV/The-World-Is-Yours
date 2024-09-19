@@ -1,14 +1,14 @@
 INSERT INTO `items` (`name`, `label`) VALUES
- ('bakingsoda', 'Baking Soda'),
+ ('cocainepackage', 'Cocaine Package'),
+ ('propelyeneglycol', 'Propelyene Glycol'),
  ('trimmed_weed', 'Trimmed Weed'),
  ('rawcocaine', 'Raw Cocaine'),
- ('propelyeneglycol', 'Propelyene Glycol'),
- ('cocainepackage', 'Cocaine Package'),
+ ('actionfigure', 'Action Figure'),
  ('untrimmed_weed', 'Untrimmed Weed'),
- ('cutcocaine', 'Cut Cocaine'),
+ ('boxmeth', 'Box of Meth'),
+ ('lab-key', 'Lab Keys'),
  ('bagmeth', 'Bag of Meth'),
+ ('cutcocaine', 'Cut Cocaine'),
  ('raidtool', 'Raid Tool'),
  ('sodiumbenzoate', 'Sodium Benzoate'),
- ('boxmeth', 'Box of Meth'),
- ('actionfigure', 'Action Figure'),
- ('lab-key', 'Lab Keys'),;
+ ('bakingsoda', 'Baking Soda'),;

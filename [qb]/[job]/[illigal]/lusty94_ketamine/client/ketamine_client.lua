@@ -83,7 +83,7 @@ end)
 
 
 --new method to spawn multiple rocks anywhere via config location
-function spawnQuartz()
+--[[ function spawnQuartz()
 	for k,v in pairs(Config.InteractionLocations.Rocks) do
 		lib.requestModel(v.model, 5000)
 		quartz = CreateObject(v.model, v.coords.x, v.coords.y, v.coords.z-1.325, true, false, false)
@@ -106,6 +106,39 @@ function spawnQuartz()
         EndTextCommandSetBlipName(blip)
         rockBlips[quartz] = blip
 	end
+end
+ ]]
+ function spawnQuartz()
+    for k,v in pairs(Config.InteractionLocations.Rocks) do
+        lib.requestModel(v.model, 5000)
+        quartz = CreateObject(v.model, v.coords.x, v.coords.y, v.coords.z-1.325, true, false, false)
+        SetEntityHeading(v.model, v.coords.w)
+        FreezeEntityPosition(quartz, true)
+        spawnedRocks[#spawnedRocks+1] = quartz
+        if TargetType == 'qb' then
+            exports['qb-target']:AddTargetEntity(quartz, {
+                options = {
+                    {
+                        item = v.item,
+                        type = "client",
+                        event = 'lusty94_ketamine:client:MineQuartzRock',
+                        icon = v.icon,
+                        label = v.label,
+                    },
+                },
+                distance = v.distance
+            })
+        elseif TargetType == 'ox' then
+            exports.ox_target:addLocalEntity(quartz, {
+                name = 'quartz',
+                items = v.item,
+                label = v.label,
+                icon = v.icon,
+                event = 'lusty94_ketamine:client:MineQuartzRock',
+                distance = v.distance,
+            })
+        end
+    end
 end
 
 --respawns rocks every 30 mins
