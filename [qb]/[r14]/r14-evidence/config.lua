@@ -1007,7 +1007,7 @@ a vector3 coord and heading.
 
 --]]--------------------------------------
 
-Config.CarWash = {
+--[[ Config.CarWash = {
     Settings = {
         usePoly = true, -- will use polyzone to create car washes, false it will distance check
         use3Dtext = false, -- will use 3D world text to draw carwash
@@ -1058,7 +1058,7 @@ Config.CarWash = {
             Heading = 0,
         },
     },
-}
+} ]]
 
 --------------------------------------------------------------------------------------------------------------
 --------------------------------        Default Ped Gloves Table         -------------------------------------
