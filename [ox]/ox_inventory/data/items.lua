@@ -1,4 +1,36 @@
 return {
+	['vehicle_manual'] = {
+		label = 'Vehicle manual',
+		weight = 50,
+		close = true,
+		consume = 0,
+		client = {},
+		server = {
+			export = 'rcore_fuel.vehicle_manual',
+		},
+	},
+	
+	['window_cleaner'] = {
+		label = 'windows cleaner',
+		weight = 50,
+		close = true,
+		consume = 0,
+		client = {},
+		server = {
+			export = 'rcore_fuel.window_cleaner',
+		},
+	},
+	
+	['fuel_pump'] = {
+		label = 'Fuel pumper',
+		weight = 10000,
+		close = true,
+		consume = 0,
+		client = {},
+		server = {
+			export = 'rcore_fuel.fuel_pump',
+		},
+	},
 	['b-burger'] = {
 		label = 'Beef Burger',
 		weight = 500,
