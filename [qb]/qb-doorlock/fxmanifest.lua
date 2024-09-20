@@ -1,34 +1,20 @@
-shared_script "@GM_AntiDump/shared/clientloader.lua"
-
 fx_version 'cerulean'
 game 'gta5'
 
-description 'L2S V5 Editied By : @L2S Dev Team || l2s.dev'
-author 'L2S DEV TEAM '
+description 'Doorlock system for the QBCore Framework'
 version '2.0.0'
 
 ui_page 'html/index.html'
 
-shared_scripts { 
+shared_scripts {
+    'config.lua',
+    'configs/*.lua',
     '@qb-core/shared/locale.lua',
     'locales/en.lua' -- Change this to your preferred language
 }
 
-reduce_clientloader {
-    --Shared
-    'config.lua',
-    --Shared
-
-    'client/main.lua'
-}
-
-server_script {
-     --Shared
-     'config.lua',
-     --Shared
-
-     'server/main.lua'
-} 
+server_script 'server/main.lua'
+client_script 'client/main.lua'
 
 files {
 	'html/*.html',

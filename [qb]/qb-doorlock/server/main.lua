@@ -6,11 +6,6 @@ local Config = Config
 local function showWarning(msg)
 	print(('^3%s: %s^0'):format(Lang:t("general.warning"), msg))
 end
-QBCore.Functions.CreateCallback('l2s-doors:server:GetItem', function(source, cb) 
-	local Player = QBCore.Functions.GetPlayer(source)
-	local key = Player.Functions.GetItemByName("keyfob")
-	cb(key)
-end)   
 
 local function checkItems(Player, items, needsAll, checkRemove)
 	if needsAll == nil then needsAll = true end
@@ -186,71 +181,6 @@ RegisterNetEvent('qb-doorlock:server:updateState', function(doorID, locked, src,
 	end)
 end)
 
-RegisterNetEvent('qb-doorlock:server:ToggleHotel', function(doorID)
-	local playerId = sentSource or source
-	local Player = QBCore.Functions.GetPlayer(playerId)
-
-	if Config.DoorList[doorID].locked then
-		Config.DoorList[doorID].locked = false
-		TriggerClientEvent('qb-doorlock:client:setState', -1, playerId, doorID, false, src or false, true, true)
-	else
-		Config.DoorList[doorID].locked = true
-		TriggerClientEvent('qb-doorlock:client:setState', -1, playerId, doorID, true, src or false, true, true)
-	end
-
-	SetTimeout(30000, function()
-		if Config.DoorList[doorID].locked then return end
-		Config.DoorList[doorID].locked = true
-		TriggerClientEvent('qb-doorlock:client:setState', -1, playerId, doorID, true, src or false, false, false)
-	end)
-end)
-
-
-RegisterNetEvent('qb-doorlock:server:ToggleMotel', function(doorID)
-	local playerId = sentSource or source
-	local Player = QBCore.Functions.GetPlayer(playerId)
-
-	if Config.DoorList[doorID].locked then
-		Config.DoorList[doorID].locked = false
-		TriggerClientEvent('qb-doorlock:client:setState', -1, playerId, doorID, false, src or false, true, true)
-	else
-		Config.DoorList[doorID].locked = true
-		TriggerClientEvent('qb-doorlock:client:setState', -1, playerId, doorID, true, src or false, true, true)
-	end
-
-	SetTimeout(5000, function()
-		if Config.DoorList[doorID].locked then return end
-		Config.DoorList[doorID].locked = true
-		TriggerClientEvent('qb-doorlock:client:setState', -1, playerId, doorID, true, src or false, false, false)
-	end)
-end)
-
-RegisterNetEvent('qb-doorlock:server:crimesplace', function(doorID)
-	local playerId = sentSource or source
-	local Player = QBCore.Functions.GetPlayer(playerId)
-
-	if Config.DoorList[doorID].locked then
-		Config.DoorList[doorID].locked = false
-		TriggerClientEvent('qb-doorlock:client:setState', -1, playerId, doorID, false, src or false, true, true)
-	else
-		Config.DoorList[doorID].locked = true
-		TriggerClientEvent('qb-doorlock:client:setState', -1, playerId, doorID, true, src or false, true, true)
-	end
-
-	SetTimeout(30000, function()
-		if Config.DoorList[doorID].locked then return end
-		Config.DoorList[doorID].locked = true
-		TriggerClientEvent('qb-doorlock:client:setState', -1, playerId, doorID, true, src or false, false, false)
-	end)
-end)
-
-RegisterNetEvent('qb-doorlock:server:robberys', function(doorID, state)
-	local playerId = sentSource or source
-	local Player = QBCore.Functions.GetPlayer(playerId)
-	Config.DoorList[doorID].locked = state
-	TriggerClientEvent('qb-doorlock:client:setState', -1, playerId, doorID, state, src or false, false, true, true)
-end)
-
 RegisterNetEvent('qb-doorlock:server:saveNewDoor', function(data, doubleDoor)
 	local src = source
 	if not QBCore.Functions.HasPermission(src, Config.CommandPermission) and not IsPlayerAceAllowed(src, 'command') then
@@ -339,6 +269,6 @@ end)
 
 -- Commands
 
--- QBCore.Commands.Add('newdoor', Lang:t("general.newdoor_command_description"), {}, false, function(source)
--- 	TriggerClientEvent('qb-doorlock:client:addNewDoor', source)
--- end, Config.CommandPermission)
+QBCore.Commands.Add('newdoor', Lang:t("general.newdoor_command_description"), {}, false, function(source)
+	TriggerClientEvent('qb-doorlock:client:addNewDoor', source)
+end, Config.CommandPermission)

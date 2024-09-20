@@ -6,8 +6,8 @@ This doorlock system is based on [nui_doorlock by thelindat](https://github.com/
 ## Dependencies
 
 * [qb-core](https://github.com/qbcore-framework/qb-core)
-* [l2s-interface](https://github.com/qbcore-framework/l2s-interface)
-* [l2s-lockpick](https://github.com/qbcore-framework/l2s-lockpick)
+* [qb-input](https://github.com/qbcore-framework/qb-input)
+* [qb-lockpick](https://github.com/qbcore-framework/qb-lockpick)
 
 ## Features
 
@@ -15,7 +15,7 @@ This doorlock system is based on [nui_doorlock by thelindat](https://github.com/
 * Multiple door types to support all possible doors
 * Support for item checking, multiple or single items
 * Support for citizenid, gang and job checking
-* Support for l2s-lockpick
+* Support for qb-lockpick
 * NUI Text as interaction text
 * Great performance
 * Uses the native door system

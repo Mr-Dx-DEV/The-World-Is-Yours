@@ -13,7 +13,8 @@ Config.DefaultColor = 'rgb(19, 28, 74)' -- The default color of the box of the p
 Config.LockedColor = 'rgb(219 58 58)' -- The color of the box of the popup text if Config.ChangeColor is true and the door is locked
 Config.UnlockedColor = 'rgb(27 195 63)' -- The color of the box of the popup text if Config.ChangeColor is true and the door is unlocked
 
-Config.Consumables = {  } -- The items will get removed once used on a door that has the item on it
+Config.Consumables = { ['ticket'] = 1, ['paperclip'] = 1 } -- The items will get removed once used on a door that has the item on it
+
 Config.DoorList = {
 	-- bobcart robbery
 	{ --  Union: 1 66

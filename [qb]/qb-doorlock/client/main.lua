@@ -21,28 +21,20 @@ end
 
 local function displayNUIText(text)
 	local color = Config.ChangeColor and (closestDoor.data.locked and Config.LockedColor or Config.UnlockedColor) or Config.DefaultColor
-	-- SendNUIMessage({
-	-- 	type = "setDoorText",
-	-- 	enable = true,
-	-- 	text = text,
-	-- 	color = color
-	-- })
-	if text == "مقفل" then
-		exports['l2s-interface']:Show('Locked', '<i class="fas fa-lock"></i>')
-	elseif text == "مفتوح" then
-		exports['l2s-interface']:Show('Unlocked', '<i class="fas fa-unlock"></i>')
-	elseif text == "مفتوح1" then
-		exports['l2s-interface']:Show('Unlocked', '<i class="fas fa-unlock"></i>')
-	elseif text == "مقفل1" then
-		exports['l2s-interface']:Show('Locked', '<i class="fas fa-lock"></i>')
-	end
-
+	SendNUIMessage({
+		type = "setDoorText",
+		enable = true,
+		text = text,
+		color = color
+	})
 	Wait(1)
 end
 
 local function hideNUI()
-	exports['l2s-interface']:Hide()
-
+	SendNUIMessage({
+		type = "setDoorText",
+		enable = false
+	})
 	Wait(1)
 end
 
@@ -61,7 +53,7 @@ local function raycastWeapon()
     if GetEntityType(entityHit) == 3 then return hit, entityHit else return false end
 end
 
-local function setobjCoords(data)
+local function setTextCoords(data)
     local minDimension, maxDimension = GetModelDimensions(data.objHash)
     local dimensions = maxDimension - minDimension
     local dx, dy = tonumber(dimensions.x), tonumber(dimensions.y)
@@ -77,26 +69,26 @@ local function playSound(door, src, enableSounds)
     if not Config.EnableSounds or not enableSounds then return end
 	local origin
 	if src and src ~= playerPed then src = NetworkGetEntityFromNetworkId(src) end
-	if not src then origin = door.objCoords elseif src == playerPed then origin = playerCoords else origin = NetworkGetPlayerCoords(src) end
+	if not src then origin = door.textCoords elseif src == playerPed then origin = playerCoords else origin = NetworkGetPlayerCoords(src) end
 	local distance = #(playerCoords - origin)
 	if distance < 10 then
-		if door.audioRemote  or door.slides then
-			PlaySoundFromEntity(-1, "Keycard_Success", PlayerPedId(), "DLC_HEISTS_BIOLAB_FINALE_SOUNDS", 1, 5.0)
-		end
 		if not door.audioLock then
-			door.audioLock = {['file'] = 'door-bolt-4.ogg', ['volume'] = 0.1}
-			door.audioUnlock = {['file'] = 'door-bolt-4.ogg', ['volume'] = 0.1}
+			if door.audioRemote then
+				door.audioLock = {['file'] = 'button-remote.ogg', ['volume'] = 0.08}
+				door.audioUnlock = {['file'] = 'button-remote.ogg', ['volume'] = 0.08}
+			else
+				door.audioLock = {['file'] = 'door-bolt-4.ogg', ['volume'] = 0.1}
+				door.audioUnlock = {['file'] = 'door-bolt-4.ogg', ['volume'] = 0.1}
+			end
 		end
 		local sfx_level = GetProfileSetting(300)
 		local sound = door.locked and door.audioLock or door.audioUnlock
-		if not door.audioRemote and not door.slides then
-			SendNUIMessage({
-				type = 'audio',
-				audio = sound,
-				distance = distance,
-				sfx = sfx_level
-			})
-		end
+		SendNUIMessage({
+			type = 'audio',
+			audio = sound,
+			distance = distance,
+			sfx = sfx_level
+		})
 	end
 end
 
@@ -162,16 +154,11 @@ local function updateDoors(specificDoor)
             elseif not data.doors then
 				if not data.doorType then data.doorType = 'door' end
                 if #(playerCoords - data.objCoords) < 30 then
-                    -- if data.doorType == "sliding" or data.doorType == "garage" then
-					-- 	data.object = GetClosestObjectOfType(data.objCoords.x, data.objCoords.y, data.objCoords.z, 5.0, data.objName or data.objHash, false, false, false)
-					-- else
-                    --     data.object = GetClosestObjectOfType(data.objCoords.x, data.objCoords.y, data.objCoords.z, 1.0, data.objName or data.objHash, false, false, false)
-                    -- end
-
-					if data.slides then data.object = GetClosestObjectOfType(data.objCoords, 5.0, data.objHash, false, false, false) else
-                        data.object = GetClosestObjectOfType(data.objCoords, 1.0, data.objHash, false, false, false)
+                    if data.doorType == "sliding" or data.doorType == "garage" then
+						data.object = GetClosestObjectOfType(data.objCoords.x, data.objCoords.y, data.objCoords.z, 5.0, data.objName or data.objHash, false, false, false)
+					else
+                        data.object = GetClosestObjectOfType(data.objCoords.x, data.objCoords.y, data.objCoords.z, 1.0, data.objName or data.objHash, false, false, false)
                     end
-
                     if data.object and data.object ~= 0 then
                         data.doorHash = 'door_'..doorID
                         if not IsDoorRegisteredWithSystem(data.doorHash) then
@@ -207,30 +194,29 @@ local function updateDoors(specificDoor)
             if not data.setText and data.doors then
                 for k, v in pairs(data.doors) do
                     if k == 1 and DoesEntityExist(v.object) then
-                        data.objCoords = v.objCoords
-                    elseif k == 2 and DoesEntityExist(v.object) and data.objCoords then
-                        local textDistance = data.objCoords - v.objCoords
-                        data.objCoords = data.objCoords - (textDistance / 2)
+                        data.textCoords = v.objCoords
+                    elseif k == 2 and DoesEntityExist(v.object) and data.textCoords then
+                        local textDistance = data.textCoords - v.objCoords
+                        data.textCoords = data.textCoords - (textDistance / 2)
                         data.setText = true
                     end
-                    if k == 2 and data.objCoords and (data.doorType == "slides" or data.doorType == "garage") then
+                    if k == 2 and data.textCoords and (data.doorType == "sliding" or data.doorType == "garage") then
                         if GetEntityHeightAboveGround(v.object) < 1 then
-                            -- data.objCoords = vec3(data.objCoords.x, data.objCoords.y, data.objCoords.z + 1.2)
-							data.objCoords = vec3(data.objCoords.x, data.objCoords.y, data.objCoords.z+1.2)
+                            data.textCoords = vec3(data.textCoords.x, data.textCoords.y, data.textCoords.z + 1.2)
                         end
                     end
                 end
             elseif not data.setText and not data.doors and DoesEntityExist(data.object) then
                 if data.doorType == "garage" then
-                    data.objCoords = data.objCoords
+                    data.textCoords = data.objCoords
                     data.setText = true
                 else
-                    data.objCoords = setobjCoords(data)
+                    data.textCoords = setTextCoords(data)
                     data.setText = true
                 end
-                if data.doorType == "slides" or data.doorType == "garage" then
+                if data.doorType == "sliding" or data.doorType == "garage" then
                     if GetEntityHeightAboveGround(data.object) < 1 then
-                        data.objCoords = vec3(data.objCoords.x, data.objCoords.y, data.objCoords.z + 1.6)
+                        data.textCoords = vec3(data.textCoords.x, data.textCoords.y, data.textCoords.z + 1.6)
                     end
                 end
             end
@@ -322,8 +308,6 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 		PlayerData = QBCore.Functions.GetPlayerData()
 		isLoggedIn = true
 	end)
-	updateDoors()
-
 end)
 
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
@@ -335,16 +319,12 @@ RegisterNetEvent('QBCore:Player:SetPlayerData', function(val)
 	PlayerData = val
 end)
 
-
-RegisterNetEvent('qb-doorlock:client:setState', function(serverId, doorID, state, src, enableAnimation, enableSounds, togggllee)
+RegisterNetEvent('qb-doorlock:client:setState', function(serverId, doorID, state, src, enableAnimation, enableSounds)
 	if not Config.DoorList[doorID] then return end
 	if enableAnimation == nil then enableAnimation = true end
 	if enableSounds == nil then enableSounds = true end
 	if serverId == PlayerData.source and enableAnimation then doorAnim() end
-	if not Config.DoorList[doorID].slides then
-		Config.DoorList[doorID].locked = state
-	end
-
+	Config.DoorList[doorID].locked = state
 	updateDoors(doorID)
 	local current = Config.DoorList[doorID]
 	while true do
@@ -390,42 +370,36 @@ RegisterNetEvent('qb-doorlock:client:setState', function(serverId, doorID, state
 				end
 			end
 		else
-			if not IsDoorRegisteredWithSystem(Config.DoorList[doorID].doorHash) then -- If door is not registered end the loop
-			return
-		end
-		Config.DoorList[doorID].currentHeading = GetEntityHeading(Config.DoorList[doorID].object)
-		Config.DoorList[doorID].doorState = DoorSystemGetDoorState(Config.DoorList[doorID].doorHash)
-		if Config.DoorList[doorID].slides then
-				Config.DoorList[doorID].locked = state
-				DoorSystemSetAutomaticRate(Config.DoorList[doorID].doorHash, Config.DoorList[doorID].doorRate or 1.0, false, false)
-				if Config.DoorList[doorID].locked then
-					DoorSystemSetDoorState(Config.DoorList[doorID].doorHash, 1, false, false) -- Set to locked
-					DoorSystemSetAutomaticDistance(Config.DoorList[doorID].doorHash, 0.0, false, false)
-					playSound(Config.DoorList[doorID], src, enableSounds)
-					return -- End the loop
+			if not IsDoorRegisteredWithSystem(current.doorHash) then return end
+			if not current.doorType then current.doorType = 'door' end
+			current.currentHeading = GetEntityHeading(current.object)
+			current.doorState = DoorSystemGetDoorState(current.doorHash)
+			if current.doorType == "sliding" or current.doorType == "garage" then
+				DoorSystemSetAutomaticRate(current.doorHash, current.doorRate or 1.0, false, false)
+				if current.locked then
+					DoorSystemSetDoorState(current.doorHash, 1, false, false)
+					DoorSystemSetAutomaticDistance(current.doorHash, 0.0, false, false)
+					playSound(current, src, enableSounds)
+					return
 				else
-					DoorSystemSetDoorState(Config.DoorList[doorID].doorHash, 0, false, false) -- Set to unlocked
-					DoorSystemSetAutomaticDistance(Config.DoorList[doorID].doorHash, 30.0, false, false)
-					playSound(Config.DoorList[doorID], src, enableSounds)
-					return -- End the loop
+					DoorSystemSetDoorState(current.doorHash, 0, false, false)
+					DoorSystemSetAutomaticDistance(current.doorHash, 30.0, false, false)
+					playSound(current, src, enableSounds)
+					return
 				end
-
-			return -- End the loop
-		elseif Config.DoorList[doorID].locked and (Config.DoorList[doorID].doorState == 4) then
-			if Config.DoorList[doorID].oldMethod then FreezeEntityPosition(Config.DoorList[doorID].object, true) end
-			DoorSystemSetDoorState(Config.DoorList[doorID].doorHash, 1, false, false) -- Set to locked
-			playSound(Config.DoorList[doorID], src, enableSounds)
-			return -- End the loop
-		elseif not Config.DoorList[doorID].locked then
-			if Config.DoorList[doorID].oldMethod then FreezeEntityPosition(Config.DoorList[doorID].object, false) end
-			DoorSystemSetDoorState(Config.DoorList[doorID].doorHash, 0, false, false) -- Set to unlocked
-			playSound(Config.DoorList[doorID], src, enableSounds)
-			return -- End the loop
-		else
-			if Round(Config.DoorList [doorID].currentHeading, 0) == Round(Config.DoorList[doorID].objHeading, 0) then
-				DoorSystemSetDoorState(Config.DoorList[doorID].doorHash, 4, false, false) -- Force to close
+			elseif current.locked and current.doorState == 4 then
+				DoorSystemSetDoorState(current.doorHash, 1, false, false)
+				playSound(current, src, enableSounds)
+				return
+			elseif not current.locked then
+				DoorSystemSetDoorState(current.doorHash, 0, false, false)
+				playSound(current, src, enableSounds)
+				return
+			else
+				if round(current.currentHeading, 0) == round(current.objYaw or current.objHeading, 0) then
+					DoorSystemSetDoorState(current.doorHash, 4, false, false)
+				end
 			end
-		end
 		end
 		Wait(0)
 	end
@@ -434,21 +408,14 @@ end)
 RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
 	if not closestDoor.data or not next(closestDoor.data) or PlayerData.metadata['isdead'] or PlayerData.metadata['ishandcuffed'] or (not closestDoor.data.pickable and not closestDoor.data.lockpick) or not closestDoor.data.locked then return end
 	usingAdvanced = isAdvanced
-	TriggerEvent('l2s-lockpick:client:openLockpick', lockpickFinish)
+	TriggerEvent('qb-lockpick:client:openLockpick', lockpickFinish)
 end)
-
-RegisterNetEvent('lockpicks:UsePoliceLockpick', function(isAdvanced)
-	if not closestDoor.data or not next(closestDoor.data) or PlayerData.metadata['isdead'] or PlayerData.metadata['ishandcuffed']  or not closestDoor.data.locked then return end
-	usingAdvanced = isAdvanced
-	TriggerEvent('l2s-lockpick:client:openLockpick', lockpickFinish)
-end)
-
 
 RegisterNetEvent('qb-doorlock:client:addNewDoor', function()
 	canContinue = false
 	hideNUI()
 	local doorData = {}
-	local dialog = exports['l2s-interface']:ShowInput({
+	local dialog = exports['qb-input']:ShowInput({
 		header = Lang:t("general.newdoor_menu_title"),
 		submitText = Lang:t("general.submit_text"),
 		inputs = {
@@ -652,11 +619,11 @@ RegisterNetEvent('qb-doorlock:client:newDoorAdded', function(data, id)
 end)
 
 -- Commands
+
 RegisterCommand('toggledoorlock', function()
     if not closestDoor.data or not next(closestDoor.data) or closestDoor.distance > (closestDoor.data.distance or closestDoor.data.maxDistance) or PlayerData.metadata['isdead'] or PlayerData.metadata['inlaststand'] or PlayerData.metadata['ishandcuffed'] then return end
 	playerPed = PlayerPedId()
 	local veh = GetVehiclePedIsIn(playerPed)
-	-- print(closestDoor.id)
 	if veh then
 		CreateThread(function()
 			local counter = 0
@@ -673,22 +640,7 @@ RegisterCommand('toggledoorlock', function()
 	end
 	local locked = not closestDoor.data.locked
 	if closestDoor.data.audioRemote then src = NetworkGetNetworkIdFromEntity(playerPed) else src = false end
-
-
-	if Config.DoorList[closestDoor.id].slides then
-		local HasItem = exports['l2s-inventory']:HasItem('keyfob') 
-		if HasItem or Config.DoorList[closestDoor.id].mazen  then
-			TriggerServerEvent('qb-doorlock:server:updateState', closestDoor.id, locked, src, false, false, true, true) -- Broadcast new state of the door to everyone
-		else
-			PlaySoundFromEntity(-1, "Keycard_Fail", PlayerPedId(), "DLC_HEISTS_BIOLAB_FINALE_SOUNDS", 1, 5.0);
-			QBCore.Functions.Notify("You dont have a keyfob...", 'error')   
-			return -- End the loop
-		end
-	else
-		TriggerServerEvent('qb-doorlock:server:updateState', closestDoor.id, locked, src, false, false, true, true) -- Broadcast new state of the door to everyone
-	end
-		
-		
+	TriggerServerEvent('qb-doorlock:server:updateState', closestDoor.id, locked, src, false, false, true, true) -- Broadcast new state of the door to everyone
 end)
 TriggerEvent("chat:removeSuggestion", "/toggledoorlock")
 RegisterKeyMapping('toggledoorlock', Lang:t("general.keymapping_description"), 'keyboard', 'E')
@@ -710,8 +662,8 @@ CreateThread(function()
 				else
 					for k in pairs(nearbyDoors) do
 						local door = Config.DoorList[k]
-						if door.setText and door.objCoords then
-							distance = #(playerCoords - door.objCoords)
+						if door.setText and door.textCoords then
+							distance = #(playerCoords - door.textCoords)
 							if distance < (closestDoor.distance or 15) then
 								if distance < (door.distance or door.maxDistance) then
 									closestDoor = {distance = distance, id = k, data = door}
@@ -722,9 +674,7 @@ CreateThread(function()
 					end
 				end
 			end
-			
 			if closestDoor.id then
-				-- print(closestDoor.id)
 				while isLoggedIn do
 					if not paused and IsPauseMenuActive() then
 						hideNUI()
@@ -733,18 +683,18 @@ CreateThread(function()
 						if not IsPauseMenuActive() then paused = false end
 					else
 						playerCoords = GetEntityCoords(playerPed)
-						closestDoor.distance = #(closestDoor.data.objCoords - playerCoords)
+						closestDoor.distance = #(closestDoor.data.textCoords - playerCoords)
 						if closestDoor.distance < (closestDoor.data.distance or closestDoor.data.maxDistance) then
 							local authorized = isAuthorized(closestDoor.data)
 							local displayText = ""
 							if not closestDoor.data.locked and not authorized then
-								displayText = 'مفتوح'
+								displayText = Lang:t("general.unlocked")
 							elseif not closestDoor.data.locked and authorized then
-								displayText = 'مفتوح1'
+								displayText = Lang:t("general.unlocked_button")
 							elseif closestDoor.data.locked and not authorized then
-								displayText = 'مقفل'
+								displayText = Lang:t("general.locked")
 							elseif closestDoor.data.locked and authorized then
-								displayText = 'مقفل1'
+								displayText = Lang:t("general.locked_button")
 							end
 							if displayText ~= "" then displayNUIText(displayText) end
 						else
