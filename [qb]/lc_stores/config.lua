@@ -643,10 +643,10 @@ Config.market_types = {
 		},
 		['max_purchasable_categories'] = 4,		-- The max amount of categories that can be purchased
 		['categories'] = {						-- Here you configure the categories available to purchase in your store
-			"food_market", "drink_market", "alcohol_market", "utilities_market"
+			"food_market", "drink_market", "alcohol_market", "utilities_market", "medicel_market"
 		},
 		['default_categories'] = {				-- Here you can configure the categories available when the store has no owner
-			"food_market", "drink_market", "alcohol_market", "utilities_market"
+			"food_market", "drink_market", "alcohol_market", "utilities_market", "medicel_market"
 		},
 		['blips'] = {							-- Create the blips on map
 			['id'] = 52,						-- Blip ID [Set this value 0 to dont have blip]
@@ -897,6 +897,74 @@ Config.market_categories = {
 				['amount_to_delivery'] = 35,
 				['img'] = 'wine.png',
 			},
+			['redw'] = {
+				['name'] = "Redwood Pack",
+				['price_to_customer'] = 15,
+				['price_to_customer_min'] = 7,
+				['price_to_customer_max'] = 30,
+				['price_to_export'] = 14,
+				['price_to_owner'] = 10,
+				['amount_to_owner'] = 35,
+				['amount_to_delivery'] = 35,
+				['img'] = 'redw.png',
+			},
+			['marlboro'] = {
+				['name'] = "Marlboro Pack",
+				['price_to_customer'] = 15,
+				['price_to_customer_min'] = 7,
+				['price_to_customer_max'] = 30,
+				['price_to_export'] = 14,
+				['price_to_owner'] = 10,
+				['amount_to_owner'] = 35,
+				['amount_to_delivery'] = 35,
+				['img'] = 'marlboro.png',
+			},
+			
+			['vape'] = {
+				['name'] = "vape",
+				['price_to_customer'] = 15,
+				['price_to_customer_min'] = 7,
+				['price_to_customer_max'] = 30,
+				['price_to_export'] = 14,
+				['price_to_owner'] = 10,
+				['amount_to_owner'] = 35,
+				['amount_to_delivery'] = 35,
+				['img'] = 'vape.png',
+			},
+			['liquid'] = {
+				['name'] = "liquid",
+				['price_to_customer'] = 15,
+				['price_to_customer_min'] = 7,
+				['price_to_customer_max'] = 30,
+				['price_to_export'] = 14,
+				['price_to_owner'] = 10,
+				['amount_to_owner'] = 35,
+				['amount_to_delivery'] = 35,
+				['img'] = 'liquid.png',
+			},
+			['lighter'] = {
+				['name'] = "lighter",
+				['price_to_customer'] = 15,
+				['price_to_customer_min'] = 7,
+				['price_to_customer_max'] = 30,
+				['price_to_export'] = 14,
+				['price_to_owner'] = 10,
+				['amount_to_owner'] = 35,
+				['amount_to_delivery'] = 35,
+				['img'] = 'lighter.png',
+			},
+			['davidoffcigar'] = {
+				['name'] = "Davidoff Cigar",
+				['price_to_customer'] = 15,
+				['price_to_customer_min'] = 7,
+				['price_to_customer_max'] = 30,
+				['price_to_export'] = 14,
+				['price_to_owner'] = 10,
+				['amount_to_owner'] = 35,
+				['amount_to_delivery'] = 35,
+				['img'] = 'davidoffcigar.png',
+			},
+
 		}
 	},
 
@@ -1074,6 +1142,17 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'laptop.png',
+			},
+			['boombox'] = {
+				['name'] = "Boombox",
+				['price_to_customer'] = 500,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'boombox.png',
 			},
 			
 			
@@ -1369,7 +1448,66 @@ Config.market_categories = {
 			
 		}
 	},
+	['medicel_market'] = {
+		['page_name'] = "Medicel",
+		['page_desc'] = "Quality tools and equipment for any project, from hand tools to power tools, designed to help you achieve precision and efficiency, available at our supermarket",
+		['page_icon'] = '<img src="img/categories/medicel-icon.png" style="padding:15px">',
+		['page_img'] = 'img/categories/medicel.png',
+		['category_buy_price'] = 3000,
+		['category_sell_price'] = 1500,
+		['items'] = {
+		
+			
+			['bandage'] = {
+				['name'] = "Bandage",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'bandage.png',
+			},
+			['painkillers'] = {
+				['name'] = "painkillers",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'painkillers.png',
+			},
+			['walkstick'] = {
+				['name'] = "Walking Stick",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'walkstick.png',
+			},
+			['wheelchair'] = {
+				['name'] = "wheelchair",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'wheelchair.png',
+			},
+			
 
+
+			
+		}
+	},
 	['utilities_market'] = {
 		['page_name'] = "Utilities",
 		['page_desc'] = "Quality tools and equipment for any project, from hand tools to power tools, designed to help you achieve precision and efficiency, available at our supermarket",
@@ -1602,6 +1740,52 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'sodiumbicarbonate.png',
+			},
+
+
+			['bandage'] = {
+				['name'] = "Bandage",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'bandage.png',
+			},
+			['painkillers'] = {
+				['name'] = "painkillers",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'painkillers.png',
+			},
+			['walkstick'] = {
+				['name'] = "Walking Stick",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'walkstick.png',
+			},
+			['wheelchair'] = {
+				['name'] = "wheelchair",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'wheelchair.png',
 			},
 			
 
