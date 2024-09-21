@@ -14,7 +14,7 @@ Config.Installer = {
 
 Config.Blip = {
     sprite = 100,
-    scale = 0.8,
+    scale = 0.5,
     color = 0,
     label = _L("Blip.Label"),
     onlyNearest = false,                -- when true, map will display only one nearest blip of the carwash. It is dynamic, so when player is driving around map, it will always show nearest.
@@ -348,7 +348,7 @@ Config.VehicleDirt = {
         },
         [1109728704] = {
             -- Around 1.5 minutes of driving on Deep Mud will make ur vehicle fully dirty
-            multipler = 8.0,
+            multipler = 3.0,
             displayName = "Deep Mud"
         },
         [223086562] = {

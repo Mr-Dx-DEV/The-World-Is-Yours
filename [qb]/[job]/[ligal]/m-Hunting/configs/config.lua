@@ -117,7 +117,7 @@ Language = {
 -- Peds
 ---------------
 Config.Peds = {
-	[1] = { hash = GetHashKey("a_m_m_eastsa_01"), loc = vector3(-773.2, 5597.93, 32.61), heading = 192.02}, -- Ped to open the shop and buy the pickaxe
+	[1] = { hash = GetHashKey("a_m_m_eastsa_01"), loc = vector3(-776.089, 5603.021, 33.741), heading = 258.382}, -- Ped to open the shop and buy the pickaxe
 }
 
 -----------------

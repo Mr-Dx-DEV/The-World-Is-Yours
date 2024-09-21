@@ -170,6 +170,18 @@ Config = {
             min = 18,
             max = 40,
         },
+        ['heroin_vial'] = {
+            min = 40,
+            max = 80,
+        },
+        ['liquidketamine'] = {
+            min = 40,
+            max = 80,
+        },
+        ['ketamine'] = {
+            min = 40,
+            max = 80,
+        },
     },
 
     -- Delivery Config

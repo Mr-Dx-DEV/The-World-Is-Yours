@@ -59,7 +59,7 @@ Config = {
 				vec2(-1217.4858398438, -889.26123046875),
 				vec2(-1196.4073486328, -917.87731933594)
 			},
-			blip = vec3(-1186.11, -885.86, 13.97), blipcolor = 5, blipsprite = 106, blipscale = 0.7, blipdisp = 6, blipcat = nil,
+			blip = vec3(-1186.11, -885.86, 13.97), blipcolor = 5, blipsprite = 106, blipscale = 0.5, blipdisp = 6, blipcat = nil,
 			--[[ garage = { spawn = vec4(-1173.0, -899.68, 13.58, 324.91),
 				out = vec4(-1170.47, -900.8, 13.81, 29.65),
 				list = { "stalion2", "burrito3", }

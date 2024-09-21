@@ -376,9 +376,9 @@ Config = {
         RenderPerollTime = true, -- This is used for rendering peroll time on the screen
 
         Blip = {
-            enable = true, -- Do you want to show blip on map?
+            enable = false, -- Do you want to show blip on map?
             sprite = 643,
-            scale = 1.0,
+            scale = 0.3,
         },
 
         StartLocations = {
@@ -525,7 +525,7 @@ Config = {
 
     -- We dont recommend to change this settings, if you decide to change it and want to spawn NPC inside the prison by game-engine you have been warned!
 
-    EnableSpawnNPCInsidePrison = false, -- This is used for enabling spawn NPC inside the prison
+    EnableSpawnNPCInsidePrison = true, -- This is used for enabling spawn NPC inside the prison
 
     Teleport = {
         WhenReleasedTeleportPrisonerInFrontOfPrison = true, -- This is used for teleporting prisoner in front of the prison when released

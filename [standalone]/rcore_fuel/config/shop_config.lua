@@ -63,7 +63,7 @@ Config.ShopList = {
     ["fuel_pump24"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(175.696030, -1561.231689, 28.258541),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -244,7 +244,7 @@ Config.ShopList = {
     ["fuel_pump23"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(-2100.799316, -317.997101, 12.028025),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -267,7 +267,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -447,7 +447,7 @@ Config.ShopList = {
     ["fuel_pump22"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(-719.509460, -935.380493, 18.017010),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -470,7 +470,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -629,7 +629,7 @@ Config.ShopList = {
     ["fuel_pump21"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(822.966309, -1025.616821, 25.235981),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -652,7 +652,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -811,7 +811,7 @@ Config.ShopList = {
     ["fuel_pump20"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(-2555.762695, 2337.963623, 32.060032),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -834,7 +834,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -993,7 +993,7 @@ Config.ShopList = {
     ["fuel_pump19"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(1180.267456, -327.665863, 68.174400),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -1016,7 +1016,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -1175,7 +1175,7 @@ Config.ShopList = {
     ["fuel_pump18"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(1210.213135, 2662.327393, 36.809952),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -1198,7 +1198,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -1336,7 +1336,7 @@ Config.ShopList = {
     ["fuel_pump17"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(620.677551, 268.942413, 102.089424),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -1359,7 +1359,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -1512,7 +1512,7 @@ Config.ShopList = {
     ["fuel_pump16"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(2682.504883, 3262.433350, 54.240540),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -1535,7 +1535,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -1666,7 +1666,7 @@ Config.ShopList = {
     ["fuel_pump15"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(-96.839989, 6422.183105, 30.457170),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -1689,7 +1689,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -1820,7 +1820,7 @@ Config.ShopList = {
     ["fuel_pump14"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(47.179821, 2776.922363, 56.884029),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -1843,7 +1843,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -1974,7 +1974,7 @@ Config.ShopList = {
     ["fuel_pump13"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(263.508881, 2609.911621, 43.853329),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -1997,7 +1997,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -2122,7 +2122,7 @@ Config.ShopList = {
     ["fuel_pump12_airplanes"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(-1234.913086, -2281.494385, 12.944557),
         blipSprite = 307,
         blipName = "Airplanes Fuel pump",
@@ -2145,7 +2145,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -2299,7 +2299,7 @@ Config.ShopList = {
     ["fuel_pump11"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(1208.704590, -1402.596191, 34.224159),
         blipSprite = 361,
         blipName = "Ele Fuel pump",
@@ -2322,7 +2322,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -2458,7 +2458,7 @@ Config.ShopList = {
     ["fuel_pump10"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(1039.403320, 2671.437256, 38.550934),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -2481,7 +2481,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -2620,7 +2620,7 @@ Config.ShopList = {
     ["fuel_pump9"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(2007.736450, 3770.942383, 31.180801),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -2643,7 +2643,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -2788,7 +2788,7 @@ Config.ShopList = {
     ["fuel_pump8"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(-1436.763550, -276.683258, 45.207676),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -2811,7 +2811,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -2950,7 +2950,7 @@ Config.ShopList = {
     ["fuel_pump7"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(2577.346680, 362.636414, 107.457306),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -2973,7 +2973,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -3132,7 +3132,7 @@ Config.ShopList = {
     ["fuel_pump6"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(-66.469276, -1762.625122, 28.253826),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -3155,7 +3155,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -3314,7 +3314,7 @@ Config.ShopList = {
     ["fuel_pump5"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(-526.253967, -1210.782349, 17.184843),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -3337,7 +3337,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -3510,7 +3510,7 @@ Config.ShopList = {
     ["fuel_pump4"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(260.763550, -1260.539917, 28.142902),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -3533,7 +3533,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -3713,7 +3713,7 @@ Config.ShopList = {
     ["fuel_pump3"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(176.217285, 6602.612793, 30.848732),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -3736,7 +3736,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -3874,7 +3874,7 @@ Config.ShopList = {
     ["fuel_pump2"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(-1798.981934, 803.198059, 137.651291),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -3897,7 +3897,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,
@@ -4056,7 +4056,7 @@ Config.ShopList = {
     ["fuel_pump1"] = {
         -- blip on minimap/full map position
         enableBlip = true,
-        blipScale = 1.0,
+        blipScale = 0.5,
         blipPosition = vec3(1703.217407, 6420.282227, 31.637579),
         blipSprite = 361,
         blipName = "Fuel pump",
@@ -4079,7 +4079,7 @@ Config.ShopList = {
         },
 
         -- Enable/Disable buying of the station?
-        EnableBuyingCompany = false,
+        EnableBuyingCompany = true,
 
         -- Society info
         EnableSociety = false,

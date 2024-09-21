@@ -35,7 +35,7 @@ Config.SpecialVehicles = {
 -- Insurance & Registration Settings
 Config.InsuranceSettings = {
     Blip = { 
-        [1] = { enable = true, coords = vector3(834.99, -813.01, 26.33), sprite = 89, colour = 5, scale = 0.8, name = "Insurance" },
+        [1] = { enable = true, coords = vector3(834.99, -813.01, 26.33), sprite = 89, colour = 5, scale = 0.5, name = "Insurance" },
     },
     Peds = {
         [1] = { coords = vector3(834.99, -813.01, 26.33), pedModel = "s_m_m_fiboffice_01", heading = 90.62},
@@ -53,7 +53,7 @@ Config.InsurancePrice = {
 -- Health Insurance
 Config.HealthInsuranceSettings = {
     Blip = { 
-        [1] = { enable = false, coords = vector3(311.38, -594.21, 43.28), sprite = 107, colour = 5, scale = 0.8, name = "Health Insurance" },
+        [1] = { enable = false, coords = vector3(311.38, -594.21, 43.28), sprite = 107, colour = 5, scale = 0.5, name = "Health Insurance" },
     },
     Peds = {
         [1] = { coords = vector3(-495.39, -342.65, 42.32), pedModel = "s_m_m_doctor_01", heading = 353.47},
@@ -70,7 +70,7 @@ Config.HealthInsurancePrice = {
 -- Home Insurance
 Config.HomeInsuranceSettings = {
     Blip = { 
-        [1] = { enable = true, coords = vector3(-709.71, 271.72, 83.15), sprite = 107, colour = 5, scale = 0.8, name = "Home Insurance" },
+        [1] = { enable = true, coords = vector3(-709.71, 271.72, 83.15), sprite = 107, colour = 5, scale = 0.5, name = "Home Insurance" },
     },
     Peds = {
         [1] = { coords = vector3(-709.16, 272.15, 83.15), pedModel = "s_m_m_strpreach_01", heading = 203.3},

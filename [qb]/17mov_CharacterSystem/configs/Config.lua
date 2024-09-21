@@ -47,7 +47,7 @@ Config.StoresBlips = {
 }
 
 -- Stores taken from QBCORE to support it
-Config.UseTarget = false
+Config.UseTarget = true
 Config.Stores = {
     [1] = {price = 1000, shopType = 'clothing', coords = vector4(1693.91, 4821.81, 41.06, 109.25), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
     [2] = {price = 1000, shopType = 'clothing', coords = vector4(-709.75, -153.95, 36.42, 105.44), ped = `s_m_m_movprem_01`, radius = 5.0, hideBlip = false },
@@ -71,7 +71,7 @@ Config.Stores = {
     [20] = {price = 500, shopType = 'barber', coords = vector4(1212.87, -472.89, 65.21, 61.65), ped = `s_f_m_fembarber`, radius = 5.0, hideBlip = false },
     [21] = {price = 500, shopType = 'barber', coords = vector4(-32.97, -152.33, 56.08, 343.66), ped = `s_f_m_fembarber`, radius = 5.0, hideBlip = false },
     [22] = {price = 500, shopType = 'barber', coords = vector4(-278.02, 6228.53, 30.7, 55.18), ped = `s_f_m_fembarber`, radius = 5.0, hideBlip = false },
-    [23] = {price = 300000, shopType = 'surgeon', coords = vector4(-441.613, -290.898, 34.911, 25.571), ped = `s_m_m_doctor_01`, radius = 1.0, hideBlip = false },
+    [23] = {price = 30000, shopType = 'surgeon', coords = vector4(-453.332, -323.267, 33.911, 291.176), ped = `s_m_m_doctor_01`, radius = 3.0, hideBlip = true },
     [24] = {price = 1500, shopType = 'tattoo', coords = vector4(1321.65, -1654.16, 51.28, 340.9), ped = `u_m_y_tattoo_01`, radius = 5.0, hideBlip = false },
     [25] = {price = 1500, shopType = 'tattoo', coords = vector4(324.66, 180.56, 102.59, 103.23), ped = `u_m_y_tattoo_01`, radius = 5.0, hideBlip = false },
     [26] = {price = 1500, shopType = 'tattoo', coords = vector4(-3169.8, 1077.75, 19.83, 198.68), ped = `u_m_y_tattoo_01`, radius = 5.0, hideBlip = false },

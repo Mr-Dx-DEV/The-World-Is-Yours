@@ -53,6 +53,22 @@ Config.PawnItems = {
     [8] = {
         item = 'laptop',
         price = math.random(50,100)
+    },
+    [9] = {
+        item = 'kq_expensive_laptop',
+        price = math.random(50,100)
+    },
+    [10] = {
+        item = 'kq_expensive_watch',
+        price = math.random(50,100)
+    },
+    [11] = {
+        item = 'kq_expensive_bag',
+        price = math.random(50,100)
+    },
+    [12] = {
+        item = 'kq_expensive_sneakers',
+        price = math.random(50,100)
     }
 }
 

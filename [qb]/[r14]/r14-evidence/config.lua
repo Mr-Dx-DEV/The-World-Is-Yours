@@ -1007,7 +1007,7 @@ a vector3 coord and heading.
 
 --]]--------------------------------------
 
---[[ Config.CarWash = {
+Config.CarWash = {
     Settings = {
         usePoly = true, -- will use polyzone to create car washes, false it will distance check
         use3Dtext = false, -- will use 3D world text to draw carwash
@@ -1020,7 +1020,7 @@ a vector3 coord and heading.
     },
     Blip = {
         Sprite = 100,
-        Scale = 0.75,
+        Scale = 0.5,
         Color = 37,  
         Name = 'Automatic Touchless Carwash', 
     },
@@ -1033,7 +1033,7 @@ a vector3 coord and heading.
         Description = 'Get a wash & wax!',
     },
     Locations = {
-        [1] = {
+       --[[  [1] = {
             Coords = vector3(174.81, -1736.77, 28.87),
             Heading = 359, -- REQUIRED IF USING POLYZONE
             Length = 10, -- OPTIONAL, specify the length of the polyzone
@@ -1044,21 +1044,21 @@ a vector3 coord and heading.
             Heading = 90,
             Length = 20,
             Width = 3,
-        },
-        [3] = {
+        }, ]]
+        [1] = {
             Coords = vector3(-74.27, 6427.72, 31.02),
             Heading = 315,
         },
-        [4] = {
+        [2] = {
             Coords = vector3(1362.69, 3591.81, 34.5),
             Heading = 21,
         },
-        [5] = {
+        --[[ [5] = {
             Coords = vector3(-699.84, -932.68, 18.59),
             Heading = 0,
-        },
+        }, ]]
     },
-} ]]
+}
 
 --------------------------------------------------------------------------------------------------------------
 --------------------------------        Default Ped Gloves Table         -------------------------------------
