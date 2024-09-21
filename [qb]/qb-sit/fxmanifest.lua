@@ -1,29 +1,19 @@
-fx_version 'cerulean'
-game 'gta5'
-
-server_scripts {
-	'config.lua',
-	'lists/seat.lua',
-	'lists/sitpoints.lua',
-	'server.lua'
+fx_version "cerulean"
+game "gta5"
+lua54 "yes"
+author "VLife"
+description "Sit Anywhere!"
+version "1.1.6"
+shared_scripts{
+    "@ox_lib/init.lua",
 }
-
 client_scripts {
-	'config.lua',
-	'lists/seat.lua',
-	'lists/sitpoints.lua',
-	'client.lua'
+	"config.lua",
+	"list.lua",
+	"client.lua",
+	"newway.lua"
 }
-
-ui_page 'html/sit.html'
-
-files {
-	'html/*.html',
-	'html/*.js',
-	'html/*.css',
+dependencies {
+	"/server:5181"
 }
-
-dependencies { 
-  'PolyZone', 
-  'qb-target' 
-}
+dependency "/assetpacks"
