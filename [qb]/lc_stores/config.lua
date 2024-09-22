@@ -12,7 +12,7 @@ Config.trucker_logistics = {					-- Settings related to the link with the Truck 
 }
 
 Config.max_stores_per_player = 1				-- Maximum number of stores that each player can have
-Config.max_stores_employed = 2					-- Maximum number of stores that each player can be employed
+Config.max_stores_employed = 5					-- Maximum number of stores that each player can be employed
 Config.has_stock_when_unowed = true				-- If true, the store stock will be full stock when there is no owner. If false, the store stock will be empty when there is no owner
 Config.max_jobs = 20							-- Max amount of jobs that each store can create
 Config.disable_rename_business = false 			-- Set this to true if you want to disable the function to rename the business
@@ -849,8 +849,8 @@ Config.market_categories = {
 		['page_icon'] = '<img src="img/categories/alcohol-icon.png" style="padding:15px">', -- Its the icon that will appear in the page tab. "padding:12px" means that the image will be 15px smaller, use it to resize the image if needed. Tip: You can get nice images here: https://icon-icons.com/search/icons/
 		-- ['page_icon'] = '<i class="fa-solid fa-burger"></i>', -- As an alternative to the page icon, you can use icons from here (https://fontawesome.com/search?m=free&s=solid)
 		['page_img'] = 'img/categories/alcohol.png',	-- This is the category image in the page to buy categories
-		['category_buy_price'] = 2500, 			-- Price to buy the category
-		['category_sell_price'] = 1250, 		-- Price to sell the category
+		['category_buy_price'] = 750000, 			-- Price to buy the category
+		['category_sell_price'] = 500000, 		-- Price to sell the category
 		['items'] = {
 			['beer'] = {						-- The item ID
 				['name'] = "Beer",				-- The item display name
@@ -973,8 +973,8 @@ Config.market_categories = {
 		['page_desc'] = "Quench your thirst and elevate your beverage game with our diverse range of refreshing drinks, from classic favorites to innovative flavors, all waiting for you to discover at our supermarket",
 		['page_icon'] = '<img src="img/categories/drinks-icon.png" style="padding:15px">',
 		['page_img'] = 'img/categories/drinks.png',
-		['category_buy_price'] = 5000,
-		['category_sell_price'] = 2500,
+		['category_buy_price'] = 750000,
+		['category_sell_price'] = 500000,
 		['items'] = {
 			['grapejuice'] = {
 				['name'] = "Grape Juice",
@@ -1028,8 +1028,8 @@ Config.market_categories = {
 		['page_desc'] = "Explore a delicious selection of fresh and high-quality food options that will tantalize your taste buds and satisfy your cravings, all conveniently available at our supermarket",
 		['page_icon'] = '<img src="img/categories/food-icon.png" style="padding:15px">',
 		['page_img'] = 'img/categories/food.png',
-		['category_buy_price'] = 5000,
-		['category_sell_price'] = 2500,
+		['category_buy_price'] = 750000,
+		['category_sell_price'] = 500000,
 		['items'] = {
 			['tosti'] = {
 				['name'] = "Grilled Sandwich",
@@ -1083,8 +1083,8 @@ Config.market_categories = {
 		['page_desc'] = "Experience the latest in technology with our wide range of cutting-edge electronics, from smartphones to home entertainment systems, available at our supermarket",
 		['page_icon'] = '<img src="img/categories/electronics-icon.png" style="padding:15px">',
 		['page_img'] = 'img/categories/electronics.png',
-		['category_buy_price'] = 5000,
-		['category_sell_price'] = 2500,
+		['category_buy_price'] = 750000,
+		['category_sell_price'] = 500000,
 		['items'] = {
 			['fitbit'] = {
 				['name'] = "Fitbit",
@@ -1166,8 +1166,8 @@ Config.market_categories = {
 		['page_desc'] = "Experience the latest in technology with our wide range of cutting-edge electronics, from smartphones to home entertainment systems, available at our supermarket",
 		['page_icon'] = '<img src="img/categories/electronics-icon.png" style="padding:15px">',
 		['page_img'] = 'img/categories/electronics.png',
-		['category_buy_price'] = 5000,
-		['category_sell_price'] = 2500,
+		['category_buy_price'] = 750000,
+		['category_sell_price'] = 500000,
 		['items'] = {
 			['classic_phone'] = {
 				['name'] = "Classic Phone",
