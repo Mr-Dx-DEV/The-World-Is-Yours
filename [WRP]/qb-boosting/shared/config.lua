@@ -18,7 +18,7 @@ Config.ScratchItem = "boostfile"
 
 -- What phone are you using
 -- Available options: qb-phone, qs-smartphone, lb-phone, renewed-phone
-Config.Phone = "qb-phone"
+Config.Phone = "qs-smartphone"
 
 -- Fuel script
 -- Available options: qb-fuel, LegacyFuel, ps-fuel
