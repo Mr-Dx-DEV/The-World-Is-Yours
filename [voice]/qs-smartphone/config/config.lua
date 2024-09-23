@@ -461,16 +461,16 @@ Config.BlackMarketAccount = 'bank' -- Account with which you want to pay in Onio
     price    'Price of the product'
 ]]
 
-Config.Darkweb = {
-    List = {
-        [1] = { item = 'WEAPON_PISTOL', label = 'Pistol', isItem = true, price = 8000 },
-        [2] = { item = 'WEAPON_PISTOL50', label = 'Pistol 50', isItem = true, price = 9000 },
-        [3] = { item = 'WEAPON_PISTOL_MK2', label = 'Pistol MK2', isItem = true, price = 10000 },
-        [4] = { item = 'WEAPON_KNUCKLE', label = 'Knucle', isItem = true, price = 5000 },
-        [5] = { item = 'WEAPON_GRENADE', label = 'Pistol', isItem = true, price = 20000 },
-        [6] = { item = 'WEAPON_CARBINERIFLE_MK2', label = 'Carbine Rifle MK2', isItem = true, price = 35000 },
-        [7] = { item = 'WEAPON_BULLPUPRIFLE_MK2', label = 'Bullpup Rifle MK2', isItem = true, price = 40000 },
-        [8] = { item = 'WEAPON_SNIPERRIFLE', label = 'Sniper Rifle', isItem = true, price = 55000 },
+-- Config.Darkweb = {
+--    List = {
+--        [1] = { item = 'WEAPON_PISTOL', label = 'Pistol', isItem = true, price = 8000 },
+--        [2] = { item = 'WEAPON_PISTOL50', label = 'Pistol 50', isItem = true, price = 9000 },
+--        [3] = { item = 'WEAPON_PISTOL_MK2', label = 'Pistol MK2', isItem = true, price = 10000 },
+--       [4] = { item = 'WEAPON_KNUCKLE', label = 'Knucle', isItem = true, price = 5000 },
+--        [5] = { item = 'WEAPON_GRENADE', label = 'Pistol', isItem = true, price = 20000 },
+--        [6] = { item = 'WEAPON_CARBINERIFLE_MK2', label = 'Carbine Rifle MK2', isItem = true, price = 35000 },
+--        [7] = { item = 'WEAPON_BULLPUPRIFLE_MK2', label = 'Bullpup Rifle MK2', isItem = true, price = 40000 },
+--        [8] = { item = 'WEAPON_SNIPERRIFLE', label = 'Sniper Rifle', isItem = true, price = 55000 },
         -- [9] = { item = 'laptop', label = 'Hacker Laptop', isItem = true, price = 700}, -- If you use `Config.WeaponsItems = false` then you can choose if it's an item with `isItem = true`.
     },
 }

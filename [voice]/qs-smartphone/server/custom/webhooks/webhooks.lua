@@ -17,14 +17,14 @@
 --- @param Important, add a webhook here, otherwise the images won't work.
 
 -- Mandatory webhook or Fivemanage token [https://www.fivemanage.com] (full use)
-Config.Webhook = ''
+Config.Webhook = 'https://discordapp.com/api/webhooks/1287447796609187860/J25doQlRHB4xmB_T4WBUKCwBO8-m235y0h_dtHnjcGX0VZz8cnqdiYlqK-00uKk-orvf'
 
-Config.TwitterWebhook = ''
-Config.InstagramWebhook = ''
-Config.YellowPagesWebhook = ''
-Config.NewsWebhook = ''
-Config.DarkWebBuy = ''
-Config.BankWebhook = '' -- You can modify on qs-smartphone/server/custom/misc/bank.lua
+Config.TwitterWebhook = 'https://discordapp.com/api/webhooks/1287447796609187860/J25doQlRHB4xmB_T4WBUKCwBO8-m235y0h_dtHnjcGX0VZz8cnqdiYlqK-00uKk-orvf'
+Config.InstagramWebhook = 'https://discordapp.com/api/webhooks/1287447796609187860/J25doQlRHB4xmB_T4WBUKCwBO8-m235y0h_dtHnjcGX0VZz8cnqdiYlqK-00uKk-orvf'
+Config.YellowPagesWebhook = 'https://discordapp.com/api/webhooks/1287447796609187860/J25doQlRHB4xmB_T4WBUKCwBO8-m235y0h_dtHnjcGX0VZz8cnqdiYlqK-00uKk-orvf'
+Config.NewsWebhook = 'https://discordapp.com/api/webhooks/1287447796609187860/J25doQlRHB4xmB_T4WBUKCwBO8-m235y0h_dtHnjcGX0VZz8cnqdiYlqK-00uKk-orvf'
+Config.DarkWebBuy = 'https://discordapp.com/api/webhooks/1287447796609187860/J25doQlRHB4xmB_T4WBUKCwBO8-m235y0h_dtHnjcGX0VZz8cnqdiYlqK-00uKk-orvf'
+Config.BankWebhook = 'https://discordapp.com/api/webhooks/1287447796609187860/J25doQlRHB4xmB_T4WBUKCwBO8-m235y0h_dtHnjcGX0VZz8cnqdiYlqK-00uKk-orvf' -- You can modify on qs-smartphone/server/custom/misc/bank.lua
 
 
 --      _       _     _   _
