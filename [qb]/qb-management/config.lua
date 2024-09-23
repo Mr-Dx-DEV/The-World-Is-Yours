@@ -19,6 +19,9 @@ Config.BossMenus = {
     catcafe = {
         vector3(-347.59, -133.35, 39.01),
     },
+    burgershot = {
+        vector3(-1199.78, -902.86, 13.89),
+    },
 }
 
 Config.GangMenus = {
