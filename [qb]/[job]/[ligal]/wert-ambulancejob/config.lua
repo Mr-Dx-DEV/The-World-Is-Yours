@@ -4,37 +4,35 @@ Config.DebugPoly = false -- Show target polys (true or false)
 
 Config.CoffeItem = "coffee"
 
-Config.ReviveClientEvent = 'hospital:client:Revive'
+Config.ReviveClientEvent = 'wasabi_ambulance:revive'
 
 Config.Locale = "en"
 
-Config.OxInventory = false
-
 --Mr desk
-Config.MrCoord = vector4(336.9098, -575.361, 43.186, 161.4)
+Config.MrCoord = vector4(-1856.1, -355.42, 41.25, 50.4)
 --Xray desk
-Config.Xray = vector4(348.4268, -579.877, 43.186, 162.51)
+Config.Xray = vector4(-1874.81, -331.74, 53.75, 325.69)
 
 Config.TargetInfos = {
     ["EMSWertAmbulanceDuty"] = {
-        Coord = vector3(307.55, -595.32, 43.28),
-        Heading = 340,
-        Lenght = 1.0,
-        Width = 1,
-        Minz = 42.2,
-        Maxz = 43.8,
+        Coord = vector3(-1820.98, -350.97, 49.46),
+        Heading = 320,
+        Lenght = 1.2,
+        Width = 1.6,
+        Minz = 48.2,
+        Maxz = 50.4,
         Event = nil,
         Icon = nil,
         Label = nil,
         Distance = 1.5
     },
     ["EMSWertArmoryStash"] = {
-        Coord = vector3(306.57, -602.33, 43.28),
-        Heading = 340,
-        Lenght = 0.6,
-        Width = 2.2,
-        Minz = 42.2,
-        Maxz = 44.4,
+        Coord = vector3(-1864.5, -325.52, 49.45),
+        Heading = 320,
+        Lenght = 1.2,
+        Width = 1.6,
+        Minz = 48.45,
+        Maxz = 50.85,
         Event = nil,
         Icon = nil,
         Label = nil,
@@ -42,12 +40,12 @@ Config.TargetInfos = {
     },
     ["EMSWertBossMenu"] = {
         --Don't tuch event value
-        Coord = vector3(335.54, -594.42, 43.28),
-        Heading = 340,
-        Lenght = 1.8,
-        Width = 1.0,
-        Minz = 42.2,
-        Maxz = 43.8,
+        Coord = vector3(-1845.44, -348.68, 84.02),
+        Heading = 13,
+        Lenght = 1.4,
+        Width = 2.2,
+        Minz = 83.02,
+        Maxz = 84.42,
         Event = "qb-bossmenu:client:OpenMenu",
         Icon = "fas fa-clipboard",
         Label = "Boss Menu",
@@ -55,12 +53,12 @@ Config.TargetInfos = {
     },
     ["EMSWertMrComputer"] = {
         --Don't tuch event value
-        Coord = vector3(341.33, -576.66, 43.28),
-        Heading = 340,
-        Lenght = 1.4,
+        Coord = vector3(-1859.8, -350.01, 41.25),
+        Heading = 319,
+        Lenght = 2.6,
         Width = 1.0,
-        Minz = 42.8,
-        Maxz = 44.0,
+        Minz = 40.25,
+        Maxz = 41.85,
         Event = "wert-ambulancejob:mr-panel",
         Icon = "fas fa-desktop",
         Label = "MRI Computer",
@@ -68,12 +66,12 @@ Config.TargetInfos = {
     },
     ["EMSWertMrDesk"] = {
         --Don't tuch event value
-        Coord = vector3(336.98, -575.21, 43.28),
-        Heading = 340,
-        Lenght = 2.6,
-        Width = 1.0,
-        Minz = 42.4,
-        Maxz = 44.0,
+        Coord = vector3(-1856.1, -355.42, 41.25),
+        Heading = 140,
+        Lenght = 3.8,
+        Width = 3.0,
+        Minz = 40.25,
+        Maxz = 43.05,
         Event = nil,
         Icon = nil,
         Label = nil,
@@ -81,12 +79,12 @@ Config.TargetInfos = {
     },
     ["EMSWertXrayComputer"] = {
         --Don't tuch event value
-        Coord = vector3(344.54, -577.97, 43.28),
-        Heading = 340,
-        Lenght = 1.4,
-        Width = 0.8,
-        Minz = 42.8,
-        Maxz = 44.0,
+        Coord = vector3(-1870.77, -329.91, 53.76),
+        Heading = 320,
+        Lenght = 1,
+        Width = 1,
+        Minz = 52.76,
+        Maxz = 54.16,
         Event = "wert-ambulancejob:xray-panel",
         Icon = "fas fa-desktop",
         Label = "XRAY Computer",
@@ -94,12 +92,12 @@ Config.TargetInfos = {
     },
     ["EMSWertXrayDesk"] = {
         --Don't tuch event value
-        Coord = vector3(348.6, -579.48, 43.28),
-        Heading = 340,
+        Coord = vector3(-1874.81, -331.74, 53.75),
+        Heading = 320,
         Lenght = 2.6,
-        Width = 1.0,
-        Minz = 42.4,
-        Maxz = 44.0,
+        Width = 1.4,
+        Minz = 52.78,
+        Maxz = 56.0,
         Event = nil,
         Icon = nil,
         Label = nil,
@@ -107,12 +105,12 @@ Config.TargetInfos = {
     },
     --
     ["EMSWertAmbulanceComputer"] = {
-        Coord = vector3(308.56, -593.79, 43.28),
-        Heading = 315,
-        Lenght = 0.8,
-        Width = 0.8,
-        Minz = 42.2,
-        Maxz = 43.8,
+        Coord = vector3(-1863.89, -322.74, 49.45),
+        Heading = 35,
+        Lenght = 1,
+        Width = 1,
+        Minz = 48.45,
+        Maxz = 50.25,
         Event = nil,
         Icon = nil,
         Label = nil,
@@ -121,12 +119,12 @@ Config.TargetInfos = {
 
     ["EMSBloodCard"] = {
         --Don't tuch event value
-        Coord = vector3(311.8, -593.43, 43.28),
-        Heading = 339,
-        Lenght = 0.8,
+        Coord = vector3(-1853.45, -334.28, 49.45),
+        Heading = 335,
+        Lenght = 1.0,
         Width = 1.0,
-        Minz = 42.8,
-        Maxz = 43.8,
+        Minz = 48.65,
+        Maxz = 50.25,
         Event = 'wert-ambulancejob:take-blood-card',
         Icon = "fa-solid fa-address-card",
         Label = 'Buy blood card',
@@ -157,15 +155,15 @@ Config.Items = {
         },
         [3] = {
             name = "weapon_flashlight",
-            price = 30,
+            price = 10,
             amount = 10,
             info = {},
             type = "item",
             slot = 3,
         },
         [4] = {
-            name = "weapon_stungun",
-            price = 250,
+            name = "weapon_fireextinguisher",
+            price = 10,
             amount = 10,
             info = {},
             type = "item",
@@ -202,6 +200,278 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 8,
+        },
+        [9] = {
+            name = "medbag",
+            price = 10,
+            amount = 10,
+            info = {},
+            type = "item",
+            slot = 9,
+        },
+        [10] = {
+            name = "medikit",
+            price = 10,
+            amount = 10,
+            info = {},
+            type = "item",
+            slot = 10,
+        },
+        [11] = {
+            name = "advancedlockpick",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 11,
+        },
+        [12] = {
+            name = "diving_gear",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 12,
+        },
+        [13] = {
+            name = "oxy",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 13,
+        },
+        [14] = {
+            name = "morphine",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 14,
+        },
+        [15] = {
+            name = "syringe",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 15,
+        },
+        [16] = {
+            name = "nikon",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 16,
+        },
+        [17] = {
+            name = "harness",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 17,
+        },
+        [18] = {
+            name = "advancedrepairkit",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 18,
+        },
+        [19] = {
+            name = "repairkit",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 19,
+        },
+        [20] = {
+            name = "cleaningkit",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 20,
+        },
+        [21] = {
+            name = "binoculars",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 21,
+        },
+        [22] = {
+            name = "armor",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 22,
+        },
+        [23] = {
+            name = "parachute",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 23,
+        },
+        [24] = {
+            name = "defib",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 24,
+        },
+        [25] = {
+            name = "accesstool",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 25,
+        },
+        [26] = {
+            name = "tylenol",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 26,
+        },
+        [27] = {
+            name = "peptobismol",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 27,
+        },
+        [28] = {
+            name = "loperamide",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 28,
+        },
+        [29] = {
+            name = "aspirin",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 29,
+        },
+        [30] = {
+            name = "ibuprofen",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 30,
+        },
+        [31] = {
+            name = "dramamine",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 31,
+        },
+        [32] = {
+            name = "covidvaccine",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 32,
+        },
+        [33] = {
+            name = "doxycycline",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 33,
+        },
+        [34] = {
+            name = "azithromycin",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 34,
+        },
+        [35] = {
+            name = "acyclovir",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 35,
+        },
+        [36] = {
+            name = "sedative",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 36,
+        },
+        [37] = {
+            name = "tweezers",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 37,
+        },
+        [38] = {
+            name = "suturekit",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 38,
+        },
+        [39] = {
+            name = "icepack",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 39,
+        },
+        [40] = {
+            name = "burncream",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 40,
+        },
+        [41] = {
+            name = "liquidheroin",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 41,
+        },
+        [42] = {
+            name = "ketamine",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 42,
         },
     }
 }
@@ -281,46 +551,20 @@ Config.EmsVehicles = {
 -- Npc doctor
 
 Config.NpcDoctors = {
-    {coord = vector4(312.77, -594.62, 43.28, 345.11), name = "John" }, -- Gabz
+    {coord = vector4(-1849.74, -339.47, 49.45, 140.58), name = "Dr. Eric Forman"}, -- Gabz
 }
 
-Config.ReviveTime = 70000
-Config.RestTime = 50000
+Config.ReviveTime = 50000
+Config.RestTime = 30000
 
-Config.NpcDoctorCost = 150
-Config.NpcDoctorMoney = "cash" -- or "bank"
+Config.NpcDoctorCost = 1000
+Config.NpcDoctorMoney = "bank" -- or "bank"
 
 Config.UseCheckOnlineDoc = true
 
 Config.Beds = {
-    ["John"] = {
-        ["dead"] = {vector4(326.84, -570.82, 43.26, 161.06), vector4(315.28, -566.61, 43.28, 155.03)},
-        ["rest"] = {vector4(307.81, -581.69, 43.2, 340.96), vector4(311.12, -583.02, 43.2, 333.79), vector4(314.52, -584.28, 43.2, 337.71), vector4(317.74, -585.4, 43.2, 337.33), vector4(322.69, -587.23, 43.2, 339.7), vector4(324.22, -582.84, 43.2, 158.46), vector4(319.32, -580.99, 43.2, 162.94)}
+    ["Dr. Eric Forman"] = {
+        ["dead"] = {vector4(-1862.91, -334.58, 49.44, 326.14), vector4(-1865.74, -332.19, 49.44, 317.79)},
+        ["rest"] = {vector4(-1868.61, -330.21, 49.44, 316.49), vector4(-1872.08, -327.19, 49.44, 319.81), vector4(-1878.58, -322.15, 49.44, 317.24), vector4(-1875.07, -317.92, 49.44, 151.89), vector4(-1871.84, -320.47, 49.44, 140.84), vector4(-1868.94, -323.25, 49.44, 142.59), vector4(-1861.59, -326.36, 50.0, 207.67)}
     },
-}
-
-
--- Photos
-Config.MrPhotos = {
-    ["beyin"] = "https://cdn.discordapp.com/attachments/971695978962907176/971696814157885460/unknown.png?ex=65f2bbad&is=65e046ad&hm=4c613e7d957d585abc4e2d73cb3f652f8b49b6b27be65ca72c65c52bf91b1f69&",
-    ["kalca"] = "https://cdn.discordapp.com/attachments/971695978962907176/971696110202658866/unknown.png?ex=65f2bb05&is=65e04605&hm=73b7f5c64ae5616986e16c375a94649286901b7329751d787cc1b3a36bf262d8&",
-    ["tabdomen"] = "https://cdn.discordapp.com/attachments/971695978962907176/971696236375736350/unknown.png?ex=65f2bb23&is=65e04623&hm=e4f6cea673ceec2de0823756eb61dcd93e42fa77ac0d635d37c7910d429c4d2e&",
-    ["tchest"] = "https://cdn.discordapp.com/attachments/971695978962907176/971696442508980234/unknown.png?ex=65f2bb55&is=65e04655&hm=17fd836e2a714f159b105d095969d356b5e44da8769a0d49f32cea96adcfa8a9&",
-    ["elbilek"] = "https://cdn.discordapp.com/attachments/971695978962907176/971696521085087784/unknown.png?ex=65f2bb67&is=65e04667&hm=0da5966d2293a5a70cfe47633ddee20e7a1e29883cab1bcc815bd77b6f85a2b4&",
-    ["omuz"] = "https://cdn.discordapp.com/attachments/971695978962907176/971696619865133056/unknown.png?ex=65f2bb7f&is=65e0467f&hm=f9d4fc8ff166c8bfe2ffbfaa055c96bac0026b8826e7d0c10f78946542cc1e94&",
-    ["diz"] = "https://cdn.discordapp.com/attachments/971695978962907176/971696691629686834/unknown.png?ex=65f2bb90&is=65e04690&hm=7d3dac932dca55bab55cb0bcb71b4fba0a9a4c0ff7752ff764e531b4cc87bdf2&",
-    ["tboyun"] = "https://cdn.discordapp.com/attachments/971695978962907176/1213049350939353098/fdhc-900x400.png?ex=65f40f3e&is=65e19a3e&hm=9f2e079cfaa0c4d19a88adc3f9db70e7cfc42206b3536febdcc3fb3ac4feb140&",
-    ["hipofiz"] = "https://cdn.discordapp.com/attachments/971695978962907176/971696882663444520/unknown.png?ex=65f2bbbe&is=65e046be&hm=6ea7ed59b63528c1117a5192f2898acc5253bf1a579f7fdeb6fd5aa9d1588dc1&",
-}
-
-Config.XrayPhotos = {
-    ["kafa"] = "https://cdn.discordapp.com/attachments/971695978962907176/971697604972916746/unknown.png?ex=65f2bc6a&is=65e0476a&hm=47c04a800367511806a82334253e6cbe1f1a980f93b92ec62fb370d7b683e0a4&",
-    ["omuz"] = "https://cdn.discordapp.com/attachments/971695978962907176/971697737886208000/unknown.png?ex=65f2bc89&is=65e04789&hm=f75088c872c437c88a20fafd6df246791764574a77faddecf311d9afed411f0c&",
-    ["humerus"] = "https://cdn.discordapp.com/attachments/971695978962907176/971698068904869928/unknown.png?ex=65f2bcd8&is=65e047d8&hm=e700e4acbe5dd144f94dfd7650f7cf586ab22d0580faf5ca1674377f15bb6e97&",
-    ["onkol"] = "https://cdn.discordapp.com/attachments/971695978962907176/971698142816907304/unknown.png?ex=65f2bcea&is=65e047ea&hm=cd1b98b844b08fde4bcbdd2b71022c556d7fdefa3fd1707672efd3ea06ba8b3d&",
-    ["pelvis"] = "https://cdn.discordapp.com/attachments/971695978962907176/971698255727575100/unknown.png?ex=65f2bd05&is=65e04805&hm=edb7c35c6124f6c6380429543cc09163b5971e98b7ea4ae0d75ca8fd60d81811&",
-    ["femur"] = "https://cdn.discordapp.com/attachments/971695978962907176/971698337914953749/unknown.png?ex=65f2bd19&is=65e04819&hm=9933ebd8ac8783d49d6654fcb8b37f732ce1ab702f9a1dc1be21e8ea0818af05&",
-    ["diz"] = "https://cdn.discordapp.com/attachments/971695978962907176/971698409071345664/unknown.png?ex=65f2bd2a&is=65e0482a&hm=b306da6a90267975873ec7d86e0b188469de2d110562d13960c3b81abfe4cd15&",
-    ["ayak"] = "https://cdn.discordapp.com/attachments/971695978962907176/971698512293158912/unknown.png?ex=65f2bd42&is=65e04842&hm=c87e3db6b0118d6dd3c977f8eb190f4fdb745a3592e343c56a77b7cefbd106af&",
-    ["ciger"] = "https://cdn.discordapp.com/attachments/971695978962907176/971698573102174258/unknown.png?ex=65f2bd51&is=65e04851&hm=a49c67fd6d2f6c6746a80f6a2bcf0a50ee35594027ad0837533aab9f0e37e701&",
 }
