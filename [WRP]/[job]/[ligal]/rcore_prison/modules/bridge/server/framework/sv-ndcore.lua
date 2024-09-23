@@ -31,7 +31,7 @@ CreateThread(function()
             return retval
         end
 
-        function Framework.getJob(client)
+        --[[ function Framework.getJob(client)
             local player = Framework.getPlayer(client)
             local retval =  {
                 name = 'unemployed',
@@ -48,7 +48,47 @@ CreateThread(function()
             end
     
             return retval
+        end ]]
+        function Framework.getJob(client)
+            local player = Framework.getPlayer(client)
+            local retval = {
+                name = 'unemployed',
+                label = 'Unemployed'
+            }
+        
+            if player then
+                if Ace.Can(client, Permissions.CAN_USE_JOB_COMMANDS) then
+                    -- Define all the jobs you want to support
+                    local jobList = {
+                        ['lspd'] = 'Los Santos Police Department',
+                        ['bcso'] = 'Blaine County Sheriff\'s Office',
+                        ['sahp'] = 'San Andreas Highway Patrol',
+                        ['lsso'] = 'Los Santos Sheriff\'s Office',
+                        ['safw'] = 'San Andreas Fish and Wildlife',
+                        ['sadoc'] = 'San Andreas Department of Corrections',
+                        ['usms'] = 'United States Marshals Service',
+                        ['fbi'] = 'Federal Bureau of Investigation',
+                        ['dhs'] = 'Department of Homeland Security',
+                        ['ss'] = 'Secret Service',
+                        ['police'] = 'Police'
+                    }
+        
+                    -- Loop through jobList and check if the player has one of these jobs
+                    for jobName, jobLabel in pairs(jobList) do
+                        if Ace.Can(client, jobName) then
+                            retval = {
+                                name = jobName,
+                                label = jobLabel
+                            }
+                            break
+                        end
+                    end
+                end
+            end
+        
+            return retval
         end
+        
     
             
         function Framework.getPlayer(client)

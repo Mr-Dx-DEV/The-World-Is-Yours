@@ -1,8 +1,8 @@
 Selector = {}
 
 Selector.Enable = true         -- Is Character Selector enabled?
-Selector.Relog = false          -- Should allow to use /relog command?
-Selector.EnableDeleting = false -- Does player is allowed to delete characters?
+Selector.Relog = true          -- Should allow to use /relog command?
+Selector.EnableDeleting = true -- Does player is allowed to delete characters?
 Selector.MaxCharacters = 2     -- Base number of max characters per player
 
 -- Here you can configure custom number of characters per specified player (based on identifier)

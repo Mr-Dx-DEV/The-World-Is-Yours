@@ -6,7 +6,7 @@ CreateThread(function()
             return license
         end
     
-        function Framework.getJob(client)
+        --[[ function Framework.getJob(client)
             local retval =  {
                 name = 'unemployed',
                 label = 'Unemployed'
@@ -20,7 +20,42 @@ CreateThread(function()
             end
     
             return retval
+        end ]]
+        function Framework.getJob(client)
+            local retval = {
+                name = 'unemployed',
+                label = 'Unemployed'
+            }
+        
+            -- Define all the jobs you want to support
+            local jobList = {
+                ['lspd'] = 'Los Santos Police Department',
+                ['bcso'] = 'Blaine County Sheriff\'s Office',
+                ['sahp'] = 'San Andreas Highway Patrol',
+                ['lsso'] = 'Los Santos Sheriff\'s Office',
+                ['safw'] = 'San Andreas Fish and Wildlife',
+                ['sadoc'] = 'San Andreas Department of Corrections',
+                ['usms'] = 'United States Marshals Service',
+                ['fbi'] = 'Federal Bureau of Investigation',
+                ['dhs'] = 'Department of Homeland Security',
+                ['ss'] = 'Secret Service',
+                ['police'] = 'Police'
+            }
+        
+            -- Loop through jobList and check if the player has one of these jobs
+            for jobName, jobLabel in pairs(jobList) do
+                if Ace.Can(client, jobName) then
+                    retval = {
+                        name = jobName,
+                        label = jobLabel
+                    }
+                    break
+                end
+            end
+        
+            return retval
         end
+        
     
                     
         function Framework.getPlayer(client)
