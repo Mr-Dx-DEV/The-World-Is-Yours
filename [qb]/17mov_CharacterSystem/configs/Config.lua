@@ -47,7 +47,7 @@ Config.StoresBlips = {
 }
 
 -- Stores taken from QBCORE to support it
-Config.UseTarget = true
+Config.UseTarget = false
 Config.Stores = {
     [1] = {price = 1000, shopType = 'clothing', coords = vector4(1693.91, 4821.81, 41.06, 109.25), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
     [2] = {price = 1000, shopType = 'clothing', coords = vector4(-709.75, -153.95, 36.42, 105.44), ped = `s_m_m_movprem_01`, radius = 5.0, hideBlip = false },
