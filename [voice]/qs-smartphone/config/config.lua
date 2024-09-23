@@ -322,15 +322,25 @@ Config.RepairWetPhoneNpcAccount = 'bank' -- Choose here the account to pay the t
 -- These works will have permission to publish in the News app.
 Config.WeazelJob = {
     'weazelnews',
- --   'police',
+  --  'police',
     'weazel',
 }
 
 -- Jobs available to receive Police App alerts.
 Config.PoliceAppJobs = {
-    [1] = 'police',
-    -- [2] = 'sheriff',
+    [1] = 'lspd',
+    [2] = 'bcso',
+    [3] = 'sahp',
+    [4] = 'lsso',
+    [5] = 'safw',
+    [6] = 'sadoc',
+    [7] = 'usms',
+    [8] = 'fbi',
+    [9] = 'dhs',
+    [10] = 'ss',
+    [11] = 'police'
 }
+
 
 --- @param job 'Name of job who will receive the message'
 --- @param name 'Visible label'
@@ -461,16 +471,16 @@ Config.BlackMarketAccount = 'bank' -- Account with which you want to pay in Onio
     price    'Price of the product'
 ]]
 
--- Config.Darkweb = {
---    List = {
---        [1] = { item = 'WEAPON_PISTOL', label = 'Pistol', isItem = true, price = 8000 },
---        [2] = { item = 'WEAPON_PISTOL50', label = 'Pistol 50', isItem = true, price = 9000 },
---        [3] = { item = 'WEAPON_PISTOL_MK2', label = 'Pistol MK2', isItem = true, price = 10000 },
---       [4] = { item = 'WEAPON_KNUCKLE', label = 'Knucle', isItem = true, price = 5000 },
---        [5] = { item = 'WEAPON_GRENADE', label = 'Pistol', isItem = true, price = 20000 },
---        [6] = { item = 'WEAPON_CARBINERIFLE_MK2', label = 'Carbine Rifle MK2', isItem = true, price = 35000 },
---        [7] = { item = 'WEAPON_BULLPUPRIFLE_MK2', label = 'Bullpup Rifle MK2', isItem = true, price = 40000 },
---        [8] = { item = 'WEAPON_SNIPERRIFLE', label = 'Sniper Rifle', isItem = true, price = 55000 },
+Config.Darkweb = {
+    List = {
+        -- [1] = { item = 'WEAPON_PISTOL', label = 'Pistol', isItem = true, price = 8000 },
+        -- [2] = { item = 'WEAPON_PISTOL50', label = 'Pistol 50', isItem = true, price = 9000 },
+        -- [3] = { item = 'WEAPON_PISTOL_MK2', label = 'Pistol MK2', isItem = true, price = 10000 },
+        -- [4] = { item = 'WEAPON_KNUCKLE', label = 'Knucle', isItem = true, price = 5000 },
+        -- [5] = { item = 'WEAPON_GRENADE', label = 'Pistol', isItem = true, price = 20000 },
+        -- [6] = { item = 'WEAPON_CARBINERIFLE_MK2', label = 'Carbine Rifle MK2', isItem = true, price = 35000 },
+        -- [7] = { item = 'WEAPON_BULLPUPRIFLE_MK2', label = 'Bullpup Rifle MK2', isItem = true, price = 40000 },
+        -- [8] = { item = 'WEAPON_SNIPERRIFLE', label = 'Sniper Rifle', isItem = true, price = 55000 },
         -- [9] = { item = 'laptop', label = 'Hacker Laptop', isItem = true, price = 700}, -- If you use `Config.WeaponsItems = false` then you can choose if it's an item with `isItem = true`.
     },
 }

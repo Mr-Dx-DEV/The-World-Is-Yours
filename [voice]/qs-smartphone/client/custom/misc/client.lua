@@ -25,15 +25,7 @@ end)
 
 RegisterKeyMapping('TooglePhone', 'Open Phone', 'keyboard', 'F1')
 
-RegisterCommand('TooglePhone', function()
-    if canOpenPhone then
-        if CheckCanOpenPhone() then -- Check if the user can open the phone, change for
-            OpenPhone()             -- Open the phone
-        end
-    end
-end)
-
-function CheckCanOpenPhone() -- Change here if u want another parameters
+--[[ local function CheckCanOpenPhone() -- Change here if u want another parameters
     local check = false
 
     if GetResourceState('visn_are') == 'started' then
@@ -54,7 +46,15 @@ function CheckCanOpenPhone() -- Change here if u want another parameters
     end
 
     return check
-end
+end ]]
+
+RegisterCommand('TooglePhone', function()
+    if canOpenPhone then
+        if IsDead() then -- Check if the user can open the phone, change for
+            OpenPhone() -- Open the phone
+        end
+    end
+end)
 
 -- Disabled control when the phone its opened
 function DisableDisplayControlActions()

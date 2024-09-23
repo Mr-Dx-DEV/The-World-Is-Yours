@@ -81,6 +81,20 @@ function Trim(number)
     return QBCore.Shared.Trim(number)
 end
 
+function IsDead() -- Change here if u want another parameters
+    local check = false
+    local data = QBCore.Functions.GetPlayerData()
+    local visnHas = GetResourceState('visn_are') == 'started'
+    if visnHas and not exports['visn_are']:GetHealthBuffer().unconscious then
+        check = true
+    end
+    if not data.metadata['isdead'] and not data.metadata['inlaststand'] and not data.metadata['ishandcuffed'] and not IsPauseMenuActive() then
+        check = true
+    end
+
+    return check
+end
+
 function SendTextMessage(msg, type)
     if type == 'inform' then
         QBCore.Functions.Notify(msg, 'primary', 5000)

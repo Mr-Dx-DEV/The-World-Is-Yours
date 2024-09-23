@@ -240,7 +240,7 @@ RegisterServerCallback('qs-smartphone:server:PayInvoice', function(source, cb, i
             local SenderPly = QBCore.Functions.GetPlayerByCitizenId(invoice[1].sendercitizenid)
             if SenderPly then
                 Ply.Functions.RemoveMoney('bank', invoice[1].amount)
-                exports['Renewed-Banking']:AddMoney(tostring(invoice[1].society), invoice[1].amount)
+                exports['qb-management']:AddMoney(tostring(invoice[1].society), invoice[1].amount)
                 TriggerEvent('jim-payments:Tickets:Give', { society = invoice[1].society, senderCitizenId = invoice[1].sendercitizenid, amount = invoice[1].amount }, SenderPly)
 
                 MySQL.Async.execute('DELETE FROM phone_invoices WHERE id = ?', { invoiceId })

@@ -97,6 +97,25 @@ function Trim(number)
     return ESX.Math.Trim(number)
 end
 
+function IsDead() -- Change here if u want another parameters
+    local check = false
+    local wasabiHas = GetResourceState('wasabi_ambulance') == 'started'
+    local inLastStand = LocalPlayer.state.dead
+    local visnHas = GetResourceState('visn_are') == 'started'
+
+    if wasabiHas and inLastStand then
+        return check
+    end
+    if visnHas and not exports['visn_are']:GetHealthBuffer().unconscious then
+        check = true
+    end
+    if IsPedDeadOrDying(PlayerPedId(), 1) or GetEntityHealth(PlayerPedId()) > 0 then
+        check = true
+    end
+
+    return check
+end
+
 function SendTextMessage(msg, type)
     if type == 'inform' then
         SetNotificationTextEntry('STRING')
