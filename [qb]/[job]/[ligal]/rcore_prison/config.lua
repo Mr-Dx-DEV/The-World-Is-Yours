@@ -80,7 +80,7 @@ Config = {
             ['ss'] = true,
             ['police'] = true,
             ['sheriff'] = true,
-            ['ambulance'] = true,
+            ['ambulance'] = false,
         },
         
         RemovePlayerJobWhenJailed = false, -- This is used for removing player job when citizen is jailed (supports: ESX, QBCore)
@@ -98,7 +98,7 @@ Config = {
             ['ss'] = true,
             ['police'] = true,
             ['sheriff'] = true,
-            ['ambulance'] = true,
+            ['ambulance'] = false,
         }
     },
 
@@ -152,7 +152,8 @@ Config = {
         EnableAutomaticReset = true, -- This is used for enabling automatic reset of the escape
         NeedItem = true, -- This is used for needing item to escape from the prison
         ItemName = 'wire_cutter', -- This is the item name for escaping from the prison
-        NotifyJobs = {'police', 'leo'}, -- This is the list of the jobs which are going to be notified when prisoner is escaping using supported dispatch system
+        NotifyJobs = {'lspd', 'bcso', 'sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police', 'leo'},
+
     },
 
     
@@ -225,8 +226,19 @@ Config = {
     -- Jobs which are allowed to jail/unjail players!
 
     Jobs = {
-        ['police'] = true, -- This is the job which is allowed to jail/unjail players
-        ['sheriff'] = true, -- This is the job which is allowed to jail/unjail players
+        ['lspd'] = true,
+            ['bcso'] = true,
+            ['sahp'] = true,
+            ['lsso'] = true,
+            ['safw'] = true,
+            ['sadoc'] = true,
+            ['usms'] = true,
+            ['fbi'] = true,
+            ['dhs'] = true,
+            ['ss'] = true,
+            ['police'] = true,
+            ['sheriff'] = true,
+            ['ambulance'] = false,
     },
 
 
