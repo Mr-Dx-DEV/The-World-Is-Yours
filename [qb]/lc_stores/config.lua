@@ -1787,6 +1787,17 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'wheelchair.png',
 			},
+			['kq_outfitbag'] = {
+				['name'] = "Outfit bag",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'casino_bag.png',
+			},
 			
 
 
