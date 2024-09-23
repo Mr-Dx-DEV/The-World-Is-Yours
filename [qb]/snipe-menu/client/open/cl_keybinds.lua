@@ -62,7 +62,7 @@ RegisterCommand("togglenameskeybind", function()
 end)
 
 if Config.EnableReports then
-    RegisterCommand("report", function()
+    RegisterCommand("snreport", function()
         OpenReports()
     end)
     

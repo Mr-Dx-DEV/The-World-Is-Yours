@@ -1,4 +1,55 @@
 return {
+	-- Boosting Items for ox_inventory
+['boostlaptop'] = {
+    label = 'Laptop',
+    weight = 100,
+    stack = false,
+    close = true,
+    description = 'A laptop used for boosting activities',
+    client = {
+        image = 'pixellaptop.png',
+        use = function(item)
+            -- Logic for using the laptop (e.g., triggering a boosting event)
+        end
+    }
+},
+['hacking_device'] = {
+    label = 'Hacking Device',
+    weight = 100,
+    stack = false,
+    close = true,
+    description = 'A hacking device used for disabling systems',
+    client = {
+        image = 'disabler.png',
+        use = function(item)
+            -- Logic for using the hacking device
+        end
+    }
+},
+['boostfile'] = {
+    label = 'File',
+    weight = 100,
+    stack = false,
+    close = true,
+    description = 'A file used for various purposes',
+    client = {
+        image = 'file.png',
+        use = function(item)
+            -- Logic for using the file
+        end
+    }
+},
+
+
+	["prison_mdt"] = {
+		     weight = 250,
+		     close = true,
+		     consume = 0,
+		     client = {},
+		     server = {
+		     export = 'rcore_prison.openMDT',
+		     },
+		 },
 	['animal_tracker'] = {
 		label = 'Animal Tracker',
 		weight = 200,
@@ -18636,17 +18687,7 @@ return {
 		}
 	},
 
-	["hacking_device"] = {
-		label = "Hacking device",
-		weight = 500,
-		stack = false,
-		close = true,
-		description = "A useful device",
-		client = {
-			image = "disabler.png",
-		}
-	},
-
+	
 	["chair25"] = {
 		label = "Red Plastic Chair",
 		weight = 100,
