@@ -1,4 +1,18 @@
 return {
+	['sim_card'] = {
+		label = 'SIM Card',
+		weight = 1,
+		stack = false, -- Since the original code had 'unique' set to true, we use stack = false
+		close = true,
+		description = 'What is this number?',
+		client = {
+			image = 'simcard.png',
+			use = function(item)
+				-- Logic for using the SIM card, can be customized based on your needs
+			end
+		}
+	},
+	
 	-- Boosting Items for ox_inventory
 ['boostlaptop'] = {
     label = 'Laptop',

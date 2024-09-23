@@ -943,7 +943,7 @@ Config.StoreApps = {
         }
     }, ]]
 
-    --[[ ["crypto"] = {
+     ["crypto"] = {
         custom = false,
         app = "crypto",
         color = "img/apps/crypto.png",
@@ -969,5 +969,5 @@ Config.StoreApps = {
                 textcolor = 'white'
             }
         }
-    }, ]]
+    },
 }

@@ -40,28 +40,26 @@ Config.Cooldown = 15
 -- Available options: crypto, cash, bank, renewed
 -- If not using crypto, then make sure to increase
 -- the reward amounts down below
-Config.Payment = "cash"
+Config.Payment = "crypto"
 
 -- Only if using renewed for payment
 -- shung, gne, xcoin, lme
 -- Or whatever you have setup
-Config.CryptoCoin = "shung"
+Config.CryptoCoin = "btc"
 
 -- List of all jobs that are considered police
 Config.PoliceJobs = {
-    ['lspd'] = true,
-            ['bcso'] = true,
-            ['sahp'] = true,
-            ['lsso'] = true,
-            ['safw'] = true,
-            ['sadoc'] = true,
-            ['usms'] = true,
-            ['fbi'] = true,
-            ['dhs'] = true,
-            ['ss'] = true,
-            ['police'] = true,
-            ['sheriff'] = true,
-            ['ambulance'] = false,
+    ["leo"] = true,
+    ["lspd"] = true,
+    ["bcso"] = true,
+    ["lsso"] = true,
+    ["sahp"] = true,
+    ["safw"] = true,
+    ["sadoc"] = true,
+    ["usms"] = true,
+    ["fbi"] = true,
+    ["dhs"] = true,
+    ["ss"] = true
 }
 
 -- Change to your vehicle keys event
@@ -136,8 +134,8 @@ Config.Tiers = {
         pedAfraid = true, -- is the ped afraid of weapons
         scratchVehicles = {},
         finishDistance = 300, -- distance to finish contract
-        MinCops = 2,
-        MinCopsVin = 2,
+        MinCops = 0,
+        MinCopsVin = 0,
         damageDetection = {
             enabled = true, -- Is the damage detection enabled
             threshold = 0.01, -- The threshold to detect damage, 0-1. 0.1 means that a damage event of 10% of the total vehicle health will trigger the reduction. Try using low values like 0.01, or lower.
@@ -175,8 +173,8 @@ Config.Tiers = {
         pedAfraid = true, -- is the ped afraid of weapons
         scratchVehicles = {},
         finishDistance = 300,
-        MinCops = 2,
-        MinCopsVin = 2,
+        MinCops = 0,
+        MinCopsVin = 0,
         damageDetection = {
             enabled = true, -- Is the damage detection enabled
             threshold = 0.01, -- The threshold to detect damage, 0-1. 0.1 means that a damage event of 10% of the total vehicle health will trigger the reduction. Try using low values like 0.01, or lower.
@@ -212,8 +210,8 @@ Config.Tiers = {
         pedAfraid = false, -- is the ped afraid of weapons
         scratchVehicles = {},
         finishDistance = 300,
-        MinCops = 2,
-        MinCopsVin = 2,
+        MinCops = 0,
+        MinCopsVin = 0,
         damageDetection = {
             enabled = true, -- Is the damage detection enabled
             threshold = 0.01, -- The threshold to detect damage, 0-1. 0.1 means that a damage event of 10% of the total vehicle health will trigger the reduction. Try using low values like 0.01, or lower.
@@ -249,8 +247,8 @@ Config.Tiers = {
         pedAfraid = false, -- is the ped afraid of weapons
         scratchVehicles = {},
         finishDistance = 300,
-        MinCops = 2,
-        MinCopsVin = 2,
+        MinCops = 0,
+        MinCopsVin = 0,
         damageDetection = {
             enabled = true, -- Is the damage detection enabled
             threshold = 0.01, -- The threshold to detect damage, 0-1. 0.1 means that a damage event of 10% of the total vehicle health will trigger the reduction. Try using low values like 0.01, or lower.
@@ -302,8 +300,8 @@ Config.Tiers = {
             },
         },
         finishDistance = 300,
-        MinCops = 2,
-        MinCopsVin = 2,
+        MinCops = 0,
+        MinCopsVin = 0,
         damageDetection = {
             enabled = true, -- Is the damage detection enabled
             threshold = 0.01, -- The threshold to detect damage, 0-1. 0.1 means that a damage event of 10% of the total vehicle health will trigger the reduction. Try using low values like 0.01, or lower.
