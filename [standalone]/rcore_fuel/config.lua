@@ -79,7 +79,7 @@ Config.InventorySystem = Inventory.AUTOMATIC
 -- Measurement system
 -- metric    = MeasurementUnits.METRIC
 -- IMPERIAL  = MeasurementUnits.IMPERIAL
-Config.MeasurementUnits = MeasurementUnits.METRIC
+Config.MeasurementUnits = MeasurementUnits.IMPERIAL
 
 -- if you do not wish to use some of the prepared map simply remove the (GetResourceState("cfx-gabz-esbltd") ~= "missing") and replace it with false
 Config.ServerMaps = {
