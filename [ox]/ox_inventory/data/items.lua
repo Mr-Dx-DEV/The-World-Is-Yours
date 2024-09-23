@@ -1,4 +1,63 @@
 return {
+	['animal_tracker'] = {
+		label = 'Animal Tracker',
+		weight = 200,
+		allowArmed = true,
+		stack = false,
+	},
+	['campfire'] = {
+		label = 'Campfire',
+		weight = 200,
+		allowArmed = true,
+		stack = false,
+	},
+	
+	['huntingbait'] = {
+		label = 'Hunting Bait',
+		weight = 100,
+		allowArmed = true,
+	},
+	
+	['cooked_meat'] = {
+		label = 'Cooked Meat',
+		weight = 200,
+	},
+	['raw_meat'] = {
+		label = 'Raw Meat',
+		weight = 200,
+	},
+	
+	['skin_deer_ruined'] = {
+		label = 'Tattered Deer Pelt',
+		weight = 200,
+		stack = false,
+	},
+	['skin_deer_low'] = {
+		label = 'Worn Deer Pelt',
+		weight = 200,
+	},
+	['skin_deer_medium'] = {
+		label = 'Supple Deer Pelt',
+		weight = 200,
+	},
+	['skin_deer_good'] = {
+		label = 'Prime Deer Pelt',
+		weight = 200,
+	},
+	['skin_deer_perfect'] = {
+		label = 'Flawless Deer Pelt',
+		weight = 200,
+	},
+	
+	['deer_horn'] = {
+		label = 'Deer Horn',
+		weight = 1000,
+	},
+
+	
+
+
+
 	['vehicle_manual'] = {
 		label = 'Vehicle manual',
 		weight = 50,
@@ -1276,15 +1335,7 @@ return {
     description = 'The best quality hunting knife.',
 },
 
--- Bait
-['huntingbait'] = {
-    name = 'huntingbait',
-    label = 'Animal Bait',
-    weight = 25000,
-    stack = true,
-    close = true,
-    description = 'Bait used to attract animals while hunting.',
-},
+
 
 -- Legal Bait
 ['huntinglegalbait'] = {
@@ -7628,11 +7679,16 @@ return {
 		stack = true
 	},
 
+	
 	['boombox'] = {
-		label = 'Boombox',
-		description = "",
-		weight = 85,
-		stack = true
+		label = 'boombox',
+		weight = 250,
+		close = true,
+		consume = 1,
+		client = {},
+		server = {
+			export = 'xradio.boombox',
+		},
 	},
 
 	['bong'] = {
@@ -17209,7 +17265,7 @@ return {
 		close = true,
 		description = "Holds different outfits",
 		client = {
-			image = "kq_outfitbag.png",
+			image = "casino_bag.png",
 		}
 	},
 
