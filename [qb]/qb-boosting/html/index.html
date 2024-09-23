@@ -1,0 +1,204 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <Title>Boosting</Title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/main.js"></script>
+        <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="container2">
+                <div class="sidebar">
+                    <div class="logo-details">
+                      <i class='bx bx-car'></i>
+                      <span class="logo_name">Boosting</span>
+                    </div>
+                    <ul class="nav-links">
+                        <li>
+                            <a href="#">
+                                <i class='bx bx-grid-alt' ></i>
+                                <span class="link_name" onclick="openTab('dashboard')">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class='bx bx-compass' ></i>
+                                <span class="link_name" onclick="openTab('contracts')">Contracts</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class='bx bx-pie-chart-alt-2' ></i>
+                                <span class="link_name" onclick="openTab('messages')">Messages</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class='bx bx-history'></i>
+                                <span class="link_name" onclick="openTab('history')">History</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="profile-details">
+                        <div class="profile-content">
+                            <img src="images/thief.png" alt="profileImg">
+                        </div>
+                        <div class="name-job">
+                            <div class="profile_name">Player Name</div>
+                            <div class="job">New Booster</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="header">
+                        <div class="currentPage">Dashboard</div>
+                        <div class="filler"></div>
+                        <input type="image" src="images/poweroff.png" onclick="closeWindow()" />
+                    </div>
+                    <div class="dashboard">
+                        <div class="top-section">
+                            <div class="player-profile">
+                                <div class="header">Profile</div>
+                                <svg>
+                                    <circle class="bg" cx="57" cy="57" r="52" />
+                                    <circle class="meter-1" cx="57" cy="57" r="52" />
+                                    <text class ="tier" fill="white" x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central">D</text>
+                                </svg>
+                                <div class="booster-class">New Booster</div>
+                                <div class="experience-needed">25 XP Needed</div>
+                            </div>
+                            <div class="current-contract">
+                                <div class="header-container">
+                                    <div class="header-details">
+                                        <div class="header">Current Contract</div>
+                                    </div>
+                                </div>
+                                <div class="no-contract">No Contract Active</div>
+                            </div>
+                        </div>
+                        <div class="bottom-section">
+                            <div class="recent-contracts">
+                                <div class="header">Recent Contracts</div>
+                                <div class="contracts-table-container">
+                                    <table class="contracts-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Type</th>
+                                                <th>Vehicle</th>
+                                                <th>Value</th>
+                                                <th>Success</th>
+                                                <th>Enemies Killed</th>
+                                                <th>Timestamp</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Rows will be appended here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="summary-container">
+                                <div class="weekly-summary">
+                                    <div class="header">Weekly Summary</div>
+                                    <div class="day-stats">
+                                        <div class="day-group">
+                                            <div class="bar h-100"></div>
+                                            <p class="day">Sun</p>
+                                        </div>
+                                        <div class="day-group">
+                                            <div class="bar h-50"></div>
+                                            <p class="day">Mon</p>
+                                        </div>
+                                        <div class="day-group">
+                                            <div class="bar h-75"></div>
+                                            <p class="day">Tue</p>
+                                        </div>
+                                        <div class="day-group">
+                                            <div class="bar h-25"></div>
+                                            <p class="day">Wed</p>
+                                        </div>
+                                        <div class="day-group selected">
+                                            <div class="bar h-100"></div>
+                                            <p class="day">Thu</p>
+                                        </div>
+                                        <div class="day-group">
+                                            <div class="bar h-50"></div>
+                                            <p class="day">Fri</p>
+                                        </div>
+                                        <div class="day-group">
+                                            <div class="bar h-75"></div>
+                                            <p class="day">Sat</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stat-row-1">
+                                    <div class="stat1">
+                                        <i class='bx bx-car'></i>
+                                        <div class="info" id="info-total-successes">0 Cars Boosted</div>
+                                    </div>
+                                    <div class="stat2">
+                                        <i class='bx bx-money'></i>
+                                        <div class="info" id="info-total-value">0 Earned</div>
+                                    </div>
+                                </div>
+                                <div class="stat-row-2">
+                                    <div class="stat1">
+                                        <i class='bx bx-no-entry'></i>
+                                        <div class="info" id="info-total-failed">0 Failed</div>
+                                    </div>
+                                    <div class="stat2">
+                                        <i class='bx bx-angry'></i>
+                                        <div class="info" id="info-total-killed">0 Killed</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contracts">
+                        <div class="top">
+                            <div class="queue-status">
+                                <button class="queue-button" id="queue-button" onclick="queue()">Join Queue</button>
+                                <div class="queue-time"></div>
+                            </div>
+                            <div class="contracts-search">
+                                <input type="text" class="search-box" placeholder="Search">
+                                <i class='bx bx-search'></i>
+                            </div>
+                        </div>
+                        <div class="contracts-list"></div>
+                    </div>
+                    <div class="history">
+                        <div class="header">Contract History</div>
+                        <div class="history-table-container">
+                            <table class="history-table">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Vehicle</th>
+                                        <th>Value</th>
+                                        <th>Success</th>
+                                        <th>Enemies Killed</th>
+                                        <th>Timestamp</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Rows will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="messages">
+                        <div class="messages-header">
+                            <h2>Message History</h2>
+                        </div>
+                        <div class="messages-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
