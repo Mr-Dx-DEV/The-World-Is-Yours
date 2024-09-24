@@ -72,12 +72,12 @@ exports['Renewed-Banking']:removeAccountMoney(account, amount)
 # QBCore additional Installation Steps 
 ## qb-managment conversion
 ```lua
-exports['Renewed-Banking']:GetAccount => exports['Renewed-Banking']:getAccountMoney
-exports['Renewed-Banking']:AddMoney => exports['Renewed-Banking']:addAccountMoney
-exports['Renewed-Banking']:RemoveMoney => exports['Renewed-Banking']:removeAccountMoney
-exports['Renewed-Banking']:GetGangAccount=> exports['Renewed-Banking']:getAccountMoney
-exports['Renewed-Banking']:AddGangMoney=> exports['Renewed-Banking']:addAccountMoney
-exports['Renewed-Banking']:RemoveGangMoney=> exports['Renewed-Banking']:removeAccountMoney
+exports['qb-management']:GetAccount => exports['Renewed-Banking']:getAccountMoney
+exports['qb-management']:AddMoney => exports['Renewed-Banking']:addAccountMoney
+exports['qb-management']:RemoveMoney => exports['Renewed-Banking']:removeAccountMoney
+exports['qb-management']:GetGangAccount=> exports['Renewed-Banking']:getAccountMoney
+exports['qb-management']:AddGangMoney=> exports['Renewed-Banking']:addAccountMoney
+exports['qb-management']:RemoveGangMoney=> exports['Renewed-Banking']:removeAccountMoney
 ```
 ## Society Bank Access
 Edit your QBCore/Shared/jobs.lua and QBCore/Shared/gangs.lua and add `bankAuth = true` to the job/gang grades which have access to society funds

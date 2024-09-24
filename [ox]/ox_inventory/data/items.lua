@@ -1,4 +1,19 @@
 return {
+	--[[ ["baseball"] = {
+        label = "Baseball",
+        category = ECategoryInventoryPets.BALLS,
+        stack = true,
+        description = "A great option for playing with pets, especially dogs. They are simple, straightforward, and effective toys that can be used for playing fetch or rolling around the house or yard.",
+        metadata = {},
+        usable = true,
+        onUse = {
+            event = "cdev_pets:useBall",
+            data = {},
+            net = false,
+            close = true,
+            preventRestoreState = true,
+        }
+    }, ]]
 	['sim_card'] = {
 		label = 'SIM Card',
 		weight = 1,
