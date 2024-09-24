@@ -340,24 +340,9 @@ return {
 
 	
 
-    ['cigarrete'] = {
-        label = 'Cigarrete',
-        weight = 100,
-        stack = true,
-        close = true,
-        consume = 0,
-    },
-
-            
 
 
-    ['wire_cutter'] = {
-        label = 'cutter',
-        weight = 100,
-        stack = true,
-        close = true,
-        consume = 0,
-    },
+  
 
 	['gun_table'] = {
         label = 'Gun Table',
@@ -370,70 +355,11 @@ return {
         }
     },
 
-    ['donut'] = {
-        label = 'Donut',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_amb_donut`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Donut',
-        },
-    },
-            
+     
+       
 
-    ['chips'] = {
-        label = 'Chips',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Chips',
-        },
-    },
             
-
-    ['pizza_ham'] = {
-        label = 'Pizza Ham',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Fries',
-        },
-    },
-            
-
-    ['fries'] = {
-        label = 'Fries',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Fries',
-        },
-    },
-            
-
-    ['coffee'] = {
-        label = 'Coffee',
-        weight = 350,
-        client = {
-            status = { thirst = 200000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
-            usetime = 2500,
-            notification = 'You quenched your thirst with a Coffee',
-        },
-    },
-            
+        
 
       
        
@@ -557,16 +483,6 @@ return {
     }
 },
 
-['acetone'] = {
-    label = 'Acetone',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'acetone.png'
-    }
-},
 ['noscapine'] = {
     label = 'Noscapine',
     weight = 100,
@@ -607,16 +523,7 @@ return {
         image = 'pure_heroin.png'
     }
 },
-['emptyvial'] = {
-    label = 'Empty Vial',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'emptyvial.png'
-    }
-},
+
 ['scales'] = {
     label = 'Scales',
     weight = 200,
@@ -639,16 +546,7 @@ return {
         image = 'heroin_vial.png'
     }
 },
-['overdosecure'] = {
-    label = 'Overdose Cure',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'overdosecure.png'
-    }
-},
+
 
 
 -- COCAINE
@@ -741,26 +639,8 @@ return {
         image = 'emptybaggies.png'
     }
 },
-['scales'] = {
-    label = 'Scales',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'scales.png'
-    }
-},
-['acetone'] = {
-    label = 'Acetone',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'acetone.png'
-    }
-},
+
+
 ['dimethylformamide'] = {
     label = 'Dimethylformamide',
     weight = 200,
@@ -773,7 +653,7 @@ return {
 },
 ['iodine'] = {
     label = 'Iodine',
-    weight = 200,
+    weight = 30,
     stack = true,
     close = true,
     description = '',
@@ -803,16 +683,7 @@ return {
         image = 'coke_baggy.png'
     }
 },
-['crack_baggy'] = {
-    label = 'Bag of Crack',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'crack_baggy.png'
-    }
-},
+
 -- KETAMINE
 
 -- REQUIRED ITEMS
@@ -879,16 +750,7 @@ return {
         image = 'quartz.png'
     }
 },
-['ether'] = {
-    label = 'Ether',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'ether.png'
-    }
-},
+
 ['silica'] = {
     label = 'Silica',
     weight = 100,
@@ -930,26 +792,7 @@ return {
     }
 },
 
-['noscapine'] = {
-    label = 'Noscapine',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'noscapine.png'
-    }
-},
-['papaverine'] = {
-    label = 'Papaverine',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'papaverine.png'
-    }
-},
+
 
 -- DRUGS
 ['liquidketamine'] = {
@@ -972,16 +815,7 @@ return {
         image = 'ketamine.png'
     }
 },
-['overdosecure'] = {
-    label = 'Overdose Cure',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'overdosecure.png'
-    }
-},
+
 -- ITEMS
 
 ['suspiciouspackage'] = {
@@ -1081,36 +915,8 @@ return {
     }
 },
 
-['scales'] = {
-    label = 'Scales',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'scales.png'
-    }
-},
-['acetone'] = {
-    label = 'Acetone',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'acetone.png'
-    }
-},
-['dimethylformamide'] = {
-    label = 'Dimethylformamide',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'dimethylformamide.png'
-    }
-},
+
+
 ['processingtable'] = {
     label = 'Processing Table',
     weight = 200,
@@ -1129,24 +935,8 @@ return {
 
 
 
-    ['cigarrete'] = {
-        label = 'Cigarrete',
-        weight = 100,
-        stack = true,
-        close = true,
-        consume = 0,
-    },
-
             
 
-
-    ['wire_cutter'] = {
-        label = 'cutter',
-        weight = 100,
-        stack = true,
-        close = true,
-        consume = 0,
-    },
 
        -- m-Hunting
 -- Meat
@@ -1302,158 +1092,7 @@ return {
 },
      
 
-    ['donut'] = {
-        label = 'Donut',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_amb_donut`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Donut',
-        },
-    },
-            
-
-    ['chips'] = {
-        label = 'Chips',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Chips',
-        },
-    },
-            
-
-    ['pizza_ham'] = {
-        label = 'Pizza Ham',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Fries',
-        },
-    },
-            
-
-    ['fries'] = {
-        label = 'Fries',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Fries',
-        },
-    },
-            
-
-    ['coffee'] = {
-        label = 'Coffee',
-        weight = 350,
-        client = {
-            status = { thirst = 200000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
-            usetime = 2500,
-            notification = 'You quenched your thirst with a Coffee',
-        },
-    },
-            
-    
-         
-
-    ['cigarrete'] = {
-        label = 'Cigarrete',
-        weight = 100,
-        stack = true,
-        close = true,
-        consume = 0,
-    },
-
-            
-
-
-    ['wire_cutter'] = {
-        label = 'cutter',
-        weight = 100,
-        stack = true,
-        close = true,
-        consume = 0,
-    },
-
-            
-
-    ['donut'] = {
-        label = 'Donut',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_amb_donut`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Donut',
-        },
-    },
-            
-
-    ['chips'] = {
-        label = 'Chips',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Chips',
-        },
-    },
-            
-
-    ['pizza_ham'] = {
-        label = 'Pizza Ham',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Fries',
-        },
-    },
-            
-
-    ['fries'] = {
-        label = 'Fries',
-        weight = 350,
-        client = {
-            status = { hunger = 200000 },
-            anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-            prop = { model = `prop_food_cb_chips`, pos = vec3(0.020000, 0.020000, -0.020000), rot = vec3(0.000000, 0.000000, 0.000000) },
-            usetime = 2500,
-            notification = 'You eat Fries',
-        },
-    },
-            
-
-    ['coffee'] = {
-        label = 'Coffee',
-        weight = 350,
-        client = {
-            status = { thirst = 200000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
-            usetime = 2500,
-            notification = 'You quenched your thirst with a Coffee',
-        },
-    },
-            
+     
 
    
     
@@ -4186,16 +3825,7 @@ return {
     }
 },
 
-['emptyvial'] = {
-    label = 'Empty Vial',
-    weight = 50,
-    stack = true,
-    close = true,
-    description = 'A empty sterile vial for storing liquid meds.',
-    client = {
-        image = 'emptyvial.png'
-    }
-},
+
 
 
 
@@ -4330,16 +3960,7 @@ return {
         image = 'hydrochloricacid.png'
     }
 },
-['acetone'] = {
-    label = 'Acetone',
-    weight = 1500,
-    stack = true,
-    close = false,
-    description = 'A highly volatile and flammable liquid..',
-    client = {
-        image = 'acetone.png'
-    }
-},
+
 ['lithium'] = {
     label = 'Lithium',
     weight = 500,
@@ -4526,17 +4147,6 @@ return {
     }
 },
 
--- Processing
-['liquidketamine'] = {
-    label = 'Liquid Ketamine',
-    weight = 500,
-    stack = true,
-    close = true,
-    description = 'A vial of liquid ketamine!',
-    client = {
-        image = 'liquidketamine.png'
-    }
-},
 
 -- Drugs
 ['ketamine_1oz'] = {
@@ -4549,16 +4159,7 @@ return {
         image = 'ketamine_1oz.png'
     }
 },
-['ketamine'] = {
-    label = 'Bag of Ketamine',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = 'A bag of ketamine!',
-    client = {
-        image = 'ketamine.png'
-    }
-},
+
 
 	-- Tools
 
@@ -4791,17 +4392,6 @@ return {
 			image = "tablet.png",
 		}
 	},
-
-	--[[ ["coffee"] = {
-		label = "Coffee",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Pump 4 Caffeine",
-		client = {
-			image = "coffee.png",
-		}
-	}, ]]
 
 	["veh_exterior"] = {
 		label = "Exterior",
@@ -5291,16 +4881,7 @@ return {
 		}
 	},
 
-	["cokebaggy"] = {
-		label = "Bag of Coke",
-		weight = 0,
-		stack = true,
-		close = true,
-		description = "To get happy real quick",
-		client = {
-			image = "cocaine_baggy.png",
-		}
-	},
+	
 
 	["stethascope"] = {
 		label = "Stetha Scope",
@@ -5941,16 +5522,7 @@ return {
 		}
 	},
 
-	["crack_baggy"] = {
-		label = "Bag of Crack",
-		weight = 0,
-		stack = true,
-		close = true,
-		description = "To get happy faster",
-		client = {
-			image = "crack_baggy.png",
-		}
-	},
+	
 
 
 	["armor"] = {
@@ -6362,14 +5934,7 @@ return {
     },
 
 
-    ['empty_evidence_bag'] = {
-        consume = 0.0,
-        label = 'Empty Evidence Bag',
-        weight = 0,
-        stack = true,
-        description = 'This is an evidence bag.',
-    },
-
+   
     ['nikon'] = {
         consume = 0.0,
         label = 'Nikoff G600',
@@ -6834,16 +6399,6 @@ return {
 		}
 	},
 
-	["weed_skunk"] = {
-		label = "Skunk 2g",
-		weight = 200,
-		stack = true,
-		close = false,
-		description = "A weed bag with 2g Skunk",
-		client = {
-			image = "weed_baggy.png",
-		}
-	},
 
 	["tunerlaptop"] = {
 		label = "Tunerchip",
@@ -6943,12 +6498,7 @@ return {
 		weight = 30,
 		stack = true
 	},
-	['iodine'] = {
-		label = 'iodine',
-		description = "",
-		weight = 30,
-		stack = true
-	},
+	
 	['bandageg'] = {
 		label = 'Bandage',
 		description = "Stops Bleeding",
@@ -6979,12 +6529,7 @@ return {
 		weight = 30,
 		stack = true
 	},
-	['syringe'] = {
-		label = 'Syringe',
-		description = "",
-		weight = 30,
-		stack = true
-	},
+
 	['tape'] = {
 		label = 'Tape',
 		description = "",
@@ -7166,12 +6711,7 @@ return {
 		stack = true
 	},
 
-	['fan'] = {
-		label = 'Fan',
-		description = "",
-		weight = 20,
-		stack = true
-	},
+
 
 	['lockpick'] = {
 		label = 'Lockpick',
@@ -7377,12 +6917,7 @@ return {
 		stack = true
 	},
 
-	--[[ ['necklace'] = {
-		label = 'Necklace',
-		weight = 55,
-		stack = true
-	}, ]]
-
+	
 	['notepad'] = {
 		label = 'Notepad',
 		weight = 5,
@@ -8173,7 +7708,7 @@ return {
 	},
 
 	["green_phone"] = {
-		label = "Phone",
+		label = "Green Phone",
 		weight = 700,
 		stack = false,
 		close = true,
@@ -9432,253 +8967,8 @@ return {
 			image = "gruppesechstablet.png",
 		}
 	},
-	
-
-
-
-
-
-
-
-	["tracker_remover"] = {
-		label = "Tracking Chip Remover",
-		weight = 1000,
-		stack = false,
-		close = true,
-		description = "A tracking chip remover!",
-		client = {
-			image = "tracker_remover.png",
-		}
-	},
-
-
 
 	
-
-
-	
-
-
-	
-	
-
-	
-
-	
-
-	["crack_1oz"] = {
-		label = "Ounce of Crack",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "For all the thirsty out there",
-		client = {
-			image = "crack_1oz.png",
-		}
-	},
-
-	["weed_white-widow_joint"] = {
-		label = "White-Widow: Joint",
-		weight = 1,
-		stack = true,
-		close = false,
-		description = "A 1g joint of the finest white-widow!",
-		client = {
-			image = "weed_white-widow_joint.png",
-		}
-	},
-
-	["water_jerrycan"] = {
-		label = "Water Jerrycan",
-		weight = 3500,
-		stack = true,
-		close = false,
-		description = "Water from a tanker.. it could be a dirty but who cares..",
-		client = {
-			image = "water_jerrycan.png",
-		}
-	},
-
-	["weed_og-kush_seed_m"] = {
-		label = "OG-Kush: Seed (M)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A male og-kush seed!",
-		client = {
-			image = "weed_og-kush_seed_m.png",
-		}
-	},
-
-	["weed_purple-haze_joint"] = {
-		label = "Purple-Haze: Joint",
-		weight = 1,
-		stack = true,
-		close = false,
-		description = "A 1g joint of the finest purple-haze!",
-		client = {
-			image = "weed_purple-haze_joint.png",
-		}
-	},
-
-	["weed_amnesia_crop"] = {
-		label = "Amnesia: Crop",
-		weight = 400,
-		stack = true,
-		close = false,
-		description = "A freshly harvested crop of the finest amnesia flower!",
-		client = {
-			image = "weed_amnesia_crop.png",
-		}
-	},
-
-	["ketamine_1oz"] = {
-		label = "Ounce of Ketamine",
-		weight = 2800,
-		stack = true,
-		close = true,
-		description = "A ounce of ketamine!",
-		client = {
-			image = "ketamine_1oz.png",
-		}
-	},
-
-
-	["weed_skunk_joint"] = {
-		label = "Skunk: Joint",
-		weight = 1,
-		stack = true,
-		close = false,
-		description = "A 1g joint of the finest skunk!",
-		client = {
-			image = "weed_skunk_joint.png",
-		}
-	},
-
-	["weed_gelato_crop"] = {
-		label = "Gelato: Crop",
-		weight = 400,
-		stack = true,
-		close = false,
-		description = "A freshly harvested crop of the finest gelato flower!",
-		client = {
-			image = "weed_gelato_crop.png",
-		}
-	},
-
-	["weed_purple-haze"] = {
-		label = "Purple-Haze: 2g",
-		weight = 2,
-		stack = true,
-		close = false,
-		description = "A 2g bag of the finest purple-haze flower!",
-		client = {
-			image = "weed_purple-haze.png",
-		}
-	},
-
-
-
-	
-	["weed_ak47_joint"] = {
-		label = "AK47: Joint",
-		weight = 1,
-		stack = true,
-		close = false,
-		description = "A 1g joint of the finest ak47!",
-		client = {
-			image = "weed_ak47_joint.png",
-		}
-	},
-
-	["weed_zkittlez_seed_f"] = {
-		label = "Zkittlez: Seed (F)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A feminized zkittlez seed.",
-		client = {
-			image = "weed_zkittlez_seed_f.png",
-		}
-	},
-
-
-	["weed_gelato"] = {
-		label = "Gelato: 2g",
-		weight = 2,
-		stack = true,
-		close = false,
-		description = "A 2g bag of the finest gelato flower!",
-		client = {
-			image = "weed_gelato.png",
-		}
-	},
-
-	["heroinbaggy"] = {
-		label = "Bag of Heroin",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "Heroin. Destroying lives since 1898!",
-		client = {
-			image = "heroinbaggy.png",
-		}
-	},
-
-	["weed_ak47_crop"] = {
-		label = "AK47: Crop",
-		weight = 400,
-		stack = true,
-		close = false,
-		description = "A freshly harvested crop of the finest ak47 flower!",
-		client = {
-			image = "weed_ak47_crop.png",
-		}
-	},
-
-	["lithium"] = {
-		label = "Lithium",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "Lithium, for batteries or maybe or things?",
-		client = {
-			image = "lithium.png",
-		}
-	},
-
-	["weed_purple-haze_seed_m"] = {
-		label = "Purple-Haze: Seed (M)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A male purple-haze seed!",
-		client = {
-			image = "weed_purple-haze_seed_m.png",
-		}
-	},
-
-	["weed_amnesia_seed_m"] = {
-		label = "Amnesia: Seed (M)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A male amnesia seed!",
-		client = {
-			image = "weed_amnesia_seed_m.png",
-		}
-	},
-
-	["weed_gelato_joint"] = {
-		label = "Gelato: Joint",
-		weight = 1,
-		stack = true,
-		close = false,
-		description = "A 1g joint of the finest gelato!",
-		client = {
-			image = "weed_gelato_joint.png",
-		}
-	},
 
 	["acetone"] = {
 		label = "Acetone",
@@ -9691,82 +8981,6 @@ return {
 		}
 	},
 
-	["weed_zkittlez_joint"] = {
-		label = "Zkittlez: Joint",
-		weight = 1,
-		stack = true,
-		close = false,
-		description = "A 1g joint of the finest zkittlez!",
-		client = {
-			image = "weed_zkittlez_joint.png",
-		}
-	},
-
-	["weed_og-kush_crop"] = {
-		label = "OG-Kush: Crop",
-		weight = 400,
-		stack = true,
-		close = false,
-		description = "A freshly harvested crop of the finest og-kush flower!",
-		client = {
-			image = "weed_og-kush_crop.png",
-		}
-	},
-
-	["weed_zkittlez_crop"] = {
-		label = "Zkittlez: Crop",
-		weight = 400,
-		stack = true,
-		close = false,
-		description = "A freshly harvested crop of the finest zkittlez flower!",
-		client = {
-			image = "weed_zkittlez_crop.png",
-		}
-	},
-
-	["weed_gelato_seed_f"] = {
-		label = "Gelato: Seed (F)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A feminized gelato seed.",
-		client = {
-			image = "weed_gelato_seed_f.png",
-		}
-	},
-
-	["sodiumcarbonate"] = {
-		label = "Sodium Carbonate",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Sodium Carbonate is the disodium salt of carbonic acid with alkalinizing property.",
-		client = {
-			image = "sodiumcarbonate.png",
-		}
-	},
-
-	["weed_og-kush_joint"] = {
-		label = "OG-Kush: Joint",
-		weight = 1,
-		stack = true,
-		close = false,
-		description = "A 1g joint of the finest og-kush!",
-		client = {
-			image = "weed_og-kush_joint.png",
-		}
-	},
-
-	["weed_skunk_seed_f"] = {
-		label = "Skunk: Seed (F)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A feminized skunk seed.",
-		client = {
-			image = "weed_skunk_seed_f.png",
-		}
-	},
 
 	["aceticacid"] = {
 		label = "Acetic Acid",
@@ -9776,120 +8990,6 @@ return {
 		description = "Acetic Acid is a clear colourless liquid which has a pungent, vinegar-like odour.",
 		client = {
 			image = "aceticacid.png",
-		}
-	},
-
-	["razorblade"] = {
-		label = "Razor Blade",
-		weight = 10,
-		stack = true,
-		close = true,
-		description = "A sharp razorblade, be careful not to cut yourself!",
-		client = {
-			image = "razorblade.png",
-		}
-	},
-
-	["weed_og-kush"] = {
-		label = "OG-Kush: 2g",
-		weight = 2,
-		stack = true,
-		close = false,
-		description = "A 2g bag of the finest og-kush flower!",
-		client = {
-			image = "weed_og-kush.png",
-		}
-	},
-
-	["weed_white-widow_seed_m"] = {
-		label = "White-Widow: Seed (M)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A male white-widow seed!",
-		client = {
-			image = "weed_white-widow_seed_m.png",
-		}
-	},
-
-	["ether"] = {
-		label = "Petroleum Ether",
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = "Petroleum ether is the petroleum fraction consisting of aliphatic hydrocarbons, commonly used as a laboratory solvent.",
-		client = {
-			image = "ether.png",
-		}
-	},
-
-	
-
-	["weed_fertilizer"] = {
-		label = "Big Bud Fertilizer",
-		weight = 1000,
-		stack = true,
-		close = false,
-		description = "Get that big bug energy!",
-		client = {
-			image = "weed_fertilizer.png",
-		}
-	},
-
-	["morphinebaggy"] = {
-		label = "Bag of Morphine",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "Morphine. Good for pain but also a good time!",
-		client = {
-			image = "morphinebaggy.png",
-		}
-	},
-
-	["weed_zkittlez"] = {
-		label = "Zkittlez: 2g",
-		weight = 2,
-		stack = true,
-		close = false,
-		description = "A 2g bag of the finest zkittlez flower!",
-		client = {
-			image = "weed_zkittlez.png",
-		}
-	},
-
-	
-
-	["weed_skunk_seed_m"] = {
-		label = "Skunk: Seed (M)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A male skunk seed!",
-		client = {
-			image = "weed_skunk_seed_m.png",
-		}
-	},
-
-	["weed_white-widow_crop"] = {
-		label = "White-Widow: Crop",
-		weight = 400,
-		stack = true,
-		close = false,
-		description = "A freshly harvested crop of the finest white-widow flower!",
-		client = {
-			image = "weed_white-widow_crop.png",
-		}
-	},
-
-	["liquidketamine"] = {
-		label = "Liquid Ketamine",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "A vial of liquid ketamine!",
-		client = {
-			image = "liquidketamine.png",
 		}
 	},
 
@@ -9904,60 +9004,6 @@ return {
 		}
 	},
 
-	["weed_white-widow_seed_f"] = {
-		label = "White-Widow: Seed (F)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A feminized white-widow seed.",
-		client = {
-			image = "weed_white-widow_seed_f.png",
-		}
-	},
-
-	["weed_og-kush_seed_f"] = {
-		label = "OG-Kush: Seed (F)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A feminized og-kush seed.",
-		client = {
-			image = "weed_og-kush_seed_f.png",
-		}
-	},
-
-	["weed_amnesia_seed_f"] = {
-		label = "Amnesia: Seed (F)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A feminized amnesia seed.",
-		client = {
-			image = "weed_amnesia_seed_f.png",
-		}
-	},
-
-	["ketamine"] = {
-		label = "Bag of Ketamine",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "A bag of ketamine!",
-		client = {
-			image = "ketamine.png",
-		}
-	},
-
-	["weed_ak47_seed_f"] = {
-		label = "AK47: Seed (F)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A feminized ak47 seed.",
-		client = {
-			image = "weed_ak47_seed_f.png",
-		}
-	},
 
 	["emptyvial"] = {
 		label = "Empty Vial",
@@ -9970,16 +9016,6 @@ return {
 		}
 	},
 
-	["distilled_water"] = {
-		label = "Distilled Water",
-		weight = 1000,
-		stack = true,
-		close = false,
-		description = "Distilled water for your plants or other uses..",
-		client = {
-			image = "distilled_water.png",
-		}
-	},
 
 	["ammonia"] = {
 		label = "Ammonia",
@@ -9989,52 +9025,6 @@ return {
 		description = "Ammonia is a colorless, highly irritating gas with a pungent, suffocating odor.",
 		client = {
 			image = "ammonia.png",
-		}
-	},
-
-	["weed_amnesia_joint"] = {
-		label = "Amnesia: Joint",
-		weight = 1,
-		stack = true,
-		close = false,
-		description = "A 1g joint of the finest amnesia!",
-		client = {
-			image = "weed_amnesia_joint.png",
-		}
-	},
-
-	["heroin_1oz"] = {
-		label = "Ounce of Heroin",
-		weight = 280,
-		stack = true,
-		close = true,
-		description = "A large amount of heroin.",
-		client = {
-			image = "heroin_1oz.png",
-		}
-	},
-
-	["weed_white-widow"] = {
-		label = "White-Widow: 2g",
-		weight = 2,
-		stack = true,
-		close = false,
-		description = "A 2g bag of the finest white-widow flower!",
-		client = {
-			image = "weed_white-widow.png",
-		}
-	},
-
-
-
-	["heroinbase"] = {
-		label = "Heroin Base",
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = "Heroin base. Refine this into heroin powder.",
-		client = {
-			image = "heroinbase.png",
 		}
 	},
 
@@ -10325,16 +9315,7 @@ return {
         image = 'orangotang.png'
     }
 },
-['coffee'] = {
-    label = 'Coffee',
-    weight = 500,
-    stack = true,
-    close = true,
-    description = 'Free The Bean!',
-    client = {
-        image = 'coffee.png'
-    }
-},
+
 ['tea'] = {
     label = 'Tea',
     weight = 500,
@@ -10579,16 +9560,7 @@ return {
 		}
 	},
 
-	["pickaxe"] = {
-		label = "Pickaxe",
-		weight = 1000,
-		stack = true,
-		close = false,
-		description = "",
-		client = {
-			image = "pickaxe.png",
-		}
-	},
+	
 	["tree_lumber"] = {
 		label = "Lumber",
 		weight = 20,
@@ -16524,19 +15496,6 @@ return {
         allowArmed = true,
         server = {export = 'r14-evidence.dirtyrag'},
     },
-	
-	['sdcard'] = {
-		label = 'SD Card',
-		weight = 1000,
-		stack = false,
-		close = true,
-		description = 'People still use these??',
-		client = {
-			image = 'sdcard.png',
-			useable = true
-		}
-	},
-	
 	
 	
 	["umbrella2"] = {
@@ -23544,16 +22503,6 @@ return {
 		}
 	},
 
-	["b-jacket"] = {
-		label = "Loaded Jacket",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "A Fully Loaded Jacket Potato",
-		client = {
-			image = "b-jacket.png",
-		}
-	},
 
 	["nuggets"] = {
 		label = "Chicken Nuggets",
