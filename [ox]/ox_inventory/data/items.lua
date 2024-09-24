@@ -1111,17 +1111,7 @@ return {
         image = 'suspiciouspackage.png'
     }
 },
-['burnerphone'] = {
-    label = 'Oxy Burner Phone',
-    weight = 0,
-    stack = false,  -- Unique item, cannot be stacked.
-    close = true,
-    unique = true,  -- Set to true since this is a unique item.
-    description = 'A Burner Phone Used To Sell Oxy',
-    client = {
-        image = 'burnerphone.png'
-    }
-},
+
 -- MAGIC MUSHROOMS
 
 -- REQUIRED ITEMS
@@ -2786,270 +2776,237 @@ return {
 			usetime = 2500,
 		}
 	},
-
-	
-	  ['boxmeth'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'boxmeth',
-		['shouldClose'] = false,
-		['image'] = 'boxmeth.png',
-		['unique'] = false,
-		['description'] = 'Chemical Substance',
-		['label'] = 'Box of Meth',
-	  
-	  },
-	  ['actionfigure'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'actionfigure',
-		['shouldClose'] = false,
-		['image'] = 'actionfigure.png',
-		['unique'] = false,
-		['description'] = 'A small figurine filled which something could be stored inside...',
-		['label'] = 'Action Figure',
-	  
-	  },
-	  ['cocainepackage'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'cocainepackage',
-		['shouldClose'] = false,
-		['image'] = 'cocainepackage.png',
-		['unique'] = false,
-		['description'] = 'A small figurine filled with a white powdery substance...',
-		['label'] = 'Cocaine Package',
-	  
-	  },
-	  ['rawcocaine'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'rawcocaine',
-		['shouldClose'] = false,
-		['image'] = 'rawcocaine.png',
-		['unique'] = false,
-		['description'] = 'Uncut Cocaine',
-		['label'] = 'Raw Cocaine',
-	  
-	  },
-	  ['cutcocaine'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'cutcocaine',
-		['shouldClose'] = false,
-		['image'] = 'cutcocaine.png',
-		['unique'] = false,
-		['description'] = 'Cut Cocaine',
-		['label'] = 'Cut Cocaine',
-	  
-	  },
-	  ['untrimmed_weed'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'untrimmed_weed',
-		['shouldClose'] = false,
-		['image'] = 'untrimmed_weed.png',
-		['unique'] = false,
-		['description'] = 'Untrimmed Weed',
-		['label'] = 'Untrimmed Weed',
-	  
-	  },
-	  ['propelyeneglycol'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'propelyeneglycol',
-		['shouldClose'] = false,
-		['image'] = 'propelyeneglycol.png',
-		['unique'] = false,
-		['description'] = 'Chemical Substance',
-		['label'] = 'Propelyene Glycol',
-	  
-	  },
-	  ['raidtool'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'raidtool',
-		['shouldClose'] = false,
-		['image'] = 'raidtool.png',
-		['unique'] = false,
-		['description'] = 'For beating the shit out of doors',
-		['label'] = 'Raid Tool',
-	  
-	  },
-	  ['trimmed_weed'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'trimmed_weed',
-		['shouldClose'] = false,
-		['image'] = 'trimmed_weed.png',
-		['unique'] = false,
-		['description'] = 'Trimmed Weed',
-		['label'] = 'Trimmed Weed',
-	  
-	  },
-	  ['bakingsoda'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'bakingsoda',
-		['shouldClose'] = false,
-		['image'] = 'bakingsoda.png',
-		['unique'] = false,
-		['description'] = 'Baking Soda',
-		['label'] = 'Baking Soda',
-	  
-	  },
-	  ['sodiumbenzoate'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'sodiumbenzoate',
-		['shouldClose'] = false,
-		['image'] = 'sodiumbenzoate.png',
-		['unique'] = false,
-		['description'] = 'Chemical Substance',
-		['label'] = 'Sodium Benzoate',
-	  
-	  },
-	  ['bagmeth'] = {
-		['weight'] = 100,
-		['useable'] = false,
-		['type'] = 'item',
-		['name'] = 'bagmeth',
-		['shouldClose'] = false,
-		['image'] = 'bagmeth.png',
-		['unique'] = false,
-		['description'] = 'Chemical Substance',
-		['label'] = 'Bag of Meth',
-	  
-	  },
-	  ['lab-key'] = {
-		['weight'] = 100,
-		['useable'] = true,
-		['type'] = 'item',
-		['name'] = 'lab-key',
-		['shouldClose'] = false,
-		['image'] = 'labkeys.png',
-		['unique'] = true,
-		['description'] = 'Keys for some sort of door?!?!',
-		['label'] = 'Lab Keys',
-	  
-	  },
-	  
-	  
-	["bloodbag"] = {
-		["name"] = "bloodbag", 			 	
-		["label"] = "Blood Bag", 	    
-		["weight"] = 150, 		
-		["type"] = "item", 
-		["image"] = "bloodbag.png", 	    	
-		["unique"] = true,   	
-		["useable"] = true, 	
-		["shouldClose"] = true,    
-		["combinable"] = nil,   
-		["description"] = ""
+	['boxmeth'] = {
+		label = 'Box of Meth',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'Chemical Substance',
+		client = {
+			image = 'boxmeth.png',
+		}
 	},
 	
-	["bloodtube"] = {
-		["name"] = "bloodtube", 			 	
-		["label"] = "Blood Tube", 	    
-		["weight"] = 500, 		
-		["type"] = "item", 
-		["image"] = "bloodtupe.png", 	    	
-		["unique"] = true,   	
-		["useable"] = true, 	
-		["shouldClose"] = true,    
-		["combinable"] = nil,   
-		["description"] = ""
+	['actionfigure'] = {
+		label = 'Action Figure',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'A small figurine filled with something that could be stored inside...',
+		client = {
+			image = 'actionfigure.png',
+		}
 	},
 	
-	
-	["emptybaggy"] = {
-		["name"] = "emptybaggy", 			 	
-		["label"] = "Empty Blood Bag", 	    
-		["weight"] = 100, 		
-		["type"] = "item", 
-		["image"] = "emptybaggy.png", 	    	
-		["unique"] = false,   	
-		["useable"] = true, 	
-		["shouldClose"] = true,    
-		["combinable"] = nil,   
-		["description"] = ""
+	['cocainepackage'] = {
+		label = 'Cocaine Package',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'A small figurine filled with a white powdery substance...',
+		client = {
+			image = 'cocainepackage.png',
+		}
 	},
 	
-	["emptysyringe"] = {
-		["name"] = "emptysyringe", 			 	
-		["label"] = "Empty Syringe", 	    
-		["weight"] = 50, 		
-		["type"] = "item", 
-		["image"] = "emptysyringe.png", 	    	
-		["unique"] = false,   	
-		["useable"] = true, 	
-		["shouldClose"] = true,    
-		["combinable"] = nil,
-		["description"] = ""
+	['rawcocaine'] = {
+		label = 'Raw Cocaine',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'Uncut Cocaine',
+		client = {
+			image = 'rawcocaine.png',
+		}
 	},
 	
-	["emptytube"] = {
-		["name"] = "emptytube", 			 	
-		["label"] = "Empty Tube", 	    
-		["weight"] = 50, 		
-		["type"] = "item", 
-		["image"] = "emptytube.png", 	    	
-		["unique"] = false,   	
-		["useable"] = true, 	
-		["shouldClose"] = true,    
-		["combinable"] = nil,   
-		["description"] = ""
+	['cutcocaine'] = {
+		label = 'Cut Cocaine',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'Cut Cocaine',
+		client = {
+			image = 'cutcocaine.png',
+		}
 	},
 	
-	["kankart"] = {
-		["name"] = "kankart", 			 	
-		["label"] = "Person Blood Card", 	    
-		["weight"] = 50, 		
-		["type"] = "item", 
-		["image"] = "kankart.png", 	    	
-		["unique"] = true,   	
-		["useable"] = true, 	
-		["shouldClose"] = true,    
-		["combinable"] = nil,   
-		["description"] = ""
+	['untrimmed_weed'] = {
+		label = 'Untrimmed Weed',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'Untrimmed Weed',
+		client = {
+			image = 'untrimmed_weed.png',
+		}
 	},
 	
-	["mri"] = {
-		["name"] = "mri", 			 	
-		["label"] = "MRI Document", 	    
-		["weight"] = 150, 		
-		["type"] = "item", 
-		["image"] = "mri.png", 	    	
-		["unique"] = true,   	
-		["useable"] = true, 	
-		["shouldClose"] = true,    
-		["combinable"] = nil,   
-		["description"] = ""
+	['propelyeneglycol'] = {
+		label = 'Propelyene Glycol',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'Chemical Substance',
+		client = {
+			image = 'propelyeneglycol.png',
+		}
 	},
 	
-	["xray"] = {
-		["name"] = "xray", 			 	
-		["label"] = "Xray Document", 	    
-		["weight"] = 150, 		
-		["type"] = "item", 
-		["image"] = "xray.png", 	    	
-		["unique"] = true,   	
-		["useable"] = true, 	
-		["shouldClose"] = true,    
-		["combinable"] = nil,   
-		["description"] = ""
+	['raidtool'] = {
+		label = 'Raid Tool',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'For beating the shit out of doors',
+		client = {
+			image = 'raidtool.png',
+		}
 	},
+	
+	['trimmed_weed'] = {
+		label = 'Trimmed Weed',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'Trimmed Weed',
+		client = {
+			image = 'trimmed_weed.png',
+		}
+	},
+	
+	['bakingsoda'] = {
+		label = 'Baking Soda',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'Baking Soda',
+		client = {
+			image = 'bakingsoda.png',
+		}
+	},
+	
+	['sodiumbenzoate'] = {
+		label = 'Sodium Benzoate',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'Chemical Substance',
+		client = {
+			image = 'sodiumbenzoate.png',
+		}
+	},
+	
+	['bagmeth'] = {
+		label = 'Bag of Meth',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'Chemical Substance',
+		client = {
+			image = 'bagmeth.png',
+		}
+	},
+	
+	['lab-key'] = {
+		label = 'Lab Keys',
+		weight = 100,
+		stack = false,
+		close = true,
+		description = 'Keys for some sort of door?!?!',
+		client = {
+			image = 'labkeys.png',
+		}
+	},
+	
+	['bloodbag'] = {
+		label = 'Blood Bag',
+		weight = 150,
+		stack = false,
+		close = true,
+		description = '',
+		client = {
+			image = 'bloodbag.png',
+		}
+	},
+	
+	['bloodtube'] = {
+		label = 'Blood Tube',
+		weight = 500,
+		stack = false,
+		close = true,
+		description = '',
+		client = {
+			image = 'bloodtube.png',
+		}
+	},
+	
+	['emptybaggy'] = {
+		label = 'Empty Blood Bag',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = '',
+		client = {
+			image = 'emptybaggy.png',
+		}
+	},
+	
+	['emptysyringe'] = {
+		label = 'Empty Syringe',
+		weight = 50,
+		stack = true,
+		close = true,
+		description = '',
+		client = {
+			image = 'emptysyringe.png',
+		}
+	},
+	
+	['emptytube'] = {
+		label = 'Empty Tube',
+		weight = 50,
+		stack = true,
+		close = true,
+		description = '',
+		client = {
+			image = 'emptytube.png',
+		}
+	},
+	
+	['kankart'] = {
+		label = 'Person Blood Card',
+		weight = 50,
+		stack = false,
+		close = true,
+		description = '',
+		client = {
+			image = 'kankart.png',
+		}
+	},
+	
+	['mri'] = {
+		label = 'MRI Document',
+		weight = 150,
+		stack = false,
+		close = true,
+		description = '',
+		client = {
+			image = 'mri.png',
+		}
+	},
+	
+	['xray'] = {
+		label = 'Xray Document',
+		weight = 150,
+		stack = false,
+		close = true,
+		description = '',
+		client = {
+			image = 'xray.png',
+		}
+	},
+	
 	-- Items
 ['clean_plate'] = {
     label = 'Clean Plate',
@@ -3395,26 +3352,7 @@ return {
         }
     }
 },
-['water'] = {
-    label = 'Water',
-    weight = 500,
-    stack = true,
-    close = true,
-    description = 'Water the way nature intended.',
-    client = {
-        image = 'water.png'
-    },
-    combine = {
-        accept = {'clean_glass'},
-        reward = 'glass_water',
-        anim = {
-            dict = 'anim@amb@clubhouse@bar@drink@one',
-            lib = 'one_bartender',
-            text = 'Pouring A Glass Of Water..',
-            time = math.random(3550, 6500)
-        }
-    }
-},
+
 ['glass_cocacola'] = {
     label = 'Glass of CocaCola',
     weight = 200,
@@ -3964,17 +3902,6 @@ return {
 
 
  
--- Drugsales
-['burnerphone'] = {
-    label = 'Burner Phone',
-    weight = 250,
-    stack = true,
-    close = true,
-    description = 'A burner phone, what do you need one of these for?',
-    client = {
-        image = 'burnerphone.png'
-    }
-},
 
 -- Weed
 -- Tools
@@ -10337,16 +10264,6 @@ return {
 		}
 	},
 
-	["burnerphone"] = {
-		label = "Burner Phone",
-		weight = 250,
-		stack = true,
-		close = true,
-		description = "A burner phone, what do you need one of these for?",
-		client = {
-			image = "burnerphone.png",
-		}
-	},
 
 	["weed_gelato"] = {
 		label = "Gelato: 2g",
@@ -11075,16 +10992,7 @@ return {
 },
 
 -- Drinks
-['water'] = {
-    label = 'Water',
-    weight = 800,
-    stack = true,
-    close = true,
-    description = 'Water the way nature intended.',
-    client = {
-        image = 'water.png'
-    }
-},
+
 ['dirtywater'] = {
     label = 'Dirty Water',
     weight = 800,
