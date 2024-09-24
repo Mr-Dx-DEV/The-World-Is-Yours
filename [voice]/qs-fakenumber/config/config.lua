@@ -1,7 +1,7 @@
 Config = {}
 Locales = Locales or {}
 
-Config.Framework = 'esx' -- 'esx' or 'qb'
+Config.Framework = 'qb' -- 'esx' or 'qb'
 
 Config.Language = 'en'
 
