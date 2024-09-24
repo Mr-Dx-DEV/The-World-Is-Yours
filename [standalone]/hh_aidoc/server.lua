@@ -35,5 +35,5 @@ AddEventHandler('hhfw:charge', function()
 	else
 		xPlayer.Functions.RemoveMoney("bank", Config.Price)
 	end
-	exports['qb-management']:AddMoney('ambulance', Config.Price)
+	exports['Renewed-Banking']:addAccountMoney('ambulance', Config.Price)
 end)

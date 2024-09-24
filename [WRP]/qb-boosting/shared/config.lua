@@ -25,16 +25,16 @@ Config.Phone = "qs-smartphone"
 Config.Fuel = "LegacyFuel"
 
 -- Max amount of contracts that can be issued at once
-Config.MaxContracts = 10
+Config.MaxContracts = 1
 
 -- Delay between issuing contracts (in seconds)
-Config.IssueDelay = {60, 180}
+Config.IssueDelay = {0, 0}
 
 -- Time before contract expires (in hours)
 Config.Expiration = 6
 
 -- Cooldown for contracts in minutes
-Config.Cooldown = 15
+Config.Cooldown = 1
 
 -- Type of payment used
 -- Available options: crypto, cash, bank, renewed
@@ -49,17 +49,8 @@ Config.CryptoCoin = "btc"
 
 -- List of all jobs that are considered police
 Config.PoliceJobs = {
-    ["leo"] = true,
-    ["lspd"] = true,
-    ["bcso"] = true,
-    ["lsso"] = true,
-    ["sahp"] = true,
-    ["safw"] = true,
-    ["sadoc"] = true,
-    ["usms"] = true,
-    ["fbi"] = true,
-    ["dhs"] = true,
-    ["ss"] = true
+    ["police"] = true,
+    ["bcso"] = true
 }
 
 -- Change to your vehicle keys event

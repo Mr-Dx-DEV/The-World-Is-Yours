@@ -40,7 +40,7 @@ SocietyBanking = {
             exports["qb-management"]:RemoveMoney(Config.SocietyName, money)
         end,
         GetBalance = function()
-            return exports['qb-management']:GetAccount(Config.SocietyName)
+            return exports['Renewed-Banking']:getAccountMoney(Config.SocietyName)
         end
     },
     [Society.RenewedBanking] = {

@@ -20,5 +20,5 @@ escrow_ignore {
     'locales/*.lua',
 }
 
-dependencies { 'qb-core', 'PolyZone', 'ps-ui' }
+dependencies { 'qb-core', 'qb-target', 'PolyZone', 'ps-ui' }
 dependency '/assetpacks'
