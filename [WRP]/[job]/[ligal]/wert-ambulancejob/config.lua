@@ -9,122 +9,122 @@ Config.ReviveClientEvent = 'wasabi_ambulance:revive'
 Config.Locale = "en"
 
 --Mr desk
-Config.MrCoord = vector4(-1856.1, -355.42, 41.25, 50.4)
+Config.MrCoord = vector4(-447.2, -291.19, 34.81, 111.64)
 --Xray desk
-Config.Xray = vector4(-1874.81, -331.74, 53.75, 325.69)
+Config.Xray = vector4(-441.027, -303.276, 34.78, 49.85)
 
 Config.TargetInfos = {
-    ["EMSWertAmbulanceDuty"] = {
-        Coord = vector3(-1820.98, -350.97, 49.46),
-        Heading = 320,
-        Lenght = 1.2,
-        Width = 1.6,
-        Minz = 48.2,
-        Maxz = 50.4,
+    ["EMSWertAmbulanceDuty"] = {     -------------------
+        Coord = vector3(-447.8, -319.39, 34.91),
+        Heading = 25,
+        Lenght = 1.0,
+        Width = 1.0,
+        Minz = 33.91,
+        Maxz = 37.91,
         Event = nil,
         Icon = nil,
         Label = nil,
         Distance = 1.5
     },
-    ["EMSWertArmoryStash"] = {
-        Coord = vector3(-1864.5, -325.52, 49.45),
-        Heading = 320,
-        Lenght = 1.2,
-        Width = 1.6,
-        Minz = 48.45,
-        Maxz = 50.85,
+    ["EMSWertArmoryStash"] = {     -------------------
+        Coord = vector3(-451.87, -325.45, 34.91),
+        Heading = 350,
+        Lenght = 2.2,
+        Width = 2.6,
+        Minz = 33.91,
+        Maxz = 37.91,
         Event = nil,
         Icon = nil,
         Label = nil,
         Distance = 1.5
     },
-    ["EMSWertBossMenu"] = {
+    ["EMSWertBossMenu"] = {     -------------------
         --Don't tuch event value
-        Coord = vector3(-1845.44, -348.68, 84.02),
-        Heading = 13,
-        Lenght = 1.4,
-        Width = 2.2,
-        Minz = 83.02,
-        Maxz = 84.42,
+        Coord = vector3(-447.14, -321.26, 34.91),
+        Heading = 20,
+        Lenght = 1.0,
+        Width = 1.0,
+        Minz = 33.91,
+        Maxz = 37.91,
         Event = "qb-bossmenu:client:OpenMenu",
         Icon = "fas fa-clipboard",
         Label = "Boss Menu",
         Distance = 1.5
     },
-    ["EMSWertMrComputer"] = {
+    ["EMSWertMrComputer"] = {                   -------------------
         --Don't tuch event value
-        Coord = vector3(-1859.8, -350.01, 41.25),
-        Heading = 319,
-        Lenght = 2.6,
+        Coord = vector3(-443.91, -295.73, 34.91),
+        Heading = 290,
+        Lenght = 2.0,
         Width = 1.0,
-        Minz = 40.25,
-        Maxz = 41.85,
+        Minz = 33.91,
+        Maxz = 37.91,
         Event = "wert-ambulancejob:mr-panel",
         Icon = "fas fa-desktop",
         Label = "MRI Computer",
         Distance = 1.0
     },
-    ["EMSWertMrDesk"] = {
+    ["EMSWertMrDesk"] = {            -------------------
         --Don't tuch event value
-        Coord = vector3(-1856.1, -355.42, 41.25),
-        Heading = 140,
+        Coord = vector3(-447.17, -290.58, 34.91),
+        Heading = 25,
         Lenght = 3.8,
         Width = 3.0,
-        Minz = 40.25,
-        Maxz = 43.05,
+        Minz = 33.91,
+        Maxz = 37.91,
         Event = nil,
         Icon = nil,
         Label = nil,
         Distance = 1.5
     },
-    ["EMSWertXrayComputer"] = {
+    ["EMSWertXrayComputer"] = {            -------------------
         --Don't tuch event value
-        Coord = vector3(-1870.77, -329.91, 53.76),
-        Heading = 320,
-        Lenght = 1,
+        Coord = vector3(-441.92, -299.61, 34.91),
+        Heading = 290,
+        Lenght = 2,
         Width = 1,
-        Minz = 52.76,
-        Maxz = 54.16,
+        Minz = 33.91,
+        Maxz = 37.91,
         Event = "wert-ambulancejob:xray-panel",
         Icon = "fas fa-desktop",
         Label = "XRAY Computer",
         Distance = 1.0
     },
-    ["EMSWertXrayDesk"] = {
+    ["EMSWertXrayDesk"] = {            -------------------
         --Don't tuch event value
-        Coord = vector3(-1874.81, -331.74, 53.75),
-        Heading = 320,
-        Lenght = 2.6,
-        Width = 1.4,
-        Minz = 52.78,
-        Maxz = 56.0,
+        Coord = vector3(-440.39, -303.26, 34.91),
+        heading = 30,
+        Lenght = 2.0,
+        Width = 4.0,
+        Minz = 33.91,
+        Maxz = 37.91,
         Event = nil,
         Icon = nil,
         Label = nil,
         Distance = 1.5
     },
     --
-    ["EMSWertAmbulanceComputer"] = {
-        Coord = vector3(-1863.89, -322.74, 49.45),
-        Heading = 35,
-        Lenght = 1,
-        Width = 1,
-        Minz = 48.45,
-        Maxz = 50.25,
+    ["EMSWertAmbulanceComputer"] = {          -------------------
+        Coord = vector3(-454.44, -319.09, 34.91),
+        Heading = 25,
+        Lenght = 2,
+        Width = 2,
+        minZ = 33.91,
+        maxZ = 37.91,
         Event = nil,
         Icon = nil,
         Label = nil,
         Distance = 1.5
     },
 
-    ["EMSBloodCard"] = {
+    ["EMSBloodCard"] = {          -------------------
         --Don't tuch event value
-        Coord = vector3(-1853.45, -334.28, 49.45),
-        Heading = 335,
-        Lenght = 1.0,
+        Coord = vector3(-445.81, -324.56, 34.91),
+        Heading = 0,
+        Lenght = 2.0,
         Width = 1.0,
-        Minz = 48.65,
-        Maxz = 50.25,
+        minZ = 33.91,
+        maxZ = 37.91,
         Event = 'wert-ambulancejob:take-blood-card',
         Icon = "fa-solid fa-address-card",
         Label = 'Buy blood card',
@@ -551,7 +551,7 @@ Config.EmsVehicles = {
 -- Npc doctor
 
 Config.NpcDoctors = {
-    {coord = vector4(-1849.74, -339.47, 49.45, 140.58), name = "Dr. Eric Forman"}, -- Gabz
+    {coord = vector4(312.77, -594.62, 43.28, 345.11), name = "Dr. Eric Forman"}, -- Gabz
 }
 
 Config.ReviveTime = 50000
