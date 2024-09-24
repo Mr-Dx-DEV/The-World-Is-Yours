@@ -435,44 +435,8 @@ return {
     },
             
 
-    ['ecola'] = {
-        label = 'Ecola',
-        weight = 350,
-        client = {
-            status = { thirst = 200000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
-            usetime = 2500,
-            notification = 'You quenched your thirst with a Coffee',
-        },
-    },
-            
-
-    ['ecola_light'] = {
-        label = 'Ecola light',
-        weight = 350,
-        client = {
-            status = { thirst = 200000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
-            usetime = 2500,
-            notification = 'You quenched your thirst with a Coffee',
-        },
-    },
-            
-
-    ['sludgie'] = {
-        label = 'Sludgie',
-        weight = 350,
-        client = {
-            status = { thirst = 200000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
-            usetime = 2500,
-            notification = 'You quenched your thirst with a Coffee',
-        },
-    },
-            
+      
+       
 
 
 	["aztecas_chain"] = {
@@ -539,16 +503,7 @@ return {
 	-- HEROIN
 
 -- REQUIRED ITEMS
-['trowel'] = {
-    label = 'Trowel',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'trowel.png'
-    }
-},
+
 ['plasticjerrycan'] = {
     label = 'Empty Plastic Jerry Can',
     weight = 100,
@@ -601,16 +556,7 @@ return {
         image = 'limepowder.png'
     }
 },
-['hydrochloricacid'] = {
-    label = 'Hydrochloric Acid',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'hydrochloricacid.png'
-    }
-},
+
 ['acetone'] = {
     label = 'Acetone',
     weight = 200,
@@ -708,26 +654,8 @@ return {
 -- COCAINE
 
 -- REQUIRED ITEMS
-['trowel'] = {
-    label = 'Trowel',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'trowel.png'
-    }
-},
-['plasticjerrycan'] = {
-    label = 'Empty Plastic Jerry Can',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'plasticjerrycan.png'
-    }
-},
+
+
 ['cokeprocessingtable'] = {
     label = 'Coke Processing Table',
     weight = 200,
@@ -750,26 +678,8 @@ return {
 },
 
 -- MATERIALS
-['cocaleaf'] = {
-    label = 'Coca Leaf',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'cocaleaf.png'
-    }
-},
-['cement'] = {
-    label = 'Cement',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'cement.png'
-    }
-},
+
+
 ['gasoline'] = {
     label = 'Gasoline',
     weight = 100,
@@ -780,16 +690,7 @@ return {
         image = 'gasoline.png'
     }
 },
-['hydrochloricacid'] = {
-    label = 'Hydrochloric Acid',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'hydrochloricacid.png'
-    }
-},
+
 ['sodiumcarbonate'] = {
     label = 'Sodium Carbonate',
     weight = 100,
@@ -965,16 +866,7 @@ return {
         image = 'butane_gas.png'
     }
 },
-['plasticjerrycan'] = {
-    label = 'Plastic Jerry Can',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'plasticjerrycan.png'
-    }
-},
+
 
 -- MATERIALS
 ['quartz'] = {
@@ -1037,16 +929,7 @@ return {
         image = 'polyethyleneglycol.png'
     }
 },
-['hydrochloricacid'] = {
-    label = 'Hydrochloric Acid',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'hydrochloricacid.png'
-    }
-},
+
 ['noscapine'] = {
     label = 'Noscapine',
     weight = 100,
@@ -1197,16 +1080,7 @@ return {
         image = 'dryingrack.png'
     }
 },
-['empty_weed_bag'] = {
-    label = 'Empty Baggies',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'empty_weed_bag.png'
-    }
-},
+
 ['scales'] = {
     label = 'Scales',
     weight = 200,
@@ -1492,46 +1366,8 @@ return {
         },
     },
             
-
-    ['ecola'] = {
-        label = 'Ecola',
-        weight = 350,
-        client = {
-            status = { thirst = 200000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
-            usetime = 2500,
-            notification = 'You quenched your thirst with a Coffee',
-        },
-    },
-            
-
-    ['ecola_light'] = {
-        label = 'Ecola light',
-        weight = 350,
-        client = {
-            status = { thirst = 200000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
-            usetime = 2500,
-            notification = 'You quenched your thirst with a Coffee',
-        },
-    },
-            
-
-    ['sludgie'] = {
-        label = 'Sludgie',
-        weight = 350,
-        client = {
-            status = { thirst = 200000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
-            usetime = 2500,
-            notification = 'You quenched your thirst with a Coffee',
-        },
-    },
-            
-
+    
+         
 
     ['cigarrete'] = {
         label = 'Cigarrete',
@@ -1619,31 +1455,8 @@ return {
     },
             
 
-    ['ecola'] = {
-        label = 'Ecola',
-        weight = 350,
-        client = {
-            status = { thirst = 200000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
-            usetime = 2500,
-            notification = 'You quenched your thirst with a Coffee',
-        },
-    },
-            
-
-    ['ecola_light'] = {
-        label = 'Ecola light',
-        weight = 350,
-        client = {
-            status = { thirst = 200000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = { model = `prop_ld_can_01`, pos = vec3(0.010000, 0.010000, 0.060000), rot = vec3(5.000000, 5.000000, -180.500000) },
-            usetime = 2500,
-            notification = 'You quenched your thirst with a Coffee',
-        },
-    },
-            
+   
+    
 
     ['sludgie'] = {
         label = 'Sludgie',
@@ -1791,16 +1604,7 @@ return {
             image = "liquid.png"
         }
     },
-    ["lighter"] = {
-        label = "Lighter",
-        weight = 200,
-        stack = true,
-        close = true,
-        description = "Cigarette lighter",
-        client = {
-            image = "lighter.png"
-        }
-    },
+    
     ["bong"] = {
         label = "Bong",
         weight = 200,
@@ -1959,17 +1763,6 @@ return {
 		},
 	},
 
-	['cola'] = {
-		label = 'eCola',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `prop_ecola_can`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst with cola'
-		}
-	},
 
 	['parachute'] = {
 		label = 'Parachute',
@@ -3915,16 +3708,7 @@ return {
         image = 'drug_shears.png'
     }
 },
-['drug_scales'] = {
-    label = 'Scale',
-    weight = 1500,
-    stack = true,
-    close = false,
-    description = 'A set of premium scales for weighing out decimals.',
-    client = {
-        image = 'drug_scales.png'
-    }
-},
+
 ['drug_grinder'] = {
     label = 'Grinder',
     weight = 150,
@@ -3945,26 +3729,7 @@ return {
         image = 'rollingpapers.png'
     }
 },
-['lighter'] = {
-    label = 'Lighter',
-    weight = 100,
-    stack = true,
-    close = false,
-    description = 'A lighter, everybody has to have one of these on hand!',
-    client = {
-        image = 'lighter.png'
-    }
-},
-['empty_weed_bag'] = {
-    label = 'Resealable Bag',
-    weight = 1,
-    stack = true,
-    close = false,
-    description = 'A small empty bag',
-    client = {
-        image = 'empty_weed_bag.png'
-    }
-},
+
 ['weed_fertilizer'] = {
     label = 'Big Bud Fertilizer',
     weight = 1000,
@@ -3985,16 +3750,7 @@ return {
         image = 'distilled_water.png'
     }
 },
-['trowel'] = {
-    label = 'Trowel',
-    weight = 1000,
-    stack = true,
-    close = false,
-    description = 'Small handheld garden shovel',
-    client = {
-        image = 'trowel.png'
-    }
-},
+
 
 -- Seeds
 -- Male
@@ -4429,16 +4185,7 @@ return {
         image = 'syringe.png'
     }
 },
-['plasticjerrycan'] = {
-    label = 'Plastic Jerrycan',
-    weight = 500,
-    stack = true,
-    close = true,
-    description = 'A empty jerry can for storing liquids.',
-    client = {
-        image = 'plasticjerrycan.png'
-    }
-},
+
 ['emptyvial'] = {
     label = 'Empty Vial',
     weight = 50,
@@ -4449,78 +4196,9 @@ return {
         image = 'emptyvial.png'
     }
 },
-['drug_scales'] = {
-    label = 'Scale',
-    weight = 1500,
-    stack = true,
-    close = false,
-    description = 'A set of premium scales for weighing out decimals.',
-    client = {
-        image = 'drug_scales.png'
-    }
-},
-['drug_cuttingkit'] = {
-    label = 'Cutting Kit',
-    weight = 1000,
-    stack = true,
-    close = true,
-    description = 'A mirror, a razor blade.. obviously this is a make up kit..',
-    client = {
-        image = 'drug_cuttingkit.png'
-    }
-},
 
--- Drug materials
-['cement'] = {
-    label = 'Cement',
-    weight = 1000,
-    stack = true,
-    close = true,
-    description = 'Just a regular bag of builders cement.',
-    client = {
-        image = 'cement.png'
-    }
-},
-['slakedlime'] = {
-    label = 'Slaked Lime',
-    weight = 1000,
-    stack = true,
-    close = true,
-    description = 'Supposed to be used in preparation of dry mixer for painting and white washing.. However..',
-    client = {
-        image = 'slakedlime.png'
-    }
-},
-['ammonia'] = {
-    label = 'Ammonia',
-    weight = 1000,
-    stack = true,
-    close = true,
-    description = 'Ammonia is a colorless, highly irritating gas with a pungent, suffocating odor.',
-    client = {
-        image = 'ammonia.png'
-    }
-},
-['aceticacid'] = {
-    label = 'Acetic Acid',
-    weight = 1000,
-    stack = true,
-    close = true,
-    description = 'Acetic Acid is a clear colourless liquid which has a pungent, vinegar-like odour.',
-    client = {
-        image = 'aceticacid.png'
-    }
-},
-['hydrochloricacid'] = {
-    label = 'Hydrochloric Acid',
-    weight = 1500,
-    stack = true,
-    close = false,
-    description = 'Dissolves food pretty well..',
-    client = {
-        image = 'hydrochloricacid.png'
-    }
-},
+
+
 ['ether'] = {
     label = 'Petroleum Ether',
     weight = 1000,
@@ -4531,16 +4209,7 @@ return {
         image = 'ether.png'
     }
 },
-['sodiumcarbonate'] = {
-    label = 'Sodium Carbonate',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = 'Sodium Carbonate is the disodium salt of carbonic acid with alkalinizing property.',
-    client = {
-        image = 'sodiumcarbonate.png'
-    }
-},
+
 ['opium'] = {
     label = 'Opium Sap',
     weight = 100,
@@ -4636,19 +4305,10 @@ return {
 
 -- Meth
 -- Tools
-['plasticjerrycan'] = {
-    label = 'Plastic Jerrycan',
-    weight = 500,
-    stack = true,
-    close = true,
-    description = 'A empty jerry can for storing liquids.',
-    client = {
-        image = 'plasticjerrycan.png'
-    }
-},
+
 ['trowel'] = {
     label = 'Trowel',
-    weight = 500,
+    weight = 100,
     stack = true,
     close = true,
     description = 'Just a simple gardening tool.',
@@ -4656,36 +4316,8 @@ return {
         image = 'trowel.png'
     }
 },
-['drug_scales'] = {
-    label = 'Scale',
-    weight = 1500,
-    stack = true,
-    close = false,
-    description = 'A set of premium scales for weighing out decimals.',
-    client = {
-        image = 'drug_scales.png'
-    }
-},
-['drug_cuttingkit'] = {
-    label = 'Cutting Kit',
-    weight = 1000,
-    stack = true,
-    close = true,
-    description = 'A mirror, a razor blade.. obviously this is a make up kit..',
-    client = {
-        image = 'drug_cuttingkit.png'
-    }
-},
-['empty_weed_bag'] = {
-    label = 'Resealable Bags',
-    weight = 1,
-    stack = true,
-    close = true,
-    description = 'A small empty bag',
-    client = {
-        image = 'empty_weed_bag.png'
-    }
-},
+
+
 
 -- Drug Materials
 ['hydrochloricacid'] = {
@@ -4773,46 +4405,9 @@ return {
         image = 'drug_cuttingkit.png'
     }
 },
-['plasticjerrycan'] = {
-    label = 'Plastic Jerrycan',
-    weight = 500,
-    stack = true,
-    close = true,
-    description = 'A empty jerry can for storing liquids.',
-    client = {
-        image = 'plasticjerrycan.png'
-    }
-},
-['trowel'] = {
-    label = 'Trowel',
-    weight = 1000,
-    stack = true,
-    close = true,
-    description = 'Small handheld garden shovel',
-    client = {
-        image = 'trowel.png'
-    }
-},
-['lighter'] = {
-    label = 'Lighter',
-    weight = 5,
-    stack = true,
-    close = true,
-    description = 'On new years eve a nice fire to stand next to',
-    client = {
-        image = 'lighter.png'
-    }
-},
-['empty_weed_bag'] = {
-    label = 'Empty Weed Bag',
-    weight = 0,
-    stack = true,
-    close = true,
-    description = 'A small empty bag',
-    client = {
-        image = 'weed_baggy_empty.png'
-    }
-},
+
+
+
 
 -- Drug materials
 ['cement'] = {
@@ -4827,7 +4422,7 @@ return {
 },
 ['cocaleaf'] = {
     label = 'Cocaine Leaf',
-    weight = 200,
+    weight = 50,
     stack = true,
     close = false,
     description = 'Makes that premium nose candy!',
@@ -5759,16 +5354,7 @@ return {
 		}
 	},
 
-	["vodka"] = {
-		label = "Vodka",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "For all the thirsty out there",
-		client = {
-			image = "vodka.png",
-		}
-	},
+
 
 	["weed_ak47"] = {
 		label = "AK47 2g",
@@ -7148,16 +6734,6 @@ return {
 		}
 	},
 
-	["lighter"] = {
-		label = "Lighter",
-		weight = 0,
-		stack = true,
-		close = true,
-		description = "On new years eve a nice fire to stand next to",
-		client = {
-			image = "lighter.png",
-		}
-	},
 
 	["comp_attachment"] = {
 		label = "Compensator",
@@ -9857,93 +9433,12 @@ return {
 		}
 	},
 	
-	["opium"] = {
-		label = "Opium Sap",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "Opium, do you know how to refine it?",
-		client = {
-			image = "opium.png",
-		}
-	},
 
-	["weed_purple-haze_seed_f"] = {
-		label = "Purple-Haze: Seed (F)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A feminized purple-haze seed.",
-		client = {
-			image = "weed_purple-haze_seed_f.png",
-		}
-	},
 
-	["weed_skunk_crop"] = {
-		label = "Skunk: Crop",
-		weight = 400,
-		stack = true,
-		close = false,
-		description = "A freshly harvested crop of the finest skunk flower!",
-		client = {
-			image = "weed_skunk_crop.png",
-		}
-	},
 
-	["weed_zkittlez_seed_m"] = {
-		label = "Zkittlez: Seed (M)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A male zkittlez seed!",
-		client = {
-			image = "weed_zkittlez_seed_m.png",
-		}
-	},
 
-	["drug_shears"] = {
-		label = "Trimming Shears",
-		weight = 200,
-		stack = true,
-		close = false,
-		description = "A set of high quality trimming shears.",
-		client = {
-			image = "drug_shears.png",
-		}
-	},
 
-	["morphine"] = {
-		label = "Morphine",
-		weight = 10,
-		stack = true,
-		close = true,
-		description = "Morphine. Good for pain but also a good time!",
-		client = {
-			image = "morphine.png",
-		}
-	},
 
-	["morphinebase"] = {
-		label = "Morphine Base",
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = "Morphine base. You can turn this into morphine or heroin.",
-		client = {
-			image = "morphinebase.png",
-		}
-	},
-
-	["benzocaine"] = {
-		label = "Benzocaine",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "Benzo? You got a toothache mate?",
-		client = {
-			image = "benzocaine.png",
-		}
-	},
 
 	["tracker_remover"] = {
 		label = "Tracking Chip Remover",
@@ -9956,148 +9451,20 @@ return {
 		}
 	},
 
-	["weed_ak47_seed_m"] = {
-		label = "AK47: Seed (M)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A male ak47 seed!",
-		client = {
-			image = "weed_ak47_seed_m.png",
-		}
-	},
 
-	["drug_scales"] = {
-		label = "Scale",
-		weight = 1500,
-		stack = true,
-		close = false,
-		description = "A set of premium scales for weighing out decimals..",
-		client = {
-			image = "drug_scales.png",
-		}
-	},
 
-	["meth_1oz"] = {
-		label = "Ounce of Meth",
-		weight = 280,
-		stack = true,
-		close = true,
-		description = "A ounce of the finest teeth rotting goodness!",
-		client = {
-			image = "meth_1oz.png",
-		}
-	},
+	
 
-	["weed_gelato_seed_m"] = {
-		label = "Gelato: Seed (M)",
-		weight = 1,
-		stack = true,
-		close = true,
-		description = "A male gelato seed!",
-		client = {
-			image = "weed_gelato_seed_m.png",
-		}
-	},
 
-	["coke_1oz"] = {
-		label = "Ounce of Cocaine",
-		weight = 280,
-		stack = true,
-		close = true,
-		description = "A ounce of the finest nose candy!",
-		client = {
-			image = "coke_1oz.png",
-		}
-	},
+	
 
-	["weed_purple-haze_crop"] = {
-		label = "Purple-Haze: Crop",
-		weight = 400,
-		stack = true,
-		close = false,
-		description = "A freshly harvested crop of the finest purple-haze flower!",
-		client = {
-			image = "weed_purple-haze_crop.png",
-		}
-	},
 
-	["sterilewater"] = {
-		label = "Sterile Water",
-		weight = 50,
-		stack = true,
-		close = true,
-		description = "A vial of sterile water for injecting meds.",
-		client = {
-			image = "sterilewater.png",
-		}
-	},
+	
+	
 
-	["drug_grinder"] = {
-		label = "Grinder",
-		weight = 150,
-		stack = true,
-		close = false,
-		description = "A grinder for grinding herbs.. or other things..",
-		client = {
-			image = "drug_grinder.png",
-		}
-	},
+	
 
-	["methylamine"] = {
-		label = "Methylamine",
-		weight = 1500,
-		stack = true,
-		close = true,
-		description = "Methylamine? What is this breaking bad?",
-		client = {
-			image = "methylamine.png",
-		}
-	},
-
-	["cement"] = {
-		label = "Cement",
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = "Just a regular bag of builders cement.",
-		client = {
-			image = "cement.png",
-		}
-	},
-
-	["liquidheroin"] = {
-		label = "Liquid Heroin",
-		weight = 10,
-		stack = true,
-		close = true,
-		description = "Heroin. Destroying lives since 1898!",
-		client = {
-			image = "liquidheroin.png",
-		}
-	},
-
-	["sodiumbicarbonate"] = {
-		label = "Baking Soda",
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = "Baking soda ey? What you cooking?",
-		client = {
-			image = "sodiumbicarbonate.png",
-		}
-	},
-
-	["cocaleaf"] = {
-		label = "Cocaine Leaf",
-		weight = 200,
-		stack = true,
-		close = false,
-		description = "Makes that premium nose candy!",
-		client = {
-			image = "cocaineleaf.png",
-		}
-	},
+	
 
 	["crack_1oz"] = {
 		label = "Ounce of Crack",
@@ -10176,16 +9543,6 @@ return {
 		}
 	},
 
-	["trowel"] = {
-		label = "Trowel",
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = "Small handheld garden shovel",
-		client = {
-			image = "trowel.png",
-		}
-	},
 
 	["weed_skunk_joint"] = {
 		label = "Skunk: Joint",
@@ -10220,28 +9577,9 @@ return {
 		}
 	},
 
-	["drug_cuttingkit"] = {
-		label = "Cutting Kit",
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = "A mirror, a razor blade.. obviously this is a make up kit..",
-		client = {
-			image = "drug_cuttingkit.png",
-		}
-	},
 
-	["illegalgasoline"] = {
-		label = "Illegal Gasoline",
-		weight = 2500,
-		stack = true,
-		close = true,
-		description = "Stolen gasoline? What are you doing with this?",
-		client = {
-			image = "illegalgasoline.png",
-		}
-	},
 
+	
 	["weed_ak47_joint"] = {
 		label = "AK47: Joint",
 		weight = 1,
@@ -10485,16 +9823,7 @@ return {
 		}
 	},
 
-	["rollingpapers"] = {
-		label = "Rolling Papers",
-		weight = 50,
-		stack = true,
-		close = false,
-		description = "Paper made specifically for encasing and smoking tobacco or cannabis.",
-		client = {
-			image = "rollingpapers.png",
-		}
-	},
+	
 
 	["weed_fertilizer"] = {
 		label = "Big Bud Fertilizer",
@@ -10529,16 +9858,7 @@ return {
 		}
 	},
 
-	["hydrochloricacid"] = {
-		label = "Hydrochloric Acid",
-		weight = 1500,
-		stack = true,
-		close = false,
-		description = "Disolves food pretty well..",
-		client = {
-			image = "hydrochloricacid.png",
-		}
-	},
+	
 
 	["weed_skunk_seed_m"] = {
 		label = "Skunk: Seed (M)",
@@ -10705,16 +10025,7 @@ return {
 		}
 	},
 
-	["plasticjerrycan"] = {
-		label = "Plastic Jerrycan",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "A empty jerry can for storing liquids.",
-		client = {
-			image = "plasticjerrycan.png",
-		}
-	},
+
 
 	["heroinbase"] = {
 		label = "Heroin Base",
@@ -11003,26 +10314,7 @@ return {
         image = 'dirtywater.png'
     }
 },
-['ecola'] = {
-    label = 'E-Cola',
-    weight = 500,
-    stack = true,
-    close = true,
-    description = 'Deliciously Infectious!',
-    client = {
-        image = 'ecola.png'
-    }
-},
-['sprunk'] = {
-    label = 'Sprunk',
-    weight = 500,
-    stack = true,
-    close = true,
-    description = 'The Essence of Life!',
-    client = {
-        image = 'sprunk.png'
-    }
-},
+
 ['orangotang'] = {
     label = 'Orang-O-Tang',
     weight = 500,
@@ -13758,82 +13050,13 @@ return {
 		}
 	},
 
-	["vape"] = {
-		label = "Vape",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Electronic cigarette",
-		client = {
-			image = "vape.png",
-		}
-	},
 
-	["marlboro"] = {
-		label = "Marlboro Pack",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Take out your cigarettes",
-		client = {
-			image = "marlboro.png",
-		}
-	},
 
-	["banana_kush_weed"] = {
-		label = "Banana Kush Weed 1G",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Weed for packing",
-		client = {
-			image = "banana_kush_weed.png",
-		}
-	},
 
-	["liquid"] = {
-		label = "Liquid",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Vape liquid",
-		client = {
-			image = "liquid.png",
-		}
-	},
 
-	["banana_kush_bag"] = {
-		label = "Banana Kush Bag",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Weed for packing",
-		client = {
-			image = "banana_kush_bag.png",
-		}
-	},
 
-	["purple_haze_weed"] = {
-		label = "Purple Haze Weed 1G",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Weed for packing",
-		client = {
-			image = "purple_haze_weed.png",
-		}
-	},
+	
 
-	["blue_dream_weed"] = {
-		label = "Blue Dream Weed 1G",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Weed for packing",
-		client = {
-			image = "blue_dream_weed.png",
-		}
-	},
 
 	["thermite_h"] = {
 		label = "Thermite",
@@ -13846,71 +13069,13 @@ return {
 		}
 	},
 
-	["og_kush_joint"] = {
-		label = "Og Kush Joint",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Good joint",
-		client = {
-			image = "og_kush_joint.png",
-		}
-	},
 
-	["banana_kush_joint"] = {
-		label = "Banana Lush Joint",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Good joint",
-		client = {
-			image = "banana_kush_joint.png",
-		}
-	},
 
-	["blue_dream_joint"] = {
-		label = "Blue Dream Joint",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Good joint",
-		client = {
-			image = "blue_dream_joint.png",
-		}
-	},
 
-	["og_kush_weed"] = {
-		label = "Og Kush Weed 1G",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Weed for packing",
-		client = {
-			image = "og_kush_weed.png",
-		}
-	},
 
-	["marlborocig"] = {
-		label = "Marlboro Cigarette",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Smoking cigarette",
-		client = {
-			image = "marlborocig.png",
-		}
-	},
 
-	["redwcig"] = {
-		label = "Redwood Cigarette",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "Smoking cigarette",
-		client = {
-			image = "redwcig.png",
-		}
-	},
+
+
 
 	["og_kush_bag"] = {
 		label = "Og Kush Bag",
@@ -14335,29 +13500,8 @@ return {
 		}
 	},
 
-	["sludgie"] = {
-		label = "Sludgie",
-		weight = 0,
-		stack = true,
-		close = true,
-		description = "Sludgie",
-		client = {
-			image = "sludgie.png",
-		}
-	},
 
-	['ecola_light'] = {
-		name = 'sludgie',
-		label = 'Sludgie',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = 'prop_ld_can_01', pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst with a Coffee'
-		}
-	},
+
 	['ecola_light'] = {
 		name = 'ecola_light',
 		label = 'Ecola light',
