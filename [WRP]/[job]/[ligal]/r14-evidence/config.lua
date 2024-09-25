@@ -160,8 +160,8 @@ Config.EvidenceCleanup = {
 }
 
 Config.Consume = {
-    GSR = false, -- set this to true if you want GSR tests to be consumed upon use
-    DNA = false, -- set this to true if you want DNA tests to be consumed upon use
+    GSR = true, -- set this to true if you want GSR tests to be consumed upon use
+    DNA = true, -- set this to true if you want DNA tests to be consumed upon use
     AccessTool = 20, -- set to a number of uses if desired, if not set to false for no usage limit
 }
 
