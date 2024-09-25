@@ -1,4 +1,162 @@
 return {
+	['cone'] = {
+        name = 'cone',
+        label = 'Cone',
+        weight = 1000,
+        type = 'item',
+        image = 'cone.png',
+        unique = false,
+        useable = true,
+        shouldClose = true,
+        description = 'An orange safety cone, or a hat if you\'ve had enough to drink.'
+    },
+    ['barricade'] = {
+        name = 'barricade',
+        label = 'Barricade',
+        weight = 5000,
+        type = 'item',
+        image = 'barricade.png',
+        unique = false,
+        useable = true,
+        shouldClose = true,
+        description = 'A police barricade to close off entry'
+    },
+    ['roadblock'] = {
+        name = 'roadblock',
+        label = 'Road Block',
+        weight = 10000,
+        type = 'item',
+        image = 'roadblock.png',
+        unique = false,
+        useable = true,
+        shouldClose = true,
+        description = 'A large sign to block off a road.'
+    },
+    ['tent'] = {
+        name = 'tent',
+        label = 'Canopy',
+        weight = 10000,
+        type = 'item',
+        image = 'canopy.png',
+        unique = false,
+        useable = true,
+        shouldClose = true,
+        description = 'A portable tent.'
+    },
+    ['light'] = {
+        name = 'light',
+        label = 'Mobile Lighting',
+        weight = 20000,
+        type = 'item',
+        image = 'lighting.png',
+        unique = false,
+        useable = true,
+        shouldClose = true,
+        description = 'A portable construction light.'
+    },
+    -- More items continue here...
+
+    ['monobloc'] = {
+        name = 'monobloc',
+        label = 'Monobloc Chair',
+        weight = 5000,
+        type = 'item',
+        image = 'monobloc.png',
+        unique = false,
+        useable = true,
+        shouldClose = true,
+        description = 'The classic white chair that looks bad everywhere'
+    },
+    ['bbq'] = {
+        name = 'bbq',
+        label = 'BBQ',
+        weight = 10000,
+        type = 'item',
+        image = 'bbq.png',
+        unique = false,
+        useable = true,
+        shouldClose = true,
+        description = 'Ooooh, we gonna have a cookout'
+    },
+    ['foldingtable'] = {
+        name = 'foldingtable',
+        label = 'Folding Table',
+        weight = 5000,
+        type = 'item',
+        image = 'foldingtable.png',
+        unique = false,
+        useable = true,
+        shouldClose = true,
+        description = 'Just need some red solo cups'
+    },
+    -- Container items
+    ['containerkey'] = {
+        name = 'containerkey',
+        label = 'Padlock Key',
+        weight = 500,
+        type = 'item',
+        image = 'labkey.png',
+        unique = true,
+        useable = true,
+        shouldClose = true,
+        description = 'A generic padlock key stamped San Andreas Lock & Key'
+    },
+    ['storagecontract'] = {
+        name = 'storagecontract',
+        label = 'Storage Contract',
+        weight = 500,
+        type = 'item',
+        image = 'printerdocument.png',
+        unique = true,
+        useable = true,
+        shouldClose = true,
+        description = 'A rental agreement for a storage container.'
+    },
+    ['anglegrinder'] = {
+        name = 'anglegrinder',
+        label = 'Angle Grinder',
+        weight = 10000,
+        type = 'item',
+        image = 'anglegrinder.png',
+        unique = true,
+        useable = true,
+        shouldClose = false,
+        description = '"A PowerMetal H420 Angle Grinder has never been used for an illegal activity. Ever." - Former CEO of PowerMetal Inc'
+    },
+    -- More container items...
+
+    -- Food items and ingredients
+   --[[  ['burger'] = {
+        name = 'burger',
+        label = 'Burger',
+        weight = 200,
+        type = 'item',
+        image = 'burger.png',
+        unique = false,
+        useable = true,
+        shouldClose = true,
+        description = "A hamburger made out of meat on a bun with cheese, add ketchup if you want"
+    }, ]]
+    ['hotdog'] = {
+        name = 'hotdog',
+        label = 'Hot Dog',
+        weight = 200,
+        type = 'item',
+        image = 'hotdog.png',
+        unique = false,
+        useable = true,
+        shouldClose = true,
+        description = "A sandwich"
+    },
+
+
+
+
+
+
+
+
+
 	--[[ ["baseball"] = {
         label = "Baseball",
         category = ECategoryInventoryPets.BALLS,
@@ -15138,29 +15296,6 @@ return {
 	},
 
 	
-
-	["roadblock"] = {
-		label = "Road Block",
-		weight = 10000,
-		stack = true,
-		close = true,
-		description = "A large sign to block off a road.",
-		client = {
-			image = "roadblock.png",
-		}
-	},
-
-	["storagecontract"] = {
-		label = "Storage Contract",
-		weight = 500,
-		stack = false,
-		close = true,
-		description = "A rental agreement for a storage container.",
-		client = {
-			image = "printerdocument.png",
-		}
-	},
-
 	["lean"] = {
 		label = "Cup of Lean",
 		weight = 1000,
@@ -15183,16 +15318,7 @@ return {
 		}
 	},
 
-	["barricade"] = {
-		label = "Barricade",
-		weight = 5000,
-		stack = true,
-		close = true,
-		description = "A police barricade to close off entry",
-		client = {
-			image = "barricade.png",
-		}
-	},
+	
 
 	["campfire"] = {
 		label = "Campfire Kit",
@@ -15284,27 +15410,7 @@ return {
 		}
 	},
 
-	["light"] = {
-		label = "Mobile Lighting",
-		weight = 20000,
-		stack = true,
-		close = true,
-		description = "A portable construction light.",
-		client = {
-			image = "lighting.png",
-		}
-	},
 
-	["hotdog"] = {
-		label = "Hot Dog",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "A sandwich",
-		client = {
-			image = "hotdog.png",
-		}
-	},
 
 	["cdplayer"] = {
 		label = "CD Player",
@@ -15441,18 +15547,6 @@ return {
 		}
 	},
 
-	
-
-	["bbq"] = {
-		label = "BBQ",
-		weight = 10000,
-		stack = true,
-		close = true,
-		description = "Ooooh, we gonna have a cookout",
-		client = {
-			image = "bbq.png",
-		}
-	},
 
 	["narkan"] = {
 		label = "Narkan",
@@ -15466,17 +15560,7 @@ return {
 	},
 
 	
-	["anglegrinder"] = {
-		label = "Angle Grinder",
-		weight = 10000,
-		stack = false,
-		close = false,
-		description = "\"A PowerMetal H420 Angle Grinder has never been used for an illegal activity. Ever.\" - Former CEO of PowerMetal Inc\"",
-		client = {
-			image = "anglegrinder.png",
-		}
-	},
-
+	
 	["vehicletv"] = {
 		label = "TV Remote",
 		weight = 1000,
@@ -15534,16 +15618,6 @@ return {
 	},
 
 
-	["foldingtable"] = {
-		label = "Folding Table",
-		weight = 5000,
-		stack = true,
-		close = true,
-		description = "Just need some red solo cups",
-		client = {
-			image = "foldingtable.png",
-		}
-	},
 
 	
 
@@ -15591,16 +15665,6 @@ return {
 		}
 	},
 
-	["containerkey"] = {
-		label = "Padlock Key",
-		weight = 500,
-		stack = false,
-		close = true,
-		description = "A generic padlock key stamped San Andreas Lock & Key",
-		client = {
-			image = "labkey.png",
-		}
-	},
 
 	["contract"] = {
 		label = "Contract",
@@ -15687,16 +15751,6 @@ return {
 		}
 	},
 
-	["tent"] = {
-		label = "Canopy",
-		weight = 10000,
-		stack = true,
-		close = true,
-		description = "A portable tent.",
-		client = {
-			image = "canopy.png",
-		}
-	},
 
 	["radiocar_blue"] = {
 		label = "radiocar blue style",
@@ -15741,17 +15795,7 @@ return {
 		}
 	},
 
-	["monobloc"] = {
-		label = "Monobloc Chair",
-		weight = 5000,
-		stack = true,
-		close = true,
-		description = "The classic white chair that looks bad everywhere",
-		client = {
-			image = "monobloc.png",
-		}
-	},
-
+	
 	["camptent"] = {
 		label = "Camping Tent",
 		weight = 10000,
@@ -15782,17 +15826,6 @@ return {
 		description = "TV Remote",
 		client = {
 			image = "remote.png",
-		}
-	},
-
-	["cone"] = {
-		label = "Cone",
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = "An orange safety cone, or a hat if you've had enough to drink.",
-		client = {
-			image = "cone.png",
 		}
 	},
 
@@ -23568,6 +23601,9498 @@ return {
 		description = "Your description here",
 		client = {
 			image = "cereal_milk.png",
+		}
+	},
+
+	["keepcompanionrangehorse"] = {
+		label = "Range Horse",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Range Horse is your royal companion!",
+		client = {
+			image = "keepcompanionhorse.png",
+		}
+	},
+
+	["coyote1"] = {
+		label = "Coyote Carcass",
+		weight = 10000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "coyote1.png",
+		}
+	},
+
+	["hummous"] = {
+		label = "Hummous",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A popular Middle Eastern dip/spread made from chickpeas, tahini, olive oil, lemon juice, and garlic, known for its creamy texture and nutty, tangy flavor.",
+		client = {
+			image = "hummous.png",
+		}
+	},
+
+	["nachos"] = {
+		label = "Nachos",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A bag of Nachos",
+		client = {
+			image = "nachos.png",
+		}
+	},
+
+	["battery"] = {
+		label = "Battery",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Battery for Electrician",
+		client = {
+			image = "lithium_battery.png",
+		}
+	},
+
+	["qualityscales"] = {
+		label = "High Quality Scales",
+		weight = 1500,
+		stack = false,
+		close = false,
+		description = "Weighs Baggies with no loss",
+		client = {
+			image = "qualityscales.png",
+		}
+	},
+
+	["potatos"] = {
+		label = "Potatos",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Ingredients",
+		client = {
+			image = "potatos.png",
+		}
+	},
+
+	["icecone"] = {
+		label = "Ice Cone",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "cone.png",
+		}
+	},
+
+	["sasplant"] = {
+		label = "Sassafras Plant",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "A strange looking plant that gives off a funky odor?",
+		client = {
+			image = "sasplant.png",
+		}
+	},
+
+	["chickenwings"] = {
+		label = "Chicken Wings",
+		weight = 0,
+		stack = true,
+		close = false,
+		description = "Only from Bahama Mamas!",
+		client = {
+			image = "chickenwings.png",
+		}
+	},
+
+	["goldenphone"] = {
+		label = "Golden Satellite Phone",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A communication device used to contact russian mafia. Be careful trusting them, they've been known to scam!",
+		client = {
+			image = "goldenphone.png",
+		}
+	},
+
+	["grilledeggsbacon"] = {
+		label = "Grilled Eggs & Bacon",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Grilled Eggs & Bacon Sandwich",
+		client = {
+			image = "grilledeggsbacon.png",
+		}
+	},
+
+	["gelato"] = {
+		label = "Choc and Vanilla Gelato",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "gelato.png",
+		}
+	},
+
+	["blueprint_explosives"] = {
+		label = "Blueprint: Explosives",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Blueprints for anything EXPLOSIVE related",
+		client = {
+			image = "blueprint_pistol.png",
+		}
+	},
+
+	["var_usb4"] = {
+		label = "Master Key (25%)",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Combine multiple USBs to create a master encryption key.",
+		client = {
+			image = "var_usb.png",
+		}
+	},
+
+	["capricciosa"] = {
+		label = "Capriccosa",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "capricciosa.png",
+		}
+	},
+
+	["springs"] = {
+		label = "Springs",
+		weight = 10,
+		stack = false,
+		close = true,
+		description = "Leftover Weapon Parts (USE ME)",
+		client = {
+			image = "springs.png",
+		}
+	},
+
+	["uwuyellowplush"] = {
+		label = "Yellow Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A yellow UwU plush",
+		client = {
+			image = "uwuyellowplush.png",
+		}
+	},
+
+	["sealedpackage"] = {
+		label = "Sealed Package",
+		weight = 10000,
+		stack = false,
+		close = false,
+		description = "A heavy water-sealed package",
+		client = {
+			image = "sealedpackage.png",
+		}
+	},
+
+	["lowervaultcodes"] = {
+		label = "Access Codes",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "A copy of the Pacific Bank lower vault access code..",
+		client = {
+			image = "lowervaultcodes.png",
+		}
+	},
+
+	["keepcompanionwarbler"] = {
+		label = "Warbler",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Warbler is your royal companion!",
+		client = {
+			image = "keepcompanionwarbler.png",
+		}
+	},
+
+	["paper"] = {
+		label = "Roll of Paper",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "paperroll.png",
+		}
+	},
+
+	["weed_purple-haze_cbd_bud"] = {
+		label = "CBD Purple-Haze Bud",
+		weight = 1200,
+		stack = true,
+		close = false,
+		description = "A bud of CBD Purple-Haze!",
+		client = {
+			image = "ww_sourdiesel_bud.png",
+		}
+	},
+
+	["deer2"] = {
+		label = "Deer Carcass",
+		weight = 15000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "deer2.png",
+		}
+	},
+
+	["fakecert"] = {
+		label = "Fake Certificate",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "fakecert.png",
+		}
+	},
+
+	["weddingcake_crop"] = {
+		label = "Wedding Cake Crop",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "Wedding Cake Crop",
+		client = {
+			image = "ww_weddingcake_crop.png",
+		}
+	},
+
+	["chicken_meat"] = {
+		label = "cchicken meat",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "chicken_meat.png",
+		}
+	},
+
+	["flusher"] = {
+		label = "The Flusher",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "flusher.png",
+		}
+	},
+
+	["charcoal"] = {
+		label = "Charcoal",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "charcoal.png",
+		}
+	},
+
+	["greenbandana"] = {
+		label = "GSF Bandana",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "GSF Gang Bandana",
+		client = {
+			image = "greenbandana.png",
+		}
+	},
+
+	["kombucha"] = {
+		label = "kombucha",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "kombucha.png",
+		}
+	},
+
+	["doghouse"] = {
+		label = "Dog House",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "A Home for the little one, or big one..",
+		client = {
+			image = "doghouse.png",
+		}
+	},
+
+	["rawsausage"] = {
+		label = "Raw Sausages",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "rawsausage.png",
+		}
+	},
+
+	["lacosanostra_flag"] = {
+		label = "La Cosa Nostra Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "La Cosa Nostra Flag",
+		client = {
+			image = "lacosanostra_flag.png",
+		}
+	},
+
+	["cooked_shrimp"] = {
+		label = "Cooked Shrimp",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "cooked_shrimp.png",
+		}
+	},
+
+	["dirtymoney"] = {
+		label = "Dirty Money",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "The ill-gotten proceeds of criminal activity.",
+		client = {
+			image = "dirtymoney.png",
+		}
+	},
+
+	["grilledtunasweetcorn"] = {
+		label = "Grilled Tuna & Sweetcorn",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Grilled Tuna & Sweetcorn Sandwich",
+		client = {
+			image = "grilledtunasweetcorn.png",
+		}
+	},
+
+	["fred"] = {
+		label = "Rare Pink Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A rare pink UwU plush",
+		client = {
+			image = "uwupinkrareplush.png",
+		}
+	},
+
+	["juice_mix"] = {
+		label = "Juice Mix",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Fresh Fruit Juice",
+		client = {
+			image = "juice_mix.png",
+		}
+	},
+
+	["chinese_rice_wine"] = {
+		label = "chinese rice wine",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "chinese_rice_wine.png",
+		}
+	},
+
+	["hackingdevice"] = {
+		label = "Hacking device",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Will allow you to bypass vehicle security systems.",
+		client = {
+			image = "hackerdevice.png",
+		}
+	},
+
+	["koi_misosoup"] = {
+		label = "Koi's Miso Soup",
+		weight = 30,
+		stack = true,
+		close = true,
+		description = "Food",
+		client = {
+			image = "misosoup.png",
+		}
+	},
+
+	["fakeweaplicence"] = {
+		label = "Fake Weapon Licence",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "fakeweap.png",
+		}
+	},
+
+	["basilseed"] = {
+		label = "Basil Seed",
+		weight = 20,
+		stack = true,
+		close = true,
+		description = "insert here",
+		client = {
+			image = "psilocybin_seed.png",
+		}
+	},
+
+	["rexmilkshake"] = {
+		label = "Rex Milkshake",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "BurgerShot Milkshake",
+		client = {
+			image = "burger-milkshake.png",
+		}
+	},
+
+	["blackbandana"] = {
+		label = "Black Bandana",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Black Gang Bandana",
+		client = {
+			image = "blackbandana.png",
+		}
+	},
+
+	["beandonut"] = {
+		label = "Donut",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "popdonut.png",
+		}
+	},
+
+	["amaretto"] = {
+		label = "Amaretto",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A bottle of Amaretto",
+		client = {
+			image = "amaretto.png",
+		}
+	},
+
+	["pizzmushrooms"] = {
+		label = "Mushrooms",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "mushrooms.png",
+		}
+	},
+
+	["policecard"] = {
+		label = "Police Badge",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "To identify yourself",
+		client = {
+			image = "psbadge.png",
+		}
+	},
+
+	["origami8"] = {
+		label = "Origami Plane",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami8.png",
+		}
+	},
+
+	["keepcompanionbobcat"] = {
+		label = "Bobcat",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Bobcat is your royal companion!",
+		client = {
+			image = "keepcompanionbobcat.png",
+		}
+	},
+
+	["lucifersd_flag"] = {
+		label = "Lucifer Satanic Demons Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Lucifer Satanic Demons Flag",
+		client = {
+			image = "lucifersd.png",
+		}
+	},
+
+	["brum_squank_pink"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_squank_pink.png",
+		}
+	},
+
+	["keepcompanionfullhorse"] = {
+		label = "Adult Horse",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Adult Horse is your royal companion!",
+		client = {
+			image = "keepcompanionhorse.png",
+		}
+	},
+
+	["fish_sauce"] = {
+		label = "fish sauce",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "fish_sauce.png",
+		}
+	},
+
+	["lucifersd_first_flag"] = {
+		label = "Lucifer Satanic Demons First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Blood Pack First Flag",
+		client = {
+			image = "lucifersd.png",
+		}
+	},
+
+	["coconut_milk"] = {
+		label = "coconut milk",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "coconut_milk.png",
+		}
+	},
+
+	["greencrack_bud"] = {
+		label = "Green Crack Bud",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Green Crack Bud",
+		client = {
+			image = "ww_greencrack_bud.png",
+		}
+	},
+
+	["marinarabox"] = {
+		label = "Boxed Marinara",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pizzabox.png",
+		}
+	},
+
+	["fallenamc_flag"] = {
+		label = "Fallen Angle Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Fallen Angle Flag",
+		client = {
+			image = "fallenamc_flag.png",
+		}
+	},
+
+	["lpcoke"] = {
+		label = "LP Coke",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "BurgerShot Cola",
+		client = {
+			image = "burger-softdrink.png",
+		}
+	},
+
+	["weedpackage"] = {
+		label = "Suspicious Package",
+		weight = 25000,
+		stack = false,
+		close = false,
+		description = "Marked for Police Seizure",
+		client = {
+			image = "weedpackage.png",
+		}
+	},
+
+	["brum_vaperound_green"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_roundvape_green.png",
+		}
+	},
+
+	["keepcompanionfalcon"] = {
+		label = "Falcon",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Falcon is your royal companion!",
+		client = {
+			image = "keepcompanionfalcon.png",
+		}
+	},
+
+	["vanillacupcake"] = {
+		label = "Vanilla Cupcake",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Vanilla Cupcake",
+		client = {
+			image = "vanillacupcake.png",
+		}
+	},
+
+	["vagosbandana"] = {
+		label = "Vagos Bandana",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Vagos Gang Bandana",
+		client = {
+			image = "vagosbandana.png",
+		}
+	},
+
+	["rexmoneyshot"] = {
+		label = "Rex Money Shot",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Money Shot",
+		client = {
+			image = "burger-moneyshot.png",
+		}
+	},
+
+	["expensive_champagne"] = {
+		label = "Champagne",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A sparkling wine from France",
+		client = {
+			image = "expensive_champagne.png",
+		}
+	},
+
+	["humanmeat"] = {
+		label = "Questionable Meat",
+		weight = 1500,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "humanmeat.png",
+		}
+	},
+
+	["bplate"] = {
+		label = "Brisket Plate",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A Brisket Plate",
+		client = {
+			image = "bplate.png",
+		}
+	},
+
+	["cplate"] = {
+		label = "Fish Plate",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A Catfish Plate",
+		client = {
+			image = "cplate.png",
+		}
+	},
+
+	["rexbscoke"] = {
+		label = "Rex Coke",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "BurgerShot Cola",
+		client = {
+			image = "burger-softdrink.png",
+		}
+	},
+
+	["lpshotnuggets"] = {
+		label = "LP Shot Nuggets",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Burgershot Nuggets",
+		client = {
+			image = "burger-shotnuggets.png",
+		}
+	},
+
+	["baconcheesemelt"] = {
+		label = "Bacon-Triple Cheese Melt",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "baconcheesemelt.png",
+		}
+	},
+
+	["vegetariana"] = {
+		label = "Vegetariana",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "vegetariana.png",
+		}
+	},
+
+	["chillidog"] = {
+		label = "Footlong Chili Dog",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chillidog.png",
+		}
+	},
+
+	["smallscales"] = {
+		label = "Small Scales",
+		weight = 1000,
+		stack = false,
+		close = false,
+		description = "Weighs Baggies with minimal loss",
+		client = {
+			image = "smallscales.png",
+		}
+	},
+
+	["balsamicglaze"] = {
+		label = "Balsamic Glaze",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Balsamic Glaze",
+		client = {
+			image = "balsamicglaze.png",
+		}
+	},
+
+	["kq_fur"] = {
+		label = "Smuggled fur",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Expensive fur, most likely smuggled",
+		client = {
+			image = "kq_fur.png",
+		}
+	},
+
+	["hotdogmeat"] = {
+		label = "Hotdog Meat",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "hotdogmeat.png",
+		}
+	},
+
+	["kamikaze"] = {
+		label = "Kamikaze",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Kamikase Cocktail",
+		client = {
+			image = "kamikaze.png",
+		}
+	},
+
+	["keepcompanionbulldog"] = {
+		label = "Bulldog",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Bulldog is your royal companion!",
+		client = {
+			image = "keepcompanionbulldog.png",
+		}
+	},
+
+	["surfingpapers"] = {
+		label = "Surfing Papers",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "Surfing documents. You have known surf for rent. You need this document to return it.",
+		client = {
+			image = "surfingpapers.png",
+		}
+	},
+
+	["olives"] = {
+		label = "Olives",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "olives.png",
+		}
+	},
+
+	["xpills"] = {
+		label = "X-Pills",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Your description here",
+		client = {
+			image = "xpills.png",
+		}
+	},
+
+	["bong8"] = {
+		label = "Bong",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A pretty bong",
+		client = {
+			image = "ww_bong.png",
+		}
+	},
+
+	["caffeagra"] = {
+		label = "Caffeagra",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "caffeagra.png",
+		}
+	},
+
+	["yakitori"] = {
+		label = "Yakitori",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Food",
+		client = {
+			image = "yakitori.png",
+		}
+	},
+
+	["hbicecream"] = {
+		label = "Hornys Ice Cream",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Hornys Drink",
+		client = {
+			image = "icecream.png",
+		}
+	},
+
+	["ppp_bud"] = {
+		label = "Puff Puff Pass Bud",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Puff Puff Pass Bud",
+		client = {
+			image = "ww_whitewidow_bud.png",
+		}
+	},
+
+	["unicornpiss"] = {
+		label = "Unicorn Piss",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "A rainbow unicorn piss slushie..",
+		client = {
+			image = "unicorn_piss.png",
+		}
+	},
+
+	["afghankush_crop"] = {
+		label = "Afghan Crop",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "Afghan Kush Crop",
+		client = {
+			image = "ww_afghankush_crop.png",
+		}
+	},
+
+	["reskit"] = {
+		label = "Revival Kit",
+		weight = 5000,
+		stack = false,
+		close = false,
+		description = "When your pal needs that pick me up",
+		client = {
+			image = "reskit.png",
+		}
+	},
+
+	["bottlemap"] = {
+		label = "Treasure Bottle",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "looks very old.",
+		client = {
+			image = "bottlemap.png",
+		}
+	},
+
+	["udon_noodles"] = {
+		label = "udon_noodles",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "udon_noodles.png",
+		}
+	},
+
+	["b2a_first_flag"] = {
+		label = "Belt 2 Ass First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Belt 2 Ass First Flag",
+		client = {
+			image = "b2a_flag.png",
+		}
+	},
+
+	["splate"] = {
+		label = "Steak Plate",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A Steak Plate",
+		client = {
+			image = "splate.png",
+		}
+	},
+
+	["floor-cleaner"] = {
+		label = "Floor Cleaner",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "floorcleaner.png",
+		}
+	},
+
+	["mdmabaggy"] = {
+		label = "Molly Baggy",
+		weight = 15,
+		stack = true,
+		close = true,
+		description = "A small bag of 'Molly' tablets, looks a bit like famous catoon figures to me.",
+		client = {
+			image = "mdmabaggy.png",
+		}
+	},
+
+	["brum_starter_black"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_starter_black.png",
+		}
+	},
+
+	["pistolgrip"] = {
+		label = "Pistol Grip",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "The grip of a pistol",
+		client = {
+			image = "pistolgrip.png",
+		}
+	},
+
+	["weed_bag"] = {
+		label = "Weed Bag",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "To get happy real fast.",
+		client = {
+			image = "weed-baggie.png",
+		}
+	},
+
+	["nplate"] = {
+		label = "Nachos Plate",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A plate of nachos and cheese",
+		client = {
+			image = "nplate.png",
+		}
+	},
+
+	["granddaddypurple_joint"] = {
+		label = "Grand Daddy Purple Joint",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Grand Daddy Purple Joint",
+		client = {
+			image = "ww_grandaddypurple_joint.png",
+		}
+	},
+
+	["rosso"] = {
+		label = "Rosso Del Montalcino",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "rosso.png",
+		}
+	},
+
+	["rollerskate"] = {
+		label = "Roller Skate",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "Roller Skating to rome around",
+		client = {
+			image = "rollerskate.png",
+		}
+	},
+
+	["rhinohorn"] = {
+		label = "Rhino Horn",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "rhinohorn.png",
+		}
+	},
+
+	["grilledchicken"] = {
+		label = "Chicken Sandwich",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chickensandwich.png",
+		}
+	},
+
+	["keepcompaniondonkey"] = {
+		label = "Donkey",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Donkey is your royal companion!",
+		client = {
+			image = "keepcompanionhorse.png",
+		}
+	},
+
+	["lp_chickburger"] = {
+		label = "Regular Chicken Burger",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Regular Chicken Burger with Cheese and single Patty",
+		client = {
+			image = "lpburger.png",
+		}
+	},
+
+	["origami14"] = {
+		label = "Origami Eagle",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami14.png",
+		}
+	},
+
+	["heistduffle"] = {
+		label = "Heist Duffel",
+		weight = 1000,
+		stack = true,
+		close = false,
+		description = "A large duffle bag, perfect for storing things - whether they belong to you or not...",
+		client = {
+			image = "houserobbag.png",
+		}
+	},
+
+	["bark"] = {
+		label = "Tree Bark",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "bark.png",
+		}
+	},
+
+	["espresso"] = {
+		label = "Espresso",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "espresso.png",
+		}
+	},
+
+	["barbera"] = {
+		label = "Barbera D'Asti",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "barbera.png",
+		}
+	},
+
+	["basketball"] = {
+		label = "Basketball",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "Play basketball with your friends on any court",
+		client = {
+			image = "basketball.png",
+		}
+	},
+
+	["uwublueplush"] = {
+		label = "Blue Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A blue UwU plush",
+		client = {
+			image = "uwublueplush.png",
+		}
+	},
+
+	["polhandcuffs"] = {
+		label = "Police Handcuffs",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Police Only",
+		client = {
+			image = "handcuffs.png",
+		}
+	},
+
+	["rexbleeder"] = {
+		label = "Rex The Bleeder",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "The Bleeder",
+		client = {
+			image = "burger-bleeder.png",
+		}
+	},
+
+	["frisbee"] = {
+		label = "Frisbee",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Some air time, but not like a plane",
+		client = {
+			image = "frisbee.png",
+		}
+	},
+
+	["bloodsbandana"] = {
+		label = "Bloods Bandana",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Bloods Gang Bandana",
+		client = {
+			image = "bloodsbandana.png",
+		}
+	},
+
+	["friedpick"] = {
+		label = "Fried Pickles",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A plate of fried pickles",
+		client = {
+			image = "friedpick.png",
+		}
+	},
+
+	["hammerhandle"] = {
+		label = "Hammer Handle",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "hammerhandle.png",
+		}
+	},
+
+	["rexrimjob"] = {
+		label = "Rex Rim Job",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "BurgerShot Donut",
+		client = {
+			image = "burger-rimjob.png",
+		}
+	},
+
+	["fruitbasket"] = {
+		label = "Fruit Basket",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "insert here",
+		client = {
+			image = "apple_crate.png",
+		}
+	},
+
+	["coriander"] = {
+		label = "coriander",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "coriander.png",
+		}
+	},
+
+	["mug"] = {
+		label = "Mug",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Mug",
+		client = {
+			image = "mug.png",
+		}
+	},
+
+	["speedball"] = {
+		label = "The SpeedBall",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "speedball.png",
+		}
+	},
+
+	["prosciuttiobox"] = {
+		label = "Boxed Prosciuttio E Funghi",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pizzabox.png",
+		}
+	},
+
+	["keepcompanionskunk"] = {
+		label = "Skunk",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Skunk is your royal companion!",
+		client = {
+			image = "keepcompanionskunk.png",
+		}
+	},
+
+	["atomsoda"] = {
+		label = "Atom Soda",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "atomsoda.png",
+		}
+	},
+
+	["weddingcake_joint"] = {
+		label = "Wedding Cake Joint",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Wedding Cake Joint",
+		client = {
+			image = "ww_weddingcake_joint.png",
+		}
+	},
+
+	["cripsbandana"] = {
+		label = "Crip Bandana",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Crips Gang Bandana",
+		client = {
+			image = "cripsbandana.png",
+		}
+	},
+
+	["hbheartstopper"] = {
+		label = "Hornys Heart Stopper",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Hornys Food",
+		client = {
+			image = "heartstopper.png",
+		}
+	},
+
+	["mirin"] = {
+		label = "mirin",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "mirin.png",
+		}
+	},
+
+	["keepcompanionredpanda"] = {
+		label = "Red Panda",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Red Panda is your royal companion!",
+		client = {
+			image = "keepcompanionredpanda.png",
+		}
+	},
+
+	["lemonlimeslushie"] = {
+		label = "Lemon N Lime Slushie",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Lemon N Lime Slushie",
+		client = {
+			image = "lemonlimeslushie.png",
+		}
+	},
+
+	["bong6"] = {
+		label = "Bong",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A pretty bong",
+		client = {
+			image = "ww_bong.png",
+		}
+	},
+
+	["vandalz_flag"] = {
+		label = "Vandalz Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Vandalz Flag",
+		client = {
+			image = "vandalz.png",
+		}
+	},
+
+	["padthai"] = {
+		label = "Pad Thai",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "padthai.png",
+		}
+	},
+
+	["laptop_purple"] = {
+		label = "Laptop",
+		weight = 2500,
+		stack = false,
+		close = false,
+		description = "A laptop made for hacking",
+		client = {
+			image = "laptop_purple.png",
+		}
+	},
+
+	["weed_white-widow_cbd_bud"] = {
+		label = "CBD White Widow Bud",
+		weight = 1200,
+		stack = true,
+		close = false,
+		description = "A bud of CBD White Widow",
+		client = {
+			image = "ww_whitewidow_bud.png",
+		}
+	},
+
+	["pestocavatappi"] = {
+		label = "Pesto Cavatappi",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pestocavatappi.png",
+		}
+	},
+
+	["bburrito"] = {
+		label = "Breakfast Burrito",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A breakfast Burrito",
+		client = {
+			image = "bburrito.png",
+		}
+	},
+
+	["turkeyslices"] = {
+		label = "Turkey Slices",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Turkey Slices",
+		client = {
+			image = "turkeyslices.png",
+		}
+	},
+
+	["jackherrer_joint"] = {
+		label = "Jack Herrer Joint",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Jack Herrer Joint",
+		client = {
+			image = "ww_jackherrer_joint.png",
+		}
+	},
+
+	["bloodorange_juice"] = {
+		label = "Blood-Orange flavoured juice for you vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape-flavour",
+		client = {
+			image = "bloodorange_juice.png",
+		}
+	},
+
+	["Tequilala Loaded Fries"] = {
+		label = "Loaded Fries",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Loaded Fries",
+		client = {
+			image = "teq_loaded_fries.png",
+		}
+	},
+
+	["rice_flour"] = {
+		label = "rice flour",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "rice_flour.png",
+		}
+	},
+
+	["foodplate"] = {
+		label = "Food Plate",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "foodplate.png",
+		}
+	},
+
+	["slicedavocado"] = {
+		label = "Sliced Avocado",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Sliced Avocado",
+		client = {
+			image = "slicedavocado.png",
+		}
+	},
+
+	["ham"] = {
+		label = "Ham",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "ham.png",
+		}
+	},
+
+	["sesame_oil"] = {
+		label = "sesame oil",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "sesame_oil.png",
+		}
+	},
+
+	["greencrack_crop"] = {
+		label = "Green Crack Crop",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "Green Crack Crop",
+		client = {
+			image = "ww_greencrack_crop.png",
+		}
+	},
+
+	["matcha_swiss"] = {
+		label = "Matcha Swiss",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "matcha_swiss.png",
+		}
+	},
+
+	["casinocodes"] = {
+		label = "Casino Access Codes",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "The first half of codes for the Casino",
+		client = {
+			image = "casinocodes.png",
+		}
+	},
+
+	["enchiladas"] = {
+		label = "Breakfast Enchiladas",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "enchi.png",
+		}
+	},
+
+	["orangebandana"] = {
+		label = "Orange Bandana",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Orange Gang Bandana",
+		client = {
+			image = "orangebandana.png",
+		}
+	},
+
+	["keepcompanionelephant"] = {
+		label = "Elephant",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Elephant is your royal companion!",
+		client = {
+			image = "keepcompanionelephant.png",
+		}
+	},
+
+	["hacking-laptop"] = {
+		label = "Hacking Device",
+		weight = 1500,
+		stack = false,
+		close = true,
+		description = "Top Secret thing to Fuck arround with",
+		client = {
+			image = "hacking_device.png",
+		}
+	},
+
+	["okonomiyaki_mixtures"] = {
+		label = "okonomiyaki_mixtures",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "okonomiyaki_mixtures.png",
+		}
+	},
+
+	["onigiri"] = {
+		label = "Onigiri",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Food",
+		client = {
+			image = "onigiri.png",
+		}
+	},
+
+	["bong5"] = {
+		label = "Bong",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A pretty bong",
+		client = {
+			image = "ww_bong.png",
+		}
+	},
+
+	["ecocoffee"] = {
+		label = "The Eco-ffee",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "ecoffee.png",
+		}
+	},
+
+	["brum_embar_yellow"] = {
+		label = "Lemon flavoured vape from embar",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_embar_yellow.png",
+		}
+	},
+
+	["squash"] = {
+		label = "Squash",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "squash.png",
+		}
+	},
+
+	["blackspades_first_flag"] = {
+		label = "Black Spades First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Black Spades First Flag",
+		client = {
+			image = "blackspades_flag.png",
+		}
+	},
+
+	["lpcoffee"] = {
+		label = "LP Coffee",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "BurgerShot Coffee",
+		client = {
+			image = "burger-coffee.png",
+		}
+	},
+
+	["rexcreampie"] = {
+		label = "Rex Creampie",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "BurgerShot Apple Pie",
+		client = {
+			image = "burger-creampie.png",
+		}
+	},
+
+	["salad"] = {
+		label = "salad",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "salad.png",
+		}
+	},
+
+	["steakstroganoff"] = {
+		label = "Steak Stroganoff",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "steakstroganoff.png",
+		}
+	},
+
+	["wetbud"] = {
+		label = "Wet Bud (100 grams)",
+		weight = 200,
+		stack = false,
+		close = false,
+		description = "Needs to be stored somewhere dry.",
+		client = {
+			image = "wet.png",
+		}
+	},
+
+	["shot_glass"] = {
+		label = "Shot Glass",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "An Empty Shot Glass",
+		client = {
+			image = "shot_glass.png",
+		}
+	},
+
+	["spring_onion"] = {
+		label = "spring onion",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "spring_onion.png",
+		}
+	},
+
+	["baklava"] = {
+		label = "Baklava",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A sweet pastry originating from the Middle East, made by layering phyllo dough with finely chopped nuts, sweetened with syrup or honey, and boasting a rich, nutty taste.",
+		client = {
+			image = "baklava.png",
+		}
+	},
+
+	["misosoup"] = {
+		label = "Miso Soup",
+		weight = 30,
+		stack = true,
+		close = true,
+		description = "Miso Soup",
+		client = {
+			image = "misosoup.png",
+		}
+	},
+
+	["fettucine"] = {
+		label = "Fettucine",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "fettucine.png",
+		}
+	},
+
+	["ramune_lychee"] = {
+		label = "ramune lychee",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "ramune_lychee.png",
+		}
+	},
+
+	["ppp_crop"] = {
+		label = "Puff Puff Pass Crop",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "Puff Puff Pass Crop",
+		client = {
+			image = "ww_whitewidow_crop.png",
+		}
+	},
+
+	["bong2"] = {
+		label = "Bong",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A pretty bong",
+		client = {
+			image = "ww_bong.png",
+		}
+	},
+
+	["gb_flag"] = {
+		label = "Ghetto Boyz Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Ghetto Boyz Flag",
+		client = {
+			image = "gb_flag.png",
+		}
+	},
+
+	["wakame"] = {
+		label = "wakame",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "wakame.png",
+		}
+	},
+
+	["security_card_05"] = {
+		label = "Security Card",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "A blue security card.",
+		client = {
+			image = "security_card_05.png",
+		}
+	},
+
+	["keepcompanionchowchow"] = {
+		label = "Chow Chow",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Chow Chow is your royal companion!",
+		client = {
+			image = "chowchow.png",
+		}
+	},
+
+	["brum_vaperound_yellow"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_roundvape_yellow.png",
+		}
+	},
+
+	["redfish"] = {
+		label = "Redfish",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "One fish two fish...",
+		client = {
+			image = "redfish.png",
+		}
+	},
+
+	["diavola"] = {
+		label = "Diavola",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "diavola.png",
+		}
+	},
+
+	["cheesefries"] = {
+		label = "Cheese Fries",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "Only from Bahama Mamas!",
+		client = {
+			image = "cheesefries.png",
+		}
+	},
+
+	["grinder"] = {
+		label = "Grinder",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "A Grinder",
+		client = {
+			image = "ww_grinder.png",
+		}
+	},
+
+	["origami6"] = {
+		label = "Origami Pig",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami6.png",
+		}
+	},
+
+	["bamboo_skewers"] = {
+		label = "Bamboo Skewers",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "bamboo_skewers.png",
+		}
+	},
+
+	["femaleseed"] = {
+		label = "Female Marijuana Seed",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "Surely I can just plant this, right?",
+		client = {
+			image = "weed-seed.png",
+		}
+	},
+
+	["ygz_first_flag"] = {
+		label = "Young Gunnaz First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Young Gunnaz First Flag",
+		client = {
+			image = "ygz_flag.png",
+		}
+	},
+
+	["baconeggtoast"] = {
+		label = "Bacon & Egg on Toast",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "baconegg.png",
+		}
+	},
+
+	["sbullet"] = {
+		label = "Silver Bullet",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Silver Bullet Cocktail",
+		client = {
+			image = "sbullet.png",
+		}
+	},
+
+	["grapesyrup"] = {
+		label = "Grape Syrup",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Grape Syrup For Making Slushies",
+		client = {
+			image = "grapesyrup.png",
+		}
+	},
+
+	["keepcompanionowl"] = {
+		label = "Owl",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Owl is your royal companion!",
+		client = {
+			image = "keepcompanionowl.png",
+		}
+	},
+
+	["chickpeas"] = {
+		label = "Chickpeas",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "An ingredient",
+		client = {
+			image = "chickpeas.png",
+		}
+	},
+
+	["watermelonbubblegum_juice"] = {
+		label = "Watermelon-Bubblegum flavoured juice for you vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape-flavour",
+		client = {
+			image = "watermelonbubblegum_juice.png",
+		}
+	},
+
+	["wires"] = {
+		label = "Wires",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Copper Wire for Electrician",
+		client = {
+			image = "copper_wires.png",
+		}
+	},
+
+	["cup"] = {
+		label = "Cup",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "cup.png",
+		}
+	},
+
+	["whitebandana"] = {
+		label = "White Bandana",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "White Gang Bandana",
+		client = {
+			image = "whitebandana.png",
+		}
+	},
+
+	["chop_wheel"] = {
+		label = "Car Wheel",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "A wheel from a vehicle",
+		client = {
+			image = "chop_wheel.png",
+		}
+	},
+
+	["default_gateway_override"] = {
+		label = "Gateway Override",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "A default gateway override on a usb",
+		client = {
+			image = "default_gateway_override.png",
+		}
+	},
+
+	["spicysteaktacos"] = {
+		label = "Spicy Steak Tacos",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Only from Bahama Mamas!",
+		client = {
+			image = "spicysteaktacos.png",
+		}
+	},
+
+	["uwugreenrareplush"] = {
+		label = "Rare Green Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A rare green UwU plush",
+		client = {
+			image = "uwugreenrareplush.png",
+		}
+	},
+
+	["frenchtoast"] = {
+		label = "French Toast",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "frenchtoast.png",
+		}
+	},
+
+	["jackherrer_crop"] = {
+		label = "Jack Herer Crop",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "Jack Herrer Crop",
+		client = {
+			image = "ww_jackherrer_crop.png",
+		}
+	},
+
+	["weaponscrap"] = {
+		label = "Weapon Scrap",
+		weight = 10,
+		stack = false,
+		close = true,
+		description = "Leftover Weapon Parts (USE ME)",
+		client = {
+			image = "weaponscrap.png",
+		}
+	},
+
+	["hbtorpedo"] = {
+		label = "Hornys Torpedo",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Hornys Food",
+		client = {
+			image = "torpedo.png",
+		}
+	},
+
+	["nitratepowder"] = {
+		label = "nitrate Powder",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "Pulverized Nitrate",
+		client = {
+			image = "nitratepowder.png",
+		}
+	},
+
+	["heroin_shot"] = {
+		label = "Heroin Shot",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Your description here",
+		client = {
+			image = "heroin_shot.png",
+		}
+	},
+
+	["gazpacho"] = {
+		label = "Guzpacho",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "gazpacho.png",
+		}
+	},
+
+	["cheesecake"] = {
+		label = "Cheese Cake",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "cheesecake.png",
+		}
+	},
+
+	["gummy_rasberry"] = {
+		label = "Rasberry Kush Gummy",
+		weight = 4,
+		stack = true,
+		close = true,
+		description = "A Rashberry Kush Gummy - Not Safe for Kids!",
+		client = {
+			image = "ww_rasberrygummies.png",
+		}
+	},
+
+	["vegetarianabox"] = {
+		label = "Boxed Vegetariana",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pizzabox.png",
+		}
+	},
+
+	["agbomb"] = {
+		label = "Timed Explosive",
+		weight = 500,
+		stack = true,
+		close = false,
+		description = "A fairly sophsticated looking timed detonation device... Looks like this thing could do a bit of damage in the wrong hands...",
+		client = {
+			image = "agbomb.png",
+		}
+	},
+
+	["diamond_mining"] = {
+		label = "Diamond",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "A diamond from Mining",
+		client = {
+			image = "diamond.png",
+		}
+	},
+
+	["ccookie"] = {
+		label = "Cranberry Cookie",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Cranberry Cookie Cocktail",
+		client = {
+			image = "ccookie.png",
+		}
+	},
+
+	["mango_juice"] = {
+		label = "Mango flavoured juice for you vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape-flavour",
+		client = {
+			image = "mango_juice.png",
+		}
+	},
+
+	["dblhornburger"] = {
+		label = "DBL HornBurger",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "dblhornburger.png",
+		}
+	},
+
+	["supercivs_flag"] = {
+		label = "Super Civilians Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Super Civilians Flag",
+		client = {
+			image = "supercivs_flag.png",
+		}
+	},
+
+	["baby_food"] = {
+		label = "Baby Food",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "Baby Food",
+		client = {
+			image = "baby_food.png",
+		}
+	},
+
+	["emberry_juice"] = {
+		label = "Emberry flavoured juice for you vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape-flavour",
+		client = {
+			image = "emberry_juice.png",
+		}
+	},
+
+	["watermelon"] = {
+		label = "WaterMelon Slice",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "watermelon.png",
+		}
+	},
+
+	["oppsnd_flag"] = {
+		label = "Opps Next Door Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Opps Next Door Flag",
+		client = {
+			image = "oppsnd_flag.png",
+		}
+	},
+
+	["crisps"] = {
+		label = "Crisps",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chips.png",
+		}
+	},
+
+	["rexshotfries"] = {
+		label = "Rex Shot Fries",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Shot Fries",
+		client = {
+			image = "burger-fries.png",
+		}
+	},
+
+	["radiohack"] = {
+		label = "Radio Interceptor",
+		weight = 500,
+		stack = true,
+		close = false,
+		description = "A radio frequency interceptor. Looks like it needs to be plugged into a source to become active?",
+		client = {
+			image = "radiohack.png",
+		}
+	},
+
+	["pastafresca"] = {
+		label = "Pasta Fresca",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pastafresca.png",
+		}
+	},
+
+	["knife"] = {
+		label = "Sharp Knife",
+		weight = 1500,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "knife.png",
+		}
+	},
+
+	["strawberrysyrup"] = {
+		label = "Strawberry Syrup",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Strawberry Syrup For Making Slushies",
+		client = {
+			image = "strawberrysyrup.png",
+		}
+	},
+
+	["vendettas_first_flag"] = {
+		label = "Vendettas First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Vendettas First Flag",
+		client = {
+			image = "vendettas_flag.png",
+		}
+	},
+
+	["masonjar"] = {
+		label = "Mason Jar",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A glass jar",
+		client = {
+			image = "masonjar.png",
+		}
+	},
+
+	["hbmilkshake"] = {
+		label = "Hornys Milkshake",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Hornys Drink",
+		client = {
+			image = "milkshake.png",
+		}
+	},
+
+	["voodoo"] = {
+		label = "Voodoo",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Voodoo Cocktail",
+		client = {
+			image = "voodoo.png",
+		}
+	},
+
+	["methcontainer"] = {
+		label = "Meth Container",
+		weight = 9500,
+		stack = true,
+		close = true,
+		description = "Container full of white powder",
+		client = {
+			image = "methcontainer.png",
+		}
+	},
+
+	["chicken_sandwich"] = {
+		label = "Chicken Sandwich",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A delicious chicken made by Lucky Plucker",
+		client = {
+			image = "sandwichbm.png",
+		}
+	},
+
+	["skewer"] = {
+		label = "Skewer",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Ingredients",
+		client = {
+			image = "skewer.png",
+		}
+	},
+
+	["coke_pooch"] = {
+		label = "Coke Pooch",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Your description here",
+		client = {
+			image = "coke_pooch.png",
+		}
+	},
+
+	["pinkpanthers_first_flag"] = {
+		label = "Pink Panthers First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Pink Panthers First Flag",
+		client = {
+			image = "pinkpanthers_flag.png",
+		}
+	},
+
+	["batbase"] = {
+		label = "Bat Base",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "batbase.png",
+		}
+	},
+
+	["hc_card1"] = {
+		label = "Test Card",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "This is just a test package",
+		client = {
+			image = "hugh.png",
+		}
+	},
+
+	["var_helmet"] = {
+		label = "VAR Helmet",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "VAR Helmet",
+		client = {
+			image = "var_helmet.png",
+		}
+	},
+
+	["bigfoot"] = {
+		label = "Big Foot Carcass",
+		weight = 50000,
+		stack = true,
+		close = false,
+		description = "A human in a costume??",
+		client = {
+			image = "bigfoot.png",
+		}
+	},
+
+	["nslicedtomato"] = {
+		label = "Sliced Tomato",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "nslicedtomato.png",
+		}
+	},
+
+	["sprunklight"] = {
+		label = "Sprunk Light",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "sprunklight.png",
+		}
+	},
+
+	["fanta"] = {
+		label = "Fanta",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "fanta.png",
+		}
+	},
+
+	["afghankush_joint"] = {
+		label = "Afghan Kush Joint",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Afghan Kush Joint",
+		client = {
+			image = "ww_afghankush_joint.png",
+		}
+	},
+
+	["blazeit_crop"] = {
+		label = "Blazing Crop",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "Blaze It's Blazing Crop",
+		client = {
+			image = "ww_whitewidow_crop.png",
+		}
+	},
+
+	["boar3"] = {
+		label = "Boar Carcass",
+		weight = 25000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "boar3.png",
+		}
+	},
+
+	["bong9"] = {
+		label = "Bong",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A pretty bong",
+		client = {
+			image = "ww_bong.png",
+		}
+	},
+
+	["mangolassi"] = {
+		label = "Mango Lassi",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A refreshing Indian beverage made with ripe mangoes, yogurt, and milk, known for its creamy texture and sweet-tangy flavor.",
+		client = {
+			image = "mangolassi.png",
+		}
+	},
+
+	["mhf_flag"] = {
+		label = "Mad Hatter Family Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Mad Hatter Family Flag",
+		client = {
+			image = "mhf_flag.png",
+		}
+	},
+
+	["log"] = {
+		label = "Log",
+		weight = 2000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "log.png",
+		}
+	},
+
+	["blazeit_bud"] = {
+		label = "Blazing Bud",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Blaze It's Blazing Bud",
+		client = {
+			image = "ww_whitewidow_bud.png",
+		}
+	},
+
+	["chickenbreast"] = {
+		label = "Chicken Breast",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "chickenbreast.png",
+		}
+	},
+
+	["racingtablet"] = {
+		label = "Racing tablet",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Seems like something to do with cars.",
+		client = {
+			image = "tablet3.png",
+		}
+	},
+
+	["curaco"] = {
+		label = "Curaco",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A bottle of Curaco",
+		client = {
+			image = "curaco.png",
+		}
+	},
+
+	["chicken_fettucine_alfredo"] = {
+		label = "Chicken Fettucine Alfredo",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chicken_fettucine_alfredo.png",
+		}
+	},
+
+	["rexheartstopper"] = {
+		label = "Rex HeartStopper",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Heartstopper",
+		client = {
+			image = "burger-heartstopper.png",
+		}
+	},
+
+	["keepcompanionmacaw"] = {
+		label = "Macaw",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Macaw is your royal companion!",
+		client = {
+			image = "keepcompanionparrot.png",
+		}
+	},
+
+	["trunk"] = {
+		label = "Car Trunk",
+		weight = 10000,
+		stack = false,
+		close = true,
+		client = {
+			image = "car_trunk.png",
+		}
+	},
+
+	["pdmcontract"] = {
+		label = "PDM Contract",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Contract used to sell PDM vehicles only, does not require subscriptions!",
+		client = {
+			image = "contract.png",
+		}
+	},
+
+	["baconhornburger"] = {
+		label = "HornBurger Bacon",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "baconburger.png",
+		}
+	},
+
+	["debarrel"] = {
+		label = "DE Barrel",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "The barrel of a desert eagle",
+		client = {
+			image = "pistolbarrel.png",
+		}
+	},
+
+	["ramen_pork"] = {
+		label = "Ramen Pork",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Food",
+		client = {
+			image = "ramen_pork.png",
+		}
+	},
+
+	["schnapps"] = {
+		label = "Peach Schnapps",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A bottle of Peach Schnapps",
+		client = {
+			image = "schnapps.png",
+		}
+	},
+
+	["fakelawyer"] = {
+		label = "Fake Laywer Pass",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "fakelawyer.png",
+		}
+	},
+
+	["ramune_watermelon"] = {
+		label = "ramune watermelon",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "ramune_watermelon.png",
+		}
+	},
+
+	["pinkpanthers_flag"] = {
+		label = "Pink Panthers Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Pink Panthers Flag",
+		client = {
+			image = "pinkpanthers_flag.png",
+		}
+	},
+
+	["carpart_hood"] = {
+		label = "Car Hood",
+		weight = 15000,
+		stack = true,
+		close = true,
+		description = "A hood from a vehicle",
+		client = {
+			image = "images/carpart_hood.png",
+		}
+	},
+
+	["origami18"] = {
+		label = "Origami Mouse",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami18.png",
+		}
+	},
+
+	["hlabs_formula"] = {
+		label = "Secret Formula",
+		weight = 1000,
+		stack = false,
+		close = false,
+		description = "You just reminded yourself why you failed chemistry in high school..",
+		client = {
+			image = "hlabs_formula.png",
+		}
+	},
+
+	["mungo_sprouts"] = {
+		label = "mungo sprouts",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "mungo_sprouts.png",
+		}
+	},
+
+	["Tequilala Frozen Hot Wings"] = {
+		label = "Frozen Hot Wings",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Frozen Chicken Wings",
+		client = {
+			image = "teq_frozen_hot_wings.png",
+		}
+	},
+
+	["soy_sauce"] = {
+		label = "soy sauce",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "soy_sauce.png",
+		}
+	},
+
+	["strawberryslushie"] = {
+		label = "Strawberry Slushie",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Strawberry Slushie",
+		client = {
+			image = "strawberryslushie.png",
+		}
+	},
+
+	["margheritabox"] = {
+		label = "Boxed Margherita",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pizzabox.png",
+		}
+	},
+
+	["tequila_shot"] = {
+		label = "Tequila Shot",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A Strong Shot",
+		client = {
+			image = "tequila_shot.png",
+		}
+	},
+
+	["chop_door"] = {
+		label = "Car Door",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "A door from a vehicle",
+		client = {
+			image = "chop_door.png",
+		}
+	},
+
+	["orangesyrup"] = {
+		label = "Orange Syrup",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Orange Syrup For Making Slushies",
+		client = {
+			image = "orangesyrup.png",
+		}
+	},
+
+	["diavolabox"] = {
+		label = "Boxed Diavola",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pizzabox.png",
+		}
+	},
+
+	["brum_embar_pink"] = {
+		label = "Grape flavoured vape from embar",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_embar_pink.png",
+		}
+	},
+
+	["rice_paper"] = {
+		label = "rice paper",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "rice_paper.png",
+		}
+	},
+
+	["Tequilala Hot Wings"] = {
+		label = "Hot Wings",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A plate of Chicken Wings",
+		client = {
+			image = "teq_hot_wings.png",
+		}
+	},
+
+	["brum_starter_green"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_starter_green.png",
+		}
+	},
+
+	["brum_vaperound_pink"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_roundvape_pink.png",
+		}
+	},
+
+	["chocolate"] = {
+		label = "Chocolate",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "Chocolate Bar",
+		client = {
+			image = "chocolate.png",
+		}
+	},
+
+	["lemonlimesyrup"] = {
+		label = "Lemon N Lime Syrup",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Lemon N Lime Syrup For Making Slushies",
+		client = {
+			image = "lemonlimesyrup.png",
+		}
+	},
+
+	["carpart_wheel"] = {
+		label = "Car Wheel",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "A wheel from a vehicle",
+		client = {
+			image = "images/carpart_wheel.png",
+		}
+	},
+
+	["treasuremap"] = {
+		label = "Treasure Map",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "This could lead somewhere...",
+		client = {
+			image = "treasuremap.png",
+		}
+	},
+
+	["pennerosa"] = {
+		label = "Penne Rosa",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pennerosa.png",
+		}
+	},
+
+	["trackeritem"] = {
+		label = "Tracker Disabler",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "A tracking disabler",
+		client = {
+			image = "electronic_kit.png",
+		}
+	},
+
+	["b2a_flag"] = {
+		label = "Belt 2 Ass Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Belt 2 Ass Flag",
+		client = {
+			image = "b2a_flag.png",
+		}
+	},
+
+	["boar1"] = {
+		label = "Boar Carcass",
+		weight = 15000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "boar1.png",
+		}
+	},
+
+	["chicken_sandwich_spicy"] = {
+		label = "Naga Chicken Sandwich",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Spicy as F chicken Sandwich made by Lucky Plucker",
+		client = {
+			image = "sandwichbm2.png",
+		}
+	},
+
+	["vandalz_first_flag"] = {
+		label = "Vandalz First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Vandalz First Flag",
+		client = {
+			image = "vandalz.png",
+		}
+	},
+
+	["alabama_slammer"] = {
+		label = "Alabama Slammer",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A Strong Beverage",
+		client = {
+			image = "alabama_slammer.png",
+		}
+	},
+
+	["ppp_joint"] = {
+		label = "Puff Puff Pass Joint",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Puff Puff Pass Joint",
+		client = {
+			image = "ww_whitewidow_joint.png",
+		}
+	},
+
+	["Tequilala Frozen Mozz Sticks"] = {
+		label = "Frozen Mozz Sticks",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Frozen Mozz Sticks",
+		client = {
+			image = "teq_frozen_mozz_sticks.png",
+		}
+	},
+
+	["breadknife"] = {
+		label = "Bread Knife",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A Sharp Bread Knife",
+		client = {
+			image = "breadknife.png",
+		}
+	},
+
+	["gholfish"] = {
+		label = "Ghol",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "A big Ghol",
+		client = {
+			image = "ghol-fish.png",
+		}
+	},
+
+	["weed_amnesia_cbd_bud"] = {
+		label = "CBD Amnesia Bud",
+		weight = 1200,
+		stack = true,
+		close = false,
+		description = "A bud of CBD Amnesia!",
+		client = {
+			image = "ww_jackherrer_bud.png",
+		}
+	},
+
+	["keepcompanionparrot"] = {
+		label = "Parrot",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Parrot is your royal companion!",
+		client = {
+			image = "keepcompanionparrot.png",
+		}
+	},
+
+	["shrimp_cocktail"] = {
+		label = "Shrimp Cocktail",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "shrimp_cocktail.png",
+		}
+	},
+
+	["beancoffee"] = {
+		label = "Coffe Beans",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "beancoffee.png",
+		}
+	},
+
+	["brum_squank_yellow"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_squank_yellow.png",
+		}
+	},
+
+	["codfish"] = {
+		label = "Cod",
+		weight = 3000,
+		stack = true,
+		close = true,
+		description = "A cody fish",
+		client = {
+			image = "codfish.png",
+		}
+	},
+
+	["bong4"] = {
+		label = "Bong",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A pretty bong",
+		client = {
+			image = "ww_bong.png",
+		}
+	},
+
+	["greenphone"] = {
+		label = "Green Satellite Phone",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A communication device used to contact russian mafia. Be careful trusting them, they've been known to scam!",
+		client = {
+			image = "greenphone.png",
+		}
+	},
+
+	["teacup"] = {
+		label = "Tea Cup",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "teacup.png",
+		}
+	},
+
+	["arabiccoffee"] = {
+		label = "Arabic Coffee",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A traditional Middle Eastern beverage made from lightly roasted coffee beans, brewed in a special pot, known for its rich and aromatic flavor.",
+		client = {
+			image = "latte.png",
+		}
+	},
+
+	["raine"] = {
+		label = "Raine",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "raine.png",
+		}
+	},
+
+	["hbbleeder"] = {
+		label = "Hornys Bleeder",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Hornys Food",
+		client = {
+			image = "bleeder.png",
+		}
+	},
+
+	["alfredo"] = {
+		label = "Alfredo",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "alfredo.png",
+		}
+	},
+
+	["coyote3"] = {
+		label = "Coyote Carcass",
+		weight = 18000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "coyote3.png",
+		}
+	},
+
+	["bread_sticks"] = {
+		label = "Bread Sticks",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "bread_sticks.png ",
+		}
+	},
+
+	["rexshotnuggets"] = {
+		label = "Rex Shot Nuggets",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Burgershot Nuggets",
+		client = {
+			image = "burger-shotnuggets.png",
+		}
+	},
+
+	["chicken_fillet"] = {
+		label = "Chicken Fillet",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Ingredients",
+		client = {
+			image = "chicken_fillet.png",
+		}
+	},
+
+	["pisswasser"] = {
+		label = "Pißwasser",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pisswaser1.png",
+		}
+	},
+
+	["keepcompaniondoberman"] = {
+		label = "Doberman",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Doberman is your royal companion!",
+		client = {
+			image = "doberman.png",
+		}
+	},
+
+	["kq_cocaine_brick"] = {
+		label = "High grade cocaine brick",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "High grade cocaine smuggled into the country",
+		client = {
+			image = "kq_cocaine_brick.png",
+		}
+	},
+
+	["rexshotrings"] = {
+		label = "Rex Ring Shots",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Burgershot Onion Rings",
+		client = {
+			image = "burger-shotrings.png",
+		}
+	},
+
+	["staglager"] = {
+		label = "Stag Lager",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "staglager.png",
+		}
+	},
+
+	["origami15"] = {
+		label = "Origami Dinosaur",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami15.png",
+		}
+	},
+
+	["brum_vaperound_lightblue"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_roundvape_lightblue.png",
+		}
+	},
+
+	["chaitea"] = {
+		label = "Chai Tea",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "Also known as masala chai, is a popular beverage that originated in India. It is a flavorful and aromatic blend of black tea, milk, and a combination of various spices.",
+		client = {
+			image = "chaitea.png",
+		}
+	},
+
+	["efesbeer"] = {
+		label = "Efes Beer",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A well-known Turkish beer brand, offering a refreshing and crisp taste as a pale lager.",
+		client = {
+			image = "efesbeer.png",
+		}
+	},
+
+	["360cctv"] = {
+		label = "360D CCTV Cam",
+		weight = 10000,
+		stack = true,
+		close = true,
+		description = "360 Degree Revolvable CCTV Camera (Manually Placeable)",
+		client = {
+			image = "mcctv.png",
+		}
+	},
+
+	["lpbbqburger"] = {
+		label = "BBQ Burger",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Special BBQ Chicken Burger",
+		client = {
+			image = "lpbbqburger.png",
+		}
+	},
+
+	["vodka_shot"] = {
+		label = "Vodka Shot",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A Strong Shot",
+		client = {
+			image = "vodka_shot.png",
+		}
+	},
+
+	["bloodpack_flag"] = {
+		label = "Blood Pack MC",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Blood Pack Flag",
+		client = {
+			image = "bloodpack_flag.png",
+		}
+	},
+
+	["nredsauce"] = {
+		label = "Red Sauce",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "nredsauce.png",
+		}
+	},
+
+	["keepcompanionbrnbear"] = {
+		label = "Brown Bear",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Brown Bear is your royal companion!",
+		client = {
+			image = "keepcompanionbrnbear.png",
+		}
+	},
+
+	["nsoysauce"] = {
+		label = "Soy Sauce",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "nsoysauce.png",
+		}
+	},
+
+	["fishinglure"] = {
+		label = "Fishing Lure",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "A colorful lure",
+		client = {
+			image = "beginnerlure.png",
+		}
+	},
+
+	["marijuana_1oz_low"] = {
+		label = "1oz marijuana",
+		weight = 500,
+		stack = false,
+		close = false,
+		description = "1oz low grade marijuana",
+		client = {
+			image = "marijuana_1oz_low.png",
+		}
+	},
+
+	["mtlion3"] = {
+		label = "Mountain Lion Carcass",
+		weight = 18000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "mtlion3.png",
+		}
+	},
+
+	["watercan"] = {
+		label = "Watercan",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "insert here",
+		client = {
+			image = "wateringcan.png",
+		}
+	},
+
+	["rice_vinegar"] = {
+		label = "rice vinegar",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "rice_vinegar.png",
+		}
+	},
+
+	["lacosanostra_first_flag"] = {
+		label = "La Cosa Nostra First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "La Cosa Nostra First Flag",
+		client = {
+			image = "lacosanostra_flag.png",
+		}
+	},
+
+	["origami12"] = {
+		label = "Origami Lion",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami12.png",
+		}
+	},
+
+	["minttea"] = {
+		label = "Mint Tea",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A soothing herbal infusion made by steeping mint leaves in hot water, known for its cool and invigorating flavour.",
+		client = {
+			image = "minttea.png",
+		}
+	},
+
+	["maleseed"] = {
+		label = "Male Marijuana Seed",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "Add this to a planted female seed to make it pregnant? You are pretty sure this seed has a penis.",
+		client = {
+			image = "weed-seed.png",
+		}
+	},
+
+	["avocadosmoothie"] = {
+		label = "Avocado Smoothie",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A creamy and nutritious drink made by blending ripe avocados with milk or yogurt, offering a buttery flavor and velvety texture.",
+		client = {
+			image = "avocadosmoothie.png",
+		}
+	},
+
+	["noodlemenu"] = {
+		label = "Noodle Exchange Menu",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "noodlemenu.png",
+		}
+	},
+
+	["bumpton"] = {
+		label = "Bumpton",
+		weight = 0,
+		stack = true,
+		close = false,
+		description = "A jeton to drive a Bumper Car, Bonk!",
+		client = {
+			image = "bumpton.png",
+		}
+	},
+
+	["fishinglure2"] = {
+		label = "Pro Fishing Lure",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "A realistic lure",
+		client = {
+			image = "betterlure.png",
+		}
+	},
+
+	["rawhotdog"] = {
+		label = "Raw Hotdog",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "rawhotdog.png",
+		}
+	},
+
+	["icenugget"] = {
+		label = "Ice Nugget",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "icenugget.png",
+		}
+	},
+
+	["hlabs_chemicals"] = {
+		label = "Unknown Chemical",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Bottles of unknown chemicals, stolen from Humane Labs..",
+		client = {
+			image = "hlabs_chemicals.png",
+		}
+	},
+
+	["bankokcurry"] = {
+		label = "Bankok Curry",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "bankokcurry.png",
+		}
+	},
+
+	["baconroll"] = {
+		label = "Bacon Roll",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "baconroll.png",
+		}
+	},
+
+	["sourdiesel_crop"] = {
+		label = "Sour Diesel Crop",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "Sour Diesel Crop",
+		client = {
+			image = "ww_sourdiesel_crop.png",
+		}
+	},
+
+	["renting_contract"] = {
+		label = "Renting Contract",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "renting_contract.png",
+		}
+	},
+
+	["edible_cchip"] = {
+		label = "Buddy Crocker Chip",
+		weight = 4,
+		stack = true,
+		close = true,
+		description = "Buddy Crockers Homemade Goods",
+		client = {
+			image = "ww_chocochip.png",
+		}
+	},
+
+	["paprika"] = {
+		label = "Paprika",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "paprika.png",
+		}
+	},
+
+	["brum_starter_pink"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_starter_pink.png",
+		}
+	},
+
+	["usb2"] = {
+		label = "Red USB",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "The Blank USB has downloaded a particular encryption marking it red.",
+		client = {
+			image = "usbred.png",
+		}
+	},
+
+	["giftbox"] = {
+		label = "Gift Box",
+		weight = 7000,
+		stack = false,
+		close = true,
+		description = "Welcome to vLifeRP! Here's a little gift for being new to the city :)",
+		client = {
+			image = "startergift.png",
+		}
+	},
+
+	["Tequilala Mozz Sticks"] = {
+		label = "Mozz Sticks",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Mozz Sticks",
+		client = {
+			image = "teq_mozz_sticks.png",
+		}
+	},
+
+	["weed_ak47_cbd_bud"] = {
+		label = "CBD AK 47 Bud",
+		weight = 1200,
+		stack = true,
+		close = false,
+		description = "A bud of CBD AK47!",
+		client = {
+			image = "ww_greencrack_bud.png",
+		}
+	},
+
+	["grilledchickenmozzarella"] = {
+		label = "Grilled Chicken & Mozzarella",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Grilled Chicken & Mozzarella Sandwich",
+		client = {
+			image = "grilledchickenmozzarella.png",
+		}
+	},
+
+	["mdmacard"] = {
+		label = "Lab Keycard",
+		weight = 350,
+		stack = false,
+		close = true,
+		description = "A high tech looking keycard, seems to be for some sort of lab?",
+		client = {
+			image = "mdmacard.png",
+		}
+	},
+
+	["sealed_cache"] = {
+		label = "Sealed Cache",
+		weight = 15000,
+		stack = false,
+		close = false,
+		description = "A heavy and resilient lockbox",
+		client = {
+			image = "sealed_cache.png",
+		}
+	},
+
+	["nwhitesauce"] = {
+		label = "White Sauce",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "nwhitesauce.png",
+		}
+	},
+
+	["mtlion2"] = {
+		label = "Mountain Lion Carcass",
+		weight = 15000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "mtlion2.png",
+		}
+	},
+
+	["gunrackkey"] = {
+		label = "Police Gun Key",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A key to open gun rack",
+		client = {
+			image = "gunrackkey.png",
+		}
+	},
+
+	["cocacola_clear"] = {
+		label = "cocacola clear",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "cocacola_clear.png",
+		}
+	},
+
+	["icecake"] = {
+		label = "Ice Cream Cake",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "icecake.png",
+		}
+	},
+
+	["weed_water"] = {
+		label = "Distilled Water",
+		weight = 1000,
+		stack = true,
+		close = false,
+		description = "Distilled water for your plants",
+		client = {
+			image = "weed_water.png",
+		}
+	},
+
+	["onionseed"] = {
+		label = "Onion Seed",
+		weight = 20,
+		stack = true,
+		close = true,
+		description = "insert here",
+		client = {
+			image = "onionseeds.png",
+		}
+	},
+
+	["meat"] = {
+		label = "Meat",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A slab of Meat",
+		client = {
+			image = "meat.png",
+		}
+	},
+
+	["secured_safe"] = {
+		label = "Safe",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "Meant to protect valuables",
+		client = {
+			image = "secured_safe.png",
+		}
+	},
+
+	["Tequilala Pizza Logs"] = {
+		label = "Pizza Logs",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Pizza Logs",
+		client = {
+			image = "teq_pizzalogs.png",
+		}
+	},
+
+	["origami17"] = {
+		label = "Origami Monkey",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami17.png",
+		}
+	},
+
+	["hunksohen"] = {
+		label = "Hunk o' Hen",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chickenthighs.png",
+		}
+	},
+
+	["tropicalslushie"] = {
+		label = "Tropical Slushie",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Tropical Slushie",
+		client = {
+			image = "tropicalslushie.png",
+		}
+	},
+
+	["oystershell"] = {
+		label = "Oyster Shell",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "oyster.png",
+		}
+	},
+
+	["keepcompanionrobodog"] = {
+		label = "Robo Dog",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Robo Dog is your royal companion!",
+		client = {
+			image = "keepcompanionrobodog.png",
+		}
+	},
+
+	["hunterlicense"] = {
+		label = "Hunting License",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "huntinglicense.png",
+		}
+	},
+
+	["chickentaco"] = {
+		label = "Chicken Taco",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chickentaco.png",
+		}
+	},
+
+	["cereal"] = {
+		label = "Cereal",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Yum! Cereal",
+		client = {
+			image = "ww_cereal.png",
+		}
+	},
+
+	["dolceto"] = {
+		label = "Dolcetto D'Alba",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "dolceto.png",
+		}
+	},
+
+	["kq_plane_hint"] = {
+		label = "Cartel plane hint",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "A hint about a cartel plane",
+		client = {
+			image = "kq_plane_hint.png",
+		}
+	},
+
+	["bunbonambo"] = {
+		label = "Bun bo nam bo",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "bunbonambo.png",
+		}
+	},
+
+	["angelsofdeath_first_flag"] = {
+		label = "Angels of Death First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Angels of Death Flag",
+		client = {
+			image = "angelsofdeath_flag.png",
+		}
+	},
+
+	["brum_starter_lightblue"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_starter_lightblue.png",
+		}
+	},
+
+	["wasabi_paste"] = {
+		label = "wasabi paste",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "wasabi_paste.png",
+		}
+	},
+
+	["ambeer"] = {
+		label = "AM Beer",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "ambeer.png",
+		}
+	},
+
+	["seaweed"] = {
+		label = "Sea Weed",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Ingredients",
+		client = {
+			image = "koi_seaweed.png",
+		}
+	},
+
+	["lpshotfries"] = {
+		label = "LP Shot Fries",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Shot Fries",
+		client = {
+			image = "burger-fries.png",
+		}
+	},
+
+	["fruitcrate"] = {
+		label = "Fruit Crate",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "insert here",
+		client = {
+			image = "emptycrate.png",
+		}
+	},
+
+	["coyote4"] = {
+		label = "Coyote Carcass",
+		weight = 20000,
+		stack = true,
+		close = false,
+		description = "This looks like a protected coyote.",
+		client = {
+			image = "coyote4.png",
+		}
+	},
+
+	["policegunrack"] = {
+		label = "Police Gun Rack",
+		weight = 15000,
+		stack = true,
+		close = true,
+		description = "Gun rack for police vehicles",
+		client = {
+			image = "policegunrack.png",
+		}
+	},
+
+	["cherryslushie"] = {
+		label = "Cherry Slushie",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Cherry Slushie",
+		client = {
+			image = "cherryslushie.png",
+		}
+	},
+
+	["smgbarrel"] = {
+		label = "SMG Barrel",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "The barrel of a SMG",
+		client = {
+			image = "smgbarrel.png",
+		}
+	},
+
+	["smgframe"] = {
+		label = "SMG Frame",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "The frame of a SMG",
+		client = {
+			image = "smgframe.png",
+		}
+	},
+
+	["fakecash"] = {
+		label = "Fake Cash",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "fakecash.png",
+		}
+	},
+
+	["gin_shot"] = {
+		label = "Gin Shot",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A Strong Shot",
+		client = {
+			image = "gin_shot.png",
+		}
+	},
+
+	["methbaggy"] = {
+		label = "Meth Baggie",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "A baggie of Meth",
+		client = {
+			image = "methbag.png",
+		}
+	},
+
+	["lettuceseed"] = {
+		label = "Lettuce Seed",
+		weight = 20,
+		stack = true,
+		close = true,
+		description = "insert here",
+		client = {
+			image = "lettuce_seed.png",
+		}
+	},
+
+	["brum_squank_green"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_squank_green.png",
+		}
+	},
+
+	["sausages"] = {
+		label = "Sausages",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "sausage.png",
+		}
+	},
+
+	["uwubrownplush"] = {
+		label = "Brown Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A brown UwU plush",
+		client = {
+			image = "uwubrownplush.png",
+		}
+	},
+
+	["tennisball"] = {
+		label = "Tennis Ball",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Some fun activities..",
+		client = {
+			image = "tennisball.png",
+		}
+	},
+
+	["carrot"] = {
+		label = "Carrot",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "carrot.png",
+		}
+	},
+
+	["kq_ecstasy"] = {
+		label = "Bag of ecstasy pills",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Decently sized bag of ecstasy pills",
+		client = {
+			image = "kq_ecstasy.png",
+		}
+	},
+
+	["icream"] = {
+		label = "Irish Cream",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A bottle of Irish Cream Liquer",
+		client = {
+			image = "icream.png",
+		}
+	},
+
+	["chickennoodlesoup"] = {
+		label = "Chicken Noodle Soup",
+		weight = 30,
+		stack = true,
+		close = true,
+		description = "Chicken Noodle Soup",
+		client = {
+			image = "chickennoodlesoup.png",
+		}
+	},
+
+	["bluedream_joint"] = {
+		label = "Blue Dream Joint",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Grand Daddy Purple Joint",
+		client = {
+			image = "ww_bluedream_joint.png",
+		}
+	},
+
+	["keepcompanioneagle"] = {
+		label = "Eagle",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Eagle is your royal companion!",
+		client = {
+			image = "keepcompanioneagle.png",
+		}
+	},
+
+	["orangesoda"] = {
+		label = "Orange Soda",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Orange Soda",
+		client = {
+			image = "orangesoda.png",
+		}
+	},
+
+	["chocolatechips"] = {
+		label = "Chocolate Chips",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "Creamy Goodness",
+		client = {
+			image = "ww_chocolatechips.png",
+		}
+	},
+
+	["boar4"] = {
+		label = "Boar Carcass",
+		weight = 20000,
+		stack = true,
+		close = false,
+		description = "This looks like a protected boar.",
+		client = {
+			image = "boar4.png",
+		}
+	},
+
+	["gunkaccino"] = {
+		label = "The Gunkaccino",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "gunkaccino.png",
+		}
+	},
+
+	["rollin60s_first_flag"] = {
+		label = "Rollin 60s First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Rollin 60s First Flag",
+		client = {
+			image = "rolling60s_flag.png",
+		}
+	},
+
+	["teriyaki"] = {
+		label = "Teriyaki",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Ingredients",
+		client = {
+			image = "teriyaki.png",
+		}
+	},
+
+	["origami4"] = {
+		label = "Origami Dragon",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami4.png",
+		}
+	},
+
+	["bronze"] = {
+		label = "Bronze",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A blend of different metals",
+		client = {
+			image = "bronze.png",
+		}
+	},
+
+	["origami7"] = {
+		label = "Origami Phoenix",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami7.png",
+		}
+	},
+
+	["breadsticks"] = {
+		label = "Bread Sticks",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "breadsticks.png",
+		}
+	},
+
+	["marijuana_crop_low"] = {
+		label = "Harvested Crop",
+		weight = 4000,
+		stack = true,
+		close = false,
+		description = "low grade harvested marijuana crop",
+		client = {
+			image = "marijuana_crop_low.png",
+		}
+	},
+
+	["origami21"] = {
+		label = "Origami Wolf",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami21.png",
+		}
+	},
+
+	["cane_sugar"] = {
+		label = "cane sugar",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "cane_sugar.png",
+		}
+	},
+
+	["pisswasser3"] = {
+		label = "Pißwasser Pale Ale",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pisswaser3.png",
+		}
+	},
+
+	["vendettas_flag"] = {
+		label = "Vendettas Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Vendettas Flag",
+		client = {
+			image = "vendettas_flag.png",
+		}
+	},
+
+	["mango"] = {
+		label = "Mango",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "An ingredient",
+		client = {
+			image = "mango.png",
+		}
+	},
+
+	["angelsofdeath_flag"] = {
+		label = "Angels of Death Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Angels of Death Flag",
+		client = {
+			image = "angelsofdeath_flag.png",
+		}
+	},
+
+	["granddaddypurple_crop"] = {
+		label = "Grand Daddy Purple Crop",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "Grand Daddy Purple Crop",
+		client = {
+			image = "ww_granddaddypurple_crop.png",
+		}
+	},
+
+	["tuna-fish"] = {
+		label = "Tuna",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "Chicken of the sea, but fucking massive.",
+		client = {
+			image = "tuna-fish.png",
+		}
+	},
+
+	["highnoon"] = {
+		label = "Highnoon",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "highnoon.png",
+		}
+	},
+
+	["gps-device"] = {
+		label = "Gps Device",
+		weight = 1500,
+		stack = false,
+		close = true,
+		description = "A GPS Tracker",
+		client = {
+			image = "gps-device.png",
+		}
+	},
+
+	["supercivs_first_flag"] = {
+		label = "Super Civilians First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Super Civilians First Flag",
+		client = {
+			image = "supercivs_flag.png",
+		}
+	},
+
+	["bloodpack_first_flag"] = {
+		label = "Blood Pack First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "The Saints MC First Flag",
+		client = {
+			image = "bloodpack_flag.png",
+		}
+	},
+
+	["binoculars2"] = {
+		label = "High-Tech Binoculars",
+		weight = 600,
+		stack = true,
+		close = true,
+		description = "Sneaky Breaky...",
+		client = {
+			image = "binoculars.png",
+		}
+	},
+
+	["sl_rawcoffee"] = {
+		label = "Raw Coffee",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "sl_rawcoffee.png",
+		}
+	},
+
+	["shelled_peanuts"] = {
+		label = "shelled peanuts",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "shelled_peanuts.png",
+		}
+	},
+
+	["liquorkey"] = {
+		label = "Liquor Storeroom",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A curious key with the label 'Liquor Storeroom'.",
+		client = {
+			image = "liquorkey.png",
+		}
+	},
+
+	["mdma"] = {
+		label = "MDMA Compound",
+		weight = 350,
+		stack = true,
+		close = true,
+		description = "A carefully compiled compound of pure Methyl​enedioxy​methamphetamine (MDMA)",
+		client = {
+			image = "mdmacomp.png",
+		}
+	},
+
+	["usb_purple"] = {
+		label = "USB Drive",
+		weight = 1000,
+		stack = true,
+		close = false,
+		description = "A purple USB flash drive",
+		client = {
+			image = "usb_purple.png",
+		}
+	},
+
+	["fishingbait"] = {
+		label = "Fish Bait",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Worm bait!",
+		client = {
+			image = "wormbait.png",
+		}
+	},
+
+	["plate"] = {
+		label = "plate",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "plate.png",
+		}
+	},
+
+	["strawberry_smoothie"] = {
+		label = "Strawberry Smoothie",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "strawberry_smoothie.png",
+		}
+	},
+
+	["brum_squank_blue"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_squank_blue.png",
+		}
+	},
+
+	["orangeslushie"] = {
+		label = "Orange Slushie",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Orange Slushie",
+		client = {
+			image = "orangeslushie.png",
+		}
+	},
+
+	["dried_tuna_katsuobushi"] = {
+		label = "dried tuna katsuobushi",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "dried_tuna_katsuobushi.png",
+		}
+	},
+
+	["cc_icecream"] = {
+		label = "Icecream",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "burger-icecream.png",
+		}
+	},
+
+	["ems_idcard"] = {
+		label = "EMS ID",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "To identify yourself",
+		client = {
+			image = "emscard.png",
+		}
+	},
+
+	["matchatea"] = {
+		label = "Matcha Tea",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "matchatea.png",
+		}
+	},
+
+	["keycuttingmachine"] = {
+		label = "Key Cutting Machine",
+		weight = 40000,
+		stack = true,
+		close = true,
+		description = "A Machine to Cut Keys",
+		client = {
+			image = "keycuttingmachine.png",
+		}
+	},
+
+	["sushi_rice"] = {
+		label = "sushi rice",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "sushi_rice.png",
+		}
+	},
+
+	["chocolate_lover_cake"] = {
+		label = "Chocolate Lovers Cake ",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "A Cake :)",
+		client = {
+			image = "chocolate_lover_cake.png",
+		}
+	},
+
+	["axehandle"] = {
+		label = "Axe Handle",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "axehandle.png",
+		}
+	},
+
+	["weed_skunk_cbd_bud"] = {
+		label = "CBD Skunk Bud",
+		weight = 1200,
+		stack = true,
+		close = false,
+		description = "A bud of CBD Skunk!",
+		client = {
+			image = "ww_afghankush_bud.png",
+		}
+	},
+
+	["goldfish"] = {
+		label = "Goldfish",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "A Goldfish... I wonder how he got there...",
+		client = {
+			image = "goldfish.png",
+		}
+	},
+
+	["keepcompaniondalmatian"] = {
+		label = "Dalmatian",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Dalmatian is your royal companion!",
+		client = {
+			image = "dalmatian.png",
+		}
+	},
+
+	["cranberrysauce"] = {
+		label = "Cranberry Sauce",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Cranberry Sauce",
+		client = {
+			image = "cranberrysauce.png",
+		}
+	},
+
+	["keepcompanionmalelion"] = {
+		label = "Malelion",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Malelion is your royal companion!",
+		client = {
+			image = "keepcompanionmalelion.png",
+		}
+	},
+
+	["largemouthbass"] = {
+		label = "Largemouth Bass",
+		weight = 3000,
+		stack = true,
+		close = true,
+		description = "Fish for Fishing.",
+		client = {
+			image = "largemouthbass.png",
+		}
+	},
+
+	["jerrycan"] = {
+		label = "Jerry Can",
+		weight = 15000,
+		stack = false,
+		close = false,
+		description = "A Jerry Can made to hold gasoline.",
+		client = {
+			image = "jerrycan.png",
+		}
+	},
+
+	["driedbud"] = {
+		label = "Dried Bud (100 Grams)",
+		weight = 200,
+		stack = false,
+		close = false,
+		description = "Pack It?",
+		client = {
+			image = "driedbud.png",
+		}
+	},
+
+	["captainskull"] = {
+		label = "Captain Skull",
+		weight = 4000,
+		stack = true,
+		close = false,
+		description = "An old skull of a captain!",
+		client = {
+			image = "captainskull.png",
+		}
+	},
+
+	["blueberry_juice"] = {
+		label = "Blueberry flavoured juice for you vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape-flavour",
+		client = {
+			image = "blueberry_juice.png",
+		}
+	},
+
+	["safrole"] = {
+		label = "Safrole Powder",
+		weight = 400,
+		stack = true,
+		close = true,
+		description = "An organic powder from crushing up oily leaves.",
+		client = {
+			image = "saspowder.png",
+		}
+	},
+
+	["custarddoughnut"] = {
+		label = "Custard Doughnut",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Custard Doughnut",
+		client = {
+			image = "custarddoughnut.png",
+		}
+	},
+
+	["gpshackingdevice"] = {
+		label = "GPS hacking device",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "If you wish to disable vehicle GPS systems.",
+		client = {
+			image = "gps_hacking_device.png",
+		}
+	},
+
+	["brum_squank_red"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_squank_red.png",
+		}
+	},
+
+	["cannabis"] = {
+		label = "Cannabis",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A Road To Happieness!!",
+		client = {
+			image = "cannabis.png",
+		}
+	},
+
+	["washedbills"] = {
+		label = "Washed Bills",
+		weight = 0,
+		stack = true,
+		close = false,
+		description = "A bag containing soggy dollar bills that need to be dried.",
+		client = {
+			image = "moneybag.png",
+		}
+	},
+
+	["weedbaggie"] = {
+		label = "Baggie (7g)",
+		weight = 1000,
+		stack = true,
+		close = false,
+		description = "Sold on the streets",
+		client = {
+			image = "weedbaggie.png",
+		}
+	},
+
+	["unicornmilk_juice"] = {
+		label = "Unicorn-Milk flavoured juice for you vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape-flavour",
+		client = {
+			image = "unicornmilk_juice.png",
+		}
+	},
+
+	["smallbud"] = {
+		label = "Packed Bud (20 Grams)",
+		weight = 200,
+		stack = false,
+		close = false,
+		description = "Sell It?",
+		client = {
+			image = "smallbud.png",
+		}
+	},
+
+	["weed_pooch"] = {
+		label = "Weed Pooch",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Your description here",
+		client = {
+			image = "weed_pooch.png",
+		}
+	},
+
+	["banhxeo"] = {
+		label = "Banhxeo",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "banhxeo.png",
+		}
+	},
+
+	["okonomiyaki"] = {
+		label = "okonomiyaki",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "okonomiyaki.png",
+		}
+	},
+
+	["goku"] = {
+		label = "Rare Pink Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A rare pink UwU plush",
+		client = {
+			image = "uwupinkrareplush.png",
+		}
+	},
+
+	["uwugreenplush"] = {
+		label = "Green Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A green UwU plush",
+		client = {
+			image = "uwugreenplush.png",
+		}
+	},
+
+	["hunterslogo"] = {
+		label = "Hunters Logo",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "hunterslogo.png",
+		}
+	},
+
+	["empty_cup"] = {
+		label = "Lean cup",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Your description here",
+		client = {
+			image = "empty_cup.png",
+		}
+	},
+
+	["cache_key"] = {
+		label = "Cache Key",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Key used for lock boxes..",
+		client = {
+			image = "cache_key.png",
+		}
+	},
+
+	["strawberryseed"] = {
+		label = "Strawberry Seed",
+		weight = 20,
+		stack = true,
+		close = true,
+		description = "insert here",
+		client = {
+			image = "strawberry_seed.png",
+		}
+	},
+
+	["tequila_bottle"] = {
+		label = "Tequila Bottle",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A fine bottle of tequila",
+		client = {
+			image = "tequila_bottle.png",
+		}
+	},
+
+	["rolled_strawberry_icecream"] = {
+		label = "Rolled Strawberry Icecream",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "rolled_strawberry_icecream.png",
+		}
+	},
+
+	["uwuredplush"] = {
+		label = "Red Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A red UwU plush",
+		client = {
+			image = "uwuredplush.png",
+		}
+	},
+
+	["lp_nagaburger"] = {
+		label = "Naga Chicken burger",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Double Patty Naga Chicken Special Burger",
+		client = {
+			image = "spicycburger.png",
+		}
+	},
+
+	["brum_starter_yellow"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_starter_yellow.png",
+		}
+	},
+
+	["brum_embar_red"] = {
+		label = "Emberry flavoured vape from embar",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_embar_red.png",
+		}
+	},
+
+	["wisconsinmaccheese"] = {
+		label = "Wisconsin Mac & Cheese",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "wisconsinmaccheese.png",
+		}
+	},
+
+	["origami10"] = {
+		label = "Origami Dolphin",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami10.png",
+		}
+	},
+
+	["kiwi_smoothie"] = {
+		label = "Kiwi Smoothies",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "kiwi_smoothie.png",
+		}
+	},
+
+	["greentea"] = {
+		label = "green tea",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "greentea.png",
+		}
+	},
+
+	["ecolalight"] = {
+		label = "eCola Light",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "ecolalight.png",
+		}
+	},
+
+	["bong7"] = {
+		label = "Bong",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A pretty bong",
+		client = {
+			image = "ww_bong.png",
+		}
+	},
+
+	["schweppes"] = {
+		label = "Schweppes",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "schweppes.png",
+		}
+	},
+
+	["gummymould"] = {
+		label = "Gummy Mould",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "A mould for candy making",
+		client = {
+			image = "ww_gummymould.png",
+		}
+	},
+
+	["rextorpedo"] = {
+		label = "Rex Torpedo",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "BurgerShot Torpedo",
+		client = {
+			image = "burger-torpedo.png",
+		}
+	},
+
+	["jamdoughnut"] = {
+		label = "Jam Doughnut",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Jam Doughnut",
+		client = {
+			image = "jamdoughnut.png",
+		}
+	},
+
+	["bb_chain"] = {
+		label = "BB Chain",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "chain_nocap.png",
+		}
+	},
+
+	["brum_squank_grey"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_squank_grey.png",
+		}
+	},
+
+	["weddingcake_bud"] = {
+		label = "Wedding Cake Bud",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Wedding Cake Bud",
+		client = {
+			image = "ww_weddingcake_bud.png",
+		}
+	},
+
+	["origami3"] = {
+		label = "Origami Poop",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami3.png",
+		}
+	},
+
+	["stolentv"] = {
+		label = "Stolen TV",
+		weight = 3000,
+		stack = true,
+		close = false,
+		description = "A stolen 65' Flat Screen Television.",
+		client = {
+			image = "stolenTV.png",
+		}
+	},
+
+	["whiskey_bottle"] = {
+		label = "Whiskey Bottle",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A fine bottle of whiskey",
+		client = {
+			image = "whiskey_bottle.png",
+		}
+	},
+
+	["grapeslushie"] = {
+		label = "Grape Slushie",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Grape Slushie",
+		client = {
+			image = "grapeslushie.png",
+		}
+	},
+
+	["hbmoneyshot"] = {
+		label = "Hornys Money Shot",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Hornys Food",
+		client = {
+			image = "moneyshot.png",
+		}
+	},
+
+	["ygz_flag"] = {
+		label = "Young Gunnaz Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Young Gunnaz Flag",
+		client = {
+			image = "ygz_flag.png",
+		}
+	},
+
+	["origami20"] = {
+		label = "Origami Squirrel",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami20.png",
+		}
+	},
+
+	["nslicedonion"] = {
+		label = "Sliced Onion",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "nslicedonion.png",
+		}
+	},
+
+	["beer_pint"] = {
+		label = "Pint of Beer",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A pint of beer",
+		client = {
+			image = "beer_pint.png",
+		}
+	},
+
+	["var_usb3"] = {
+		label = "Master Key (25%)",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Combine multiple USBs to create a master encryption key.",
+		client = {
+			image = "var_usb.png",
+		}
+	},
+
+	["wings"] = {
+		label = "Plate of Wings",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A plate of Chicken Wings",
+		client = {
+			image = "wings.png",
+		}
+	},
+
+	["mugichatea"] = {
+		label = "mugicha tea",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "mugichatea.png",
+		}
+	},
+
+	["arcadeblue"] = {
+		label = "Blue Arcade Card",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "Blue Arcade Card",
+		client = {
+			image = "arcadeblue.png",
+		}
+	},
+
+	["var_medkit"] = {
+		label = "CPR Medical Kit",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "VAR CPR Kit",
+		client = {
+			image = "firstaid.png",
+		}
+	},
+
+	["picklehornburger"] = {
+		label = "HornBurger Pickle",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pickleburger.png",
+		}
+	},
+
+	["kq_radio_encoder"] = {
+		label = "Radio encoder",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "Device used for encoding radio signal",
+		client = {
+			image = "kq_radio_encoder.png",
+		}
+	},
+
+	["isosafrole"] = {
+		label = "Isosafrole",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "An organic compound that is used in the fragrance industry. Structurally, the molecule is related to phenylpropene, a type of aromatic organic chemical.",
+		client = {
+			image = "isosafrole.png",
+		}
+	},
+
+	["killerwhale"] = {
+		label = "Killer Whale",
+		weight = 7000,
+		stack = true,
+		close = true,
+		description = "This is a whole ass Shamu.",
+		client = {
+			image = "killerwhalemeat.png",
+		}
+	},
+
+	["brum_vaperound_black"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_roundvape_black.png",
+		}
+	},
+
+	["mtlion4"] = {
+		label = "Mountain Lion Carcass",
+		weight = 20000,
+		stack = true,
+		close = false,
+		description = "This looks like a protected mountain lion.",
+		client = {
+			image = "mtlion4.png",
+		}
+	},
+
+	["batman"] = {
+		label = "Rare Pink Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A rare pink UwU plush",
+		client = {
+			image = "uwupinkrareplush.png",
+		}
+	},
+
+	["arcadegold"] = {
+		label = "Gold Arcade Card",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "Gold Arcade Card",
+		client = {
+			image = "arcadegold.png",
+		}
+	},
+
+	["pistolbarrel"] = {
+		label = "Pistol Barrel",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "The barrel of a pistol",
+		client = {
+			image = "pistolbarrel.png",
+		}
+	},
+
+	["lean_bottle"] = {
+		label = "Lean bottle",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Your description here",
+		client = {
+			image = "lean_bottle.png",
+		}
+	},
+
+	["cherrypie"] = {
+		label = "Cherry Pie",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "Only from Bahama Mamas!",
+		client = {
+			image = "cherrypie.png",
+		}
+	},
+
+	["bulletcasing"] = {
+		label = "Bullet Casing",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Used for crafting bullets",
+		client = {
+			image = "bulletcasing.png",
+		}
+	},
+
+	["okonomiyaki_sauce"] = {
+		label = "okonomiyaki sauce",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "okonomiyaki_sauce.png",
+		}
+	},
+
+	["hardcore_boosterpack"] = {
+		label = "Hardcore Booster Pack",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Hardcore Comic Store's Booster Pack",
+		client = {
+			image = "boosterpack.png",
+		}
+	},
+
+	["marinara"] = {
+		label = "Marinara",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "marinara.png",
+		}
+	},
+
+	["treasurechest"] = {
+		label = "Treasure Chest",
+		weight = 5000,
+		stack = false,
+		close = true,
+		description = "Ye, Treasure mighty.",
+		client = {
+			image = "treasurechest.png",
+		}
+	},
+
+	["stomach"] = {
+		label = "Stomach",
+		weight = 1500,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "stomach.png",
+		}
+	},
+
+	["ramen_chicken"] = {
+		label = "Ramen Chicken",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Food",
+		client = {
+			image = "ramen_chicken.png",
+		}
+	},
+
+	["pro-reel"] = {
+		label = "Pro Fishing Reel",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "A professional fishing reel.",
+		client = {
+			image = "pro-reel.png",
+		}
+	},
+
+	["kebab"] = {
+		label = "Kebab",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "Kebab is a mouthwatering dish with origins in the Middle East and various variations found in different cuisines around the world. It typically consists of skewered and grilled or roasted pieces of marinated meat, such as beef, lamb, chicken",
+		client = {
+			image = "kebab.png",
+		}
+	},
+
+	["pescatore"] = {
+		label = "Pescatore",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pescatore.png",
+		}
+	},
+
+	["sugardoughnut"] = {
+		label = "Sugar Doughnut",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Sugar Doughnut",
+		client = {
+			image = "sugardoughnut.png",
+		}
+	},
+
+	["matcha_swiss_plate"] = {
+		label = "Matcha Swiss Plate",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "matcha_swiss_plate.png",
+		}
+	},
+
+	["stolendocs"] = {
+		label = "Stolen Documents",
+		weight = 400,
+		stack = true,
+		close = false,
+		description = "A stolen set of documents.",
+		client = {
+			image = "stolendocuments.png",
+		}
+	},
+
+	["brum_starter_grey"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_starter_grey.png",
+		}
+	},
+
+	["origami13"] = {
+		label = "Origami Turkey",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami13.png",
+		}
+	},
+
+	["brisket"] = {
+		label = "Brisket",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "brisket.png",
+		}
+	},
+
+	["slicedsquash"] = {
+		label = "Sliced Squash",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "slicedsquash.png",
+		}
+	},
+
+	["spongebob"] = {
+		label = "Rare Pink Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A rare pink UwU plush",
+		client = {
+			image = "uwupinkrareplush.png",
+		}
+	},
+
+	["glogang_first_flag"] = {
+		label = "Glo Gang First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Glo Gang First Flag",
+		client = {
+			image = "glogang_flag.png",
+		}
+	},
+
+	["softdrinkscup"] = {
+		label = "Soft Drinks Cup",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Soft Drinks Cup",
+		client = {
+			image = "softdrinkscup.png",
+		}
+	},
+
+	["kitchenknife"] = {
+		label = "Kitchen Knife",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A Sharp Kitchen Knife",
+		client = {
+			image = "kitchenknife.png",
+		}
+	},
+
+	["grilledturkeycranberry"] = {
+		label = "Grilled Turkey & Cranberry",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Grilled Turkey & Cranberry Sandwich",
+		client = {
+			image = "grilledturkeycranberry.png",
+		}
+	},
+
+	["brum_embar_grey"] = {
+		label = "Menthol flavoured vape from embar",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_embar_grey.png",
+		}
+	},
+
+	["cc_first_flag"] = {
+		label = "Crimson Cartel First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Crimson Cartel First Flag",
+		client = {
+			image = "cc_flag.png",
+		}
+	},
+
+	["coke_brick_gang"] = {
+		label = "Coke Brick",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Heavy package of cocaine, mostly used for deals and takes a lot of space",
+		client = {
+			image = "coke_brick.png",
+		}
+	},
+
+	["diamond_ring_mining"] = {
+		label = "Diamond Ring",
+		weight = 1500,
+		stack = true,
+		close = true,
+		description = "A diamond ring from Mining",
+		client = {
+			image = "diamond_ring.png",
+		}
+	},
+
+	["sharwama"] = {
+		label = "Sharwama",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A Middle Eastern dish consisting of thinly sliced marinated meat, often chicken, beef, or lamb, grilled or roasted and typically served in a pita bread wrap with various toppings and sauces.",
+		client = {
+			image = "sharwama.png",
+		}
+	},
+
+	["charmander"] = {
+		label = "Rare Pink Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A rare pink UwU plush",
+		client = {
+			image = "uwupinkrareplush.png",
+		}
+	},
+
+	["brum_embar_green"] = {
+		label = "Doubleapple flavoured vape from embar",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_embar_green.png",
+		}
+	},
+
+	["thequantum_flag"] = {
+		label = "The Quantum Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "The Qunantum Flag",
+		client = {
+			image = "thequantum_flag.png",
+		}
+	},
+
+	["peanutbutter"] = {
+		label = "Peanut Butter",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "Creamy Goodness",
+		client = {
+			image = "ww_peanutbutterr.png",
+		}
+	},
+
+	["bitcoin"] = {
+		label = "BitCoin",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "Coin only used by poweful people!",
+		client = {
+			image = "bitcoin.png",
+		}
+	},
+
+	["maccheese"] = {
+		label = "Mac n Cheese",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A bowl of maccaroni and cheese",
+		client = {
+			image = "maccheese.png",
+		}
+	},
+
+	["keepcompanionpitbull"] = {
+		label = "Pitbull",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Pitbull is your royal companion!",
+		client = {
+			image = "keepcompanionpitbull.png",
+		}
+	},
+
+	["bigfruit"] = {
+		label = "The Big Fruit",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "bigfruit.png",
+		}
+	},
+
+	["brussian"] = {
+		label = "Black Russian",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Black Russian Cocktail",
+		client = {
+			image = "brussian.png",
+		}
+	},
+
+	["dorayaki_plate"] = {
+		label = "Dorayaki plate",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "dorayaki_plate.png",
+		}
+	},
+
+	["kidneys"] = {
+		label = "Kidneys",
+		weight = 1500,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "kidneys.png",
+		}
+	},
+
+	["camviewer"] = {
+		label = "CamViewer",
+		weight = 7000,
+		stack = true,
+		close = true,
+		description = "Remote Camera Viewer and Controller",
+		client = {
+			image = "camviewer.png",
+		}
+	},
+
+	["ngreensauce"] = {
+		label = "Green Chilli Sauce",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "ngreensauce.png",
+		}
+	},
+
+	["rice_noodles"] = {
+		label = "rice noodles",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "rice_noodles.png",
+		}
+	},
+
+	["ncheese"] = {
+		label = "Cheese",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "ncheese.png",
+		}
+	},
+
+	["afghankush_bud"] = {
+		label = "Afghan Kush Bud",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Afghan Kush Bud",
+		client = {
+			image = "ww_afghankush_bud.png",
+		}
+	},
+
+	["carpart_trunk"] = {
+		label = "Car Trunk",
+		weight = 15000,
+		stack = true,
+		close = true,
+		description = "A trunk from a vehicle",
+		client = {
+			image = "images/carpart_trunk.png",
+		}
+	},
+
+	["bong10"] = {
+		label = "Bong",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A pretty bong",
+		client = {
+			image = "ww_bong.png",
+		}
+	},
+
+	["liver"] = {
+		label = "Liver",
+		weight = 1500,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "liver.png",
+		}
+	},
+
+	["hornburger"] = {
+		label = "HornBurger",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "hornburger.png",
+		}
+	},
+
+	["blueraspberrysyrup"] = {
+		label = "Blue Raspberry Syrup",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Blue Raspberry Syrup For Making Slushies",
+		client = {
+			image = "blueraspberrysyrup.png",
+		}
+	},
+
+	["ring"] = {
+		label = "Diamond Ring",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "I wonder what this is worth?",
+		client = {
+			image = "ring.png",
+		}
+	},
+
+	["skateboard"] = {
+		label = "Skateboard",
+		weight = 5000,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "skateboard.png",
+		}
+	},
+
+	["chickenhorn"] = {
+		label = "Chicken Hornstars",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chickhornstars.png",
+		}
+	},
+
+	["brum_vaperound_grey"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_roundvape_grey.png",
+		}
+	},
+
+	["origami1"] = {
+		label = "Origami Scorpion",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami1.png",
+		}
+	},
+
+	["teriyaki_chicken"] = {
+		label = "Teriyaki Chicken",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Food",
+		client = {
+			image = "teriyaki_chicken.png",
+		}
+	},
+
+	["keepcompanionwolf"] = {
+		label = "Wolf",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Wolf is your royal companion!",
+		client = {
+			image = "keepcompanionwolf.png",
+		}
+	},
+
+	["methcase"] = {
+		label = "Shiny Case",
+		weight = 4500,
+		stack = false,
+		close = true,
+		description = "Briefcase full of money",
+		client = {
+			image = "securitycase.png",
+		}
+	},
+
+	["bkamikaze"] = {
+		label = "Blue Kamikaze",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Blue Kamikaze Cocktail",
+		client = {
+			image = "bkamikaze.png",
+		}
+	},
+
+	["bluedream_crop"] = {
+		label = "Blue Dream Crop",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "Blue Dream Crop",
+		client = {
+			image = "ww_bluedream_crop.png",
+		}
+	},
+
+	["japanese_cheesecake"] = {
+		label = "japanese cheesecake",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "japanese_cheesecake.png",
+		}
+	},
+
+	["taserammo"] = {
+		label = "Taser Cartridges",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "No More Spamming. lul",
+		client = {
+			image = "taserammo.png",
+		}
+	},
+
+	["deer3"] = {
+		label = "Deer Carcass",
+		weight = 18000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "deer3.png",
+		}
+	},
+
+	["blueprint_smgs"] = {
+		label = "Blueprint: SMGs",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Blueprints for anything SMG related",
+		client = {
+			image = "blueprint-mac10.png",
+		}
+	},
+
+	["turkishcoffee"] = {
+		label = "Turkish Coffee",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A strong and flavorful coffee preparation method originating from Turkey, made by simmering finely ground coffee beans and water together, often served unfiltered in small cups.",
+		client = {
+			image = "turkishcoffee.png",
+		}
+	},
+
+	["mozzarellacheese"] = {
+		label = "Mozzarella Cheese",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Mozzarella Cheese",
+		client = {
+			image = "mozzarellacheese.png",
+		}
+	},
+
+	["cc_flag"] = {
+		label = "Crimson Cartel Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Crimson Cartel Flag",
+		client = {
+			image = "cc_flag.png",
+		}
+	},
+
+	["brum_embar_lightblue"] = {
+		label = "Bubblegum flavoured vape from embar",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_embar_lightblue.png",
+		}
+	},
+
+	["recycleables"] = {
+		label = "Recycleables",
+		weight = 1500,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "recycleables.png",
+		}
+	},
+
+	["skill-reel"] = {
+		label = "Skill Fishing Reel",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "A skilled fishing reel.",
+		client = {
+			image = "skill-reel.png",
+		}
+	},
+
+	["brain"] = {
+		label = "Brain",
+		weight = 1500,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "brain.png",
+		}
+	},
+
+	["brum_vaperound_blue"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_roundvape_blue.png",
+		}
+	},
+
+	["slicedtomato"] = {
+		label = "Sliced Tomato",
+		weight = 500,
+		stack = true,
+		close = false,
+		description = "Sliced Onion",
+		client = {
+			image = "slicedtomato.png",
+		}
+	},
+
+	["logger"] = {
+		label = "Logger Beer",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "logger.png",
+		}
+	},
+
+	["pasta"] = {
+		label = "Bag of Pasta",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A bag of Pasta",
+		client = {
+			image = "pasta.png",
+		}
+	},
+
+	["packagedmeth"] = {
+		label = "Raw Meth",
+		weight = 1000,
+		stack = true,
+		close = false,
+		description = "Meth Drugs, Hmmmmmm.....",
+		client = {
+			image = "meth_tray.png",
+		}
+	},
+
+	["squirtle"] = {
+		label = "Rare Pink Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A rare pink UwU plush",
+		client = {
+			image = "uwupinkrareplush.png",
+		}
+	},
+
+	["medfruits"] = {
+		label = "Fresh Fruit Medly",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "medfruits.png",
+		}
+	},
+
+	["bluedream_bud"] = {
+		label = "Blue Dream Bud",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Blue Dream Bud",
+		client = {
+			image = "ww_bluedream_bud.png",
+		}
+	},
+
+	["baby_water"] = {
+		label = "Baby Water",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "Baby Water",
+		client = {
+			image = "baby_water.png",
+		}
+	},
+
+	["weed_zkittlez_cbd_bud"] = {
+		label = "CBD Zkittlez Bud",
+		weight = 1200,
+		stack = true,
+		close = false,
+		description = "A bud of CBD Zkittlez!",
+		client = {
+			image = "ww_granddaddypurple_bud.png",
+		}
+	},
+
+	["grilledbaconavocado"] = {
+		label = "Grilled Bacon & Avocado",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Grilled Bacon & Avocado Sandwich",
+		client = {
+			image = "grilledbaconavocado.png",
+		}
+	},
+
+	["pisswasser2"] = {
+		label = "Pißwasser Stout",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pisswaser2.png",
+		}
+	},
+
+	["hbfries"] = {
+		label = "Hornys French Fries",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Hornys Food",
+		client = {
+			image = "fries.png",
+		}
+	},
+
+	["bleachwipes"] = {
+		label = "Bleach Wipes",
+		weight = 25,
+		stack = true,
+		close = true,
+		description = "To clean and sanatize",
+		client = {
+			image = "bleachwipes.png",
+		}
+	},
+
+	["jd_flag"] = {
+		label = "Jade Dragons Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Jade Dragons Flag",
+		client = {
+			image = "jd_flag.png",
+		}
+	},
+
+	["greencrack_joint"] = {
+		label = "Green Crack Joint",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Green Crack Joint",
+		client = {
+			image = "ww_greencrack_joint.png",
+		}
+	},
+
+	["iflag"] = {
+		label = "Irish Flag",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Irish Flag Cocktail",
+		client = {
+			image = "iflag.png",
+		}
+	},
+
+	["dblchickenhornburger"] = {
+		label = "DBL Chicken HornBurger",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "dblchickenburger.png",
+		}
+	},
+
+	["goldchain_mining"] = {
+		label = "Golden Chain",
+		weight = 1500,
+		stack = true,
+		close = true,
+		description = "A golden chain from Mining",
+		client = {
+			image = "goldchain.png",
+		}
+	},
+
+	["margherita"] = {
+		label = "Margherita",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "margherita.png",
+		}
+	},
+
+	["syphoningkit"] = {
+		label = "Syphoning Kit",
+		weight = 5000,
+		stack = false,
+		close = false,
+		description = "A kit made to siphon gasoline from vehicles.",
+		client = {
+			image = "syphoningkit.png",
+		}
+	},
+
+	["weedbud"] = {
+		label = "Weed Bud",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A small 2g weed bud..",
+		client = {
+			image = "weedbud.png",
+		}
+	},
+
+	["bluefish"] = {
+		label = "Bluefish",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "One fish two fish redfish...",
+		client = {
+			image = "bluefish.png",
+		}
+	},
+
+	["turfoption"] = {
+		label = "Turf Options",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "turfoption.png",
+		}
+	},
+
+	["keepcompanionsparrow"] = {
+		label = "Sparrow",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Sparrow is your royal companion!",
+		client = {
+			image = "keepcompanionsparrow.png",
+		}
+	},
+
+	["origami16"] = {
+		label = "Origami Butterfly",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami16.png",
+		}
+	},
+
+	["fakedrivelicence"] = {
+		label = "Fake Drivers Licence",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "fakedriver.png",
+		}
+	},
+
+	["cookedbacon"] = {
+		label = "Crispy Bacon",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "crispy bacon",
+		client = {
+			image = "cookedbacon.png",
+		}
+	},
+
+	["ballasbandana"] = {
+		label = "Ballas Bandana",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Ballas Gang Bandana",
+		client = {
+			image = "ballasbandana.png",
+		}
+	},
+
+	["witches_brew"] = {
+		label = "Witches Brew",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A Strong Beverage",
+		client = {
+			image = "witches_brew.png",
+		}
+	},
+
+	["junkdrink"] = {
+		label = "Junk",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "junkdrink.png",
+		}
+	},
+
+	["dusche"] = {
+		label = "Dusche Gold",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "dusche.png",
+		}
+	},
+
+	["sourapple_juice"] = {
+		label = "Sour-Apple flavoured juice for you vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape-flavour",
+		client = {
+			image = "sourapple_juice.png",
+		}
+	},
+
+	["origami2"] = {
+		label = "Origami Spider",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami2.png",
+		}
+	},
+
+	["var_usb2"] = {
+		label = "Master Key (25%)",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Combine multiple USBs to create a master encryption key.",
+		client = {
+			image = "var_usb.png",
+		}
+	},
+
+	["nezuko"] = {
+		label = "Rare Pink Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A rare pink UwU plush",
+		client = {
+			image = "uwupinkrareplush.png",
+		}
+	},
+
+	["prosciuttio"] = {
+		label = "Prosciuttio E Funghi",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "proscuttio.png",
+		}
+	},
+
+	["boostingtablet"] = {
+		label = "Boosting tablet",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Seems like something's installed on this.",
+		client = {
+			image = "tablet1.png",
+		}
+	},
+
+	["shovel"] = {
+		label = "Flag Removal Shovel",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Used to destroy/remove flags",
+		client = {
+			image = "30gang_flag.png",
+		}
+	},
+
+	["origami19"] = {
+		label = "Origami Cockatiel",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami19.png",
+		}
+	},
+
+	["apple_juice"] = {
+		label = "Apple flavoured juice for you vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape-flavour",
+		client = {
+			image = "apple_juice.png",
+		}
+	},
+
+	["mdmabulk"] = {
+		label = "Pressed MDMA Pills",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A pile of freshly pressed MDMA pills.",
+		client = {
+			image = "mdmapills.png",
+		}
+	},
+
+	["uwupurpleplush"] = {
+		label = "Purple Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A purple UwU plush",
+		client = {
+			image = "uwupurpleplush.png",
+		}
+	},
+
+	["soba_noodles"] = {
+		label = "soba_ oodles",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "soba_noodles.png",
+		}
+	},
+
+	["tripleburger"] = {
+		label = "The Triple Burger",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "tripleburger.png",
+		}
+	},
+
+	["balbazar"] = {
+		label = "Rare Pink Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A rare pink UwU plush",
+		client = {
+			image = "uwupinkrareplush.png",
+		}
+	},
+
+	["sesame_seeds"] = {
+		label = "sesame seeds",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "sesame_seeds.png",
+		}
+	},
+
+	["kungpao"] = {
+		label = "kungpao",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "kungpao.png",
+		}
+	},
+
+	["edible_ricecrispy"] = {
+		label = "Buddy Crocker Crispy",
+		weight = 4,
+		stack = true,
+		close = true,
+		description = "Buddy Crockers Homemade Goods",
+		client = {
+			image = "ww_crispytreat.png",
+		}
+	},
+
+	["licenseplate"] = {
+		label = "Plate Changer",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Donator Car plate Changer",
+		client = {
+			image = "fake_plate.png",
+		}
+	},
+
+	["menthol_juice"] = {
+		label = "Menthol flavoured juice for you vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape-flavour",
+		client = {
+			image = "menthol_juice.png",
+		}
+	},
+
+	["glass_cutter"] = {
+		label = "Glass Cutter",
+		weight = 2500,
+		stack = true,
+		close = true,
+		description = "A glass cutter to cut glass",
+		client = {
+			image = "glass_cutter.png",
+		}
+	},
+
+	["moneygm_flag"] = {
+		label = "Money Gang Mafia Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Money Gang Mafia Flag",
+		client = {
+			image = "moneygm_flag.png",
+		}
+	},
+
+	["keepcompanionyounghorse"] = {
+		label = "Younghorse",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Young Horse is your royal companion!",
+		client = {
+			image = "keepcompanionhorse.png",
+		}
+	},
+
+	["jd_first_flag"] = {
+		label = "Jade Dragons First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Jade Dragons First Flag",
+		client = {
+			image = "jd_flag.png",
+		}
+	},
+
+	["yellow_pepper"] = {
+		label = "yellow_pepper",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "yellow_pepper.png",
+		}
+	},
+
+	["grill_chicken"] = {
+		label = "Grilled Chicken",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "grill_chicken.png",
+		}
+	},
+
+	["hc_card3"] = {
+		label = "Test Card 3",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "This is just a test package",
+		client = {
+			image = "tex.png",
+		}
+	},
+
+	["gb_first_flag"] = {
+		label = "Ghetto Boyz First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Ghetto Boyz First Flag",
+		client = {
+			image = "gb_flag.png",
+		}
+	},
+
+	["cheeseslice"] = {
+		label = "Cheese Slice",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Cheese Slice",
+		client = {
+			image = "cheeseslice.png",
+		}
+	},
+
+	["sprite"] = {
+		label = "sprite",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "sprite.png",
+		}
+	},
+
+	["rawbacon"] = {
+		label = "Raw Bacon",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "rawbacon.png",
+		}
+	},
+
+	["bzshell"] = {
+		label = "BZ Shell",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "The casing of a gas grenade",
+		client = {
+			image = "bzshell.png",
+		}
+	},
+
+	["puremdma"] = {
+		label = "Pure MDMA",
+		weight = 250,
+		stack = true,
+		close = true,
+		description = "Solidified pure Methyl​enedioxy​methamphetamine (MDMA)",
+		client = {
+			image = "puremdma.png",
+		}
+	},
+
+	["stolencase"] = {
+		label = "Stolen Case",
+		weight = 2500,
+		stack = true,
+		close = false,
+		description = "A stolen suit case.",
+		client = {
+			image = "stolensuitcase.png",
+		}
+	},
+
+	["strawberry_juice"] = {
+		label = "Strawberry flavoured juice for you vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape-flavour",
+		client = {
+			image = "strawberry_juice.png",
+		}
+	},
+
+	["boar2"] = {
+		label = "Boar Carcass",
+		weight = 20000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "boar2.png",
+		}
+	},
+
+	["boilermaker"] = {
+		label = "Boilermaker",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A Strong Shot",
+		client = {
+			image = "boilermaker.png",
+		}
+	},
+
+	["steak"] = {
+		label = "Steak",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "steak.png",
+		}
+	},
+
+	["bolognese"] = {
+		label = "Bolognese",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "bolognese.png",
+		}
+	},
+
+	["noodle"] = {
+		label = "Noodle",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Ingredients",
+		client = {
+			image = "noodles.png",
+		}
+	},
+
+	["gummy_belt"] = {
+		label = "Herrer Belts",
+		weight = 4,
+		stack = true,
+		close = true,
+		description = "Sour Belts with a Twist",
+		client = {
+			image = "ww_rainbowbelts.png",
+		}
+	},
+
+	["glogang_flag"] = {
+		label = "Glo Gang Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Glo Gang Flag",
+		client = {
+			image = "glogang_flag.png",
+		}
+	},
+
+	["patrickstar"] = {
+		label = "Rare Pink Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A rare pink UwU plush",
+		client = {
+			image = "uwupinkrareplush.png",
+		}
+	},
+
+	["white_cabbage"] = {
+		label = "white cabbage",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "white_cabbage.png",
+		}
+	},
+
+	["sweetcorn"] = {
+		label = "Sweetcorn",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Sweetcorn",
+		client = {
+			image = "sweetcorn.png",
+		}
+	},
+
+	["bullettip"] = {
+		label = "Bullet Tip",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Used for crafting bullets",
+		client = {
+			image = "bullettip.png",
+		}
+	},
+
+	["mtlion1"] = {
+		label = "Mountain Lion Carcass",
+		weight = 10000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "mtlion1.png",
+		}
+	},
+
+	["soba"] = {
+		label = "soba",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "soba.png",
+		}
+	},
+
+	["keepcompaniongreyhound"] = {
+		label = "Greyhound",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Greyhound is your royal companion!",
+		client = {
+			image = "keepcompaniongreyhound.png",
+		}
+	},
+
+	["redphone"] = {
+		label = "Red Satellite Phone",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A communication device used to contact russian mafia. Be careful trusting them, they've been known to scam!",
+		client = {
+			image = "redphone.png",
+		}
+	},
+
+	["powersaw"] = {
+		label = "Power Saw",
+		weight = 1000,
+		stack = false,
+		close = false,
+		description = "",
+		client = {
+			image = "powersaw.png",
+		}
+	},
+
+	["chickenhornburger"] = {
+		label = "Chicken HornBurger",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chickenburger.png",
+		}
+	},
+
+	["yachtcodes"] = {
+		label = "Yacht Access Codes",
+		weight = 200,
+		stack = false,
+		close = true,
+		description = "The first half of codes for the Yacht",
+		client = {
+			image = "yachtcodes.png",
+		}
+	},
+
+	["var_usb1"] = {
+		label = "Master Key (25%)",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Combine multiple USBs to create a master encryption key.",
+		client = {
+			image = "var_usb.png",
+		}
+	},
+
+	["potato_starch"] = {
+		label = "potato starch",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "potato_starch.png",
+		}
+	},
+
+	["blazeit_joint"] = {
+		label = "Blazing Joint",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Blaze It's Blazing Joint",
+		client = {
+			image = "ww_whitewidow_joint.png",
+		}
+	},
+
+	["blackspades_flag"] = {
+		label = "Black Spades Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Black Spades Flag",
+		client = {
+			image = "blackspades_flag.png",
+		}
+	},
+
+	["baby_medikit"] = {
+		label = "Baby Medikit",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "Baby Medikit",
+		client = {
+			image = "baby_medikit.png",
+		}
+	},
+
+	["brum_starter_blue"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_starter_blue.png",
+		}
+	},
+
+	["housewhite"] = {
+		label = "House White Wine",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "housewhite.png",
+		}
+	},
+
+	["atomfries"] = {
+		label = "Atom Fries",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "atomfries.png",
+		}
+	},
+
+	["keepcompanionpdk9"] = {
+		label = "Police K9 Officer",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Police K9 Officer is your royal companion!",
+		client = {
+			image = "pdk9.png",
+		}
+	},
+
+	["pistolframe"] = {
+		label = "Pistol Frame",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "The frame of a pistol",
+		client = {
+			image = "pistolframe.png",
+		}
+	},
+
+	["avocado"] = {
+		label = "Avocado",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "avocado.png",
+		}
+	},
+
+	["gummy_applering"] = {
+		label = "Green Crack Gummy",
+		weight = 4,
+		stack = true,
+		close = true,
+		description = "There is no Crack in this Gummy stop asking",
+		client = {
+			image = "ww_greenapplegummies.png",
+		}
+	},
+
+	["yellow-diamond"] = {
+		label = "Canary Diamond",
+		weight = 3000,
+		stack = true,
+		close = true,
+		description = "Yellow is truly, truly, truly gorgeous..",
+		client = {
+			image = "yellow-diamond.png",
+		}
+	},
+
+	["tropicalsyrup"] = {
+		label = "Tropical Syrup",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Tropical Syrup For Making Slushies",
+		client = {
+			image = "tropicalsyrup.png",
+		}
+	},
+
+	["creamyshake"] = {
+		label = "Extra Creamy Jumbo Shake",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "atomshake.png",
+		}
+	},
+
+	["chickenfillet"] = {
+		label = "Chicken Fillets",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chickenbreasts.png",
+		}
+	},
+
+	["weed_gelato_cbd_bud"] = {
+		label = "CBD Gelato Bud",
+		weight = 1200,
+		stack = true,
+		close = false,
+		description = "A bud of CBD Gelato!",
+		client = {
+			image = "ww_weddingcake_bud.png",
+		}
+	},
+
+	["vcorporation_idcard"] = {
+		label = "VCorporation ID",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "To identify yourself",
+		client = {
+			image = "card_id.png",
+		}
+	},
+
+	["boltcutters2"] = {
+		label = "Bolt Cutters",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "A sturdy set of pliers, used primarily for cutting through reinforced steel.",
+		client = {
+			image = "boltcutters.png",
+		}
+	},
+
+	["spice_pooch"] = {
+		label = "Spice Pooch",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Your description here",
+		client = {
+			image = "spice_pooch.png",
+		}
+	},
+
+	["heart"] = {
+		label = "Heart",
+		weight = 1500,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "heart.png",
+		}
+	},
+
+	["chicken_kebab"] = {
+		label = "Chicken Kebab",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chicken_kebab.png",
+		}
+	},
+
+	["lungs"] = {
+		label = "Lungs",
+		weight = 1500,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "lungs.png",
+		}
+	},
+
+	["caesar_salad"] = {
+		label = "Caesar Salad",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "caesar_salad.png",
+		}
+	},
+
+	["kq_ivory"] = {
+		label = "Smuggled ivory",
+		weight = 1500,
+		stack = true,
+		close = true,
+		description = "Expensive fur, most likely smuggled",
+		client = {
+			image = "kq_ivory.png",
+		}
+	},
+
+	["vpn"] = {
+		label = "VPN",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Hmm",
+		client = {
+			image = "greenchip.png",
+		}
+	},
+
+	["dorayaki"] = {
+		label = "Dorayaki",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "dorayaki.png",
+		}
+	},
+
+	["hornbreakfast"] = {
+		label = "Horny's Breakfast",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "bangers.png",
+		}
+	},
+
+	["tunachunks"] = {
+		label = "Tuna Chunks",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Tuna Chunks",
+		client = {
+			image = "tunachunks.png",
+		}
+	},
+
+	["cigarette"] = {
+		label = "Cigarette",
+		weight = 250,
+		stack = true,
+		close = true,
+		description = "Smokeable Tobacco",
+		client = {
+			image = "cigarette.png",
+		}
+	},
+
+	["gin_bottle"] = {
+		label = "Gin Bottle",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A fine bottle of gin",
+		client = {
+			image = "gin_bottle.png",
+		}
+	},
+
+	["chop_hood"] = {
+		label = "Car Hood",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "A hood from a vehicle",
+		client = {
+			image = "chop_hood.png",
+		}
+	},
+
+	["var_usb5"] = {
+		label = "Master Key (100%)",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Master Key to access encrypted data.",
+		client = {
+			image = "var_usb.png",
+		}
+	},
+
+	["tr_first_flag"] = {
+		label = "The Reapers First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "The Reapers First Flag",
+		client = {
+			image = "tr_flag.png",
+		}
+	},
+
+	["tillie"] = {
+		label = "Tillie Mae",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "The Tillie Mae Special",
+		client = {
+			image = "tillie.png",
+		}
+	},
+
+	["thequantum_first_flag"] = {
+		label = "The Qunantum First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "The Qunantum First Flag",
+		client = {
+			image = "thequantum_flag.png",
+		}
+	},
+
+	["chop_trunk"] = {
+		label = "Car Trunk",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "A trunk from a vehicle",
+		client = {
+			image = "chop_trunk.png",
+		}
+	},
+
+	["stolenlaptop"] = {
+		label = "Stolen Laptop",
+		weight = 1000,
+		stack = true,
+		close = false,
+		description = "A stolen Macbook.",
+		client = {
+			image = "laptop1.png",
+		}
+	},
+
+	["fish"] = {
+		label = "Fish",
+		weight = 1000,
+		stack = true,
+		close = false,
+		description = "A Catfish",
+		client = {
+			image = "fish.png",
+		}
+	},
+
+	["gummy_blueberry"] = {
+		label = "Blue Dream Gummy",
+		weight = 4,
+		stack = true,
+		close = true,
+		description = "A hazy Blue Dream Gummy",
+		client = {
+			image = "ww_blueberrygummies.png",
+		}
+	},
+
+	["large_drill"] = {
+		label = "Large Drill",
+		weight = 20000,
+		stack = true,
+		close = false,
+		description = "A Large Drill, good at cracking Secure Locks.",
+		client = {
+			image = "large_drill.png",
+		}
+	},
+
+	["b52"] = {
+		label = "B-52",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "B-52 Cocktail",
+		client = {
+			image = "b52.png",
+		}
+	},
+
+	["koi_soda"] = {
+		label = "Koi's Soda",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Drink",
+		client = {
+			image = "soda.png",
+		}
+	},
+
+	["tr_flag"] = {
+		label = "The Reapers Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "The Reapers Flag",
+		client = {
+			image = "tr_flag.png",
+		}
+	},
+
+	["weaponrepairkit"] = {
+		label = "Weapon repair kit",
+		weight = 2000,
+		stack = false,
+		close = true,
+		description = "A repair kit for your weapon. Not meant for permanent repairs.",
+		client = {
+			image = "weaponrepairkit.png",
+		}
+	},
+
+	["red_pepper"] = {
+		label = "red pepper",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "red_pepper.png",
+		}
+	},
+
+	["gummy_grape"] = {
+		label = "Grand Daddy Purp Gummy",
+		weight = 4,
+		stack = true,
+		close = true,
+		description = "Grand Daddy of Gummies",
+		client = {
+			image = "ww_grapegummies.png",
+		}
+	},
+
+	["sourdiesel_bud"] = {
+		label = "Sour Diesel Bud",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Sour Diesel Bud",
+		client = {
+			image = "ww_sourdiesel_bud.png",
+		}
+	},
+
+	["granddaddypurple_bud"] = {
+		label = "Grand Daddy Purple Bud",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Grand Daddy Purple Bud",
+		client = {
+			image = "ww_granddaddypurple_bud.png",
+		}
+	},
+
+	["radiator"] = {
+		label = "Car Radiator",
+		weight = 10000,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "car_radiator.png",
+		}
+	},
+
+	["cappucc"] = {
+		label = "Cappuccinotini",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Cappuccinotini Cocktail",
+		client = {
+			image = "cappucc.png",
+		}
+	},
+
+	["chillimince"] = {
+		label = "Chillimince",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chillimince.png",
+		}
+	},
+
+	["keepcompanionvulture"] = {
+		label = "Vulture",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Vulture is your royal companion!",
+		client = {
+			image = "keepcompanionvulture.png",
+		}
+	},
+
+	["udon"] = {
+		label = "udon",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "udon.png",
+		}
+	},
+
+	["gb_jay_chain"] = {
+		label = "Jay GB Chain",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "chain_nocap.png",
+		}
+	},
+
+	["rplate"] = {
+		label = "Ribs Plate",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A plate of Ribs",
+		client = {
+			image = "rplate.png",
+		}
+	},
+
+	["capricciosabox"] = {
+		label = "Boxed Capriccosa",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pizzabox.png",
+		}
+	},
+
+	["chocolatecupcake"] = {
+		label = "Chocolate Cupcake",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Chocolate Cupcake",
+		client = {
+			image = "chocolatecupcake.png",
+		}
+	},
+
+	["crutch"] = {
+		label = "Crutch",
+		weight = 650,
+		stack = true,
+		close = true,
+		description = "A device used to assist with walking.",
+		client = {
+			image = "crutch.png",
+		}
+	},
+
+	["weed_og-kush_cbd_bud"] = {
+		label = "CBD OG Kush Bud",
+		weight = 1200,
+		stack = true,
+		close = false,
+		description = "A bud of CBD OG Kush",
+		client = {
+			image = "ww_bluedream_bud.png",
+		}
+	},
+
+	["sushi"] = {
+		label = "Sushi",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Food",
+		client = {
+			image = "sushi.png",
+		}
+	},
+
+	["tagine"] = {
+		label = "Tagine",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A traditional North African dish named after the earthenware pot in which it is cooked. It features a unique combination of tender, slow-cooked meats (such as lamb, chicken, or beef) or vegetables, simmered with aromatic spices, dried fruits, and preserved lemons.",
+		client = {
+			image = "tagine.png",
+		}
+	},
+
+	["cctv"] = {
+		label = "CCTV Cam",
+		weight = 5000,
+		stack = true,
+		close = true,
+		description = "Single Heading CCTV Camera (Manually Placeable)",
+		client = {
+			image = "nmcctv.png",
+		}
+	},
+
+	["eggs"] = {
+		label = "eggs",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "eggs.png",
+		}
+	},
+
+	["oppsnd_first_flag"] = {
+		label = "Opps Next Door First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Opps Next Door First Flag",
+		client = {
+			image = "oppsnd_flag.png",
+		}
+	},
+
+	["copper_wires"] = {
+		label = "Copper Wires",
+		weight = 1000,
+		stack = true,
+		close = false,
+		description = "Some copper wiring, good for conducting electricity..",
+		client = {
+			image = "copper_wires.png",
+		}
+	},
+
+	["brum_squank_lightblue"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_squank_lightblue.png",
+		}
+	},
+
+	["rexfrozennugget"] = {
+		label = "Rex Frozen Nuggets",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "Bag of Frozen Nuggets",
+		client = {
+			image = "burger-frozennugget.png",
+		}
+	},
+
+	["beef_leg"] = {
+		label = "Beef Leg",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "beef_leg.png",
+		}
+	},
+
+	["ramune_original"] = {
+		label = "ramune original",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "ramune_original.png",
+		}
+	},
+
+	["grilled_salmon"] = {
+		label = "Grilled Salmon",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "grilled_salmon.png",
+		}
+	},
+
+	["deer1"] = {
+		label = "Deer Carcass",
+		weight = 10000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "deer1.png",
+		}
+	},
+
+	["brum_vaperound_red"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_roundvape_red.png",
+		}
+	},
+
+	["tomato_soup"] = {
+		label = "Tomato Soup",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "tomato_soup.png",
+		}
+	},
+
+	["beer_glass"] = {
+		label = "Beer Glass",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "An Empty Beer Glass",
+		client = {
+			image = "beer_glass.png",
+		}
+	},
+
+	["mayonese"] = {
+		label = "mayonese",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "mayonese.png",
+		}
+	},
+
+	["vodka_bottle"] = {
+		label = "Vodka Bottle",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A fine bottle of Vodka",
+		client = {
+			image = "vodka_bottle.png",
+		}
+	},
+
+	["turkey"] = {
+		label = "Turkey",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Turkey",
+		client = {
+			image = "turkey.png",
+		}
+	},
+
+	["grapple"] = {
+		label = "Grapple Gun",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Where are you?",
+		client = {
+			image = "grapple.png",
+		}
+	},
+
+	["mdp2p"] = {
+		label = "MDP2P",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A chemical compound consisting of a phenylacetone moiety substituted with a methylenedioxy functional group.",
+		client = {
+			image = "mdp2p.png",
+		}
+	},
+
+	["edible_peanutcookie"] = {
+		label = "Buddy Peanutbutter Cookie",
+		weight = 4,
+		stack = true,
+		close = true,
+		description = "Buddy Crockers Homemade Goods",
+		client = {
+			image = "ww_peanutbutter.png",
+		}
+	},
+
+	["meth_pooch"] = {
+		label = "Meth Pooch",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Your description here",
+		client = {
+			image = "meth_pooch.png",
+		}
+	},
+
+	["coyote2"] = {
+		label = "Coyote Carcass",
+		weight = 15000,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "coyote2.png",
+		}
+	},
+
+	["origami5"] = {
+		label = "Origami Unicorn",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami5.png",
+		}
+	},
+
+	["breadslice"] = {
+		label = "Slice of Bread",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "breadslice.png",
+		}
+	},
+
+	["eggsbenedict"] = {
+		label = "Eggs Benedict",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "eggbene.png",
+		}
+	},
+
+	["chocolatebar"] = {
+		label = "Chocolate Bar",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Chocolate Bar",
+		client = {
+			image = "chocolatebar.png",
+		}
+	},
+
+	["faffel"] = {
+		label = "Faffel",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A flavorful and popular Middle Eastern dish consisting of crispy, deep-fried or baked patties made from ground chickpeas or fava beans.",
+		client = {
+			image = "faffel.png",
+		}
+	},
+
+	["spray"] = {
+		label = "Spray Can",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "spray.png",
+		}
+	},
+
+	["fertilizer"] = {
+		label = "Fertilizer",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Cool",
+		client = {
+			image = "fertilizer.png",
+		}
+	},
+
+	["carpart_door"] = {
+		label = "Car Door",
+		weight = 15000,
+		stack = true,
+		close = true,
+		description = "A door from a vehicle",
+		client = {
+			image = "images/carpart_door.png",
+		}
+	},
+
+	["stolenbust"] = {
+		label = "Stolen Bust",
+		weight = 3000,
+		stack = true,
+		close = false,
+		description = "An expensive looking sculpture, very heavy and looks like it is quite old.",
+		client = {
+			image = "stolenbust.png",
+		}
+	},
+
+	["woowoo"] = {
+		label = "Woo Woo",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Woowoo Cocktail",
+		client = {
+			image = "woowoo.png",
+		}
+	},
+
+	["brocoli"] = {
+		label = "brocoli",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "brocoli.png",
+		}
+	},
+
+	["cocktails_glass"] = {
+		label = "Cocktail Glass",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "An Empty Cocktail Glass",
+		client = {
+			image = "cocktails_glass.png",
+		}
+	},
+
+	["brum_embar_black"] = {
+		label = "Blackberry flavoured vape from embar",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_embar_black.png",
+		}
+	},
+
+	["nrawpasta2"] = {
+		label = "Tagliatelle Pasta",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "nrawpasta.png",
+		}
+	},
+
+	["intestines"] = {
+		label = "Intestines",
+		weight = 1500,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "intestines.png",
+		}
+	},
+
+	["rexmeatfree"] = {
+		label = "Rex Meat Free",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Meat Free",
+		client = {
+			image = "burger-meatfree.png",
+		}
+	},
+
+	["alla"] = {
+		label = "Alla Vodka",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "alla.png",
+		}
+	},
+
+	["rexbscoffee"] = {
+		label = "Rex Coffee",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "BurgerShot Coffee",
+		client = {
+			image = "burger-coffee.png",
+		}
+	},
+
+	["chocolatedoughnut"] = {
+		label = "Chocolate Doughnut",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Chocolate Doughnut",
+		client = {
+			image = "chocolatedoughnut.png",
+		}
+	},
+
+	["coaldust"] = {
+		label = "Coal Dust",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "Pulverized Coal",
+		client = {
+			image = "coaldust.png",
+		}
+	},
+
+	["weld"] = {
+		label = "Weld",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "For Weling metals",
+		client = {
+			image = "gunframe.png",
+		}
+	},
+
+	["amarone"] = {
+		label = "Amarone",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "amarone.png",
+		}
+	},
+
+	["stingraymeat"] = {
+		label = "Stingray",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "Stingray Meat",
+		client = {
+			image = "stingraymeat.png",
+		}
+	},
+
+	["passionfruitpunch"] = {
+		label = "passionfruitpunch",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "passionfruitpunch.png",
+		}
+	},
+
+	["nshrimp"] = {
+		label = "Shrimp Packet",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "nshrimp.png",
+		}
+	},
+
+	["bratte"] = {
+		label = "The Bratte",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "bratte.png",
+		}
+	},
+
+	["turmeric"] = {
+		label = "turmeric",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "turmeric.png",
+		}
+	},
+
+	["chestkey"] = {
+		label = "Key",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "A gold key.",
+		client = {
+			image = "chestkey.png",
+		}
+	},
+
+	["nrawpasta"] = {
+		label = "Raw Pasta",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "nrawpasta.png",
+		}
+	},
+
+	["basketball_hoop"] = {
+		label = "Basketball Hoop",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "Place anywhere and play basketball wherever you want",
+		client = {
+			image = "basketball_hoop.png",
+		}
+	},
+
+	["rollin60s_flag"] = {
+		label = "Rollin 60s Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Rollin 60s Flag",
+		client = {
+			image = "rollin60s_flag.png",
+		}
+	},
+
+	["brum_embar_blue"] = {
+		label = "Blueberry flavoured vape from embar",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_embar_blue.png",
+		}
+	},
+
+	["japanese_cheesecake_plate"] = {
+		label = "Japanese Cheesecake Plate",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "japanese_cheesecake_plate.png",
+		}
+	},
+
+	["eelfish"] = {
+		label = "Eel",
+		weight = 4000,
+		stack = true,
+		close = true,
+		description = "An eel.. pretty useless.",
+		client = {
+			image = "eelfish.png",
+		}
+	},
+
+	["sourdiesel_joint"] = {
+		label = "Sour Diesel Joint",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Sour Diesel Joint",
+		client = {
+			image = "ww_sourdiesel_joint.png",
+		}
+	},
+
+	["weed_untrimmed"] = {
+		label = "Untreamed Weed",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Untreamed Weed",
+		client = {
+			image = "weed_untrimmed.png",
+		}
+	},
+
+	["ecgonine"] = {
+		label = "Ecgonine",
+		weight = 4000,
+		stack = true,
+		close = false,
+		description = "Ecgonine (tropane derivative) is a tropane alkaloid",
+		client = {
+			image = "ecgonine.png",
+		}
+	},
+
+	["pickle"] = {
+		label = "Pickle",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A jar of Pickles",
+		client = {
+			image = "pickle.png",
+		}
+	},
+
+	["jackherrer_bud"] = {
+		label = "Jack Herrer Bud",
+		weight = 2,
+		stack = true,
+		close = false,
+		description = "Jack Herrer Bud",
+		client = {
+			image = "ww_jackherrer_bud.png",
+		}
+	},
+
+	["swordfish"] = {
+		label = "Sword Fish",
+		weight = 3000,
+		stack = true,
+		close = true,
+		description = "This has a giant ass needle for a face.",
+		client = {
+			image = "swordfish.png",
+		}
+	},
+
+	["slicedbacon"] = {
+		label = "Sliced Bacon",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Sliced Bacon",
+		client = {
+			image = "slicedbacon.png",
+		}
+	},
+
+	["koi_milkshake"] = {
+		label = "Koi's Milkshake",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Drink",
+		client = {
+			image = "milkshake.png",
+		}
+	},
+
+	["trimmers"] = {
+		label = "Trimming Shears",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "High quality trimming shears.",
+		client = {
+			image = "ww_shears.png",
+		}
+	},
+
+	["cherrysyrup"] = {
+		label = "Cherry Syrup",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Cherry Syrup For Making Slushies",
+		client = {
+			image = "cherrysyrup.png",
+		}
+	},
+
+	["spaghettimeatballs"] = {
+		label = "Spaghetti & Meatballs",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "spaghettimeatballs.png",
+		}
+	},
+
+	["slicedbread"] = {
+		label = "Sliced Bread",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Fresh Sliced Bread",
+		client = {
+			image = "slicedbread.png",
+		}
+	},
+
+	["leek"] = {
+		label = "leek",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "leek.png",
+		}
+	},
+
+	["deer4"] = {
+		label = "Deer Carcass",
+		weight = 20000,
+		stack = true,
+		close = false,
+		description = "This looks like a protected deer.",
+		client = {
+			image = "deer4.png",
+		}
+	},
+
+	["uwu_mysterybox"] = {
+		label = "UWU Mystery Box",
+		weight = 150,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "uwu_mysterybox.png",
+		}
+	},
+
+	["peanut_butter"] = {
+		label = "peanut butter",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "peanut_butter.png",
+		}
+	},
+
+	["bong3"] = {
+		label = "Bong",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "A pretty bong",
+		client = {
+			image = "ww_bong.png",
+		}
+	},
+
+	["potatoseed"] = {
+		label = "Potato Seed",
+		weight = 20,
+		stack = true,
+		close = true,
+		description = "insert here",
+		client = {
+			image = "potatoseeds.png",
+		}
+	},
+
+	["tomatoseed"] = {
+		label = "Tomato Seed",
+		weight = 20,
+		stack = true,
+		close = true,
+		description = "insert here",
+		client = {
+			image = "tomato_seed.png",
+		}
+	},
+
+	["margarita"] = {
+		label = "Margarita",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "A Strong Beverage",
+		client = {
+			image = "margarita.png",
+		}
+	},
+
+	["ramen_hot"] = {
+		label = "Ramen Hot",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "Food",
+		client = {
+			image = "ramen_hot.png",
+		}
+	},
+
+	["mozz"] = {
+		label = "Mozzeralla",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "mozz.png",
+		}
+	},
+
+	["grilledhalloumi"] = {
+		label = "Grilled Halloumi",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "A versatile cheese dish from Cyprus, featuring semi-hard halloumi cheese grilled to develop a golden-brown crust while maintaining a soft, slightly melted interior.",
+		client = {
+			image = "grilledhalloumi.png",
+		}
+	},
+
+	["cardhat"] = {
+		label = "Cardboard Box",
+		weight = 100,
+		stack = false,
+		close = false,
+		description = "",
+		client = {
+			image = "cardhat.png",
+		}
+	},
+
+	["double_cup"] = {
+		label = "Double cup",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Your description here",
+		client = {
+			image = "double_cup.png",
+		}
+	},
+
+	["wateringcan"] = {
+		label = "Watering Can",
+		weight = 1000,
+		stack = false,
+		close = false,
+		description = "Fill this at a river or lake.",
+		client = {
+			image = "wateringcan.png",
+		}
+	},
+
+	["sprayremover"] = {
+		label = "Spray Remover",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "sprayremover.png",
+		}
+	},
+
+	["kq_tobacco"] = {
+		label = "Smuggled tobacco",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "Tobacco smuggled into the country",
+		client = {
+			image = "kq_tobacco.png",
+		}
+	},
+
+	["frenchtoastbacon"] = {
+		label = "French Toast Bacon",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "frenchbacon.png",
+		}
+	},
+
+	["chickensalad"] = {
+		label = "Chicken Salad",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chickensalad.png",
+		}
+	},
+
+	["keepcompanionlepoard"] = {
+		label = "Lepoard",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Lepoard is your royal companion!",
+		client = {
+			image = "keepcompanionlepoard.png",
+		}
+	},
+
+	["origami9"] = {
+		label = "Origami Whale",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami9.png",
+		}
+	},
+
+	["blueraspberryslushie"] = {
+		label = "Blue Raspberry Slushie",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Blue Raspberry Slushie",
+		client = {
+			image = "blueraspberryslushie.png",
+		}
+	},
+
+	["trackerdisabler"] = {
+		label = "Tracker Disabler",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "What is this?",
+		client = {
+			image = "hacking_device.png",
+		}
+	},
+
+	["driedbills"] = {
+		label = "Dried Bills",
+		weight = 0,
+		stack = true,
+		close = false,
+		description = "An uncounted stack of dried dollar bills.",
+		client = {
+			image = "driedbills.png",
+		}
+	},
+
+	["leo-gps"] = {
+		label = "LEO GPS",
+		weight = 2000,
+		stack = false,
+		close = true,
+		description = "Show your gps location to others",
+		client = {
+			image = "leo-gps.png",
+		}
+	},
+
+	["cannabutter"] = {
+		label = "Cannabutter",
+		weight = 1,
+		stack = true,
+		close = true,
+		description = "This butter sure do smell funny",
+		client = {
+			image = "ww_cannabutter.png",
+		}
+	},
+
+	["hashbrowns"] = {
+		label = "Hash Browns",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "hashbrown.png",
+		}
+	},
+
+	["mhf_first_flag"] = {
+		label = "Mad Hatter Family First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Mad Hatters Family First Flag",
+		client = {
+			image = "mhf_flag.png",
+		}
+	},
+
+	["cucumber"] = {
+		label = "Cucumber",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "cucumber.png",
+		}
+	},
+
+	["methlab"] = {
+		label = "Lab",
+		weight = 15000,
+		stack = true,
+		close = false,
+		description = "A portable Meth Lab",
+		client = {
+			image = "lab.png",
+		}
+	},
+
+	["grilledcheese"] = {
+		label = "Grilled Cheese",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Grilled Cheese Sandwich",
+		client = {
+			image = "grilledcheese.png",
+		}
+	},
+
+	["scotch"] = {
+		label = "Scotch",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A bottle of Scotch",
+		client = {
+			image = "scotch.png",
+		}
+	},
+
+	["crushedice"] = {
+		label = "Crushed Ice",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Crushed Ice For Making Slushies",
+		client = {
+			image = "crushedice.png",
+		}
+	},
+
+	["oxy-box"] = {
+		label = "Drug Package",
+		weight = 15000,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "oxy-box.png",
+		}
+	},
+
+	["spicy_lobster"] = {
+		label = "Spicy Lobster",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "spicy_lobster.png",
+		}
+	},
+
+	["spring_rolls"] = {
+		label = "spring rolls",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "spring_rolls.png",
+		}
+	},
+
+	["moneygm_first_flag"] = {
+		label = "Money Gang Mafia First Flag",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "Money Gang Mafia First Flag",
+		client = {
+			image = "moneygm_flag.png",
+		}
+	},
+
+	["brum_squank_black"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_squank_black.png",
+		}
+	},
+
+	["housered"] = {
+		label = "House Red Wine",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "housered.png",
+		}
+	},
+
+	["wheeltoken"] = {
+		label = "Lucky Wheel Token",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "token init jj love you all except cops...",
+		client = {
+			image = "token.png",
+		}
+	},
+
+	["brum_starter_red"] = {
+		label = "Refillable vape",
+		weight = 1000,
+		stack = true,
+		close = true,
+		description = "vape",
+		client = {
+			image = "brum_starter_red.png",
+		}
+	},
+
+	["debarkedlog"] = {
+		label = "Debarked Log",
+		weight = 100,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "debarkedlog.png",
+		}
+	},
+
+	["nrawmeat"] = {
+		label = "Raw Meat Packet",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "nrawmeat.png",
+		}
+	},
+
+	["emsmdt"] = {
+		label = "EMS MDT",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "Expensive mdt",
+		client = {
+			image = "emsmdt.png",
+		}
+	},
+
+	["uwupinkrareplush"] = {
+		label = "Rare Pink Plush",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A rare pink UwU plush",
+		client = {
+			image = "uwupinkrareplush.png",
+		}
+	},
+
+	["gyokuro"] = {
+		label = "Gyokuro",
+		weight = 50,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "gyokuro.png",
+		}
+	},
+
+	["croutons"] = {
+		label = "Croutons",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "croutons.png",
+		}
+	},
+
+	["arcadegreen"] = {
+		label = "Green Arcade Card",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "Green Arcade Card",
+		client = {
+			image = "arcadegreen.png",
+		}
+	},
+
+	["slushiecup"] = {
+		label = "Slushie Cup",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "A Cup Used For Making Slushies!",
+		client = {
+			image = "slushiecup.png",
+		}
+	},
+
+	["ramune_strawberry"] = {
+		label = "ramune strawberry",
+		weight = 1,
+		stack = true,
+		close = false,
+		description = "",
+		client = {
+			image = "ramune_strawberry.png",
+		}
+	},
+
+	["rollingpaper"] = {
+		label = "Rolling Paper",
+		weight = 5,
+		stack = true,
+		close = true,
+		description = "Required to roll joints!",
+		client = {
+			image = "rollingpaper.png",
+		}
+	},
+
+	["origami11"] = {
+		label = "Origami Bunny",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "",
+		client = {
+			image = "origami11.png",
+		}
+	},
+
+	["mwkey"] = {
+		label = "Laundry Key",
+		weight = 200,
+		stack = false,
+		close = false,
+		description = "A curious looking key with no discernable markings or inscriptions? Wonder what this is for?",
+		client = {
+			image = "mwkey.png",
+		}
+	},
+
+	["edible_snickerdoodle"] = {
+		label = "Buddy Crocker Doodle",
+		weight = 4,
+		stack = true,
+		close = true,
+		description = "Buddy Crockers Homemade Goods",
+		client = {
+			image = "ww_snickerdoodle.png",
 		}
 	},
 }
