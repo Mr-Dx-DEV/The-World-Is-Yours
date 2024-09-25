@@ -241,8 +241,36 @@ Config.BlacklistedVehs = {
     [`ruiner2`] = true,
     [`deluxo`] = true,
     [`cargoplane2`] = true,
-    [`voltic2`] = true
+    [`voltic2`] = true,
+
+    -- Added Vehicles
+    [`issi3`] = true,
+    [`issi4`] = true,
+    [`issi5`] = true,
+    [`issi6`] = true,
+    [`dominator4`] = true,
+    [`dominator5`] = true,
+    [`dominator6`] = true,
+    [`dukes2`] = true,
+    [`imperator2`] = true,
+    [`imperator3`] = true,
+    [`caracara`] = true,
+    [`deluxo`] = true,
+    [`jb700`] = true,
+    [`toreador`] = true,
+    [`blazer5`] = true,
+    [`ruiner2`] = true,
+    [`ardent`] = true,
+    [`stromberg`] = true,
+    [`viseris`] = true,
+    [`impaler2`] = true,
+    [`impaler3`] = true,
+    [`impaler4`] = true,
+    [`deathbike2`] = true,
+    [`deathbike3`] = true,
+    [`boxville5`] = true
 }
+
 
 Config.BlacklistedWeapons = {
     [`WEAPON_RAILGUN`] = true,
