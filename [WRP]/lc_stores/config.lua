@@ -704,10 +704,10 @@ Config.market_types = {
 		},
 		['max_purchasable_categories'] = 4,		-- The max amount of categories that can be purchased
 		['categories'] = {						-- Here you configure the categories available to purchase in your store
-			"electronics_market"
+			"electronics_market", "phones_market"
 		},
 		['default_categories'] = {				-- Here you can configure the categories available when the store has no owner
-			"electronics_market"
+			"electronics_market", "phones_market"
 		},
 		['blips'] = {							-- Create the blips on map
 			['id'] = 816,						-- Blip ID [Set this value 0 to dont have blip]
