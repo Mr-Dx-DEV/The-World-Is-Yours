@@ -40,6 +40,11 @@ Location.Enter = function(lastLocation, isNew)
 
     if not Config.Showcase then
         if Config.Framework == "QBCore" and Location.EnableApartments then
+            Core.Functions.TriggerCallback('apartments:GetOwnedApartment', function(result)
+                if result then
+                    TriggerEvent("apartments:client:SetHomeBlip", result.type)
+                end
+            end)
             local awaiting = true
             if isNew then
                 if AparmentsLocations ~= nil then
@@ -227,6 +232,9 @@ Location.SpawnPlayer = function(info, isNew)
         if Config.Showcase then
             Citizen.Wait(1000)
             SetNuiFocus(false, false)
+        end
+        if not Location.Enable then
+            TriggerEvent("17mov_CharacterSystem:PlayerSpawned", isNew)
         end
     end)
 end

@@ -220,12 +220,21 @@ RegisterNetEvent("17mov_CharacterSystem:OpenOutfitsMenu", function()
             })
         end
 
+        if #Elements == 0 then
+            table.insert(Elements, {
+                label = _L("Bridge.Wardrobe.NoOutfits"), exit = true
+            })
+        end
+
         Core?.UI.Menu.Open("default", GetCurrentResourceName(), "Example_Menu", {
             title = _L("Bridge.Wardrobe.SelectOutfit"),
             align    = 'center',
             elements = Elements
         }, function(data,menu)
             menu.close();
+            if data.current.exit then
+                return menu.close()
+            end
             Core?.UI.Menu.Open("default", GetCurrentResourceName(), "Example_Menu", {
                 title = data.current.label,
                 align    = 'center',

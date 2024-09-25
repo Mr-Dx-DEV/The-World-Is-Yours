@@ -1,8 +1,10 @@
 if Skin.Enabled then
     function RegisterIlleniumExport(name, func)
-        RegisterNetEvent(string.format("__cfx_export_illenium-%s", name), func)
+        RegisterNetEvent(string.format("__cfx_export_illenium-appearance_%s", name), function(setCB)
+            setCB(func)
+        end)
     end
-    
+
     RegisterIlleniumExport("getPedModel", function(ped)
         local PlayerSkin = Skin.ConstructFromPed(ped)
         return TranslateHashToString(PlayerSkin.model)
@@ -108,7 +110,7 @@ if Skin.Enabled then
         local PlayerSkin = Skin.ConstructFromPed(ped)
         local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
 
-        for i=1, #IlleniumDataFormat.components do
+        for i = 1, #IlleniumDataFormat.components do
             local CurrentComponent = IlleniumDataFormat.components[i]
             if CurrentComponent.component_id == data.component_id then
                 CurrentComponent.drawable = data.drawable
@@ -123,8 +125,8 @@ if Skin.Enabled then
         local PlayerSkin = Skin.ConstructFromPed(ped)
         local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
 
-        for i=1, #IlleniumDataFormat.components do
-            for i2=1, #data do
+        for i = 1, #IlleniumDataFormat.components do
+            for i2 = 1, #data do
                 local CurrentComponent = IlleniumDataFormat.components[i]
                 if CurrentComponent.component_id == data[i2].component_id then
                     CurrentComponent.drawable = data[i2].drawable
@@ -140,7 +142,7 @@ if Skin.Enabled then
         local PlayerSkin = Skin.ConstructFromPed(ped)
         local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
 
-        for i=1, #IlleniumDataFormat.props do
+        for i = 1, #IlleniumDataFormat.props do
             local CurrentComponent = IlleniumDataFormat.props[i]
             if CurrentComponent.prop_id == data.prop_id then
                 CurrentComponent.drawable = data.drawable
@@ -155,8 +157,8 @@ if Skin.Enabled then
         local PlayerSkin = Skin.ConstructFromPed(ped)
         local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
 
-        for i=1, #IlleniumDataFormat.props do
-            for i2=1, #data do
+        for i = 1, #IlleniumDataFormat.props do
+            for i2 = 1, #data do
                 local CurrentComponent = IlleniumDataFormat.props[i]
                 if CurrentComponent.prop_id == data[i2].prop_id then
                     CurrentComponent.drawable = data[i2].drawable
@@ -166,40 +168,40 @@ if Skin.Enabled then
         end
 
         Skin.SetOnPed(ped, TranslateSkinFromIllenium(IlleniumDataFormat, PlayerSkin.model))
+    end)
 
-        RegisterIlleniumExport("setPedProps", function(ped, data)
-            local PlayerSkin = Skin.ConstructFromPed(ped)
-            local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
+    RegisterIlleniumExport("setPedProps", function(ped, data)
+        local PlayerSkin = Skin.ConstructFromPed(ped)
+        local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
 
-            for i=1, #IlleniumDataFormat.props do
-                for i2=1, #data do
-                    local CurrentComponent = IlleniumDataFormat.props[i]
-                    if CurrentComponent.prop_id == data[i2].prop_id then
-                        CurrentComponent.drawable = data[i2].drawable
-                        CurrentComponent.texture = data[i2].texture
-                    end
+        for i = 1, #IlleniumDataFormat.props do
+            for i2 = 1, #data do
+                local CurrentComponent = IlleniumDataFormat.props[i]
+                if CurrentComponent.prop_id == data[i2].prop_id then
+                    CurrentComponent.drawable = data[i2].drawable
+                    CurrentComponent.texture = data[i2].texture
                 end
             end
+        end
 
-            Skin.SetOnPed(ped, TranslateSkinFromIllenium(IlleniumDataFormat, PlayerSkin.model))
-        end)
+        Skin.SetOnPed(ped, TranslateSkinFromIllenium(IlleniumDataFormat, PlayerSkin.model))
+    end)
 
-        RegisterIlleniumExport("setPlayerAppearance", function(IlleniumDataFormat)
-            Skin.SetOnPed(PlayerPedId(), TranslateSkinFromIllenium(IlleniumDataFormat, IlleniumDataFormat.model))
-        end)
+    RegisterIlleniumExport("setPlayerAppearance", function(IlleniumDataFormat)
+        Skin.SetOnPed(PlayerPedId(), TranslateSkinFromIllenium(IlleniumDataFormat, IlleniumDataFormat.model))
+    end)
 
-        RegisterIlleniumExport("setPedAppearance", function(ped, IlleniumDataFormat)
-            Skin.SetOnPed(ped, TranslateSkinFromIllenium(IlleniumDataFormat, IlleniumDataFormat.model))
-        end)
+    RegisterIlleniumExport("setPedAppearance", function(ped, IlleniumDataFormat)
+        Skin.SetOnPed(ped, TranslateSkinFromIllenium(IlleniumDataFormat, IlleniumDataFormat.model))
+    end)
 
-        RegisterIlleniumExport("setPedTattoos", function(ped, data)
-            local PlayerSkin = Skin.ConstructFromPed(ped)
-            local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
+    RegisterIlleniumExport("setPedTattoos", function(ped, data)
+        local PlayerSkin = Skin.ConstructFromPed(ped)
+        local IlleniumDataFormat = TranslateSkinToIllenium(PlayerSkin)
 
-            IlleniumDataFormat.tattoos = data
+        IlleniumDataFormat.tattoos = data
 
-            Skin.SetOnPed(ped, TranslateSkinFromIllenium(IlleniumDataFormat, PlayerSkin.model))
-        end)
+        Skin.SetOnPed(ped, TranslateSkinFromIllenium(IlleniumDataFormat, PlayerSkin.model))
     end)
 end
 
@@ -216,7 +218,8 @@ RegisterNetEvent("17mov_CharacterSystem:PlayerSpawned", function(isNew)
                 TriggerEvent("qb-clothes:client:CreateFirstCharacter")
             end
         else
-            Functions.Print("Player spawned but 17Movement Skin menu has been disabled. Please configure ur own in /bridge/illenium.lua:210")
+            Functions.Print(
+            "Player spawned but 17Movement Skin menu has been disabled. Please configure ur own in /bridge/illenium.lua:210")
         end
     end
 end)

@@ -10,6 +10,7 @@ Locale["pl"] = {
     ["Bridge.Wardrobe.DeleteOutfit"] = "Usuń Outift",
     ["Bridge.Wardrobe.ChooseOutfit"] = "Wybierz Outift",
     ["Bridge.Wardrobe.StartingOutfit"] = "Startowy Outfit",
+    ["Bridge.Wardrobe.NoOutfits"] = "Nie masz żadnych zapisnych strojów",
     ["Bridge.Command.Skin"] = "Skin Menu",
     ["Bridge.Command.SkinId"] = "ID Gracza",
 

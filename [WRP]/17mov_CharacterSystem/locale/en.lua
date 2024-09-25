@@ -10,6 +10,7 @@ Locale["en"] = {
     ["Bridge.Wardrobe.DeleteOutfit"] = "Delete Outift",
     ["Bridge.Wardrobe.ChooseOutfit"] = "Choose Outift",
     ["Bridge.Wardrobe.StartingOutfit"] = "Starting Outfit",
+    ["Bridge.Wardrobe.NoOutfits"] = "You don't have any outfits",
     ["Bridge.Command.Skin"] = "Skin Menu",
     ["Bridge.Command.SkinId"] = "Player ID",
 
@@ -17,10 +18,10 @@ Locale["en"] = {
     ["Store.barber.BlipLabel"] = "Barber",
     ["Store.surgeon.BlipLabel"] = "Surgeon",
     ["Store.tattoo.BlipLabel"] = "Tattoo Shop",
-    ["Store.Use"] = "Clothing Store",
+    ["Store.Use"] = "Press ~INPUT_CONTEXT~ to use service ~g~[$%s]",
     ["Store.NotEnoughMoney"] = "You don't have enough money",
 
-    ["OutfitChanger.Use"] = "Outfits Section",
+    ["OutfitChanger.Use"] = "Press ~INPUT_CONTEXT~ to browse your outfits",
     ["OutfitChanger.NoOutfits"] = "You don't have any saved outfits",
     ["ClothingRoom.Use"] = "Press ~INPUT_CONTEXT~ to toggle duty outfit",
     ["ClothingRoom.NoOutfit"] = "There's no item prepeared for your job's grade",

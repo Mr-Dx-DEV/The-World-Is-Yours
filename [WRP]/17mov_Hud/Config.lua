@@ -35,7 +35,7 @@ Config.BigRadarKey = nil        -- You can add possiblity to open big radar when
 Config.ShowRadarIfHidden = true -- If radar is hidden and you set Config.BigRadarKey then key also show radar
 
 -- Stress system
-Config.EnableStress = true           -- Use build-in stress system
+Config.EnableStress = false           -- Use build-in stress system
 Config.AddStressWhileShooting = true -- Should add stress while shooting?
 Config.StressingSpeed = 100          -- Speed above which you start to get stressed
 Config.MinimumStressForEffects = 50  -- Minimum Stress amount to start effects

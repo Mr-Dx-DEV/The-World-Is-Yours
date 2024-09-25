@@ -1,3 +1,5 @@
+if not Skin.Enabled then return end
+
 -- Code taken and refactored from qb-core.
 function AddBlip(coordinates, sprite, color, scale, label)
     local clothingShop = AddBlipForCoord(coordinates.x, coordinates.y, coordinates.z)
@@ -23,21 +25,21 @@ CreateThread(function()
                     ---@diagnostic disable-next-line: assign-type-mismatch
                     Config.Stores[k].ped = GetHashKey(v.ped)
                 end
-    
+
                 Functions.LoadModel(v.ped)
-    
+
                 local ped = CreatePed(0, v.ped, v.coords.x, v.coords.y, v.coords.z, v.coords.w, false, true)
                 FreezeEntityPosition(ped, true)
                 SetBlockingOfNonTemporaryEvents(ped, true)
                 SetEntityInvincible(ped, true)
-    
+
                 Config.Stores[k].spawnedPed = ped
-    
+
                 if Config.UseTarget then
                     while AddTargetStorePed == nil do
                         Wait(100)
                     end
-    
+
                     AddTargetStorePed(ped, v.shopType, k)
                 end
             end)
@@ -154,7 +156,6 @@ RegisterNetEvent("17mov_CharacterSystem:client:OpenClothingRoom", function(job, 
                     }
                 })
             end
-
 
             exports["qb-menu"]:openMenu(data)
         elseif Config.Framework == "ESX" then
