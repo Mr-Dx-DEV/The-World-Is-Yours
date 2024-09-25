@@ -36,11 +36,15 @@ Config.ShowRadarIfHidden = true -- If radar is hidden and you set Config.BigRada
 
 -- Stress system
 Config.EnableStress = true           -- Use build-in stress system
-Config.AddStressWhileShooting = false -- Should add stress while shooting?
-Config.StressingSpeed = 150          -- Speed above which you start to get stressed
-Config.MinimumStressForEffects = 100  -- Minimum Stress amount to start effects
+Config.AddStressWhileShooting = true -- Should add stress while shooting?
+Config.StressingSpeed = 100          -- Speed above which you start to get stressed
+Config.MinimumStressForEffects = 50  -- Minimum Stress amount to start effects
+Config.WhtielistedWeapons = {        -- Here you can add some weapon models that "bypassing" stress system (not adding stress while shooting)
+    -- Just add weapons models like bellow:
+    -- `weapon_pistol`,
+}
 
-Config.EnableRadarZoom = true       -- If your minimap is blurred, set this to true.
+Config.EnableRadarZoom = false       -- If your minimap is blurred, set this to true.
 Config.RadarZoom = 1000              -- Radar Zoom
 
 Config.ComponentsToHide = { 2, 6, 7, 8, 9, 22 }
@@ -157,6 +161,7 @@ Config.DefaultColors = {
 Config.EnableSettings = true
 Config.CommandString = "openHudSettings"
 Config.Settings = {
+    ["scale"] = true,
     ["positions"] = true,
     ["colors"] = true,
     ["theme"] = true,
@@ -191,6 +196,7 @@ Config.DefaultSettings = {
     ['SpeedUnits'] = "kmh",    -- Values: ['kmh', 'mph']. Default speed units. (NOTE: DO NO TOUCH! Sets automatically from Config.UseMPH)
     ['Map'] = "inCar",         -- Values: [true, false, 'inCar']. When radar should be displayed
     ['CinematicMode'] = false, -- Values: [true, false]. Is that CinematicMode enabled
+    ['Scale'] = 50,     -- Values: <0, 100>. Default HUD scale
     ['NotifyVolume'] = 50,     -- Values: <0, 100>. Default notifications sounds volume
     ['healthAndVest'] = true,  -- Values: [true, <0,1>]. Displaying Health and Vest componenets. True - show always. Number - Show only is lower than
     ['food'] = true,           -- Values: [true, <0,1>]. Displaying Hunger and Thirt componenet. True - show always. Number - Show only is lower than
@@ -283,6 +289,8 @@ Config.Lang = {
     ["NUI_SETTINGS_HEADER_DESCRIPTION"] =
     "Here you can change some main hud features",
     ["NUI_SETTINGS_EXIT"] = 'Press <span class="button">ESC</span> to exit',
+    ["NUI_SETTINGS_SCALE"] = "Adjust <strong>Scale</strong>",
+    ["NUI_SETTINGS_SCALE_RESET_BTN"] = "Reset",
     ["NUI_SETTINGS_POSITIONS"] = "Change Icons <strong>Position</strong>",
     ["NUI_SETTINGS_POSITIONS_SELECT_BTN"] = "Adjust",
     ["NUI_SETTINGS_POSITIONS_RESET_BTN"] = "Reset",

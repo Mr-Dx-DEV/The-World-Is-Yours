@@ -321,13 +321,23 @@ if Config.EnableStress then
     end)
 
     if Config.AddStressWhileShooting then
+        local function IsWeaponWhitelisted(weapon)
+            for k,v in pairs(Config.WhtielistedWeapons) do
+                if v == weapon then
+                    return true
+                end
+            end
+
+            return false
+        end
+
         CreateThread(function()
             while true do
                 local ped = PlayerPedId()
                 local weapon = GetSelectedPedWeapon(ped)
                 local timeout = 1000
 
-                if weapon ~= GetHashKey("WEAPON_UNARMED") then
+                if weapon ~= GetHashKey("WEAPON_UNARMED") and not IsWeaponWhitelisted(weapon) then
                     if IsPedShooting(ped) then
                         TriggerServerEvent('hud:server:GainStress', 1)
                         TriggerEvent("esx_status:add", "stress", math.random(5000, 10000))
@@ -687,5 +697,3 @@ RegisterNetEvent("17mov_Hud:GetSettings", GetSettings)
 -- end)
 
 -- { 17movement.net } --
-
-

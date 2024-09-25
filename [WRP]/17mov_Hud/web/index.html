@@ -526,6 +526,49 @@
 					</div>
 					<p data-translation="SETTINGS_EXIT"></p>
 				</header>
+				<div class="option" data-option="scale">
+					<div class="left">
+						<h1 data-translation="SETTINGS_SCALE"></h1>
+						<div class="option-icon">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="20"
+								height="20"
+								viewBox="0 0 20 20"
+								fill="none"
+							>
+								<path
+									d="M7.90332 16.3885L6.74769 15.2328C6.59148 15.0766 6.59148 14.8233 6.74769 14.6671L9.71753 11.6973C9.87374 11.5411 9.87374 11.2878 9.71753 11.1316L8.86901 10.2831C8.7128 10.1269 8.45953 10.1269 8.30332 10.2831L5.33347 13.2529C5.17726 13.4091 4.924 13.4091 4.76779 13.2529L3.61215 12.0973C3.36017 11.8453 2.92931 12.0238 2.92931 12.3801L2.92931 16.6713C2.92931 16.8922 3.1084 17.0713 3.32931 17.0713L7.62048 17.0713C7.97684 17.0713 8.15531 16.6404 7.90332 16.3885Z"
+									fill="white"
+								/>
+								<path
+									d="M12.0967 3.61204L13.2523 4.76767C13.4085 4.92388 13.4085 5.17715 13.2523 5.33336L10.2825 8.30321C10.1263 8.45942 10.1263 8.71268 10.2825 8.86889L11.131 9.71742C11.2872 9.87363 11.5405 9.87363 11.6967 9.71742L14.6665 6.74757C14.8227 6.59136 15.076 6.59136 15.2322 6.74757L16.3878 7.90321C16.6398 8.15519 17.0707 7.97673 17.0707 7.62036L17.0707 3.32919C17.0707 3.10828 16.8916 2.92919 16.6707 2.92919L12.3795 2.92919C12.0232 2.92919 11.8447 3.36005 12.0967 3.61204Z"
+									fill="white"
+								/>
+							</svg>
+						</div>
+					</div>
+					<div class="buttons">
+						<input
+							type="range"
+							min="0"
+							max="100"
+							id="settings-scale-range"
+						/>
+						<input
+							type="number"
+							min="0"
+							max="100"
+							class="btn"
+							id="settings-scale"
+						/>
+                        <button
+							class="btn"
+							id="reset-scale"
+							data-translation="SETTINGS_SCALE_RESET_BTN"
+						></button>
+					</div>
+				</div>
 				<div class="option" data-option="positions">
 					<div class="left">
 						<h1 data-translation="SETTINGS_POSITIONS"></h1>
@@ -975,7 +1018,7 @@
 					class="option"
 					data-for-component="location"
 					data-option="location"
-                    id="settings-location"
+					id="settings-location"
 				>
 					<div class="left">
 						<h1 data-translation="SETTINGS_STREET_NAMES"></h1>
@@ -986,7 +1029,7 @@
 							data-value="true"
 							data-translation="SETTINGS_SHOW"
 						></button>
-                        <button
+						<button
 							class="btn"
 							data-value="inCar"
 							data-translation="SETTINGS_ONLY_IN_CAR"
@@ -1145,11 +1188,7 @@
 						></button>
 					</div>
 				</div>
-				<div
-					class="option"
-					data-for-component="job"
-					data-option="job"
-				>
+				<div class="option" data-for-component="job" data-option="job">
 					<div class="left">
 						<h1 data-translation="SETTINGS_JOB"></h1>
 					</div>

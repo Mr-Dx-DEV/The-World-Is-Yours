@@ -14,7 +14,9 @@ html {
 	--color-text-primary: var(--color-text-primary-light);
 	--color-text-secondary: var(--color-text-secondary-light);
 	--color-transparent: var(--color-transparent-light);
-	--range-width: 50%;
+	--range-volume-width: 50%;
+	--range-scale-width: 50%;
+	--hud-scale: 1;
 }
 
 html.dark {
@@ -121,7 +123,9 @@ body {
 	transition: all 0.3s ease-in-out;
 }
 
-.row-wrapper[data-component="cash"] svg, .row-wrapper[data-component="dirt_money"] svg, .row-wrapper[data-component="society_money"] svg {
+.row-wrapper[data-component="cash"] svg,
+.row-wrapper[data-component="dirt_money"] svg,
+.row-wrapper[data-component="society_money"] svg {
 	fill: var(--color-primary);
 }
 
@@ -222,7 +226,7 @@ body {
 	flex-direction: column;
 	align-items: center;
 	padding-top: 85px;
-    transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 
 .wrapper[data-display="status"] .vehicle-wrapper {
@@ -449,7 +453,8 @@ input[type="checkbox"] {
 	color: var(--color-text-primary);
 }
 
-.settings #settings-volume-range {
+.settings #settings-volume-range,
+.settings #settings-scale-range {
 	position: relative;
 	appearance: none;
 	cursor: pointer;
@@ -457,30 +462,41 @@ input[type="checkbox"] {
 	width: 150px;
 }
 
-.settings #settings-volume-range::before {
+.settings #settings-volume-range::before,
+.settings #settings-scale-range::before {
 	position: absolute;
 	top: 0;
 	left: 0;
 	content: "";
 	display: block;
-	width: var(--range-width);
 	height: 10px;
 	background-color: var(--color-primary);
 	border-radius: 5px;
 }
 
-.settings #settings-volume-range:focus {
+.settings #settings-volume-range::before {
+	width: var(--range-volume-width);
+}
+
+.settings #settings-scale-range::before {
+	width: var(--range-scale-width);
+}
+
+.settings #settings-volume-range:focus,
+.settings #settings-scale-range:focus {
 	outline: none;
 }
 
-.settings #settings-volume-range::-webkit-slider-runnable-track {
+.settings #settings-volume-range::-webkit-slider-runnable-track,
+.settings #settings-scale-range::-webkit-slider-runnable-track {
 	background-color: rgba(255, 255, 255, 0.06);
 	border: 1px solid rgba(103, 103, 103, 0.1);
 	border-radius: 5px;
 	height: 10px;
 }
 
-.settings #settings-volume-range::-webkit-slider-thumb {
+.settings #settings-volume-range::-webkit-slider-thumb,
+.settings #settings-scale-range::-webkit-slider-thumb {
 	appearance: none;
 	margin-top: -6px;
 	background-color: var(--color-primary);
@@ -868,7 +884,7 @@ input[type="number"]::-webkit-inner-spin-button {
 	position: absolute;
 	left: 14px;
 	bottom: 10px;
-    height: fit-content;
+	height: fit-content;
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
@@ -1054,7 +1070,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 @media screen and (min-width: 800px) {
-	.hud,
+	/* .hud,
 	.wrapper,
 	.settings-wrapper {
 		zoom: 0.65;
@@ -1064,19 +1080,25 @@ input[type="number"]::-webkit-inner-spin-button {
 	}
 	.notify-wrapper .notify p {
 		font-size: 12px;
-	}
+	} */
+    html {
+        --hud-scale: 0.65;
+    }
 }
 
 @media screen and (min-width: 1000px) {
-	.hud,
+	/* .hud,
 	.wrapper,
 	.settings-wrapper {
 		zoom: 0.75;
-	}
+	} */
+    html {
+        --hud-scale: 0.75;
+    }
 }
 
 @media screen and (min-width: 1200px) {
-	.hud,
+	/* .hud,
 	.wrapper,
 	.settings-wrapper {
 		zoom: 0.8;
@@ -1086,19 +1108,25 @@ input[type="number"]::-webkit-inner-spin-button {
 	}
 	.notify-wrapper .notify p {
 		font-size: 13px;
-	}
+	} */
+    html {
+        --hud-scale: 0.8;
+    }
 }
 
 @media screen and (min-width: 1400px) {
-	.hud,
+	/* .hud,
 	.wrapper,
 	.settings-wrapper {
 		zoom: 0.85;
-	}
+	} */
+    html {
+        --hud-scale: 0.85;
+    }
 }
 
 @media screen and (min-width: 1600px) {
-	.hud,
+	/* .hud,
 	.wrapper,
 	.settings-wrapper {
 		zoom: 0.9;
@@ -1108,21 +1136,38 @@ input[type="number"]::-webkit-inner-spin-button {
 	}
 	.notify-wrapper .notify p {
 		font-size: 14px;
-	}
+	} */
+    html {
+        --hud-scale: 0.9;
+    }
 }
 
 @media screen and (min-width: 1800px) {
-	.hud,
+	/* .hud,
 	.wrapper,
 	.settings-wrapper {
 		zoom: 0.95;
-	}
+	} */
+    html {
+        --hud-scale: 0.95;
+    }
 }
 
 @media screen and (min-width: 1920px) {
-	.hud,
+	/* .hud,
 	.wrapper,
 	.settings-wrapper {
 		zoom: 1;
-	}
+	} */
+    html {
+        --hud-scale: 1;
+    }
+}
+
+.hud,
+.wrapper,
+.help_notification,
+.notify-wrapper,
+.progress_bar {
+	zoom: var(--hud-scale);
 }

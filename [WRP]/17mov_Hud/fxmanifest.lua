@@ -3,7 +3,7 @@
 fx_version "cerulean"
 game "gta5"
 author "17Movement"
-version "1.0.70"
+version "1.0.73"
 lua54 "yes"
 
 files {
