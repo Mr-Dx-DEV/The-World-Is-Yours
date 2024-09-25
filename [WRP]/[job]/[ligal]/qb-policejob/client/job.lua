@@ -206,14 +206,27 @@ function TakeOutAir(vehicleInfo)
     end
 end
 
-local function IsArmoryWhitelist() -- being removed
+--[[ local function IsArmoryWhitelist() -- being removed
     local retval = false
 
     if QBCore.Functions.GetPlayerData().job.name == 'police' or QBCore.Functions.GetPlayerData().job.type == 'leo' then
         retval = true
     end
     return retval
+end ]]
+local function IsArmoryWhitelist()
+    local retval = false
+    local job = QBCore.Functions.GetPlayerData().job.name
+
+    if job == 'police' or job == 'lspd' or job == 'bcso' or job == 'sahp' or job == 'lsso' 
+    or job == 'safw' or job == 'sadoc' or job == 'usms' or job == 'fbi' or job == 'dhs' 
+    or job == 'ss' or QBCore.Functions.GetPlayerData().job.type == 'leo' then
+        retval = true
+    end
+
+    return retval
 end
+
 
 local function SetWeaponSeries()
     for k, _ in pairs(Config.Items.items) do
@@ -576,7 +589,9 @@ end)
 
 RegisterNetEvent('police:client:CheckStatus', function()
     QBCore.Functions.GetPlayerData(function(PlayerData)
-        if PlayerData.job.name == "police" or PlayerData.job.type == "leo" then
+      --  if PlayerData.job.name == "police" or PlayerData.job.type == "leo" then
+      if PlayerData.job.name == "police" or PlayerData.job.name == "lspd" or PlayerData.job.name == "bcso" or PlayerData.job.name == "sahp" or PlayerData.job.name == "lsso" or PlayerData.job.name == "safw" or PlayerData.job.name == "sadoc" or PlayerData.job.name == "usms" or PlayerData.job.name == "fbi" or PlayerData.job.name == "dhs" or PlayerData.job.name == "ss" or PlayerData.job.type == "leo" then
+
             local player, distance = GetClosestPlayer()
             if player ~= -1 and distance < 5.0 then
                 local playerId = GetPlayerServerId(player)
@@ -765,8 +780,21 @@ local function dutylistener()
     dutylisten = true
     CreateThread(function()
         while dutylisten do
-            if PlayerJob.name == "police" or PlayerJob.type == "leo" then
-                if IsControlJustReleased(0, 38) then
+            --if PlayerJob.name == "police" or PlayerJob.type == "leo" then
+            if PlayerJob.name == "police" 
+            or PlayerJob.name == "lspd" 
+            or PlayerJob.name == "bcso" 
+            or PlayerJob.name == "sahp" 
+            or PlayerJob.name == "lsso" 
+            or PlayerJob.name == "safw" 
+            or PlayerJob.name == "sadoc" 
+            or PlayerJob.name == "usms" 
+            or PlayerJob.name == "fbi" 
+            or PlayerJob.name == "dhs" 
+            or PlayerJob.name == "ss" 
+            or PlayerJob.type == "leo" then
+
+        if IsControlJustReleased(0, 38) then
                     TriggerServerEvent("QBCore:ToggleDuty")
                     TriggerServerEvent("police:server:UpdateCurrentCops")
                     TriggerServerEvent("police:server:UpdateBlips")
@@ -786,7 +814,18 @@ local function stash()
     CreateThread(function()
         while true do
             Wait(0)
-            if inStash and PlayerJob.name == "police" or PlayerJob.type == "leo"then
+            if inStash and PlayerJob.name == "police" 
+            or PlayerJob.name == "lspd" 
+            or PlayerJob.name == "bcso" 
+            or PlayerJob.name == "sahp" 
+            or PlayerJob.name == "lsso" 
+            or PlayerJob.name == "safw" 
+            or PlayerJob.name == "sadoc" 
+            or PlayerJob.name == "usms" 
+            or PlayerJob.name == "fbi" 
+            or PlayerJob.name == "dhs" 
+            or PlayerJob.name == "ss" 
+            or PlayerJob.type == "leo" then
                 if PlayerJob.onduty then sleep = 5 end
                 if IsControlJustReleased(0, 38) then
                     TriggerServerEvent("inventory:server:OpenInventory", "stash", "policestash_"..QBCore.Functions.GetPlayerData().citizenid)
@@ -805,7 +844,18 @@ local function trash()
     CreateThread(function()
         while true do
             Wait(0)
-            if inTrash and PlayerJob.name == "police" or PlayerJob.type == "leo"then
+            if inTrash and PlayerJob.name == "police" 
+    or PlayerJob.name == "lspd" 
+    or PlayerJob.name == "bcso" 
+    or PlayerJob.name == "sahp" 
+    or PlayerJob.name == "lsso" 
+    or PlayerJob.name == "safw" 
+    or PlayerJob.name == "sadoc" 
+    or PlayerJob.name == "usms" 
+    or PlayerJob.name == "fbi" 
+    or PlayerJob.name == "dhs" 
+    or PlayerJob.name == "ss" 
+    or PlayerJob.type == "leo" then
                 if PlayerJob.onduty then sleep = 5 end
                 if IsControlJustReleased(0, 38) then
                     TriggerServerEvent("inventory:server:OpenInventory", "stash", "policetrash", {
@@ -827,7 +877,18 @@ local function fingerprint()
     CreateThread(function()
         while true do
             Wait(0)
-            if inFingerprint and PlayerJob.name == "police" or PlayerJob.type == "leo"then
+            if inFingerprint and PlayerJob.name == "police" 
+    or PlayerJob.name == "lspd" 
+    or PlayerJob.name == "bcso" 
+    or PlayerJob.name == "sahp" 
+    or PlayerJob.name == "lsso" 
+    or PlayerJob.name == "safw" 
+    or PlayerJob.name == "sadoc" 
+    or PlayerJob.name == "usms" 
+    or PlayerJob.name == "fbi" 
+    or PlayerJob.name == "dhs" 
+    or PlayerJob.name == "ss" 
+    or PlayerJob.type == "leo" then
                 if PlayerJob.onduty then sleep = 5 end
                 if IsControlJustReleased(0, 38) then
                     TriggerEvent("qb-police:client:scanFingerPrint")
@@ -845,7 +906,18 @@ local function armoury()
     CreateThread(function()
         while true do
             Wait(0)
-            if inArmoury and PlayerJob.name == "police" or PlayerJob.type == "leo"then
+            if inArmoury and PlayerJob.name == "police" 
+    or PlayerJob.name == "lspd" 
+    or PlayerJob.name == "bcso" 
+    or PlayerJob.name == "sahp" 
+    or PlayerJob.name == "lsso" 
+    or PlayerJob.name == "safw" 
+    or PlayerJob.name == "sadoc" 
+    or PlayerJob.name == "usms" 
+    or PlayerJob.name == "fbi" 
+    or PlayerJob.name == "dhs" 
+    or PlayerJob.name == "ss" 
+    or PlayerJob.type == "leo" then
                 if PlayerJob.onduty then sleep = 5 end
                 if IsControlJustReleased(0, 38) then
                     TriggerEvent("qb-police:client:openArmoury")
@@ -863,7 +935,18 @@ local function heli()
     CreateThread(function()
         while true do
             Wait(0)
-            if inHelicopter and PlayerJob.name == "police" or PlayerJob.type == "leo"then
+            if inHelicopter and PlayerJob.name == "police" 
+    or PlayerJob.name == "lspd" 
+    or PlayerJob.name == "bcso" 
+    or PlayerJob.name == "sahp" 
+    or PlayerJob.name == "lsso" 
+    or PlayerJob.name == "safw" 
+    or PlayerJob.name == "sadoc" 
+    or PlayerJob.name == "usms" 
+    or PlayerJob.name == "fbi" 
+    or PlayerJob.name == "dhs" 
+    or PlayerJob.name == "ss" 
+    or PlayerJob.type == "leo" then
                 if PlayerJob.onduty then sleep = 5 end
                 if IsControlJustReleased(0, 38) then
                     TriggerEvent("qb-police:client:spawnHelicopter")
@@ -881,7 +964,18 @@ local function impound()
     CreateThread(function()
         while true do
             Wait(0)
-            if inImpound and PlayerJob.name == "police" or PlayerJob.type == "leo"then
+            if inImpound and PlayerJob.name == "police" 
+    or PlayerJob.name == "lspd" 
+    or PlayerJob.name == "bcso" 
+    or PlayerJob.name == "sahp" 
+    or PlayerJob.name == "lsso" 
+    or PlayerJob.name == "safw" 
+    or PlayerJob.name == "sadoc" 
+    or PlayerJob.name == "usms" 
+    or PlayerJob.name == "fbi" 
+    or PlayerJob.name == "dhs" 
+    or PlayerJob.name == "ss" 
+    or PlayerJob.type == "leo" then
                 if PlayerJob.onduty then sleep = 5 end
                 if IsPedInAnyVehicle(PlayerPedId(), false) then
                     if IsControlJustReleased(0, 38) then
@@ -901,7 +995,18 @@ local function garage()
     CreateThread(function()
         while true do
             Wait(0)
-            if inGarage and PlayerJob.name == "police" or PlayerJob.type == "leo"then
+            if inGarage and PlayerJob.name == "police" 
+    or PlayerJob.name == "lspd" 
+    or PlayerJob.name == "bcso" 
+    or PlayerJob.name == "sahp" 
+    or PlayerJob.name == "lsso" 
+    or PlayerJob.name == "safw" 
+    or PlayerJob.name == "sadoc" 
+    or PlayerJob.name == "usms" 
+    or PlayerJob.name == "fbi" 
+    or PlayerJob.name == "dhs" 
+    or PlayerJob.name == "ss" 
+    or PlayerJob.type == "leo" then
                 if PlayerJob.onduty then sleep = 5 end
                 if IsPedInAnyVehicle(PlayerPedId(), false) then
                     if IsControlJustReleased(0, 38) then
