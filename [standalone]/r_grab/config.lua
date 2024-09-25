@@ -30,8 +30,18 @@ Config = {
         enabled = true, -- Activate or not the QB system
         jobs = { -- Job for which the grab ped can be used
             'police',
-            'fbi',
-            'ambulance',
+'fbi',
+'ambulance',
+'lspd',
+'bcso',
+'sahp',
+'lsso',
+'safw',
+'sadoc',
+'usms',
+'dhs',
+'ss'
+
         }
     },
 
