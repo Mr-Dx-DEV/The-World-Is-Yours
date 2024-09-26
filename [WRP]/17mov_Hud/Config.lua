@@ -8,7 +8,7 @@ Config.DefaultVoiceMode = 2
 Config.MaxVoiceMode = 3
 Config.EnableSpeedometer = true     -- If you want to disable speedometer for aby reason just set it to false
 Config.MaxNotifyStack = 5           -- Max ammount of notifcations "per once". All notifications above this number wait until the old ones disappear
-Config.ShowDateIfTimeIsReal = false -- If you set time type to "real" does should also display date?
+Config.ShowDateIfTimeIsReal = true -- If you set time type to "real" does should also display date?
 Config.MaxUnderwaterTime = 40.0
 
 Config.SeatBelts = {
@@ -19,7 +19,7 @@ Config.SeatBelts = {
     BlacklistedModels = {},                         -- Enter here models that doesn't have seatbelts. Example: BlacklistedModels = { `sultan`, `zentorno` },
     Warning = true,                                 -- Should play *beep* *beep* when player driving with not fasten belts
     WarningVolume = 30,                             -- Volume of warning sound Scale: <0-100>
-    WarningSpeed = 15,                              -- Speed above you will hear a warning
+    WarningSpeed = 30,                              -- Speed above you will hear a warning
     TogglingSound = true,                           -- Play soung if toggle betls
     TogglingSoundVolume = 30,                       -- Volume of toggling sound
     TogglingSoundIsGlobal = false,                  -- Every player in nearby should hear sound or only player that toggling?
@@ -35,10 +35,10 @@ Config.BigRadarKey = nil        -- You can add possiblity to open big radar when
 Config.ShowRadarIfHidden = true -- If radar is hidden and you set Config.BigRadarKey then key also show radar
 
 -- Stress system
-Config.EnableStress = false           -- Use build-in stress system
+Config.EnableStress = true           -- Use build-in stress system
 Config.AddStressWhileShooting = true -- Should add stress while shooting?
-Config.StressingSpeed = 100          -- Speed above which you start to get stressed
-Config.MinimumStressForEffects = 50  -- Minimum Stress amount to start effects
+Config.StressingSpeed = 0.1          -- Speed above which you start to get stressed
+Config.MinimumStressForEffects = 100  -- Minimum Stress amount to start effects
 Config.WhtielistedWeapons = {        -- Here you can add some weapon models that "bypassing" stress system (not adding stress while shooting)
     -- Just add weapons models like bellow:
     -- `weapon_pistol`,
@@ -192,7 +192,7 @@ Config.Settings = {
 Config.DefaultSettings = {
     ['AutoTheme'] = true,      -- Values: [true, false]. Enables that theme work in automatic mode (depends from time)
     ['DarkMode'] = false,      -- Values: [true, false]. If AutoTheme is false, then the hud theme will be set to this value
-    ['Time'] = "server",       -- Values: ['server', 'real']. Should display server time or real time?
+    ['Time'] = "relaxed",       -- Values: ['server', 'real']. Should display server time or real time?
     ['SpeedUnits'] = "kmh",    -- Values: ['kmh', 'mph']. Default speed units. (NOTE: DO NO TOUCH! Sets automatically from Config.UseMPH)
     ['Map'] = "inCar",         -- Values: [true, false, 'inCar']. When radar should be displayed
     ['CinematicMode'] = false, -- Values: [true, false]. Is that CinematicMode enabled
@@ -208,12 +208,12 @@ Config.DefaultSettings = {
     ['radio'] = true,          -- Values: [true, false]. Show radio component
     ['time'] = true,           -- Values: [true, false]. Show time component
     ['cash'] = true,           -- Values: [true, false]. Show cash component
-    ['dirt_money'] = true,     -- Values: [true, false]. Show dirt_money component
-    ['society_money'] = true,  -- Values: [true, false]. Show society_money component
-    ['bank'] = true,           -- Values: [true, false]. Show bank component
+    ['dirt_money'] = false,     -- Values: [true, false]. Show dirt_money component
+    ['society_money'] = false,  -- Values: [true, false]. Show society_money component
+    ['bank'] = false,           -- Values: [true, false]. Show bank component
     ['weapon'] = true,         -- Values: [true, false]. Show weapon component
-    ['serverId'] = true,       -- Values: [true, false]. Show server id component
-    ['job'] = true,            -- Values: [true, false]. Show job component
+    ['serverId'] = false,       -- Values: [true, false]. Show server id component
+    ['job'] = false,            -- Values: [true, false]. Show job component
 }
 
 -- Default HUD components positions

@@ -304,7 +304,7 @@ if Config.EnableStress then
                 local speed = GetEntitySpeed(vehicle) * SpeedMultiplier
 
                 if speed > Config.StressingSpeed then
-                    TriggerServerEvent('hud:server:GainStress', 1)
+                    TriggerServerEvent('hud:server:GainStress', 0.1)
                     TriggerEvent("esx_status:add", "stress", math.random(5000, 10000))
 
                     -- Showing only one nottification per 5 minutes to avoid spam
@@ -339,7 +339,7 @@ if Config.EnableStress then
 
                 if weapon ~= GetHashKey("WEAPON_UNARMED") and not IsWeaponWhitelisted(weapon) then
                     if IsPedShooting(ped) then
-                        TriggerServerEvent('hud:server:GainStress', 1)
+                        TriggerServerEvent('hud:server:GainStress', 0.1)
                         TriggerEvent("esx_status:add", "stress", math.random(5000, 10000))
 
                         -- Showing only one nottification per 5 minutes to avoid spam
