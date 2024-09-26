@@ -4,9 +4,9 @@ Config.useModernUI = true               -- In March 2023 the jobs have passed hu
     Config.splitReward = false          -- This option work's only when useModernUI is false. If this option is true, the payout is: (Config.OnePercentWorth * Progress ) / PartyCount, if false then: (Config.OnePercentWorth * Progress)
 
 Config.UseBuiltInNotifications = true   -- Set to false if you want to use ur framework notification style. Otherwise, the built in modern notifications will be used.=
-Config.letBossSplitReward = true                    -- If it's true, then boss can manage whole party rewards percent in menu. If you'll set it to false, then everybody will get same amount.
+Config.letBossSplitReward = false                    -- If it's true, then boss can manage whole party rewards percent in menu. If you'll set it to false, then everybody will get same amount.
 Config.multiplyRewardWhileWorkingInGroup = true     -- If it's false, then reward will stay by default. For example $1000 for completing whole job. If you'll set it to true, then the payout will depend on how many players is there in the group. For example, if for full job there's $1000, then if player will work in 4 member group, the reward will be $4000. (baseReward * partyCount)
-Config.Price = 2            -- Price per one bag inside trashmaster. 100 is maximum so full trash = 200$ / partyCount
+Config.Price = 10            -- Price per one bag inside trashmaster. 100 is maximum so full trash = 200$ / partyCount
 
 Config.UseTarget = true                 -- Change it to true if you want to use a target system. All setings about the target system are under target.lua file.
 Config.RequiredJob = "none"             -- Set to "none" if you dont want using jobs. If you are using target, you have to set "job" parameter inside every export in target.lua
@@ -53,7 +53,7 @@ Config.Blips = { -- Here you can configure Company blip.
     [1] = {
         Sprite = 318,
         Color = 52,
-        Scale = 0.8,
+        Scale = 0.6,
         Pos = vector3(-321.56, -1545.74, 30.01),
         Label = 'Garbage Job'
     },

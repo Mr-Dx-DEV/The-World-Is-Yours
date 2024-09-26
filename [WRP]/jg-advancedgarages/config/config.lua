@@ -83,7 +83,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -97,7 +97,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -111,7 +111,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -125,7 +125,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -139,7 +139,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -153,7 +153,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -167,7 +167,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -181,7 +181,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -195,7 +195,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -209,7 +209,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -223,7 +223,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -237,7 +237,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 356,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -251,7 +251,7 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 359,
       color = 0,
-      scale = 0.7
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -266,7 +266,7 @@ Config.PrivGarageHideBlips = false
 Config.PrivGarageBlip = {
   id = 357,
   color = 0,
-  scale = 0.7
+  scale = 0.6
 }
 
 -- Job Garages
@@ -287,7 +287,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.6
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -303,7 +303,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.6
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -349,7 +349,7 @@ Config.GangGarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.7
+      scale = 0.6
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -374,7 +374,7 @@ Config.ImpoundLocations = { -- IMPORTANT - Every impound name must be unique
     blip = {
       id = 68,
       color = 0,
-      scale = 0.7
+      scale = 0.6
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -389,7 +389,7 @@ Config.ImpoundLocations = { -- IMPORTANT - Every impound name must be unique
     blip = {
       id = 68,
       color = 0,
-      scale = 0.7
+      scale = 0.6
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
