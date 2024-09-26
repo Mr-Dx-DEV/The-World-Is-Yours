@@ -353,18 +353,9 @@ exports('getTimeFreezeState', function() return freezeTime end)
 exports('getWeatherState', function() return CurrentWeather end)
 exports('getDynamicWeather', function() return Config.DynamicWeather end)
 
---  Snipe Adminmenu
 exports('getTime', function()
     local hour = math.floor(((baseTime+timeOffset)/60)%24)
     local minute = math.floor((baseTime+timeOffset)%60)
 
     return hour,minute
 end)
-
-
-local function isAllowedToChange(src)
-    if src == 0 or QBCore.Functions.HasPermission(src, "admin") or IsPlayerAceAllowed(src, 'command') or exports["snipe-menu"]:isAdmin(src) then
-        return true
-    end
-    return false
-end
