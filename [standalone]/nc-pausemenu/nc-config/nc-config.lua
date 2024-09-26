@@ -9,7 +9,7 @@ nc_config.ESX = 'es_extended'
 
 nc_config.nc_blur = 'MenuMGIn'
 nc_config.disconnect = 'Ding dong ping pong!'
-nc_config.discord = 'https://discord.gg/uu6E4SGpwN'
+nc_config.discord = 'https://discord.gg/TdKUp5bCG2'
 
 nc_config.MulticharacterLogout = false
 
