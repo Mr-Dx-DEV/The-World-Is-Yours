@@ -1,54 +1,102 @@
+--[[
+    Hi dear customer or developer, here you can fully configure your server's
+    framework or you could even duplicate this file to create your own framework.
+
+    If you do not have much experience, we recommend you download the base version
+    of the framework that you use in its latest version and it will work perfectly.
+]]
+
 if Config.Framework ~= 'qb' then
     return
 end
 
-QBCore = exports['qb-core']:GetCoreObject()
+CreateThread(function()
+    QBCore = exports['qb-core']:GetCoreObject()
 
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
-AddEventHandler('QBCore:Client:OnPlayerLoaded', function(playerData)
-    IsLoggedIn = true
-    GetHouseObjects()
-    Wait(1000)
+    while QBCore.Functions.GetPlayerData().job == nil do
+        Wait(10)
+    end
+    PlayerData = QBCore.Functions.GetPlayerData()
+    PlayerHousesLoaded()
+end)
+
+qbcoreMenu = 'qb-menu'         -- Only if use a custom name of qb-menu
+qbcoreInput = 'qb-input'       -- Only if use a custom name of qb-input
+qbcoreRadial = 'qb-radialmenu' -- Only if use a custom name of qb-radialmenu
+
+RegisterNetEvent('QBCore:Player:SetPlayerData')
+AddEventHandler('QBCore:Player:SetPlayerData', function(val)
+    PlayerData = val
 end)
 
 RegisterNetEvent('QBCore:Client:OnPlayerUnload')
 AddEventHandler('QBCore:Client:OnPlayerUnload', function()
-    IsLoggedIn = false
-    CurrentHouseData = {}
-    DeleteBlips()
+    PlayerData = {}
+    UnloadDecorations(CurrentHouse or closesthouse)
+    if Config.EnableCredit and Config.OnlyInGame then
+        StopCredit()
+    end
 end)
+
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    if Config.EnableCredit and Config.OnlyInGame then
+        StartCredit()
+    end    
+end)
+
+RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
+    TriggerEvent('housing:client:OnJobUpdateBlips')
+end)
+
+
 
 function TriggerServerCallback(name, cb, ...)
     QBCore.Functions.TriggerCallback(name, cb, ...)
 end
 
-function GetPlayerData()
-    return QBCore.Functions.GetPlayerData()
+function GetPlayerJob()
+    return PlayerData.job.name
 end
 
-function GetIdentifier()
-    return GetPlayerData().citizenid
-end
-
-function GetJobName()
-    return GetPlayerData()?.job?.name
+function GetPlayerIdentifier()
+    return QBCore.Functions.GetPlayerData().citizenid
 end
 
 function GetPlayers()
     return QBCore.Functions.GetPlayers()
 end
 
-function GetVehicleProperties(vehicle)
-    return QBCore.Functions.GetVehicleProperties(vehicle)
+function GetClosestPlayer()
+    return QBCore.Functions.GetClosestPlayer()
+end
+
+function CustomLeaveHouse()
+    -- Add your code here
+end
+
+function CustomJoinHouse()
+    -- Add your code here
+end
+
+function SendTextMessage(msg, type)
+    if type == 'inform' then
+        QBCore.Functions.Notify(msg, 'primary', 5000)
+    end
+    if type == 'error' then
+        QBCore.Functions.Notify(msg, 'error', 5000)
+    end
+    if type == 'success' then
+        QBCore.Functions.Notify(msg, 'success', 5000)
+    end
 end
 
 function ShowHelpNotification(msg)
     BeginTextCommandDisplayHelp('STRING')
     AddTextComponentSubstringPlayerName(msg)
-    EndTextCommandDisplayHelp(0, false, true, -1)
+    EndTextCommandDisplayHelp(0, 0, false, -1)
 end
 
-function DrawText3Ds(x, y, z, text)
+function DrawText3D(x, y, z, text)
     SetTextScale(0.35, 0.35)
     SetTextFont(4)
     SetTextProportional(1)
@@ -59,43 +107,12 @@ function DrawText3Ds(x, y, z, text)
     SetDrawOrigin(x, y, z, 0)
     DrawText(0.0, 0.0)
     local factor = (string.len(text)) / 370
-    DrawRect(0.0, 0.0 + 0.0125, 0.017 + factor, 0.03, 0, 0, 0, 75)
+    DrawRect(0.0, 0.0 + 0.0125, 0.017 + factor, 0.03, 0, 0, 0, 55)
     ClearDrawOrigin()
 end
 
-function DrawGenericText(text)
-    SetTextColour(186, 186, 186, 255)
-    SetTextFont(7)
-    SetTextScale(0.378, 0.378)
-    SetTextWrap(0.0, 1.0)
-    SetTextCentre(false)
-    SetTextDropshadow(0, 0, 0, 0, 255)
-    SetTextEdge(1, 0, 0, 0, 205)
-    SetTextEntry('STRING')
-    AddTextComponentString(text)
-    DrawText(0.40, 0.00)
+function SpawnInHouse(house)
+    enterOwnedHouse(house)
 end
 
-function SendTextMessage(msg, type)
-    if type == 'inform' then
-        lib.notify({
-            title = 'Housing',
-            description = msg,
-            type = 'inform'
-        })
-    end
-    if type == 'error' then
-        lib.notify({
-            title = 'Housing',
-            description = msg,
-            type = 'error'
-        })
-    end
-    if type == 'success' then
-        lib.notify({
-            title = 'Housing',
-            description = msg,
-            type = 'success'
-        })
-    end
-end
+exports('SpawnInHouse',SpawnInHouse)

@@ -1,21 +1,19 @@
+--[[
+    Here you have the configuration of stashes, you can modify it or even
+    create your own! In case your inventory is not here, you can ask the
+    creator to create a file following this example and add it!
+]]
+
 if Config.Inventory ~= 'core_inventory' then
     return
 end
 
-function openStash(customData, uniq)
-    local data = customData or Config.DefaultStashData
-    local house = CurrentHouse
-    local houseData = Config.Houses[house]
-    if not customData then
-        if houseData.ipl then
-            data = houseData.ipl.stash or data
-        else
-            local shellData = Config.Shells[houseData.tier]
-            if shellData then
-                data = shellData.stash or data
-            end
-        end
-    end
-    uniq = uniq or house
-    TriggerServerEvent('core_inventory:server:openInventory', tostring(uniq):gsub(':', ''):gsub('#', ''):gsub(' ', ''), 'stash', nil, nil)
+function HousingStash(id, other, mlo)
+    TriggerServerEvent('core_inventory:server:openInventory', id, 'stash')
 end
+
+--[[
+    Furniture stash system, choose your own weight and slots!
+]]
+
+ObjectStash = {}

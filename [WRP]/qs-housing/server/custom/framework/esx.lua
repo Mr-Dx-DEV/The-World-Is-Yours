@@ -1,17 +1,34 @@
+--[[
+    Hi dear customer or developer, here you can fully configure your server's
+    framework or you could even duplicate this file to create your own framework.
+
+    If you do not have much experience, we recommend you download the base version
+    of the framework that you use in its latest version and it will work perfectly.
+]]
+
 if Config.Framework ~= 'esx' then
     return
 end
 
-userTable = 'users'                 -- users
-identifierColumn = 'identifier'     -- identifier
-accountsColumn = 'accounts'
-fiveguardresourcename = 'fiveguard' -- Five Ward anticheat name
+local legacyEsx = pcall(function()
+    ESX = exports['es_extended']:getSharedObject()
+end)
+if not legacyEsx then
+    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+end
 
-ESX = exports['es_extended']:getSharedObject()
+identifierTypes = 'identifier'
+userColumns = 'users'
+accountsType = 'accounts'
+skinTable = 'users'
+
+-- Five Ward anticheat name
+fiveguardresourcename = 'fiveguard'
 
 RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function(id)
-    HandleLoadPlayer(id)
+AddEventHandler('esx:playerLoaded', function(id, xPlayer)
+    Wait(500)
+    TriggerClientEvent('housing:client:setIplData', id, iplHouses)
 end)
 
 function RegisterServerCallback(name, cb)
@@ -26,53 +43,9 @@ function GetPlayerFromId(source)
     return ESX.GetPlayerFromId(source)
 end
 
-function GetPlayerFromIdentifier(identifier)
-    return ESX.GetPlayerFromIdentifier(identifier)
-end
-
-function AddMoneyToAccount(account, amount, isNotRent)
-    local source = GetPlayerSourceFromIdentifier(account)
-    if source then
-        AddAccountMoney(source, 'bank', amount)
-        if isNotRent then return end
-        TriggerClientEvent('qb-houses:sendTextMessage', source, Lang('HOUSING_NOTIFICATION_RENT_PAYMENT') .. amount, 'error')
-    else
-        local result = MySQL.Sync.fetchAll('SELECT ' .. accountsColumn .. ' FROM ' .. userTable .. ' WHERE ' .. identifierColumn .. ' = ?', { account })
-        if not result[1] then return print('Add Money Account : Not finded this account: ' .. account) end
-        local accounts = Config.Framework == 'qbcore' and result[1].money or result[1].accounts
-        accounts = json.decode(accounts)
-        accounts.bank = accounts.bank + amount
-        MySQL.Sync.execute('UPDATE ' .. userTable .. ' SET ' .. accountsColumn .. ' = ? WHERE ' .. identifierColumn .. ' = ?', {
-            json.encode(accounts),
-            account
-        })
-    end
-end
-
-function RemoveMoneyFromAccount(account, amount, dontCheck)
-    local source = GetPlayerSourceFromIdentifier(account)
-    if source then
-        RemoveAccountMoney(source, 'bank', amount)
-        return true
-    else
-        local player = MySQL.Sync.fetchAll('SELECT ' .. accountsColumn .. ' FROM ' .. userTable .. ' WHERE ' .. identifierColumn .. ' = ?', { account })
-        if player[1] then
-            local accounts = Config.Framework == 'qbcore' and player[1].money or player[1].accounts
-            accounts = json.decode(accounts)
-            if accounts.bank >= amount or dontCheck then
-                accounts.bank = accounts.bank - amount
-                MySQL.Sync.execute('UPDATE ' .. userTable .. ' SET ' .. accountsColumn .. ' = ? WHERE ' .. identifierColumn .. ' = ?', { json.encode(accounts), account })
-                return true
-            end
-        end
-    end
-    return false
-end
-
-function GetJobName(source)
-    local player = GetPlayerFromId(source)
-    if not player then return '' end
-    return player.getJob().name
+function GetIdentifier(player)
+    if not player then return print('There is no player value or you use a very old esx...') end
+    return player.getIdentifier('license')
 end
 
 function GetCharacterName(source)
@@ -89,157 +62,70 @@ function GetCharacterName(source)
     return firstName, lastName
 end
 
-function GetAccountMoney(source, account)
-    local player = GetPlayerFromId(source)
-    return player.getAccount(account).money
+function GetJob(player)
+    return GetPlayerFromId(player).job
 end
 
-function AddAccountMoney(source, account, amount)
-    local player = GetPlayerFromId(source)
-    player.addAccountMoney(account, amount)
+function GetJobName(player)
+    return GetPlayerFromId(player).job.name
 end
 
-function RemoveAccountMoney(source, account, amount)
-    local player = GetPlayerFromId(source)
-    player.removeAccountMoney(account, amount)
+function GetJobGrade(player)
+    return GetPlayerFromId(player).job.grade
 end
 
-function RemoveItem(source, item, count)
-    local player = GetPlayerFromId(source)
-    player.removeInventoryItem(item, count)
+function GetPlayers()
+    return ESX.GetPlayers()
 end
 
-function GetIdentifier(source)
-    local player = GetPlayerFromId(source)
-    if not player then
-        return false
-    end
-    return player.identifier
+function GetPlayerIdentifier(id)
+    return ESX.GetPlayerFromIdentifier(id)
 end
 
-function GetPlayerSourceFromIdentifier(identifier)
-    local player = GetPlayerFromIdentifier(identifier)
-    if not player then
-        return false
-    end
-    return player.source
+function GetMoney(source)
+    local xPlayer = GetPlayerFromId(source)
+    return xPlayer.getMoney()
 end
 
-function GetPlayerSourceFromSource(source)
-    local player = GetPlayerFromId(source)
-    if not player then
-        return false
-    end
-    return player.source
+function AddMoney(source, price)
+    local xPlayer = GetPlayerFromId(source)
+    xPlayer.addAccountMoney('money', price)
 end
 
-function GetCharacterFromIdentifier(identifier)
-    local result = MySQL.Sync.fetchAll('SELECT * FROM `users` WHERE identifier = ?', { identifier })
-    if not result[1] then
-        return '', ''
-    end
-    result = result[1]
-    return result?.firstname, result?.lastname
+function RemoveMoney(source, price)
+    local xPlayer = GetPlayerFromId(source)
+    xPlayer.removeAccountMoney('money', price)
 end
 
-RegisterServerCallback('qb-houses:GetInside', function(source, cb)
-    local src = source
-    local identifier = GetIdentifier(src)
-    if Config.Framework == 'qb' then
-        local player = GetPlayerFromId(src)
-        return cb(player.PlayerData.metadata['inside'])
-    end
-    local fetch = ([[
-		SELECT inside
-		FROM %s
-		WHERE %s = @id;
-	]]):format(userTable, identifierColumn)
-    local fetchData = { ['@id'] = identifier }
-    local result = MySQL.Sync.fetchAll(fetch, fetchData)
-    if result and result[1] then
-        cb(result[1].inside)
-    else
-        cb(false)
-    end
-end)
-
-function GetPlayerSQLDataFromIdentifier(identifier)
-    local result = MySQL.Sync.fetchAll('SELECT * FROM `users` WHERE identifier = ?', { identifier })
-    if result[1] then
-        return result[1]
-    end
-    return false
+function GetBankMoney(source)
+    local xPlayer = GetPlayerFromId(source)
+    return xPlayer.getAccount('bank').money
 end
 
-function UpdateInside(src, insideId, bool)
-    local identifier = GetIdentifier(src)
-    local update = ([[
-			UPDATE %s SET inside = @inside
-			WHERE %s = @id;
-	]]):format(userTable, identifierColumn)
-    local updateData = {
-        ['@inside'] = insideId,
-        ['@id'] = identifier
-    }
-    if bool then
-        MySQL.Sync.execute(update, updateData)
-    else
-        updateData = {
-            ['@inside'] = nil,
-            ['@id'] = identifier
-        }
-        MySQL.Sync.execute(update, updateData)
-    end
+function AddBankMoney(source, price)
+    local xPlayer = GetPlayerFromId(source)
+    xPlayer.addAccountMoney('bank', price)
 end
 
-RegisterServerCallback('qb-phone:server:MeosGetPlayerHouses', function(source, cb, input)
-    if input then
-        local search = escape_sqli(input)
-        local searchData = {}
-        local query = 'SELECT * FROM `' .. userTable .. '` WHERE `' .. identifierColumn .. '` = "' .. search .. '"'
-        -- Split on " " and check each var individual
-        local searchParameters = SplitStringToArray(search)
-        -- Construct query dynamicly for individual parm check
-        if #searchParameters > 1 then
-            query = query .. ' OR `firstname` LIKE "%' .. searchParameters[1] .. '%" OR `lastname` LIKE "%' .. searchParameters[1] .. '%"'
-            for i = 2, #searchParameters do
-                query = query .. ' OR `firstname` LIKE "%' .. searchParameters[i] .. '%" OR `lastname` LIKE "%' .. searchParameters[i] .. '%"'
-            end
-        else
-            query = query .. ' OR `firstname` LIKE "%' .. search .. '%" OR `lastname` LIKE "%' .. search .. '%"'
-        end
-        local result = MySQL.Sync.fetchAll(query)
-        if result[1] then
-            local houses = MySQL.Sync.fetchAll('SELECT * FROM player_houses WHERE citizenid = ?',
-                { result[1][identifierColumn] })
-            if houses[1] then
-                for k, v in pairs(houses) do
-                    local charinfo = {
-                        firstname = result[1].firstname,
-                        lastname = result[1].lastname,
-                    }
-                    searchData[#searchData + 1] = {
-                        name = v.house,
-                        keyholders = v.keyholders,
-                        owner = v.citizenid,
-                        price = Config.Houses[v.house].price,
-                        label = Config.Houses[v.house].address,
-                        tier = Config.Houses[v.house].tier,
-                        garage = Config.Houses[v.house].garage,
-                        charinfo = charinfo,
-                        coords = {
-                            x = Config.Houses[v.house].coords.enter.x,
-                            y = Config.Houses[v.house].coords.enter.y,
-                            z = Config.Houses[v.house].coords.enter.z
-                        }
-                    }
-                end
-                cb(searchData)
-            end
-        else
-            cb(nil)
-        end
-    else
-        cb(nil)
-    end
-end)
+function RemoveBankMoney(source, price)
+    local xPlayer = GetPlayerFromId(source)
+    xPlayer.removeAccountMoney('bank', price)
+end
+
+if Config.Inventory == 'ox_inventory' then return end
+
+function GetItem(player, item)
+    return player.getInventoryItem(item)
+end
+
+function GetItemCount(item)
+    return item.count
+end
+
+function AddItem(xPlayer, item, count)
+    xPlayer.addInventoryItem(item, count)
+end
+
+function RemoveItem(xPlayer, item, count)
+    xPlayer.removeInventoryItem(item, count)
+end
