@@ -9,7 +9,7 @@ function WSB.giveCarKeys(plate, _model, _vehicle)
     if WSB.framework == 'qb' then
         return TriggerEvent('vehiclekeys:client:SetOwner', plate)
     else
-       return exports.wasabi_carlock:GiveKey(plate) -- Leave like this if using wasabi_carlock
+        return exports.wasabi_carlock:GiveKey(plate) -- Leave like this if using wasabi_carlock
     end
 end
 
@@ -18,3 +18,6 @@ function WSB.removeCarKeys(plate, _model, _vehicle)
         return exports.wasabi_carlock:RemoveKey(plate)
     end
 end
+
+exports('giveCarKeys', WSB.giveCarKeys)     -- Export for use in other scripts
+exports('removeCarKeys', WSB.removeCarKeys) -- Export for use in other scripts

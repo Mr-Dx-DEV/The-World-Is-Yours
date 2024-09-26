@@ -60,3 +60,7 @@ end
 function WSB.isTextUIOpen()
     return textUI and true or false, textUI or false
 end
+
+exports('showTextUI', WSB.showTextUI)     -- Export for use in other scripts
+exports('hideTextUI', WSB.hideTextUI)     -- Export for use in other scripts
+exports('isTextUIOpen', WSB.isTextUIOpen) -- Export for use in other scripts
