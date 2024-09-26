@@ -309,7 +309,7 @@ Config.Gyms = {
 	{
 		gymcoords = vector3(-1207.25, -1571.51, 4.59), -- coords for blip and also coords for gym menu (if gympayed is disables menu will not show)
 		gymname = "Muscle Sands",
-		gymblip = {blip = true, blipiconid = 311, blipdisplay = 4, blipcolor = 3, blipshortrange = true, blipscale = 1.0},
+		gymblip = {blip = true, blipiconid = 311, blipdisplay = 4, blipcolor = 3, blipshortrange = true, blipscale = 0.5},
 		gympayed = true, -- enable this if you want payed gym for player, so players need always pay for use machines in gym)
 		gymprice = 1000, -- the price of entry to the gym
 		gymtime = 10, -- time a player can be in the gym after payment (in minutes)
@@ -413,7 +413,7 @@ Config.Gyms = {
 	 {
 	 	gymcoords = vector3(259.01, -269.51, 52.96), -- coords for blip and also coords for gym menu (if gympayed is disables menu will not show)
 	 	gymname = "LA Fitness", -- https://www.youtube.com/watch?v=LXm9ix0fF4Y (Map)
-	 	gymblip = {blip = true, blipiconid = 311, blipdisplay = 4, blipcolor = 3, blipshortrange = true, blipscale = 1.0},
+	 	gymblip = {blip = true, blipiconid = 311, blipdisplay = 4, blipcolor = 3, blipshortrange = true, blipscale = 0.5},
 	 	gympayed = true, -- enable this if you want payed gym for player, so players need always pay for use machines in gym)
 	 	gymprice = 2000, -- the price of entry to the gym
 	 	gymtime = 60, -- time a player can be in the gym after payment (in minutes)
