@@ -1,3 +1,39 @@
+
+function OpenStash(id, weight, slots)
+  if GetResourceState('ox_inventory') ~= 'missing'  then
+      if not exports.ox_inventory:openInventory('stash', id) then
+          TriggerServerEvent('l2s-hotel:server:RegisterStash', id, slots, weight)
+          exports.ox_inventory:openInventory('stash', id)
+      end
+  else
+    --   local stash = {}
+    --   stash.maxweight = weight
+    --   stash.slots = slots
+    --   TriggerServerEvent('inventory:server:OpenInventory', 'stash', id, stash)
+    --   TriggerEvent('inventory:client:SetCurrentStash', id) 
+
+      TriggerServerEvent('l2s-hotel:server:openStash',id, {maxweight = weight, slots = slots} ) -- fro last qb-inventory version
+  end
+end
+
+function OpenOutfits()
+  if GetResourceState('l2s-outfits') ~= 'missing' then
+      TriggerServerEvent("l2s-outfits:server:OpenHousing", true)
+  elseif GetResourceState('qb-clothing') ~= 'missing' then
+      TriggerEvent('qb-clothing:client:openOutfitMenu')
+  elseif GetResourceState('illenium-appearance') ~= 'missing' then
+      TriggerEvent('illenium-appearance:client:openOutfitMenu')
+  elseif GetResourceState('codem-apperance') ~= 'missing' then
+      TriggerEvent('codem-apperance:OpenWardrobe')
+  elseif GetResourceState('rcore_clothes') ~= 'missing' then
+      TriggerEvent("rcore_clothes:openOutfits")
+  elseif GetResourceState('ox_appearance') ~= 'missing' then
+      TriggerEvent('ox_appearance:wardrobe')
+  else
+      -- If you are not using one of the scripts in the list, you must integrate it yourself.
+  end
+end
+
 CreateThread(function()
     -- Service Room Hotel [Target]
     exports[Shared.Exports.target]:AddBoxZone("hotelservice", vector3(-1202.36, -203.91, 39.32), 0.6, 0.6, {

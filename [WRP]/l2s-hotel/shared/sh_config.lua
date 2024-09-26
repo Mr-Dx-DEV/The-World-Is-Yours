@@ -18,11 +18,7 @@ Shared.StashWeight = {
 Shared.V4Files = false -- if you use L2S v4 Files 
 Shared.firstdoorlock = 234 -- if you uses V4 l2s files only set first doorlock number Defult : 234
 Shared.Events = {
-    inventory1 = 'inventory:server:OpenInventory', -- your inventory event  (client event)
-    inventory2 = 'inventory:client:SetCurrentStash', -- your inventory event  (client event)
-    inventory3 = 'inventory:client:ItemBox', -- your inventory event (client event)
-    phone = 'qs-smartphone:server:sendNewMailToOffline', -- your phone event (server event) file open source if you want make it export server/mail.lua
-    outfits = "qb-clothing:server:openOutfitMenu", -- your outfits event (server event)
+    itembox = 'inventory:client:ItemBox', -- your inventory event (client event)
     doorlock = "qb-doorlock:server:ToggleHotel" -- if you uses your v4 files dont touch
 }
 
