@@ -26,12 +26,12 @@ Config.ResourcesToDisable = {
 Config.StoresBlips = {
     ["clothing"] = {
         sprite = 73,
-        scale = 0.7,
+        scale = 0.6,
         color = 3,
     },
     ["barber"] = {
         sprite = 71,
-        scale = 0.7,
+        scale = 0.6,
         color = 0,
     },
     ["surgeon"] = {
@@ -41,7 +41,7 @@ Config.StoresBlips = {
     },
     ["tattoo"] = {
         sprite = 75,
-        scale = 0.7,
+        scale = 0.6,
         color = 4,
     },
 }
@@ -49,21 +49,21 @@ Config.StoresBlips = {
 -- Stores taken from QBCORE to support it
 Config.UseTarget = false
 Config.Stores = {
-    [1] = {price = 1000, shopType = 'clothing', coords = vector4(1693.91, 4821.81, 41.06, 109.25), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
-    [2] = {price = 1000, shopType = 'clothing', coords = vector4(-709.75, -153.95, 36.42, 105.44), ped = `s_m_m_movprem_01`, radius = 5.0, hideBlip = false },
-    [3] = {price = 1000, shopType = 'clothing', coords = vector4(-1192.41, -772.64, 16.33, 99.67), ped = `u_f_y_mistress`, radius = 5.0, hideBlip = false },
-    [4] = {price = 1000, shopType = 'clothing', coords = vector4(425.36, -807.41, 28.49, 101.17), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
-    [5] = {price = 1000, shopType = 'clothing', coords = vector4(-162.64, -301.98, 38.73, 257.59), ped = `s_m_m_movprem_01`, radius = 5.0, hideBlip = false },
-    [6] = {price = 1000, shopType = 'clothing', coords = vector4(75.74, -1391.67, 28.38, 265.76), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
-    [7] = {price = 1000, shopType = 'clothing', coords = vector4(-821.28, -1073.0, 10.33, 223.11), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
-    [8] = {price = 1000, shopType = 'clothing', coords = vector4(-1451.3, -238.38, 48.81, 47.66), ped = `s_m_m_movprem_01`, radius = 5.0, hideBlip = false },
-    [9] = {price = 1000, shopType = 'clothing', coords = vector4(4.11, 6511.94, 30.88, 46.79), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
-    [10] = {price = 1000, shopType = 'clothing', coords = vector4(618.55, 2761.18, 41.09, 173.39), ped = `u_f_y_mistress`, radius = 5.0, hideBlip = false },
-    [11] = {price = 1000, shopType = 'clothing', coords = vector4(1197.87, 2710.09, 37.22, 192.14), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
-    [12] = {price = 1000, shopType = 'clothing', coords = vector4(-3173.71, 1047.13, 19.86, 328.29), ped = `u_f_y_mistress`, radius = 5.0, hideBlip = false },
-    [13] = {price = 1000, shopType = 'clothing', coords = vector4(-1100.45, 2711.43, 18.11, 235.52), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
-    [14] = {price = 1000, shopType = 'clothing', coords = vector4(-1207.5, -1457.89, 3.36, 31.84), ped = `ig_g`, radius = 5.0, hideBlip = false },
-    [15] = {price = 1000, shopType = 'clothing', coords = vector4(120.21, -224.81, 53.56, 296.7), ped = `u_f_y_mistress`, radius = 5.0, hideBlip = false },
+    [1] = {price = 200, shopType = 'clothing', coords = vector4(1693.91, 4821.81, 41.06, 109.25), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
+    [2] = {price = 200, shopType = 'clothing', coords = vector4(-709.75, -153.95, 36.42, 105.44), ped = `s_m_m_movprem_01`, radius = 5.0, hideBlip = false },
+    [3] = {price = 200, shopType = 'clothing', coords = vector4(-1192.41, -772.64, 16.33, 99.67), ped = `u_f_y_mistress`, radius = 5.0, hideBlip = false },
+    [4] = {price = 200, shopType = 'clothing', coords = vector4(425.36, -807.41, 28.49, 101.17), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
+    [5] = {price = 200, shopType = 'clothing', coords = vector4(-162.64, -301.98, 38.73, 257.59), ped = `s_m_m_movprem_01`, radius = 5.0, hideBlip = false },
+    [6] = {price = 200, shopType = 'clothing', coords = vector4(75.74, -1391.67, 28.38, 265.76), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
+    [7] = {price = 200, shopType = 'clothing', coords = vector4(-821.28, -1073.0, 10.33, 223.11), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
+    [8] = {price = 200, shopType = 'clothing', coords = vector4(-1451.3, -238.38, 48.81, 47.66), ped = `s_m_m_movprem_01`, radius = 5.0, hideBlip = false },
+    [9] = {price = 200, shopType = 'clothing', coords = vector4(4.11, 6511.94, 30.88, 46.79), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
+    [10] = {price = 200, shopType = 'clothing', coords = vector4(618.55, 2761.18, 41.09, 173.39), ped = `u_f_y_mistress`, radius = 5.0, hideBlip = false },
+    [11] = {price = 200, shopType = 'clothing', coords = vector4(1197.87, 2710.09, 37.22, 192.14), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
+    [12] = {price = 200, shopType = 'clothing', coords = vector4(-3173.71, 1047.13, 19.86, 328.29), ped = `u_f_y_mistress`, radius = 5.0, hideBlip = false },
+    [13] = {price = 200, shopType = 'clothing', coords = vector4(-1100.45, 2711.43, 18.11, 235.52), ped = `a_f_y_soucent_01`, radius = 5.0, hideBlip = false },
+    [14] = {price = 200, shopType = 'clothing', coords = vector4(-1207.5, -1457.89, 3.36, 31.84), ped = `ig_g`, radius = 5.0, hideBlip = false },
+    [15] = {price = 200, shopType = 'clothing', coords = vector4(120.21, -224.81, 53.56, 296.7), ped = `u_f_y_mistress`, radius = 5.0, hideBlip = false },
     [16] = {price = 500, shopType = 'barber', coords = vector4(-814.3, -183.8, 36.58, 130.43), ped = `s_f_m_fembarber`, radius = 5.0, hideBlip = false },
     [17] = {price = 500, shopType = 'barber', coords = vector4(136.8, -1708.4, 28.3, 130.43), ped = `s_f_m_fembarber`, radius = 5.0, hideBlip = false },
     [18] = {price = 500, shopType = 'barber', coords = vector4(-1282.61, -1116.82, 5.99, 80.23), ped = `s_f_m_fembarber`, radius = 5.0, hideBlip = false },
