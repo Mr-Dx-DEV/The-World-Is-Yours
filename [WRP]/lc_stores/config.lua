@@ -508,7 +508,7 @@ Config.market_locations = {
 			['store'] = 'bank',
 		}
 	},
-	["market_19"] = {
+	--[[ ["market_19"] = {
 		['buy_price'] = 70000,
 		['sell_price'] = 35000,
 		['coord'] = {157.84, -234.75, 54.42},
@@ -534,7 +534,7 @@ Config.market_locations = {
 			},
 			['store'] = 'bank',
 		}
-	},
+	}, ]]
 	["market_20"] = {
 		['buy_price'] = 70000,
 		['sell_price'] = 35000,
@@ -716,7 +716,7 @@ Config.market_types = {
 			['scale'] = 0.6,					-- Blip Scale
 		}
 	},
-	['applestore'] = {							-- Market type ID
+--[[ 	['applestore'] = {							-- Market type ID
 		['stock_capacity'] = 150,				-- Max stock capacity
 		['max_employees'] = 5,					-- Max employees
 		['required_job'] = {},					-- Required job do purchase goods in this store (set to {} to dont require any job here, or put the job name there like this: ['required_job'] = {'cop', 'gang', 'job_name'},)
@@ -777,7 +777,7 @@ Config.market_types = {
 			['scale'] = 0.6,					-- Blip Scale
 		}
 	},
-
+ ]]
 	['ammunation'] = {
 		['stock_capacity'] = 50,
 		['max_employees'] = 5,
