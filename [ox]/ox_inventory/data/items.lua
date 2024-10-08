@@ -1,4 +1,16 @@
 return {
+	['torture_kit'] = {
+		label = 'Torture Kit',
+		weight = 1000,
+		stack = false,  -- Set to false since the item is unique
+		close = true,  -- Whether inventory should close after using the item
+		description = '',  -- Add a description if needed
+		client = {
+			image = 'torture_kit.png'  -- Path to the image file
+		},
+		useable = true,  -- Set to true if you want this item to be useable
+	},
+	
 	['cone'] = {
         name = 'cone',
         label = 'Cone',

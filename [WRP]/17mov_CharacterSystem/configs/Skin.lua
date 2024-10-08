@@ -88,7 +88,7 @@ Skin.Presets = { -- This is list of predefined presets. You can create some pres
 
     ["clothing"] = {
         "tshirt", "torso", "arms", "bproof", "pants", "shoes", "helmet", "mask", "watches", "ears", "chain", "glasses",
-        "bags", "makeup", "decals",
+        "bags", "decals",
     },
 
     ["surgeon"] = {

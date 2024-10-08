@@ -54,6 +54,12 @@
 		"Enable": true,
 		"Songs": [
 			{
+				"Title": "The world is your",
+				"Artist": "Hendersin",
+				"ImageUrl": "./loadingscreen/songs/look_at_that.jpg",
+				"SongUrl": "./loadingscreen/songs/Hendersin.mp3"
+			},
+			{
 				"Title": "Look at that",
 				"Artist": "Captain Joz",
 				"ImageUrl": "./loadingscreen/songs/look_at_that.jpg",

@@ -3,14 +3,14 @@
 ---------------------------------------------------------------
 
 PlayerSkeleton = {
-    head = { label = Strings.ply_injury_head, limp = false, level = 0, bleed = 0 },
-    neck = { label = Strings.ply_injury_neck, limp = false, level = 0, bleed = 0 },
+    head = { label = Strings.ply_injury_head, limp = true, level = 0, bleed = 0 },
+    neck = { label = Strings.ply_injury_neck, limp = true, level = 0, bleed = 0 },
     spine = { label = Strings.ply_injury_spine, limp = true, level = 0, bleed = 0 },
-    upper_body = { label = Strings.ply_injury_upper, limp = false, level = 0, bleed = 0 },
+    upper_body = { label = Strings.ply_injury_upper, limp = true, level = 0, bleed = 0 },
     lower_body = { label = Strings.ply_injury_lower, limp = true, level = 0, bleed = 0 },
-    left_arm = { label = Strings.ply_injury_left_arm, limp = false, level = 0, bleed = 0 },
+    left_arm = { label = Strings.ply_injury_left_arm, limp = true, level = 0, bleed = 0 },
     left_leg = { label = Strings.ply_injury_left_leg, limp = true, level = 0, bleed = 0 },
-    right_arm = { label = Strings.ply_injury_right_arm, limp = false, level = 0, bleed = 0 },
+    right_arm = { label = Strings.ply_injury_right_arm, limp = true, level = 0, bleed = 0 },
     right_leg = { label = Strings.ply_injury_right_leg, limp = true, level = 0, bleed = 0 },
 }
 
