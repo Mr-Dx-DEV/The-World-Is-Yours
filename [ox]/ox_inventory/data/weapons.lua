@@ -1,5 +1,75 @@
 return {
 	Weapons = {
+		--Kyros Weapon Pack Mafia
+		['WEAPON_CRIPSGLOCK'] = {
+            label = 'CRIPS GLOCK',
+            weight = 1900,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        },
+
+		['WEAPON_BLOODSGLOCK'] = {
+            label = 'BLOODS GLOCK',
+            weight = 1900,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        }, 
+
+		['WEAPON_CARTELGLOCK'] = {
+            label = 'CARTEL GLOCK',
+            weight = 1900,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        }, 
+
+		['WEAPON_FAMILIASGLOCK'] = {
+            label = 'FAMILIAS GLOCK',
+            weight = 1900,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        }, 
+
+		['WEAPON_BMGLOCK'] = {
+            label = 'BLK MAFIA GLOCK',
+            weight = 1900,
+            durability = 0.1,
+            ammoname = 'ammo-9'
+        }, 
+
+		['WEAPON_BMARP'] = {
+            label = 'BLK MAFIA ARP',
+            weight = 3500,
+            durability = 0.1,
+            ammoname = 'ammo-rifle'
+        }, 
+
+		['WEAPON_FAMILIASARP'] = {
+            label = 'FAMILAS ARP',
+            weight = 3500,
+            durability = 0.1,
+            ammoname = 'ammo-rifle'
+        }, 
+
+		['WEAPON_CARTELARP'] = {
+            label = 'CARTEL ARP',
+            weight = 3500,
+            durability = 0.1,
+            ammoname = 'ammo-rifle'
+        }, 
+
+		['WEAPON_CRIPSARP'] = {
+            label = 'CRIPS ARP',
+            weight = 3500,
+            durability = 0.1,
+            ammoname = 'ammo-rifle'
+        }, 
+
+		['WEAPON_BLOODSARP'] = {
+            label = 'BLOODS ARP',
+            weight = 3500,
+            durability = 0.1,
+            ammoname = 'ammo-rifle'
+        }, 
 		--Kyros Weapon Pack V5
 		['WEAPON_FN57'] = {
             label = 'FN Five-seveN',
