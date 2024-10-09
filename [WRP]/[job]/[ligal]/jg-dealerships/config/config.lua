@@ -89,14 +89,16 @@ Config.Categories = {
   suvs = "SUVs",
   commercial = "Commercial",
   cycles = "Cycles",
-  industrial = "Industrial"
+  industrial = "Industrial",
+  CUSTOMSPDM = "Custom PDM",
+  DEALERSHIP = "DEALERSHIP",
 }
 
 Config.DealershipLocations = {
   ["pdm"] = {
-    type = "owned", -- or "owned", "self-service"
+    type = "self-service", -- or "owned", "self-service"
     openShowroom = {
-      coords = vector3(-55.99, -1096.59, 26.42),
+      coords = vector3(-33.239, -1097.99, 27.269),
       size = 5
     },
     openManagement = {
@@ -107,14 +109,14 @@ Config.DealershipLocations = {
       coords = vector3(-27.89, -1082.1, 26.64),
       size = 5
     },
-    purchaseSpawn = vector4(-13.68, -1092.31, 26.67, 159.82),
-    testDriveSpawn = vector4(-49.77, -1110.83, 26.44, 75.94),
+    purchaseSpawn = vector4(-16.45, -1095.21, 26.97, 167.97),
+    testDriveSpawn = vector4(-16.45, -1095.21, 26.97, 167.97),
     camera = {
       name = "Car",
       coords = vector4(-146.6166, -596.6301, 166.0, 270.0),
       positions = {5.0, 8.0, 12.0, 8.0}
     },
-    categories = {"sedans", "compacts", "motorcycles", "offroad", "coupes", "muscle", "suvs"},
+    categories = {"sedans", "compacts", "motorcycles", "offroad", "coupes", "muscle", "suvs", "sportsclassics", "super", "sports", "cycles", "vans", "CUSTOMSPDM"},
     enableTestDrive = true,
     hideBlip = false,
     blip = {
@@ -135,29 +137,29 @@ Config.DealershipLocations = {
     job = "cardealer", -- Owned dealerships only
     directSaleDistance = 50,
   },
-  ["luxury"] = {
-    type = "self-service", -- or "owned", "self-service"
+  ["edm"] = {
+    type = "owned", -- or "owned", "self-service"
     openShowroom = {
-      coords = vector3(-1257.4, -369.12, 36.98),
+      coords = vector3(-70.07, 75.32, 71.62),
       size = 5
     },
     openManagement = {
-      coords = vector3(-1249.04, -346.96, 37.34),
+      coords = vector3(-63.94, 74.55, 71.62),
       size = 5
     },
     sellVehicle = {
       coords = vector3(-1233.46, -346.81, 37.33),
       size = 5
     },
-    purchaseSpawn = vector4(-1233.46, -346.81, 37.33, 23.36),
-    testDriveSpawn = vector4(-1233.46, -346.81, 37.33, 23.36),
+    purchaseSpawn = vector4(-68.72, 82.41, 71.51, 63.41),
+    testDriveSpawn = vector4(-68.72, 82.41, 71.51, 63.41),
     camera = {
       name = "Car",
       coords = vector4(-146.6166, -596.6301, 166.0, 270.0),
       positions = {5.0, 8.0, 12.0, 8.0}
     },
-    categories = {"sportsclassics", "super", "sports"},
-    enableSellVehicle = true, -- Allow players to sell vehicles back to dealer
+    categories = {"DEALERSHIP"},
+    enableSellVehicle = false, -- Allow players to sell vehicles back to dealer
     sellVehiclePercent = 0.6,  -- 60% of current sale price
     enableTestDrive = true,
     enableFinance = true,
