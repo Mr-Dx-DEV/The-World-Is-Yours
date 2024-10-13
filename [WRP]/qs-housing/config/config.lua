@@ -372,9 +372,9 @@ Config.ItemRequired = 'police_stormram' --This is the item needed to initiate th
 Config.RamsNeeded = 1                   --This will be the number of times you must do the minigame before opening a door.
 Config.TimeAutoCloseDoor = 5            -- In minutes
 
-Config.HouseRobbery = true              --If you activate this, the players will be able to rob the houses.
+Config.HouseRobbery = false              --If you activate this, the players will be able to rob the houses.
 Config.RequiredCops = 1                 --Minimum number of police officers available to initiate house robberies.
-Config.RobberyItem = 'lockpick'         --This is the item needed to rob the houses.
+Config.RobberyItem = 'advancedlockpick'         --This is the item needed to rob the houses.
 Config.LockpickBrokenChance = 80        --You can modify the chance that the item will break, if you place 0, it will never break, if you place 100, it will always break.
 
 Config.PoliceJob = {
