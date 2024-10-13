@@ -1,386 +1,393 @@
 return {
 	Weapons = {
 		--Kyros Weapon Pack Mafia
-		['WEAPON_CRIPSGLOCK'] = {
-            label = 'CRIPS GLOCK',
-            weight = 1900,
-            durability = 0.1,
-            ammoname = 'ammo-9'
-        },
+		-- Weapon Definitions with Correct Ammo Types
 
-		['WEAPON_BLOODSGLOCK'] = {
-            label = 'BLOODS GLOCK',
-            weight = 1900,
-            durability = 0.1,
-            ammoname = 'ammo-9'
-        }, 
+['WEAPON_CRIPSGLOCK'] = {
+    label = 'CRIPS GLOCK',
+    weight = 1900,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_CARTELGLOCK'] = {
-            label = 'CARTEL GLOCK',
-            weight = 1900,
-            durability = 0.1,
-            ammoname = 'ammo-9'
-        }, 
+['WEAPON_BLOODSGLOCK'] = {
+    label = 'BLOODS GLOCK',
+    weight = 1900,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+}, 
 
-		['WEAPON_FAMILIASGLOCK'] = {
-            label = 'FAMILIAS GLOCK',
-            weight = 1900,
-            durability = 0.1,
-            ammoname = 'ammo-9'
-        }, 
+['WEAPON_CARTELGLOCK'] = {
+    label = 'CARTEL GLOCK',
+    weight = 1900,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+}, 
 
-		['WEAPON_BMGLOCK'] = {
-            label = 'BLK MAFIA GLOCK',
-            weight = 1900,
-            durability = 0.1,
-            ammoname = 'ammo-9'
-        }, 
+['WEAPON_FAMILIASGLOCK'] = {
+    label = 'FAMILIAS GLOCK',
+    weight = 1900,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+}, 
 
-		['WEAPON_BMARP'] = {
-            label = 'BLK MAFIA ARP',
-            weight = 3500,
-            durability = 0.1,
-            ammoname = 'ammo-rifle'
-        }, 
+['WEAPON_BMGLOCK'] = {
+    label = 'BLK MAFIA GLOCK',
+    weight = 1900,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+}, 
 
-		['WEAPON_FAMILIASARP'] = {
-            label = 'FAMILAS ARP',
-            weight = 3500,
-            durability = 0.1,
-            ammoname = 'ammo-rifle'
-        }, 
+['WEAPON_BMARP'] = {
+    label = 'BLK MAFIA ARP',
+    weight = 3500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+}, 
 
-		['WEAPON_CARTELARP'] = {
-            label = 'CARTEL ARP',
-            weight = 3500,
-            durability = 0.1,
-            ammoname = 'ammo-rifle'
-        }, 
+['WEAPON_FAMILIASARP'] = {
+    label = 'FAMILAS ARP',
+    weight = 3500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+}, 
 
-		['WEAPON_CRIPSARP'] = {
-            label = 'CRIPS ARP',
-            weight = 3500,
-            durability = 0.1,
-            ammoname = 'ammo-rifle'
-        }, 
+['WEAPON_CARTELARP'] = {
+    label = 'CARTEL ARP',
+    weight = 3500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+}, 
 
-		['WEAPON_BLOODSARP'] = {
-            label = 'BLOODS ARP',
-            weight = 3500,
-            durability = 0.1,
-            ammoname = 'ammo-rifle'
-        }, 
-		--Kyros Weapon Pack V5
-		['WEAPON_FN57'] = {
-            label = 'FN Five-seveN',
-            weight = 1500,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_CRIPSARP'] = {
+    label = 'CRIPS ARP',
+    weight = 3500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+}, 
 
-		['WEAPON_T1911'] = {
-            label = 'TAN 1911',
-            weight = 2000,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_BLOODSARP'] = {
+    label = 'BLOODS ARP',
+    weight = 3500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+}, 
 
-		['WEAPON_GLOCK21'] = {
-            label = 'GLOCK 21',
-            weight = 2000,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+-- Kyros Weapon Pack V5
 
-		['WEAPON_TARP'] = {
-            label = 'TAN ARP',
-            weight = 4600,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_FN57'] = {
+    label = 'FN Five-seveN',
+    weight = 1500,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_LBTARP'] = {
-            label = 'LB TAN ARP',
-            weight = 5500,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_T1911'] = {
+    label = 'TAN 1911',
+    weight = 2000,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_WOARP'] = {
-            label = 'WHITE-OUT ARP',
-            weight = 4000,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_GLOCK21'] = {
+    label = 'GLOCK 21',
+    weight = 2000,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_SR40'] = {
-            label = 'RUGER SR40',
-            weight = 1400,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_TARP'] = {
+    label = 'TAN ARP',
+    weight = 4600,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_ILLGLOCK17'] = {
-            label = 'ILLEGAL GLOCK 17',
-            weight = 2000,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_LBTARP'] = {
+    label = 'LB TAN ARP',
+    weight = 5500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_DMK18'] = {
-            label = 'DESERET MK18',
-            weight = 6000,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_WOARP'] = {
+    label = 'WHITE-OUT ARP',
+    weight = 4000,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_BLACKARP'] = {
-            label = 'BLACK ARP',
-            weight = 5500,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_SR40'] = {
+    label = 'RUGER SR40',
+    weight = 1400,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_REDM4A1'] = {
-            label = 'RED DRAG M4A1',
-            weight = 6200,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_ILLGLOCK17'] = {
+    label = 'ILLEGAL GLOCK 17',
+    weight = 2000,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_BLUEGLOCKS'] = {
-            label = 'BLUE GLOCK SWITCH',
-            weight = 2000,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_DMK18'] = {
+    label = 'DESERET MK18',
+    weight = 6000,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_GLOCKBEAMS'] = {
-            label = 'GLOCK BEAM SWITCH',
-            weight = 2000,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_BLACKARP'] = {
+    label = 'BLACK ARP',
+    weight = 5500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_MGGLOCK'] = {
-            label = 'MG GLOCK',
-            weight = 2000,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_REDM4A1'] = {
+    label = 'RED DRAG M4A1',
+    weight = 6200,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_TGLOCK19'] = {
-            label = 'TAN G19',
-            weight = 2100,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_BLUEGLOCKS'] = {
+    label = 'BLUE GLOCK SWITCH',
+    weight = 2000,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_MIDASGLOCK'] = {
-            label = 'MIDAS GLOCK',
-            weight = 5000,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_GLOCKBEAMS'] = {
+    label = 'GLOCK BEAM SWITCH',
+    weight = 2000,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_TEC9S'] = {
-            label = 'TEC 9 W STRAP',
-            weight = 4500,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_MGGLOCK'] = {
+    label = 'MG GLOCK',
+    weight = 2000,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_CHAIR'] = {
-			label = 'BRAWL CHAIR',
-			weight = 3000,
-			durability = 0.3,
-		},
+['WEAPON_TGLOCK19'] = {
+    label = 'TAN G19',
+    weight = 2100,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_REDARP'] = {
-            label = 'RED DRAG ARP',
-            weight = 4500,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_MIDASGLOCK'] = {
+    label = 'MIDAS GLOCK',
+    weight = 5000,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_P30L'] = {
-            label = 'H&K P30L',
-            weight = 1900,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_TEC9S'] = {
+    label = 'TEC 9 W STRAP',
+    weight = 4500,
+    durability = 0.1,
+    ammoname = 'smg_ammo'
+},
 
-		['WEAPON_GLOCK41'] = {
-            label = 'GLOCK 41',
-            weight = 1700,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_CHAIR'] = {
+    label = 'BRAWL CHAIR',
+    weight = 3000,
+    durability = 0.3,
+},
 
-		['WEAPON_THOMPSON'] = {
-            label = 'BLACK THOMPSON',
-            weight = 6000,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_REDARP'] = {
+    label = 'RED DRAG ARP',
+    weight = 4500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_RAM7'] = {
-            label = 'RAM-7',
-            weight = 5200,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_P30L'] = {
+    label = 'H&K P30L',
+    weight = 1900,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_M500'] = {
-            label = 'MOSSBERG 500',
-            weight = 4500,
-            durability = 0.1,
-            ammoname = 'shotgun_ammo'
-        },
+['WEAPON_GLOCK41'] = {
+    label = 'GLOCK 41',
+    weight = 1700,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_R590'] = {
-            label = 'REMINGTON 590',
-            weight = 3100,
-            durability = 0.1,
-            ammoname = 'shotgun_ammo'
-        },
+['WEAPON_THOMPSON'] = {
+    label = 'BLACK THOMPSON',
+    weight = 6000,
+    durability = 0.1,
+    ammoname = 'smg_ammo'
+},
 
-		['WEAPON_BAR15'] = {
-            label = 'AR-15',
-            weight = 5500,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_RAM7'] = {
+    label = 'RAM-7',
+    weight = 5200,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_BSCAR'] = {
-            label = 'BLACK SCAR',
-            weight = 5500,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_M500'] = {
+    label = 'MOSSBERG 500',
+    weight = 4500,
+    durability = 0.1,
+    ammoname = 'shotgun_ammo'
+},
 
-		['WEAPON_AXE'] = {
-			label = 'AXE',
-			weight = 2000,
-			durability = 0.1,
-		},
+['WEAPON_R590'] = {
+    label = 'REMINGTON 590',
+    weight = 3100,
+    durability = 0.1,
+    ammoname = 'shotgun_ammo'
+},
 
-		['WEAPON_P210'] = {
-            label = 'P210 CARRY',
-            weight = 1800,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_BAR15'] = {
+    label = 'AR-15',
+    weight = 5500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_KRISSVECTOR'] = {
-            label = 'KRISS VECTOR',
-            weight = 3900,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_BSCAR'] = {
+    label = 'BLACK SCAR',
+    weight = 5500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		--Kyros Weapon Pack POLICE
-		['WEAPON_PDBATON'] = {
-			label = 'PD BATON',
-			weight = 1000,
-			durability = 0.1,
-		},
+['WEAPON_AXE'] = {
+    label = 'AXE',
+    weight = 2000,
+    durability = 0.1,
+},
 
-		['WEAPON_BTASER'] = {
-			label = 'PD Black Taser',
-			weight = 300,
-			durability = 0.1,
-		},
+['WEAPON_P210'] = {
+    label = 'P210 CARRY',
+    weight = 1800,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_YTASER'] = {
-			label = 'PD Yellow Taser',
-			weight = 300,
-			durability = 0.1,
-		},
+['WEAPON_KRISSVECTOR'] = {
+    label = 'KRISS VECTOR',
+    weight = 3900,
+    durability = 0.1,
+    ammoname = 'smg_ammo'
+},
 
-		['WEAPON_PDG19'] = {
-            label = 'PD GLOCK 19G4',
-            weight = 1800,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+-- Kyros Weapon Pack POLICE
 
-		['WEAPON_PD870'] = {
-            label = 'PD REMINGTON 870',
-            weight = 7800,
-            durability = 0.1,
-            ammoname = 'shotgun_ammo'
-        },
+['WEAPON_PDBATON'] = {
+    label = 'PD BATON',
+    weight = 1000,
+    durability = 0.1,
+},
 
-		['WEAPON_PDM700'] = {
-            label = 'PD REMINGTON M700',
-            weight = 9400,
-            durability = 0.1,
-            ammoname = 'sniper_ammo'
-        },
+['WEAPON_BTASER'] = {
+    label = 'PD Black Taser',
+    weight = 300,
+    durability = 0.1,
+},
 
-		['WEAPON_HK417'] = {
-            label = 'PD HK417',
-            weight = 4400,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_YTASER'] = {
+    label = 'PD Yellow Taser',
+    weight = 300,
+    durability = 0.1,
+},
 
-		['WEAPON_PDCM607'] = {
-            label = 'PD COLT M607',
-            weight = 4500,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_PDG19'] = {
+    label = 'PD GLOCK 19G4',
+    weight = 1800,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
 
-		['WEAPON_PDC7'] = {
-            label = 'PD COLT C7',
-            weight = 4500,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_PD870'] = {
+    label = 'PD REMINGTON 870',
+    weight = 7800,
+    durability = 0.1,
+    ammoname = 'shotgun_ammo'
+},
 
-		['WEAPON_PDG22'] = {
-            label = 'PD GLOCK 22',
-            weight = 4500,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_PDM700'] = {
+    label = 'PD REMINGTON M700',
+    weight = 9400,
+    durability = 0.1,
+    ammoname = 'sniper_ammo'
+},
 
-		['WEAPON_PDBM3'] = {
-            label = 'PD BENELLI M3',
-            weight = 3500,
-            durability = 0.1,
-            ammoname = 'shotgun_ammo'
-        },
+['WEAPON_HK417'] = {
+    label = 'PD HK417',
+    weight = 4400,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_PDP88'] = {
-            label = 'PD WALTHER P88',
-            weight = 1500,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_PDCM607'] = {
+    label = 'PD COLT M607',
+    weight = 4500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_PDHK45'] = {
-            label = 'PD HK45',
-            weight = 1600,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_PDC7'] = {
+    label = 'PD COLT C7',
+    weight = 4500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_PDHK33'] = {
-            label = 'PD HK433',
-            weight = 3600,
-            durability = 0.1,
-            ammoname = 'rifle_ammo'
-        },
+['WEAPON_PDG22'] = {
+    label = 'PD GLOCK 22',
+    weight = 4500,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
 
-		['WEAPON_PDHKUSP'] = {
-            label = 'PD HK USP',
-            weight = 1600,
-            durability = 0.1,
-            ammoname = 'pistol_ammo'
-        },
+['WEAPON_PDBM3'] = {
+    label = 'PD BENELLI M3',
+    weight = 3500,
+    durability = 0.1,
+    ammoname = 'shotgun_ammo'
+},
+
+['WEAPON_PDP88'] = {
+    label = 'PD WALTHER P88',
+    weight = 1500,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
+
+['WEAPON_PDHK45'] = {
+    label = 'PD HK45',
+    weight = 1600,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
+
+['WEAPON_PDHK33'] = {
+    label = 'PD HK433',
+    weight = 3600,
+    durability = 0.1,
+    ammoname = 'rifle_ammo'
+},
+
+['WEAPON_PDHKUSP'] = {
+    label = 'PD HK USP',
+    weight = 1600,
+    durability = 0.1,
+    ammoname = 'pistol_ammo'
+},
+
+
 
 
 
@@ -1827,6 +1834,17 @@ return {
 					`COMPONENT_MGGLOCK_CLIP_02`, -- v5
 					`COMPONENT_MIDASGLOCK_CLIP_02`, -- v5
 					`COMPONENT_TGLOCK19_CLIP_02`, -- v5
+					`COMPONENT_CARTELGLOCK_CLIP_EXTENDED`, -- mafia [A]
+					`COMPONENT_CRIPSGLOCK_CLIP_EXTENDED`, -- mafia [A]
+					`COMPONENT_BLOODSGLOCK_CLIP_EXTENDED`, -- mafia [A]
+					`COMPONENT_BMGLOCK_CLIP_EXTENDED`, -- mafia [A]
+					`COMPONENT_FAMILIASGLOCK_CLIP_EXTENDED`, -- mafia [A]
+					`COMPONENT_KINGZGLOCK_CLIP_EXTENDED`, -- mafia [B]
+					`COMPONENT_GRAPEGLOCK_CLIP_EXTENDED`, -- mafia [B]
+					`COMPONENT_HOOVERGLOCK_CLIP_EXTENDED`, -- mafia [B]
+					`COMPONENT_MOBGLOCK_CLIP_EXTENDED`, -- mafia [B]
+					`COMPONENT_PLAYBOYGLOCK_CLIP_EXTENDED`, -- mafia [B]
+
 
 
 
@@ -3172,6 +3190,16 @@ return {
 					`COMPONENT_MGGLOCK_CLIP_03`, -- v5
 					`COMPONENT_TGLOCK19_CLIP_03`, -- v5
 					`COMPONENT_MIDASGLOCK_CLIP_03`, -- v5
+					`COMPONENT_CARTELGLOCK_CLIP_DRUM`, -- mafia [A]
+					`COMPONENT_CRIPSGLOCK_CLIP_DRUM`, -- mafia [A]
+					`COMPONENT_BLOODSGLOCK_CLIP_DRUM`, -- mafia [A]
+					`COMPONENT_BMGLOCK_CLIP_DRUM`, -- mafia [A]
+					`COMPONENT_FAMILIASGLOCK_CLIP_DRUM`, -- mafia [A]
+					`COMPONENT_PLAYBOYGLOCK_CLIP_DRUM`, -- mafia [B]
+					`COMPONENT_MOBGLOCK_CLIP_DRUM`, -- mafia [B]
+					`COMPONENT_GRAPEGLOCK_CLIP_DRUM`, -- mafia [B]
+					`COMPONENT_HOOVERGLOCK_CLIP_DRUM`, -- mafia [B]
+					`COMPONENT_KINGZGLOCK_CLIP_DRUM`, -- mafia [B]
 				},
 				usetime = 2500
 			}
@@ -3196,7 +3224,155 @@ return {
 				usetime = 5500
 			}
 		},
+		['at_clip_100_black'] = {
+			label = 'BLK 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_CARTELGLOCK_CLIP_BLACK`, -- mafia 
+					`COMPONENT_CRIPSGLOCK_CLIP_BLACK`, -- mafia 
+					`COMPONENT_BLOODSGLOCK_CLIP_BLACK`, -- mafia 
+					`COMPONENT_BMGLOCK_CLIP_BLACK`, -- mafia 
+					`COMPONENT_FAMILIASGLOCK_CLIP_BLACK`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+		
+		['at_clip_100_red'] = {
+			label = 'Red 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_CARTELGLOCK_CLIP_RED`, -- mafia 
+					`COMPONENT_BLOODSGLOCK_CLIP_RED`, -- mafia 
+					`COMPONENT_BMGLOCK_CLIP_RED`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
 
+		['at_clip_100_white'] = {
+			label = 'WT 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_CARTELGLOCK_CLIP_WHITE`, -- mafia 
+					`COMPONENT_CRIPSGLOCK_CLIP_WHITE`, -- mafia 
+					`COMPONENT_BLOODSGLOCK_CLIP_WHITE`, -- mafia 
+					`COMPONENT_BMGLOCK_CLIP_WHITE`, -- mafia 
+					`COMPONENT_FAMILIASGLOCK_CLIP_WHITE`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_100_blue'] = {
+			label = 'Blue 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_CRIPSGLOCK_CLIP_BLUE`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_100_green'] = {
+			label = 'GRN 100R Drum',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_FAMILIASGLOCK_CLIP_GREEN`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_black'] = {
+			label = 'BLK BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_BMARP_CLIP_BLACK`, -- mafia 
+					`COMPONENT_FAMILIASARP_CLIP_BLACK`, -- mafia 
+					`COMPONENT_CARTELARP_CLIP_BLACK`, -- mafia 
+					`COMPONENT_CRIPSARP_CLIP_BLACK`, -- mafia 
+					`COMPONENT_BLOODSARP_CLIP_BLACK`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_red'] = {
+			label = 'RED BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_BMARP_CLIP_RED`, -- mafia 
+					`COMPONENT_FAMILIASARP_CLIP_RED`, -- mafia 
+					`COMPONENT_CARTELARP_CLIP_RED`, -- mafia 
+					`COMPONENT_CRIPSARP_CLIP_RED`, -- mafia 
+					`COMPONENT_BLOODSARP_CLIP_RED`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_blue'] = {
+			label = 'BLUE BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_BMARP_CLIP_BLUE`, -- mafia 
+					`COMPONENT_FAMILIASARP_CLIP_BLUE`, -- mafia 
+					`COMPONENT_CARTELARP_CLIP_BLUE`, -- mafia 
+					`COMPONENT_CRIPSARP_CLIP_BLUE`, -- mafia 
+					`COMPONENT_BLOODSARP_CLIP_BLUE`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_green'] = {
+			label = 'GRN BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_BMARP_CLIP_GREEN`, -- mafia 
+					`COMPONENT_FAMILIASARP_CLIP_GREEN`, -- mafia 
+					`COMPONENT_CARTELARP_CLIP_GREEN`, -- mafia 
+					`COMPONENT_CRIPSARP_CLIP_GREEN`, -- mafia 
+					`COMPONENT_BLOODSARP_CLIP_GREEN`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
+
+		['at_clip_bandana_white'] = {
+			label = 'WT BANDANA DRUM',
+			type = 'magazine',
+			weight = 800,
+			client = {
+				component = {
+					`COMPONENT_BMARP_CLIP_WHITE`, -- mafia 
+					`COMPONENT_FAMILIASARP_CLIP_WHITE`, -- mafia 
+					`COMPONENT_CARTELARP_CLIP_WHITE`, -- mafia 
+					`COMPONENT_CRIPSARP_CLIP_WHITE`, -- mafia 
+					`COMPONENT_BLOODSARP_CLIP_WHITE`, -- mafia 
+				},
+				usetime = 5500
+			}
+		},
 		['at_clip_clear'] = {
 			label = 'Clear Clip',
 			type = 'magazine',
@@ -3213,6 +3389,18 @@ return {
 					`COMPONENT_TGLOCK19_CLIP_05`, -- pistol
 					`COMPONENT_MIDASGLOCK_CLIP_05`, -- pistol
 					`COMPONENT_REDARP_CLIP_04`, -- rifle
+
+					
+					`COMPONENT_CARTELGLOCK_CLIP_CLEAR`, -- mafia [A]
+					`COMPONENT_CRIPSGLOCK_CLIP_CLEAR`, -- mafia [A]
+					`COMPONENT_BLOODSGLOCK_CLIP_CLEAR`, -- mafia [A]
+					`COMPONENT_BMGLOCK_CLIP_CLEAR`, -- mafia [A]
+					`COMPONENT_FAMILIASGLOCK_CLIP_CLEAR`, -- mafia [A]
+					`COMPONENT_PLAYBOYGLOCK_CLIP_CLEAR`, -- mafia [B]
+					`COMPONENT_MOBGLOCK_CLIP_CLEAR`, -- mafia [B]
+					`COMPONENT_GRAPEGLOCK_CLIP_CLEAR`, -- mafia [B]
+					`COMPONENT_HOOVERGLOCK_CLIP_CLEAR`, -- mafia [B]
+					`COMPONENT_KINGZGLOCK_CLIP_CLEAR`, -- mafia [B]
 				},
 				usetime = 2500
 			}
