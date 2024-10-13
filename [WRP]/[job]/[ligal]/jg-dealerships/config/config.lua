@@ -92,6 +92,14 @@ Config.Categories = {
   industrial = "Industrial",
   CUSTOMSPDM = "Custom PDM",
   DEALERSHIP = "DEALERSHIP",
+  oneofone = "oneofone",
+  oneoffive = "one of five",
+  oneoften = "one of ten",
+  oneoftenbikes = "one of ten bikes",
+  GANG = "GANG",
+  IMPORT = "IMPORT",
+  ADMINONLY = "ADMINONLY",
+  
 }
 
 Config.DealershipLocations = {
@@ -137,28 +145,28 @@ Config.DealershipLocations = {
     job = "cardealer", -- Owned dealerships only
     directSaleDistance = 50,
   },
-  ["edm"] = {
+  ["WIY"] = {
     type = "owned", -- or "owned", "self-service"
     openShowroom = {
       coords = vector3(-70.07, 75.32, 71.62),
       size = 5
     },
     openManagement = {
-      coords = vector3(-63.94, 74.55, 71.62),
+      coords = vector3(-57.145, 71.311, 71.615),
       size = 5
     },
     sellVehicle = {
       coords = vector3(-1233.46, -346.81, 37.33),
       size = 5
     },
-    purchaseSpawn = vector4(-68.72, 82.41, 71.51, 63.41),
+    purchaseSpawn = vector4(-87.844, 71.917, 71.587, 155.123),
     testDriveSpawn = vector4(-68.72, 82.41, 71.51, 63.41),
     camera = {
       name = "Car",
       coords = vector4(-146.6166, -596.6301, 166.0, 270.0),
       positions = {5.0, 8.0, 12.0, 8.0}
     },
-    categories = {"DEALERSHIP"},
+    categories = {"oneofone", "oneoffive", "oneoften", "oneoftenbikes", "DEALERSHIP", "GANG", "IMPORT", "ADMINONLY"},
     enableSellVehicle = false, -- Allow players to sell vehicles back to dealer
     sellVehiclePercent = 0.6,  -- 60% of current sale price
     enableTestDrive = true,
