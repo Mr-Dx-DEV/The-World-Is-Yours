@@ -3,30 +3,24 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local Webhooks = {
     ['default'] = '',
     ['testwebhook'] = '',
-    ['playermoney'] = '',
-    ['playerinventory'] = '',
-    ['robbing'] = '',
+    
+   
+   
     ['cuffing'] = '',
-    ['drop'] = '',
-    ['trunk'] = '',
-    ['stash'] = '',
-    ['glovebox'] = '',
-    ['banking'] = '',
+    
     ['vehicleshop'] = '',
     ['vehicleupgrades'] = '',
     ['shops'] = '',
     ['dealers'] = '',
-    ['storerobbery'] = '',
-    ['bankrobbery'] = '',
+    
     ['powerplants'] = '',
-    ['death'] = '',
-    ['joinleave'] = '',
+    
     ['ooc'] = '',
     ['report'] = '',
     ['me'] = '',
     ['pmelding'] = '',
     ['112'] = '',
-    ['bans'] = '',
+    
     ['anticheat'] = '',
     ['weather'] = '',
     ['moneysafes'] = '',
@@ -41,6 +35,26 @@ local Webhooks = {
     ['qbjobs'] = '',
     ['identificationforgery'] = 'YOUR_WEBHOOK_HERE',
     ['burnerphones'] = 'YOUR_WEBHOOK_HERE',
+
+
+
+    ["playermoney"] = "https://discord.com/api/webhooks/1190196221655134309/mIiu2BfJFT437rTm2DG_ZrSd6i4sOkmAxVjioXE26cTRS2Q_v5d1QCamahhpNEVJuY7Z",
+    ["playerinventory"] = "https://discord.com/api/webhooks/1294746684235976804/lKdrLls3NG02tnctzvIAMN41waSjYmUnca3Hh60ltCj9KKXS-BraQ2vDKMc52EoJF13A",
+    ["robbing"] = "https://discord.com/api/webhooks/1190196901379850300/2cgQaz5zr8i06o-s_5dmqZSXNleb5qqpJAuJmSf5BhA6ulIn4b5kV3rss7au-wl3iK8h",
+    
+    ["drop"] = "https://discord.com/api/webhooks/1190197000654819369/tz6JT_GHOqOvTX31l6BpKa0YcpNmjgmtyVr9p-rbpjHBIbEX2ZnZHvJY5YQ8JYQxxqMc",
+    ["trunk"] = "https://discord.com/api/webhooks/1190197103104905216/BRF5B7n_OgBvWHhknRUvo2p_rr-KHbegslKMG_BezxBC_qawiIyocyGl5FRG2yHksLuC",
+    ["stash"] = "https://discord.com/api/webhooks/1190197185053204511/KUvtOjjr5uUbazkt0q83_hRThZ1Br1A85XGm3_ti1dWxeb2q8AC3EnoxMxeBTuxZVu1s",
+    ["glovebox"] = "https://discord.com/api/webhooks/1190197270361161758/GMqFVE2Yvda6vINxi47Cg3f7SFacWBnypQj-yFd0KR08iv68qs5Oy_UEZ03husgcLtTo",
+    ["banking"] = "https://discord.com/api/webhooks/1190197428620640266/Rlmp5iqoxI4aMkdhxrSHI40X9wY4LWmmwr2S3ijw4uz2eVpSpaa4MYW8Qe7unrFHNWlR",
+    
+    ["storerobbery"] = "https://discord.com/api/webhooks/1190197525026713710/wkSL6xb3hmEDIndWFnS29moVTdu0mohvejIN309-gZstlqbOcKnmbT5cPjT3knBBPR11",
+    ["bankrobbery"] = "https://discord.com/api/webhooks/1190197693486739457/8GDkstNIHLPcsw2fDLXf_GG-cv7Jk1D7MmByMTxe051o-58R7Q9Mu02Qp1Nw7a7cj67x",
+    
+    ["death"] = "https://discord.com/api/webhooks/1190196438198652928/qxc5W4CY1VCw33W3k8Mxr-zf0dbYpa1-5XdXOMPS0C-PklrGd6zCphMozZLo1vrAyWA6",
+    ["joinleave"] = "https://discord.com/api/webhooks/1294746201983553597/7YUhEJoau29_NIaMZN3P0pPDM2SC3KTGGu44OOhY6WEM-00zNDW5IIH3HKShBdqbFQe0",
+    
+    ["bans"] = "https://discord.com/api/webhooks/1190196542041227296/J0lZw8aWmsR0uvkhwULTGLROpx6kIJ4rNX9JgU4kFvmENf6GCrk6prn88kZP_cBCruVY",
 }
 
 local colors = { -- https://www.spycolor.com/
