@@ -1,174 +1,214 @@
-print("Jim-Mining - Mining Script by Jimathy")
+print("^2Jim-Mining ^7v^4"..GetResourceMetadata(GetCurrentResourceName(), 'version', nil):gsub("%.", "^7.^4").."^7 - ^2Mining Script by ^1Jimathy^7")
 
-Config = {}
+Loc = {}
 
 Config = {
-	Blips = true, -- Enable Blips?
-	BlipNamer = false, -- Enable to Name Blips different things, disable if you already have too many blips as this will group them together
-	PropSpawn = true, -- Enable Ore Props
-	Pedspawn = true, -- Do you want to spawn peds for main locations?
-	Invincible = true, --Do you want the peds to be invincible?
-	Frozen = true, --Do you want the peds to be unable to move? It's probably a yes, so leave true in there.
-	Stoic = true, --Do you want the peds to react to what is happening in their surroundings?
-	Fade = true, -- Do you want the peds to fade into/out of existence? It looks better than just *POP* its there.
-	Distance = 40.0, --The distance you want peds to spawn at
-}
+	Debug = false, -- enable debug mode
+	img = "qb-inventory/html/images/", --Set this to the image directory of your inventory script or "nil" if using newer qb-menu
 
-Config.ImageLink = "ox_inventory/web/images/" --Set this to the image directory of your inventory script
+	Lan = "en", -- Pick your language here
 
---Blips and Locations
--- Each one has individual blip enablers
--- Mine and Mine Leave have headings for the player locations
-Config.Locations =  {
-	['Mine'] = { name = "Mine", location = vector3(-595.15,2091.23,131.46-1.03), heading = 61.59, blipTrue = true }, -- The location where you enter the mine 
-	['Quarry'] = { name = "Quarry", location = vector3(2961.02, 2754.14, 43.71-1.03), heading = 200.0, blipTrue = true }, -- The location where you enter the mine 
-	['Smelter'] = {	name = "Smelter", location = vector3(1112.29, -2009.9, 31.46), blipTrue = true }, -- The location of the smelter
-	['Cracking'] = { name = "Stone Cracking", location = vector3(1109.27,-1992.68,30.99-1.03), heading = 305.0-180.0, blipTrue = false }, -- The location of the smelter
-	['Buyer'] = { name = "Ore Buyer", location = vector3(1085.7,-2001.04,31.41-1.03), heading = 323.73, blipTrue = false }, -- The Location of the ore buyer
-	['JewelCut'] = { name = "Jewel Cutting", location = vector3(1077.24, -1984.22, 31.0-0.97), heading = 300.0, blipTrue = false }, -- The Location of the jewel cutting bench. Couldn't decide so left in smeltery
-	['Buyer2'] = { name = "Jewel Buyer", location = vector3(-629.85, -240.31, 38.16-1.03), heading = 105.74, blipTrue = false }, -- The Location of the jewel buyer, I left this as Vangelico, others will proabably change to pawn shops
-}
+	JimShops = true, 		-- Set this to true if using jim-shops
 
-------------------------------------------------------------
---Ores and Props
+	Inv = "ox",				--"qb" or "ox"
+	Menu = "ox",			--"qb" or "ox"
+	ProgressBar = "qb",		--"qb" or "ox"
+	Notify = "qb",			--"qb" or "ox"
 
-Config.OrePositions = {
-	---MineShaft Locations
-	{ coords = vector3(-587.05, 2059.08, 129.75), },
-	{ coords = vector3(-588.49, 2048.05, 129.95-1.0), },
-	{ coords = vector3(-580.10, 2037.82, 128.8-1.0), },
-	{ coords = vector3(-572.28, 2022.37, 127.93-1.0), },
-	{ coords = vector3(-562.8, 2011.85, 127.55-1.0), },
-	--Quarry Locations
-	{ coords = vector3(2980.37, 2748.4, 43.4-1.5), },
-	{ coords = vector3(2985.77, 2751.19, 43.46-1.5), },
-	{ coords = vector3(2990.38, 2750.4, 43.46-1.5), },
-	{ coords = vector3(3000.77, 2754.15, 43.5-1.5), },
-	{ coords = vector3(2977.74, 2741.16, 44.54-1.5), },
-}
+	DrillSound = true,		-- disable drill sounds
 
------------------------------------------------------------
+	MultiCraft = true,		-- Enable multicraft
+	MultiCraftAmounts = { [1], [5], [10] },
 
-Config.RewardPool = {
-	'carbon',  'stone2',  'stone2', 
-	'copperore', 'stone2', 
-	'goldore', 
-	'ironore',  'stone2',  'stone2', 
-    'metalscrap', 'stone2', 
-	'uncut_ruby',
-	'uncut_emerald', 'stone2', 
-	'uncut_diamond',
-	'uncut_sapphire', 'stone2', 
-}
+	K4MB1Prop = false, -- Enable this to make use of K4MB1's ore props provided with their Mining Cave MLO
 
-------------------------------------------------------------
-Config.SellItems = { -- Selling Prices
-	['copperore'] = 200,
-	['goldore'] = 200,
-	['ironore'] = 200,
-	['carbon'] = 200,
-	
-	['goldbar'] = 3000,
-	
-	['uncut_emerald'] = 200,
-	['uncut_ruby'] = 200,
-	['uncut_diamond'] = 400,
-	['uncut_sapphire'] = 200,
+	Timings = { -- Time it takes to do things
+		["Cracking"] = math.random(5000, 10000),
+		["Washing"] = math.random(10000, 12000),
+		["Panning"] = math.random(25000, 30000),
+		["Pickaxe"] = math.random(15000, 18000),
+		["Mining"] = math.random(10000, 15000),
+		["Laser"] = math.random(7000, 10000),
+		["OreRespawn"] = math.random(55000, 75000),
+		["Crafting"] = 5000,
+	},
 
-	['emerald'] = 500,
-	['ruby'] = 500,
-	['diamond'] = 1000,
-	['sapphire'] = 500,
+	CrackPool = { -- Rewards from cracking stone
+		"carbon",
+		"copperore",
+		"ironore",
+		"metalscrap",
+	},
 
-	['diamond_ring'] = 2000,
-	['emerald_ring'] = 1500,
-	['ruby_ring'] = 1500,
-	['sapphire_ring'] = 1500,
+	WashPool = {	-- Rewards from washing stone
+		"goldore",
+		"uncut_ruby",
+		"uncut_emerald",
+		"uncut_diamond",
+		"uncut_sapphire",
+		"goldore",
+	},
 
-	['diamond_necklace'] = 2000,
-	['emerald_necklace'] = 1500,
-	['ruby_necklace'] = 1500,
-	['sapphire_necklace'] = 1500,
-
-	['gold_ring'] = 1000,
-	['goldchain'] = 1000,
-	['10kgoldchain'] = 800,
-
-}
+	PanPool = {		-- Rewards from panning
+		"can",
+		"goldore",
+		"can",
+		"goldore",
+		"bottle",
+		"stone",
+		"goldore",
+		"bottle",
+		"can",
+		"silverore",
+		"can",
+		"silverore",
+		"bottle",
+		"stone",
+		"silverore",
+		"bottle",
+	},
 
 ------------------------------------------------------------
+	OreSell = { -- List of ores you can sell to the buyer npc
+		"goldingot",
+		"silveringot",
+		"copperore",
+		"ironore",
+		"goldore",
+		"silverore",
+		"carbon",
+	},
 
-Config.PedList = { -- APPARENTLY You can call config locations IN the config, learn't that one today
-	{ model = "S_M_Y_Construct_01", coords = Config.Locations['Mine'].location, heading = Config.Locations['Mine'].heading, gender = "male", scenario = "WORLD_HUMAN_CLIPBOARD", }, -- Outside Mine
-	{ model = "S_M_Y_Construct_01", coords = Config.Locations['Quarry'].location, heading = Config.Locations['Quarry'].heading, gender = "male", scenario = "WORLD_HUMAN_CLIPBOARD", }, -- Outside Mine
-	{ model = "S_M_Y_Construct_01", coords = Config.Locations['Buyer'].location, heading = Config.Locations['Buyer'].heading, gender = "male", scenario = "WORLD_HUMAN_CLIPBOARD", }, -- Ore Buyer
-	{ model = "S_M_M_HighSec_03", coords = Config.Locations['Buyer2'].location, heading = Config.Locations['Buyer2'].heading, gender = "male", scenario = "WORLD_HUMAN_CLIPBOARD", }, -- Jewel Buyer
-}
+	SellingPrices = { -- Selling Prices
+		['copperore'] = 100,
+		['goldore'] = 100,
+		['silverore'] = 100,
+		['ironore'] = 100,
+		['carbon'] = 100,
 
-------------------------------------------------------------
---Added mine lighting for my first world NVE problems
---Light Up at Night..or sometimes not at all :(
-Config.MineLights = {
-	{ coords = vector3(-595.52, 2086.38, 131.38+0.45), },
-	{ coords = vector3(-594.30, 2082.89, 131.40+0.65), },
-	{ coords = vector3(-591.85, 2073.95, 131.35+0.65), },
-	{ coords = vector3(-589.98, 2066.16, 131.02+0.55), },
-	{ coords = vector3(-588.92, 2059.21, 130.67+0.45), },
-	{ coords = vector3(-588.69, 2054.36, 130.33+0.25), },
-	{ coords = vector3(-587.11, 2048.25, 129.79+0.25), },
-	{ coords = vector3(-584.51, 2041.63, 129.26+0.0), },
-	{ coords = vector3(-580.87, 2035.56, 128.72+0.0), },
-	{ coords = vector3(-576.07, 2028.91, 128.16+0.0), },
-	{ coords = vector3(-571.74, 2023.9, 127.81+0.0), },
-	{ coords = vector3(-565.44, 2017.63, 127.47+0.0), },
-	{ coords = vector3(-561.39, 2012.64, 127.28+0.0), },
-	{ coords = vector3(-558.24, 2008.18, 127.16+0.0), },
-}
+		['goldingot'] = 100,
+		['silveringot'] = 100,
 
+		['uncut_emerald'] = 100,
+		['uncut_ruby'] = 100,
+		['uncut_diamond'] = 100,
+		['uncut_sapphire'] = 100,
+
+		['emerald'] = 100,
+		['ruby'] = 100,
+		['diamond'] = 100,
+		['sapphire'] = 100,
+
+		['diamond_ring'] = 100,
+		['emerald_ring'] = 100,
+		['ruby_ring'] = 100,
+		['sapphire_ring'] = 100,
+		['diamond_ring_silver'] = 100,
+		['emerald_ring_silver'] = 100,
+		['ruby_ring_silver'] = 100,
+		['sapphire_ring_silver'] = 100,
+
+		['diamond_necklace'] = 100,
+		['emerald_necklace'] = 100,
+		['ruby_necklace'] = 100,
+		['sapphire_necklace'] = 100,
+		['diamond_necklace_silver'] = 100,
+		['emerald_necklace_silver'] = 100,
+		['ruby_necklace_silver'] = 100,
+		['sapphire_necklace_silver'] = 100,
+
+		['diamond_earring'] = 100,
+		['emerald_earring'] = 100,
+		['ruby_earring'] = 100,
+		['sapphire_earring'] = 100,
+		['diamond_earring_silver'] = 100,
+		['emerald_earring_silver'] = 100,
+		['ruby_earring_silver'] = 100,
+		['sapphire_earring_silver'] = 100,
+
+		['gold_ring'] = 100,
+		['goldchain'] = 100,
+		['goldearring'] = 100,
+		['silver_ring'] = 100,
+		['silverchain'] = 100,
+		['silverearring'] = 100,
+
+	},
 ------------------------------------------------------------
 --Mining Store Items
-Config.Items = {
-    label = "Mining Store",  slots = 7,
-    items = {
-	[1] = { name = "water_bottle", price = 10, amount = 100, info = {}, type = "item", slot = 1, },
-	[2] = { name = "sandwich", price = 15, amount = 250, info = {}, type = "item", slot = 2, },
-	[3] = { name = "bandage", price = 100, amount = 100, info = {}, type = "item", slot = 3, },
-	[4] = { name = "weapon_flashlight", price = 2500, amount = 100, info = {}, type = "item", slot = 4, }, 
-	[5] = { name = "drill",	price = 1000, amount = 100, info = {}, type = "item", slot = 5, }, 
-	[6] = { name = "handdrill",	price = 1000, amount = 100, info = {}, type = "item",	slot = 6, },
-	[7] = { name = "drillbit", price = 50, amount = 100,	info = {}, type = "item", slot = 7, }, }		
+	Items = {
+		label = "Mining Store",  slots = 10,
+		items = {
+			{ name = "water_bottle", price = 0, amount = 100, info = {}, type = "item", slot = 1, },
+			{ name = "sandwich", price = 0, amount = 250, info = {}, type = "item", slot = 2, },
+			{ name = "bandage", price = 0, amount = 100, info = {}, type = "item", slot = 3, },
+			{ name = "weapon_flashlight", price = 0, amount = 100, info = {}, type = "item", slot = 4, },
+			{ name = "goldpan", price = 0, amount = 100, info = {}, type = "item", slot = 5, },
+			{ name = "pickaxe",	price = 1, amount = 100, info = {}, type = "item", slot = 6, },
+			{ name = "miningdrill",	price = 1, amount = 50, info = {}, type = "item", slot = 7, },
+			{ name = "mininglaser",	price = 1, amount = 5, info = {}, type = "item", slot = 8, },
+			{ name = "drillbit", price = 0, amount = 100, info = {}, type = "item", slot = 9, },
+			
+		},
+	},
 }
+Crafting = {
+	SmeltMenu = {
+		{ ["copper"] = { ["copperore"] = 1 }, ['amount'] = 4 },
+		{ ["goldingot"] = { ["goldore"] = 1 } },
+		{ ["goldingot"] = { ["goldchain"] = 3 } },
+		{ ["goldingot"] = { ["gold_ring"] = 4 } },
+		{ ["silveringot"] = { ["silverore"] = 1 } },
+		{ ["silveringot"] = { ["silverchain"] = 3 } },
+		{ ["silveringot"] = { ["silver_ring"] = 4 } },
+		{ ["iron"] = { ["ironore"] = 1 } },
+		{ ["steel"] = { ["ironore"] = 1, ["carbon"] = 1 } },
+		{ ["aluminum"] = { ["can"] = 2, }, ['amount'] = 3 },
+		{ ["glass"] = { ["bottle"] = 2, }, ['amount'] = 2 },
+	},
+	GemCut = {
+		{ ["emerald"] = { ["uncut_emerald"] = 1, } },
+		{ ["diamond"] = { ["uncut_diamond"] = 1}, },
+		{ ["ruby"] = { ["uncut_ruby"] = 1 }, },
+		{ ["sapphire"] = { ["uncut_sapphire"] = 1 }, },
+	},
+	RingCut = {
+		{ ["gold_ring"] = { ["goldingot"] = 1 }, ['amount'] = 3 },
+		{ ["silver_ring"] = { ["silveringot"] = 1 }, ['amount'] = 3 },
+		{ ["diamond_ring"] = { ["gold_ring"] = 1, ["diamond"] = 1 }, },
+		{ ["emerald_ring"] = { ["gold_ring"] = 1, ["emerald"] = 1 }, },
+		{ ["ruby_ring"] = { ["gold_ring"] = 1, ["ruby"] = 1 }, },
+		{ ["sapphire_ring"] = { ["gold_ring"] = 1, ["sapphire"] = 1 }, },
 
-Crafting = {}
-Crafting.SmeltMenu = {
-	[1] = { ["copper"] = { ["copperore"] = 1 }, ['amount'] = 4 },
-	[2] = { ["goldbar"] = { ["goldore"] = 5 } },
-	[3] = { ["goldbar"] = { ["goldchain"] = 3 } },
-	[4] = { ["goldbar"] = { ["10kgoldchain"] = 5 } },
-	[5] = { ["goldbar"] = { ["gold_ring"] = 5 } },
-	[6] = { ["iron"] = { ["ironore"] = 4 } },
-	[7] = { ["steel"] = { ["ironore"] = 2, ["carbon"] = 2 } },
-	--[8] = { ["aluminum"] = { ["can"] = 2, }, ['amount'] = 3 },
-	--[9] = { ["glass"] = { ["bottle"] = 3, }, ['amount'] = 2 },
-}
-Crafting.GemCut = {
-	[1] = { ["emerald"] = { ["uncut_emerald"] = 1, } },
-	[2] = { ["diamond"] = { ["uncut_diamond"] = 1}, },
-	[3] = { ["ruby"] = { ["uncut_ruby"] = 1 }, },
-	[4] = { ["sapphire"] = { ["uncut_sapphire"] = 1 }, },
-}
-Crafting.RingCut = {
-	[1] = { ["gold_ring"] = { ["goldbar"] = 1 }, ['amount'] = 4 },
-	[2] = { ["diamond_ring"] = { ["gold_ring"] = 1, ["diamond"] = 1 }, },
-	[3] = { ["emerald_ring"] = { ["gold_ring"] = 1, ["emerald"] = 1 }, },
-	[4] = { ["ruby_ring"] = { ["gold_ring"] = 1, ["ruby"] = 1 }, },
-	[5] = { ["sapphire_ring"] = { ["gold_ring"] = 1, ["sapphire"] = 1 }, },
-}
-Crafting.NeckCut = {
-	[1] = { ["goldchain"] = { ["goldbar"] = 1 }, ['amount'] = 3  },
-	[2] = { ["10kgoldchain"] = { ["goldbar"] = 1 }, ['amount'] = 4 },
-	[3] = { ["diamond_necklace"] = { ["goldchain"] = 1, ["diamond"] = 1 }, },
-	[4] = { ["ruby_necklace"] = { ["goldchain"] = 1, ["ruby"] = 1 }, },
-	[5] = { ["sapphire_necklace"] = { ["goldchain"] = 1, ["sapphire"] = 1 }, },
-	[6] = { ["emerald_necklace"] = { ["goldchain"] = 1, ["emerald"] = 1 }, },
+		{ ["diamond_ring_silver"] = { ["silver_ring"] = 1, ["diamond"] = 1 }, },
+		{ ["emerald_ring_silver"] = { ["silver_ring"] = 1, ["emerald"] = 1 }, },
+		{ ["ruby_ring_silver"] = { ["silver_ring"] = 1, ["ruby"] = 1 }, },
+		{ ["sapphire_ring_silver"] = { ["silver_ring"] = 1, ["sapphire"] = 1 }, },
+	},
+	NeckCut = {
+		{ ["goldchain"] = { ["goldingot"] = 1 }, ['amount'] = 3  },
+		{ ["silverchain"] = { ["silveringot"] = 1 }, ['amount'] = 3  },
+		{ ["diamond_necklace"] = { ["goldchain"] = 1, ["diamond"] = 1 }, },
+		{ ["ruby_necklace"] = { ["goldchain"] = 1, ["ruby"] = 1 }, },
+		{ ["sapphire_necklace"] = { ["goldchain"] = 1, ["sapphire"] = 1 }, },
+		{ ["emerald_necklace"] = { ["goldchain"] = 1, ["emerald"] = 1 }, },
+
+		{ ["diamond_necklace_silver"] = { ["silverchain"] = 1, ["diamond"] = 1 }, },
+		{ ["ruby_necklace_silver"] = { ["silverchain"] = 1, ["ruby"] = 1 }, },
+		{ ["sapphire_necklace_silver"] = { ["silverchain"] = 1, ["sapphire"] = 1 }, },
+		{ ["emerald_necklace_silver"] = { ["silverchain"] = 1, ["emerald"] = 1 }, },
+	},
+	EarCut = {
+		{ ["goldearring"] = { ["goldingot"] = 1 }, ['amount'] = 3  },
+		{ ["silverearring"] = { ["silveringot"] = 1 }, ['amount'] = 3  },
+		{ ["diamond_earring"] = { ["goldearring"] = 1, ["diamond"] = 1 }, },
+		{ ["ruby_earring"] = { ["goldearring"] = 1, ["ruby"] = 1 }, },
+		{ ["sapphire_earring"] = { ["goldearring"] = 1, ["sapphire"] = 1 }, },
+		{ ["emerald_earring"] = { ["goldearring"] = 1, ["emerald"] = 1 }, },
+
+		{ ["diamond_earring_silver"] = { ["silverearring"] = 1, ["diamond"] = 1 }, },
+		{ ["ruby_earring_silver"] = { ["silverearring"] = 1, ["ruby"] = 1 }, },
+		{ ["sapphire_earring_silver"] = { ["silverearring"] = 1, ["sapphire"] = 1 }, },
+		{ ["emerald_earring_silver"] = { ["silverearring"] = 1, ["emerald"] = 1 }, },
+	},
 }
