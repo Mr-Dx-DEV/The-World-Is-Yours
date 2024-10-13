@@ -7,7 +7,7 @@ Config = {
 	img = "ox_inventory/web/images/", -- Set this to your inventory
 
 	Inv = "ox", -- set to "ox" if using OX Inventory
-	Menu = "qb",
+	Menu = "ox",
 	ProgressBar = "qb",
 	Notify = "qb",
 
