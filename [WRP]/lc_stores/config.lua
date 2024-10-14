@@ -1169,7 +1169,18 @@ Config.market_categories = {
 		['category_buy_price'] = 750000,
 		['category_sell_price'] = 500000,
 		['items'] = {
-			['classic_phone'] = {
+			['phone'] = {
+				['name'] = "Phone",
+				['price_to_customer'] = 1000,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'phone.png',
+			},
+			--[[ ['classic_phone'] = {
 				['name'] = "Classic Phone",
 				['price_to_customer'] = 1000,
 				['price_to_customer_min'] = 175,
@@ -1275,7 +1286,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'white_phone.png',
-			},
+			}, ]]
 			--[[  
 			['wet_phone'] = {
 				['name'] = "Wet Phone",
@@ -1421,7 +1432,7 @@ Config.market_categories = {
 				['img'] = 'phone_module.png',
 			},
 			 ]]
-			['powerbank'] = {
+			--[[ ['powerbank'] = {
 				['name'] = "Power Bank",
 				['price_to_customer'] = 350,
 				['price_to_customer_min'] = 175,
@@ -1431,7 +1442,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'powerbank.png',
-			},
+			}, ]]
 			
 			
 			--[[ ['radio'] = {
