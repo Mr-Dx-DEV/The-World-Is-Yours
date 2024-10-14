@@ -49,7 +49,7 @@ Config = {
 
     DisableSprint = true, -- Disable the sprint (recommended: leave it true)
 
-    CollisionRange = 0.5, -- Collision distance (0.0 to disable the dragged player's collision)
+    CollisionRange = 0.8, -- Collision distance (0.0 to disable the dragged player's collision)
 
     AttachPosition = vector3(0.20, 0.45, 0.0), -- Positioning of the player facing the police officer
 
