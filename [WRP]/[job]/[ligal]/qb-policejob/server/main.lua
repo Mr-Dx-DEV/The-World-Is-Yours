@@ -728,7 +728,7 @@ RegisterNetEvent('heli:spotlight', function(state)
     TriggerClientEvent('heli:spotlight', -1, serverID, state)
 end)
 
-RegisterNetEvent('police:server:SearchPlayer', function(playerId)
+--[[ RegisterNetEvent('police:server:SearchPlayer', function(playerId)
     local src = source
     local playerPed = GetPlayerPed(src)
     local targetPed = GetPlayerPed(playerId)
@@ -736,6 +736,18 @@ RegisterNetEvent('police:server:SearchPlayer', function(playerId)
     local targetCoords = GetEntityCoords(targetPed)
     if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, "Attempted exploit abuse") end
 
+    local SearchedPlayer = QBCore.Functions.GetPlayer(playerId)
+    if not QBCore.Functions.GetPlayer(src) or not SearchedPlayer then return end
+
+    TriggerClientEvent('QBCore:Notify', src, Lang:t("info.cash_found", {cash = SearchedPlayer.PlayerData.money["cash"]}))
+    TriggerClientEvent('QBCore:Notify', SearchedPlayer.PlayerData.source, Lang:t("info.being_searched"))
+end)
+ ]]
+ RegisterNetEvent('police:server:SearchPlayer', function(playerId)
+    local src = source
+    local playerPed = GetPlayerPed(src)
+    local targetPed = GetPlayerPed(playerId)
+    
     local SearchedPlayer = QBCore.Functions.GetPlayer(playerId)
     if not QBCore.Functions.GetPlayer(src) or not SearchedPlayer then return end
 
