@@ -80,42 +80,48 @@ Config = {
 	},
 
 	SellingPrices = { -- Selling Prices
-		['copperore'] = 100,
-		['goldore'] = 100,
-		['silverore'] = 100,
-		['ironore'] = 100,
-		['carbon'] = 100,
+		['copperore'] = 200,
+		['goldore'] = 200,
+		['silverore'] = 200,
+		['ironore'] = 200,
+		['carbon'] = 200,
+
+
+		['goldbar'] = 3000,
+
 
 		['goldingot'] = 100,
 		['silveringot'] = 100,
 
-		['uncut_emerald'] = 100,
-		['uncut_ruby'] = 100,
-		['uncut_diamond'] = 100,
-		['uncut_sapphire'] = 100,
+		['uncut_emerald'] = 200,
+		['uncut_ruby'] = 200,
+		['uncut_diamond'] = 200,
+		['uncut_sapphire'] = 200,
 
-		['emerald'] = 100,
-		['ruby'] = 100,
-		['diamond'] = 100,
-		['sapphire'] = 100,
+		['emerald'] = 500,
+		['ruby'] = 500,
+		['diamond'] = 500,
+		['sapphire'] = 500,
 
-		['diamond_ring'] = 100,
-		['emerald_ring'] = 100,
-		['ruby_ring'] = 100,
-		['sapphire_ring'] = 100,
-		['diamond_ring_silver'] = 100,
-		['emerald_ring_silver'] = 100,
-		['ruby_ring_silver'] = 100,
-		['sapphire_ring_silver'] = 100,
+		['diamond_ring'] = 2000,
+		['emerald_ring'] = 1500,
+		['ruby_ring'] = 1500,
+		['sapphire_ring'] = 1500,
 
-		['diamond_necklace'] = 100,
-		['emerald_necklace'] = 100,
-		['ruby_necklace'] = 100,
-		['sapphire_necklace'] = 100,
-		['diamond_necklace_silver'] = 100,
-		['emerald_necklace_silver'] = 100,
-		['ruby_necklace_silver'] = 100,
-		['sapphire_necklace_silver'] = 100,
+		['diamond_ring_silver'] = 1500,
+		['emerald_ring_silver'] = 1000,
+		['ruby_ring_silver'] = 1000,
+		['sapphire_ring_silver'] = 1000,
+
+		['diamond_necklace'] = 2000,
+		['emerald_necklace'] = 1500,
+		['ruby_necklace'] = 1500,
+		['sapphire_necklace'] = 1500,
+
+		['diamond_necklace_silver'] = 2000,
+		['emerald_necklace_silver'] = 1000,
+		['ruby_necklace_silver'] = 1000,
+		['sapphire_necklace_silver'] = 1000,
 
 		['diamond_earring'] = 100,
 		['emerald_earring'] = 100,
@@ -126,12 +132,13 @@ Config = {
 		['ruby_earring_silver'] = 100,
 		['sapphire_earring_silver'] = 100,
 
-		['gold_ring'] = 100,
-		['goldchain'] = 100,
+		['gold_ring'] = 1000,
+		['goldchain'] = 1000,
 		['goldearring'] = 100,
 		['silver_ring'] = 100,
 		['silverchain'] = 100,
 		['silverearring'] = 100,
+		['10kgoldchain'] = 800,
 
 	},
 ------------------------------------------------------------
