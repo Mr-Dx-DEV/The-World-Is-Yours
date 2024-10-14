@@ -238,7 +238,7 @@ end)
 function ST.Scoreboard.Menu.Open(self)
     ST._Scoreboard.SelectedPlayer = nil
     if not IsPedInAnyVehicle(PlayerPedId(),true) and not (QBCore.Functions.GetPlayerData().metadata["isdead"]) and not (QBCore.Functions.GetPlayerData().metadata["inlaststand"]) then
-        TriggerEvent('animations:client:EmoteCommandStart', {"stopsign4"})   
+        TriggerEvent('animations:client:EmoteCommandStart', {"phone"})   
     end   
     WarMenu.OpenMenu("scoreboard")
     shouldDraw = true
