@@ -31600,6 +31600,16 @@ return {
 			image = "weaponrepairkit.png",
 		}
 	},
+	["gunrepairkit"] = {
+		label = "Gun repair kit",
+		weight = 2000,
+		stack = false,
+		close = true,
+		description = "A repair kit for your weapon. Not meant for permanent repairs.",
+		client = {
+			image = "gunrepairkit.png",
+		}
+	},
 
 	["red_pepper"] = {
 		label = "red pepper",
