@@ -170,7 +170,7 @@ return {
 			{ name = 'WEAPON_YTASER', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'WEAPON_PDG19', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'WEAPON_PD870', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
-			{ name = 'WEAPON_PDM700', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+		--	{ name = 'WEAPON_PDM700', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'WEAPON_HK417', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'WEAPON_PDCM607', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'WEAPON_PDC7', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
