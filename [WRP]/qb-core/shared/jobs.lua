@@ -714,6 +714,18 @@ QBShared.Jobs = {
 			['4'] = { name = 'Manager', isboss = true, bankAuth = true, payment = 150 },
 		},
 	},
+    dealership = {
+		label = 'Vehicle Dealer',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+			['0'] = { name = 'Recruit', payment = 50 },
+			['1'] = { name = 'Showroom Sales', payment = 75 },
+			['2'] = { name = 'Business Sales', payment = 100 },
+			['3'] = { name = 'Finance', payment = 125 },
+			['4'] = { name = 'Manager', isboss = true, bankAuth = true, payment = 150 },
+		},
+	},
 	mechanic = {
 		label = 'LS Customs',
 		type = 'mechanic',

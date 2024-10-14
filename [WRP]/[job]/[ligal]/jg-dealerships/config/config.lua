@@ -183,6 +183,9 @@ Config.DealershipLocations = {
     showroomGangWhitelist = {},
     societyPurchaseJobWhitelist = {},
     societyPurchaseGangWhitelist = {},
+    disableShowroomPurchase = false,
+    job = "dealership", -- Owned dealerships only
+    directSaleDistance = 50,
   },
   ["boats"] = {
     type = "self-service", -- or "owned", "self-service"
