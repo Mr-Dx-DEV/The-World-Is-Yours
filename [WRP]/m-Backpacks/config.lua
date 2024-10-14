@@ -22,9 +22,9 @@ Config.Utility = {
     PutBackpack = {  -- NOTE 2*
         Enable = true,
         Men = {
-            SmallBackpack = 10,    -- Id of bag on clothing
-            MediumBackpack = 34,  -- Id of bag on clothing
-            LargeBackpack = 93,   -- Id of bag on clothing
+            SmallBackpack = 155,    -- Id of bag on clothing
+            MediumBackpack = 161,  -- Id of bag on clothing
+            LargeBackpack = 158,   -- Id of bag on clothing
         },
         Woman = {
             SmallBackpack = 1,    -- Id of bag on clothing
