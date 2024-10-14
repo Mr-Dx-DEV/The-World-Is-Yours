@@ -161,7 +161,7 @@ return {
 			{ name = 'fingerprinttape', price = 100, grade = 0 },
 			{ name = 'mikrosil', price = 100, grade = 0 },
 			{ name = 'keepcompanionshepherd', price = 1000, grade = 0 },
-
+			{ name = 'gunrepairkit', price = 100, grade = 0 },
 
 
 
