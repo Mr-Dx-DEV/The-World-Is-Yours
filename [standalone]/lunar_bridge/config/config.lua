@@ -12,8 +12,20 @@ Config.Dispatch = {
     Type = 'ps-dispatch', --['normal'/'cd_dispatch'/'qs-dispatch'/'ps-dispatch']
 	Jobs = {
 		'police',
-		'sheriff'
+		'sheriff',
+		'fbi',
+		'ambulance',
+		'lspd',
+		'bcso',
+		'sahp',
+		'lsso',
+		'safw',
+		'sadoc',
+		'usms',
+		'dhs',
+		'ss'
 	}
+	
 }
 
 -- The distance at which peds and props get loaded in for players
