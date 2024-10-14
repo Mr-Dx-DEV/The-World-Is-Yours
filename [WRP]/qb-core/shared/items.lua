@@ -2755,6 +2755,12 @@ QBShared.Items = {
 	
 	["bottle"] 						 = {["name"] = "bottle", 			  	  		["label"] = "Empty Bottle", 			["weight"] = 10, 		["type"] = "item", 		["image"] = "bottle.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "A glass bottle"},
 	["can"] 						 = {["name"] = "can", 			  	  			["label"] = "Empty Can", 				["weight"] = 10, 		["type"] = "item", 		["image"] = "can.png", 					["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "An empty can, good for recycling"},
+
+
+	--m backpacks
+	['smallbackpack'] 			= {['name'] = 'smallbackpack', 			['label'] = 'Small Backpack',            	['weight'] = 250,     ['type'] = 'item',      ['image'] = 'smallbackpack.png',         	['unique'] = true,     ['useable'] = true,     ['shouldClose'] = false,     ['combinable'] = nil,   ['description'] = ''},
+	['mediumbackpack'] 			= {['name'] = 'mediumbackpack', 		['label'] = 'Medium Backpack',            	['weight'] = 450,     ['type'] = 'item',      ['image'] = 'mediumbackpack.png',         	['unique'] = true,     ['useable'] = true,     ['shouldClose'] = false,     ['combinable'] = nil,   ['description'] = ''},
+	['largebackpack'] 			= {['name'] = 'largebackpack', 			['label'] = 'Large Backpack',            	['weight'] = 650,     ['type'] = 'item',      ['image'] = 'largebackpack.png',         	['unique'] = true,     ['useable'] = true,     ['shouldClose'] = false,     ['combinable'] = nil,   ['description'] = ''},
 }
 
 
