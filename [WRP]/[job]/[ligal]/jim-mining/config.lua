@@ -4,14 +4,14 @@ Loc = {}
 
 Config = {
 	Debug = false, -- enable debug mode
-	img = "qb-inventory/html/images/", --Set this to the image directory of your inventory script or "nil" if using newer qb-menu
+	img = "ox_inventory/web/images/", --Set this to the image directory of your inventory script or "nil" if using newer qb-menu
 
 	Lan = "en", -- Pick your language here
 
 	JimShops = true, 		-- Set this to true if using jim-shops
 
 	Inv = "ox",				--"qb" or "ox"
-	Menu = "ox",			--"qb" or "ox"
+	Menu = "qb",			--"qb" or "ox"
 	ProgressBar = "qb",		--"qb" or "ox"
 	Notify = "qb",			--"qb" or "ox"
 
@@ -136,21 +136,20 @@ Config = {
 	},
 ------------------------------------------------------------
 --Mining Store Items
-	Items = {
-		label = "Mining Store",  slots = 10,
-		items = {
-			{ name = "water_bottle", price = 0, amount = 100, info = {}, type = "item", slot = 1, },
-			{ name = "sandwich", price = 0, amount = 250, info = {}, type = "item", slot = 2, },
-			{ name = "bandage", price = 0, amount = 100, info = {}, type = "item", slot = 3, },
-			{ name = "weapon_flashlight", price = 0, amount = 100, info = {}, type = "item", slot = 4, },
-			{ name = "goldpan", price = 0, amount = 100, info = {}, type = "item", slot = 5, },
-			{ name = "pickaxe",	price = 1, amount = 100, info = {}, type = "item", slot = 6, },
-			{ name = "miningdrill",	price = 1, amount = 50, info = {}, type = "item", slot = 7, },
-			{ name = "mininglaser",	price = 1, amount = 5, info = {}, type = "item", slot = 8, },
-			{ name = "drillbit", price = 0, amount = 100, info = {}, type = "item", slot = 9, },
-			
-		},
+Items = {
+	label = "Mining Store",  slots = 9,
+	items = {
+		{ name = "water_bottle", price = 0, amount = 100, info = {}, type = "item", slot = 1, },
+		{ name = "sandwich", price = 0, amount = 250, info = {}, type = "item", slot = 2, },
+		{ name = "bandage", price = 0, amount = 100, info = {}, type = "item", slot = 3, },
+		{ name = "weapon_flashlight", price = 0, amount = 100, info = {}, type = "item", slot = 4, },
+		{ name = "goldpan", price = 0, amount = 100, info = {}, type = "item", slot = 5, },
+		{ name = "pickaxe",	price = 100, amount = 100, info = {}, type = "item", slot = 6, },
+		{ name = "miningdrill",	price = 10000, amount = 50, info = {}, type = "item", slot = 7, },
+		{ name = "mininglaser",	price = 60000, amount = 5, info = {}, type = "item", slot = 8, },
+		{ name = "drillbit", price = 0, amount = 100, info = {}, type = "item", slot = 9, },
 	},
+},
 }
 Crafting = {
 	SmeltMenu = {
