@@ -50,33 +50,33 @@ Config.AIResponse = {
 
 -- To Set This Up visit https://forum.cfx.re/t/how-to-updated-discord-rich-presence-custom-image/157686
 Config.Discord = {
-    isEnabled = false,                                     -- If set to true, then discord rich presence will be enabled
-    applicationId = '00000000000000000',                   -- The discord application id
-    iconLarge = 'logo_name',                               -- The name of the large icon
+    isEnabled = true,                                     -- If set to true, then discord rich presence will be enabled
+    applicationId = '1221275994808127539',                   -- The discord application id
+    iconLarge = 'logo',                               -- The name of the large icon
     iconLargeHoverText = 'This is a Large icon with text', -- The hover text of the large icon
-    iconSmall = 'small_logo_name',                         -- The name of the small icon
+    iconSmall = 'logo',                         -- The name of the small icon
     iconSmallHoverText = 'This is a Small icon with text', -- The hover text of the small icon
     updateRate = 60000,                                    -- How often the player count should be updated
     showPlayerCount = true,                                -- If set to true the player count will be displayed in the rich presence
-    maxPlayers = 48,                                       -- Maximum amount of players
+    maxPlayers = 128,                                       -- Maximum amount of players
     buttons = {
         {
-            text = 'First Button!',
+            text = 'Connect 🌎!',
             url = 'fivem://connect/localhost:30120'
         },
         {
-            text = 'Second Button!',
-            url = 'fivem://connect/localhost:30120'
+            text = 'Discord 😁',
+            url = 'https://discord.gg/SMbumpbBky'
         }
     }
 }
 
 Config.Density = {
-    parked = 0.3,
-    vehicle = 0.3,
+    parked = 10.0,
+    vehicle = 0.9,
     multiplier = 0.3,
-    peds = 0.3,
-    scenario = 0.3
+    peds = 0.8,
+    scenario = 0.8
 }
 
 Config.Disable = {
