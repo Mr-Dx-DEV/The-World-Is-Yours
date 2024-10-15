@@ -32,7 +32,7 @@ Config.Debug = {
     PrintTest = {enabled = false, label = "Print result of player checks/tests to server console", server = true, order = 11}, -- print results of BAC, GSR, frisks, and investigates to server console
     PrintTestC = {enabled = false, label = "Print data sent to player check/test events to console.", order = 12}, -- print data sent to BAC, GSR, frisks, and investigates to console
     OutlineCasings = {enabled = false, label = "Draw entity outline for shell casing objects", order = 13}, -- print data sent to BAC, GSR, frisks, and investigates to console
-    ConfirmDrugPositive = {enabled = false, label = "Create server print and notify player when they test positive for a drug.", order = 14}, -- print/notify when a player returns positive for a drug to assist in testing drug/consumables integration
+    ConfirmDrugPositive = {enabled = true, label = "Create server print and notify player when they test positive for a drug.", order = 14}, -- print/notify when a player returns positive for a drug to assist in testing drug/consumables integration
     PrintEventTriggerArgs = {enabled = true, label = "Print the arguments for your alochol and drug triggers to server console", server = true, order = 15}, -- this will print event trigger args to server console
 }
 
@@ -148,7 +148,7 @@ Config.Fingerprints = {
 Config.EvidenceCleanup = { 
     RemoveFingerprints = { -- these items will remove fingerprints and can be combined with the remove blood items   *********IF YOU ARE USING OX_INVENTORY YOU MUST ADD A SERVER EXPORT FOR IT TO BE USEABLE************ 
         ['microfibercloth'] = {useable = true}, -- this item will open a weapon interaction menu to wipe it down or clean it
-        ['rag'] = {useable = false}, -- this item will allow you to wipe down the weapon if you use the /cleanweapon command  *********IF YOU ARE USING OX_INVENTORY YOU MUST ADD A SERVER EXPORT FOR IT TO BE USEABLE************ 
+        ['rag'] = {useable = true}, -- this item will allow you to wipe down the weapon if you use the /cleanweapon command  *********IF YOU ARE USING OX_INVENTORY YOU MUST ADD A SERVER EXPORT FOR IT TO BE USEABLE************ 
     },
     AlwaysAvailable = true, -- set to FALSE to require rag item for removing fingerprints, removing blood will require a dedicated rag still
     RemoveBlood = { -- these items will remove blood, but requires a rag from RemoveFingerprints to use
@@ -344,7 +344,7 @@ Config.Notification = {
 
 Config.AuthorizedJobs = {
     LEO = { -- this is for job checks which should only return true for police officers
-        Jobs = {['police'] = true, ['offpolice'] = true, ['fib'] = true},
+        Jobs = {['police'] = true, ['offpolice'] = true, ['lspd'] = true, ['bcso'] = true, ['safw'] = true, ['sahp'] = true, ['sadoc'] = true, ['usms'] = true, ['ss'] = true, ['dhs'] = true, ['lsso'] = true, ['fbi'] = true},
         Types = {['police'] = true, ['leo'] = true},
         Check = function(source)
             local PlyData = nil
