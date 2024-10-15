@@ -2761,6 +2761,18 @@ QBShared.Items = {
 	['smallbackpack'] 			= {['name'] = 'smallbackpack', 			['label'] = 'Small Backpack',            	['weight'] = 250,     ['type'] = 'item',      ['image'] = 'smallbackpack.png',         	['unique'] = true,     ['useable'] = true,     ['shouldClose'] = false,     ['combinable'] = nil,   ['description'] = ''},
 	['mediumbackpack'] 			= {['name'] = 'mediumbackpack', 		['label'] = 'Medium Backpack',            	['weight'] = 450,     ['type'] = 'item',      ['image'] = 'mediumbackpack.png',         	['unique'] = true,     ['useable'] = true,     ['shouldClose'] = false,     ['combinable'] = nil,   ['description'] = ''},
 	['largebackpack'] 			= {['name'] = 'largebackpack', 			['label'] = 'Large Backpack',            	['weight'] = 650,     ['type'] = 'item',      ['image'] = 'largebackpack.png',         	['unique'] = true,     ['useable'] = true,     ['shouldClose'] = false,     ['combinable'] = nil,   ['description'] = ''},
+
+	phone = {
+		name = 'phone',
+		label = 'Phone',
+		weight = 190,
+		type = 'item',
+		image = 'phone.png',
+		unique = true,
+		useable = true,
+		shouldClose = true,
+		description = 'LB Phone'
+	},
 }
 
 
