@@ -643,10 +643,10 @@ Config.market_types = {
 		},
 		['max_purchasable_categories'] = 4,		-- The max amount of categories that can be purchased
 		['categories'] = {						-- Here you configure the categories available to purchase in your store
-			"food_market", "drink_market", "alcohol_market", "utilities_market", "medicel_market"
+			"food_market", "drink_market", "alcohol_market", "utilities_market", "medicel_market", "backpack_market"
 		},
 		['default_categories'] = {				-- Here you can configure the categories available when the store has no owner
-			"food_market", "drink_market", "alcohol_market", "utilities_market", "medicel_market"
+			"food_market", "drink_market", "alcohol_market", "utilities_market", "medicel_market","backpack_market"
 		},
 		['blips'] = {							-- Create the blips on map
 			['id'] = 52,						-- Blip ID [Set this value 0 to dont have blip]
@@ -781,7 +781,7 @@ Config.market_types = {
 	['ammunation'] = {
 		['stock_capacity'] = 50,
 		['max_employees'] = 5,
-		['required_job'] = {'police', 'example'},
+		['required_job'] = {'example'},
 		['upgrades'] = {
 			['stock'] = {
 				['price'] = 16000,
@@ -1459,62 +1459,113 @@ Config.market_categories = {
 			
 		}
 	},
-	['medicel_market'] = {
-		['page_name'] = "Medicel",
+
+	['backpack_market'] = {
+		['page_name'] = "Backpack",
 		['page_desc'] = "Quality tools and equipment for any project, from hand tools to power tools, designed to help you achieve precision and efficiency, available at our supermarket",
 		['page_icon'] = '<img src="img/categories/medicel-icon.png" style="padding:15px">',
 		['page_img'] = 'img/categories/medicel.png',
 		['category_buy_price'] = 3000,
 		['category_sell_price'] = 1500,
 		['items'] = {
+			['backpack1'] = {
+				['name'] = "Backpack 1",
+				['price_to_customer'] = 3000,
+				['price_to_customer_min'] = 250,
+				['price_to_customer_max'] = 1000,
+				['price_to_export'] = 450,
+				['price_to_owner'] = 400,
+				['amount_to_owner'] = 5,
+				['amount_to_delivery'] = 5,
+				['img'] = 'backpack1.png',
+			},
+			
+			['backpack2'] = {
+				['name'] = "Backpack 2",
+				['price_to_customer'] = 6000,
+				['price_to_customer_min'] = 275,
+				['price_to_customer_max'] = 1100,
+				['price_to_export'] = 495,
+				['price_to_owner'] = 440,
+				['amount_to_owner'] = 4,
+				['amount_to_delivery'] = 4,
+				['img'] = 'backpack2.png',
+			},
+			
+			['duffle1'] = {
+				['name'] = "Duffle Bag 1",
+				['price_to_customer'] = 9000,
+				['price_to_customer_min'] = 300,
+				['price_to_customer_max'] = 1200,
+				['price_to_export'] = 540,
+				['price_to_owner'] = 480,
+				['amount_to_owner'] = 3,
+				['amount_to_delivery'] = 3,
+				['img'] = 'duffle1.png',
+			},
+			
+			['briefcase'] = {
+				['name'] = "Briefcase",
+				['price_to_customer'] = 12000,
+				['price_to_customer_min'] = 225,
+				['price_to_customer_max'] = 900,
+				['price_to_export'] = 405,
+				['price_to_owner'] = 360,
+				['amount_to_owner'] = 6,
+				['amount_to_delivery'] = 6,
+				['img'] = 'briefcase.png',
+			},
+			
+			['paramedicbag'] = {
+				['name'] = "Paramedic Bag",
+				['price_to_customer'] = 5000,
+				['price_to_customer_min'] = 325,
+				['price_to_customer_max'] = 1300,
+				['price_to_export'] = 585,
+				['price_to_owner'] = 520,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'paramedicbag.png',
+			},
+			
+			['policepouches'] = {
+				['name'] = "Police Pouches",
+				['price_to_customer'] = 4000,
+				['price_to_customer_min'] = 200,
+				['price_to_customer_max'] = 800,
+				['price_to_export'] = 360,
+				['price_to_owner'] = 320,
+				['amount_to_owner'] = 7,
+				['amount_to_delivery'] = 7,
+				['img'] = 'policepouches.png',
+			},
+			
+			['policepouches1'] = {
+				['name'] = "Police Pouches 1",
+				['price_to_customer'] = 200,
+				['price_to_customer_min'] = 210,
+				['price_to_customer_max'] = 840,
+				['price_to_export'] = 378,
+				['price_to_owner'] = 336,
+				['amount_to_owner'] = 7,
+				['amount_to_delivery'] = 7,
+				['img'] = 'policepouches1.png',
+			},
+			
+			['briefcaselockpicker'] = {
+				['name'] = "Briefcase Lockpicker",
+				['price_to_customer'] = 20000,
+				['price_to_customer_min'] = 350,
+				['price_to_customer_max'] = 1400,
+				['price_to_export'] = 630,
+				['price_to_owner'] = 560,
+				['amount_to_owner'] = 1,
+				['amount_to_delivery'] = 1,
+				['img'] = 'briefcaselockpicker.png',
+			},
+			
 		
 			
-			['bandage'] = {
-				['name'] = "Bandage",
-				['price_to_customer'] = 350,
-				['price_to_customer_min'] = 175,
-				['price_to_customer_max'] = 700,
-				['price_to_export'] = 315,
-				['price_to_owner'] = 300,
-				['amount_to_owner'] = 2,
-				['amount_to_delivery'] = 2,
-				['img'] = 'bandage.png',
-			},
-			['painkillers'] = {
-				['name'] = "painkillers",
-				['price_to_customer'] = 350,
-				['price_to_customer_min'] = 175,
-				['price_to_customer_max'] = 700,
-				['price_to_export'] = 315,
-				['price_to_owner'] = 300,
-				['amount_to_owner'] = 2,
-				['amount_to_delivery'] = 2,
-				['img'] = 'painkillers.png',
-			},
-			['walkstick'] = {
-				['name'] = "Walking Stick",
-				['price_to_customer'] = 350,
-				['price_to_customer_min'] = 175,
-				['price_to_customer_max'] = 700,
-				['price_to_export'] = 315,
-				['price_to_owner'] = 300,
-				['amount_to_owner'] = 2,
-				['amount_to_delivery'] = 2,
-				['img'] = 'walkstick.png',
-			},
-			['wheelchair'] = {
-				['name'] = "wheelchair",
-				['price_to_customer'] = 350,
-				['price_to_customer_min'] = 175,
-				['price_to_customer_max'] = 700,
-				['price_to_export'] = 315,
-				['price_to_owner'] = 300,
-				['amount_to_owner'] = 2,
-				['amount_to_delivery'] = 2,
-				['img'] = 'wheelchair.png',
-			},
-			
-
 
 			
 		}
@@ -1522,8 +1573,8 @@ Config.market_categories = {
 	['utilities_market'] = {
 		['page_name'] = "Utilities",
 		['page_desc'] = "Quality tools and equipment for any project, from hand tools to power tools, designed to help you achieve precision and efficiency, available at our supermarket",
-		['page_icon'] = '<img src="img/categories/utilities-icon.png" style="padding:15px">',
-		['page_img'] = 'img/categories/utilities.png',
+		['page_icon'] = '<img src="img/categories/backpack1.png" style="padding:15px">',
+		['page_img'] = 'img/categories/backpack1.png',
 		['category_buy_price'] = 3000,
 		['category_sell_price'] = 1500,
 		['items'] = {
