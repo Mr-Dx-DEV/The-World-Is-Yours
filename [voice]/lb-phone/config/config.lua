@@ -24,7 +24,7 @@ Config.Item = {}
 Config.Item.Require = true -- require a phone item to use the phone
 Config.Item.Name = "phone" -- name of the phone item
 
-Config.Item.Unique = false -- should each phone be unique? https://docs.lbscripts.com/phone/configuration/#unique-phones
+Config.Item.Unique = true -- should each phone be unique? https://docs.lbscripts.com/phone/configuration/#unique-phones
 Config.Item.Inventory = "auto" --[[
     The inventory you use, IGNORE IF YOU HAVE Config.Item.Unique DISABLED.
     Supported:
@@ -82,7 +82,7 @@ Config.Companies = {}
 Config.Companies.Enabled = true -- allow players to call companies?
 Config.Companies.MessageOffline = true -- if true, players can message companies even if no one in the company is online
 Config.Companies.DefaultCallsDisabled = false -- should receiving company calls be disabled by default?
-Config.Companies.AllowAnonymous = false -- allow players to call companies with "hide caller id" enabled?
+Config.Companies.AllowAnonymous = true -- allow players to call companies with "hide caller id" enabled?
 Config.Companies.SeeEmployees = "everyone" -- who should be able to see employees? they will see name, online status & phone number. options are: "everyone", "employees" or "none"
 Config.Companies.DeleteConversations = true -- allow employees to delete conversations?
 Config.Companies.Services = {
