@@ -1,17 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
 
 :root {
-  --color-default: #cfd2da;
-  --color-hover: white;
+  --color-default: #ffffff;
+  --color-hover: #38a2e5;
 }
 
 body {
   visibility: hidden;
+  visibility: 0;
   user-select: none;
   white-space: nowrap;
   margin: 0;
   user-select: none;
   overflow: hidden;
+  transition: all 0.3s ease-in-out;
 }
 
 p {
@@ -29,6 +31,16 @@ p {
   transform: translate(-50%, -50%);
   font-size: 22pt;
   fill: black;
+  color: white;
+  font-weight: normal;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.interaction {
+  /* font-size: 30px !important; */
+  scale: 1.5 !important;
+  color: #38a2e5 !important;
 }
 
 .eye-hover {
@@ -37,8 +49,8 @@ p {
 
 #options-wrapper {
   position: absolute;
-  top: calc(48.4%);
-  left: calc(50% + 18pt);
+  top: 52%;
+  left: 48.5%;
 }
 
 .option-container {
@@ -47,17 +59,12 @@ p {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  font-family: "Nunito";
-  background: linear-gradient(
-    90deg,
-    rgba(20, 20, 20, 0.7) 0%,
-    rgba(20, 20, 20, 0.6) 66%,
-    rgba(47, 48, 53, 0) 100%
-  );
-  font-size: 11pt;
+  font-family: "Roboto Condensed", sans-serif;
+  background: transparent;
+  font-size: 15pt;
   line-height: 22pt;
   vertical-align: middle;
-  margin: 2pt;
+  margin-left: 5pt;
   transition: 300ms;
   transform-origin: left top;
   scale: 1;
@@ -67,15 +74,14 @@ p {
 }
 
 .option-container:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(30, 30, 30, 0.7) 0%,
-    rgba(30, 30, 30, 0.6) 66%,
-    rgba(57, 58, 63, 0) 100%
-  );
+  background: transparent;
   transform-origin: left top;
   color: var(--color-hover);
-  margin-left: 4pt;
+  margin-left: 7pt;
+}
+
+.option-container:hover .option-icon {
+  color: var(--color-hover) !important;
 }
 
 .option-icon {
@@ -84,8 +90,14 @@ p {
   width: 14pt;
   margin: 5pt;
   color: var(--color-default);
+  transition: all 0.3s ease;
 }
 
 .option-label {
   font-weight: 500;
+}
+
+#eye-image {
+  width: 60px;
+  height: 44px;
 }
