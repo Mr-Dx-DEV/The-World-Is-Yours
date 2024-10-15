@@ -6,7 +6,7 @@ game         'gta5'
 --[[ Resource Information ]]--
 name         'rcore_prison'
 author       'NewEdit | rcore.cz'
-version      '2.0.14'
+version      '2.0.19'
 description  'Standalone unique Prison system - prison break, prison jobs and more!'
 
 shared_scripts {
@@ -39,15 +39,17 @@ server_scripts {
 
     'modules/bridge/server/inventory/sv-ox_inventory.lua',
     'modules/bridge/server/inventory/sv-qs_inventory.lua',
+    'modules/bridge/server/inventory/sv-cheeza_inventory.lua',
     'modules/bridge/server/inventory/sv-esx_inventory.lua',
     'modules/bridge/server/inventory/sv-qb_inventory.lua',
+    'modules/bridge/server/inventory/sv-origen_inventory.lua',
     'modules/bridge/server/inventory/sv-mf_inventory.lua',
     'modules/bridge/server/inventory/sv-ps_inventory.lua',
     'modules/bridge/server/inventory/sv-lj_inventory.lua',
     'modules/bridge/server/inventory/sv-core_inventory.lua',
     'modules/bridge/server/inventory/sv-codem_inventory.lua',
-    'modules/bridge/server/inventory/sv-cheeza_inventory.lua',
     'modules/bridge/server/inventory/sv-tgiann-inventory.lua',
+    'modules/bridge/server/inventory/sv-ak_inventory.lua',
     'modules/bridge/server/inventory/sv-standalone.lua',
 
     'modules/bridge/server/booths/*.lua',

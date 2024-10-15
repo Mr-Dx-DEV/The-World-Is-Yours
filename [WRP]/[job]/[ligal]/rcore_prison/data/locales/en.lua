@@ -1,4 +1,9 @@
 Locales['en'] = {
+    PERMISSION = {
+        NOT_ENOUGH_RANK = 'You need to be higher position to access this command.',
+        GENERAL_MESSAGE = 'Has access: %s',
+    },
+
     CHAT = {
         COMMAND_STOPALARM = 'Command used for stopping alarm',
         COMMAND_JAIL = 'Command used for jailing',
@@ -151,6 +156,7 @@ Locales['en'] = {
         LOG_CITIZEN_CITIZEN_RELEASED_BY_OFFICER_FROM_PAROLLE = '%s was released by officer named %s from his parolle',
         LOG_CITIZEN_ESCAPED_PRISON = '%s escaped from prison',
         LOG_CITIZEN_PAROLLED = '%s was perolled by %s for %s amount',
+
     },
 
     LOGS_DISCORD = {
@@ -438,6 +444,7 @@ Locales['en'] = {
     
 
     GENERAL = {
+        YOU_HAVE_BEEN_SENT_TO_COMS_BY = 'You have been sent to COMS by %s',
         NOT_ACCESS_TO_INTERACT_ZONE = 'Sorry, but not going to talk with you',
         WIRE_CUTTER_LABEL = 'Wire cutter',
         YOU_HAVE_BEEN_PAROLLED = 'You have been parolled for %s amount!',

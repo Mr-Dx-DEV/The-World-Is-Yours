@@ -67,12 +67,10 @@ ESX_ITEMS_DEPLOY = {
 }
 
 CreateThread(function()
-    if (isBridgeLoaded('Framework', Framework.ESX)) then
-        if resourceList['Inventory'] then
+    if (isBridgeLoaded('Framework', Framework.ESX)) and not isResourceLoaded(Inventories.CHEEZA) then
+        if resourceList['Inventory'] and resourceList['Inventory'] ~= Inventories.ESX then
             return dbg.debug('ESX-INV: Found already loaded inventory named: %s', Bridge.Inventory)
         end
-
-
 
         Inventory.getInventoryItems = function(client)
             local player = Framework.getPlayer(client)
@@ -160,19 +158,14 @@ CreateThread(function()
                 return false
             end
 
-            local itemExistState = Inventory.DoesItemExist(item, client)
-
-            if not itemExistState then
-                return false
-            end
-
-            local state, error_message = pcall(function()
+            local success, state = pcall(function()
                 if player.inventory then
                     local playerInventory = player.getInventoryItem(item)
 
-                    if playerInventory.count > 0 then
+                    if playerInventory and playerInventory.count > 0 then
                         return true
                     else
+                        -- ITEM DOESNT EXIST
                         return false
                     end
                 else

@@ -17,6 +17,7 @@ NetworkService.EventListener('heartbeat', function(eventType, data)
         NewPrisoner(prisoner)
     elseif eventType == 'PRISONER_RELEASED' and not prisoner.escaped then
         PrisonerReleased(prisoner)
+        Inventory.HandleOpenState(playerId, false)
 
         if RegisterNetworkFlow[tostring(playerId)] then
             RegisterNetworkFlow[tostring(playerId)] = nil

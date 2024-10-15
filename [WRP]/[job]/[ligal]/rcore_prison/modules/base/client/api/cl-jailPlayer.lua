@@ -2,6 +2,31 @@ RegisterNetEvent('rcore_prison:client:JailPlayer', function(target, jailTime)
     JailPlayer(target, jailTime)
 end)
 
+RegisterNetEvent('rcore_prison:client:JailByIdentifier', function(target, jailTime)
+    JailByIdentifier(target, jailTime)
+end)
+
+function JailByIdentifier(target, jailTime)
+    dbg.debugAPI('Getting request from resource: %s for prison event: %s\n Logic path: rcore_prison/modules/api/client/cl-jailPlayer.lua', GetInvokingResource(), 'rcore_prison:client:JailPlayer')
+
+    if type(target) ~= 'string' then
+        return
+    end
+
+    local jailTime, receivedTime, stateCode = isJailTimeValid(jailTime)
+
+    if jailTime then
+        dbg.debugAPI('[JAIL PLAYER] - Jailed target user: %s | received time: %s', target, receivedTime)
+        TriggerServerEvent('rcore_prison:server:JailByIdentifier', target, jailTime)
+    else
+        Framework.sendNotification({
+            description = _U('JAIL.PLAYER_CLOSEST_PLAYER_JAIL_FAIL'),
+            type = 'error',
+        })
+        dbg.debugAPI('[JAIL PLAYER] - Failed to jailed target user since: %s | received time: %s', stateCode, receivedTime)
+    end
+end
+
 function JailPlayer(target, jailTime)
     dbg.debugAPI('Getting request from resource: %s for prison event: %s\n Logic path: rcore_prison/modules/api/client/cl-jailPlayer.lua', GetInvokingResource(), 'rcore_prison:client:JailPlayer')
 

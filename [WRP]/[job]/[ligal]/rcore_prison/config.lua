@@ -1,12 +1,13 @@
 Config = {
-    Debug = false,               -- This is enabling debug of rcore_prison 
+    Debug = true,               -- This is enabling debug of rcore_prison 
     DebugInventory = false,       -- This enable debug related to the inventory module
     DebugClothing = false,        -- This enable debug related to the clothing module
     DebugAPI = false,             -- This enable debug related to the API system
 
     DebugEnviroment = false,     -- This enable debug related to the enviroment
-
     ErrorDebug = false, -- will make errors easier to track
+
+    InitInfo = false, -- This disable orange show resource informations in your server console.
 
     DebugLevel = {
         'NETWORK',
@@ -32,19 +33,19 @@ Config = {
 
     -- Framework settings
 
-    Framework = Framework.QBCore,            -- [ND Framework - ND_Core | ESX - es_extended, QBCore - qb-core, QBOX - qbx_core, Standalone - standalone]
-    Inventory = Inventories.OX,          -- [OX - ox_inventory, QB - qb-inventory, QS - qs-sinventory, MF - mf-inventory, PS - ps-inventory, LJ - lj-inventory, CORE = core_inventory]
+    Framework = Framework.AUTO_DETECT,            -- [ND Framework - ND_Core | ESX - es_extended, QBCore - qb-core, QBOX - qbx_core, Standalone - standalone]
+    Inventory = Inventories.AUTO_DETECT,          -- [OX - ox_inventory, QB - qb-inventory, QS - qs-sinventory, MF - mf-inventory, PS - ps-inventory, LJ - lj-inventory, CORE = core_inventory]
     Target = Target.OX,                         -- [NONE - none [pressing E], OX - ox_target, QB - qb-target, Q - qtarget]
     Database = Database.AUTO_DETECT,              -- [OX - ox_mysql, MYSQL_ASYNC - mysql-async, GHMATTI - ghmattimysql]
 
     -- Other script settings
 
     Clothing = Clothing.AUTO_DETECT,              -- [NONE - None, ESX - skin_changer, QB - qb-clothing, FAPPEARANCE - fivem-appearance, IAPPEARANCE - illennium-appearance, TGIANN - tgiann-clothing, CRM - crm_appearance]
-    Phone = Phones.LB_PHONE,                   -- [NONE - None, QB_PHONE - qb_phone, LB_PHONE - lb_phone]
-    Notify = Notifies.QBCORE,                -- [NONE - Native, NATIVE - GTA:V Notify, OX - ox_lib, QBCORE - qb-core, OKOK - okok_notify, ESX - esx_notify, MYTHIC - mythic_notify, PNOTIFY - pNotify, BRUTAL - brutal_notify]
-    TextUI = TextUI.OX,                  -- [NONE - RCore, ESX - esx_textui, OX - ox_lib, QBCORE - qb-core]
-    Menus = MenuList.OX,                       -- [RCORE - RCore, ESX_CONTEXT - esx_context, ESX_MENU - es_extended, OX - ox_menu, QB - qb-core]
-    Dispatch = DispatchList.PS,                 -- [NONE - Standalone, RCORE - rcore_dispatch, PS - ps_dispatch, QS - qs_dispatch, CORE - core_dispatch, CD - cd_dispatch, DUSA - dusa_dispatch, REDUTZU - redutzu-mdt, LOVE_SCRIPTS - emergencydispatch, ORIGEN - origen_polic, CODEMe] 
+    Phone = Phones.AUTO_DETECT,                   -- [NONE - None, QB_PHONE - qb_phone, LB_PHONE - lb_phone]
+    Notify = Notifies.AUTO_DETECT,                -- [NONE - Native, NATIVE - GTA:V Notify, OX - ox_lib, QBCORE - qb-core, OKOK - okok_notify, ESX - esx_notify, MYTHIC - mythic_notify, PNOTIFY - pNotify, BRUTAL - brutal_notify]
+    TextUI = TextUI.AUTO_DETECT,                  -- [NONE - RCore, ESX - esx_textui, OX - ox_lib, QBCORE - qb-core, OKOK - okokTextUI]
+    Menus = MenuList.QB,                       -- [RCORE - RCore, ESX_CONTEXT - esx_context, ESX_MENU - es_extended, OX - ox_menu, QB - qb-core]
+    Dispatch = DispatchList.AUTO_DETECT,                 -- [NONE - Standalone, RCORE - rcore_dispatch, PS - ps_dispatch, QS - qs_dispatch, CORE - core_dispatch, CD - cd_dispatch, DUSA - dusa_dispatch, REDUTZU - redutzu-mdt, LOVE_SCRIPTS - emergencydispatch, ORIGEN - origen_polic, CODEMe] 
     
 
     ---------------------------------------------------------------------------------------------------------------
@@ -62,12 +63,15 @@ Config = {
     AllowAdminGroupsUseJailCommands = false, -- This is used for allowing admin groups to use prison commands which are restricted to police/sheriff jobs
 
     RestrictCommandsForDistance = true, -- This is used for restricting commands for distance to inmates.
+
     RestrictDistance = 10.0, -- This is the distance for restricting commands
 
     Prisoners = {
         Companion = true, -- This is used for enabling companion system, player with the specific job are not going to be attacked by Prison Guards
         CompanionRefreshCycleTime = 1.5, -- This is the time for refreshing prisoners (default in sec)
         CompanionJobList = {
+            ['police'] = true,
+            ['sheriff'] = true,
             ['lspd'] = true,
             ['bcso'] = true,
             ['sahp'] = true,
@@ -78,14 +82,14 @@ Config = {
             ['fbi'] = true,
             ['dhs'] = true,
             ['ss'] = true,
-            ['police'] = true,
-            ['sheriff'] = true,
             ['ambulance'] = false,
         },
-        
+
         RemovePlayerJobWhenJailed = false, -- This is used for removing player job when citizen is jailed (supports: ESX, QBCore)
         RemovePlayerSetDefaultJob = 'unemployed', -- This is the default job set when RemovePlayerJobWhenJailed is enabled
         RemoveJobList = {
+            ['police'] = true, -- 
+            ['ambulance'] = true,
             ['lspd'] = true,
             ['bcso'] = true,
             ['sahp'] = true,
@@ -96,9 +100,7 @@ Config = {
             ['fbi'] = true,
             ['dhs'] = true,
             ['ss'] = true,
-            ['police'] = true,
             ['sheriff'] = true,
-            ['ambulance'] = false,
         }
     },
 
@@ -152,12 +154,16 @@ Config = {
         EnableAutomaticReset = true, -- This is used for enabling automatic reset of the escape
         NeedItem = true, -- This is used for needing item to escape from the prison
         ItemName = 'wire_cutter', -- This is the item name for escaping from the prison
-        NotifyJobs = {'lspd', 'bcso', 'sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police', 'leo'},
+        NotifyJobs = {'lspd', 'bcso', 'sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police', 'leo'}, -- This is the list of the jobs which are going to be notified when prisoner is escaping using supported dispatch system
 
+        Experimental = {
+            RemoveCuttersAfterWallDestroyed = false, -- This will enable removing wire_cutter (ItemName) from player inventory when destroying wall 
+            CuttingSequence = false, -- This will enable/disable cutting sequence
+            CuttingSequenceTime = 15, -- How much the cutting should take before wall breaks (in seconds)
+            ClearPlayerInventoryWhenEscape = false, -- This will enable/disable clearing of player inventory if he escaped
+        }
     },
 
-    
- 
     Guards = {
         EnableJailAllCitizensWhenAttackedGuard = true, -- This is used for jailing all citizens when guard is attacked
         JailTime = 20, -- This is the jail time for attacking guard (default in min)
@@ -208,11 +214,11 @@ Config = {
     },
 
     Text = {
-        Position = 'right-center', -- This is the position of the text ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+        Position = 'bottom-right', -- This is the position of the text ['top-left', 'top-right', 'bottom-left', 'bottom-right']
     },
 
     Subtitles = {
-        Position = 'bottom-center', -- This is the position of the subtitles ['top-left', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right']
+        Position = 'top-right', -- This is the position of the subtitles ['top-left', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right']
     },
  
  
@@ -226,6 +232,8 @@ Config = {
     -- Jobs which are allowed to jail/unjail players!
 
     Jobs = {
+        ['police'] = true, -- This is the job which is allowed to jail/unjail players
+        ['sheriff'] = true, -- This is the job which is allowed to jail/unjail players
         ['lspd'] = true,
             ['bcso'] = true,
             ['sahp'] = true,
@@ -236,8 +244,7 @@ Config = {
             ['fbi'] = true,
             ['dhs'] = true,
             ['ss'] = true,
-            ['police'] = true,
-            ['sheriff'] = true,
+            
             ['ambulance'] = false,
     },
 
@@ -388,9 +395,9 @@ Config = {
         RenderPerollTime = true, -- This is used for rendering peroll time on the screen
 
         Blip = {
-            enable = false, -- Do you want to show blip on map?
+            enable = true, -- Do you want to show blip on map?
             sprite = 643,
-            scale = 0.3,
+            scale = 1.0,
         },
 
         StartLocations = {
@@ -443,12 +450,12 @@ Config = {
 
     ImagePath = {
         [Inventories.OX] = 'nui://ox_inventory/web/images',
-    --    [Inventories.QB] = 'nui://qb-inventory/html/images',
-    --    [Inventories.LJ] = 'nui://lj-inventory/html/images',
-    --    [Inventories.QS] = 'nui://qs-inventory/html/images',
-    --    [Inventories.PS] = 'nui://ps-inventory/html/images',
-    --    [Inventories.TGIANN] = 'nui://inventory_images/images',
-    --    [Inventories.ESX] = '', -- When running es_extended the images are being loaded from rcore_prison/modules/nui/web/build/images/items
+        [Inventories.QB] = 'nui://qb-inventory/html/images',
+        [Inventories.LJ] = 'nui://lj-inventory/html/images',
+        [Inventories.QS] = 'nui://qs-inventory/html/images',
+        [Inventories.PS] = 'nui://ps-inventory/html/images',
+        [Inventories.TGIANN] = 'nui://inventory_images/images',
+        [Inventories.ESX] = '', -- When running es_extended the images are being loaded from rcore_prison/modules/nui/web/build/images/items
     }, 
 
     Canteen = {
@@ -537,10 +544,66 @@ Config = {
 
     -- We dont recommend to change this settings, if you decide to change it and want to spawn NPC inside the prison by game-engine you have been warned!
 
-    EnableSpawnNPCInsidePrison = true, -- This is used for enabling spawn NPC inside the prison
+    EnableSpawnNPCInsidePrison = false, -- This is used for enabling spawn NPC inside the prison
 
     Teleport = {
         WhenReleasedTeleportPrisonerInFrontOfPrison = true, -- This is used for teleporting prisoner in front of the prison when released
+    }
+}
+
+Config.RestrictCommands = {
+    Enable = false, -- Do you want to restrict command based off job grades?
+    UseGradeNumbers = false, -- This will use check via jobGrade number (this will disable check via ListGrades)
+    GradeNumber = 2, -- Which grades are able to access specific commands (>=)
+    ListGrades = { -- List of grades with access state (true = yes | false = no access) to use specific commands.
+        [Config.Commands.Jail] = {
+            ['recruit'] = false,
+            ['officer'] = true,
+            ['sergeant'] = true,
+            ['lieutenant'] = true,
+            ['chief'] = true,
+            ['boss'] = true,
+        },
+        [Config.Commands.JailCP] = {
+            ['recruit'] = false,
+            ['officer'] = true,
+            ['sergeant'] = true,
+            ['lieutenant'] = true,
+            ['chief'] = true,
+            ['boss'] = true,
+        },
+        [Config.Commands.Unjail] = {
+            ['recruit'] = false,
+            ['officer'] = true,
+            ['sergeant'] = true,
+            ['lieutenant'] = true,
+            ['chief'] = true,
+            ['boss'] = true,
+        },
+        [Config.Commands.Startcs] = {
+            ['recruit'] = false,
+            ['officer'] = true,
+            ['sergeant'] = true,
+            ['lieutenant'] = true,
+            ['chief'] = true,
+            ['boss'] = true,
+        },
+        [Config.Commands.Removecs] = {
+            ['recruit'] = false,
+            ['officer'] = true,
+            ['sergeant'] = true,
+            ['lieutenant'] = true,
+            ['chief'] = true,
+            ['boss'] = true,
+        },
+        [Config.Commands.RemoveSolitary] = {
+            ['recruit'] = false,
+            ['officer'] = true,
+            ['sergeant'] = true,
+            ['lieutenant'] = true,
+            ['chief'] = true,
+            ['boss'] = true,
+        }
     }
 }
 

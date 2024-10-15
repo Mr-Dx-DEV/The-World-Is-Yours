@@ -1,8 +1,10 @@
 RegisterCommand(Config.Commands.JailCP, function(source, args, rawCommand)
     local playerId = source
 
-    if not Framework.canPerformJobCommand(playerId, Config.Commands.JailCP) then
-        Framework.sendNotification(playerId, _U('GENERAL.YOU_NEED_TO_BE_IN_JOB'), 'error')
+    local state, reason = Framework.canPerformJobCommand(playerId, Config.Commands.JailCP)
+
+    if not state then
+        Framework.sendNotification(playerId, _U('PERMISSION.GENERAL_MESSAGE', reason), 'error')
         dbg.info("Cannot perform this command - you are not job member!", playerId)
         return
     end
@@ -18,8 +20,11 @@ end, false)
 RegisterCommand(Config.Commands.StopAlarm, function(source, args, rawCommand)
     local playerId = source
 
-    if not Framework.canPerformJobCommand(playerId, Config.Commands.StopAlarm) then
-        Framework.sendNotification(playerId, _U('GENERAL.YOU_NEED_TO_BE_IN_JOB'), 'error')
+
+    local state, reason = Framework.canPerformJobCommand(playerId, Config.Commands.StopAlarm)
+
+    if not state then
+        Framework.sendNotification(playerId, _U('PERMISSION.GENERAL_MESSAGE', reason), 'error')
         dbg.info("Cannot perform this command - you are not job member!", playerId)
         return
     end
@@ -35,11 +40,14 @@ end, false)
 RegisterCommand(Config.Commands.Startcs, function(source, args, rawCommand)
     local playerId = source
 
-    if not Framework.canPerformJobCommand(playerId, Config.Commands.Startcs) then
-         Framework.sendNotification(playerId, _U('GENERAL.YOU_NEED_TO_BE_IN_JOB'), 'error')
+    local state, reason = Framework.canPerformJobCommand(playerId, Config.Commands.Startcs)
+
+    if not state then
+        Framework.sendNotification(playerId, _U('PERMISSION.GENERAL_MESSAGE', reason), 'error')
         dbg.info("Cannot perform this command - you are not job member!", playerId)
         return
     end
+
     
     local targetPlayerId = GetPlayerByIdOrName(args[1])
     local perolAmount = tonumber(args[2])
@@ -94,8 +102,10 @@ end, false)
 RegisterCommand(Config.Commands.Jail, function(source, args, rawCommand)
     local playerId = source
 
-    if not Framework.canPerformJobCommand(playerId, Config.Commands.Jail) then
-        Framework.sendNotification(playerId, _U('GENERAL.YOU_NEED_TO_BE_IN_JOB'), 'error')
+    local state, reason = Framework.canPerformJobCommand(playerId, Config.Commands.Jail)
+
+    if not state then
+        Framework.sendNotification(playerId, _U('PERMISSION.GENERAL_MESSAGE', reason), 'error')
         dbg.info("Cannot perform this command - you are not job member!", playerId)
         return
     end
@@ -152,8 +162,10 @@ end, false)
 RegisterCommand(Config.Commands.Unjail, function(source, args, rawCommand)
     local playerId = source
 
-    if not Framework.canPerformJobCommand(playerId, Config.Commands.Unjail) then
-        Framework.sendNotification(playerId, _U('GENERAL.YOU_NEED_TO_BE_IN_JOB'), 'error')
+    local state, reason = Framework.canPerformJobCommand(playerId, Config.Commands.Unjail)
+
+    if not state then
+        Framework.sendNotification(playerId, _U('PERMISSION.GENERAL_MESSAGE', reason), 'error')
         dbg.info("Cannot perform this command - you are not job member!", playerId)
         return
     end
@@ -192,8 +204,10 @@ end, false)
 RegisterCommand(Config.Commands.Solitary, function(source, args, rawCommand)
     local playerId = source
 
-    if not Framework.canPerformJobCommand(playerId, Config.Commands.Solitary) then
-        Framework.sendNotification(playerId, _U('GENERAL.YOU_NEED_TO_BE_IN_JOB'), 'error')
+    local state, reason = Framework.canPerformJobCommand(playerId, Config.Commands.Solitary)
+
+    if not state then
+        Framework.sendNotification(playerId, _U('PERMISSION.GENERAL_MESSAGE', reason), 'error')
         dbg.info("Cannot perform this command - you are not job member!", playerId)
         return
     end
@@ -229,8 +243,10 @@ end, false)
 RegisterCommand(Config.Commands.RemoveSolitary, function(source, args, rawCommand)
     local playerId = source
 
-    if not Framework.canPerformJobCommand(playerId, Config.Commands.RemoveSolitary) then
-        Framework.sendNotification(playerId, _U('GENERAL.YOU_NEED_TO_BE_IN_JOB'), 'error')
+    local state, reason = Framework.canPerformJobCommand(playerId, Config.Commands.RemoveSolitary)
+
+    if not state then
+        Framework.sendNotification(playerId, _U('PERMISSION.GENERAL_MESSAGE', reason), 'error')
         dbg.info("Cannot perform this command - you are not job member!", playerId)
         return
     end
@@ -254,8 +270,10 @@ end, false)
 RegisterCommand(Config.Commands.Removecs, function(source, args, rawCommand)
     local playerId = source
 
-    if not Framework.canPerformJobCommand(playerId, Config.Commands.Removecs) then
-        Framework.sendNotification(playerId, _U('GENERAL.YOU_NEED_TO_BE_IN_JOB'), 'error')
+    local state, reason = Framework.canPerformJobCommand(playerId, Config.Commands.Removecs)
+
+    if not state then
+        Framework.sendNotification(playerId, _U('PERMISSION.GENERAL_MESSAGE', reason), 'error')
         dbg.info("Cannot perform this command - you are not job member!", playerId)
         return
     end
@@ -334,4 +352,3 @@ function GetPlayerByCharacterId(targetCharId)
         end
     end
 end
-

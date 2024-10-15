@@ -34,6 +34,20 @@ NetworkService.EventListener('heartbeat', function(eventType, data)
     end
 end)
 
+OutfitService.IsResourceWasabiAppearance = function()
+    local retval = false
+
+    if Clothing.FAPPEARANCE and isResourcePresentProvideless(Clothing.FAPPEARANCE) then
+        local resourceAuth = GetResourceMetadata(Clothing.FAPPEARANCE, 'author') or nil
+
+        if resourceAuth and resourceAuth == 'wasabirobby' then
+            retval = true
+        end
+    end
+
+    return retval
+end
+
 
 OutfitService.GetOufitByPlayerModel = function()
     local plyPed = PlayerPedId()
@@ -46,8 +60,8 @@ OutfitService.GetOufitByPlayerModel = function()
     -- CODEM - Load qb-clothing outfit when using QBCore
     
     if Bridge.Framework == Framework.QBCore and Bridge.Clothing == Clothing.CODEM then
-        Bridge.Clothing = Clothing.QB 
-        dbg.debugClothing('Server is running qb-core with codem-appearance, loading qb-clothing configuration.')
+        Bridge.Clothing = Clothing.ESX 
+        dbg.debugClothing('Server is running qb-core with codem-appearance, loading skinchanger configuration.')
     end
 
     if Bridge.Framework == Framework.QBOX and Bridge.Clothing == Clothing.IAPPEARANCE then
@@ -55,11 +69,6 @@ OutfitService.GetOufitByPlayerModel = function()
         dbg.debugClothing('Server is running QBX-Core with Illenium-appearance, loading qb-clothing configuration.')
     end
     
-    if Bridge.Framework == Framework.ESX and Bridge.Clothing == Clothing.IAPPEARANCE then
-        Bridge.Clothing = Clothing.ESX
-        dbg.debugClothing('Server is running ESX with Illenium-appearance, loading esx-skin configuration.')
-    end
-
     -- 17mov_CharacterSystem [12.08.2024] not any API exists for this resource.
 
     if Bridge.Framework == Framework.QBCore and isResourceLoaded(Clothing.MOV) or Bridge.Clothing == Clothing.MOV and Bridge.Framework == Framework.QBCore then
@@ -153,7 +162,17 @@ OutfitService.GetOufitByPlayerModel = function()
 end
 
 OutfitService.RestorePlayerOutfit = function()
-    if (Bridge.Clothing == Clothing.MOV and Bridge.Framework == Framework.ESX) or Bridge.Clothing == Clothing.ESX then
+    if Clothing.CODEM and Bridge.Clothing == Clothing.CODEM or isResourceLoaded(Clothing.CODEM) then
+        return TriggerEvent("codem-appearance:reloadSkin")
+    end
+
+    local getWasabiAppearanceState = OutfitService.IsResourceWasabiAppearance()
+
+    if getWasabiAppearanceState then
+        return ExecuteCommand('reloadchar')
+    end
+
+    if  (Bridge.Clothing == Clothing.IAPPEARANCE or Bridge.Clothing == Clothing.MOV and Bridge.Framework == Framework.ESX) or Bridge.Clothing == Clothing.ESX then
         Framework.object.TriggerServerCallback(Config.FrameworkEvents['esx_skin:getPlayerSkin'], function(skin)
             repeat
                 Wait(1000)
@@ -183,8 +202,6 @@ OutfitService.RestorePlayerOutfit = function()
         ExecuteCommand('reloadped')
     elseif Clothing.RCORE and Bridge.Clothing == Clothing.RCORE then
         ExecuteCommand('reloadskin')
-    elseif Clothing.CODEM and Bridge.Clothing == Clothing.CODEM then
-        TriggerEvent("codem-appearance:reloadSkin")
     else
         dbg.critical('Clothing resource not found: %s not going to restore player outfit!', Bridge.Clothing)
     end
@@ -203,6 +220,10 @@ OutfitService.SetAppearance = function(actionType)
     end
 
     dbg.debugClothing('Setting outfit via resource: %s >> with type: %s (%s)', Bridge.Clothing, actionType, Bridge.Framework)
+
+    if OutfitService.IsResourceWasabiAppearance() and actionType == PRISON_OUTFITS.CITIZEN and Config.Outfits.RestorePlayerOutfitOnRelease then
+        return ExecuteCommand('reloadchar')
+    end
 
     if Clothing.MOV and isResourceLoaded(Clothing.MOV) and actionType == PRISON_OUTFITS.CITIZEN and Config.Outfits.RestorePlayerOutfitOnRelease then
         return OutfitService.RestorePlayerOutfit()
@@ -241,8 +262,16 @@ OutfitService.SetAppearance = function(actionType)
     if Bridge.Clothing == Clothing.CRM or Bridge.Clothing == 'crm-appearance' then
         exports['crm-appearance']:crm_set_ped_clothing(plyPed, outfit.crm_clothing)
         exports['crm-appearance']:crm_set_ped_accessories(plyPed, outfit.crm_accessories)
-        
         return
+    end
+
+    if Bridge.Clothing == Clothing.CODEM or isResourceLoaded(Clothing.CODEM) then
+        TriggerEvent('skinchanger:loadPedSkin', outfit, PlayerPedId())
+        return
+    end
+
+    if OutfitService.IsResourceWasabiAppearance() then
+        return exports[Clothing.FAPPEARANCE]:setPedAppearance(plyPed, outfit)
     end
 
     if Bridge.Clothing == Clothing.ESX then
@@ -259,8 +288,6 @@ OutfitService.SetAppearance = function(actionType)
 
             TriggerEvent('skinchanger:loadClothes', skin, currentOutfit)
         end)
-    elseif Bridge.Clothing == Clothing.CODEM then
-        TriggerEvent('skinchanger:loadPedSkin', outfit, PlayerPedId())
     elseif Bridge.Clothing == Clothing.ONEX then
         if not outfit then
             return dbg.critical('Outfit not found when using onex-creation clothing.')

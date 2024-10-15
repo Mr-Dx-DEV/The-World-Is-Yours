@@ -1,6 +1,10 @@
 
 local recentPedSesssions = {}
 
+RegisterNetEvent('rcore_prison:server:JailByIdentifier', function(target, jailTime)
+    JailPlayer(source, target, jailTime, 'identifier')
+end)
+
 RegisterNetEvent('rcore_prison:server:JailPlayer', function(target, jailTime)
     JailPlayer(source, target, jailTime)
 end)
@@ -80,6 +84,7 @@ function JailPlayerByNPC(target, netId)
     end
 end
 
+
 function JailPlayer(source, target, jailTime, resourceName, jailType)
     local playerId = source
     local emulatorName = 'JAIL PLAYER'
@@ -90,7 +95,7 @@ function JailPlayer(source, target, jailTime, resourceName, jailType)
         return
     end
 
-    if Config.RestrictCommandsForDistance and resourceName ~= 'qbcore' then
+    if Config.RestrictCommandsForDistance and (resourceName ~= 'qbcore' and resourceName ~= 'identifier') then
         local mePed = GetPlayerPed(playerId)
         local targetPed = GetPlayerPed(target)
 
@@ -113,9 +118,25 @@ function JailPlayer(source, target, jailTime, resourceName, jailType)
         emulatorName = 'COMMUNITY SERVICE'
     end
 
+    if resourceName == 'identifier' then
+        if Bridge.Framework == Framework.ESX then
+            local Player = Framework.object.GetPlayerFromIdentifier(target)
+
+            if Player then
+                target = Player.source
+            end
+        elseif Bridge.Framework == Framework.QBCore then
+            local Player = Framework.object.Functions.GetPlayerByCitizenId(target)
+
+            if Player then
+                target = Player.PlayerData.source
+            end
+        end
+    end
+
     if target and GetPlayerPed(target) then
         if jailTime and jailTime > 0 then
-            if resourceName then
+            if resourceName and resourceName ~= 'identifier' then
                 provideDebugEmulator(emulatorName, resourceName, playerId, jailType)
             end
 

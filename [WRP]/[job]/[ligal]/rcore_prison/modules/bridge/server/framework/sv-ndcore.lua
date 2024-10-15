@@ -16,79 +16,55 @@ CreateThread(function()
             return identifiers['discord'] or identifiers['license'] or identifiers['license2'] 
         end
     
+
         function Framework.canStartPrisonBreak()
             local retval = false
             local officers = Framework.getOfficers()
-
-            if officers and next(officers) then
-                local size = #officers
-
-                if size >= Config.Escape.RequiredPolice then
+        
+            if type(officers) == "table" then
+                if Config.Escape.PoliceCheck then
+                    if officers and next(officers) then
+                        local size = #officers
+        
+                        if not size or size == 0 then
+                            size = table.size(officers)
+                        end
+        
+                        if size and size >= Config.Escape.RequiredPolice then
+                            retval = true
+                        end
+                    end
+                else
+                    retval = true
+                end
+            elseif type(officers) == "number" then
+                if officers >= Config.Escape.RequiredPolice then
                     retval = true
                 end
             end
-
+        
             return retval
         end
 
-        --[[ function Framework.getJob(client)
-            local player = Framework.getPlayer(client)
+        function Framework.getJob(client)
             local retval =  {
                 name = 'unemployed',
-                label = 'Unemployed'
+                label = 'Unemployed',
+                gradeName = 'None',
+                grade = 1
             }
 
-            if player then
-                if Ace.Can(client, Permissions.CAN_USE_JOB_COMMANDS) then
-                    retval =  {
-                        name = 'police',
-                        label = 'Police'
-                    }
-                end
+            if Ace.Can(client, Permissions.CAN_USE_JOB_COMMANDS) then
+                retval =  {
+                    name = 'police',
+                    label = 'Police',
+                    gradeName = 'Officer',
+                    grade = 1
+                }
             end
     
             return retval
-        end ]]
-        function Framework.getJob(client)
-            local player = Framework.getPlayer(client)
-            local retval = {
-                name = 'unemployed',
-                label = 'Unemployed'
-            }
-        
-            if player then
-                if Ace.Can(client, Permissions.CAN_USE_JOB_COMMANDS) then
-                    -- Define all the jobs you want to support
-                    local jobList = {
-                        ['lspd'] = 'Los Santos Police Department',
-                        ['bcso'] = 'Blaine County Sheriff\'s Office',
-                        ['sahp'] = 'San Andreas Highway Patrol',
-                        ['lsso'] = 'Los Santos Sheriff\'s Office',
-                        ['safw'] = 'San Andreas Fish and Wildlife',
-                        ['sadoc'] = 'San Andreas Department of Corrections',
-                        ['usms'] = 'United States Marshals Service',
-                        ['fbi'] = 'Federal Bureau of Investigation',
-                        ['dhs'] = 'Department of Homeland Security',
-                        ['ss'] = 'Secret Service',
-                        ['police'] = 'Police'
-                    }
-        
-                    -- Loop through jobList and check if the player has one of these jobs
-                    for jobName, jobLabel in pairs(jobList) do
-                        if Ace.Can(client, jobName) then
-                            retval = {
-                                name = jobName,
-                                label = jobLabel
-                            }
-                            break
-                        end
-                    end
-                end
-            end
-        
-            return retval
         end
-        
     
             
         function Framework.getPlayer(client)
@@ -98,21 +74,41 @@ CreateThread(function()
         function Framework.canPerformJobCommand(client, commandName)
             local job = Framework.getJob(client)
             
-            if job == nil then return false end
+            if job == nil then return false, false end
     
             local jobName = job.name
-    
+            local jobGrade = job.grade
+            local gradeName = job.gradeName:lower()
+            
             if jobName == nil then return false end
+            
+            if Config.RestrictCommands and Config.RestrictCommands.Enable and commandName and next(Config.RestrictCommands.ListGrades[commandName]) then
+                if Config.RestrictCommands.UseGradeNumbers and jobGrade ~= nil then
+                    if jobGrade >= Config.RestrictCommands.GradeNumber then
+                        return true, true
+                    else
+                        return false, _U('PERMISSION.NOT_ENOUGH_RANK')
+                    end
+                else
+                    local hasPermission = Config.RestrictCommands.ListGrades[commandName][gradeName]
+
+                    if not hasPermission then
+                        return false, _U('PERMISSION.NOT_ENOUGH_RANK')
+                    else
+                        return true, true
+                    end
+                end
+            end
 
             if Config.AllowAdminGroupsUseJailCommands and Framework.isAdmin(client) then
-                return true
+                return true, true
             end
     
             if Config.Jobs[jobName] then
-                return true
+                return true, true
             end
             
-            return false
+            return false, false
         end
     
         function Framework.getCharacterShortName(client)

@@ -24,3 +24,19 @@ NetworkService.EventListener('heartbeat', function(eventType, data)
         RemoveAllPedWeapons(plyPed, true)
     end
 end)
+
+function HandleInventoryBusyState(state)
+    if not type(state) ~= "boolean" then
+        return
+    end
+
+    local plyState = LocalPlayer.state
+
+    if isResourcePresentProvideless(Inventories.OX) then
+        plyState:set('invBusy', state, true)
+    elseif Bridge.Framework == Framework.QBCore then
+        plyState:set('inv_busy', state, true)
+    end
+
+    dbg.critical('Setting inventory busy state: %s', state)
+end

@@ -128,7 +128,6 @@ CreateThread(function()
                         coords = prop.coords,
                         heading = prop.heading
                     })
-                    dbg.debug('LOD - Spawning entity named %s', GetEntityArchetypeName(place.entityProp))
                 end
             else
                 if place.entityProp then
@@ -193,6 +192,8 @@ Interact.HandleZone = function()
                 Interact.LeaveZone(id, place)
             end
 
+            local skipSpawnNPC = false
+
             if place.npc and not place.npcLoaded then
                 if zoneType == INTERACT_TYPES.QUEST then
                     if place.quest.options then
@@ -203,14 +204,16 @@ Interact.HandleZone = function()
 
                             if quest.action == Actions.PRISON_BREAK and not Config.Escape.Enable then
                                 place.npcLoaded = true
-                                return
+                                skipSpawnNPC = true
                             end
                         end
                     end
                 end
 
-                place.npcLoaded = true
-                Interact.LoadNPC(place, id)
+                if not skipSpawnNPC then
+                    place.npcLoaded = true
+                    Interact.LoadNPC(place, id)
+                end
             end
         end
 
