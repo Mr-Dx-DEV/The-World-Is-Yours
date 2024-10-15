@@ -27,9 +27,16 @@ Config.qbSettings = {
 
 -- List of police jobs
 Config.policeJobs = {
-    'police',
+    'leo',
     'lspd',
     'bcso',
+    'lsso',
+    'sahp',
+    'usms',
+    'sadoc',
+    'fbi',
+    'dhs',
+    'ss',
 }
 
 -- The minimum amount of officers online needed for the loot to spawn
@@ -77,16 +84,16 @@ Config.dispatch = {
 
 -- Odds of loot spawning inside a parked npc vehicle by class given in percentage (0-100) (can use decimal values)
 Config.odds = {
-    [0] = 5, -- Compacts
-    [1] = 15, -- Sedans
-    [2] = 17.5, -- SUVs
-    [3] = 7, -- Coupes
-    [4] = 9, -- Muscle
-    [5] = 17.5, -- Sports Classics
-    [6] = 15, -- Sports
-    [7] = 20, -- Super
+    [0] = 50, -- Compacts
+    [1] = 50, -- Sedans
+    [2] = 50, -- SUVs
+    [3] = 50, -- Coupes
+    [4] = 50, -- Muscle
+    [5] = 50, -- Sports Classics
+    [6] = 50, -- Sports
+    [7] = 50, -- Super
     [8] = 0, -- Motorcycles
-    [9] = 12, -- Off-road
+    [9] = 50, -- Off-road
     [10] = 0, -- Industrial
     [11] = 0, -- Utility
     [12] = 5, -- Vans
@@ -106,49 +113,49 @@ Config.loot = {
         model = 'prop_michael_backpack',
         offset = vector3(0.0, -0.05, 0.05),
         loot = 'electronics',
-        lootChance = 40,
+        lootChance = 30,
     },
     {
         model = 'prop_michael_backpack',
         offset = vector3(0.0, -0.05, 0.05),
         loot = 'clothes',
-        lootChance = 50,
+        lootChance = 30,
     },
     {
         model = 'bkr_prop_duffel_bag_01a',
         offset = vector3(0.0, -0.05, 0.1),
         loot = 'electronics',
-        lootChance = 60,
+        lootChance = 30,
     },
     {
         model = 'prop_cs_heist_bag_02',
         offset = vector3(0.0, -0.05, 0.12),
         loot = 'electronics',
-        lootChance = 70,
+        lootChance = 30,
     },
     {
         model = 'v_club_vu_djbag',
         offset = vector3(0.0, 0.01, -0.18),
         loot = 'electronics',
-        lootChance = 90,
+        lootChance = 30,
     },
     {
         model = 'prop_cs_heist_bag_02',
         offset = vector3(0.0, -0.05, 0.12),
         loot = 'clothes',
-        lootChance = 50,
+        lootChance = 30,
     },
     {
         model = 'prop_cs_heist_bag_02',
         offset = vector3(0.0, -0.05, 0.12),
         loot = 'cash',
-        lootChance = 50,
+        lootChance = 30,
     },
     {
         model = 'prop_cs_shopping_bag',
         offset = vector3(0.0, 0.05, 0.3),
         loot = 'clothes',
-        lootChance = 70,
+        lootChance = 30,
     },
     {
         model = 'prop_nigel_bag_pickup',
@@ -160,13 +167,13 @@ Config.loot = {
         model = 'prop_stat_pack_01',
         offset = vector3(0.0, -0.07, -0.07),
         loot = 'cash',
-        lootChance = 80,
+        lootChance = 30,
     },
     {
         model = 'hei_heist_acc_box_trinket_02',
         offset = vector3(0.0, -0.05, 0.05),
         loot = 'electronics',
-        lootChance = 60,
+        lootChance = 30,
     },
     {
         model = 'prop_cs_cardbox_01',
@@ -185,7 +192,7 @@ Config.loot = {
 Config.lootTypes = {
     ['cash'] = {
         money = {
-            chance = 100,
+            chance = 30,
             amount = {
                 min = 50,
                 max = 1000,
@@ -211,7 +218,7 @@ Config.lootTypes = {
             'kq_expensive_sneakers',
         },
         money = {
-            chance = 70,
+            chance = 25,
             amount = {
                 min = 100,
                 max = 500,
