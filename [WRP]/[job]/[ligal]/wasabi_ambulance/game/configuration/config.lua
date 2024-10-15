@@ -270,7 +270,7 @@ Config.EnviPrescriptions = {
     --       If you use Envi Prescriptions:          --
     -- https://envi-scripts.tebex.io/package/5604452 --
     ---------------------------------------------------
-    enabled = false, -- Enable to add option for prescriptions to job menu
+    enabled = true, -- Enable to add option for prescriptions to job menu
     minRank = 1      -- Minimum job level/grade to have this option available
 }
 
@@ -295,7 +295,7 @@ Config.mInsurance = {
     --   If you use m-Insurance:     --
     -- https://marcinhu.tebex.io/    --
     -----------------------------------
-    enabled = false,      -- Enable to allow for discount on insured patient
+    enabled = true,      -- Enable to allow for discount on insured patient
     checkInDiscount = 500 --The amount to deduct from the configured check-price if player has insurance
 }
 
