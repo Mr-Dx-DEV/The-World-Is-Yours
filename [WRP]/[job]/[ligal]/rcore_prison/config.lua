@@ -1,5 +1,5 @@
 Config = {
-    Debug = true,               -- This is enabling debug of rcore_prison 
+    Debug = false,               -- This is enabling debug of rcore_prison 
     DebugInventory = false,       -- This enable debug related to the inventory module
     DebugClothing = false,        -- This enable debug related to the clothing module
     DebugAPI = false,             -- This enable debug related to the API system
