@@ -29,7 +29,7 @@ Config = {
 		["Pickaxe"] = math.random(15000, 18000),
 		["Mining"] = math.random(10000, 15000),
 		["Laser"] = math.random(7000, 10000),
-		["OreRespawn"] = math.random(55000, 75000),
+		["OreRespawn"] = math.random(10000, 15000),
 		["Crafting"] = 5000,
 	},
 
@@ -144,12 +144,12 @@ Config = {
 ------------------------------------------------------------
 --Mining Store Items
 Items = {
-	label = "Mining Store",  slots = 9,
+	label = "Mining Store",  slots = 12,
 	items = {
 		{ name = "water_bottle", price = 0, amount = 100, info = {}, type = "item", slot = 1, },
 		{ name = "sandwich", price = 0, amount = 250, info = {}, type = "item", slot = 2, },
 		{ name = "bandage", price = 0, amount = 100, info = {}, type = "item", slot = 3, },
-		{ name = "weapon_flashlight", price = 0, amount = 100, info = {}, type = "item", slot = 4, },
+		{ name = "WEAPON_FLASHLIGHT", price = 0, amount = 100, info = {}, type = "item", slot = 4, },
 		{ name = "goldpan", price = 0, amount = 100, info = {}, type = "item", slot = 5, },
 		{ name = "pickaxe",	price = 100, amount = 100, info = {}, type = "item", slot = 6, },
 		{ name = "miningdrill",	price = 10000, amount = 50, info = {}, type = "item", slot = 7, },
