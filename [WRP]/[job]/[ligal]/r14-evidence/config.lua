@@ -260,6 +260,28 @@ Config.DrugTesting = {
         ['meth'] = {
             label = 'Methamphetamine',
         },
+        ['morphine30'] = { 
+            label = 'Morphine 30mg',
+        },
+        ['morphine15'] = {
+            label = 'Morphine 15mg',
+        },
+        ['perc30'] = {
+            label = 'Percocet 30mg',
+        },
+        ['perc10'] = {
+            label = 'Percocet 10mg',
+        },
+        ['perc5'] = {
+            label = 'Percocet 5mg',
+        },
+        ['vic10'] = {
+            label = 'Vicodin 10mg',
+        },
+        ['vic5'] = {
+            label = 'Vicodin 5mg',
+        },
+        
     },
     EventTriggers = {
         --[1] = {event = 'consumables:server:useMeth', type = 'server', drugType = 'meth', positiveTime = 4},
