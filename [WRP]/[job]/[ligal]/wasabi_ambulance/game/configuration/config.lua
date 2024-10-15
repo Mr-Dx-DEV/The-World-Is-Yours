@@ -87,9 +87,21 @@ Config.ProgressCircleLocation = 'bottom' -- Where you want the progress circle l
 Config.policeCanTreat = {
     enabled = true, -- Police can treat patients?
     jobs = {        -- Police / other jobs
-        'police',
-        --    'sheriff',
-    }
+    'police',
+    'sheriff',
+    'fbi',
+    'ambulance',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
 }
 
 -- Enabled keys while dead and while on stretcher
