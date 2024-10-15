@@ -1459,12 +1459,150 @@ Config.market_categories = {
 			
 		}
 	},
+	['medicel_market'] = {
+		['page_name'] = "Medicel",
+		['page_desc'] = "Quality tools and equipment for any project, from hand tools to power tools, designed to help you achieve precision and efficiency, available at our supermarket",
+		['page_icon'] = '<img src="img/categories/medicel-icon.png" style="padding:15px">',
+		['page_img'] = 'img/categories/medicel.png',
+		['category_buy_price'] = 3000,
+		['category_sell_price'] = 1500,
+		['items'] = {
+		
+			
+			['bandage'] = {
+				['name'] = "Bandage",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'bandage.png',
+			},
+			--[[ ['painkillers'] = {
+				['name'] = "painkillers",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'painkillers.png',
+			}, ]]
+			--[[ ['morphine30'] = {
+				['name'] = "Morphine 30mg",
+				['price_to_customer'] = 300,
+				['price_to_customer_min'] = 100,
+				['price_to_customer_max'] = 300,
+				['price_to_export'] = 270,
+				['price_to_owner'] = 250,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'morphine30.png',
+			},
+			['morphine15'] = {
+				['name'] = "Morphine 15mg",
+				['price_to_customer'] = 200,
+				['price_to_customer_min'] = 100,
+				['price_to_customer_max'] = 200,
+				['price_to_export'] = 180,
+				['price_to_owner'] = 160,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'morphine15.png',
+			},
+			['perc30'] = {
+				['name'] = "Percocet 30mg",
+				['price_to_customer'] = 300,
+				['price_to_customer_min'] = 150,
+				['price_to_customer_max'] = 300,
+				['price_to_export'] = 270,
+				['price_to_owner'] = 250,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'perc30.png',
+			},
+			['perc10'] = {
+				['name'] = "Percocet 10mg",
+				['price_to_customer'] = 150,
+				['price_to_customer_min'] = 100,
+				['price_to_customer_max'] = 150,
+				['price_to_export'] = 135,
+				['price_to_owner'] = 125,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'perc10.png',
+			},
+			['perc5'] = {
+				['name'] = "Percocet 5mg",
+				['price_to_customer'] = 100,
+				['price_to_customer_min'] = 50,
+				['price_to_customer_max'] = 100,
+				['price_to_export'] = 90,
+				['price_to_owner'] = 80,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'perc5.png',
+			},
+			['vic10'] = {
+				['name'] = "Vicodin 10mg",
+				['price_to_customer'] = 250,
+				['price_to_customer_min'] = 125,
+				['price_to_customer_max'] = 250,
+				['price_to_export'] = 225,
+				['price_to_owner'] = 200,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'vic10.png',
+			},
+			['vic5'] = {
+				['name'] = "Vicodin 5mg",
+				['price_to_customer'] = 125,
+				['price_to_customer_min'] = 100,
+				['price_to_customer_max'] = 125,
+				['price_to_export'] = 112,
+				['price_to_owner'] = 100,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'vic5.png',
+			},
+			 ]]
+			['walkstick'] = {
+				['name'] = "Walking Stick",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'walkstick.png',
+			},
+			['wheelchair'] = {
+				['name'] = "wheelchair",
+				['price_to_customer'] = 350,
+				['price_to_customer_min'] = 175,
+				['price_to_customer_max'] = 700,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'wheelchair.png',
+			},
+			
+
+
+			
+		}
+	},
 
 	['backpack_market'] = {
 		['page_name'] = "Backpack",
 		['page_desc'] = "Quality tools and equipment for any project, from hand tools to power tools, designed to help you achieve precision and efficiency, available at our supermarket",
-		['page_icon'] = '<img src="img/categories/medicel-icon.png" style="padding:15px">',
-		['page_img'] = 'img/categories/medicel.png',
+		['page_icon'] = '<img src="img/categories/backpack1.png" style="padding:15px">',
+		['page_img'] = 'img/categories/backpack1.png',
 		['category_buy_price'] = 3000,
 		['category_sell_price'] = 1500,
 		['items'] = {
@@ -1573,8 +1711,8 @@ Config.market_categories = {
 	['utilities_market'] = {
 		['page_name'] = "Utilities",
 		['page_desc'] = "Quality tools and equipment for any project, from hand tools to power tools, designed to help you achieve precision and efficiency, available at our supermarket",
-		['page_icon'] = '<img src="img/categories/backpack1.png" style="padding:15px">',
-		['page_img'] = 'img/categories/backpack1.png',
+		['page_icon'] = '<img src="img/categories/utilities-icon.png" style="padding:15px">',
+		['page_img'] = 'img/categories/utilities.png',
 		['category_buy_price'] = 3000,
 		['category_sell_price'] = 1500,
 		['items'] = {
@@ -1816,7 +1954,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'bandage.png',
 			},
-			['painkillers'] = {
+			--[[ ['painkillers'] = {
 				['name'] = "painkillers",
 				['price_to_customer'] = 350,
 				['price_to_customer_min'] = 175,
@@ -1826,7 +1964,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'painkillers.png',
-			},
+			}, ]]
 			['walkstick'] = {
 				['name'] = "Walking Stick",
 				['price_to_customer'] = 350,
