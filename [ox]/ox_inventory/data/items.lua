@@ -1,4 +1,65 @@
 return {
+
+	
+	----- backpack
+	---
+	["backpack1"] = {
+	label = "backpack1",
+	weight = 15,
+	stack = false,
+	close = true,
+	description = "A stylish backpack"
+},
+["backpack2"] = {
+	label = "backpack2",
+	weight = 15,
+	stack = false,
+	close = true,
+	description = "A stylish backpack"
+},
+["duffle1"] = {
+	label = "Duffle bag",
+	weight = 15,
+	stack = false,
+	close = true,
+	description = "A stylish duffle bag"
+},
+["briefcase"] = {
+	label = "Briefcase",
+	weight = 10,
+	stack = false,
+	close = true,
+	description = "A portable rectangular case used for carrying important documents, files, or other personal belongings."
+},
+["paramedicbag"] = {
+	label = "Paramedic bag",
+	weight = 5,
+	stack = false,
+	close = true,
+	description = "A medical bag used by paramedics, containing essential supplies for emergency care."
+},
+["policepouches"] = {
+	label = "Police Pouch",
+	weight = 5,
+	stack = false,
+	close = true,
+	description = "A pouch used by police officers to store and carry essential supplies such as handcuffs, pepper spray, and other tactical equipment."
+},
+["policepouches1"] = {
+	label = "Police Pouch",
+	weight = 5,
+	stack = false,
+	close = true,
+	description = "A larger version of the police pouch used to store additional tactical gear and equipment."
+},
+
+["briefcaselockpicker"] = {
+	label = "Briefcase Lockpicker",
+	weight = 0.5,
+	stack = true,
+	close = true,
+	description = "Briefcase Lockpicker"
+},
 	---- heist
 ['blue_keycard'] = {
     label = 'Blue Keycard',
@@ -8226,7 +8287,7 @@ return {
 	["kq_expensive_watch"] = {
 		label = "Expensive watch",
 		weight = 250,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Expensive wristwatch. Looks used",
 		client = {
@@ -33215,6 +33276,22 @@ return {
 		description = "Buddy Crockers Homemade Goods",
 		client = {
 			image = "ww_snickerdoodle.png",
+		}
+	},
+	
+	["phone"] = {
+		label = "Phone",
+		weight = 190,
+		stack = false,
+		consume = 0,
+		client = {
+			export = "lb-phone.UsePhoneItem",
+			remove = function()
+				TriggerEvent("lb-phone:itemRemoved")
+			end,
+			add = function()
+				TriggerEvent("lb-phone:itemAdded")
+			end
 		}
 	},
 }
