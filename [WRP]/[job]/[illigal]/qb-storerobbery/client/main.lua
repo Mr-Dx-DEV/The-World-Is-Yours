@@ -416,7 +416,8 @@ RegisterNetEvent('qb-storerobbery:client:setSafeStatus', function(safe, bool)
 end)
 
 RegisterNetEvent('qb-storerobbery:client:robberyCall', function(_, _, _, coords)
-    if (PlayerJob.name == 'police' or PlayerJob.type == 'leo') and onDuty then
+    if (PlayerJob.name == 'police' or PlayerJob.name == 'sheriff' or PlayerJob.name == 'fbi' or PlayerJob.name == 'ambulance' or PlayerJob.name == 'lspd' or PlayerJob.name == 'bcso' or PlayerJob.name == 'sahp' or PlayerJob.name == 'lsso' or PlayerJob.name == 'safw' or PlayerJob.name == 'sadoc' or PlayerJob.name == 'usms' or PlayerJob.name == 'dhs' or PlayerJob.name == 'ss') and onDuty then
+
         PlaySound(-1, 'Lose_1st', 'GTAO_FM_Events_Soundset', 0, 0, 1)
         TriggerServerEvent('police:server:policeAlert', Lang:t('email.storerobbery_progress'))
 
