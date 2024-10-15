@@ -135,7 +135,7 @@ return {
 			{ name = 'painkillers', price = 100, grade = 0 },
 			{ name = 'weapon_fireextinguisher', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'diving_gear', price = 1000, grade = 0 },
-			{ name = 'firstaid', price = 100, grade = 0 },
+			{ name = 'medbag', price = 100, grade = 0 },
 			{ name = 'bandage', price = 30, grade = 0 },
 			{ name = 'weapon_heavysniper_mk2', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'snp_ammo', price = 100, grade = 0 },
