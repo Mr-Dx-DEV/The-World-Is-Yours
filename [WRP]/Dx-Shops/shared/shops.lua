@@ -19,7 +19,7 @@ Locations = {
 		["hideblip"] = false,
     }, ]]
 
-	--[[ ["weedshop"] = {
+	 ["weedshop"] = {
         ["label"] = "Smoke On The Water",
 		["type"] = "items",
 		["model"] = {
@@ -37,7 +37,7 @@ Locations = {
 		["blipcolour"] = 0,
 		["hideblip"] = false,
     },
- ]]
+ 
 	--[[ ["leisureshop"] = {
         ["label"] = "Leisure Shop",
 		["type"] = "items",
