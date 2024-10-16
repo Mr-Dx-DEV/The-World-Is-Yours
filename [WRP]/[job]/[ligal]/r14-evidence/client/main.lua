@@ -34,7 +34,7 @@ local nogloves, cleaningWeapon = false, false
 
 -- flashlight configs
 
-local usingflashlight = false -- do not touch
+local usingflashlight = true -- do not touch
 local curopac = 200 -- opacity of current pickup
 local cursize = 0.1
 local flashdist = 8 -- distance flashlight reveals evidence
