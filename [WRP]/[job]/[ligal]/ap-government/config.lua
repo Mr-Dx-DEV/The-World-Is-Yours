@@ -16,7 +16,7 @@ Config = {
 	},
 	Language = "ENG", -- Set to "ENG" for English & "GER" for German & "FRA" for French.
 	Currency = '$', -- Set this to the currency your server uses.
-	UsingAPCourt = false, -- Set this to true if your using AP-COURT.
+	UsingAPCourt = true, -- Set this to true if your using AP-COURT.
 	NotifyWinnerByPhone = true, -- Set true to email player of winning the election
 	displayVotingChatNotify = false, -- Set too true to show voting notiforcations in chat false for notify
 	AddJobsFromConfig = true, -- Set this to true if you want this script to add the jobs from Config.AddSharedJobs below to your shared jobs in qb-core. 
@@ -86,9 +86,9 @@ Config.Dirk_BountyHunterV2 = { -- https://www.dirkscripts.com/package/5326364.
 
 Config.MayorOptions = {
 	funds = {
-		grants = {enable = true, min = 2000, max = 200000},
-		withdrawal = {enable = false, min = 100, max = 200000},
-		deposit = {enable = false, min = 1000, max = 100000}
+		grants = {enable = true, min = 2000, max = 2000000},
+		withdrawal = {enable = true, min = 100, max = 2000000},
+		deposit = {enable = true, min = 1000, max = 1000000}
 	}
 }
 
@@ -99,8 +99,8 @@ Config.Tax = {
 		enable = true,
 		TaxTypes = {
 	        ["Income"] = {enable = true, mayorControl = true, label = 'Income', percentageCap = 0.80, percentage = 0.15, AddCityHallFunds = true},		
-	        ["Housing"] = {enable = false, mayorControl = false, label = 'Housing', percentageCap = 0.15, percentage = 0.15, AddCityHallFunds = true},
-			["Vehicle"] = {enable = false, mayorControl = false, label = 'Vehicle', percentageCap = 0.15, percentage = 0.15, AddCityHallFunds = true},
+	        ["Housing"] = {enable = true, mayorControl = true, label = 'Housing', percentageCap = 0.15, percentage = 0.15, AddCityHallFunds = true},
+			["Vehicle"] = {enable = true, mayorControl = true, label = 'Vehicle', percentageCap = 0.15, percentage = 0.15, AddCityHallFunds = true},
 			["Item"] = {enable = true, mayorControl = true, label = 'Item', percentageCap = 0.80, percentage = 0.15, AddCityHallFunds = true},
 		}
 	}
@@ -111,10 +111,10 @@ Config.BusinessTax = {
 	securityVerify = true, -- Set this to true if you want the player to recive a pin to verify registering a business with the mayor.
 	tax = {
       mayorControl = {
-		changeAmount = false, -- Set this too true if you want the mayor to ajust the business tax per job.
+		changeAmount = true, -- Set this too true if you want the mayor to ajust the business tax per job.
         amounts = {
-			min = 2000, -- Min the mayor can ajust business tax.
-			max = 20000 -- Max the mayor can ajust business tax.
+			min = 20, -- Min the mayor can ajust business tax.
+			max = 200000 -- Max the mayor can ajust business tax.
 		}
 	  },
 	  basicAmount = 2000, -- Basic amount that the business will pay in tax.
