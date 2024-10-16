@@ -59,7 +59,7 @@ Config.Bags = {
           size = 100000,
           cloth = {
                male = {
-                    ["bag"] = { item = 36, texture = 0 }
+                    ["bag"] = { item = 155, texture = 0 }
                },
                female = {
                     ["bag"] = { item = 1, texture = 0 }
@@ -78,10 +78,10 @@ Config.Bags = {
      {
           item = 'backpack2',
           slots = 20,
-          size = 200000,
+          size = 250000,
           cloth = {
                male = {
-                    ["bag"] = { item = 36, texture = 1 }
+                    ["bag"] = { item = 161, texture = 1 }
                },
                female = {
                     ["bag"] = { item = 85, texture = 13 }
@@ -95,11 +95,11 @@ Config.Bags = {
      },
      {
           item = 'duffle1',
-          slots = 20,
-          size = 200000,
+          slots = 30,
+          size = 400000,
           cloth = {
                male = {
-                    ["bag"] = { item = 82, texture = 4 }
+                    ["bag"] = { item = 158, texture = 4 }
                },
                female = {
                     ["accessory"] = { item = 123, texture = 0 }
@@ -114,8 +114,8 @@ Config.Bags = {
      },
      {
           item = 'briefcase',
-          slots = 5,
-          size = 10000,
+          slots = 10,
+          size = 50000,
           locked = true,
           prop = GetProp('suitcase2') -- Use props from shared/props.lua
      },
