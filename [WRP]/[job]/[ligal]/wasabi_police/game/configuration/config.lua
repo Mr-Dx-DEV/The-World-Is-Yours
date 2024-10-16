@@ -185,7 +185,7 @@ Config.RadarPosts = {           -- Radar posts for speed detection
 }
 
 Config.GSR = {                 -- Gunshot residue settings
-    enabled = true,           -- Enabled?
+    enabled = false,           -- Enabled?
     cleanInWater = true,       -- Can clean GSR while in water?
     timeToClean = 60 * seconds, -- How long to clean GSR in water if enabled
     autoClean = 960,           -- (IN SECONDS)How long before residue clears itself? Set to false if undesired to auto clean GSR
