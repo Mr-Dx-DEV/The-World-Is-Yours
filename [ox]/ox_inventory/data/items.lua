@@ -3,7 +3,7 @@ return {
 	
 	-- Chains for ox_inventory
 ['chain_v'] = {
-    label = 'Mafia chain',
+    label = 'Mafia chain Male',
     weight = 1,
     stack = false,
     close = true,
@@ -23,7 +23,7 @@ return {
     }
 },
 ['chain_v2'] = {
-    label = 'V shape chain',
+    label = 'Mafia chain Female',
     weight = 1,
     stack = false,
     close = true,
