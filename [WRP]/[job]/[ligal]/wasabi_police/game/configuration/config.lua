@@ -187,8 +187,8 @@ Config.RadarPosts = {           -- Radar posts for speed detection
 Config.GSR = {                 -- Gunshot residue settings
     enabled = true,           -- Enabled?
     cleanInWater = true,       -- Can clean GSR while in water?
-    timeToClean = 5 * seconds, -- How long to clean GSR in water if enabled
-    autoClean = 600,           -- (IN SECONDS)How long before residue clears itself? Set to false if undesired to auto clean GSR
+    timeToClean = 60 * seconds, -- How long to clean GSR in water if enabled
+    autoClean = 960,           -- (IN SECONDS)How long before residue clears itself? Set to false if undesired to auto clean GSR
     command = 'gsr'            -- Command for testing for GSR? Set to false if undesired
 }
 
@@ -204,9 +204,9 @@ Config.seizeCash = {  -- ONLY FOR QBCORE WITHOUT CASH AS ITEM
 }
 
 Config.handcuff = {                             -- Config in regards to cuffing
-    defaultCuff = 'hard',                       -- Default cuff type (Options: 'soft' / 'hard') Changing this will be the default hotkey cuff type
+    defaultCuff = 'soft',                       -- Default cuff type (Options: 'soft' / 'hard') Changing this will be the default hotkey cuff type
     persistentCuff = true,                      -- Verify player's cuffed status during login (Install '_EXTRA_ESX_INSTALL/ESX_PERSISTENT_CUFF.sql' if using ESX)
-    timer = 20 * minutes,                       -- Time before player is automatically unrestrained(Set to false if not desired)
+    timer = false,                       -- Time before player is automatically unrestrained(Set to false if not desired)
     hotkey = false,                               -- What key to press to handcuff people(Set to false for no hotkey)
     skilledEscape = {
         enabled = true,                         -- Allow criminal to simulate resisting by giving them a chance to break free from cuffs via skill check
@@ -218,10 +218,10 @@ Config.handcuff = {                             -- Config in regards to cuffing
         item = 'handcuffs'                      -- Item name (DONT FORGET to make sure its in your items)
     },
     lockpicking = {                             -- Lockpicking someone else out of handcuffs
-        enabled = false,                        -- Enable handcuffs to be able to be lockpicked off(MUST HAVE LOCKPICK ITEM IN ITEMS)
+        enabled = true,                        -- Enable handcuffs to be able to be lockpicked off(MUST HAVE LOCKPICK ITEM IN ITEMS)
         item = 'bobby_pin',
-        breakChance = 50,                       -- Chance of lockpick breaking if failed (Set to 100 for 100% or 0 for never breaking)
-        difficulty = { 'easy', 'easy', 'easy' } -- Options: 'easy' / 'medium' / 'hard' (Can be stringed along as they are in config)
+        breakChance = 25,                       -- Chance of lockpick breaking if failed (Set to 100 for 100% or 0 for never breaking)
+        difficulty = { 'medium', 'medium', 'medium' } -- Options: 'easy' / 'medium' / 'hard' (Can be stringed along as they are in config)
     }
 }
 
