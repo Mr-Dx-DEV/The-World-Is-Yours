@@ -1653,7 +1653,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 6,
 				['img'] = 'briefcase.png',
 			},
-			
+			--[[ 
 			['paramedicbag'] = {
 				['name'] = "Paramedic Bag",
 				['price_to_customer'] = 5000,
@@ -1665,7 +1665,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'paramedicbag.png',
 			},
-			
+			 ]]
 			['policepouches'] = {
 				['name'] = "Police Pouches",
 				['price_to_customer'] = 4000,
