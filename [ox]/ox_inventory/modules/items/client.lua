@@ -186,6 +186,433 @@ Item('clothing', function(data, slot)
 	end)
 end)
 
+-- FARMING
+-- POTS
+local Pots = {
+	['farm_pot_xs'] = {
+        model       = 'prop_milk_crate_xs',
+    },
+    ['farm_pot_s'] = {
+        model       = 'prop_milk_crate_s',
+    },
+    ['farm_pot_m'] = {
+        model       = 'prop_milk_crate_m',
+    },
+    ['farm_pot_l'] = {
+        model       = 'prop_milk_crate_l',
+    },    
+}
+
+for k, v in pairs(Pots) do 
+	Item(k, function(data, slot)
+		ox_inventory:useItem(data, function(data)
+			if data then
+				TriggerEvent("zat-farming:client:UseItem", slot.name, v.model, 'pots')
+				TriggerServerEvent('zat-farming:server:removeitem', slot.name, 1, slot.slot)
+			end
+		end)
+	end)
+end
+-- LAMPS
+
+local Lights = { -- add any lights you want ...
+	['farm_light_s'] = { 
+		model       = 'h4_prop_x17_sub_lampa_small_blue',
+	},                   
+	['farm_light_l'] = { 
+		model       = 'h4_prop_x17_sub_lampa_large_blue',
+	}, 
+}
+
+for k, v in pairs(Lights) do 
+	Item(k, function(data, slot)
+		ox_inventory:useItem(data, function(data)
+			if data then
+				TriggerEvent("zat-farming:client:UseItem", slot.name, v.model, 'lights')
+				TriggerServerEvent('zat-farming:server:removeitem', slot.name, 1, slot.slot)
+			end
+		end)
+	end)
+end
+
+local FanProps = {
+    [1] = "prop_fan_01",
+    [2] = "v_res_fa_fan", 
+    [3] = "prop_wall_vent_02"
+}
+
+Item('zatfan01', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, FanProps[1])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+Item('zatresfan', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, FanProps[2])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)	
+end)
+
+Item('zatwallfan', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, FanProps[3])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+local HeaterProps = {
+    [1] = "prop_elec_heater_01",
+    [2] = "prop_patio_heater_01", 
+}
+
+Item('zatheater', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, HeaterProps[1])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+Item('zatpatioheater', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, HeaterProps[2])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+
+local LightProps = {
+    [1] = "prop_wall_light_05a",
+    [2] = "ch_prop_ch_lamp_ceiling_w_01a", 
+    [3] = "h4_prop_x17_sub_lampa_small_blue"
+}
+
+Item('zatwalllight', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, LightProps[1])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+Item('zatceilinglight', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, LightProps[2])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+Item('zatbluelight', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, LightProps[3])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+local PlanterProps = {
+    [1] = "prop_garden",
+    [2] = "prop_weed_rack_xs",
+    [3] = "prop_rack_dryer_s",
+    [4] = "bkr_prop_weed_table_01a",
+    [5] = "prop_water_setup"
+}
+
+Item('zatplanter', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, PlanterProps[1])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+Item('zatweedrackxs', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, PlanterProps[2])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+Item('zatweedracks', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, PlanterProps[3])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+Item('zatweedtable', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, PlanterProps[4])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+Item('zatwatersetup', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItemStrict", slot.name, PlanterProps[5])
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+---
+Item('zatwaterbottleempty', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:fillWater")
+		end
+	end)
+end)
+
+local WeedProps = {
+    [1] = "bkr_prop_weed_bud_01a",
+    [2] = "bkr_prop_weed_med_01a",
+    [3] = "bkr_prop_weed_med_01b",
+    [4] = "bkr_prop_weed_lrg_01a",
+    [5] = "bkr_prop_weed_lrg_01b"
+}
+
+Item('zatweedseed', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseItem", slot.name, WeedProps[1], slot.metadata)
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+			
+		end
+	end)
+end)
+
+Item('zatpackedweed', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			local count = ox_inventory:GetItemCount("zatrollingpaper")
+			if count >= 5 then
+				TriggerEvent("zat-weed:client:rollIt", slot.metadata)
+				TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+				TriggerServerEvent("zat-weed:server:RemoveRollingPapersOx")
+			end
+		end
+	end)
+end)
+
+Item('zatjoint', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("zat-weed:client:UseJoint", slot.metadata.purity)
+			TriggerServerEvent("zat-weed:server:RemoveItemOx", slot, nil)
+		end
+	end)
+end)
+
+-- FARMING
+-- POTS
+local Pots = {
+	['farm_pot_xs'] = {
+        model       = 'prop_milk_crate_xs',
+    },
+    ['farm_pot_s'] = {
+        model       = 'prop_milk_crate_s',
+    },
+    ['farm_pot_m'] = {
+        model       = 'prop_milk_crate_m',
+    },
+    ['farm_pot_l'] = {
+        model       = 'prop_milk_crate_l',
+    },    
+}
+
+for k, v in pairs(Pots) do 
+	Item(k, function(data, slot)
+		ox_inventory:useItem(data, function(data)
+			if data then
+				TriggerEvent("zat-farming:client:UseItem", slot.name, v.model, 'pots')
+				TriggerServerEvent('zat-farming:server:removeitem', slot.name, 1, slot.slot)
+			end
+		end)
+	end)
+end
+-- LAMPS
+
+local Lights = { -- add any lights you want ...
+	['farm_light_s'] = { 
+		model       = 'h4_prop_x17_sub_lampa_small_blue',
+	},                   
+	['farm_light_l'] = { 
+		model       = 'h4_prop_x17_sub_lampa_large_blue',
+	}, 
+}
+
+for k, v in pairs(Lights) do 
+	Item(k, function(data, slot)
+		ox_inventory:useItem(data, function(data)
+			if data then
+				TriggerEvent("zat-farming:client:UseItem", slot.name, v.model, 'lights')
+				TriggerServerEvent('zat-farming:server:removeitem', slot.name, 1, slot.slot)
+			end
+		end)
+	end)
+end
+
+-- TOOLS 
+local Tools = { -- add any lights you want ...
+    ['farm_mil'] = { 
+        model       = 'prop_farming_mil',
+    },                   
+    ['farm_compost'] = { 
+        model       = 'prop_farming_compost',
+    }, 
+    ['farm_sink_s'] = { 
+        model       = 'prop_ff_sink_02',
+    }, 
+    ['farm_sink_m'] = { 
+        model       = 'prop_bar_sink_01',
+    }, 
+    ['moon_distillation'] = { 
+        model       = 'prop_moonshine',
+    },  
+}
+
+for k, v in pairs(Tools) do 
+	Item(k, function(data, slot)
+		ox_inventory:useItem(data, function(data)
+			if data then
+				TriggerEvent("zat-farming:client:UseItem", slot.name, v.model, 'tools')
+				TriggerServerEvent('zat-farming:server:removeitem', slot.name, 1, slot.slot)
+			end
+		end)
+	end)
+end
+
+-- Water Can
+
+Item('farm_water', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			if slot.metadata.water == nil then
+				slot.metadata.water = 0
+			end
+			if slot.metadata.water == 0 then
+				-- Remove Item
+				TriggerEvent('zat-farming:client:FillWater', slot)
+			end
+		end
+	end)
+end)
+
+ 
+-- Moonshine
+Item('moon_moonshine_pack', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			if slot.metadata.purity == nil then
+				slot.metadata.purity = 0
+			end
+			TriggerServerEvent('zat-farming:server:additem', 'moon_moonshine', 6, slot.metadata)
+			TriggerServerEvent('zat-farming:server:removeitem', slot.name, 1, slot.slot)
+		end
+	end)
+end)
+
+Item('moon_moonshine', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent('zat-farming:client:StartEffect', slot)
+			TriggerServerEvent('zat-farming:server:removeitem', slot.name, 1, slot.slot)
+		end
+	end)
+end)
+-- TOOLS 
+local Tools = { -- add any lights you want ...
+    ['farm_mil'] = { 
+        model       = 'prop_farming_mil',
+    },                   
+    ['farm_compost'] = { 
+        model       = 'prop_farming_compost',
+    }, 
+    ['farm_sink_s'] = { 
+        model       = 'prop_ff_sink_02',
+    }, 
+    ['farm_sink_m'] = { 
+        model       = 'prop_bar_sink_01',
+    }, 
+    ['moon_distillation'] = { 
+        model       = 'prop_moonshine',
+    },  
+}
+
+for k, v in pairs(Tools) do 
+	Item(k, function(data, slot)
+		ox_inventory:useItem(data, function(data)
+			if data then
+				TriggerEvent("zat-farming:client:UseItem", slot.name, v.model, 'tools')
+				TriggerServerEvent('zat-farming:server:removeitem', slot.name, 1, slot.slot)
+			end
+		end)
+	end)
+end
+
+-- Water Can
+
+Item('farm_water', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			if slot.metadata.water == nil then
+				slot.metadata.water = 0
+			end
+			if slot.metadata.water == 0 then
+				-- Remove Item
+				TriggerEvent('zat-farming:client:FillWater', slot)
+			end
+		end
+	end)
+end)
+
+ 
+-- Moonshine
+Item('moon_moonshine_pack', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			if slot.metadata.purity == nil then
+				slot.metadata.purity = 0
+			end
+			TriggerServerEvent('zat-farming:server:additem', 'moon_moonshine', 6, slot.metadata)
+			TriggerServerEvent('zat-farming:server:removeitem', slot.name, 1, slot.slot)
+		end
+	end)
+end)
+
+Item('moon_moonshine', function(data, slot)
+	ox_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent('zat-farming:client:StartEffect', slot)
+			TriggerServerEvent('zat-farming:server:removeitem', slot.name, 1, slot.slot)
+		end
+	end)
+end)
+
 -----------------------------------------------------------------------------------------------
 
 exports('Items', function(item) return getItem(nil, item) end)

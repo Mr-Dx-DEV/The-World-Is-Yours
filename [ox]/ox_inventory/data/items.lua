@@ -1,6 +1,679 @@
 return {
+--- farming
 
+["farm_seed_carrot"] = {
+	label = "Carrot Seed",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Carrot Seed",
+	client = {
+		image = "farm_seed.png",
+	}
+},
+
+["farm_carrot_mash"] = {
+	label = "Mash Carrot",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Mash Carrot",
+	client = {
+		image = "farm_carrot_mash.png",
+	}
+},
+
+["farm_sink_s"] = {
+	label = "Sink",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Sink",
+	client = {
+		image = "farm_sink_s.png",
+	}
+},
+
+["farm_light_s"] = {
+	label = "Light S",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Light S",
+	client = {
+		image = "farm_light_s.png",
+	}
+},
+
+["farm_carrot_comp"] = {
+	label = "Rotten Carrot",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Rotten Carrot",
+	client = {
+		image = "farm_carrot_comp.png",
+	}
+},
+
+["farm_sink_m"] = {
+	label = "Modern Sink",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Modern Sink",
+	client = {
+		image = "farm_sink_m.png",
+	}
+},
+
+["moon_distillation"] = {
+	label = "Moonshine Distillation",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Moonshine Distillation",
+	client = {
+		image = "moon_distillation.png",
+	}
+},
+
+["farm_onion_comp"] = {
+	label = "Rotten Onion",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Rotten Onion",
+	client = {
+		image = "farm_onion_comp.png",
+	}
+},
+
+["farm_corn_mash"] = {
+	label = "Mash Corn",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Mash Corn",
+	client = {
+		image = "farm_corn_mash.png",
+	}
+},
+
+["farm_light_l"] = {
+	label = "Light L",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Light L",
+	client = {
+		image = "farm_light_l.png",
+	}
+},
+
+["farm_seed_sunflower"] = {
+	label = "SunFlower Seed",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "SunFlower Seed",
+	client = {
+		image = "farm_seed.png",
+	}
+},
+
+["moon_moonshine_pack"] = {
+	label = "Moonshine Pack",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Moonshine Pack",
+	client = {
+		image = "moon_moonshine_pack.png",
+	}
+},
+
+["farm_seed_wheat"] = {
+	label = "Wheat Seed",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Wheat Seed",
+	client = {
+		image = "farm_seed.png",
+	}
+},
+
+["farm_sunflower_comp"] = {
+	label = "Rotten SunFlower",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Rotten SunFlower",
+	client = {
+		image = "farm_sunflower_comp.png",
+	}
+},
+
+["farm_tomato_comp"] = {
+	label = "Rotten Tomato",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Rotten Tomato",
+	client = {
+		image = "farm_tomato_comp.png",
+	}
+},
+
+["farm_mil"] = {
+	label = "Mil Machine",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Mil Machine",
+	client = {
+		image = "farm_mil.png",
+	}
+},
+
+["farm_seed_tomato"] = {
+	label = "Tomato Seed",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Tomato Seed",
+	client = {
+		image = "farm_seed.png",
+	}
+},
+
+["farm_pot_xs"] = {
+	label = "Pot XS",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "XS Pot",
+	client = {
+		image = "farm_pot_xs.png",
+	}
+},
+
+["farm_pot_m"] = {
+	label = "Pot M",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "M Pot",
+	client = {
+		image = "farm_pot_m.png",
+	}
+},
+
+["farm_onion"] = {
+	label = "Onion",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Onion",
+	client = {
+		image = "farm_onion.png",
+	}
+},
+
+["farm_onion_mash"] = {
+	label = "Mash Onion",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Mash Onion",
+	client = {
+		image = "farm_onion_mash.png",
+	}
+},
+
+["farm_compost"] = {
+	label = "Compost Box",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Compost Box",
+	client = {
+		image = "farm_compost.png",
+	}
+},
+
+["farm_water_tap"] = {
+	label = "Water Tap",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Water Tap",
+	client = {
+		image = "farm_water_tap.png",
+	}
+},
+
+["farm_corn"] = {
+	label = "Corn",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Corn",
+	client = {
+		image = "farm_corn.png",
+	}
+},
+
+["farm_tomato_mash"] = {
+	label = "Mash Tomato",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Mash Tomato",
+	client = {
+		image = "farm_tomato_mash.png",
+	}
+},
+
+["moon_moonshine"] = {
+	label = "Moonshine",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Moonshine",
+	client = {
+		image = "moon_moonshine.png",
+	}
+},
+
+["farm_seed_corn"] = {
+	label = "Corn Seed",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Corn Seed",
+	client = {
+		image = "farm_seed.png",
+	}
+},
+
+["farm_pot_s"] = {
+	label = "Pot S",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "S Pot",
+	client = {
+		image = "farm_pot_s.png",
+	}
+},
+
+["farm_fertilizer"] = {
+	label = "Fertilizer",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Fertilizer",
+	client = {
+		image = "farm_fertilizer.png",
+	}
+},
+
+["farm_wheat"] = {
+	label = "Wheat",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Wheat",
+	client = {
+		image = "farm_wheat.png",
+	}
+},
+
+["farm_seed_onion"] = {
+	label = "Onion Seed",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Onion Seed",
+	client = {
+		image = "farm_seed.png",
+	}
+},
+
+["farm_pot_l"] = {
+	label = "Pot L",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "L Pot",
+	client = {
+		image = "farm_pot_l.png",
+	}
+},
+
+["farm_sunflower_mash"] = {
+	label = "Mash SunFlower",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Mash SunFlower",
+	client = {
+		image = "farm_sunflower_mash.png",
+	}
+},
+
+["farm_tomato"] = {
+	label = "Tomato",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Tomato",
+	client = {
+		image = "farm_tomato.png",
+	}
+},
+
+["farm_wheat_mash"] = {
+	label = "Mash Wheat",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Mash Wheat",
+	client = {
+		image = "farm_wheat_mash.png",
+	}
+},
+
+["farm_water"] = {
+	label = "Water Can",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Water Can",
+	client = {
+		image = "farm_water.png",
+	}
+},
+
+["farm_yeast"] = {
+	label = "Yeast",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Yeast",
+	client = {
+		image = "farm_yeast.png",
+	}
+},
+
+["farm_wheat_comp"] = {
+	label = "Rotten Wheat",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Rotten Wheat",
+	client = {
+		image = "farm_wheat_comp.png",
+	}
+},
+
+["farm_sunflower"] = {
+	label = "SunFlower",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "SunFlower",
+	client = {
+		image = "farm_sunflower.png",
+	}
+},
+
+["farm_carrot"] = {
+	label = "Carrot",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Carrot",
+	client = {
+		image = "farm_carrot.png",
+	}
+},
+
+["farm_corn_comp"] = {
+	label = "Rotten Corn",
+	weight = 100,
+	stack = false,
+	close = true,
+	description = "Rotten Corn",
+	client = {
+		image = "farm_corn_comp.png",
+	}
+},
+	--- weed
+	["zatresfan"] = {
+		label = "Modern Fan",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Fan - 60 and 120 RPM...",
+		client = {
+			image = "zatresfan.png",
+		}
+	},
+	["zatrollingpaper"] = {
+		label = "Rolling Paper",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "Rolling paper",
+		client = {
+			image = "zatrollingpaper.png",
+		}
+	},
 	
+	["zatpackedweed"] = {
+		label = "Packed Weed",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Weed ready for sale",
+		client = {
+			image = "zatpackedweed.png",
+		}
+	},
+	
+	["zatpatioheater"] = {
+		label = "Patio Heater",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Patio heater - LOH 21°C...",
+		client = {
+			image = "zatpatioheater.png",
+		}
+	},
+	
+	["zatweedbranch"] = {
+		label = "Weed Branch",
+		weight = 10000,
+		stack = false,
+		close = true,
+		client = {
+			image = "zatweedbranch.png",
+		},
+		description = "Weed plant",
+	},
+	["zatceilinglight"] = {
+		label = "Ceiling Light",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "ceiling light...",
+		client = {
+			image = "zatceilinglight.png",
+		}
+	},
+	
+	["zatbluelight"] = {
+		label = "Blue Light",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Blue Wall Light - Perfect for plant growth...",
+		client = {
+			image = "zatbluelight.png",
+		}
+	},
+	["zatwalllight"] = {
+		label = "Wall Light",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Wall Light...",
+		client = {
+			image = "zatwalllight.png",
+		}
+	},
+	
+	["zatweedseed"] = {
+		label = "Weed Seed",
+		weight = 0,
+		stack = false,
+		close = true,
+		description = "Weed Seed",
+		client = {
+			image = "zatweedseed.png",
+		}
+	},
+	
+	["zatweedtable"] = {
+		label = "Table",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "Table with Full weed Setup",
+		client = {
+			image = "zatweedtable.png",
+		}
+	},
+	
+	["zatweedracks"] = {
+		label = "Medium Weed Rack",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Weed Rack with max 5 slots...",
+		client = {
+			image = "zatweedracks.png",
+		}
+	},
+	["zatplanter"] = {
+		label = "Planter",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Home made Garden...",
+		client = {
+			image = "zatplanter.png",
+		}
+	},
+	
+	["zatwaterbottlefull"] = {
+		label = "Water Bottle Full",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Water Bottle...",
+		client = {
+			image = "zatwaterbottlefull.png",
+		}
+	},
+	
+	["zatwatersetup"] = {
+		label = "Water Filtration",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Water Filtration Setup...",
+		client = {
+			image = "zatwatersetup.png",
+		}
+	},
+	["zatfan01"] = {
+		label = "Fan",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Fan - 20 and 50 RPM...",
+		client = {
+			image = "zatfan01.png",
+		}
+	},
+	
+	["zatweedrackxs"] = {
+		label = "Small Weed Rack",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Weed Rack with max 3 slots...",
+		client = {
+			image = "zatweedrackxs.png",
+		}
+	},
+	["zatweednutrition"] = {
+		label = "Plant Fertilizer",
+		weight = 2000,
+		stack = true,
+		close = true,
+		description = "Plant nutrition",
+		client = {
+			image = "zatweednutrition.png",
+		}
+	},
+	["zatheater"] = {
+		label = "Wall Heater",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Electrical wall heater - LOH 10°C...",
+		client = {
+			image = "zatheater.png",
+		}
+	},
+	
+	["zatwallfan"] = {
+		label = "Wall Fan",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Fan - 80 and 200 RPM...",
+		client = {
+			image = "zatwallfan.png",
+		}
+	},
+	["zatjoint"] = {
+		label = "Joint",
+		weight = 0,
+		stack = false,
+		close = true,
+		description = "Sidney would be very proud at you",
+		client = {
+			image = "zatjoint.png",
+		}
+	},
+	
+	["zatwaterbottleempty"] = {
+		label = "Water Bottle Empty",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "Water Bottle...",
+		client = {
+			image = "zatwaterbottleempty.png",
+		}
+	},
 	-- Chains for ox_inventory
 ['chain_v'] = {
     label = 'Mafia chain Male',
