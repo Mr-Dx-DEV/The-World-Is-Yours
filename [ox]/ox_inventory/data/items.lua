@@ -1,6 +1,189 @@
 return {
 
 	
+	-- Chains for ox_inventory
+['chain_v'] = {
+    label = 'Mafia chain',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_v.png'
+    }
+},
+['chain_v1'] = {
+    label = '2LM chain',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_v.png'
+    }
+},
+['chain_v2'] = {
+    label = 'V shape chain',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_v.png'
+    }
+},
+['chain_bdb'] = {
+    label = 'BDB Chain',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_bdb.png'
+    }
+},
+['chain_cp1'] = {
+    label = 'Cross Chain',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_cp.png'
+    }
+},
+['chain_cp2'] = {
+    label = 'Cross Chain',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_cp.png'
+    }
+},
+['chain_skull'] = {
+    label = 'Iced out Skull',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_skull.png'
+    }
+},
+['chain_skull2'] = {
+    label = 'Iced out Skull',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_skull.png'
+    }
+},
+['chain_skull3'] = {
+    label = 'Iced out Skull',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_skull.png'
+    }
+},
+['chain_nocap'] = {
+    label = 'Iced out NOCAP',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_nocap.png'
+    }
+},
+['chain_snake'] = {
+    label = 'Iced out Snake Bite',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_snake.png'
+    }
+},
+['chain_link'] = {
+    label = 'Iced out linked Chain',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'chain_link.png'
+    }
+},
+['chain_au1'] = {
+    label = 'Among Us | All Gold',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'goldongoldau.png'
+    }
+},
+['chain_au2'] = {
+    label = 'Among Us | Red/Gold',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'goldandredau.png'
+    }
+},
+['chain_au3'] = {
+    label = 'Among Us | Blue/Gold',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'golandblueau.png'
+    }
+},
+['chain_au4'] = {
+    label = 'Among Us | White/Gold',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'silverandgoldau.png'
+    }
+},
+['chain_au5'] = {
+    label = 'Among Us | Green/Gold',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'goldandgreenau.png'
+    }
+},
+['chain_au6'] = {
+    label = 'Among Us | Black/Gold',
+    weight = 1,
+    stack = false,
+    close = true,
+    description = 'Add a lil bit of drip',
+    client = {
+        image = 'goldandblackau.png'
+    }
+},
+-- Continue similarly for the rest of the items.
+
 	----- backpack
 	---
 	["backpack1"] = {
@@ -8276,7 +8459,7 @@ return {
 	["kq_expensive_laptop"] = {
 		label = "Expensive laptop",
 		weight = 2000,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Expensive laptop. Looks used",
 		client = {
@@ -8298,7 +8481,7 @@ return {
 	["kq_expensive_bag"] = {
 		label = "Designer bag",
 		weight = 2000,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Designer bag. Looks used",
 		client = {
@@ -8309,7 +8492,7 @@ return {
 	["kq_expensive_sneakers"] = {
 		label = "Designer sneakers",
 		weight = 250,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Designer shoes. Look used",
 		client = {
@@ -16273,16 +16456,6 @@ return {
 		}
 	},
 
-	["chain_bdb"] = {
-		label = "BDB Chain",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "billiondollarbaby.png",
-		}
-	},
 
 	["blueberry_cruffin"] = {
 		label = "Blueberry Cruffin",
@@ -16295,16 +16468,7 @@ return {
 		}
 	},
 
-	["chain_au14"] = {
-		label = "Among Us | Pink/Diamond",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus14.png",
-		}
-	},
+	
 
 	["brakes_level3"] = {
 		label = "Brakes Level 3",
@@ -16647,16 +16811,7 @@ return {
 		}
 	},
 
-	["chain_au6"] = {
-		label = "Among Us | Black/Gold",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus6.png",
-		}
-	},
+
 
 	["strawberry_lemonade"] = {
 		label = "Chilled Strawberry Lemonade",
@@ -16702,16 +16857,7 @@ return {
 		}
 	},
 
-	["chain_au16"] = {
-		label = "Among Us | White/Diamond",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus16.png",
-		}
-	},
+
 
 	["sliced_strawberry"] = {
 		label = "Sliced Strawberry",
@@ -16900,16 +17046,7 @@ return {
 		}
 	},
 
-	["chain_link"] = {
-		label = "Iced out linked Chain",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "chain_link.png",
-		}
-	},
+
 
 	["pineapple_seed"] = {
 		label = "Pineapple Seed",
@@ -17341,16 +17478,7 @@ return {
 		}
 	},
 
-	["chain_nocap"] = {
-		label = "Iced out NOCAP",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "chain_nocap.png",
-		}
-	},
+
 
 	["party_pack"] = {
 		label = "50PC PARTY PACK",
@@ -17638,16 +17766,7 @@ return {
 		}
 	},
 
-	["chain_skull7"] = {
-		label = "Iced out Skull",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "skull7.png",
-		}
-	},
+
 
 	["meatball"] = {
 		label = "Meatball",
@@ -18012,16 +18131,6 @@ return {
 		}
 	},
 
-	["chain_au1"] = {
-		label = "Among Us | All Gold ",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus1.png",
-		}
-	},
 
 	["w_diet_coke"] = {
 		label = "Diet Coke",
@@ -18320,16 +18429,6 @@ return {
 		}
 	},
 
-	["chain_cp2"] = {
-		label = "Cross Chain",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "crosschain2.png",
-		}
-	},
 
 	["gary_payton_joint"] = {
 		label = "Gary Payton Joint",
@@ -18408,17 +18507,6 @@ return {
 		}
 	},
 
-	["chain_au8"] = {
-		label = "Among Us | Cyan/Gold",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus8.png",
-		}
-	},
-
 	["picture"] = {
 		label = "Picture",
 		weight = 950,
@@ -18485,17 +18573,6 @@ return {
 		}
 	},
 
-	["chain_au2"] = {
-		label = "Among Us | Red/Gold",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus2.png",
-		}
-	},
-
 	["pirckly_pear_joint"] = {
 		label = "Pirckly Pear Joint",
 		weight = 500,
@@ -18551,17 +18628,7 @@ return {
 		}
 	},
 
-	["chain_skull4"] = {
-		label = "Iced out Skull",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "skull4.png",
-		}
-	},
-
+	
 	["medium_diet_coke"] = {
 		label = "Medium Diet Coke",
 		weight = 100,
@@ -19277,16 +19344,6 @@ return {
 		}
 	},
 
-	["chain_au9"] = {
-		label = "Among Us | Orange/Gold",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus9.png",
-		}
-	},
 
 	["acyclovir"] = {
 		label = "Acyclovir",
@@ -19486,16 +19543,6 @@ return {
 		}
 	},
 
-	["chain_au11"] = {
-		label = "Among Us | Gold/Diamond",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus11.png",
-		}
-	},
 
 	["jefe_joint"] = {
 		label = "Jefe Joint",
@@ -19673,38 +19720,6 @@ return {
 		}
 	},
 
-	["chain_skull"] = {
-		label = "Iced out Skull",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "skull1.png",
-		}
-	},
-
-	["chain_skull6"] = {
-		label = "Iced out Skull",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "skull6.png",
-		}
-	},
-
-	["chair61"] = {
-		label = "Cream Chair",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "chair61.png",
-		}
-	},
 
 	["pizzasauce"] = {
 		label = "Pizza Sauce",
@@ -19761,16 +19776,6 @@ return {
 		}
 	},
 
-	["chain_v"] = {
-		label = "Vlone | Silver/Gold",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "chain_v.png",
-		}
-	},
 
 	["pizza_margherita"] = {
 		label = "Margherita Pizza",
@@ -19937,16 +19942,6 @@ return {
 		}
 	},
 
-	["chain_au15"] = {
-		label = "Among Us | Blue/Diamond",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus15.png",
-		}
-	},
 
 	["boneless_meal_deal"] = {
 		label = "Boneless Meal Deal",
@@ -20344,60 +20339,7 @@ return {
 		}
 	},
 
-	["chair94"] = {
-		label = "Grey Luxury Office Chair",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "chair94.png",
-		}
-	},
 
-	["chair90"] = {
-		label = "White Couch",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "chair90.png",
-		}
-	},
-
-	["chair102"] = {
-		label = "Red Deco Chair",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "chair102.png",
-		}
-	},
-
-	["chain_v2"] = {
-		label = "Vlone | Silver/Black",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "chain_v.png",
-		}
-	},
-
-	["chain_au13"] = {
-		label = "Among Us | Green/Diamond",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus13.png",
-		}
-	},
 
 	["salami"] = {
 		label = "Salami",
@@ -20707,16 +20649,7 @@ return {
 		}
 	},
 
-	["chain_au4"] = {
-		label = "Among Us | White/Gold",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus4.png",
-		}
-	},
+
 
 	["pirckly_pear"] = {
 		label = "Pirckly Pear",
@@ -20762,16 +20695,6 @@ return {
 		}
 	},
 
-	["chain_skull5"] = {
-		label = "Iced out Skull",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "skull5.png",
-		}
-	},
 
 	["cheese_fries"] = {
 		label = "CHEESE FRIES",
@@ -21070,16 +20993,7 @@ return {
 		}
 	},
 
-	["chain_au3"] = {
-		label = "Among Us | Blue/Gold",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus3.png",
-		}
-	},
+
 
 	["wake_up_wrap"] = {
 		label = "WAKE-UP WRAP",
@@ -21235,16 +21149,7 @@ return {
 		}
 	},
 
-	["chain_snake"] = {
-		label = "Iced out Snake Bite",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "trustnoone.png",
-		}
-	},
+
 
 	["chair4"] = {
 		label = "Old Metal Chair",
@@ -21708,16 +21613,6 @@ return {
 		}
 	},
 
-	["chain_v1"] = {
-		label = "Vlone | Gold/Silver",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "chain_v.png",
-		}
-	},
 
 	["frozennuggets"] = {
 		label = "Frozen Nuggets",
@@ -21961,16 +21856,6 @@ return {
 		}
 	},
 
-	["chain_skull2"] = {
-		label = "Iced out Skull",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "skull2.png",
-		}
-	},
 
 	["get_figgy"] = {
 		label = "Get Figgy",
@@ -22170,16 +22055,7 @@ return {
 		}
 	},
 
-	["chain_au7"] = {
-		label = "Among Us | Purple/Gold",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus7.png",
-		}
-	},
+
 
 	["zomo_lemon"] = {
 		label = "Zomo Lemon Mint",
@@ -22335,16 +22211,6 @@ return {
 		}
 	},
 
-	["chain_skull3"] = {
-		label = "Iced out Skull",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "skull3.png",
-		}
-	},
 
 	["strawberry_crate"] = {
 		label = "Strawberry Crate",
@@ -22732,16 +22598,6 @@ return {
 		}
 	},
 
-	["chain_cp1"] = {
-		label = "Cross Chain",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "crosschain1.png",
-		}
-	},
 
 	["soda"] = {
 		label = "Soda",
@@ -22919,16 +22775,7 @@ return {
 		}
 	},
 
-	["chain_au5"] = {
-		label = "Among Us | Green/Gold",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus5.png",
-		}
-	},
+
 
 	["keepcompanionhen"] = {
 		label = "Hen",
@@ -23326,16 +23173,6 @@ return {
 		}
 	},
 
-	["chain_au10"] = {
-		label = "Among Us | Black/Diamond",
-		weight = 1,
-		stack = false,
-		close = true,
-		description = "Add a lil bit of drip",
-		client = {
-			image = "amongus10.png",
-		}
-	},
 
 	["homestyle_mac_cheese"] = {
 		label = "Regular Homestyle Mac & Cheese",
@@ -33292,6 +33129,193 @@ return {
 			add = function()
 				TriggerEvent("lb-phone:itemAdded")
 			end
+		}
+	},
+
+	["chain_au10"] = {
+		label = "Among Us | Black/Diamond",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "amongus10.png",
+		}
+	},
+
+	["chain_skull7"] = {
+		label = "Iced out Skull",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "skull7.png",
+		}
+	},
+
+	["chair94"] = {
+		label = "Grey Luxury Office Chair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chair94.png",
+		}
+	},
+
+	["chain_au7"] = {
+		label = "Among Us | Purple/Gold",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "amongus7.png",
+		}
+	},
+
+	["chain_skull6"] = {
+		label = "Iced out Skull",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "skull6.png",
+		}
+	},
+
+	["chain_au8"] = {
+		label = "Among Us | Cyan/Gold",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "amongus8.png",
+		}
+	},
+
+	["chain_au13"] = {
+		label = "Among Us | Green/Diamond",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "amongus13.png",
+		}
+	},
+
+	["chain_au11"] = {
+		label = "Among Us | Gold/Diamond",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "amongus11.png",
+		}
+	},
+
+	["chain_au16"] = {
+		label = "Among Us | White/Diamond",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "amongus16.png",
+		}
+	},
+
+	["chain_skull4"] = {
+		label = "Iced out Skull",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "skull4.png",
+		}
+	},
+
+	["chain_skull5"] = {
+		label = "Iced out Skull",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "skull5.png",
+		}
+	},
+
+	["chain_au15"] = {
+		label = "Among Us | Blue/Diamond",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "amongus15.png",
+		}
+	},
+
+	["chain_au14"] = {
+		label = "Among Us | Pink/Diamond",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "amongus14.png",
+		}
+	},
+
+	["chain_au9"] = {
+		label = "Among Us | Orange/Gold",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Add a lil bit of drip",
+		client = {
+			image = "amongus9.png",
+		}
+	},
+
+	["chair102"] = {
+		label = "Red Deco Chair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chair102.png",
+		}
+	},
+
+	["chair61"] = {
+		label = "Cream Chair",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chair61.png",
+		}
+	},
+
+	["chair90"] = {
+		label = "White Couch",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "chair90.png",
 		}
 	},
 }
