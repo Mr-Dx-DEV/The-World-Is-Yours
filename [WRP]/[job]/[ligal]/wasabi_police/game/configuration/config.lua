@@ -351,18 +351,19 @@ Config.Props = { -- What props are available in the "Place Objects" section of t
 
 
 Config.Locations = {
-    LSPD = {
+    Vinewood = {
         blip = {
             enabled = true,
-            coords = vec3(464.57, -992.0, 30.69),
+            coords = vec3(601.13, -10.12, 70.63),
             sprite = 60,
             color = 29,
-            scale = 1.0,
-            string = 'Mission Row PD'
+            scale = 0.5,
+            string = 'Vinewood LSPD'
         },
+        
 
         clockInAndOut = {
-            enabled = true,                        -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for each e.x. offpolice for police offsheriff for sheriff AND have grades for each pd grade - QBCORE REQUIRES NOTHING)
+            enabled = false,                        -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for each e.x. offpolice for police offsheriff for sheriff AND have grades for each pd grade - QBCORE REQUIRES NOTHING)
             jobLock = false,                    -- This must be set to which job will be utilizing (ESX MUST HAVE OFF DUTY JOB / GRADES FOR THIS - ex. offpolice or offsheriff)
             coords = vec3(464.87, -977.37, 30.69), -- Location of where to go on and off duty(If not using target)
             label = '[E] - Go On/Off Duty',        -- Text to display(If not using target)
@@ -381,7 +382,7 @@ Config.Locations = {
         },
 
         bossMenu = {
-            enabled = true,                        -- Enable boss menu?
+            enabled = false,                        -- Enable boss menu?
             jobLock = false,                   -- Lock to specific police job? Set to false if not desired
             coords = vec3(460.64, -985.64, 30.73), -- Location of boss menu (If not using target)
             label = '[E] - Access Boss Menu',      -- Text UI label string (If not using target)
@@ -400,7 +401,7 @@ Config.Locations = {
         },
 
         armoury = {
-            enabled = true,                                                                              -- Set to false if you don't want to use
+            enabled = false,                                                                              -- Set to false if you don't want to use
             coords = vec3(472.99, -970.19, 27.71 - 0.9),                                                 -- Coords of armoury
             heading = 84.75,                                                                             -- Heading of armoury NPC
             ped = 's_f_y_cop_01',                                                                        -- Ped model or false for no ped
@@ -556,9 +557,9 @@ Config.Locations = {
         -- Personal Locker. Supports inventories: ox_inventory, qb-inventory, and qs-inventory
         --        Custom inventories can easily be added in wasabi_bridge/inventories/
         personalLocker = {
-            enabled = false,                       -- Enable personal locker for this station?
+            enabled = true,                       -- Enable personal locker for this station?
             jobLock = false,                    -- Job lock?
-            coords = vec3(462.64, -995.88, 30.69), -- Area to prompt personal locker
+            coords = vec3(604.902, -16.657, 76.628), -- Area to prompt personal locker
             range = 2.0,                           -- Range it will prompt from coords above
             label = '[E] - Access Personal Locker',
             target = {
@@ -575,9 +576,9 @@ Config.Locations = {
         },
 
         evidenceLocker = {
-            enabled = false,                      -- Enable evidence locker for this station?
+            enabled = true,                      -- Enable evidence locker for this station?
             jobLock = false,                   -- Job lock?
-            coords = vec3(472.5, -991.21, 26.27), -- Area to prompt personal locker
+            coords = vec3(618.318, -14.108, 76.628), -- Area to prompt personal locker
             range = 2.0,                          -- Range it will prompt from coords above
             label = '[E] - Access Evidence Locker',
             target = {
@@ -595,7 +596,7 @@ Config.Locations = {
 
 
         vehicles = {                                   -- Vehicle Garage
-            enabled = true,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
+            enabled = false,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
             jobLock = false,                        -- Job lock? or access to all police jobs by using false
             zone = {
                 coords = vec3(463.69, -1019.72, 28.1), -- Area to prompt vehicle garage
@@ -676,5 +677,183 @@ Config.Locations = {
                 },
             }
         }
+    },
+    SanAndreasHighwayPatrol = {
+        blip = {
+            enabled = true,
+            coords = vec3(1540.69, 817.67, 77.66),
+            sprite = 60,
+            color = 29,
+            scale = 0.5,
+            string = 'San Andreas Highway Patrol'
+        },
+        
+
+        clockInAndOut = {
+            enabled = false,                        -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for each e.x. offpolice for police offsheriff for sheriff AND have grades for each pd grade - QBCORE REQUIRES NOTHING)
+            jobLock = false,                    -- This must be set to which job will be utilizing (ESX MUST HAVE OFF DUTY JOB / GRADES FOR THIS - ex. offpolice or offsheriff)
+            coords = vec3(464.87, -977.37, 30.69), -- Location of where to go on and off duty(If not using target)
+            label = '[E] - Go On/Off Duty',        -- Text to display(If not using target)
+            distance = 3.0,                        -- Distance to display text UI(If not using target)
+            target = {
+                enabled = false,                   -- If enabled, the location and distance above will be obsolete
+                label = 'Go On/Off Duty',
+                coords = vec3(464.87, -977.37, 30.69),
+                heading = 91.06,
+                distance = 2.5,
+                width = 2.0,
+                length = 1.0,
+                minZ = 30.69 - 0.9,
+                maxZ = 30.69 + 0.9
+            }
+        },
+
+        bossMenu = {
+            enabled = false,                        -- Enable boss menu?
+            jobLock = false,                   -- Lock to specific police job? Set to false if not desired
+            coords = vec3(460.64, -985.64, 30.73), -- Location of boss menu (If not using target)
+            label = '[E] - Access Boss Menu',      -- Text UI label string (If not using target)
+            distance = 3.0,                        -- Distance to allow access/prompt with text UI (If not using target)
+            target = {
+                enabled = false,                   -- If enabled, the location and distance above will be obsolete
+                label = 'Access Boss Menu',
+                coords = vec3(460.64, -985.64, 30.73),
+                heading = 269.85,
+                distance = 2.0,
+                width = 2.0,
+                length = 1.0,
+                minZ = 30.73 - 0.9,
+                maxZ = 30.73 + 0.9
+            }
+        },
+
+        -- Personal Locker. Supports inventories: ox_inventory, qb-inventory, and qs-inventory
+        --        Custom inventories can easily be added in wasabi_bridge/inventories/
+        personalLocker = {
+            enabled = false,                       -- Enable personal locker for this station?
+            jobLock = false,                    -- Job lock?
+            coords = vec3(462.64, -995.88, 30.69), -- Area to prompt personal locker
+            range = 2.0,                           -- Range it will prompt from coords above
+            label = '[E] - Access Personal Locker',
+            target = {
+                enabled = false, -- If enabled, the location above will be obsolete
+                label = 'Access Personal Locker',
+                coords = vec3(462.64, -995.88, 30.69),
+                heading = 354.94,
+                distance = 2.5,
+                width = 2.0,
+                length = 1.0,
+                minZ = 30.69 - 0.9,
+                maxZ = 30.69 + 0.9
+            }
+        },
+
+        evidenceLocker = {
+            enabled = false,                      -- Enable evidence locker for this station?
+            jobLock = false,                   -- Job lock?
+            coords = vec3(472.5, -991.21, 26.27), -- Area to prompt personal locker
+            range = 2.0,                          -- Range it will prompt from coords above
+            label = '[E] - Access Evidence Locker',
+            target = {
+                enabled = false, -- If enabled, the location above will be obsolete
+                label = 'Access Evidence Locker',
+                coords = vec3(472.5, -991.21, 26.27),
+                heading = 266.23,
+                distance = 2.5,
+                width = 2.0,
+                length = 1.0,
+                minZ = 26.27 - 0.9,
+                maxZ = 26.27 + 0.9
+            }
+        },
+    },
+    BCSOHQSandy = {
+        blip = {
+            enabled = true,
+            coords = vec3(1827.05, 3674.93, 42.87),
+            sprite = 60,
+            color = 29,
+            scale = 0.5,
+            string = 'BCSO HQ Sandy'
+        },
+        
+
+        clockInAndOut = {
+            enabled = true,                        -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for each e.x. offpolice for police offsheriff for sheriff AND have grades for each pd grade - QBCORE REQUIRES NOTHING)
+            jobLock = false,                    -- This must be set to which job will be utilizing (ESX MUST HAVE OFF DUTY JOB / GRADES FOR THIS - ex. offpolice or offsheriff)
+            coords = vec3(464.87, -977.37, 30.69), -- Location of where to go on and off duty(If not using target)
+            label = '[E] - Go On/Off Duty',        -- Text to display(If not using target)
+            distance = 3.0,                        -- Distance to display text UI(If not using target)
+            target = {
+                enabled = false,                   -- If enabled, the location and distance above will be obsolete
+                label = 'Go On/Off Duty',
+                coords = vec3(464.87, -977.37, 30.69),
+                heading = 91.06,
+                distance = 2.5,
+                width = 2.0,
+                length = 1.0,
+                minZ = 30.69 - 0.9,
+                maxZ = 30.69 + 0.9
+            }
+        },
+
+        bossMenu = {
+            enabled = false,                        -- Enable boss menu?
+            jobLock = false,                   -- Lock to specific police job? Set to false if not desired
+            coords = vec3(460.64, -985.64, 30.73), -- Location of boss menu (If not using target)
+            label = '[E] - Access Boss Menu',      -- Text UI label string (If not using target)
+            distance = 3.0,                        -- Distance to allow access/prompt with text UI (If not using target)
+            target = {
+                enabled = false,                   -- If enabled, the location and distance above will be obsolete
+                label = 'Access Boss Menu',
+                coords = vec3(460.64, -985.64, 30.73),
+                heading = 269.85,
+                distance = 2.0,
+                width = 2.0,
+                length = 1.0,
+                minZ = 30.73 - 0.9,
+                maxZ = 30.73 + 0.9
+            }
+        },
+
+        -- Personal Locker. Supports inventories: ox_inventory, qb-inventory, and qs-inventory
+        --        Custom inventories can easily be added in wasabi_bridge/inventories/
+        personalLocker = {
+            enabled = false,                       -- Enable personal locker for this station?
+            jobLock = false,                    -- Job lock?
+            coords = vec3(462.64, -995.88, 30.69), -- Area to prompt personal locker
+            range = 2.0,                           -- Range it will prompt from coords above
+            label = '[E] - Access Personal Locker',
+            target = {
+                enabled = false, -- If enabled, the location above will be obsolete
+                label = 'Access Personal Locker',
+                coords = vec3(462.64, -995.88, 30.69),
+                heading = 354.94,
+                distance = 2.5,
+                width = 2.0,
+                length = 1.0,
+                minZ = 30.69 - 0.9,
+                maxZ = 30.69 + 0.9
+            }
+        },
+
+        evidenceLocker = {
+            enabled = false,                      -- Enable evidence locker for this station?
+            jobLock = false,                   -- Job lock?
+            coords = vec3(472.5, -991.21, 26.27), -- Area to prompt personal locker
+            range = 2.0,                          -- Range it will prompt from coords above
+            label = '[E] - Access Evidence Locker',
+            target = {
+                enabled = false, -- If enabled, the location above will be obsolete
+                label = 'Access Evidence Locker',
+                coords = vec3(472.5, -991.21, 26.27),
+                heading = 266.23,
+                distance = 2.5,
+                width = 2.0,
+                length = 1.0,
+                minZ = 26.27 - 0.9,
+                maxZ = 26.27 + 0.9
+            }
+        },
     },
 }
