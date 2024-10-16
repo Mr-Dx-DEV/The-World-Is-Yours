@@ -199,7 +199,7 @@ Config.tackle = {
 }
 
 Config.seizeCash = {  -- ONLY FOR QBCORE WITHOUT CASH AS ITEM
-    enabled = true,  -- Enabled?
+    enabled = false,  -- Enabled?
     item = 'moneybag' -- Item to add after seizedCash
 }
 

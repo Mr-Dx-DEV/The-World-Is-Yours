@@ -14,11 +14,11 @@ end
 
 shared = {
     resource = GetCurrentResourceName(),
-    framework = GetConvar('inventory:framework', 'esx'),
+    framework = GetConvar('inventory:framework', 'qb'),
     playerslots = GetConvarInt('inventory:slots', 50),
-    playerweight = GetConvarInt('inventory:weight', 30000),
+    playerweight = GetConvarInt('inventory:weight', 150000),
     target = GetConvarInt('inventory:target', 0) == 1,
-    police = json.decode(GetConvar('inventory:police', '["police", "sheriff"]')),
+    police = json.decode(GetConvar('inventory:police', '["lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"]')),
 }
 
 shared.dropslots = GetConvarInt('inventory:dropslots', shared.playerslots)
@@ -78,7 +78,7 @@ else
     client = {
         autoreload = GetConvarInt('inventory:autoreload', 0) == 1,
         screenblur = GetConvarInt('inventory:screenblur', 1) == 1,
-        keys = json.decode(GetConvar('inventory:keys', '')) or { 'F2', 'K', 'TAB' },
+        keys = json.decode(GetConvar('inventory:keys', '')) or { 'TAB', 'F2', 'Z' },
         enablekeys = json.decode(GetConvar('inventory:enablekeys', '[249]')),
         aimedfiring = GetConvarInt('inventory:aimedfiring', 0) == 1,
         giveplayerlist = GetConvarInt('inventory:giveplayerlist', 0) == 1,

@@ -620,3 +620,31 @@ lib.addCommand('viewinv', {
 }, function(source, args)
 	Inventory.InspectInventory(source, tonumber(args.invId) or args.invId)
 end)
+
+--[[ exports.ox_inventory:registerHook('swapItems', function(payload)
+    local inventory = Inventory(payload.source)
+    local toSlotFin = payload.toSlot
+    if type(payload.toSlot) == "table" then
+      toSlotFin = payload.toSlot.slot
+    end
+    if server.hasGroup(inventory, shared.police) then
+      return true
+    elseif payload.fromType == "player" and payload.source == payload.fromInventory and payload.fromInventory == payload.toInventory then
+      return true
+    elseif payload.fromSlot ~= nil and toSlotFin ~= nil then
+      if ((payload.fromSlot.slot == 6 and payload.source ~= payload.fromInventory and payload.fromType == "player") or 
+        (payload.fromInventory == payload.toInventory and toSlotFin == 6 and payload.toType == "player") or
+        (payload.fromInventory ~= payload.toInventory and toSlotFin == 6 and payload.source == payload.fromInventory and payload.toType == "player")) then
+                TriggerClientEvent('ox_lib:notify', payload.source, {
+                    title = 'Not Allowed',
+                    description = 'You can not steal from a locked slot.',
+                    type = 'error'
+                })
+        return false
+      else
+        return true
+      end
+    else
+      return true
+    end
+end) ]]
