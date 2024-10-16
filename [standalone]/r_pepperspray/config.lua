@@ -24,7 +24,7 @@ Config = {
     For QBCore: https://docs.rytrak.fr/framework-compatibility/add-a-custom-weapon-on-qbcore
                                           IMPORTANT
     ---------------------------------------------------------------------------------*/
-    UseFramework = false,
+    UseFramework = true,
 
     AcePermission = { -- Use of the ace permission system (you can modify this function on cl_utils.lua)
         enabled = true,
@@ -55,9 +55,21 @@ Config = {
         ['pepperspray'] = {
             weapon = `WEAPON_PEPPERSPRAY`, -- Model of the weapon for the spray
             requiredJob = { -- Job required to recover this gas (this configuration is enabled when you activate ESX or QB above)
-                'police',
-                'fbi'
-            },
+    'police',
+    'sheriff',
+    'fbi',
+    'ambulance',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+},
+
 
             sprayQuantity = 500, -- Quantity of spray
             sprayDescent = 10, -- Time in milliseconds to lower the recovery rate (The higher the number, the longer the time)
@@ -117,9 +129,21 @@ Config = {
         command = 'antidote', -- Command to recover the decontamination spray (you can modify the command from cl_utils.lua)
         weapon = `WEAPON_ANTIDOTE`, -- Decontamination spray weapon
         requiredJob = { -- Job required to recover this gas (this configuration is enabled when you activate ESX or QB above)
-            'police',
-            'fbi'
-        },
+    'police',
+    'sheriff',
+    'fbi',
+    'ambulance',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+},
+
 
         decontaminationQuantity = 100, -- Quantity of decontamination spray
         decontaminationDescent = 10, -- Time in milliseconds to lower the recovery rate (The higher the number, the longer the time)
