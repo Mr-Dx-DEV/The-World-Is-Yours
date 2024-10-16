@@ -67,7 +67,7 @@ Config = {
     FpsMode = false, -- set this to true if you have first-person shooting to disable the ability to crouch and shoot in third-person
 
     -- Crawling Options
-    CrawlEnabled = true, -- If crawling should be enabled.
+    CrawlEnabled = false, -- If crawling should be enabled.
     CrawlKeybindEnabled = true, -- If true, crawling will use keybinds.
     CrawlKeybind = 'rcontrol', -- The default crawl keybind, get the button string here: https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/
 
