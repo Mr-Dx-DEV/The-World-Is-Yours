@@ -82,7 +82,7 @@ Config = {
             ['fbi'] = true,
             ['dhs'] = true,
             ['ss'] = true,
-            ['ambulance'] = false,
+            ['ambulance'] = true,
         },
 
         RemovePlayerJobWhenJailed = false, -- This is used for removing player job when citizen is jailed (supports: ESX, QBCore)
@@ -137,7 +137,7 @@ Config = {
     },
 
     Escape = {
-        RequiredPolice = 3, -- How many police officers are need to be online?
+        RequiredPolice = 4, -- How many police officers are need to be online?
         PoliceCheck = false, -- This is used for enabling checking if there is enough Police officers to start Prison break
         Enable = true, -- This is used for enabling prison break system
         MarkerColor = { r = 255, g = 0, b = 0, a = 100 }, -- This is the color of the marker
@@ -304,8 +304,8 @@ Config = {
     },
 
     DisplayPrisonMap = true, -- This is used for displaying prison map on the game map! (The map consumes 0.02ms to render!)
-    PrisonYardAnnoucement = false, -- This is used for announcing prisoners about the yard time!
-    BroadcastNewPrisoner = false, -- This is used for broadcasting new prisoner to all players on server.
+    PrisonYardAnnoucement = true, -- This is used for announcing prisoners about the yard time!
+    BroadcastNewPrisoner = true, -- This is used for broadcasting new prisoner to all players on server.
     AutoUncuffNewPrisoner = true, -- This is used for auto uncuffing new prisoner when they are jailed.
 
     Time = TIMES.MIN, -- This is the time unit for jail time ['SEC', 'MIN', 'HOURS', 'DAYS', 'WEEK', 'MONTHS']
