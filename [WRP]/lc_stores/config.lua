@@ -1154,7 +1154,17 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'boombox.png',
 			},
-			
+			['contracts_tablet'] = {
+				['name'] = "Contract Tablet",
+				['price_to_customer'] = 80000,
+				['price_to_customer_min'] = 75000,
+				['price_to_customer_max'] = 90000,
+				['price_to_export'] = 315,
+				['price_to_owner'] = 300,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'contracts_tablet.png',
+			},
 			
 			
 			
