@@ -3,6 +3,10 @@ Products = {
         { name = "boltcutters2", price = 1250, amount = 50 },
         { name = "screwdriverset", price = 500, amount = 50 },
     },
+    ["blackmarket"] = {
+        { name = "bobby_pin", price = 1250, amount = 50 },
+        
+    },
    --[[  ["leisureshop"] = {
         { name = "parachute", price = 2500, amount = 50 },
         { name = "diving_gear", price = 2500, amount = 50 },
@@ -47,7 +51,7 @@ Products = {
         { name = "ice", price = 5, amount = 250 }, 
     },
 
-    ["collectors"] = {
+    --[[ ["collectors"] = {
         { name = "nukexd_boosterpack", price = 20, amount = 250, },
         { name = "mystery_box1", price = 300, amount = 5, requiredJob = { ["collectors"] = 3,  } },
         { name = "mystery_box2", price = 300, amount = 5, requiredJob = { ["collectors"] = 3,  } },
@@ -55,7 +59,7 @@ Products = {
         { name = "mystery_box4", price = 300, amount = 5, requiredJob = { ["collectors"] = 3,  } },
         { name = "mystery_box5", price = 500, amount = 5, requiredJob = { ["collectors"] = 3,  } },
         
-    },
+    }, ]]
 
     ["radioshop"] = {
         { name = "radiocar", price = 500, amount = 30, },

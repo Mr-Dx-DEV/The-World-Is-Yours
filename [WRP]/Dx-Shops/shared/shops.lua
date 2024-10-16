@@ -76,7 +76,7 @@ Locations = {
 		["hideblip"] = true,
     }, ]]
 
-	["collectors"] = {
+	--[[ ["collectors"] = {
         ["label"] = "Collectors",
 		["type"] = "items",
 		["model"] = {
@@ -94,7 +94,7 @@ Locations = {
 		["blipcolour"] = 48,
 		["hideblip"] = true,
 		["job"] = "collectors",
-    },
+    }, ]]
     
 }
 
@@ -143,10 +143,10 @@ if Config.Overrides.BlackMarket then
 			`MP_M_Meth_01`,
 		},
 		["coords"] = {
-			vec4(776.24, 4184.08, 41.8, 92.12),
-			vec4(2482.51, 3722.28, 43.92, 39.98),
-			vec4(462.67, -1789.16, 28.59, 317.53),
-			vec4(-115.15, 6369.07, 31.52, 232.08),
+		--	vec4(776.24, 4184.08, 41.8, 92.12),
+		--	vec4(2482.51, 3722.28, 43.92, 39.98),
+		--	vec4(462.67, -1789.16, 28.59, 317.53),
+		--	vec4(-115.15, 6369.07, 31.52, 232.08),
 			vec4(752.52, -3198.33, 6.07, 301.72)
 		},
 		["products"] = Products["blackmarket"],
