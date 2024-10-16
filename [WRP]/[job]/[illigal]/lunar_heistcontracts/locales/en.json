@@ -34,6 +34,7 @@
     "missing_lockpick": "You're missing a lockpick.",
     "angle_grinder_description": "Your best option for cutting through tough materials like chains.",
     "hack_usb_description": "A compact USB device capable of bypassing most security systems.",
+    "bobby_pin_description": "For Cuf Lockpick.",
     "hack_card_description": "An advanced card that easily breaches secure access points.",
     "thermite_description": "A high-temperature mixture for quickly cutting through metal barriers.",
     "large_drill_description": "A powerful drill used to open deposit boxes.",

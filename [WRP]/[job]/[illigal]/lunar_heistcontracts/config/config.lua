@@ -115,6 +115,7 @@ Config.ped = {
     buyItems = {
         { name = 'angle_grinder', description = locale('angle_grinder_description'), price = { money = 1000, crypto = 75 }, stock = 3 },
         { name = 'hack_usb', description = locale('hack_usb_description'), price = { money = 1250, crypto = 100 }, stock = 5 },
+        { name = 'bobby_pin', description = locale('bobby_pin_description'), price = { money = 1250, crypto = 100 }, stock = 5 },
         { name = 'hack_card', description = locale('hack_card_description'), price = { money = 2000, crypto = 150 }, stock = 5 },
         { name = 'thermite', description = locale('thermite_description'), price = { money = 250, crypto = 20 }, stock = 5 },
         { name = 'large_drill', description = locale('large_drill_description'), price = { money = 5000, crypto = 200 }, stock = 3 },
@@ -122,6 +123,7 @@ Config.ped = {
         { name = 'bomb_c4', description = locale('bomb_c4_description'), price = { money = 7500, crypto = 200 }, stock = 2 },
        -- { name = 'weapon_pistol', description = locale('weapon_pistol_description'), price = { money = 12500, crypto = 500 }, stock = 2, chance = 25 },
         { name = 'weapon_combatpistol', description = locale('weapon_combatpistol_description'), price = { money = 17500, crypto = 750 }, stock = 2, chance = 25 },
+
     },--
     sellAccount = 'money',
     ---@type ShopSellItem[]
