@@ -6,10 +6,10 @@ Config.EnableTextureReplace = true         -- Turn this off if you don't want th
 
 -- Settings for the installer.lua file.
 Config.Installer = {
-    AutoAddItems = true,
-    AutoAddInventoryImages = true,
-    AutoDisableOldCarWashScript = true,
-    AutoSearchForStreamConflict = true,
+    AutoAddItems = false,
+    AutoAddInventoryImages = false,
+    AutoDisableOldCarWashScript = false,
+    AutoSearchForStreamConflict = false,
 }
 
 Config.Blip = {
