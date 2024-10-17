@@ -143,7 +143,22 @@ Config.Functions = {
 
 Config.AuthorizedJobs = {
     LEO = { -- this is for job checks which should only return true for police officers
-        Jobs = {['police'] = true, ['fib'] = true, ['sheriff'] = true},
+    Jobs = {
+        ['police'] = true,
+        ['fib'] = true,
+        ['sheriff'] = true,
+        ['ambulance'] = true,
+        ['lspd'] = true,
+        ['bcso'] = true,
+        ['sahp'] = true,
+        ['lsso'] = true,
+        ['safw'] = true,
+        ['sadoc'] = true,
+        ['usms'] = true,
+        ['dhs'] = true,
+        ['ss'] = true
+    },
+    
         Types = {['police'] = true, ['leo'] = true},
         Check = function(source)
             local PlyData = nil
