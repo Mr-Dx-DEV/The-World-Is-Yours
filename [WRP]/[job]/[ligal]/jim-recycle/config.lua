@@ -108,13 +108,13 @@ Config = {
 		{ model = "v_ind_cs_toolbox2", xPos = 0.04, yPos = 0.12, zPos = 0.29, xRot = 56.0, yRot = 287.0, zRot = 169.0 },
 	},
 	Prices = {
-		['copper'] = 10,
-		['plastic'] = 10,
-		['metalscrap'] = 10,
-		['steel'] = 10,
-		['glass'] = 10,
-		['iron'] = 10,
-		['rubber'] = 10,
+		['copper'] = 5,
+		['plastic'] = 5,
+		['metalscrap'] = 5,
+		['steel'] = 5,
+		['glass'] = 5,
+		['iron'] = 5,
+		['rubber'] = 5,
 		['aluminum'] = 10,
 		['bottle'] = 5,
 		['can'] = 5,
@@ -138,7 +138,6 @@ Config = {
 	DumpItems = {
 		"bottle",
 		"can",
-		"sandwich",
 	},
 	ScrapItems = {
 		"steel",
@@ -151,7 +150,7 @@ Config = {
 	RecycleAmounts = {
 		["Recycle"] = {
 			Min = 10,
-			Max = 25,
+			Max = 15,
 		},
 		["Trade"] = {
 			{ amount = 1, itemGive = 1, Min = 1, Max = 1, },
