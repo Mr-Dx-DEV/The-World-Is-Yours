@@ -15,7 +15,7 @@ Config.Setup = {
     -- Set your interaction system below
     -- Available options are: 'ox_target', 'qb-target', 'interact', 'textui' & 'custom'
     -- 'custom' needs to be added to client/functions.lua
-    interact = 'ox_lib',
+    interact = 'ox_target',
     -- Set your notification system below
     -- Available options are: 'ox_lib', 'esx', 'qb', 'okok', 'sd-notify', 'wasabi_notify' & 'custom'
     -- 'custom' needs to be added to client/functions.lua
@@ -120,9 +120,9 @@ Config.Shops = {
         -- The ped model used for the shopkeeper
         ped = 'a_m_y_beach_02',
         -- The location this shop exists at
-        coords = vec4(-1234.3484, -1476.9872, 3.3116, 79.8191),
+        coords = vec4(-222.928, 6230.529, 30.786, 89.549),
         -- The account used to purchase detectors ('cash' or 'bank')
-        account = 'cash',
+        account = 'bank',
         -- Customize the blip settings below
         blip = {
             enabled = true, -- Enable or disable this blip
@@ -138,7 +138,7 @@ Config.Shops = {
         -- The ped model used for the shopkeeper
         ped = 'a_m_o_genstreet_01',
         -- The location this shop exists at
-        coords = vec4(412.6790, 314.3495, 102.0208, 207.4230),
+        coords = vec4(-231.565, 6229.728, 30.786, 310.026),
         -- The account used at this shop ('cash' or 'bank')
         -- The money the player receives when selling items
         -- And the money used when purchasing shovel (if enabled)
@@ -197,7 +197,7 @@ Config.Shops = {
             ['md_presidentialwatch'] = 5000
         },
         blip = {
-            enabled = true,
+            enabled = false,
             sprite = 207,
             color = 2,
             scale = 0.5,
