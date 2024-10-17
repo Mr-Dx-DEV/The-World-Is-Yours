@@ -16,19 +16,19 @@ Config = {
     DisableControls = false, -- Disable specific controls when menu is open, can be configured in NativeUI.lua:2452 (approximately)
 
     -- Menu Customization Options
-    MenuTitle = '', -- You can change the name of the menu here or leave it blank to remove the text in front of the custom banners
+    MenuTitle = 'World is Your', -- You can change the name of the menu here or leave it blank to remove the text in front of the custom banners
     TitleOutline = true,
     TitleColour = {R = 255, G = 0, B = 255, A = 255}, --- The colour of the menu banner text in RGB. This is white by default aka 255, 255, 255. See https://www.rapidtables.com/web/color/RGB_Color.html for colours.
     MenuPosition = 'right', -- You can change the menu position here. Use 'left' or 'right'
     CustomMenuEnabled = false, -- You can change the header image for the menu here, Note this might cause an issue of the image getting stuck on people's screens
 
     -- Combat Car, and Player Movement Options
-    DisarmPlayer = true, -- Set this to true if you want to disarm the player when they play an emote.
-    AllowPunching = true, -- Set this to true if you want to allow people punching while emotes are playing
+    DisarmPlayer = false, -- Set this to true if you want to disarm the player when they play an emote.
+    AllowPunching = false, -- Set this to true if you want to allow people punching while emotes are playing
     AllowedInCars = true, -- Set this if you really wanna disable emotes in cars, as of 1.7.2 they only play the upper body part if in a vehicle
     -- You can disable the menu here / change the keybind. It is currently set to F4
     -- The keybind you set here will be server-sided for new players. existing players can set their own in the ESC menu keybind settings
-    AllowInWater = true, -- If turned off, opening the menu and playing an emote will not be possible while swimming
+    AllowInWater = false, -- If turned off, opening the menu and playing an emote will not be possible while swimming
 
     -- Ragdoll options
     RagdollEnabled = false,     -- You can enable or disable the Ragdoll keybinding here.
@@ -51,6 +51,7 @@ Config = {
     HandsupKeybindEnabled = false,
     HandsupKeybindInCarEnabled = false,
     PersistentEmoteAfterHandsup = true, -- If true, you will play the emote you were playing previously after you stop handsup.
+    HoldToHandsUp = false, -- Hands-up action occurs only while holding the button down
 
     -- Pointing Options
     PointingEnabled = false, -- You can disable the finger pointing here / change the keybind. It is currently set to B
@@ -67,13 +68,13 @@ Config = {
     FpsMode = false, -- set this to true if you have first-person shooting to disable the ability to crouch and shoot in third-person
 
     -- Crawling Options
-    CrawlEnabled = false, -- If crawling should be enabled.
+    CrawlEnabled = true, -- If crawling should be enabled.
     CrawlKeybindEnabled = true, -- If true, crawling will use keybinds.
     CrawlKeybind = 'rcontrol', -- The default crawl keybind, get the button string here: https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/
 
     -- Binocular Options
     BinocularsEnabled = false, -- If set to true, the /binoculars command will be enabled.
-    AllowVisionsToggling = true, -- If set to true, you'll be able to toggle between different vision modes in the binoculars
+    AllowVisionsToggling = false, -- If set to true, you'll be able to toggle between different vision modes in the binoculars
 
     -- News Camera Options
     NewscamEnabled = false, -- If set to true, the /newscam command will be enabled.
@@ -85,18 +86,17 @@ Config = {
 }
 
 Config.KeybindKeys = {
-    ['num4'] = 108,
-    ['num5'] = 110,
-    ['num6'] = 109,
-    ['num7'] = 117,
-    ['num8'] = 111,
-    ['num9'] = 118
+    108, -- num4
+    110, -- num5
+    109, -- num6
+    117, -- num7
+    111, -- num8
+    118 -- num9
 }
 
 Config.Credits = {
     {title = "<b>Thanks to the community<b>", subtitle = "For supporting and using RP Emotes!"},
-  --  {title = "Thanks <font color=\"#ff451d\">Galib Mahin 🫡</font>", subtitle = "<font color=\"#ff451d\">Galib Mahin 🌹</font> for assistance with adding animations."},
+    
     {title = "Thanks ~o~Mr Dx 🌹~s~", subtitle = "~o~DullPear~s~ for the Development ❤️"},
-  
     
 }

@@ -38,7 +38,7 @@ PublicSharedPetsConfig = {
         WantPedShop = true,
 
         -- Coords to define where the ped will spawn
-        PedCoords = vector4(-1281.44, -1414.52, 3.35, 125.32),
+        PedCoords = vector4(78.661, -228.305, 54.673, 93.981),
 
         -- Parameter to define the ped model.
         PedModel = "a_m_m_beach_01",
