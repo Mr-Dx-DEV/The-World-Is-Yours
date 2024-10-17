@@ -134,61 +134,49 @@ Config = {
     MinimumDrugSalePolice = 0,
 
     DrugsPrice = {
-        ['weed_whitewidow'] = {
-            min = 15,
-            max = 24,
-        },
-        ['weed_ogkush'] = {
-            min = 15,
-            max = 28,
-        },
-        ['weed_skunk'] = {
-            min = 15,
-            max = 31,
-        },
-        ['weed_amnesia'] = {
-            min = 18,
-            max = 34,
-        },
-        ['weed_purplehaze'] = {
-            min = 18,
-            max = 37,
-        },
-        ['weed_ak47'] = {
-            min = 18,
-            max = 40,
-        },
-        ['crack_baggy'] = {
-            min = 18,
-            max = 34,
-        },
+
         ['cokebaggy'] = {
-            min = 18,
-            max = 37,
+            min = 500,
+            max = 1000,
         },
-        ['meth'] = {
-            min = 18,
-            max = 40,
+        ['weed_bag'] = {
+            min = 300,
+            max = 500,
         },
-        ['heroin_vial'] = {
-            min = 40,
-            max = 80,
+
+       ['kq_meth_low'] = {
+            min = 1500,
+            max = 3000,
         },
-        ['liquidketamine'] = {
-            min = 40,
-            max = 80,
+        ['kq_meth_mid'] = {
+            min = 3500,
+            max = 4000,
         },
-        ['ketamine'] = {
-            min = 40,
-            max = 80,
+        ['kq_meth_high'] = {
+            min = 3500,
+            max = 5000,
         },
+
+
+        ['zatpackedweed'] = {
+            min = 1500,
+            max = 2000,
+        },
+
+
+        ['moon_moonshine'] = {
+            min = 1500,
+            max = 2500,
+        },
+
+        
     },
 
     -- Delivery Config
     UseMarkedBills = false,     -- true for marked bills, false for cash
     DeliveryRepGain = 1,        -- amount of rep gained per delivery
     DeliveryRepLoss = 1,        -- amount of rep lost if delivery wrong or late
-    PoliceDeliveryModifier = 2, -- amount to multiply active cop count by
+    PoliceDeliveryModifier = 0, -- amount to multiply active cop count by
     WrongAmountFee = 2,         -- divide the payout by this value for wrong delivery amount
     OverdueDeliveryFee = 4,     -- divide the payout by this value for overdue delivery
 
