@@ -14,7 +14,6 @@ ALTER TABLE `owned_vehicles` ADD COLUMN IF NOT EXISTS `impound_retrievable` INT(
 ALTER TABLE `owned_vehicles` ADD COLUMN IF NOT EXISTS `impound_data` LONGTEXT DEFAULT '';
 ALTER TABLE `owned_vehicles` ADD COLUMN IF NOT EXISTS `nickname` VARCHAR(255) DEFAULT '';
 
--- player_priv_garages
 CREATE TABLE IF NOT EXISTS `player_priv_garages` (
     `id` INT(11) unsigned NOT NULL AUTO_INCREMENT,
     `owners` longtext,

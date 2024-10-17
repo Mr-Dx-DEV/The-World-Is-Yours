@@ -26,3 +26,21 @@ end)
 RegisterNetEvent("jg-advancedgarages:client:TransferVehicle:config", function(plate, newOwnerPlayerId)
   -- Code placed in here will be fired when a vehicle is transferred to another player via a public garage
 end)
+
+-- Check whether a vehicle can be transferred between players, return false to prevent
+---@param fromPlayerSrc integer
+---@param toPlayerSrc integer
+---@param plate string
+---@return boolean allowTransfer
+lib.callback.register("jg-advancedgarages:client:transfer-vehicle-verification", function(fromPlayerSrc, toPlayerSrc, plate)
+  return true
+end)
+
+-- Check whether a vehicle can be transferred between garages, return false to prevent
+---@param fromGarageId integer
+---@param toGarageId integer
+---@param plate string
+---@return boolean allowTransfer
+lib.callback.register("jg-advancedgarages:client:transfer-garage-verification", function(fromGarageId, toGarageId, plate)
+  return true
+end)

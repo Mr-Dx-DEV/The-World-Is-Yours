@@ -10,13 +10,13 @@ Config.NumberAndDateFormat = "en-US"
 Config.Currency = "USD"
 
 -- Framework & Integrations
-Config.Framework = "QBCore" -- or "QBCore", "Qbox", "ESX"
+Config.Framework = "auto" -- or "QBCore", "Qbox", "ESX"
 Config.FuelSystem = "LegacyFuel" -- or "LegacyFuel", "ps-fuel", "lj-fuel", "ox_fuel", "cdn-fuel", "hyon_gas_station", "okokGasStation", "nd_fuel", "myFuel", "ti_fuel", "none"
 Config.VehicleKeys = "qb-vehiclekeys" -- or "qb-vehiclekeys", "MrNewbVehicleKeys", "jaksam-vehicles-keys", "qs-vehiclekeys", "mk_vehiclekeys", "wasabi_carlock", "cd_garage", "okokGarage", "t1ger_keys", "Renewed", "none"
-Config.Notifications = "ox_lib" -- or "default", "okokNotify", "ox_lib", "ps-ui"
+Config.Notifications = "auto" -- or "default", "okokNotify", "ox_lib", "ps-ui"
 
 -- Draw text UI prompts (key binding control IDs here: https://docs.fivem.net/docs/game-references/controls/)
-Config.DrawText = "ox_lib" -- or "jg-textui", "qb-DrawText", "okokTextUI", "ox_lib", "ps-ui"
+Config.DrawText = "jg-textui" -- or "jg-textui", "qb-DrawText", "okokTextUI", "ox_lib", "ps-ui"
 Config.OpenGarageKeyBind = 38
 Config.OpenGaragePrompt = "[E] Open Garage"
 Config.OpenImpoundKeyBind = 38
@@ -28,7 +28,7 @@ Config.ExitInteriorPrompt = "[E] Exit Garage"
 
 -- Target
 Config.UseTarget = false
-Config.Target = "qb-target" -- or "qb-target"
+Config.Target = "ox_target" -- or "qb-target"
 Config.TargetPed = "s_m_y_valet_01"
 
 -- Radial
@@ -59,6 +59,7 @@ Config.EnableTransfers = {
   betweenGarages = true,
   betweenPlayers = true
 }
+Config.DisableTransfersToUnregisteredGarages = false -- Potential hacking protection for vigilant servers - unregistered garages are ones created via events in third-party script integrations, such as housing scripts, and therefore could be prone to script kiddie attacks.
 
 -- Prevent vehicle duplication
 -- Learn more: https://docs.jgscripts.com/advanced-garages/vehicle-duplication-prevention
@@ -266,7 +267,7 @@ Config.PrivGarageHideBlips = false
 Config.PrivGarageBlip = {
   id = 357,
   color = 0,
-  scale = 0.6
+  scale = 0.5
 }
 
 -- Job Garages
@@ -287,7 +288,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.6
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -303,7 +304,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.6
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -331,7 +332,8 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   }
 }
 
--- Gang Garages (QBCore only)
+-- Gang Garages (QBCore/Qbox only by default)
+Config.GangEnableCustomESXIntegration = false -- Set to true if you've added a custom system to cl/sv-functions.lua
 Config.GangGarageShowBlips = true
 Config.GangGarageSetVehicleCommand = "setgangvehicle" -- admin only
 Config.GangGarageRemoveVehicleCommand = "removegangvehicle" -- admin only
@@ -349,7 +351,7 @@ Config.GangGarageLocations = { -- IMPORTANT - Every garage name must be unique
     blip = {
       id = 357,
       color = 0,
-      scale = 0.6
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
@@ -374,12 +376,12 @@ Config.ImpoundLocations = { -- IMPORTANT - Every impound name must be unique
     blip = {
       id = 68,
       color = 0,
-      scale = 0.6
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["Impound B"] = {
+  }
+  --[[ ["Impound B"] = {
     coords = vector3(1649.71, 3789.61, 34.79),
     spawn = vector4(1643.66, 3798.36, 34.49, 216.16),
     distance = 15,
@@ -389,27 +391,31 @@ Config.ImpoundLocations = { -- IMPORTANT - Every impound name must be unique
     blip = {
       id = 68,
       color = 0,
-      scale = 0.6
+      scale = 0.5
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  }
+  } ]]
 }
 
 -- Garage Interior
-Config.GarageInteriorEntrance = vector4(227.96, -1003.06, -99.0, 358.0)
+Config.GarageInteriorEntrance = vector4(227.96, -1003.06, -99.0, 0.0)
+Config.GarageInteriorCameraCutscene = {
+  vector4(227.96, -977.81, -98.99, 0.0), -- from
+  vector4(227.96, -1006.96, -98.99, 0.0), -- to (this should be the entrance, or slightly further back from the entrance coords for a better final player transition)
+}
 Config.GarageInteriorVehiclePositions = {
-  vec4(233.000000, -984.000000, -99.410004, 118.000000),
-  vec4(233.000000, -988.500000, -99.410004, 118.000000),
-  vec4(233.000000, -993.000000, -99.410004, 118.000000),
-  vec4(233.000000, -997.500000, -99.410004, 118.000000),
-  vec4(233.000000, -1002.000000, -99.410004, 118.000000),
-  vec4(223.600006, -979.000000, -99.410004, 235.199997),
-  vec4(223.600006, -983.599976, -99.410004, 235.199997),
-  vec4(223.600006, -988.200012, -99.410004, 235.199997),
-  vec4(223.600006, -992.799988, -99.410004, 235.199997),
-  vec4(223.600006, -997.400024, -99.410004, 235.199997),
-  vec4(223.600006, -1002.000000, -99.410004, 235.199997),
+  vector4(233.000000, -984.000000, -99.410004, 118.000000),
+  vector4(233.000000, -988.500000, -99.410004, 118.000000),
+  vector4(233.000000, -993.000000, -99.410004, 118.000000),
+  vector4(233.000000, -997.500000, -99.410004, 118.000000),
+  vector4(233.000000, -1002.000000, -99.410004, 118.000000),
+  vector4(223.600006, -979.000000, -99.410004, 235.199997),
+  vector4(223.600006, -983.599976, -99.410004, 235.199997),
+  vector4(223.600006, -988.200012, -99.410004, 235.199997),
+  vector4(223.600006, -992.799988, -99.410004, 235.199997),
+  vector4(223.600006, -997.400024, -99.410004, 235.199997),
+  vector4(223.600006, -1002.000000, -99.410004, 235.199997),
 }
 
 -- Staff Commands
@@ -428,6 +434,7 @@ Config.PlayerTransferBlacklist = {
   "spawnName"
 }
 
+Config.AutoRunSQL = true
 Config.ReturnToPreviousRoutingBucket = false
 Config.HideWatermark = false
 Config.__v3Config = true

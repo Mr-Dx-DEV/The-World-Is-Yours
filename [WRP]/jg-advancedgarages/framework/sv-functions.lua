@@ -98,9 +98,13 @@ function Framework.Server.GetPlayerGang(src)
 
     return {
       name = player.PlayerData.gang.name,
+      label = player.PlayerData.gang.label,
       grade = player.PlayerData.gang.grade.level
     }
   elseif Config.Framework == "ESX" then
+    -- To implement gangs in ESX, enable Config.GangEnableCustomESXIntegration & then add the necessary exports here.
+    -- It must return the same data structure as QB/X above, with { name, label, grade }
+    -- Heads up, you must also add the exports to cl-functions.lua -> Framework.Client.GetPlayerGang
     error("ESX does not natively support gangs.");
   end
 
@@ -227,11 +231,16 @@ function Framework.Server.GetPlate(vehicle)
   local plate = GetVehicleNumberPlateText(vehicle)
   if not plate or plate == nil or plate == "" then return false end
 
+  if GetResourceState("brazzers-fakeplates") == "started" then
+    local originalPlate = MySQL.scalar.await("SELECT plate FROM player_vehicles WHERE fakeplate = ?", {plate})
+    if originalPlate then plate = originalPlate end
+  end
+
   local trPlate = string.gsub(plate, "^%s*(.-)%s*$", "%1")
   return trPlate
 end
 
----@param vehicle table
+---@param vehicle boolean|QueryResult|unknown|{ [number]: { [string]: unknown  }|{ [string]: unknown }}
 ---@return string | number | false model
 function Framework.Server.GetModelColumn(vehicle)
   if Config.Framework == "QBCore" or Config.Framework == "Qbox" then
@@ -251,6 +260,20 @@ function Framework.Server.GetModelColumn(vehicle)
 end
 
 --
+-- ti_fuel
+--
+
+RegisterNetEvent("jg-advancedgarages:server:save-ti-fuel-type", function(plate, type)
+  MySQL.query.await("ALTER TABLE " .. Framework.VehiclesTable .. " ADD COLUMN IF NOT EXISTS `ti_fuel_type` VARCHAR(100) DEFAULT '';")
+  MySQL.update.await("UPDATE " .. Framework.VehiclesTable .. " SET ti_fuel_type = ? WHERE plate = ?", {type, plate});
+end)
+
+lib.callback.register("jg-advancedgarages:server:get-ti-fuel-type", function(src, plate)
+  MySQL.query.await("ALTER TABLE " .. Framework.VehiclesTable .. " ADD COLUMN IF NOT EXISTS `ti_fuel_type` VARCHAR(100) DEFAULT '';")
+  return MySQL.scalar.await("SELECT ti_fuel_type FROM  " .. Framework.VehiclesTable .. " WHERE plate = ?", {plate}) or false
+end)
+
+--
 -- Brazzers-FakePlates
 --
 
@@ -264,18 +287,4 @@ lib.callback.register("brazzers-fakeplates:getFakePlateFromPlate", function(_, p
   local result = MySQL.scalar.await("SELECT fakeplate FROM player_vehicles WHERE plate = ?", {plate})
   if result then return result end
   return false
-end)
-
---
--- ti_fuel
---
-
-RegisterNetEvent("jg-advancedgarages:server:save-ti-fuel-type", function(plate, type)
-  MySQL.query.await("ALTER TABLE " .. Framework.VehiclesTable .. " ADD COLUMN IF NOT EXISTS `ti_fuel_type` VARCHAR(100) DEFAULT '';")
-  MySQL.update.await("UPDATE " .. Framework.VehiclesTable .. " SET ti_fuel_type = ? WHERE plate = ?", {type, plate});
-end)
-
-lib.callback.register("jg-advancedgarages:server:get-ti-fuel-type", function(src, plate)
-  MySQL.query.await("ALTER TABLE " .. Framework.VehiclesTable .. " ADD COLUMN IF NOT EXISTS `ti_fuel_type` VARCHAR(100) DEFAULT '';")
-  return MySQL.scalar.await("SELECT ti_fuel_type FROM  " .. Framework.VehiclesTable .. " WHERE plate = ?", {plate}) or false
 end)

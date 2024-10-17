@@ -1,70 +1,13 @@
 local GARAGE_ZONE_Z_DIST = 4.0
 local inVehicle, blips, zones, peds = nil, {}, {}, {}
+local cachedGarageLocations
 
----Fetches all available garage locations, store in a global
-local function fetchAvailableGarageLocations()
-  local garages = {}
-
-  for id, config in pairs(Config.GarageLocations) do
-    garages[id] = config
-    garages[id].checkVehicleGarageId = Config.GarageUniqueLocations
-    garages[id].enableInteriors = config.type == "car" and Config.GarageEnableInteriors
-    garages[id].uniqueBlips = Config.GarageUniqueBlips
-    garages[id].infiniteSpawns = Config.AllowInfiniteVehicleSpawns
-    garages[id].garageType = "personal"
+function getAvailableGarageLocations()
+  if not cachedGarageLocations then
+    cachedGarageLocations = lib.callback.await("jg-advancedgarages:server:get-available-garage-locations", 1000)
   end
 
-  local privateGarages = lib.callback.await("jg-advancedgarages:server:get-private-garages", false)
-  for _, garage in ipairs(privateGarages) do
-    garages[garage.name] = {
-      coords = vector3(garage.x, garage.y, garage.z),
-      spawn = vector4(garage.x, garage.y, garage.z, garage.h),
-      distance = garage.distance,
-      type = garage.type,
-      hideBlip = Config.PrivGarageHideBlips,
-      blip = Config.PrivGarageBlip,
-      uniqueBlips = Config.GarageUniqueBlips,
-      checkVehicleGarageId = Config.GarageUniqueLocations,
-      enableInteriors = garage.type == "car" and Config.PrivGarageEnableInteriors,
-      infiniteSpawns = Config.AllowInfiniteVehicleSpawns,
-      garageType = "personal"
-    }
-  end
-  
-  local job = Framework.Client.GetPlayerJob()
-  for id, config in pairs(Config.JobGarageLocations) do
-    if job and (type(config.job) == "table" and isItemInList(config.job, job.name) or config.job == job.name) then 
-      garages[id] = config
-      garages[id].checkVehicleGarageId = Config.JobGarageUniqueLocations and config.vehiclesType ~= "spawner"
-      garages[id].enableInteriors = config.type == "car" and Config.JobGarageEnableInteriors
-      garages[id].uniqueBlips = Config.JobGarageUniqueBlips
-      garages[id].infiniteSpawns = Config.JobGaragesAllowInfiniteVehicleSpawns
-      garages[id].garageType = "job"
-    end
-  end
-
-  local gang = (Config.Framework == "QBCore" or Config.Framework == "Qbox") and Framework.Client.GetPlayerGang()
-  for id, config in pairs(Config.GangGarageLocations) do
-    if gang and (type(config.gang) == "table" and isItemInList(config.gang, gang.name) or config.gang == gang.name) then
-      garages[id] = config
-      garages[id].checkVehicleGarageId = Config.GangGarageUniqueLocations and config.vehiclesType ~= "spawner"
-      garages[id].enableInteriors = config.type == "car" and Config.GangGarageEnableInteriors
-      garages[id].uniqueBlips = Config.GangGarageUniqueBlips
-      garages[id].infiniteSpawns = Config.GangGaragesAllowInfiniteVehicleSpawns
-      garages[id].garageType = "gang"
-    end
-  end
-
-  for id, config in pairs(Config.ImpoundLocations) do
-    garages[id] = config
-    garages[id].uniqueBlips = Config.ImpoundUniqueBlips
-    garages[id].garageType = "impound"
-    garages[id].hasImpoundJob = config.job and job and (type(config.job) == "table" and isItemInList(config.job, job.name) or config.job == job.name)
-  end
-
-  LocalPlayer.state:set("availableGarageLocations", garages, true)
-
-  return garages
+  return cachedGarageLocations or {}
 end
 
 ---@param coords vector3
@@ -152,7 +95,7 @@ local function pedIsInGarageZone(garageId, garageType, isImpound)
   end
   
   if Config.UseRadialMenu then return end
-  if IsControlJustPressed(0, isImpound and Config.OpenImpoundKeyBind or Config.OpenGarageKeyBind) then
+  if IsControlJustPressed(0, isImpound and Config.OpenImpoundKeyBind or (pedIsInVehicle and Config.InsertVehicleKeyBind or Config.OpenGarageKeyBind)) then
     action()
   end
 end
@@ -204,7 +147,7 @@ end
 local function createGarageZonesAndBlips()
   for _, blip in ipairs(blips) do RemoveBlip(blip) end -- Remove existing blips 
   
-  local garages = fetchAvailableGarageLocations()
+  local garages = getAvailableGarageLocations()
 
   if Config.UseTarget then
     createTargetZones(garages)
@@ -225,12 +168,13 @@ local function createGarageZonesAndBlips()
   end
 end
 
-RegisterNetEvent("jg-adavancedgarages:client:update-blips-text-uis", function()
+RegisterNetEvent("jg-advancedgarages:client:update-blips-text-uis", function()
+  cachedGarageLocations = lib.callback.await("jg-advancedgarages:server:get-available-garage-locations", 1000)
   createGarageZonesAndBlips()
 end)
 
 CreateThread(function()
-  Wait(1000)
+  Wait(2500)
   createGarageZonesAndBlips()
 end)
 
