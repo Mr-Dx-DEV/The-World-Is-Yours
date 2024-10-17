@@ -267,7 +267,7 @@ return {
 ["farm_seed_carrot"] = {
 	label = "Carrot Seed",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Carrot Seed",
 	client = {
@@ -278,7 +278,7 @@ return {
 ["farm_carrot_mash"] = {
 	label = "Mash Carrot",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Mash Carrot",
 	client = {
@@ -289,7 +289,7 @@ return {
 ["farm_sink_s"] = {
 	label = "Sink",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Sink",
 	client = {
@@ -300,7 +300,7 @@ return {
 ["farm_light_s"] = {
 	label = "Light S",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Light S",
 	client = {
@@ -311,7 +311,7 @@ return {
 ["farm_carrot_comp"] = {
 	label = "Rotten Carrot",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Rotten Carrot",
 	client = {
@@ -322,7 +322,7 @@ return {
 ["farm_sink_m"] = {
 	label = "Modern Sink",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Modern Sink",
 	client = {
@@ -333,7 +333,7 @@ return {
 ["moon_distillation"] = {
 	label = "Moonshine Distillation",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Moonshine Distillation",
 	client = {
@@ -344,7 +344,7 @@ return {
 ["farm_onion_comp"] = {
 	label = "Rotten Onion",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Rotten Onion",
 	client = {
@@ -355,7 +355,7 @@ return {
 ["farm_corn_mash"] = {
 	label = "Mash Corn",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Mash Corn",
 	client = {
@@ -366,7 +366,7 @@ return {
 ["farm_light_l"] = {
 	label = "Light L",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Light L",
 	client = {
@@ -377,7 +377,7 @@ return {
 ["farm_seed_sunflower"] = {
 	label = "SunFlower Seed",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "SunFlower Seed",
 	client = {
@@ -388,7 +388,7 @@ return {
 ["moon_moonshine_pack"] = {
 	label = "Moonshine Pack",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Moonshine Pack",
 	client = {
@@ -399,7 +399,7 @@ return {
 ["farm_seed_wheat"] = {
 	label = "Wheat Seed",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Wheat Seed",
 	client = {
@@ -410,7 +410,7 @@ return {
 ["farm_sunflower_comp"] = {
 	label = "Rotten SunFlower",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Rotten SunFlower",
 	client = {
@@ -421,7 +421,7 @@ return {
 ["farm_tomato_comp"] = {
 	label = "Rotten Tomato",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Rotten Tomato",
 	client = {
@@ -432,7 +432,7 @@ return {
 ["farm_mil"] = {
 	label = "Mil Machine",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Mil Machine",
 	client = {
@@ -443,7 +443,7 @@ return {
 ["farm_seed_tomato"] = {
 	label = "Tomato Seed",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Tomato Seed",
 	client = {
@@ -454,7 +454,7 @@ return {
 ["farm_pot_xs"] = {
 	label = "Pot XS",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "XS Pot",
 	client = {
@@ -465,7 +465,7 @@ return {
 ["farm_pot_m"] = {
 	label = "Pot M",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "M Pot",
 	client = {
@@ -476,7 +476,7 @@ return {
 ["farm_onion"] = {
 	label = "Onion",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Onion",
 	client = {
@@ -487,7 +487,7 @@ return {
 ["farm_onion_mash"] = {
 	label = "Mash Onion",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Mash Onion",
 	client = {
@@ -498,7 +498,7 @@ return {
 ["farm_compost"] = {
 	label = "Compost Box",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Compost Box",
 	client = {
@@ -509,7 +509,7 @@ return {
 ["farm_water_tap"] = {
 	label = "Water Tap",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Water Tap",
 	client = {
@@ -520,7 +520,7 @@ return {
 ["farm_corn"] = {
 	label = "Corn",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Corn",
 	client = {
@@ -531,7 +531,7 @@ return {
 ["farm_tomato_mash"] = {
 	label = "Mash Tomato",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Mash Tomato",
 	client = {
@@ -542,7 +542,7 @@ return {
 ["moon_moonshine"] = {
 	label = "Moonshine",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Moonshine",
 	client = {
@@ -553,7 +553,7 @@ return {
 ["farm_seed_corn"] = {
 	label = "Corn Seed",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Corn Seed",
 	client = {
@@ -564,7 +564,7 @@ return {
 ["farm_pot_s"] = {
 	label = "Pot S",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "S Pot",
 	client = {
@@ -575,7 +575,7 @@ return {
 ["farm_fertilizer"] = {
 	label = "Fertilizer",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Fertilizer",
 	client = {
@@ -586,7 +586,7 @@ return {
 ["farm_wheat"] = {
 	label = "Wheat",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Wheat",
 	client = {
@@ -597,7 +597,7 @@ return {
 ["farm_seed_onion"] = {
 	label = "Onion Seed",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Onion Seed",
 	client = {
@@ -608,7 +608,7 @@ return {
 ["farm_pot_l"] = {
 	label = "Pot L",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "L Pot",
 	client = {
@@ -619,7 +619,7 @@ return {
 ["farm_sunflower_mash"] = {
 	label = "Mash SunFlower",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Mash SunFlower",
 	client = {
@@ -630,7 +630,7 @@ return {
 ["farm_tomato"] = {
 	label = "Tomato",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Tomato",
 	client = {
@@ -641,7 +641,7 @@ return {
 ["farm_wheat_mash"] = {
 	label = "Mash Wheat",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Mash Wheat",
 	client = {
@@ -652,7 +652,7 @@ return {
 ["farm_water"] = {
 	label = "Water Can",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Water Can",
 	client = {
@@ -663,7 +663,7 @@ return {
 ["farm_yeast"] = {
 	label = "Yeast",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Yeast",
 	client = {
@@ -674,7 +674,7 @@ return {
 ["farm_wheat_comp"] = {
 	label = "Rotten Wheat",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Rotten Wheat",
 	client = {
@@ -685,7 +685,7 @@ return {
 ["farm_sunflower"] = {
 	label = "SunFlower",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "SunFlower",
 	client = {
@@ -696,7 +696,7 @@ return {
 ["farm_carrot"] = {
 	label = "Carrot",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Carrot",
 	client = {
@@ -707,7 +707,7 @@ return {
 ["farm_corn_comp"] = {
 	label = "Rotten Corn",
 	weight = 100,
-	stack = false,
+	stack = true,
 	close = true,
 	description = "Rotten Corn",
 	client = {
@@ -718,7 +718,7 @@ return {
 	["zatresfan"] = {
 		label = "Modern Fan",
 		weight = 100,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Fan - 60 and 120 RPM...",
 		client = {
@@ -739,7 +739,7 @@ return {
 	["zatpackedweed"] = {
 		label = "Packed Weed",
 		weight = 100,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Weed ready for sale",
 		client = {
@@ -750,7 +750,7 @@ return {
 	["zatpatioheater"] = {
 		label = "Patio Heater",
 		weight = 100,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Patio heater - LOH 21°C...",
 		client = {
@@ -761,7 +761,7 @@ return {
 	["zatweedbranch"] = {
 		label = "Weed Branch",
 		weight = 10000,
-		stack = false,
+		stack = true,
 		close = true,
 		client = {
 			image = "zatweedbranch.png",
@@ -771,7 +771,7 @@ return {
 	["zatceilinglight"] = {
 		label = "Ceiling Light",
 		weight = 100,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "ceiling light...",
 		client = {
@@ -782,7 +782,7 @@ return {
 	["zatbluelight"] = {
 		label = "Blue Light",
 		weight = 100,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Blue Wall Light - Perfect for plant growth...",
 		client = {
@@ -792,7 +792,7 @@ return {
 	["zatwalllight"] = {
 		label = "Wall Light",
 		weight = 100,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Wall Light...",
 		client = {
@@ -867,7 +867,7 @@ return {
 	["zatfan01"] = {
 		label = "Fan",
 		weight = 100,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Fan - 20 and 50 RPM...",
 		client = {
@@ -898,7 +898,7 @@ return {
 	["zatheater"] = {
 		label = "Wall Heater",
 		weight = 100,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Electrical wall heater - LOH 10°C...",
 		client = {
@@ -909,7 +909,7 @@ return {
 	["zatwallfan"] = {
 		label = "Wall Fan",
 		weight = 100,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Fan - 80 and 200 RPM...",
 		client = {
@@ -919,7 +919,7 @@ return {
 	["zatjoint"] = {
 		label = "Joint",
 		weight = 0,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "Sidney would be very proud at you",
 		client = {
@@ -941,7 +941,7 @@ return {
 ['chain_v'] = {
     label = 'Mafia chain Male',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -951,7 +951,7 @@ return {
 ['chain_v1'] = {
     label = '2LM chain',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -961,7 +961,7 @@ return {
 ['chain_v2'] = {
     label = 'Mafia chain Female',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -971,7 +971,7 @@ return {
 ['chain_bdb'] = {
     label = 'BDB Chain',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -981,7 +981,7 @@ return {
 ['chain_cp1'] = {
     label = 'Cross Chain',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -991,7 +991,7 @@ return {
 ['chain_cp2'] = {
     label = 'Cross Chain',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1001,7 +1001,7 @@ return {
 ['chain_skull'] = {
     label = 'Iced out Skull',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1011,7 +1011,7 @@ return {
 ['chain_skull2'] = {
     label = 'Iced out Skull',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1021,7 +1021,7 @@ return {
 ['chain_skull3'] = {
     label = 'Iced out Skull',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1031,7 +1031,7 @@ return {
 ['chain_nocap'] = {
     label = 'Iced out NOCAP',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1041,7 +1041,7 @@ return {
 ['chain_snake'] = {
     label = 'Iced out Snake Bite',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1051,7 +1051,7 @@ return {
 ['chain_link'] = {
     label = 'Iced out linked Chain',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1061,7 +1061,7 @@ return {
 ['chain_au1'] = {
     label = 'Among Us | All Gold',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1071,7 +1071,7 @@ return {
 ['chain_au2'] = {
     label = 'Among Us | Red/Gold',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1081,7 +1081,7 @@ return {
 ['chain_au3'] = {
     label = 'Among Us | Blue/Gold',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1091,7 +1091,7 @@ return {
 ['chain_au4'] = {
     label = 'Among Us | White/Gold',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1101,7 +1101,7 @@ return {
 ['chain_au5'] = {
     label = 'Among Us | Green/Gold',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
@@ -1111,7 +1111,7 @@ return {
 ['chain_au6'] = {
     label = 'Among Us | Black/Gold',
     weight = 1,
-    stack = false,
+    stack = true,
     close = true,
     description = 'Add a lil bit of drip',
     client = {
