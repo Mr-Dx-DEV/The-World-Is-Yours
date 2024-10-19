@@ -114,7 +114,14 @@ Config.Consumables = {
         ["b-brisket"] = math.random(35, 54),
         ["b-chicken"] = math.random(35, 54),
         ["b-ribs"] = math.random(35, 54),
-        ["b-jacket"] = math.random(35, 54)
+        ["b-jacket"] = math.random(35, 54),
+
+        -- Casino Bar Snacks
+["casino_burger"] = math.random(25, 40),
+["casino_psqs"] = math.random(25, 40),
+["casino_ego_chaser"] = math.random(25, 40),
+["casino_sandwitch"] = math.random(25, 40),
+["casino_donut"] = math.random(25, 40)
 
     },
     drink = {
@@ -132,7 +139,14 @@ Config.Consumables = {
  -- default drink items
         ['water_bottle'] = math.random(35, 54),
         ['kurkakola'] = math.random(35, 54),
-        ['coffee'] = math.random(40, 50)
+        ['coffee'] = math.random(40, 50),
+
+        -- Casino Bar Drinks
+["casino_beer"] = math.random(25, 40),
+["casino_coke"] = math.random(25, 40),
+["casino_sprite"] = math.random(25, 40),
+["casino_luckypotion"] = math.random(25, 40),
+["casino_coffee"] = math.random(25, 40)
     },
     alcohol = { -- default alcohol items
     --    ['whiskey'] = math.random(20, 30),
