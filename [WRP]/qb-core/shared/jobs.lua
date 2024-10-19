@@ -638,6 +638,15 @@ QBShared.Jobs = {
 			['6'] = { name = 'Owner', isboss = true, bankAuth = true, payment = 150 },
 		},
 	},
+    ['casino'] = {
+        label = 'Casino',
+        defaultDuty = true,
+        grades = {
+            ['0'] = { name = 'Novice', payment = 50 },
+            ['1'] = { name = 'Experienced', payment = 100 },
+            ['2'] = { name = 'Boss', isboss = true, payment = 200 },
+        },
+    },
 	tobacco = {
 		label = 'Tobacco Farmer',
 		type = 'Tobacco',
