@@ -53,7 +53,21 @@ local function CustomAlert(data)
             offset = data.offset or 'false',                   -- Blip / radius offset
             flash = data.flash or 'false'                      -- Blip flash
         },
-        jobs = { 'police' },
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+},
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -78,7 +92,21 @@ local function VehicleTheft()
         plate = data.vehicle_plate,
         color = data.vehicle_colour,
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+            'police',
+            'sheriff',
+            'fbi',
+            'lspd',
+            'bcso',
+            'sahp',
+            'lsso',
+            'safw',
+            'sadoc',
+            'usms',
+            'dhs',
+            'ss'
+        }
+        
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -100,7 +128,21 @@ local function Shooting()
         gender = GetPlayerGender(),
         weapon = GetWeaponName(),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -122,7 +164,21 @@ local function Hunting()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -148,7 +204,21 @@ local function VehicleShooting()
         plate = data.vehicle_plate,
         color = data.vehicle_colour,
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -173,7 +243,21 @@ local function SpeedingVehicle()
         plate = data.vehicle_plate,
         color = data.vehicle_colour,
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -194,7 +278,21 @@ local function Fight()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -215,7 +313,21 @@ local function PrisonBreak()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -237,7 +349,21 @@ local function StoreRobbery(camId)
         street = GetStreetAndZone(coords),
         camId = camId,
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -259,7 +385,21 @@ local function FleecaBankRobbery(camId)
         street = GetStreetAndZone(coords),
         camId = camId,
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -281,7 +421,21 @@ local function PaletoBankRobbery(camId)
         street = GetStreetAndZone(coords),
         camId = camId,
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -303,7 +457,21 @@ local function PacificBankRobbery(camId)
         street = GetStreetAndZone(coords),
         camId = camId,
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -325,7 +493,21 @@ local function VangelicoRobbery(camId)
         street = GetStreetAndZone(coords),
         camId = camId,
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -346,7 +528,21 @@ local function HouseRobbery()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -367,7 +563,21 @@ local function YachtHeist()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -389,7 +599,21 @@ local function SuspiciousActivity()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -414,7 +638,21 @@ local function CarJacking(vehicle)
         plate = data.vehicle_plate,
         color = data.vehicle_colour,
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -478,7 +716,22 @@ local function OfficerDown()
         street = GetStreetAndZone(coords),
         name = FRAMEWORK.GetPlayerName() .. ' ' .. FRAMEWORK.GetPlayerLastname(),
         alertTime = 10,
-        jobs = { 'ambulance', 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+ 'ambulance',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -502,7 +755,22 @@ local function OfficerBackup()
         street = GetStreetAndZone(coords),
         name = FRAMEWORK.GetPlayerName() .. ' ' .. FRAMEWORK.GetPlayerLastname(),
         alertTime = 10,
-        jobs = { 'ambulance', 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+ 'ambulance',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -526,7 +794,22 @@ local function OfficerInDistress()
         street = GetStreetAndZone(coords),
         name = FRAMEWORK.GetPlayerName() .. ' ' .. FRAMEWORK.GetPlayerLastname(),
         alertTime = 10,
-        jobs = { 'ambulance', 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+ 'ambulance',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -548,7 +831,22 @@ local function ambulanceDown()
         street = GetStreetAndZone(coords),
         name = FRAMEWORK.GetPlayerName() .. ' ' .. FRAMEWORK.GetPlayerLastname(),
         alertTime = 10,
-        jobs = { 'ambulance', 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+ 'ambulance',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -571,7 +869,21 @@ local function Explosion()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -608,7 +920,21 @@ end
 --- @param type string -- What type of emergency
 --- @param anonymous boolean -- Is the call anonymous
 RegisterNetEvent('ps-dispatch:client:sendEmergencyMsg', function(data, type, anonymous)
-    local jobs = { ['911'] = { 'police' }, ['311'] = { 'ambulance' } }
+    local jobs = { ['911'] = {
+        'police',
+        'sheriff',
+        'fbi',
+        'lspd',
+        'bcso',
+        'sahp',
+        'lsso',
+        'safw',
+        'sadoc',
+        'usms',
+        'dhs',
+        'ss'
+    },
+     ['311'] = { 'ambulance' } }
 
     PhoneCall(data, anonymous, jobs[type], type)
 end)
@@ -627,7 +953,21 @@ local function ArtGalleryRobbery()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
 end
@@ -647,7 +987,21 @@ local function HumaneRobbery()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
 end
@@ -667,7 +1021,21 @@ local function TrainRobbery()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
 end
@@ -687,7 +1055,21 @@ local function VanRobbery()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
 end
@@ -707,7 +1089,21 @@ local function UndergroundRobbery()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
 end
@@ -727,7 +1123,21 @@ local function DrugBoatRobbery()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -748,7 +1158,21 @@ local function UnionRobbery()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -773,7 +1197,21 @@ local function CarBoosting(vehicle)
         plate = data.vehicle_plate,
         color = data.vehicle_colour,
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)
@@ -794,7 +1232,21 @@ local function SignRobbery()
         gender = GetPlayerGender(),
         street = GetStreetAndZone(coords),
         alertTime = nil,
-        jobs = { 'police' }
+        jobs = {
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+}
+
     }
 
     TriggerServerEvent('ps-dispatch:server:notify', dispatchData)

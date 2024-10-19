@@ -8,7 +8,21 @@ CL_CONFIG.EnableUnitOnHeader = true          -- Enable the unit on the header of
 CL_CONFIG.AlertCommands = {
     {
         command = '911',
-        job = { 'police' },
+        job = { 
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+},
+
         code = '10-13',
         default_priority = 'medium',
         enabled = true,
@@ -16,7 +30,21 @@ CL_CONFIG.AlertCommands = {
     },
     {
         command = 'anon911',
-        job = { 'police' },
+        job = { 
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss'
+},
+
         code = '10-13',
         default_priority = 'medium',
         enabled = true,
@@ -25,7 +53,22 @@ CL_CONFIG.AlertCommands = {
     {
         command = 'sos',
         code = 'P2',
-        job = { 'police', 'ambulance' },
+        job = { 
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss',
+    'ambulance'
+},
+
         prepared_args = 'A officer is in need of assistance, please come as fast as possible.',
         default_priority = 'high',
         enabled = true,
@@ -44,7 +87,22 @@ CL_CONFIG.AlertCommands = {
     {
         command = 'emergency',
         code = 'P2',
-        job = { 'police', 'ambulance' },
+        job = { 
+    'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss',
+    'ambulance'
+},
+
         default_priority = 'high',
         enabled = true,
         anonymous = false,
