@@ -12,13 +12,13 @@ Logs.Screenshots = false
 -- You can enable (true) or disable (false) specific player events to log here
 Logs.Events = {
     -- found_item is when the player finds an item while detecting
-    found_item = false,
+    found_item = true,
     -- level_up is when a player levels up their metal detecting skill level
-    level_up = false,
+    level_up = true,
     -- buy_detector is when a player purchases a metal detector
-    buy_detector = false,
+    buy_detector = true,
     -- item_sold is when a player sells an item(s) to shop
-    item_sold = false,
+    item_sold = true,
 }
 
 -- If Logs.Service = 'discord', you can customize the webhook data here
@@ -27,7 +27,7 @@ Logs.Discord = {
     -- The name of the webhook
     name = 'Metal Detecting Logs',
     -- The webhook link
-    link = '',
+    link = 'https://discord.com/api/webhooks/1296632444853948470/eneVvNbZwWAKvtKrGKCYjOhdjpEqsUiTzhauf8cDSvXPJWFKaR5iXBbDJjzvb7Cgpu48',
     -- The webhook profile image
     image = 'https://i.imgur.com/ILTkWBh.png',
     -- The webhook footer image
