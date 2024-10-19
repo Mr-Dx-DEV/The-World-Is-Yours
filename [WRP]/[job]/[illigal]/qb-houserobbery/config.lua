@@ -919,7 +919,7 @@ Config.Houses = {
         }
     },
     ['paleto1'] = {
-        ['coords'] = vector4(-360.24, 6260.61, 31.9, 136.27),
+        ['coords'] = vector4(-357.004, 6207.455, 31.842, 40.872),
         ['opened'] = false,
         ['tier'] = 1,
         ['furniture'] = {
@@ -936,7 +936,7 @@ Config.Houses = {
         }
     },
     ['paleto2'] = {
-        ['coords'] = vector4(-366.57, 6214.12, 31.84, 317.03),
+        ['coords'] = vector4(-374.533, 6190.999, 31.73, 37.321),
         ['opened'] = false,
         ['tier'] = 1,
         ['furniture'] = {
@@ -953,7 +953,7 @@ Config.Houses = {
         }
     },
     ['paleto3'] = {
-        ['coords'] = vector4(-447.87, 6260.25, 30.05, 338.35),
+        ['coords'] = vector4(-167.075, 6312.216, 31.486, 324.992),
         ['opened'] = false,
         ['tier'] = 1,
         ['furniture'] = {
@@ -970,7 +970,7 @@ Config.Houses = {
         }
     },
     ['paleto4'] = {
-        ['coords'] = vector4(-245.99, 6414.45, 31.46, 305.54),
+        ['coords'] = vector4(-30.063, 6457.873, 31.46, 40.697),
         ['opened'] = false,
         ['tier'] = 1,
         ['furniture'] = {
