@@ -137,7 +137,7 @@ Config = {
     },
 
     Escape = {
-        RequiredPolice = 4, -- How many police officers are need to be online?
+        RequiredPolice = 0, -- How many police officers are need to be online?
         PoliceCheck = false, -- This is used for enabling checking if there is enough Police officers to start Prison break
         Enable = true, -- This is used for enabling prison break system
         MarkerColor = { r = 255, g = 0, b = 0, a = 100 }, -- This is the color of the marker
@@ -235,15 +235,15 @@ Config = {
         ['police'] = true, -- This is the job which is allowed to jail/unjail players
         ['sheriff'] = true, -- This is the job which is allowed to jail/unjail players
         ['lspd'] = true,
-            ['bcso'] = true,
-            ['sahp'] = true,
-            ['lsso'] = true,
-            ['safw'] = true,
-            ['sadoc'] = true,
-            ['usms'] = true,
-            ['fbi'] = true,
-            ['dhs'] = true,
-            ['ss'] = true,
+        ['bcso'] = true,
+        ['sahp'] = true,
+        ['lsso'] = true,
+        ['safw'] = true,
+        ['sadoc'] = true,
+        ['usms'] = true,
+        ['fbi'] = true,
+        ['dhs'] = true,
+        ['ss'] = true,
             
             ['ambulance'] = false,
     },
