@@ -5,7 +5,7 @@ Framework = {
     QBCore = 'qbcore',
     Custom = 'custom',
 }
-CONFIG.Framework = Framework.qbcore -- esx or qbcore or custom
+CONFIG.Framework = Framework.QBCore -- esx or qbcore or custom
 CONFIG.AlertIcon = './assets/siren.svg'
 CONFIG.Debug = false
 CONFIG.RCoreStatsIntegration = false

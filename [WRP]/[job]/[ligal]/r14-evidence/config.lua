@@ -209,7 +209,7 @@ regalonefour.github.io to insert the appropriate event triggers into your consum
 
 Config.Breathalyzer = {
     Enabled = true, -- set this to true if you want to use the breathalyzer events contained in this script (may require additional setup if not using qb-smallresources)
-    UsingESX = true, -- set this to true if you are using ESX and want to use the native ESX.setPlayerStatus function to set BAC
+    UsingESX = false, -- set this to true if you are using ESX and want to use the native ESX.setPlayerStatus function to set BAC
     EventTriggers = {
         [1] = {event = 'hypothetical_consumables:server:consumedrink', type = 'server', alocholArgPos = 2, alocholArgSubField = 'item', alcoholArgValue = 'margarita', cidArgPos = nil},
     },
