@@ -50,16 +50,12 @@ exports('overrideRadioNameGetter', overrideRadioNameGetter)
 --- adds a player to the specified radion channel
 ---@param source number the player to add to the channel
 ---@param radioChannel number the channel to set them to
----@return boolean wasAdded if the player was successfuly added to the radio channel, or if it failed.
 function addPlayerToRadio(source, radioChannel)
 	if not canJoinChannel(source, radioChannel) then
 		-- remove the player from the radio client side
-		TriggerClientEvent("pma-voice:radioChangeRejected", source)
-		TriggerClientEvent('pma-voice:removePlayerFromRadio', source, source)
-		return false
+		return TriggerClientEvent('pma-voice:removePlayerFromRadio', source, source)
 	end
 	logger.verbose('[radio] Added %s to radio %s', source, radioChannel)
-
 	-- check if the channel exists, if it does set the varaible to it
 	-- if not create it (basically if not radiodata make radiodata)
 	radioData[radioChannel] = radioData[radioChannel] or {}
@@ -72,7 +68,6 @@ function addPlayerToRadio(source, radioChannel)
 	radioData[radioChannel][source] = false
 	TriggerClientEvent('pma-voice:syncRadioData', source, radioData[radioChannel],
 		GetConvarInt("voice_syncPlayerNames", 0) == 1 and plyName)
-	return true
 end
 
 --- removes a player from the specified channel
@@ -113,15 +108,15 @@ function setPlayerRadio(source, _radioChannel)
 		-- changed
 		TriggerClientEvent('pma-voice:clSetPlayerRadio', source, radioChannel)
 	end
-	if radioChannel ~= 0 then
-		if plyVoice.radio > 0 then
-			removePlayerFromRadio(source, plyVoice.radio)
-		end
-		local wasAdded = addPlayerToRadio(source, radioChannel)
-		Player(source).state.radioChannel = wasAdded and radioChannel or 0
+	print('Player %s set radio to %s', source, radioChannel)
+	Player(source).state.radioChannel = radioChannel
+	if radioChannel ~= 0 and plyVoice.radio == 0 then
+		addPlayerToRadio(source, radioChannel)
 	elseif radioChannel == 0 then
 		removePlayerFromRadio(source, plyVoice.radio)
-		Player(source).state.radioChannel = 0
+	elseif plyVoice.radio > 0 then
+		removePlayerFromRadio(source, plyVoice.radio)
+		addPlayerToRadio(source, radioChannel)
 	end
 end
 
@@ -133,14 +128,30 @@ end)
 
 --- syncs the player talking across all radio members
 ---@param talking boolean sets if the palyer is talking.
-function setTalkingOnRadio(talking)
+function setTalkingOnRadio(talking, globalRadio, reset)
 	if GetConvarInt('voice_enableRadios', 1) ~= 1 then return end
+	local src = source
 	voiceData[source] = voiceData[source] or defaultTable(source)
 	local plyVoice = voiceData[source]
 	local radioTbl = radioData[plyVoice.radio]
+	if not reset and globalRadio and GlobalState['user_radio_' .. source] then
+		radioTbl = globalRadio
+	end
+	if reset then
+		CreateThread(function()
+			for k, _ in pairs(globalRadio) do
+				local plyVoice = voiceData[k]
+				if plyVoice then
+					local radioTbl = radioData[plyVoice.radio]
+					TriggerClientEvent('pma-voice:syncRadioData', k, radioTbl, '')
+					TriggerClientEvent('pma-voice:setTalkingOnRadio', k, src, false)
+				end
+			end
+		end)
+	end
 	if radioTbl then
 		radioTbl[source] = talking
-		logger.verbose('[radio] Set %s to talking: %s on radio %s', source, talking, plyVoice.radio)
+		logger.info('[radio] Set %s to talking: %s on radio %s', source, talking, plyVoice.radio)
 		for player, _ in pairs(radioTbl) do
 			if player ~= source then
 				TriggerClientEvent('pma-voice:setTalkingOnRadio', player, source, talking)
