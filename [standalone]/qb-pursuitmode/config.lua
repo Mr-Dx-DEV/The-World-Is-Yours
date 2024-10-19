@@ -28,7 +28,8 @@ Config.AuthorizedJobs = { -- empty => everyone can use it
     "fbi",
     "dhs",
     "ss",
-    "ambulance"
+    "ambulance",
+    "police"
 }
 
 Config.VehicleModes = { -- If you define a new mode, you will have to add a new Vehicle Modification and a new mode for EVERY vehicle defined in Config.VehiclesConfig!
