@@ -248,14 +248,20 @@
 				<div class="pages stock-page" style="height: 100%;">
 					<div class="row" style="height: 100%;">
 						<div class="col-md-12" style="height: 100%;">
-							<div id="stock-title-div" class="mt-3 mb-3 d-flex justify-content-between align-items-end">
+							<div id="stock-title-div" class="mt-3 mb-3">
 								<div id="stock-amount" class="col-9">
 										
 								</div>
-								<div id="stock-filter-statistics" class="d-flex align-items-center mb-3">
+								<div class="d-flex justify-content-between mb-3">
+									<div id="stock-filter-statistics" class="d-flex align-items-center">
 
+									</div>
+									<div class="align-self-end">
+										<button id="stock-footer-button-import" class="btn btn-primary" onclick="showModalImportProducts(false)"></button>
+									</div>
 								</div>
 							</div>
+
 							<ul id="stock-products" class="list list-inline" style="max-height: calc(100% - var(--stock-title-height)); overflow: auto;">
 
 							</ul>
@@ -266,17 +272,22 @@
 				<div class="pages goods-page" style="height: 100%;">
 					<div class="row" style="height: 100%;">
 						<div class="col-md-12" style="height: 100%;">
-							<div id="goods-title-div" class="mt-3 mb-3 d-flex justify-content-between align-items-end">
+							<div id="goods-title-div" class="mt-3 mb-3">
 								<div class="col-9">
 									<h4 id="goods-page-title" class="text-uppercase"></h4>
 									<p id="goods-page-desc"></p>
 								</div>
-								<div id="stock-filter-contracts" class="d-flex align-items-center mb-3">
-
+								<div class="d-flex justify-content-between mb-3">
+									<div id="stock-filter-contracts" class="d-flex align-items-center">
+	
+									</div>
+									<div class="align-self-end">
+										<button id="goods-footer-button-import" class="btn btn-primary" onclick="showModalImportProducts(true)"></button>
+									</div>
 								</div>
 							</div>
 							
-							<ul id="job-page-list" class="list list-inline" style="max-height: calc(100% - var(--goods-title-height)); overflow: auto;">
+							<ul id="job-page-list" class="list list-inline m-0" style="max-height: calc(100% - var(--goods-title-height)); overflow: auto;">
 
 							</ul>
 						</div>

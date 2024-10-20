@@ -11,7 +11,7 @@ window.addEventListener("message", async function (event) {
 	if (item.resourceName) {
 		Utils.setResourceName(item.resourceName);
 	}
-	if (item.price){
+	if (item.price >= 0){
 		let market_categories = item.market_categories;
 		$("#buy-store-container").html(`
 			<p id="modal-p">${Utils.translate("confirm_buy_store").format(Utils.currencyFormat(item.price))} + ${Utils.translate("category_price")}</p>
@@ -521,30 +521,32 @@ window.addEventListener("message", async function (event) {
 				let fkey = market_item.fkey;
 				let key = fkey.replace("-x-", "|");
 				let amount = (market_item.amount_to_owner + Math.floor(market_item.amount_to_owner * (config.market_types.upgrades.truck.level_reward[store_business.truck_upgrade] / 100)));
-				let price = market_item.price_to_owner;
-				let discount = Math.floor((price * config.market_types.upgrades.relationship.level_reward[store_business.relationship_upgrade]) / 100);
+				let discount = ((market_item.price_to_owner * config.market_types.upgrades.relationship.level_reward[store_business.relationship_upgrade]) / 100);
+				let final_price = market_item.price_to_owner - discount;
 
 				// Append to job-page-list
 				$("#job-page-list").append(`
 					<div data-name="${market_item.name}" class="item-card">
+						<label class="d-block m-0">
 						<li class="d-flex justify-content-between card-theme">
-							<div class="d-flex flex-row align-items-center"><img class="font-large-2 mr-2 " src="img/items/${market_item.img}" width="30">
+							<div class="d-flex flex-row align-items-center">
+								<input type="checkbox" class="job-page-item-checkbox item-list-checkbox mr-2" data-id="${market_item.fkey}" data-name="${market_item.name}" data-image="${market_item.img}" data-amount="${amount}" data-label-amount="${amount}" data-price="${final_price}">
+								<img class="font-large-2 mr-2 " src="img/items/${market_item.img}" width="30">
 								<div class="ml-2">
 									<h6 class="mb-0">${market_item.name}</h6>
 									<div class="d-flex flex-row mt-1 text-black-50 small">
-										<div><i class="fas fa-coins"></i><span class="ml-2">${Utils.translate("jobs_page_cost")}: ${Utils.currencyFormat(price-discount)}</span></div>
+										<div><i class="fas fa-coins"></i><span class="ml-2">${Utils.translate("jobs_page_cost")}: ${Utils.currencyFormat(final_price)}</span></div>
 										<div class="ml-3"><i class="fas fa-dolly"></i><span class="ml-2">${Utils.translate("jobs_page_max_amount")}: ${amount}</span></div>
 									</div>
 								</div>
 							</div>
 							<form class="mb-0 mt-0" id="jobs-form" role="form">
 								<div class="d-flex flex-row h-100">
-									<input id="input-job-${fkey}" class="form-control job-amount mr-3 h-100" min="1" max="${amount}" type="number" name="amount" required="required" placeholder="${Utils.translate("jobs_page_amount")}" oninput="Utils.invalidMsg(this,1,${amount});">
-									<button onclick="startImportJob('${fkey}')" class="btn btn-primary mr-3">${Utils.translate("jobs_page_start")}</button>
-									<button onclick="storeProductFromInventory('${fkey}')" class="btn btn-primary">${Utils.translate("jobs_page_store_item")}</button>
+									<button onclick="showModalStoreProductsFromInventory('${market_item.fkey}', '${market_item.name}', '${market_item.img}')" class="btn btn-primary">${Utils.translate("jobs_page_store_item")}</button>
 								</div>
 							</form>
 						</li>
+						</label>
 					</div>
 				`);
 
@@ -563,8 +565,11 @@ window.addEventListener("message", async function (event) {
 				// Stock amount (statistics page)
 				$("#stock-products").append(`
 					<div data-name="${market_item.name}" class="item-card">
+						<label class="d-block m-0">
 						<li class="d-flex justify-content-between card-theme">
-							<div class="d-flex flex-row align-items-center"><img class="font-large-2 mr-2 " src="img/items/${market_item.img}" width="30">
+							<div class="d-flex flex-row align-items-center">
+								<input type="checkbox" class="stock-page-item-checkbox item-list-checkbox mr-2" data-id="${market_item.fkey}" data-name="${market_item.name}" data-image="${market_item.img}" data-amount="${amount}" data-label-amount="${Math.min(amount, stock_value)}" data-price="${market_item.price_to_export}">
+								<img class="font-large-2 mr-2 " src="img/items/${market_item.img}" width="30">
 								<div class="ml-2">
 									<h6 class="mb-0">${market_item.name}</h6>
 									<div class="d-flex flex-row mt-1 text-black-50 small">
@@ -574,15 +579,15 @@ window.addEventListener("message", async function (event) {
 									</div>
 								</div>
 							</div>
-								<div class="d-flex flex-row">
-									<span class="form-control textbox ml-3 text-muted"> 
-										${Utils.getCurrencySymbol()}
-										<input id="input-price-${fkey}" min="1" type="number" name="amount" required="required" placeholder="${Utils.translate("statistics_page_price_input")}"/>
-									</span>
-									<button onclick="setPrice('${fkey}')" class="btn btn-primary ml-3 mt-0">${Utils.translate("statistics_page_set_price")}</button>
-									<button onclick="startExportJob('${fkey}')" class="btn btn-primary ml-3 mt-0">${Utils.translate("statistics_page_export")}</button>
-								</div>
+							<div class="d-flex flex-row">
+								<span class="form-control textbox ml-3 text-muted"> 
+									${Utils.getCurrencySymbol()}
+									<input id="input-price-${fkey}" min="1" type="number" name="amount" required="required" placeholder="${Utils.translate("statistics_page_price_input")}"/>
+								</span>
+								<button onclick="setPrice('${fkey}')" class="btn btn-primary ml-3 mt-0">${Utils.translate("statistics_page_set_price")}</button>
+							</div>
 						</li>
+						</label>
 					</div>
 				`);
 			});
@@ -629,7 +634,7 @@ window.addEventListener("message", async function (event) {
 						<span class="tooltip">${Utils.translate("navbar_bank_page")}</span>
 					</li>
 					<li href="#myModal" data-toggle="modal" >
-						<i class="fas fa-times"></i>
+						<i class="fas fa-times text-danger"></i>
 						<span class="tooltip">${Utils.translate("navbar_sell_btn")}</span>
 					</li>
 				`);
@@ -653,9 +658,13 @@ window.addEventListener("message", async function (event) {
 					$("#rename-business-container").css("display", "none");
 				}
 
+				// Stock page
+				$("#stock-footer-button-import").text(Utils.translate("statistics_page_stock_export_products"));
+
 				// Goods page
 				$("#goods-page-title").text(Utils.translate("goods_page_title"));
 				$("#goods-page-desc").text(Utils.translate("goods_page_desc"));
+				$("#goods-footer-button-import").text(Utils.translate("jobs_page_import_products"));
 
 				// Hire page
 				$("#hire-page-title").text(Utils.translate("hire_page_title"));
@@ -896,6 +905,161 @@ function getItemByExactMatchName(product, market_items){
 	}
 }
 
+function showModalImportProducts(isImport) {
+	// Get all checkboxes
+	const checkboxes = $(isImport ? ".job-page-item-checkbox" : ".stock-page-item-checkbox");
+
+	// Initialize an array to hold selected items
+	let selectedItems = [];
+
+	// Loop through each checkbox
+	checkboxes.each(function () {
+		// Check if the checkbox is selected
+		if ($(this).is(":checked")) {
+			const itemId = $(this).data("id");
+			const itemName = $(this).data("name");
+			const itemImage = $(this).data("image");
+			const itemPrice = $(this).data("price");
+			const itemMaxAmount = $(this).data("amount");
+			const itemLabelMaxAmount = $(this).data("label-amount");
+			selectedItems.push({ id: itemId, name: itemName, image: itemImage, price: itemPrice, maxAmount: itemMaxAmount, labelMaxAmount: itemLabelMaxAmount });
+		}
+	});
+
+	// If no items are selected, return early
+	if (selectedItems.length === 0) {
+		Utils.post("notify", { type: "error", msg: Utils.translate("jobs_page_must_select_checkbox") });
+		return; // Exit the function if no items are selected
+	}
+
+	// Generate the table rows dynamically based on selected items
+	let tableRows = "";
+	selectedItems.forEach((item) => {
+		tableRows += `
+			<tr class="border-right border-left border-bottom">
+				<td class="d-flex align-items-center text-left"><img src="img/items/${item.image}" class="mr-2" style="width: 40px;">${item.name}</td>
+				<td class="align-middle">${Utils.currencyFormat(item.price)}</td>
+				<td class="align-middle">${item.labelMaxAmount}</td>
+				<td><input type="number" class="form-control item-amount-input" id="item-amount-${item.id}" min="0" value="0" max="${item.labelMaxAmount}" data-max="${item.maxAmount}"></td>
+			</tr>
+		`;
+	});
+	tableRows += `
+		<tr class="border-right border-left border-bottom">
+			<td class="font-weight-semi-bold text-right" colspan="3">${Utils.translate("jobs_page_modal_final_price")}</td>
+			<td id="goods-import-final-value" class="font-weight-semi-bold text-right pr-4">${Utils.currencyFormat(0)}</td>
+		</tr>
+	`;
+
+	let progressBarPercent = 0;
+
+	// Function to update progress bar and restrict amounts dynamically
+	function updateProgressBar() {
+		let totalChosenPercentage = 0;
+		let totalPrice = 0;
+
+		// Calculate total chosen percentage
+		selectedItems.forEach(item => {
+			const amount = parseInt($(`#item-amount-${item.id}`).val(), 10) || 0;
+			const maxAmount = parseInt(item.maxAmount, 10);
+			const itemPercentage = (amount / maxAmount) * 100;
+			totalChosenPercentage += itemPercentage;
+			totalPrice += amount * item.price;
+		});
+
+		// Update the progress bar
+		const progressBar = $("#goods-import-progress-bar");
+		progressBar.css("width", `${Math.min(100, totalChosenPercentage)}%`);
+		progressBar.attr("aria-valuenow", totalChosenPercentage);
+		progressBar.text(`${totalChosenPercentage.toFixed(2)}%`);
+
+		// Change background based on the percentage
+		if (totalChosenPercentage > 100) {
+			progressBar.removeClass("bg-primary").addClass("bg-danger");
+		} else {
+			progressBar.removeClass("bg-danger").addClass("bg-primary");
+		}
+
+		// Change final import value
+		$("#goods-import-final-value").text(Utils.currencyFormat(totalPrice));
+	}
+
+	const modalStoreProductsFromInventory = {
+		title: `${Utils.translate(isImport ? "jobs_page_import_products" : "statistics_page_stock_export_products")}`,
+		bodyHtml: `
+				<h6 class="mb-3">${Utils.translate(isImport ? "jobs_page_modal_body_text" : "statistics_page_stock_export_body_text")}</h6>
+				<div class="goods-table-container">
+					<table class="table text-center">
+						<thead>
+							<tr>
+								<th class="border-top-0 pt-0 text-left align-middle" style="width: 40%;">${Utils.translate("jobs_page_modal_name")}</th>
+								<th class="border-top-0 pt-0 align-middle" style="width: 20%;">${Utils.translate("jobs_page_modal_price")}</th>
+								<th class="border-top-0 pt-0 align-middle" style="width: 20%;">${Utils.translate("jobs_page_modal_max_amount")}</th>
+								<th class="border-top-0 pt-0 align-middle" style="width: 20%;">${Utils.translate("jobs_page_modal_amount")}</th>
+							</tr>
+						</thead>
+						<tbody>
+							${tableRows}
+						</tbody>
+					</table>
+					<span>${Utils.translate("jobs_page_modal_truck_capacity")}</span>
+					<div class="progress mb-3" style="height: 20px;">
+						<div id="goods-import-progress-bar" class="progress-bar bg-primary" role="progressbar" style="width: ${progressBarPercent}%; font-weight: 600; font-size: 13px;" aria-valuenow="${progressBarPercent}" aria-valuemin="0" aria-valuemax="100">${progressBarPercent}%</div>
+					</div>
+				</div>
+				`,
+		buttons: [
+			{ text: Utils.translate("confirmation_modal_cancel_button"), class: "btn btn-outline-primary", dismiss: true },
+			{ text: Utils.translate("confirmation_modal_confirm_button"), class: "btn btn-primary", dismiss: false, type: "submit" },
+		],
+		onSubmit: function () {
+			// Collect the item IDs and amounts selected by the user
+			let selectedData = [];
+			selectedItems.forEach(item => {
+				const amount = $(`#item-amount-${item.id}`).val();
+				if (amount > 0) {
+					selectedData.push({ item_id: item.id, amount: amount });
+				}
+			});
+
+			Utils.post(isImport ? "startImportJob" : "startExportJob", selectedData);
+		},
+	};
+
+	Utils.showCustomModal(modalStoreProductsFromInventory);
+
+	// Add event listeners to all input fields to update the progress bar dynamically
+	$(".item-amount-input").on("input", updateProgressBar);
+}
+
+function showModalStoreProductsFromInventory(fkey, name, img) {
+	const modalStoreProductsFromInventory = {
+		title: `${Utils.translate("jobs_page_store_item")}: ${name}`,
+		bodyHtml: `<div class="d-flex justify-content-center m-2"><img src="img/items/${img}" class="w-25"></div>`,
+		buttons: [
+			{ text: Utils.translate("confirmation_modal_cancel_button"), class: "btn btn-outline-primary", dismiss: true },
+			{ text: Utils.translate("confirmation_modal_confirm_button"), class: "btn btn-primary", dismiss: false, type: "submit" },
+		],
+		inputs: [
+			{
+				type: "number",
+				label: Utils.translate("jobs_page_modal_store_item_body"),
+				id: "number-input-id",
+				name: "store-from-inventory-input-name",
+				value: 1,
+				min: 1,
+				required: true,
+				placeholder: Utils.translate("jobs_page_amount"),
+			},
+		],
+		onSubmit: function(formData) {
+			let amount = formData.get("store-from-inventory-input-name");
+			storeProductFromInventory(fkey,amount);
+		},
+	};
+	Utils.showCustomModal(modalStoreProductsFromInventory);
+}
+
 $("#buyModal").on("hidden.bs.modal", function () {
 	closeUI();
 });
@@ -907,18 +1071,11 @@ $("#buyModal").on("hidden.bs.modal", function () {
 function closeUI(){
 	Utils.post("close","");
 }
-function startImportJob(item_id){
-	let amount = $("#input-job-"+item_id).val();
-	item_id = item_id.replace("-x-", "|");
-	Utils.post("startImportJob",{item_id:item_id,amount:amount});
-}
 function startExportJob(item_id){
 	item_id = item_id.replace("-x-", "|");
 	Utils.showDefaultModal(() => Utils.post("startExportJob",{item_id:item_id}), Utils.translate("confirmation_modal_export_all"));
 }
-function storeProductFromInventory(item_id){
-	let amount = $("#input-job-"+item_id).val();
-	item_id = item_id.replace("-x-", "|");
+function storeProductFromInventory(item_id,amount){
 	Utils.post("storeProductFromInventory",{item_id:item_id,amount:amount});
 }
 function setPrice(item_id){

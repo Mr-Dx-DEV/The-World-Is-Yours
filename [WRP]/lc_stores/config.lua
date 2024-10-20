@@ -17,6 +17,7 @@ Config.has_stock_when_unowed = true				-- If true, the store stock will be full 
 Config.max_jobs = 20							-- Max amount of jobs that each store can create
 Config.disable_rename_business = false 			-- Set this to true if you want to disable the function to rename the business
 Config.group_map_blips = true					-- true: will group all the blips into a single category in the map. false: all the blips will be grouped just by the name and icon
+Config.charge_import_money_before = true 		-- true: The money will be deducted from the store balance when the player starts the job. false: The money will be deducted only after the player finishes the job
 
 -- Here are the places where the person can open the market menu
 -- You can add as many locations as you want, just use the location already created as an example

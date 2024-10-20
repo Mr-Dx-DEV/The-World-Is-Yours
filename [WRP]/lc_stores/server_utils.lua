@@ -20,3 +20,12 @@ end
 function afterBuyItem(source,market_id,item_id,amount,total_price,account)
 	-- Here you can run any code just after the player purchased any item, like government taxes or anything else
 end
+
+function beforeHireEmployee(source,market_id,employee_id)
+	-- Here you can do any verification when a player is being hired to a store by the owner. return true or false
+	return true
+end
+
+function afterHireEmployee(source,market_id,employee_id)
+	-- Here you can run any code right after the a employee was hired
+end

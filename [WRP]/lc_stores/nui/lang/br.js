@@ -15,7 +15,6 @@ Lang["br"] = {
 	filter_placeholder: "Nome",
 
 	confirmation_modal_fire_player: "Tem certeza de que deseja demitir este jogador?",
-	confirmation_modal_export_all: "Tem certeza de que deseja iniciar um trabalho para exportar a quantidade máxima deste produto que seu caminhão pode transportar?",
 	confirmation_modal_sell_category: "Tem certeza de que deseja vender esta categoria? Todos os produtos atualmente em estoque nesta categoria serão perdidos",
 
 	navbar_main_page: "Sua Loja",
@@ -38,7 +37,6 @@ Lang["br"] = {
 	statistics_page_export_price: "Preço para exportar",
 	statistics_page_stock_amount: "Quantidade em estoque",
 	statistics_page_set_price: "Definir Preço",
-	statistics_page_export: "Exportar",
 	statistics_page_title: "Estatísticas",
 	statistics_page_desc: "Estatísticas do Mercado",
 	statistics_page_money_earned: "Total de dinheiro ganho",
@@ -49,6 +47,8 @@ Lang["br"] = {
 	statistics_page_customers: "Clientes",
 	statistics_page_stock_title: "Produtos em estoque",
 	statistics_page_stock_desc: "Aqui, você pode visualizar e interagir com todos os itens armazenados na sua loja. Verifique o seu estoque atual, defina os preços dos produtos ou exporte-os para gerar renda",
+	statistics_page_stock_export_products: "Exportar selecionados",
+	statistics_page_stock_export_body_text: "Escolha a quantidade de itens que você deseja exportar:",
 
 	goods_page_title: "Comprar mercadorias",
 	goods_page_desc: "Aqui, você pode comprar mercadorias por meio de missões de importação para repor o estoque da sua loja. Alternativamente, você também pode armazenar itens diretamente do seu inventário no estoque da loja",
@@ -70,8 +70,17 @@ Lang["br"] = {
 	jobs_page_max_amount: "Quantidade Máxima",
 	jobs_page_cost: "Custo da unidade",
 	jobs_page_amount: "Quantidade",
-	jobs_page_start: "Começar trabalho",
 	jobs_page_store_item: "Armazenar do inventário",
+	jobs_page_import_products: "Importar selecionados",
+	jobs_page_modal_store_item_body: "Escolha a quantidade que deseja armazenar",
+	jobs_page_modal_body_text: "Escolha a quantidade de itens que você deseja importar:",
+	jobs_page_modal_name: "Nome",
+	jobs_page_modal_price: "Preço",
+	jobs_page_modal_max_amount: "Quantidade máxima",
+	jobs_page_modal_amount: "Quantidade",
+	jobs_page_modal_final_price: "Preço final:",
+	jobs_page_modal_truck_capacity: "Capacidade do caminhão:",
+	jobs_page_must_select_checkbox: "Você deve selecionar pelo menos um produto para importar",
 
 	market_items_stock: "Estoque",
 	market_items_stock_full: "Cheio",

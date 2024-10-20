@@ -15,7 +15,6 @@ Lang["de"] = {
 	filter_placeholder: "Produktname",
 
 	confirmation_modal_fire_player: "Sind Sie sicher, dass Sie diesen Spieler entlassen möchten?",
-	confirmation_modal_export_all: "Sind Sie sicher, dass Sie einen Auftrag starten möchten, um die maximale Menge dieses Produkts zu exportieren, die Ihr Lastwagen transportieren kann?",
 	confirmation_modal_sell_category: "Sind Sie sicher, dass Sie diese Kategorie verkaufen möchten? Alle Produkte, die sich derzeit in dieser Kategorie auf Lager befinden, gehen verloren",
 
 	navbar_main_page: "Ihr Geschäft",
@@ -38,7 +37,6 @@ Lang["de"] = {
 	statistics_page_export_price: "Exportpreis",
 	statistics_page_stock_amount: "Lagerbestand",
 	statistics_page_set_price: "Setpreis",
-	statistics_page_export: "Alle exportieren",
 	statistics_page_title: "Statistik",
 	statistics_page_desc: "Marktstatistik",
 	statistics_page_money_earned: "Verdientes Geld insgesamt",
@@ -49,6 +47,8 @@ Lang["de"] = {
 	statistics_page_customers: "Kunden",
 	statistics_page_stock_title: "Produkte auf Lager",
 	statistics_page_stock_desc: "Hier können Sie alle Artikel anzeigen und mit ihnen interagieren, die in Ihrem Geschäft gespeichert sind. Überprüfen Sie Ihren aktuellen Lagerbestand, legen Sie Produktpreise fest oder exportieren Sie sie, um Einkommen zu generieren.",
+	statistics_page_stock_export_products: "Ausgewählte exportieren",
+	statistics_page_stock_export_body_text: "Wählen Sie die Menge der Artikel, die Sie exportieren möchten:",
 
 	goods_page_title: "Waren kaufen",
 	goods_page_desc: "Hier können Sie Waren über Importmissionen kaufen, um den Bestand Ihres Geschäfts aufzufüllen. Alternativ können Sie auch direkt Artikel aus Ihrem Inventar in den Lagerbestand des Geschäfts übertragen.",
@@ -70,8 +70,17 @@ Lang["de"] = {
 	jobs_page_max_amount: "Maximale Menge",
 	jobs_page_cost: "Kosten pro Stück",
 	jobs_page_amount: "Menge",
-	jobs_page_start: "Job ausführen",
 	jobs_page_store_item: "Aus dem Inventar speichern",
+	jobs_page_import_products: "Ausgewählte importieren",
+	jobs_page_modal_store_item_body: "Wählen Sie die Menge, die Sie lagern möchten",
+	jobs_page_modal_body_text: "Wählen Sie die Menge der Artikel, die Sie importieren möchten:",
+	jobs_page_modal_name: "Name",
+	jobs_page_modal_price: "Preis",
+	jobs_page_modal_max_amount: "Maximale Menge",
+	jobs_page_modal_amount: "Menge",
+	jobs_page_modal_final_price: "Endpreis:",
+	jobs_page_modal_truck_capacity: "LKW-Kapazität:",
+	jobs_page_must_select_checkbox: "Sie müssen mindestens ein Produkt zum Importieren auswählen",
 
 	market_items_stock: "Lagerbestand",
 	market_items_stock_full: "Voll",

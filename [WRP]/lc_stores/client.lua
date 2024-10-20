@@ -201,6 +201,8 @@ RegisterNUICallback('post', function(body, cb)
 		end
 		if body.event == "close" then
 			closeUI()
+		elseif body.event == "notify" then
+			exports['lc_utils']:notify(body.data.type,body.data.msg)
 		elseif (body.event == "startImportJob" or body.event == "startExportJob") and not canStartJob(current_market_id) then
 			-- Do nothing :)
 		else
@@ -385,7 +387,7 @@ AddEventHandler('stores:startJob', function(truck_level,is_import)
 		local has_error, error_message = Utils.Entity.isThereSomethingWrongWithThoseBoys(vehicles,peds)
 		if has_error then
 			deleteObject(object)
-			Utils.Vehicles.removeKeysFromPlate(truck_vehicle,truck_model)
+			Utils.Vehicles.removeKeysFromPlate(properties.plate,truck_model)
 			Utils.Blips.removeBlip(truck_blip)
 			Utils.Blips.removeBlip(route_blip)
 			PlaySoundFrontend(-1, "PROPERTY_PURCHASE", "HUD_AWARDS", false)
