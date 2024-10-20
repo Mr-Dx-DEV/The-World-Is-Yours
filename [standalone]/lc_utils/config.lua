@@ -8,7 +8,7 @@ Config.ESX_settings = {							-- (ESX Only) ESX settings
 	['esx_version'] = 'weight'					-- [weight|limit] Configure here if your inventory uses weight or limit
 }
 
-Config.locale = "en"							-- Set the file language [en/br/de/es/no/fr/zh-cn/ja]
+Config.locale = "en"							-- Set the file language [en/br/de/es/fr/no/fr/zh-cn/ja]
 
 Config.format = {
 	['currency'] = 'USD',						-- This is the currency format, so that your currency symbol appears correctly [Examples: BRL, USD, EUR] (Currency codes: https://taxsummaries.pwc.com/glossary/currency-codes)
@@ -21,10 +21,10 @@ Config.format = {
 Config.custom_scripts_compatibility = {
 	['fuel'] = "LegacyFuel",						-- [ox_fuel|ps-fuel|sna-fuel|cdn-fuel|LegacyFuel|default|other] Fuel script Compatibility
 	['inventory'] = "ox_inventory",					-- [ox_inventory|qs-inventory|ps-inventory|default|other] Inventory script Compatibility
-	['keys'] = "wasabi_carlock",						-- [qs-vehiclekeys|cd_garage|jaksam|wasabi_carlock|default|other] Keys script Compatibility
-	['mdt'] = "ps-mdt",						-- [ps-mdt|redutzu-mdt|default|other] MDT script Compatibility (to log weapon serial)
+	['keys'] = "default",						-- [qs-vehiclekeys|cd_garage|jaksam|wasabi_carlock|default|other] Keys script Compatibility
+	['mdt'] = "default",						-- [ps-mdt|redutzu-mdt|default|other] MDT script Compatibility (to log weapon serial)
 	['target'] = "ox_target",					-- [qb-target|ox_target|disabled|other] Target script Compatibility (disabled will use markers)
-	['notification'] = "default",				-- [okokNotify|qbcore|default|other] Notification script Compatibility
+	['notification'] = "qbcore",				-- [okokNotify|qbcore|ox_lib|default|other] Notification script Compatibility
 }
 
 Config.marker_style = 1							-- (Only if target is disabled) [1|2] There are 2 available styles for markers, choose them here

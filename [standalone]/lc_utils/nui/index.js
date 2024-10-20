@@ -215,9 +215,13 @@ Utils.showDefaultDangerModal = function (action, body = Utils.translate('confirm
 const exampleConfig = {
 	title: 'Custom Modal Title',
 	body: 'Custom Modal Body Text',
+	bodyHtml: '<p>Custom Modal Body Text that accept HTML</p>',
+	bodyImage: "https://shuffle.dev/randomizer/saas/bootstrap-pstls/1.0.0/static_elements/footer/10_awz.jpg",
+	footerText: "Custom Footer Text",
 	buttons: [
-		{ text: 'Cancel', class: 'btn btn-outline-primary', dismiss: true },
-		{ text: 'Confirm', class: 'btn btn-primary', dismiss: false, action: () => console.log('Confirmed') }
+		{ text: Utils.translate('confirmation_modal_cancel_button'), class: 'btn btn-outline-primary', dismiss: true },
+		{ text: Utils.translate('confirmation_modal_confirm_button'), class: 'btn btn-primary', dismiss: false, action: () => console.log('Confirmed') }
+		{ text: 'Submit', class: 'btn btn-primary', dismiss: false, type: 'submit' }
 	],
 	inputs: [
 		{
@@ -263,8 +267,9 @@ const exampleConfig = {
 			]
 		}
 	],
-	onSubmit: function(inputValues) {
-		console.log("Form submitted with input values:", inputValues);
+	onSubmit: function(formData) {
+		console.log("Form submitted with input values:", [...formData]);
+		let amount = formData.get("number-input-name"); // Get by element name
 		// You can perform further actions with the input values here
 	}
 };

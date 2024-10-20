@@ -6,7 +6,7 @@ Utils.String = {}
 Utils.CustomScripts = {}
 Utils.Config = Config
 Utils.Lang = {}
-Utils.Version = '1.1.5'
+Utils.Version = '1.1.7'
 
 exports('GetUtils', function()
 	return Utils
@@ -289,7 +289,7 @@ Citizen.CreateThread(function()
 	if GetCurrentResourceName() ~= "lc_utils" then return end
 	Wait(1000)
 
-	print("^2[lc_utils] Loaded! Support discord: https://discord.gg/TdKUp5bCG2 ^3[v"..Utils.Version.."]^7")
+	print("^2[lc_utils] Loaded! Support discord: https://discord.gg/U5YDgbh ^3[v"..Utils.Version.."]^7")
 
 	assert(Config, "^3You have errors in your config file, consider fixing it or redownload the original config.^7")
 	assert(Config.framework == "QBCore" or Config.framework == "ESX", string.format("^3The Config.framework must be set to ^1ESX^3 or ^1QBCore^3, its actually set to ^1%s^3.^7", Config.framework))
