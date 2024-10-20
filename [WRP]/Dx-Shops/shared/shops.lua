@@ -18,8 +18,7 @@ Locations = {
 		["blipcolour"] = 5,
 		["hideblip"] = false,
     }, ]]
-
-	 ["weedshop"] = {
+	["weedshop"] = {
         ["label"] = "Smoke On The Water",
 		["type"] = "items",
 		["model"] = {
@@ -36,6 +35,24 @@ Locations = {
 		['blipscale'] = 0.8,
 		["blipcolour"] = 0,
 		["hideblip"] = false,
+    },
+	 ["contract"] = {
+        ["label"] = "contract",
+		["type"] = "items",
+		["model"] = {
+			`a_m_y_hippy_01`,
+		},
+		["killable"] = false,
+		["logo"] = "https://i.imgur.com/bPcM0TM.png",
+        ["coords"] = {
+			vector4(-37.508, -1086.911, 27.274, 168.486),
+		},
+		["scenario"] = "WORLD_HUMAN_AA_SMOKE",
+        ["products"] = Products["contract"],
+        ["blipsprite"] = 140,
+		['blipscale'] = 0.8,
+		["blipcolour"] = 0,
+		["hideblip"] = true,
     },
  
 	--[[ ["leisureshop"] = {
