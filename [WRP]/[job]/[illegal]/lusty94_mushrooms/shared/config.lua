@@ -209,7 +209,7 @@ Config.DrugSettings = {
         OverDoseLevel = 1250, -- minimum level needed to overdose - set fairly high to prevent constant overdoses or match your highest level stated in the OverDoseLevels table below
         HealthRemoved = 50, -- amount of health to be removed when overdosing
         OverDoseCureAmount = math.random(30,50), -- amount of overdose metadata is removed when consuming indigo_mycota_cure
-        DeathCapTripChance = 50, -- chance for the player to have a trip when consuming a death cap mushroom or else they will die
+        DeathCapTripChance = 20, -- chance for the player to have a trip when consuming a death cap mushroom or else they will die
     },
     OverDoseLevels = { -- Change your overdose requirements here to suit your server set these as high as you want preset overdose increase -  if changing amounts dont forget to edit server file also where overdose values are
         150, -- level 2 

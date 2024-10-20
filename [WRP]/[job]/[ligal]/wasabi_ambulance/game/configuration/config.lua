@@ -196,7 +196,7 @@ Config.KnockoutFeature = {
 -- Last Stand (2 Stage death)
 Config.LastStand = true                -- Enable a 2 stage death. Where initially you can crawl around(Similiar to qb-ambulancejob)
 Config.DisableLastStandCrawl = false   -- Disable crawling within last stand
-Config.LastStandTickTime = 5 * seconds -- Everytime this time passes while in last stand,
+Config.LastStandTickTime = 30 * seconds -- Everytime this time passes while in last stand,
 ----------------------------------------- a random amount(8-15) amount of health will be deducted to similuate bleeding out
 Config.DisableHeadShotKill = false     -- When enabled, a player who is shot in the head will still go into last stand (Recommended to leave false)
 Config.StayInVehicleOnDeath = true

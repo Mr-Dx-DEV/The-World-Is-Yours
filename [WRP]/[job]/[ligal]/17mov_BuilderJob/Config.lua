@@ -110,31 +110,31 @@ Config.Clothes = {
 
     male = {
         ["mask"] = {clotheId = 0, variation = 0},
-        ["arms"] = {clotheId = 0, variation = 0},
+        ["arms"] = {clotheId = 32, variation = 0},
         ["pants"] = {clotheId = 9, variation = 4},
         ["bag"] = {clotheId = 0, variation = 0},
-        ["shoes"] = {clotheId = 25, variation = 0},
-        ["t-shirt"] = {clotheId = 59, variation = 1},
-        ["torso"] = {clotheId = 226, variation = 0},
+        ["shoes"] = {clotheId = 148, variation = 0},
+        ["t-shirt"] = {clotheId = 92, variation = 1},
+        ["torso"] = {clotheId = 127, variation = 0},
         ["decals"] = {clotheId = 0, variation = 0},
         ["kevlar"] = {clotheId = 0, variation = 0},
     },
 
-    maleHelmet = { clotheId = 145, variation = 1},
+    maleHelmet = { clotheId = 91, variation = 1},
     
     female = {
         ["mask"] = {clotheId = 0, variation = 0},
-        ["arms"] = {clotheId = 0, variation = 0},
-        ["pants"] = {clotheId = 109, variation = 15},
+        ["arms"] = {clotheId = 14, variation = 0},
+        ["pants"] = {clotheId = 143, variation = 1},
         ["bag"] = {clotheId = 0, variation = 0},
-        ["shoes"] = {clotheId = 25, variation = 0},
-        ["t-shirt"] = {clotheId = 36, variation = 1},
-        ["torso"] = {clotheId = 236, variation = 0},
+        ["shoes"] = {clotheId = 159, variation = 0},
+        ["t-shirt"] = {clotheId = 148, variation = 1},
+        ["torso"] = {clotheId = 184, variation = 1},
         ["decals"] = {clotheId = 0, variation = 0},
         ["kevlar"] = {clotheId = 0, variation = 0},
     },
 
-    femaleHelmet = { clotheId = 144, variation = 1},
+    femaleHelmet = { clotheId = 156, variation = 1},
 }
 
 Config.Lang = {

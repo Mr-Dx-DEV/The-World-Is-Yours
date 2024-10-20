@@ -2,7 +2,7 @@ OUTFITS = {
     ['onex-creation'] = {
         ['Male'] = {
             ["hat"] = {
-                item = 0,
+                item = 80,
                 texture = 0
             },
 
@@ -12,12 +12,12 @@ OUTFITS = {
             },
 
             ['arms'] = {
-                item = 19,
+                item = 1,
                 texture = 0
             },
 
             ['shirt'] = {
-                item = 58,
+                item = 15,
                 texture = 0
             },
 
@@ -27,24 +27,24 @@ OUTFITS = {
             },
 
             ["torso"] = {
-                item = 15,
+                item = 637,
                 texture = 0
             },
 
             ['shoes'] = {
-                item = 27,
+                item = 13,
                 texture = 0,
             },
 
             ['pants'] = {
-                item = 24,
+                item = 276,
                 texture = 0,
             },
         },
         ['Female'] = {
             ["hat"] = {
-                item = 0,
-                texture = 0
+                item = 132,
+                texture = 23
             },
 
             ['mask'] = {
@@ -53,12 +53,12 @@ OUTFITS = {
             },
 
             ['arms'] = {
-                item = 5,
+                item = 23,
                 texture = 0
             },
 
             ['shirt'] = {
-                item = 15,
+                item = 16,
                 texture = 0
             },
 
@@ -68,18 +68,18 @@ OUTFITS = {
             },
 
             ["torso"] = {
-                item = 23,
+                item = 481,
                 texture = 0
             },
 
             ['shoes'] = {
-                item = 27,
-                texture = 0,
+                item = 65,
+                texture = 4,
             },
 
             ['pants'] = {
-                item = 66,
-                texture = 0,
+                item = 223,
+                texture = 2,
             },
         }
     },

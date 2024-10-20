@@ -7032,7 +7032,7 @@ return {
 
 	["empty_weed_bag"] = {
 		label = "Empty Weed Bag",
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		description = "A small empty bag",

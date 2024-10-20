@@ -92,7 +92,7 @@ Config = {
     Opacity = 0.35, -- Percentage it'll show (0-1)
     
     -- If person is hired & online
-    HiredJob = 'police', -- Job to assign
+    HiredJob = 'police','lspd','safw','bcso','lsso','sahp','sadoc','usms','fbi','dhs','ss', -- Job to assign
     HiredGrade = 0, -- Grade to assign
 
     -- If person is fired & online
@@ -145,25 +145,39 @@ Config = {
     LBPhone = false, -- If you're using LB Phone ,then turn this true
     Fingerprint = false, -- If fingerprint should be showed or not
     AvailableTags = { -- Available tags to add (id always has to be unique | label)
-        {id = 1, label = 'Be aware'},
-        {id = 2, label = 'Dangerous'},
-        {id = 3, label = 'Wanted'},
-        {id = 4, label = 'Im batman'},
-        {id = 5, label = 'Bubble'}
+    {id = 1, label = 'Be Aware'},
+    {id = 2, label = 'Armed and Dangerous'},
+    {id = 3, label = 'Wanted'},
+    {id = 4, label = 'Mentally Unstable'},
+    {id = 5, label = 'Suspicious'},
+    {id = 6, label = 'Known Runner'},
+    {id = 7, label = 'Known Fighter'},
+    {id = 8, label = 'BOLO'},
+    {id = 9, label = 'Revoked Drivers license'},
+    {id = 10, label = 'CI'},
+    {id = 11, label = 'FFL'},
+    {id = 12, label = 'POLICE'},
+    {id = 13, label = 'DOJ'},
+    {id = 14, label = 'Distric Attorney Office'},
+    {id = 15, label = 'JUDGE'},
+    {id = 16, label = 'CITY OFFICIAL'},
+    {id = 17, label = 'Caution Double Name'},
     },
     -- Profiles page
 
     -- Incidents page
     IncidentTags = { -- Available tags to add (id always has to be unique | Label)
-        {id = 1, label = 'Incident tag 1'},
-        {id = 2, label = 'Incident tag 2'},
-        {id = 3, label = 'Incident tag 3'},
-        {id = 4, label = 'Incident tag 4'},
-        {id = 5, label = 'Incident tag 5'},
-        {id = 6, label = 'Incident tag 6'},
-        {id = 7, label = 'Incident tag 7'},
-        {id = 8, label = 'Incident tag 8'},
-        {id = 9, label = 'Incident tag 9'}
+    {id = 1, label = 'See Initial Officer Report'},
+    {id = 2, label = 'See CSU Report'},
+    {id = 3, label = 'See Multiple Reports'},
+    {id = 4, label = 'Turn over to Federal'},
+    {id = 5, label = 'Confidential Informant'},
+    {id = 6, label = 'Detective Investigation'},
+    {id = 7, label = 'See Fire Investigation'},
+    {id = 8, label = 'DFW Warden Report'},
+    {id = 9, label = 'BOLO'},
+    {id = 10, label = 'Warrant'},
+    {id = 11, label = 'Arrest Report to Follow'},
     },
     -- Incidents page
 
@@ -171,23 +185,33 @@ Config = {
     Report = {
         Categories = {'Investigative Report', 'Standard Report', 'Bubbles Report', 'Bubbles'}, -- Available categories to select
         Tags = {
-            {id = 1, label = 'Vagos', color = 'yellow'},
-            {id = 2, label = 'Ballas', color = 'purple'},
-            {id = 3, label = 'Families', color = 'green'},
-            {id = 4, label = 'Suspecious', color = 'orange'},
-            {id = 5, label = 'Suspecious Boxes', color = 'orange'},
-            {id = 6, label = 'Weird??', color = 'red'}
+            {id = 1, label = 'Unorganized Crime', color = 'yellow'},
+            {id = 2, label = 'Organized Crime Group', color = 'purple'},
+            {id = 3, label = 'Gang Crime', color = 'green'},
+            {id = 4, label = 'Other', color = 'orange'},
+            {id = 5, label = 'Suspicious', color = 'orange'},
+            {id = 6, label = 'Unknown Crime Group', color = 'red'},
+            {id = 7, label = 'Poacher', color = 'blue'},
         }
     },
     -- Report page
 
     -- Evidence page
     Evidence = {
-        Types = {'Murder Case', 'Other'}, -- Available categories to select
-        Tags = { -- Available tags to add (id always has to be unique | label)
-            {id = 1, label = 'Vagos'},
-            {id = 2, label = 'Ballas'},
-            {id = 3, label = 'Families'}
+        Types = {'Murder Case', 'Other Non-Traffic', 'Traffic', 'Criminal'}, -- Available categories to select
+         Tags = { -- Available tags to add (id always has to be unique | label)
+             {id = 1, label = 'Other'},
+             {id = 2, label = 'Gang Crime'},
+             {id = 3, label = 'Unorganized Crime'},
+             {id = 4, label = 'Organized Crime Group'},
+             {id = 5, label = 'Unknown Crime Group'},
+             {id = 6, label = 'Firearm '},
+             {id = 7, label = 'DNA'},
+             {id = 8, label = 'Harde vidence'},
+             {id = 9, label = 'Forensic'},
+             {id = 10, label = 'Blunt force'},
+             {id = 11, label = 'Bladed weapon'},
+             {id = 12, label = 'Fingerprint'},
         }
     },
     -- Evidence page
@@ -200,11 +224,16 @@ Config = {
             {id = 2, label = 'Depot'}
         },
         Tags = {
-            {id = 1, label = 'Example 1'},
-            {id = 2, label = 'Example 2'},
-            {id = 3, label = 'Example 3'},
-            {id = 4, label = 'Example 4'},
-            {id = 5, label = 'Example 5'},
+            {id = 1, label = 'BOLO'},
+            {id = 2, label = 'Warrant'},
+            {id = 3, label = 'Tuner Chipped'},
+            {id = 4, label = 'Habitual speeder'},
+            {id = 5, label = 'Trafficker Veh'},
+            {id = 6, label = 'Depot Veh'},
+            {id = 7, label = 'Police Seized Veh'},
+            {id = 8, label = 'Stolen Veh'},
+            {id = 9, label = 'FOP tag'},
+            {id = 10, label = 'UC'},
         }
     },
     -- Vehicles page

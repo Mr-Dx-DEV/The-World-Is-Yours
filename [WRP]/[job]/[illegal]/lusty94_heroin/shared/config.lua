@@ -56,13 +56,13 @@ Config.CoreSettings = {
         --use 'ox' for ox_inventory shops
     },
     Police = {
-        MinCops = 1, -- minimum amount of cops required on duty to request mission
+        MinCops = 0, -- minimum amount of cops required on duty to request mission
         Type = 'ps' -- support for qb-policejob and ps_dispatch
         --use 'qb' for qb-policejob
         --use 'ps' for ps-dispatch
     },
     Phone = {
-        Type = 'qs' -- support for qb-phone and qs-smartphone
+        Type = 'custom' -- support for qb-phone and qs-smartphone
         --use 'qb' for qb-phone
         --use 'qs' for qs-smartphone
         --use 'custom' for your own phone script and then make sure to add the emails snippet required for the supply mission

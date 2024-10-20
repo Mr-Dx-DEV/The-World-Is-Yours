@@ -53,7 +53,10 @@ Products = {
         { name = "mango", price = 5, amount = 250 },
         { name = "ice", price = 5, amount = 250 }, 
     },
-
+    ["contract"] = {
+        { name = "contract", price = 10000, amount = 250 },
+        
+    },
     --[[ ["collectors"] = {
         { name = "nukexd_boosterpack", price = 20, amount = 250, },
         { name = "mystery_box1", price = 300, amount = 5, requiredJob = { ["collectors"] = 3,  } },
