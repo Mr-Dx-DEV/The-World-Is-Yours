@@ -9,11 +9,11 @@
 Config = {
     -- General Settings
     requireditem = 'money',
-    requireditemamount = 1000,
+    requireditemamount = 10000,
     repairtime = 5000,
     repairItem = 'gunrepairkit',
     
-    requireGunRepairKit = true, -- Require weapon repair kit for repairs
+    requireGunRepairKit = false, -- Require weapon repair kit for repairs
 
     progressType = 'circle', -- 'bar' or 'circle'
     progressPosition = 'middle', -- Only applies if progressType == 'circle', 'middle' or 'bottom'
