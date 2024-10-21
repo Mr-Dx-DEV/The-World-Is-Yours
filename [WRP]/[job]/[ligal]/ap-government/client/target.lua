@@ -2,7 +2,6 @@ QBCore = exports[Config.FrameworkExport]:GetCoreObject()
 
 local cfg = Config.Target
 local qbTarget = Config.Interactions.qbTarget
-local oxTarget = Config.Interactions.oxTarget
 local qTarget = Config.Interactions.qTarget
 
 RegisterNetEvent('ap-government:notify')
@@ -40,7 +39,7 @@ checkJob = function(name, grade)
 end
 
 Citizen.CreateThread(function()
-  local qbtargetcfg, oxtargetcfg = cfg['qb-target'], cfg['ox-target']
+  local qbtargetcfg = cfg['qb-target']
   if qbTarget == true then
     if qbtargetcfg['votingSystem']['votingStaff']['active'] == true then
       local input = {
@@ -52,7 +51,9 @@ Citizen.CreateThread(function()
         },
       }
       if Config.VotingSettings.Job then
-        table.insert(input, {type = "client", event = "ap-government:client:staffVotingMenu", icon = 'fas fa-sign-in-alt', label = 'Voting Management', job = {[qbtargetcfg['votingSystem']['votingStaff']['ped'].job.name] = qbtargetcfg['votingSystem']['votingStaff']['ped'].job.grade}})
+        table.insert(input, {type = "client", event = "ap-government:client:viewRequestedCandidates", icon = 'fas fa-sign-in-alt', label = 'View Candidate Applications', job = {[qbtargetcfg['votingSystem']['votingStaff']['ped'].job.name] = qbtargetcfg['votingSystem']['votingStaff']['ped'].job.grade}})
+        table.insert(input, {type = "client", event = "ap-government:client:viewCandidates", icon = 'fas fa-sign-in-alt', label = 'View Current Candidates', job = {[qbtargetcfg['votingSystem']['votingStaff']['ped'].job.name] = qbtargetcfg['votingSystem']['votingStaff']['ped'].job.grade}})
+        table.insert(input, {type = "client", event = "ap-government:client:votingOptions", icon = 'fas fa-sign-in-alt', label = 'Voting Options', job = {[qbtargetcfg['votingSystem']['votingStaff']['ped'].job.name] = qbtargetcfg['votingSystem']['votingStaff']['ped'].job.grade}})
       end
       exports['qb-target']:SpawnPed({
         model = qbtargetcfg['votingSystem']['votingStaff']['ped'].ped.model, 
@@ -77,14 +78,6 @@ Citizen.CreateThread(function()
             label = "Vote For Candidate"
         }
       }
-      if Config.VotingLaws then
-        table.insert(onSelect, {
-          type = "client",
-          event = "ap-government:client:openLawVoting",
-          icon = "fas fa-sign-in-alt",
-          label = "Vote For Laws"
-        })
-      end
       for k,v in pairs(qbtargetcfg['votingSystem']['votingPoints']['points']) do
         if v.active == true then
           exports['qb-target']:AddBoxZone(v.name, v.coords, v.length, v.width, {
@@ -126,25 +119,6 @@ Citizen.CreateThread(function()
       end
     end
     if qbtargetcfg['appointmentsPed']['active'] == true then
-
-      local options = {
-        {
-          type = "server",
-          event = "ap-government:server:appointmentData", 
-          icon = 'fas fa-sign-in-alt',
-          label = 'Mayor Appointments'
-        },
-      }
-
-      if Config.VotingLaws then
-        table.insert(options, {
-          type = "client",
-          event = "ap-government:client:passedLaws", 
-          icon = 'fas fa-sign-in-alt',
-          label = 'Passed Laws'
-        })
-      end
-
       exports['qb-target']:SpawnPed({
         model = qbtargetcfg['appointmentsPed']['ped'].ped.model, 
         coords = qbtargetcfg['appointmentsPed']['ped'].coords, 
@@ -153,129 +127,18 @@ Citizen.CreateThread(function()
         invincible = qbtargetcfg['appointmentsPed']['ped'].invincible, 
         blockevents = qbtargetcfg['appointmentsPed']['ped'].blockevents, 
         target = { 
-          options = options,
+          options = { 
+            { 
+              type = "server",
+              event = "ap-government:server:appointmentData", 
+              icon = 'fas fa-sign-in-alt',
+              label = 'Mayor Appointments'
+            }
+          },
           distance = 2.5, 
         },
         spawnNow = true,
       })
-    end
-  elseif oxTarget == true then
-    if oxtargetcfg['votingSystem']['votingStaff']['active'] == true then
-      local hash = GetHashKey(oxtargetcfg['votingSystem']['votingStaff']['ped'].ped.model)
-  
-      while not HasModelLoaded(hash) do
-        RequestModel(hash)
-        Wait(0)
-      end
-
-      local ent = CreatePed(0, hash, oxtargetcfg['votingSystem']['votingStaff']['ped'].coords.x, oxtargetcfg['votingSystem']['votingStaff']['ped'].coords.y, oxtargetcfg['votingSystem']['votingStaff']['ped'].coords.z, oxtargetcfg['votingSystem']['votingStaff']['ped'].coords[4], false, false)
-  
-      FreezeEntityPosition(ent,true)
-      TaskSetBlockingOfNonTemporaryEvents(ent,true)
-      SetEntityInvincible(ent,true)
-
-      local input = {
-        { 
-          name = 'apply_candidate_menu',
-          event = "ap-government:client:applyCandidate", 
-          icon = 'fa-solid fa-sign-in-alt',
-          label = 'Apply As Candidate'
-        },
-      }
-
-      if Config.VotingSettings.Job then
-        table.insert(input, {name = 'viewRequestedCandidates', event = "ap-government:client:staffVotingMenu", icon = 'fas fa-sign-in-alt', label = 'Voting Management', groups = oxtargetcfg['votingSystem']['votingStaff']['ped'].job.name})
-      end
-      
-      exports["ox_target"]:addLocalEntity(ent, input)
-    end
-    if oxtargetcfg['votingSystem']['votingPoints']['active'] == true then
-      local onSelect = {
-        {
-            name = "isRegistered",
-            serverEvent = "ap-government:server:isRegistered",
-            icon = "fas fa-sign-in-alt",
-            label = "Vote For Candidate"
-        }
-      }
-      if Config.VotingLaws then
-        table.insert(onSelect, {
-          name = "openLawVoting",
-          event = "ap-government:client:openLawVoting",
-          icon = "fas fa-sign-in-alt",
-          label = "Vote For Laws"
-        })
-      end
-      for k,v in pairs(oxtargetcfg['votingSystem']['votingPoints']['points']) do
-        if v.active == true then
-          exports.ox_target:addBoxZone({
-            coords=v.coords,
-            size=v.size,
-            rotation=v.rotation, 
-            debug=false,
-            drawSprite=true,
-            options=onSelect
-          })
-        end
-      end
-    end
-    if oxtargetcfg['majorOffice']['active'] == true then
-      local onSelect = {
-        {
-            name = "majorOffice",
-            event = "ap-government:client:majorOffice",
-            icon = "fas fa-sign-in-alt",
-            label = "Major Options",
-            groups = oxtargetcfg['majorOffice']['job'].name,
-        }
-      }
-      for k,v in pairs(oxtargetcfg['majorOffice']['points']) do
-        if v.active == true then
-          exports.ox_target:addBoxZone({
-            coords=v.coords,
-            size=v.size,
-            rotation=v.rotation, 
-            debug=false,
-            drawSprite=true,
-            options=onSelect
-          })
-        end
-      end
-    end
-    if oxtargetcfg['appointmentsPed']['active'] == true then
-      local hash = GetHashKey(oxtargetcfg['appointmentsPed']['ped'].ped.model)
-  
-      while not HasModelLoaded(hash) do
-        RequestModel(hash)
-        Wait(0)
-      end
-
-    
-      local ent = CreatePed(0, hash, oxtargetcfg['appointmentsPed']['ped'].coords, false, false)
-  
-      FreezeEntityPosition(ent,true)
-      TaskSetBlockingOfNonTemporaryEvents(ent,true)
-      SetEntityInvincible(ent,true)
-
-      local input = {
-        { 
-          name = 'appointmentData',
-          serverEvent = "ap-government:server:appointmentData", 
-          icon = 'fa-solid fa-sign-in-alt',
-          label = 'Mayor Appointments'
-        },
-      }
-
-      if Config.VotingLaws then
-        table.insert(input, {
-          name = 'passedLaws',
-          event = "ap-government:client:passedLaws", 
-          icon = 'fa-solid fa-sign-in-alt',
-          label = 'Passed Laws'
-        })
-      end
-
-      exports["ox_target"]:addLocalEntity(ent, input)
     end
   end
 end)
@@ -321,7 +184,9 @@ Citizen.CreateThread(function()
       }
 
       if Config.VotingSettings.Job then
-        table.insert(input, {event = "ap-government:client:staffVotingMenu", icon = 'fas fa-sign-in-alt', label = 'Voting Management', job = {[qtargetcfg['votingSystem']['votingStaff']['ped'].job.name] = qtargetcfg['votingSystem']['votingStaff']['ped'].job.grade}})
+        table.insert(input, {event = "ap-government:client:viewRequestedCandidates", icon = 'fas fa-sign-in-alt', label = 'View Candidate Applications', job = {[qtargetcfg['votingSystem']['votingStaff']['ped'].job.name] = qtargetcfg['votingSystem']['votingStaff']['ped'].job.grade}})
+        table.insert(input, {event = "ap-government:client:viewCandidates", icon = 'fas fa-sign-in-alt', label = 'View Current Candidates', job = {[qtargetcfg['votingSystem']['votingStaff']['ped'].job.name] = qtargetcfg['votingSystem']['votingStaff']['ped'].job.grade}})
+        table.insert(input, {event = "ap-government:client:votingOptions", icon = 'fas fa-sign-in-alt', label = 'Voting Options', job = {[qtargetcfg['votingSystem']['votingStaff']['ped'].job.name] = qtargetcfg['votingSystem']['votingStaff']['ped'].job.grade}})
       end
       
       exports['qtarget']:AddTargetModel({qtargetcfg['votingSystem']['votingStaff']['ped'].ped.model}, {
@@ -350,24 +215,14 @@ Citizen.CreateThread(function()
       TaskSetBlockingOfNonTemporaryEvents(ent,true)
       SetEntityInvincible(ent,true)
 
-      local options = {
-        {
-          event = "ap-government:target:appointmentData", 
-          icon = 'fas fa-sign-in-alt',
-          label = 'Mayor Appointments'
-        },
-      }
-
-      if Config.VotingLaws then
-        table.insert(options, {
-          event = "ap-government:client:passedLaws", 
-          icon = 'fas fa-sign-in-alt',
-          label = 'Passed Laws'
-        })
-      end
-
       exports['qtarget']:AddTargetModel({qtargetcfg['appointmentsPed']['ped'].ped.model}, {
-        options = options,
+        options = {
+            {
+                event = "ap-government:target:appointmentData", 
+                icon = 'fas fa-sign-in-alt',
+                label = 'Mayor Appointments'
+            },
+        },
         distance = 2.5,
       })
     end
@@ -379,13 +234,6 @@ Citizen.CreateThread(function()
             label = "Vote For Candidate"
         }
       }
-      if Config.VotingLaws then
-        table.insert(onSelect, {
-          event = "ap-government:client:openLawVoting",
-          icon = "fas fa-sign-in-alt",
-          label = "Vote For Laws"
-        })
-      end
       for k,v in pairs(qtargetcfg['votingSystem']['votingPoints']['points']) do
         if v.active == true then
           exports['qtarget']:AddBoxZone(v.name, v.coords, v.length, v.width, {
@@ -549,7 +397,9 @@ RegisterNetEvent('ap-government:client:drawtext:voteSystem', function()
   }
   if Config.VotingSettings.Job then
     if checkJob(job.name, job.grade) then
-      table.insert(VotingOptionsMenu, {header = LangClient[Config.Language].menus['staffVotingMenu_header_one'], txt = LangClient[Config.Language].menus['staffVotingMenu_txt_one'], params = {isServer = false, event = "ap-government:client:staffVotingMenu", args = {}}})
+      table.insert(VotingOptionsMenu, {header = LangClient.menus['staffVotingMenu_header_one'], txt = LangClient.menus['staffVotingMenu_txt_one'], params = {isServer = false, event = "ap-government:client:viewRequestedCandidates", args = {}}})
+      table.insert(VotingOptionsMenu, {header = LangClient.menus['staffVotingMenu_header_two'], txt = LangClient.menus['staffVotingMenu_txt_two'], params = {isServer = false, event = "ap-government:client:viewCandidates", args = {}}})
+      table.insert(VotingOptionsMenu, {header = LangClient.menus['staffVotingMenu_header_three'], txt = LangClient.menus['staffVotingMenu_txt_three'], params = {isServer = false, event = "ap-government:client:votingOptions", args = {}}})
     end
   end
   ContextMenu(VotingOptionsMenu)
