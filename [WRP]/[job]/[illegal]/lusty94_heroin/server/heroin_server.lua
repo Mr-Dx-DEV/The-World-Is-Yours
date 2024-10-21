@@ -1,26 +1,29 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-local MetaDataName = Config.XP.MetaDataName
 local OverDoseName = Config.DrugSettings.Effects.OverDoseMetaDataName
 local NotifyType = Config.CoreSettings.Notify.Type
 local InvType = Config.CoreSettings.Inventory.Type
 local Levels = Config.XP.Levels
 local OverDoseLevels = Config.DrugSettings.OverDoseLevels
-local xpChance = Config.XP.XPChance
+
 
 ----------< USEABLE ITEMS >-------------
 
-local useItems = {
+local heroinItems = {
     { name = 'heroinprocessingtable',   event = 'lusty94_heroin:client:openProcessingTable'},
     { name = 'heroin_vial',             event = 'lusty94_heroin:client:TakeHeroin'},
-    { name = 'overdosecure',            event = 'lusty94_heroin:client:TakeOverDoseCure'},
 }
 
-for k,v in pairs(useItems) do
+for k,v in pairs(heroinItems) do
     QBCore.Functions.CreateUseableItem(v.name, function(source, item)
         TriggerClientEvent(v.event, source)
     end)
 end
 
+if Config.DrugSettings.Effects.OverDose then
+    QBCore.Functions.CreateUseableItem('heroinoverdosecure', function(source, item)
+        TriggerClientEvent('lusty94_heroin:client:TakeOverDoseCure', source)
+    end)
+end
 
 --notification function
 local function SendNotify(src, msg, type, time, title)
@@ -39,6 +42,67 @@ local function SendNotify(src, msg, type, time, title)
     elseif NotifyType == 'ox' then 
         TriggerClientEvent('ox_lib:notify', src, ({ title = title, description = msg, length = time, type = type, style = 'default'}))
     end
+end
+
+--remove items
+local function removeItem(src, item, amount)
+    if InvType == 'qb' then
+        if exports['qb-inventory']:RemoveItem(src, item, amount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'remove', amount)
+        end
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src, item, amount)
+    end
+end
+
+--add items
+local function addItem(src, item, amount)
+    if InvType == 'qb' then
+        if exports['qb-inventory']:AddItem(src, item, amount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add', amount)
+        end
+    elseif InvType == 'ox' then
+        if exports.ox_inventory:CanCarryItem(src, item, amount) then
+            exports.ox_inventory:AddItem(src, item, amount)
+        else
+            SendNotify(src, Config.Language.Notifications.CantCarry, 'error', 5000)
+        end
+    end
+end
+
+
+--return amount for heroin processing
+local function calculateHeroinReturn(DrugXP)
+    if Config.XP.Enabled then
+        if DrugXP <= 150 then
+            return math.random(1, 3)
+        elseif DrugXP <= 500 then
+            return math.random(3, 5)
+        elseif DrugXP <= 750 then
+            return math.random(5, 7)
+        elseif DrugXP <= 1250 then
+            return math.random(7, 9)
+        elseif DrugXP <= 1500 then
+            return math.random(9, 11)
+        elseif DrugXP <= 2200 then
+            return math.random(11, 13)
+        end
+    else
+        return math.random(3,5) -- edit item reward amounts if not using XP here - THIS IS USED GLOBALLY FOR ALL ITEMS IN THIS SCRIPT SO DO NOT SET TOO HIGH
+    end
+end
+
+local function giveXP()
+    if Config.XP.Enabled then
+        local MetaDataName = Config.XP.MetaDataName
+        local DrugXP = Player.PlayerData.metadata[MetaDataName]
+        local xpChance = Config.XP.XPChance
+        local xpAmount = math.random(5,10) -- edit XP reward here
+        if xpChance >= math.random(1,100) then
+            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
+            SendNotify(src,Config.Language.Notifications.EarnedXp, 'error', 2000)
+        end
+    end	
 end
 
 
@@ -187,7 +251,7 @@ QBCore.Functions.CreateCallback('lusty94_heroin:server:StartMission', function(s
         cb(true)
     else
         cb(false)
-        SendNotify(src,Config.Language.Notifications.NoCopsName, 'error', 2500)
+        SendNotify(src,Config.Language.Notifications.NoCops, 'error', 2500)
     end
 end)
 
@@ -195,48 +259,17 @@ end)
 
 ----------< EVENTS >-------------
 
+
+
 --pick OpiumPlants
 RegisterServerEvent('lusty94_heroin:server:PickOpiumPlants', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
-    local xpAmount = math.random(5,10) -- edit XP reward here
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            amount = math.random(2,5)
-        elseif DrugXP <= 500 then
-            amount = math.random(5,9)
-        elseif DrugXP <= 750 then
-            amount = math.random(9, 13)
-        elseif DrugXP <= 1250 then
-            amount = math.random(13, 18)
-        elseif DrugXP <= 1500 then
-            amount = math.random(18, 25)
-        elseif DrugXP <= 2200 then
-            amount = math.random(25, 32)
-        else
-            amount = math.random(32,40)
-        end
-    else 
-        amount = math.random(3,6)
-    end
-    if InvType == 'qb' then
-        Player.Functions.AddItem("opiumsap", amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["opiumsap"], "add", amount)
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, "opiumsap", amount) then
-            exports.ox_inventory:AddItem(src,"opiumsap", amount)
-        else
-            SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    local returnAmount = calculateHeroinReturn(DrugXP)
+    addItem(src, 'opiumsap', returnAmount)
+    giveXP()
 end)
 
 
@@ -247,39 +280,18 @@ RegisterServerEvent('lusty94_heroin:server:GetLime', function()
 	local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            amount = math.random(2,5)
-        elseif DrugXP <= 500 then
-            amount = math.random(5,9)
-        elseif DrugXP <= 750 then
-            amount = math.random(9, 13)
-        elseif DrugXP <= 1250 then
-            amount = math.random(13, 18)
-        elseif DrugXP <= 1500 then
-            amount = math.random(18, 25)
-        elseif DrugXP <= 2000 then
-            amount = math.random(25, 32)
-        else
-            amount = math.random(32,40)
-        end
-    else amount = math.random(3,6) end
-    if InvType == 'qb' then
-        Player.Functions.AddItem("limepowder", amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["limepowder"], "add", amount)
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, "limepowder", amount) then    
-            exports.ox_inventory:AddItem(src,"limepowder", amount)
-        else
-            SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
-        end
+    local returnAmount = calculateHeroinReturn(DrugXP)
+    -- IF USING DRUG SCRIPTS THEN UNCOMMENT CEMENT BELOW AS THIS IS NEEDED FOR OTHER SCRIPTS [ COCIANE ]
+    -- cocaine and heroin scripts share target models for the construction pallets! IF USING BOTH SCRIPTS THEN USE ONE OR THE OTHER TO GET THE ITEMS REQUIRED
+    local items = { 
+        'limepowder',
+        --[[ 'cement', ]]
+    }
+    for _, palletItems in pairs(items) do
+        addItem(src, palletItems, returnAmount)
+        Wait(500)
     end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    giveXP()
 end)
 
 
@@ -289,46 +301,11 @@ RegisterServerEvent('lusty94_heroin:server:GetEther', function(amount)
 	local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            amount = math.random(2,5)
-        elseif DrugXP <= 500 then
-            amount = math.random(5,9)
-        elseif DrugXP <= 750 then
-            amount = math.random(9, 13)
-        elseif DrugXP <= 1250 then
-            amount = math.random(13, 18)
-        elseif DrugXP <= 1500 then
-            amount = math.random(18, 25)
-        elseif DrugXP <= 2000 then
-            amount = math.random(25, 32)
-        else
-            amount = math.random(32,40)
-        end
-    else 
-        amount = math.random(3,6)
-    end
-    if InvType == 'qb' then
-        if Player.Functions.RemoveItem(Config.CoreSettings.Props.Ether.RequiredItem, 1) then
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.CoreSettings.Props.Ether.RequiredItem], "remove")
-            Player.Functions.AddItem("ether", amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["ether"], "add", amount)
-        end
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:RemoveItem(src,Config.CoreSettings.Props.Ether.RequiredItem, 1) then
-            if exports.ox_inventory:CanCarryItem(src, "ether", amount) then
-                exports.ox_inventory:AddItem(src,"ether", amount)
-            else
-                SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
-            end
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    local returnAmount = calculateHeroinReturn(DrugXP)
+    removeItem(src, Config.CoreSettings.Props.Ether.RequiredItem, 1)
+    Wait(500)
+    addItem(src, 'ether', returnAmount)
+    giveXP()
 end)
 
 --pick HydrochloricAcid
@@ -337,44 +314,11 @@ RegisterServerEvent('lusty94_heroin:server:GetHydrochloricAcid', function()
 	local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            amount = math.random(2,5)
-        elseif DrugXP <= 500 then
-            amount = math.random(5,9)
-        elseif DrugXP <= 750 then
-            amount = math.random(9, 13)
-        elseif DrugXP <= 1250 then
-            amount = math.random(13, 18)
-        elseif DrugXP <= 1500 then
-            amount = math.random(18, 25)
-        elseif DrugXP <= 2000 then
-            amount = math.random(25, 32)
-        else
-            amount = math.random(32,40)
-        end
-    else amount = math.random(3,6) end
-    if InvType == 'qb' then
-        if Player.Functions.RemoveItem(Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, 1) then
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.CoreSettings.Props.HydrochloricAcid.RequiredItem], "remove")
-            Player.Functions.AddItem("hydrochloricacid", amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["hydrochloricacid"], "add", amount)
-        end
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:RemoveItem(src,Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, 1) then
-            if exports.ox_inventory:CanCarryItem(src, "hydrochloricacid", amount) then    
-                exports.ox_inventory:AddItem(src,"hydrochloricacid", amount)
-            else
-                SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
-            end
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    local returnAmount = calculateHeroinReturn(DrugXP)
+    removeItem(src, Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, 1)
+    Wait(500)
+    addItem(src, 'hydrochloricacid', returnAmount)
+    giveXP()
 end)
 
 
@@ -385,43 +329,35 @@ RegisterServerEvent('lusty94_heroin:server:SearchGuards', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
     local cashenabled = Config.Processing.Mission.FindCash
-    local cashchance = Config.Processing.Mission.CashChance
-    local cashamount = Config.Processing.Mission.CashAmount
-    if not Player then return end
     local chance = Config.CoreSettings.Chances.SearchBody
+    if not Player then return end
     if chance >= math.random(1,100)  then
         local items = { 'acetone', 'papaverine', 'noscapine',} -- add more items here if you wish but makes sure to change here if you change recipe in config
-        local itemsAmount
-        for _, item in pairs(items) do
-            itemsAmount = math.random(2,4)
-            if InvType == 'qb' then
-                Player.Functions.AddItem(item, itemsAmount)
-                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[items], "add", itemsAmount)
-            elseif InvType == 'ox' then
-                if exports.ox_inventory:CanCarryItem(src, item, itemsAmount) then 
-                    exports.ox_inventory:AddItem(src, item, itemsAmount)
-                else
-                    SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
-                end
-            end
+        for _, rewards in pairs(items) do
+            local itemsAmount = math.random(2,4)
+            Wait(500)
+            addItem(src, rewards, itemsAmount)
         end
-        if cashenabled then 
+        if cashenabled then
+            local cashchance = Config.Processing.Mission.CashChance
+            local cashamount = Config.Processing.Mission.CashAmount
             if cashchance >= math.random(1,100) then
                 if InvType == 'qb' then
-                    Player.Functions.AddMoney('cash', cashamount, "supplies-mission")
+                    Player.Functions.AddMoney('cash', cashamount)
                 elseif InvType == 'ox' then
-                    if exports.ox_inventory:CanCarryItem(src, "money", cashamount) then 
-                        exports.ox_inventory:AddItem(src,"money", cashamount)
+                    if exports.ox_inventory:CanCarryItem(src, 'money', cashamount) then
+                        exports.ox_inventory:AddItem(src, 'money', cashamount)
                     else
-                        SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
+                        SendNotify(src, Config.Language.Notifications.CantCarry, 'error', 5000)
                     end
                 end
             end
         end
     else
-        SendNotify(src, 'You didnt find anything of use.', 'error', 2000)
+        SendNotify(src, Config.Language.Notifications.NothingFound, 'error', 2000)
     end
 end)
+
 
 
 --process heroin base
@@ -429,103 +365,34 @@ RegisterNetEvent('lusty94_heroin:server:ProcessHeroinBase', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
-    local xpAmount = math.random(5,10) -- Edit xp reward here
+    local returnAmount = calculateHeroinReturn(DrugXP)
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
-        end
-    else returnAmount = Config.Processing.HeroinBase.ProcessedItemAmount end -- edit amount given if not using xp here
-    if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.HeroinBase.RequiredItemName, Config.Processing.HeroinBase.RequiredItemAmount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.HeroinBase.RequiredItemName], 'remove', Config.Processing.HeroinBase.RequiredItemAmount)
-            Player.Functions.RemoveItem(Config.Processing.HeroinBase.RequiredItem2Name, Config.Processing.HeroinBase.RequiredItem2Amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.HeroinBase.RequiredItem3Name], 'remove', Config.Processing.HeroinBase.RequiredItem2Amount)
-            Player.Functions.RemoveItem(Config.Processing.HeroinBase.RequiredItem3Name, Config.Processing.HeroinBase.RequiredItem3Amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.HeroinBase.RequiredItem3Name], 'remove', Config.Processing.HeroinBase.RequiredItem3Amount)
-            Player.Functions.RemoveItem(Config.Processing.HeroinBase.RequiredItem4Name, Config.Processing.HeroinBase.RequiredItem4Amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.HeroinBase.RequiredItem4Name], 'remove', Config.Processing.HeroinBase.RequiredItem4Amount)
-        
-            Player.Functions.AddItem(Config.Processing.HeroinBase.ProcessedItemName, returnAmount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.HeroinBase.ProcessedItemName], 'add', returnAmount)
-        
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.HeroinBase.ProcessedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.HeroinBase.RequiredItemName, Config.Processing.HeroinBase.RequiredItemAmount)
-            exports.ox_inventory:RemoveItem(src,Config.Processing.HeroinBase.RequiredItem2Name, Config.Processing.HeroinBase.RequiredItem2Amount)
-            exports.ox_inventory:RemoveItem(src,Config.Processing.HeroinBase.RequiredItem3Name, Config.Processing.HeroinBase.RequiredItem3Amount)
-            exports.ox_inventory:RemoveItem(src,Config.Processing.HeroinBase.RequiredItem4Name, Config.Processing.HeroinBase.RequiredItem4Amount)
-            exports.ox_inventory:AddItem(src,Config.Processing.HeroinBase.ProcessedItemName, returnAmount)
-        else
-            SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    removeItem(src, Config.Processing.HeroinBase.RequiredItemName, Config.Processing.HeroinBase.RequiredItemAmount)
+    Wait(500)
+    removeItem(src, Config.Processing.HeroinBase.RequiredItem2Name, Config.Processing.HeroinBase.RequiredItem2Amount)
+    Wait(500)
+    removeItem(src, Config.Processing.HeroinBase.RequiredItem3Name, Config.Processing.HeroinBase.RequiredItem3Amount)
+    Wait(500)
+    removeItem(src, Config.Processing.HeroinBase.RequiredItem4Name, Config.Processing.HeroinBase.RequiredItem4Amount)
+    Wait(500)
+    addItem(src, Config.Processing.HeroinBase.ProcessedItemName, returnAmount)
 end)
+
 
 --process pure heroin
 RegisterNetEvent('lusty94_heroin:server:ProcessPureHeroin', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
-    local xpAmount = math.random(5,10) -- Edit xp reward here
+    local returnAmount = calculateHeroinReturn(DrugXP)
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
-        end
-    else returnAmount = Config.Processing.PureHeroin.ProcessedItemAmount end
-    if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.PureHeroin.RequiredItemName, Config.Processing.PureHeroin.RequiredItemAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.PureHeroin.RequiredItemName], 'remove', Config.Processing.PureHeroin.RequiredItemAmount)
-        Player.Functions.RemoveItem(Config.Processing.PureHeroin.RequiredItem2Name, Config.Processing.PureHeroin.RequiredItem2Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.PureHeroin.RequiredItem3Name], 'remove', Config.Processing.PureHeroin.RequiredItem2Amount)
-        Player.Functions.RemoveItem(Config.Processing.PureHeroin.RequiredItem3Name, Config.Processing.PureHeroin.RequiredItem3Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.PureHeroin.RequiredItem3Name], 'remove', Config.Processing.PureHeroin.RequiredItem3Amount)
-
-        Player.Functions.AddItem(Config.Processing.PureHeroin.ProcessedItemName, returnAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.PureHeroin.ProcessedItemName], 'add', returnAmount)
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.PureHeroin.ProcessedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.PureHeroin.RequiredItemName, Config.Processing.PureHeroin.RequiredItemAmount)
-            exports.ox_inventory:RemoveItem(src,Config.Processing.PureHeroin.RequiredItem2Name, Config.Processing.PureHeroin.RequiredItem2Amount)
-            exports.ox_inventory:RemoveItem(src,Config.Processing.PureHeroin.RequiredItem3Name, Config.Processing.PureHeroin.RequiredItem3Amount)
-            exports.ox_inventory:AddItem(src,Config.Processing.PureHeroin.ProcessedItemName, returnAmount)
-        else
-            SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    removeItem(src, Config.Processing.PureHeroin.RequiredItemName, Config.Processing.PureHeroin.RequiredItemAmount)
+    Wait(500)
+    removeItem(src, Config.Processing.PureHeroin.RequiredItem2Name, Config.Processing.PureHeroin.RequiredItem2Amount)
+    Wait(500)
+    removeItem(src, Config.Processing.PureHeroin.RequiredItem3Name, Config.Processing.PureHeroin.RequiredItem3Amount)
+    Wait(500)
+    addItem(src, Config.Processing.PureHeroin.ProcessedItemName, returnAmount)
 end)
 
 -- process heroin vial
@@ -533,46 +400,13 @@ RegisterServerEvent('lusty94_heroin:server:ProcessHeroinVial', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
-    local xpAmount = math.random(5,10) -- Edit xp reward here
+    local returnAmount = calculateHeroinReturn(DrugXP)
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
-        end
-    else returnAmount = Config.Processing.Bagging.HeroinVial.BaggedItemAmount end
-    if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.Bagging.HeroinVial.RequiredItemName, Config.Processing.Bagging.HeroinVial.RequiredItemAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.HeroinVial.RequiredItemName], 'remove', Config.Processing.Bagging.HeroinVial.RequiredItemAmount)
-        Player.Functions.RemoveItem(Config.Processing.Bagging.HeroinVial.RequiredItem3Name, Config.Processing.Bagging.HeroinVial.RequiredItem3Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.HeroinVial.RequiredItem3Name], 'remove', Config.Processing.Bagging.HeroinVial.RequiredItem3Amount)
-
-        Player.Functions.AddItem(Config.Processing.Bagging.HeroinVial.BaggedItemName, returnAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.HeroinVial.BaggedItemName], 'add', returnAmount)
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.Bagging.HeroinVial.BaggedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Bagging.HeroinVial.RequiredItemName, Config.Processing.Bagging.HeroinVial.RequiredItemAmount)
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Bagging.HeroinVial.RequiredItem3Name, Config.Processing.Bagging.HeroinVial.RequiredItem3Amount)
-            exports.ox_inventory:AddItem(src,Config.Processing.Bagging.HeroinVial.BaggedItemName, returnAmount)
-        else
-            SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    removeItem(src, Config.Processing.Bagging.HeroinVial.RequiredItemName, Config.Processing.Bagging.HeroinVial.RequiredItemAmount)
+    Wait(500)
+    removeItem(src, Config.Processing.Bagging.HeroinVial.RequiredItem3Name, Config.Processing.Bagging.HeroinVial.RequiredItem3Amount)
+    Wait(500)
+    addItem(src, Config.Processing.Bagging.HeroinVial.BaggedItemName, returnAmount)
 end)
 
 
@@ -581,50 +415,16 @@ end)
 RegisterServerEvent('lusty94_heroin:server:CreateOverDoseCure', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local DrugXP = Player.PlayerData.metadata[MetaDataName]
-    local xpAmount = math.random(5,10) -- Edit xp reward here
+    local DrugXP = Player.PlayerData.metadata[MetaDataName] 
+    local returnAmount = calculateHeroinReturn(DrugXP)
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
-        end
-    else returnAmount = Config.Processing.Curing.ProcessedItemAmount end
-    if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.Curing.RequiredItemName, Config.Processing.Curing.RequiredItemAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.RequiredItemName], 'remove', Config.Processing.Curing.RequiredItemAmount)
-        Player.Functions.RemoveItem(Config.Processing.Curing.RequiredItem2Name, Config.Processing.Curing.RequiredItem2Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.RequiredItem3Name], 'remove', Config.Processing.Curing.RequiredItem2Amount)
-        Player.Functions.RemoveItem(Config.Processing.Curing.RequiredItem3Name, Config.Processing.Curing.RequiredItem3Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.RequiredItem3Name], 'remove', Config.Processing.Curing.RequiredItem3Amount)
-        
-        Player.Functions.AddItem(Config.Processing.Curing.ProcessedItemName, returnAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.ProcessedItemName], 'add', returnAmount)
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.Curing.ProcessedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Curing.RequiredItemName, Config.Processing.Curing.RequiredItemAmount)
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Curing.RequiredItem2Name, Config.Processing.Curing.RequiredItem2Amount)
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Curing.RequiredItem3Name, Config.Processing.Curing.RequiredItem3Amount)
-            exports.ox_inventory:AddItem(src,Config.Processing.Curing.ProcessedItemName, returnAmount)
-        else
-            SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    removeItem(src, Config.Processing.Curing.RequiredItemName, Config.Processing.Curing.RequiredItemAmount)
+    Wait(500)
+    removeItem(src, Config.Processing.Curing.RequiredItem2Name, Config.Processing.Curing.RequiredItem2Amount)
+    Wait(500)
+    removeItem(src, Config.Processing.Curing.RequiredItem3Name, Config.Processing.Curing.RequiredItem3Amount)
+    Wait(500)
+    addItem(src, Config.Processing.Curing.ProcessedItemName, returnAmount)
 end)
 
 
@@ -635,12 +435,8 @@ end)
 RegisterServerEvent('lusty94_heroin:server:TakeHeroin', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
-    if InvType == 'qb' then
-	    Player.Functions.RemoveItem(Config.Processing.TakeDrugs.RequiredItemName, 1) -- heroin_vial
-	    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.TakeDrugs.RequiredItemName], "remove")
-    elseif InvType == 'ox' then
-        exports.ox_inventory:RemoveItem(src, Config.Processing.TakeDrugs.RequiredItemName, 1)
-    end
+    if not Player then return end
+    removeItem(src, Config.Processing.TakeDrugs.RequiredItemName, 1)
 end)
 
 
@@ -650,7 +446,7 @@ RegisterServerEvent('lusty94_heroin:server:OverDose', function()
     local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
     local OverDose = Player.PlayerData.metadata[OverDoseName]
-
+    if not Player then return end
     Player.Functions.SetMetaData(OverDoseName, (OverDose + Config.DrugSettings.Effects.OverDoseAmount))
     if OverDose >= Config.DrugSettings.Effects.OverDoseLevel then
         Wait(3000)       
@@ -663,7 +459,7 @@ RegisterServerEvent('lusty94_heroin:server:CureOverDose', function()
     local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
     local OverDose = Player.PlayerData.metadata[OverDoseName]
-
+    if not Player then return end
     if OverDose >= 1 then
         if Player.Functions.RemoveItem(Config.Processing.Curing.ProcessedItemName, 1) then
             Player.Functions.SetMetaData(OverDoseName, (OverDose - Config.DrugSettings.Effects.OverDoseCureAmount))
@@ -671,7 +467,7 @@ RegisterServerEvent('lusty94_heroin:server:CureOverDose', function()
             SendNotify(src, Config.Language.Notifications.OverDoseCuredName, 'success', 2000)
         end
     else
-        SendNotify(src, Config.Language.Notifications.AlreadyCuredName, 'error', 2000)
+        SendNotify(src, Config.Language.Notifications.AlreadyCured, 'error', 2000)
     return
     end
 end)
@@ -723,7 +519,33 @@ if Config.XP.Enabled then
     end
 end
 
---tints shop
+
+--------------------------< QB-INVENTORY SUPPLY SHOPS >--------------------
+--supply shop
+RegisterServerEvent('lusty94_heroin:server:SupplyShop', function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local heroinSupplies = {
+        {name = "trowel",                 price = 5,      amount = 1000, info = {}, type = "item", slot = 1,},
+        {name = "emptyvial",              price = 5,      amount = 1000, info = {}, type = "item", slot = 2,},
+        {name = "scales",                 price = 500,    amount = 1000, info = {}, type = "item", slot = 3,},
+        {name = "plasticjerrycan",        price = 100,    amount = 1000, info = {}, type = "item", slot = 4,},
+        {name = "heroinprocessingtable",  price = 1000,   amount = 1000, info = {}, type = "item", slot = 5,},
+    }
+    exports['qb-inventory']:CreateShop({
+        name = 'heroinSupplies',
+        label = 'Heroin Supply Shop',
+        slots = 5,
+        items = heroinSupplies
+    })
+    if Player then
+        exports['qb-inventory']:OpenShop(source, 'heroinSupplies')
+    end
+end)
+
+
+--------------------------< OX_INVENTORY SUPPLY SHOPS >--------------------
+--supply shop
 function HeroinSupplyShop()
     exports.ox_inventory:RegisterShop('HeroinSupplyShop', {
         name = 'Heroin Supply Shop',
@@ -740,7 +562,7 @@ end
 AddEventHandler('onResourceStart', function(resourceName)
     if (GetCurrentResourceName() == resourceName) then
         if InvType == 'ox' then
-            print('^5--<^3!^5>-- ^7| Lusty94_Heroin|^5 ^5--<^3!^5>--^7')
+            print('^5--<^3!^5>-- ^7| Lusty94_Heroin 2.0.1 |^5 ^5--<^3!^5>--^7')
             print('^5--<^3!^5>-- ^7| Inventory Type is set to ox |^5 ^5--<^3!^5>--^7')
             print('^5--<^3!^5>-- ^7| Registering shops automatically |^5 ^5--<^3!^5>--^7')
             HeroinSupplyShop()

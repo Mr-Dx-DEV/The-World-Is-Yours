@@ -8,16 +8,11 @@ name "lusty94_heroin"
 
 description 'Heroin Processing Script For QB Core'
 
-version '2.0.0'
+version '2.0.1'
 
 lua54 'yes'
 
 client_script {
-	'@PolyZone/client.lua',
-    '@PolyZone/BoxZone.lua',
-    '@PolyZone/EntityZone.lua',
-    '@PolyZone/CircleZone.lua',
-    '@PolyZone/ComboZone.lua',
     'client/heroin_client.lua',
     'shared/menus.lua',
 }

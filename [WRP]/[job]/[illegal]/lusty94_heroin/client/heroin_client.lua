@@ -1,23 +1,19 @@
 local QBCore = exports['qb-core']:GetCoreObject()
+local NotifyType = Config.CoreSettings.Notify.Type
+local TargetType = Config.CoreSettings.Target.Type
+local InvType = Config.CoreSettings.Inventory.Type
+local PhoneType = Config.CoreSettings.Phone.Type
+local PoliceType = Config.CoreSettings.Police.Type
+local EvidenceEvent = Config.CoreSettings.EventNames.Evidence
+local cooldownTimeLime = Config.CoreSettings.CoolDownTimers.Lime 
+local cooldownTimeEther = Config.CoreSettings.CoolDownTimers.Ether 
+local cooldownTimeHydrochloricAcid = Config.CoreSettings.CoolDownTimers.HydrochloricAcid 
+local cooldownTimeMission = Config.CoreSettings.CoolDownTimers.Mission
 local inZone, busy, heroinTablePlaced, isLimeOnCooldown = false, false, false, false
 local isEtherOnCooldown, isHydrochloricAcidOnCooldown, vehiclespawned, HeroinMissionCooldown = false, false, false, false
 local lastLimeUsage, lastEtherUsage, lastHydrochloricAcidUsage, lastMissionUsage = 0, 0, 0, 0
 local heroinTableProp = nil
 local opiumPlants = {}
-local NotifyType = Config.CoreSettings.Notify.Type
-local TargetType = Config.CoreSettings.Target.Type
-local ShopType = Config.CoreSettings.Shop.Type
-local PhoneType = Config.CoreSettings.Phone.Type
-local PoliceType = Config.CoreSettings.Police.Type
-local EvidenceEvent = Config.CoreSettings.EventNames.Evidence
-local opiumModel = Config.CoreSettings.Props.OpiumPlants.Name
-local LimeModel = Config.CoreSettings.Props.Lime.Name
-local EtherModel = Config.CoreSettings.Props.Ether.Name
-local HydrochloricAcidModel = Config.CoreSettings.Props.HydrochloricAcid.Name
-local cooldownTimeLime = Config.CoreSettings.CoolDownTimers.Lime 
-local cooldownTimeEther = Config.CoreSettings.CoolDownTimers.Ether 
-local cooldownTimeHydrochloricAcid = Config.CoreSettings.CoolDownTimers.HydrochloricAcid 
-local cooldownTimeMission = Config.CoreSettings.CoolDownTimers.Mission
 
 
 --notification function
@@ -75,9 +71,17 @@ CreateThread(function()
             	TaskStartScenarioInPlace(heroinPed, v.scenario, 0, true)
 			end
 			if TargetType == 'qb' then
-				exports['qb-target']:AddTargetEntity(heroinPed, { options = { { type = "client", event = "lusty94_heroin:client:openSuppliesShop", icon = v.targeticon, label = v.targetlabel, },{ event = 'lusty94_heroin:client:missionEmail', type = 'client', icon = 'fa-solid fa-bars', label = 'Chemical Supplies Run', }, }, distance = v.targetdistance })
+				exports['qb-target']:AddTargetEntity(heroinPed, { 
+					options = { 
+						{ type = "client", event = "lusty94_heroin:client:openSuppliesShop", icon = v.targeticon, label = v.targetlabel, },
+						{ event = 'lusty94_heroin:client:missionEmail', type = 'client', icon = 'fa-solid fa-bars', label = 'Chemical Supplies Run', }, 
+					}, distance = v.targetdistance 
+				})
 			elseif TargetType == 'ox' then
-				exports.ox_target:addLocalEntity(heroinPed, { { name = 'heroinPed', icon = v.targeticon, label = v.targetlabel, event = 'lusty94_heroin:client:openSuppliesShop', distance = v.targetdistance}, { name = 'heroinPed', label = 'Chemical Supplies Run', icon = 'fa-solid fa-bars', event = 'lusty94_heroin:client:missionEmail', distance = v.targetdistance, } })
+				exports.ox_target:addLocalEntity(heroinPed, { 
+					{ name = 'heroinPed', icon = v.targeticon, label = v.targetlabel, event = 'lusty94_heroin:client:openSuppliesShop', distance = v.targetdistance}, 
+					{ name = 'heroinPed', label = 'Chemical Supplies Run', icon = 'fa-solid fa-bars', event = 'lusty94_heroin:client:missionEmail', distance = v.targetdistance, } 
+				})
 			end
 			if v.useblip then
 				v.blip = AddBlipForCoord(v.coords.x, v.coords.y, v.coords.z)
@@ -95,34 +99,115 @@ CreateThread(function()
 end)
 
 
+local EtherModel = Config.CoreSettings.Props.Ether.Name
+local LimeModel = Config.CoreSettings.Props.Lime.Name
+local HydrochloricAcidModel = Config.CoreSettings.Props.HydrochloricAcid.Name
 
-
---Ether prop
-CreateThread(function()
-	if TargetType == 'qb' then
-		exports['qb-target']:AddTargetModel(EtherModel, { options = { { item = Config.CoreSettings.Props.Ether.RequiredItem, event = 'lusty94_heroin:client:GetEther', type = 'client', icon = Config.CoreSettings.Props.Ether.TargetIcon, label = Config.CoreSettings.Props.Ether.TargetLabel, }, }, distance = Config.CoreSettings.Props.Ether.TargetDistance, })
-	elseif TargetType == 'ox' then
-		exports.ox_target:addModel(EtherModel, ({ items = Config.CoreSettings.Props.Ether.RequiredItem, name = 'Ether', label = Config.CoreSettings.Props.Ether.TargetLabel, icon = Config.CoreSettings.Props.Ether.TargetIcon, event = 'lusty94_heroin:client:GetEther', distance = Config.CoreSettings.Props.Ether.TargetDistance, }))
-	end
-end)
-
---Lime prop
-CreateThread(function()
-	if TargetType == 'qb' then
-		exports['qb-target']:AddTargetModel(LimeModel, { item = Config.CoreSettings.Props.Lime.RequiredItem, options = { { event = 'lusty94_heroin:client:GetLime', type = 'client', icon = Config.CoreSettings.Props.Lime.TargetIcon, label = Config.CoreSettings.Props.Lime.TargetLabel, }, }, distance = Config.CoreSettings.Props.Lime.TargetDistance, })
-	elseif TargetType == 'ox' then
-		exports.ox_target:addModel(LimeModel, ({ items = Config.CoreSettings.Props.Lime.RequiredItem, name = 'Lime', label = Config.CoreSettings.Props.Lime.TargetLabel, icon = Config.CoreSettings.Props.Lime.TargetIcon, event = 'lusty94_heroin:client:GetLime', distance = Config.CoreSettings.Props.Lime.TargetDistance, }))
-	end
-end)
-
---HydrochloricAcid prop
-CreateThread(function()
-	if TargetType == 'qb' then
-		exports['qb-target']:AddTargetModel(HydrochloricAcidModel, { item = Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, options = { { event = 'lusty94_heroin:client:GetHydrochloricAcid', type = 'client', icon = Config.CoreSettings.Props.HydrochloricAcid.TargetIcon, label = Config.CoreSettings.Props.HydrochloricAcid.TargetLabel, }, }, distance = Config.CoreSettings.Props.HydrochloricAcid.TargetDistance, })
-	elseif TargetType == 'ox' then
-		exports.ox_target:addModel(HydrochloricAcidModel, ({ items = Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, name = 'HydrochloricAcid', label = Config.CoreSettings.Props.HydrochloricAcid.TargetLabel, icon = Config.CoreSettings.Props.HydrochloricAcid.TargetIcon, event = 'lusty94_heroin:client:GetHydrochloricAcid', distance = Config.CoreSettings.Props.HydrochloricAcid.TargetDistance, }))
-	end
-end)
+if Config.CoreSettings.DrugScripts.Enabled then
+	print('^5--<^3!^5>-- ^7| Lusty94_Heroin |^5 ^5--<^3!^5>--^7 Config.CoreSettings.DrugScripts is enabled - TARGET MODELS HAVE BEEN REMOVED TO PREVENT CLASHES WITH OTHER SCRIPTS - MAKE SURE ITEM NAMES MATCH THROUGHOUT PROCESSING OPTIONS ^5--<^3!^5>--^7')
+else	
+	CreateThread(function()
+		if TargetType == 'qb' then
+			exports['qb-target']:AddTargetModel(EtherModel, { options = { 
+					{ 
+						item = Config.CoreSettings.Props.Ether.RequiredItem,
+						action = function()
+							if not busy then
+								TriggerEvent('lusty94_heroin:client:GetEther')
+							else
+								SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+							end
+						end,
+						type = 'client', 
+						icon = Config.CoreSettings.Props.Ether.TargetIcon, 
+						label = Config.CoreSettings.Props.Ether.TargetLabel, 
+					}, 
+				}, distance = Config.CoreSettings.Props.Ether.TargetDistance, 
+			})
+			exports['qb-target']:AddTargetModel(LimeModel, {  options = { 
+					{ 
+						item = Config.CoreSettings.Props.Lime.RequiredItem,
+						action = function()
+							if not busy then
+								TriggerEvent('lusty94_heroin:client:GetLime')
+							else
+								SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+							end
+						end,
+						type = 'client', 
+						icon = Config.CoreSettings.Props.Lime.TargetIcon, 
+						label = Config.CoreSettings.Props.Lime.TargetLabel, 
+					}, 
+				}, distance = Config.CoreSettings.Props.Lime.TargetDistance, 
+			})
+			exports['qb-target']:AddTargetModel(HydrochloricAcidModel, {  options = { 
+					{ 
+						item = Config.CoreSettings.Props.HydrochloricAcid.RequiredItem,
+						action = function()
+							if not busy then
+								TriggerEvent('lusty94_heroin:client:GetHydrochloricAcid')
+							else
+								SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+							end
+						end,
+						type = 'client', 
+						icon = Config.CoreSettings.Props.HydrochloricAcid.TargetIcon, 
+						label = Config.CoreSettings.Props.HydrochloricAcid.TargetLabel, 
+					}, 
+				}, distance = Config.CoreSettings.Props.HydrochloricAcid.TargetDistance, 
+			})
+		elseif TargetType == 'ox' then
+			exports.ox_target:addModel(EtherModel, (
+				{ 
+					items = Config.CoreSettings.Props.Ether.RequiredItem, 
+					name = 'Ether',
+					label = Config.CoreSettings.Props.Ether.TargetLabel, 
+					icon = Config.CoreSettings.Props.Ether.TargetIcon, 
+					onSelect = function()
+						if not busy then
+							TriggerEvent('lusty94_heroin:client:GetEther')
+						else
+							SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+						end
+					end, 
+					distance = Config.CoreSettings.Props.Ether.TargetDistance, 
+				}
+			))
+			exports.ox_target:addModel(LimeModel, (
+				{ 
+					items = Config.CoreSettings.Props.Lime.RequiredItem, 
+					name = 'Lime', 
+					label = Config.CoreSettings.Props.Lime.TargetLabel, 
+					icon = Config.CoreSettings.Props.Lime.TargetIcon, 
+					onSelect = function()
+						if not busy then
+							TriggerEvent('lusty94_heroin:client:GetLime')
+						else
+							SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+						end
+					end,
+					distance = Config.CoreSettings.Props.Lime.TargetDistance, 
+				}
+			))
+			exports.ox_target:addModel(HydrochloricAcidModel, (
+				{ 
+					items = Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, 
+					name = 'HydrochloricAcid', 
+					label = Config.CoreSettings.Props.HydrochloricAcid.TargetLabel, 
+					icon = Config.CoreSettings.Props.HydrochloricAcid.TargetIcon, 
+					onSelect = function()
+						if not busy then
+							TriggerEvent('lusty94_heroin:client:GetHydrochloricAcid')
+						else
+							SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+						end
+					end,
+					distance = Config.CoreSettings.Props.HydrochloricAcid.TargetDistance, 
+				}
+			))
+		end
+	end)
+end
 
 
 
@@ -151,9 +236,27 @@ function spawnOpium()
 		FreezeEntityPosition(opiumPlant, true)
 		opiumPlants[#opiumPlants+1] = opiumPlant
 		if TargetType == 'qb' then
-			exports['qb-target']:AddTargetEntity(opiumPlant, { options = { { item = v.item,type = "client", event = "lusty94_heroin:client:PickOpiumPlants", icon = v.icon, label = v.label, }, }, distance = v.distance })
+			exports['qb-target']:AddTargetEntity(opiumPlant, { options = { 
+					{ 
+						item = v.item,
+						type = "client", 
+						event = "lusty94_heroin:client:PickOpiumPlants", 
+						icon = v.icon, 
+						label = v.label, 
+					}, 
+				}, distance = v.distance 
+			})
 		elseif TargetType == 'ox' then
-			exports.ox_target:addLocalEntity(opiumPlant, ({ name = 'opiumPlant', items = v.item, label = v.label, icon = v.icon, event = 'lusty94_heroin:client:PickOpiumPlants', distance = v.distance, }))
+			exports.ox_target:addLocalEntity(opiumPlant, (
+				{ 
+					name = 'opiumPlant', 
+					items = v.item, 
+					label = v.label, 
+					icon = v.icon, 
+					event = 'lusty94_heroin:client:PickOpiumPlants', 
+					distance = v.distance, 
+				}
+			))
 		end
 	end
 end
@@ -172,36 +275,41 @@ RegisterNetEvent("lusty94_heroin:client:PickOpiumPlants", function()
 	end   
 	if nearbyObject and IsPedOnFoot(playerPed) then
 		if busy then
-			SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+			SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
 		else
 			local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
 			if success then
 				busy = true
 				LockInventory(true)
 				FreezeEntityPosition(PlayerPed, true)
-				if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.PickOpiumPlants, label = Config.Language.ProgressBar.PickOpiumPlants, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.PickOpiumPlants.AnimDict, clip = Config.Animations.PickOpiumPlants.Anim, flag = Config.Animations.PickOpiumPlants.Flags,}, prop = { model = 'prop_cs_trowel', bone = 18905, pos = vec3(0.12, 0.0, 0.02), rot = vec3(76.0, 188.0, 34.0), }, }) then
-					local chance2 = Config.CoreSettings.Chances.GetOpium
-					if chance2 >= math.random(1,100) then
-						TriggerServerEvent('lusty94_heroin:server:PickOpiumPlants')
-					else
-						SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
-					end
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.ProgressBar.PickOpiumPlants, 
+					label = Config.Language.ProgressBar.PickOpiumPlants, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = true, },  
+					anim = { dict = Config.Animations.PickOpiumPlants.AnimDict, clip = Config.Animations.PickOpiumPlants.Anim, flag = Config.Animations.PickOpiumPlants.Flags,}, 
+					prop = { model = Config.Animations.PickOpiumPlants.Prop, bone = Config.Animations.PickOpiumPlants.Bone, pos = Config.Animations.PickOpiumPlants.Pos, rot = Config.Animations.PickOpiumPlants.Rot, }, 
+				}) then
 					SetEntityAsMissionEntity(nearbyObject, false, true)
 					DeleteObject(nearbyObject)
 					opiumPlants[nearbyID] = nil
+					local chance = Config.CoreSettings.Chances.GetOpium
+					if chance >= math.random(1,100) then
+						TriggerServerEvent('lusty94_heroin:server:PickOpiumPlants')
+					else
+						SendNotify(Config.Language.Notifications.NothingFound, 'error', 2000)
+					end					
 					busy = false
 					LockInventory(false)
-					FreezeEntityPosition(PlayerPed, false)
-					ClearPedTasks(PlayerPedId())
 				else 
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
-					FreezeEntityPosition(PlayerPed, true)
-					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+					SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
 				end
 			else
-				SendNotify("Action failed.", 'error', 2000)
+				SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
 			end
 		end 
 	end
@@ -218,16 +326,22 @@ RegisterNetEvent('lusty94_heroin:client:openProcessingTable', function()
     local x, y, z   = table.unpack(coords + forward)
     local tableModel = Config.CoreSettings.Props.ProcessingTable.Name
 	if busy then
-        SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+        SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
     else
 		if heroinTablePlaced then
-            SendNotify(Config.Language.Notifications.PropErrorName, 'error', 2000)
+            SendNotify(Config.Language.Notifications.PropError, 'error', 2000)
 			return
 		end
 		busy = true
         LockInventory(true)
-		if lib.progressCircle({ duration = 5000, label = Config.Language.ProgressBar.PlaceProcessingTable, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags, }, }) 
-        then
+		if lib.progressCircle({ 
+			duration = 5000, 
+			label = Config.Language.ProgressBar.PlaceProcessingTable, 
+			position = 'bottom', 
+			useWhileDead = false, 
+			canCancel = true, disable = { car = true, move = true, }, 
+			anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags, }, 
+		}) then
             lib.requestModel(tableModel, 5000)
             heroinTableProp = CreateObject(tableModel, x, y, z, true, false, true)
             PlaceObjectOnGroundProperly(heroinTableProp)
@@ -235,9 +349,38 @@ RegisterNetEvent('lusty94_heroin:client:openProcessingTable', function()
             FreezeEntityPosition(heroinTableProp, true)
 			SetEntityHeading(heroinTableProp, GetEntityHeading(playerPed))
             if TargetType == 'qb' then
-                exports['qb-target']:AddTargetEntity(heroinTableProp, {  options = { { event = 'lusty94_heroin:client:openMainMenu', type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconOpen, label =  Config.CoreSettings.Props.ProcessingTable.TargetLabelOpen, }, { event = 'lusty94_heroin:client:DeleteProcessingTable', type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconRemove, label = Config.CoreSettings.Props.ProcessingTable.TargetLabelRemove, },}, distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance })
+                exports['qb-target']:AddTargetEntity(heroinTableProp, {  options = { 
+						{ 
+							event = 'lusty94_heroin:client:openMainMenu', 
+							type = 'client', 
+							icon = Config.CoreSettings.Props.ProcessingTable.TargetIconOpen, 
+							label =  Config.CoreSettings.Props.ProcessingTable.TargetLabelOpen, 
+						}, 
+						{ 
+							event = 'lusty94_heroin:client:DeleteProcessingTable', 
+							type = 'client', 
+							icon = Config.CoreSettings.Props.ProcessingTable.TargetIconRemove, 
+							label = Config.CoreSettings.Props.ProcessingTable.TargetLabelRemove, 
+						},
+					}, distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance 
+				})
             elseif TargetType == 'ox' then
-                exports.ox_target:addLocalEntity(heroinTableProp, { { name = 'heroinTableProp', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconOpen, label =  Config.CoreSettings.Props.ProcessingTable.TargetLabelOpen, event = 'lusty94_heroin:client:openMainMenu', distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance}, { name = 'heroinTableProp', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconRemove, label = Config.CoreSettings.Props.ProcessingTable.TargetLabelRemove, event = 'lusty94_heroin:client:DeleteProcessingTable', distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance}  })
+                exports.ox_target:addLocalEntity(heroinTableProp, { 
+					{ 
+						name = 'heroinTableProp', 
+						icon = Config.CoreSettings.Props.ProcessingTable.TargetIconOpen, 
+						label =  Config.CoreSettings.Props.ProcessingTable.TargetLabelOpen, 
+						event = 'lusty94_heroin:client:openMainMenu', 
+						distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance
+					}, 
+					{ 
+						name = 'heroinTableProp', 
+						icon = Config.CoreSettings.Props.ProcessingTable.TargetIconRemove, 
+						label = Config.CoreSettings.Props.ProcessingTable.TargetLabelRemove, 
+						event = 'lusty94_heroin:client:DeleteProcessingTable', 
+						distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance
+					}, 
+				})
             end
             ClearPedTasks(playerPed)
             heroinTablePlaced = true
@@ -246,7 +389,7 @@ RegisterNetEvent('lusty94_heroin:client:openProcessingTable', function()
         else
             busy = false                                
             ClearPedTasks(playerPed)
-            SendNotify("Action cancelled.", 'error', 3000)
+            SendNotify(Config.Language.Notifications.Cancelled, 'error', 3000)
         end
 	end
 end)
@@ -262,7 +405,11 @@ end
 -- delete processing table
 RegisterNetEvent('lusty94_heroin:client:DeleteProcessingTable', function()
     if heroinTableProp then
-		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(heroinTableProp, 'heroinTableProp') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(heroinTableProp, 'heroinTableProp') end
+		if TargetType == 'qb' then 
+			exports['qb-target']:RemoveTargetEntity(heroinTableProp, 'heroinTableProp') 
+		elseif TargetType == 'ox' then 
+			exports.ox_target:removeLocalEntity(heroinTableProp, 'heroinTableProp') 
+		end
         delete_prop(heroinTableProp)
         heroinTableProp = nil
         heroinTablePlaced = false
@@ -273,7 +420,7 @@ end)
 
 -- Function to display a notification with the remaining cooldown time
 local function ShowCooldownNotification(remainingTime)
-    local notificationMessage = Config.Language.Notifications.SearchTimerName .. remainingTime / 1000 .. " seconds before doing that."
+    local notificationMessage = 'You must wait: ' .. remainingTime / 1000 .. " seconds before doing that."
 	SendNotify(notificationMessage, 'error', 3000)
 end
 
@@ -288,7 +435,7 @@ local function PoliceCallChance()
 		elseif PoliceType == 'ps' then
 			exports['ps-dispatch']:SuspiciousActivity()
 		end				
-		--SendNotify(Config.Language.Notifications.PoliceNotifiedName, 'error', 2000) --uncomment this line if you want the player to be notified that police have been called
+		--SendNotify(Config.Language.Notifications.PoliceNotified, 'error', 2000) --uncomment this line if you want the player to be notified that police have been called
 	end
 end
 
@@ -298,7 +445,7 @@ RegisterNetEvent('lusty94_heroin:client:GetEther', function()
 	QBCore.Functions.TriggerCallback('lusty94_heroin:get:JerryCan', function(HasItems)  
 		if HasItems then
 			if busy then
-				SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+				SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
 			else
 				if isEtherOnCooldown then
 					local remainingTime = math.ceil((lastEtherUsage + cooldownTimeEther))
@@ -308,33 +455,39 @@ RegisterNetEvent('lusty94_heroin:client:GetEther', function()
 					if success then
 						busy = true
 						LockInventory(true)
-						if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.GetEther, label = Config.Language.ProgressBar.GetEther, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.GetEther.AnimDict, clip = Config.Animations.GetEther.Anim, flag = Config.Animations.GetEther.Flags,}, prop = { model = 'prop_ld_jerrycan_01', bone = 60309, pos = vec3(0.06, 0.04, 0.02), rot = vec3(194.0, 0.0, 0.0), }, }) then
-							busy = false
-							LockInventory(false)
-							ClearPedTasks(PlayerPedId())
+						if lib.progressCircle({ 
+							duration = Config.CoreSettings.ProgressBar.GetEther, 
+							label = Config.Language.ProgressBar.GetEther, 
+							position = 'bottom', 
+							useWhileDead = false, 
+							canCancel = true, 
+							disable = { car = true, move = true, },  
+							anim = { dict = Config.Animations.GetEther.AnimDict, clip = Config.Animations.GetEther.Anim, flag = Config.Animations.GetEther.Flags,}, 
+							prop = { model = Config.Animations.GetEther.Prop, bone = Config.Animations.GetEther.Bone, pos = Config.Animations.GetEther.Pos, rot = Config.Animations.GetEther.Rot, }, 
+						}) then
 							isEtherOnCooldown = true
 							SetTimeout(cooldownTimeEther, function() isEtherOnCooldown = false end)
-							local chance = math.random(1,100)
-							local chance2 = Config.CoreSettings.Chances.GetEther
-							if chance <= chance2 then
+							local chance = Config.CoreSettings.Chances.GetEther
+							if chance >= math.random(1,100) then
 								TriggerServerEvent('lusty94_heroin:server:GetEther')
 							else
-								SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
+								SendNotify(Config.Language.Notifications.NothingFound, 'error', 2000)
 								PoliceCallChance()
 							end
+							busy = false
+							LockInventory(false)
 						else 
 							busy = false
 							LockInventory(false)
-							ClearPedTasks(PlayerPedId())
-							SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+							SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
 						end
 					else
-						SendNotify("Action failed.", 'error', 2000)
+						SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
 					end
 				end
 			end
 		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
+			SendNotify(Config.Language.Notifications.NoItems, 'error', 2000)
 		end
 	end)
 end)
@@ -343,7 +496,7 @@ end)
 --get Lime
 RegisterNetEvent('lusty94_heroin:client:GetLime', function()
 	if busy then
-        SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+        SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
     else
 		if isLimeOnCooldown then
 			local remainingTime = math.ceil((lastLimeUsage + cooldownTimeLime))
@@ -353,28 +506,34 @@ RegisterNetEvent('lusty94_heroin:client:GetLime', function()
 			if success then
 				busy = true
 				LockInventory(true)
-				if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.GetLime, label = Config.Language.ProgressBar.GetLime, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.GetLime.AnimDict, clip = Config.Animations.GetLime.Anim, flag = Config.Animations.GetLime.Flags,}, prop = { model = 'prop_cs_trowel', bone = 18905, pos = vec3(0.12, 0.0, 0.02), rot = vec3(76.0, 188.0, 34.0), }, }) then
-					busy = false
-					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.ProgressBar.GetLime, 
+					label = Config.Language.ProgressBar.GetLime, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = true, },  
+					anim = { dict = Config.Animations.GetLime.AnimDict, clip = Config.Animations.GetLime.Anim, flag = Config.Animations.GetLime.Flags,}, 
+					prop = { model = Config.Animations.GetLime.Prop, bone = Config.Animations.GetLime.Bone, pos = Config.Animations.GetLime.Pos, rot = Config.Animations.GetLime.Rot, }, 
+				}) then
 					isLimeOnCooldown = true
 					SetTimeout(cooldownTimeLime, function() isLimeOnCooldown = false end)
-					local chance = math.random(1,100)
-					local chance2 = Config.CoreSettings.Chances.GetLime
-					if chance <= chance2 then
+					local chance = Config.CoreSettings.Chances.GetLime
+					if chance >= math.random(1,100) then
 						TriggerServerEvent('lusty94_heroin:server:GetLime')
 					else
-						SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
+						SendNotify(Config.Language.Notifications.NothingFound, 'error', 2000)
 						PoliceCallChance()
 					end
+					busy = false
+					LockInventory(false)
 				else 
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
-					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+					SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
 				end
 			else
-				SendNotify("Action failed.", 'error', 2000)
+				SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
 			end
 		end
 	end
@@ -386,7 +545,7 @@ RegisterNetEvent('lusty94_heroin:client:GetHydrochloricAcid', function()
 	QBCore.Functions.TriggerCallback('lusty94_heroin:get:HydroCan', function(HasItems)  
 		if HasItems then
 			if busy then
-				SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+				SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
 			else
 				if isHydrochloricAcidOnCooldown then
 					local remainingTime = math.ceil((lastHydrochloricAcidUsage + cooldownTimeHydrochloricAcid))
@@ -396,33 +555,39 @@ RegisterNetEvent('lusty94_heroin:client:GetHydrochloricAcid', function()
 					if success then
 						busy = true
 						LockInventory(true)
-						if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.GetHydrochloricAcid, label = Config.Language.ProgressBar.GetHydrochloricAcid, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.GetHydrochloricAcid.AnimDict, clip = Config.Animations.GetHydrochloricAcid.Anim, flag = Config.Animations.GetHydrochloricAcid.Flags,}, prop = { model = 'prop_ld_jerrycan_01', bone = 60309, pos = vec3(0.06, 0.04, 0.02), rot = vec3(194.0, 0.0, 0.0), }, }) then
-							busy = false
-							LockInventory(false)
-							ClearPedTasks(PlayerPedId())
+						if lib.progressCircle({ 
+							duration = Config.CoreSettings.ProgressBar.GetHydrochloricAcid, 
+							label = Config.Language.ProgressBar.GetHydrochloricAcid, 
+							position = 'bottom', 
+							useWhileDead = false, 
+							canCancel = true, 
+							disable = { car = true, move = true, },  
+							anim = { dict = Config.Animations.GetHydrochloricAcid.AnimDict, clip = Config.Animations.GetHydrochloricAcid.Anim, flag = Config.Animations.GetHydrochloricAcid.Flags,}, 
+							prop = { model = Config.Animations.GetHydrochloricAcid.Prop, bone = Config.Animations.GetHydrochloricAcid.Bone, pos = Config.Animations.GetHydrochloricAcid.Pos, rot = Config.Animations.GetHydrochloricAcid.Rot, }, 
+						}) then
 							isHydrochloricAcidOnCooldown = true
 							SetTimeout(cooldownTimeHydrochloricAcid, function() isHydrochloricAcidOnCooldown = false end)
-							local chance = math.random(1,100)
-							local chance2 = Config.CoreSettings.Chances.GetHydro
-							if chance <= chance2 then
+							local chance = Config.CoreSettings.Chances.GetHydro
+							if chance >= math.random(1,100) then
 								TriggerServerEvent('lusty94_heroin:server:GetHydrochloricAcid')
 							else
-								SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
+								SendNotify(Config.Language.Notifications.NothingFound, 'error', 2000)
 								PoliceCallChance()
 							end
+							busy = false
+							LockInventory(false)
 						else 
 							busy = false
 							LockInventory(false)
-							ClearPedTasks(PlayerPedId())
-							SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+							SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
 						end
 					else
-						SendNotify("Action failed.", 'error', 2000)
+						SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
 					end
 				end
 			end
 		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
+			SendNotify(Config.Language.Notifications.NoItems, 'error', 2000)
 		end
 	end)
 end)
@@ -446,29 +611,39 @@ end
 --search driver
 local function SearchHeroinDriver()
     if busy then
-        SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+        SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
     else
         local success = lib.skillCheck({'easy', 'easy', 'easy',}, {'e'})
         if success then
             busy = true
             LockInventory(true)
-            if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.SearchGuards, label = 'Searching body...', position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = 'mini@repair', clip = 'fixing_a_ped',},}) then
-                if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(heroinDriver) elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(heroinDriver, 'heroinDriver') end
+            if lib.progressCircle({ 
+				duration = Config.CoreSettings.ProgressBar.SearchGuards, 
+				label = Config.Language.ProgressBar.SearchGuards, 
+				position = 'bottom', 
+				useWhileDead = false, 
+				canCancel = true, 
+				disable = { car = true, move= true, }, 
+				anim = { dict = Config.Animations.SearchGuards.AnimDict, clip = Config.Animations.SearchGuards.Anim, flag = Config.Animations.SearchGuards.Flags,},
+			}) then
+                if TargetType == 'qb' then 
+					exports['qb-target']:RemoveTargetEntity(heroinDriver) 
+				elseif TargetType == 'ox' then 
+					exports.ox_target:removeLocalEntity(heroinDriver, 'heroinDriver') 
+				end
+                TriggerServerEvent('lusty94_heroin:server:SearchGuards')
+                PoliceCallChance()
                 busy = false
                 vehiclespawned = false
                 LockInventory(false)
-                ClearPedTasks(PlayerPedId())
-                TriggerServerEvent('lusty94_heroin:server:SearchGuards')
-                PoliceCallChance()
             else 
                 busy = false
                 LockInventory(false)
-                ClearPedTasks(PlayerPedId())
-                SendNotify('Action cancelled.', 'error', 2000)
+                SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
             end
         else
             busy = false
-            SendNotify('Failed!', 'error', 2000)
+            SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
         end
     end
 end
@@ -476,29 +651,39 @@ end
 --search passenger
 local function SearchHeroinPassenger()
     if busy then
-        SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+        SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
     else
         local success = lib.skillCheck({'easy', 'easy', 'easy',}, {'e'})
         if success then
             busy = true
             LockInventory(true)
-            if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.SearchGuards, label = 'Searching body...', position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = 'mini@repair', clip = 'fixing_a_ped',},}) then
-                if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(heroinPassenger) elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(heroinPassenger, 'heroinPassenger') end
+            if lib.progressCircle({ 
+				duration = Config.CoreSettings.ProgressBar.SearchGuards, 
+				label = Config.Language.ProgressBar.SearchGuards, 
+				position = 'bottom', 
+				useWhileDead = false, 
+				canCancel = true, 
+				disable = { car = true, move= true, }, 
+				anim = { dict = Config.Animations.SearchGuards.AnimDict, clip = Config.Animations.SearchGuards.Anim, flag = Config.Animations.SearchGuards.Flags,},
+			}) then
+                if TargetType == 'qb' then 
+					exports['qb-target']:RemoveTargetEntity(heroinPassenger) 
+				elseif TargetType == 'ox' then 
+					exports.ox_target:removeLocalEntity(heroinPassenger, 'heroinPassenger') 
+				end
+                TriggerServerEvent('lusty94_heroin:server:SearchGuards')
+				PoliceCallChance()		
                 busy = false
                 vehiclespawned = false
                 LockInventory(false)
-                ClearPedTasks(PlayerPedId())
-                TriggerServerEvent('lusty94_heroin:server:SearchGuards')
-				PoliceCallChance()		
             else 
                 busy = false
                 LockInventory(false)
-                ClearPedTasks(PlayerPedId())
-                SendNotify('Action cancelled.', 'error', 2000)
+                SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
             end
         else
             busy = false
-            SendNotify('Failed!', 'error', 2000)
+            SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
         end
     end
 end
@@ -507,7 +692,7 @@ end
 local function SpawnHeroinVehicle()
     for k, v in pairs(Config.Processing.Mission.Vehicle) do
         if vehiclespawned then
-            SendNotify(Config.Language.Notifications.AlreadySpawnedName, 'error', 2000)
+            SendNotify(Config.Language.Notifications.AlreadySpawned, 'error', 2000)
         else
             lib.requestModel(v.model, 5000)					
 			local location = Config.Processing.Mission.StartLocations[math.random(1, #Config.Processing.Mission.StartLocations)]
@@ -519,7 +704,7 @@ local function SpawnHeroinVehicle()
             SetBlipColour(vehicleBlip, 5)
 			SetBlipScale(vehicleBlip, 0.8)
             BeginTextCommandSetBlipName("STRING")
-            AddTextComponentString("Marked Vehicle")
+            AddTextComponentString("Truck")
             lib.requestModel(v.drivermodel, 5000)		
             lib.requestModel(v.passengermodel, 5000)		
             heroinDriver = CreatePed(26, v.drivermodel, location.x, location.y, location.z, location.w, true, false)
@@ -548,11 +733,51 @@ local function SpawnHeroinVehicle()
 			local destination = Config.Processing.Mission.DestinationLocations[math.random(#Config.Processing.Mission.DestinationLocations)]
             TaskVehicleDriveToCoordLongrange(heroinDriver, car, destination.x, destination.y, destination.z, 35.0, 524340, 10.0)
             if TargetType == 'qb' then
-                exports['qb-target']:AddTargetEntity(heroinDriver, { options = { { type = "client", action = function() SearchHeroinDriver() end, icon = v.targeticon, label = v.targetlabel, } }, distance = v.targetdistance })
-                exports['qb-target']:AddTargetEntity(heroinPassenger, { options = { { type = "client", action = function() SearchHeroinPassenger() end, icon = v.targeticon, label = v.targetlabel, } }, distance = v.targetdistance })
+                exports['qb-target']:AddTargetEntity(heroinDriver, { options = { 
+						{ 
+							type = "client", 
+							action = function() 
+								SearchHeroinDriver() 
+							end, 
+							icon = v.targeticon, 
+							label = v.targetlabel, 
+						} 
+					}, distance = v.targetdistance 
+				})
+                exports['qb-target']:AddTargetEntity(heroinPassenger, { options = { 
+						{ 
+							type = "client", 
+							action = function() 
+								SearchHeroinPassenger() 
+							end, 
+							icon = v.targeticon, 
+							label = v.targetlabel, 
+						} 
+					}, distance = v.targetdistance 
+				})
             elseif TargetType == 'ox' then
-                exports.ox_target:addLocalEntity(heroinDriver, { { name = 'heroinDriver', icon = v.targeticon, label = v.targetlabel, onSelect = function() SearchHeroinDriver() end, distance = v.targetdistance} })
-                exports.ox_target:addLocalEntity(heroinPassenger, { { name = 'heroinPassenger', icon = v.targeticon, label = v.targetlabel, onSelect = function() SearchHeroinPassenger() end, distance = v.targetdistance} })
+                exports.ox_target:addLocalEntity(heroinDriver, { 
+					{ 
+						name = 'heroinDriver', 
+						icon = v.targeticon, 
+						label = v.targetlabel, 
+						onSelect = function() 
+							SearchHeroinDriver() 
+						end, 
+						distance = v.targetdistance
+					} 
+				})
+                exports.ox_target:addLocalEntity(heroinPassenger, { 
+					{ 
+						name = 'heroinPassenger', 
+						icon = v.targeticon, 
+						label = v.targetlabel, 
+						onSelect = function() 
+							SearchHeroinPassenger() 
+						end, 
+						distance = v.targetdistance
+					} 
+				})
             end
 			local destinationCoords = vector3(destination.x, destination.y, destination.z)
 			local arrivalDistance = 50.0
@@ -563,8 +788,6 @@ local function SpawnHeroinVehicle()
 					if DoesEntityExist(heroinDriver, heroinPassenger) and IsEntityDead(heroinDriver, heroinPassenger) then
 						RemoveBlip(vehicleBlip)
 						SetPedKeepTask(heroinDriver, false)
-						SetPedDropsWeaponsWhenDead(heroinDriver, false)
-						SetPedDropsWeaponsWhenDead(heroinPassenger, false)
 						SetPedKeepTask(heroinPassenger, false)
 						SetModelAsNoLongerNeeded(heroinDriver)
 						SetModelAsNoLongerNeeded(heroinPassenger)
@@ -581,8 +804,16 @@ local function SpawnHeroinVehicle()
 						SetModelAsNoLongerNeeded(heroinPassenger)
 						DeletePed(heroinDriver)
 						DeletePed(heroinPassenger)
-                        if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(heroinDriver) elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(heroinDriver, 'heroinDriver') end
-                        if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(heroinPassenger) elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(heroinPassenger, 'heroinPassenger') end						
+                        if TargetType == 'qb' then
+							exports['qb-target']:RemoveTargetEntity(heroinDriver) 
+						elseif TargetType == 'ox' then 
+							exports.ox_target:removeLocalEntity(heroinDriver, 'heroinDriver') 
+						end
+                        if TargetType == 'qb' then 
+							exports['qb-target']:RemoveTargetEntity(heroinPassenger) 
+						elseif TargetType == 'ox' then 
+							exports.ox_target:removeLocalEntity(heroinPassenger, 'heroinPassenger') 
+						end				
 						vehiclespawned = false
 						break
 					end
@@ -621,7 +852,7 @@ RegisterNetEvent('lusty94_heroin:client:missionEmail', function()
                 local remainingTime = math.ceil((lastMissionUsage + cooldownTimeMission))
                 SendNotify('You must wait ' .. remainingTime / 1000 / 60 .. ' minutes before doing that.', 'error', 2000)
             else
-                local phoneItems = {
+                local phoneItems = { -- add or remove phone items here
                     "phone", -- qb-phone
                     "black_phone", -- qs-smartphone
                     "blue_phone", -- qs-smartphone
@@ -641,8 +872,8 @@ RegisterNetEvent('lusty94_heroin:client:missionEmail', function()
                     end
                 end    
                 if hasCompatiblePhone then
-                    SendNotify(Config.Language.Notifications.EmailWaitName, 'success', 2000)
-                    Wait(1000 * 30) -- 30 seconds
+                    SendNotify(Config.Language.Notifications.EmailWait, 'success', 2000)
+                    Wait(Config.CoreSettings.Processing.Mission.DelayTime)
                     if PhoneType == 'qb' then
                         TriggerServerEvent('qb-phone:server:sendNewMail', {
                             sender = 'Unknown Sender ',
@@ -669,7 +900,7 @@ RegisterNetEvent('lusty94_heroin:client:missionEmail', function()
                     HeroinMissionCooldown = true                
                     SetTimeout(cooldownTimeMission, function() HeroinMissionCooldown = false end) 
                 else
-                    SendNotify(Config.Language.Notifications.WrongPhoneName, 'error', 2000)
+                    SendNotify(Config.Language.Notifications.WrongPhone, 'error', 2000)
                 end
             end
         end
@@ -686,34 +917,40 @@ RegisterNetEvent("lusty94_heroin:client:ProcessHeroinBase", function()
     QBCore.Functions.TriggerCallback('lusty94_heroin:get:ProcessHeroinBase', function(HasItems)  
         if HasItems then
             if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+                SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
             else
                 local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
                 if success then
                     busy = true
                     LockInventory(true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.ProcessHeroinBase, label = Config.Language.ProgressBar.ProcessHeroinBase, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
+                    if lib.progressCircle({ 
+						duration = Config.CoreSettings.ProgressBar.ProcessHeroinBase, 
+						label = Config.Language.ProgressBar.ProcessHeroinBase, 
+						position = 'bottom', 
+						useWhileDead = false, 
+						canCancel = true, 
+						disable = { car = true, move = true, }, 
+						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+					}) then
 						local chance = Config.CoreSettings.Chances.ProcessSuccess
 						if chance >= math.random(1,100) then
                         	TriggerServerEvent('lusty94_heroin:server:ProcessHeroinBase')
 						else
-							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
+							SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
 						end
+						busy = false
+						LockInventory(false)
                     else 
                         busy = false
                         LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+                        SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
                     end
                 else
-                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
+                    SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
                 end
             end
 		else
-			SendNotify(Config.Language.Notifications.NotEnoughName, 'error', 2000)
+			SendNotify(Config.Language.Notifications.NotEnough, 'error', 2000)
         end
     end)
 end)
@@ -723,34 +960,40 @@ RegisterNetEvent("lusty94_heroin:client:ProcessPureHeroin", function()
     QBCore.Functions.TriggerCallback('lusty94_heroin:get:ProcessPureHeroin', function(HasItems)  
         if HasItems then
             if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+                SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
             else
                 local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
                 if success then
                     busy = true
                     LockInventory(true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.ProcessPureHeroin, label = Config.Language.ProgressBar.ProcessPureHeroin, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
+                    if lib.progressCircle({ 
+						duration = Config.CoreSettings.ProgressBar.ProcessPureHeroin, 
+						label = Config.Language.ProgressBar.ProcessPureHeroin, 
+						position = 'bottom', 
+						useWhileDead = false, 
+						canCancel = true, 
+						disable = { car = true, move = true, }, 
+						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+					}) then
 						local chance = Config.CoreSettings.Chances.ProcessSuccess
 						if chance >= math.random(1,100) then
                         	TriggerServerEvent('lusty94_heroin:server:ProcessPureHeroin')
 						else
-							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
+							SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
 						end
+						busy = false
+						LockInventory(false)
                     else 
                         busy = false
                         LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+                        SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
                     end
                 else
-                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
+                    SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
                 end
             end
 		else
-			SendNotify(Config.Language.Notifications.NotEnoughName, 'error', 2000)
+			SendNotify(Config.Language.Notifications.NotEnough, 'error', 2000)
         end
     end)
 end)
@@ -760,34 +1003,40 @@ RegisterNetEvent("lusty94_heroin:client:ProcessHeroinVial", function()
     QBCore.Functions.TriggerCallback('lusty94_heroin:get:ProcessHeroinVial', function(HasItems)  
         if HasItems then
             if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+                SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
             else
                 local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
                 if success then
                     busy = true
                     LockInventory(true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.ProcessHeroinVial, label = Config.Language.ProgressBar.ProcessHeroinVial, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
+                    if lib.progressCircle({ 
+						duration = Config.CoreSettings.ProgressBar.ProcessHeroinVial, 
+						label = Config.Language.ProgressBar.ProcessHeroinVial, 
+						position = 'bottom', 
+						useWhileDead = false, 
+						canCancel = true, 
+						disable = { car = true, move = true, }, 
+						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+					}) then
 						local chance = Config.CoreSettings.Chances.ProcessSuccess
 						if chance >= math.random(1,100) then
                         	TriggerServerEvent('lusty94_heroin:server:ProcessHeroinVial')
 						else
-							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
+							SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
 						end
+						busy = false
+						LockInventory(false)
                     else 
                         busy = false
                         LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+                        SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
                     end
                 else
-                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
+                    SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
                 end
             end
 		else
-			SendNotify(Config.Language.Notifications.NotEnoughName, 'error', 2000)
+			SendNotify(Config.Language.Notifications.NotEnough, 'error', 2000)
         end
     end)
 end)
@@ -797,34 +1046,40 @@ RegisterNetEvent('lusty94_heroin:client:CreateOverDoseCure', function()
 	QBCore.Functions.TriggerCallback('lusty94_heroin:get:OverDoseCureItems', function(HasItems)  
         if HasItems then
             if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+                SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
             else
                 local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
                 if success then
                     busy = true
                     LockInventory(true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.CreateOverDoseCure, label = Config.Language.ProgressBar.CreateOverDoseCure, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
+                    if lib.progressCircle({ 
+						duration = Config.CoreSettings.ProgressBar.CreateOverDoseCure, 
+						label = Config.Language.ProgressBar.CreateOverDoseCure, 
+						position = 'bottom', 
+						useWhileDead = false, 
+						canCancel = true, 
+						disable = { car = true, move = true, }, 
+						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+					}) then
 						local chance = Config.CoreSettings.Chances.ProcessSuccess
 						if chance >= math.random(1,100) then
                         	TriggerServerEvent('lusty94_heroin:server:CreateOverDoseCure')
 						else
-							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
+							SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
 						end
+						busy = false
+						LockInventory(false)
                     else 
                         busy = false
                         LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+                        SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
                     end
                 else
-                    SendNotify("Action failed.", 'error', 2000)
+                    SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
                 end
             end
 		else
-			SendNotify(Config.Language.Notifications.NotEnoughName, 'error', 2000)
+			SendNotify(Config.Language.Notifications.NotEnough, 'error', 2000)
         end
 	end)
 end)
@@ -841,7 +1096,7 @@ end)
 
 -- Function to take heroin
 local function TakeHeroin()
-	local player = PlayerPedId()
+	local playerPed = PlayerPedId()
 	local timer = Config.DrugSettings.Effects.EffectsTimer
 	local StressEvent = Config.CoreSettings.EventNames.Stress
 	Wait(2500) 
@@ -851,9 +1106,11 @@ local function TakeHeroin()
 	ShakeGameplayCam('DRUNK_SHAKE', 1.10)
 	Wait(3000) 
 	SetTimecycleModifier('spectator5')
-	SetPedMotionBlur(player, true) 
-    if IsPedRunning(PlayerPedId()) then
-        SetPedToRagdoll(PlayerPedId(), math.random(1000, 3000), math.random(1000, 3000), 3, false, false, false)
+	SetPedMotionBlur(playerPed, true) 
+	AddArmourToPed(playerPed, Config.DrugSettings.Effects.ArmourGained)
+	TriggerServerEvent(StressEvent, Config.DrugSettings.Effects.StressReduced)
+    if IsPedRunning(playerPed) then
+        SetPedToRagdoll(playerPed, math.random(1000, 3000), math.random(1000, 3000), 3, false, false, false)
     end
 	TriggerEvent(EvidenceEvent, "widepupils", 300)
 	SetFlash(0, 0, 500, 7000, 500)
@@ -868,20 +1125,18 @@ local function TakeHeroin()
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('DRUNK_SHAKE', 1.10)
 	Wait(timer)
-	SendNotify(Config.Language.Notifications.DrugEffectsName, 'success', 2000)
+	SendNotify(Config.Language.Notifications.DrugEffects, 'success', 2000)
 	Wait(2000)
 	ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
-    SetRunSprintMultiplierForPlayer(player, 1.0)
-    StopGameplayCamShaking(player, true)
-    SetPedIsDrunk(player, false)
-    SetPedMotionBlur(player, false)
-	SetEntityInvincible(PlayerPedId(), false)
-	ClearPedTasks(player)
-	AddArmourToPed(player, Config.DrugSettings.Effects.ArmourGained)
-	TriggerServerEvent(StressEvent, Config.DrugSettings.Effects.StressReduced)
-	SendNotify(Config.Language.Notifications.OverDoseWarningName, 'error', 2000)
+    SetRunSprintMultiplierForPlayer(playerPed, 1.0)
+    StopGameplayCamShaking(playerPed, true)
+    SetPedIsDrunk(playerPed, false)
+    SetPedMotionBlur(playerPed, false)
+	SetEntityInvincible(playerPed, false)
+	ClearPedTasks(playerPed)	
 	if Config.DrugSettings.Effects.OverDose then
+		SendNotify(Config.Language.Notifications.OverDoseWarning, 'error', 2000)
 		TriggerServerEvent('lusty94_heroin:server:OverDose')
 	end
 end
@@ -894,27 +1149,34 @@ RegisterNetEvent('lusty94_heroin:client:TakeHeroin', function()
 	QBCore.Functions.TriggerCallback('lusty94_heroin:get:TakeHeroin', function(HasItems)  
         if HasItems then
 			if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+                SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
             else
 				busy = true
 				LockInventory(true)
-				if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.TakeHeroin, label = Config.Language.ProgressBar.TakeHeroin, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,}, prop = { model = 'prop_syringe_01', bone = 28422, pos = vec3(0.0, 0.0, 0.0), rot = vec3(0.0, 0.0, 0.0), }, }) then
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.ProgressBar.TakeHeroin, 
+					label = Config.Language.ProgressBar.TakeHeroin, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = true, }, 
+					anim = { dict = Config.Animations.TakeHeroin.AnimDict, clip = Config.Animations.TakeHeroin.Anim, flag = Config.Animations.TakeHeroin.Flags,}, 
+					prop = { model = Config.Animations.TakeHeroin.Prop, bone = Config.Animations.TakeHeroin.Bone, pos = Config.Animations.TakeHeroin.Pos, rot = Config.Animations.TakeHeroin.Rot, }, 
+				}) then
 					TriggerServerEvent('lusty94_heroin:server:TakeHeroin')
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
 					if Config.DrugSettings.Effects.Enabled then
 						TakeHeroin()
 					end
 				else 
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
-					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+					SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
 				end
 			end
 		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
+			SendNotify(Config.Language.Notifications.NoItems, 'error', 2000)
 		end
 	end)
 end)
@@ -929,19 +1191,19 @@ end)
 
 -- overdose
 RegisterNetEvent('lusty94_heroin:client:OverDose', function()
-	local player = PlayerPedId()
+	local playerPed = PlayerPedId()
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.10)
 	DoScreenFadeOut(2000)
 	Wait(2000)
-	SetEntityHealth(player, GetEntityHealth(player) - Config.DrugSettings.Effects.HealthRemoved)
+	SetEntityHealth(playerPed, GetEntityHealth(playerPed) - Config.DrugSettings.Effects.HealthRemoved)
 	Wait(2000)
 	DoScreenFadeIn(2000)
 	SendNotify(Config.Language.Notifications.OverDosedName, 'error', 2000)
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.10)
 	SetFlash(0, 0, 500, 7000, 500)
-	StopGameplayCamShaking(player, true)
+	StopGameplayCamShaking(playerPed, true)
 end)
 
 -- Take overdose cure
@@ -949,24 +1211,31 @@ RegisterNetEvent('lusty94_heroin:client:TakeOverDoseCure', function()
 	QBCore.Functions.TriggerCallback('lusty94_heroin:get:TakeOverDoseCure', function(HasItems)  
         if HasItems then
 			if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+                SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
             else
 				busy = true
 				LockInventory(true)
-				if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.TakeOverDoseCure, label = Config.Language.ProgressBar.TakeOverDoseCure, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,}, prop = { model = 'prop_syringe_01', bone = 28422, pos = vec3(0.0, 0.0, 0.0), rot = vec3(0.0, 0.0, 0.0), }, }) then
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.ProgressBar.TakeOverDoseCure, 
+					label = Config.Language.ProgressBar.TakeOverDoseCure, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = true, }, 
+					anim = { dict = Config.Animations.TakeOverdoseCure.AnimDict, clip = Config.Animations.TakeOverdoseCure.Anim, flag = Config.Animations.TakeOverdoseCure.Flags,}, 
+					prop = { model = Config.Animations.TakeOverdoseCure.Prop, bone = Config.Animations.TakeOverdoseCure.Bone, pos = Config.Animations.TakeOverdoseCure.Pos, rot = Config.Animations.TakeOverdoseCure.Rot, },
+				}) then
 					TriggerServerEvent('lusty94_heroin:server:CureOverDose')
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
 				else 
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
-					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+					SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
 				end
 			end
 		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
+			SendNotify(Config.Language.Notifications.NoItems, 'error', 2000)
 		end
 	end)
 end)
@@ -979,22 +1248,9 @@ end)
 
 -- open supplies shop
 AddEventHandler("lusty94_heroin:client:openSuppliesShop", function()
-	local heroinItems = {
-        label = "Heroin Supplies", 
-        slots = 5,
-        items = {
-            [1] = {name = "trowel",                 price = 5,      amount = 1000, info = {}, type = "item", slot = 1,},
-            [2] = {name = "emptyvial",              price = 5,      amount = 1000, info = {}, type = "item", slot = 2,},
-            [3] = {name = "scales",                 price = 500,    amount = 1000, info = {}, type = "item", slot = 3,},
-            [4] = {name = "plasticjerrycan",        price = 100,    amount = 1000, info = {}, type = "item", slot = 4,},
-            [5] = {name = "heroinprocessingtable",  price = 1000,   amount = 1000, info = {}, type = "item", slot = 5,},
-        },
-    }
-	if ShopType == 'qb'then
-		TriggerServerEvent("inventory:server:OpenInventory", "shop", "HeroinSupplyShop", heroinItems)
-	elseif ShopType == 'jim' then
-		TriggerServerEvent("jim-shops:ShopOpen", "shop", "HeroinSupplyShop", heroinItems)
-	elseif ShopType == 'ox' then
+	if InvType == 'qb'then
+		TriggerServerEvent('lusty94_heroin:server:SupplyShop')
+	elseif InvType == 'ox' then
 		exports.ox_inventory:openInventory('shop',{ type = 'HeroinSupplyShop' })
 	end
 end)
@@ -1002,34 +1258,41 @@ end)
 
 
 -- function to lock inventory to prevent exploits
-function LockInventory(toggle) -- big up to jim for how to do this
+function LockInventory(toggle)
 	if toggle then
-        LocalPlayer.state:set("inv_busy", true, true) -- used by qb, ps and ox
-        --this is the old method below
-        --[[         
-        if InvType == 'qb' then
-            this is for the old method if using old qb and ox
-            TriggerEvent('inventory:client:busy:status', true) TriggerEvent('canUseInventoryAndHotbar:toggle', false)
-        elseif InvType == 'ox' then
-            LocalPlayer.state:set("inv_busy", true, true)
-        end         
-        ]]
+        LocalPlayer.state:set("inv_busy", true, true)
     else 
-        LocalPlayer.state:set("inv_busy", false, true) -- used by qb, ps and ox
-        --this is the old method below
-        --[[        
-        if InvType == 'qb' then
-            this is for the old method if using old qb and ox
-         TriggerEvent('inventory:client:busy:status', false) TriggerEvent('canUseInventoryAndHotbar:toggle', true)
-        elseif InvType == 'ox' then
-            LocalPlayer.state:set("inv_busy", false, true)
-        end        
-        ]]
+        LocalPlayer.state:set("inv_busy", false, true)
     end
 end
 
 
+--function to display item images for ox_lib menu
+function ItemImage(img)
+	if InvType == 'ox' then
+		return "nui://ox_inventory/web/images/"..img..'.png'
+	elseif InvType == 'qb' then
+		return "nui://qb-inventory/html/images/"..QBCore.Shared.Items[img].image
+	end
+end
 
+
+--dont touch
+AddEventHandler('onResourceStart', function(resourceName)
+    if (GetCurrentResourceName() == resourceName) then
+		spawnOpium()
+    end
+end)
+
+--dont touch
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    -- on player load delete objects that are already spawned, empty the objects table and then respawn them to prevent duplications
+    for _, v in pairs(opiumPlants) do SetEntityAsMissionEntity(v, false, true) DeleteObject(v) SetEntityAsNoLongerNeeded(v) end
+    opiumPlants = {}
+    spawnOpium()
+end)
+
+--dont touch
 AddEventHandler('onResourceStop', function(resource)
 	if resource == GetCurrentResourceName() then
         delete_prop(heroinTableProp)
@@ -1043,17 +1306,13 @@ AddEventHandler('onResourceStop', function(resource)
 		for _, v in pairs(opiumPlants) do SetEntityAsMissionEntity(v, false, true) DeleteObject(v) end
 		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(opiumPlant, 'opiumPlant') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(opiumPlant, 'opiumPlant') end
 		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(heroinPed, 'heroinPed') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(heroinPed, 'heroinPed') end
-		if TargetType == 'qb' then exports['qb-target']:RemoveTargetModel(EtherModel) elseif TargetType == 'ox' then exports.ox_target:removeModel(EtherModel) end
-		if TargetType == 'qb' then exports['qb-target']:RemoveTargetModel(LimeModel) elseif TargetType == 'ox' then exports.ox_target:removeModel(LimeModel) end
-		if TargetType == 'qb' then exports['qb-target']:RemoveTargetModel(HydrochloricAcidModel) elseif TargetType == 'ox' then exports.ox_target:removeModel(HydrochloricAcidModel) end
+		if Config.CoreSettings.DrugScripts.Enabled then
+		else			
+			if TargetType == 'qb' then exports['qb-target']:RemoveTargetModel(EtherModel) elseif TargetType == 'ox' then exports.ox_target:removeModel(EtherModel) end
+			if TargetType == 'qb' then exports['qb-target']:RemoveTargetModel(LimeModel) elseif TargetType == 'ox' then exports.ox_target:removeModel(LimeModel) end
+			if TargetType == 'qb' then exports['qb-target']:RemoveTargetModel(HydrochloricAcidModel) elseif TargetType == 'ox' then exports.ox_target:removeModel(HydrochloricAcidModel) end
+		end	
 		DeletePed(heroinPed)
-		print('^5--<^3!^5>-- ^7| Lusty94 |^5 ^5--<^3!^5>--^7 Heroin V2.0.0 Stopped Successfully ^5--<^3!^5>--^7')
+		print('^5--<^3!^5>-- ^7| Lusty94 |^5 ^5--<^3!^5>--^7 Heroin V2.0.1 Stopped Successfully ^5--<^3!^5>--^7')
 	end
-end)
-
---dont touch
-AddEventHandler('onResourceStart', function(resourceName)
-    if (GetCurrentResourceName() == resourceName) then
-		spawnOpium()
-    end
 end)

@@ -15,18 +15,16 @@ Config = {}
 -- Below you can change multiple options to suit your server needs.
 
 
-Config.DebugPoly = true -- debugs polyzone and displays green area of coca leves field
-
-
 Config.CoreSettings = {
+    DrugScripts = {
+        Enabled = false, 
+        -- the following scripts: lusty94_cocaine, lusty94_heroin and lusty94_ketamine ALL share target models for hydrochloric acid, ether, lime and cement
+        -- if you are using other scripts that clash with each other enable this setting to disable the target models for this script that are used in my other drug scripts
+        -- then make sure the item name matches across all scripts to prevent any issues and use 1 target model option to collect said items
+    },
     EventNames = {
         Stress = 'hud:server:RelieveStress', -- name of stress removal event
-        Evidence = 'evidence:client:SetStatus', -- name of evidence event to set widepupils status when taking cocaine and crack
-    },
-    Target = {
-        Type = 'ox', -- target script name support for qb-target and ox_target        
-        --use 'qb' for qb-target
-        --use 'ox' for ox_target 
+        Evidence = 'evidence:client:SetStatus', -- name of evidence event to set widepupils status when taking drugs
     },
     Notify = {
         Type = 'qb', -- notification type, support for qb-core notify, okokNotify, mythic_notify, boii_ui notify and ox_lib notify
@@ -36,33 +34,24 @@ Config.CoreSettings = {
         --use 'boii' for boii_ui notify
         --use 'ox' for -x_lib notify
     },    
-    Menu = {
-        Type = 'qb', -- menu script name, support for qb-menu, jixel-menu and ox_lib context menu
-        --EDITS MENUS.LUA TO ADD YOUR CUSTOM MENU OR CHANGE VALUES
-        --use 'qb' for qb-menu
-        --use 'jixel' for jixel-menu
-        --use 'ox' for ox_lib context menu
-        --use 'custom' for your own custom menu
+    Target = {
+        Type = 'ox', -- target script name support for qb-target and ox_target        
+        --use 'qb' for qb-target
+        --use 'ox' for ox_target 
     },
     Inventory = {
         Type = 'ox' -- support for qb-inventory & ox_inventory
         --use 'qb' for qb-inventory
         --use 'ox' for ox_inventory
     },
-    Shop = { -- support for qb-inventory shops, jim-shops and ox_inventory shops
-        Type = 'ox',
-        --use 'qb' for qb-inventory shops
-        --use 'jim' for jim-shops
-        --use 'ox' for ox_inventory shops
-    },
     Police = {
-        MinCops = 0, -- minimum amount of cops required on duty to request mission
-        Type = 'ps' -- support for qb-policejob and ps_dispatch
+        MinCops = 1, -- minimum amount of cops required on duty to request mission
+        Type = 'qb' -- support for qb-policejob and ps_dispatch
         --use 'qb' for qb-policejob
         --use 'ps' for ps-dispatch
     },
     Phone = {
-        Type = 'custom' -- support for qb-phone and qs-smartphone
+        Type = 'qb' -- support for qb-phone and qs-smartphone
         --use 'qb' for qb-phone
         --use 'qs' for qs-smartphone
         --use 'custom' for your own phone script and then make sure to add the emails snippet required for the supply mission
@@ -90,13 +79,20 @@ Config.CoreSettings = {
     Chances = { -- chances for individual events
         CallPolice = 90, -- chance to call police when searching for items
         GetOpium = 90, -- chance to get coca leaves
-        GetLime = 75, -- chance to get cement
-        GetEther = 75, -- chance to get gasoline
-        GetHydro = 75, -- chance to get hydrochloric acid
-        SearchBody = 75, -- chance to get items from searching chemicals mission peds
+        GetLime = 90, -- chance to get cement
+        GetEther = 90, -- chance to get gasoline
+        GetHydro = 90, -- chance to get hydrochloric acid
+        SearchBody = 90, -- chance to get items from searching chemicals mission peds
         ProcessSuccess = 100, -- chance to process drugs successfuly
     }, 
-    Props = { -- NAME  = prop name - REQUIREDITEM = item needed to activate target - ITEMCHANCE = chance of finding item - POLICECHANCE = chance of police notify if failed / found nothing = TARGETICON = icon for target - TARGETLABEL = label for target - TARGETDISTANCE = distance for target
+    Props = { 
+        -- Name  = prop name 
+        -- RequiredItem = item needed to activate target 
+        -- ItemChance = chance of finding item 
+        -- PoliceChance = chance of police notify if failed / found nothing 
+        -- TargetIcon = icon for target 
+        -- TargetLabel = label for target 
+        -- TargetDistance = distance for target
         OpiumPlants = {
             Name = 'prop_plant_01b',
             RequiredItem = 'trowel',
@@ -111,7 +107,7 @@ Config.CoreSettings = {
             ItemChance = 90,
             PoliceChance = 90,
             TargetIcon = 'fa-solid fa-hand-point-up',
-            TargetLabel = 'Get Lime', 
+            TargetLabel = 'Search Pallets', 
             TargetDistance = 2.0,
         },
         Ether = {
@@ -144,16 +140,58 @@ Config.CoreSettings = {
 }
 
 Config.Blips = {
-    {title = 'Opium Plants', colour = 5, id = 270, coords = vector3(242.67, 3574.86, 34.18), scale = 0.8, useblip = false,}, -- BLIP FOR OPIUM PLANTS
-    {title = 'Ether Barrels', colour = 5, id = 648, coords = vector3(463.64, -578.81, 28.50), scale = 0.8, useblip = false,}, -- BLIP FOR ETHER BARRELS
-    {title = 'Construction Site', colour = 5, id = 478, coords = vector3(-489.18, -990.85, 29.13), scale = 0.8, useblip = false,}, -- BLIP FOR CONSTRUCTION SITE
-    {title = 'Hydrochloric Acid', colour = 5, id = 415, coords = vector3(2710.09, 1532.11, 20.82), scale = 0.8, useblip = false,}, -- BLIP FOR HYDROCHLORIC ACID
+    {
+        useblip = false,
+        title = 'Opium Plants', 
+        colour = 5, 
+        id = 270, 
+        coords = vector3(242.67, 3574.86, 34.18), 
+        scale = 0.8, 
+    },
+    {
+        useblip = false,
+        title = 'Ether Barrels', 
+        colour = 5, 
+        id = 648, 
+        coords = vector3(463.64, -578.81, 28.50), 
+        scale = 0.8, 
+    },
+    {
+        useblip = false,
+        title = 'Construction Site', 
+        colour = 5, 
+        id = 478, 
+        coords = vector3(-489.18, -990.85, 29.13), 
+        scale = 0.8, 
+    },
+    {
+        useblip = false,
+        title = 'Hydrochloric Acid', 
+        colour = 5, 
+        id = 415, 
+        coords = vector3(2710.09, 1532.11, 20.82), 
+        scale = 0.8, 
+    },
 }
 
 
 Config.Peds = {
-    -- if setting useped to false make sure to set useblip to false also and add your own methods of obtaining the items required
-    {name = 'supplies_ped',  useped = true, coords = vector4(962.00, -2189.64, 30.51, 85.25),   model = 'g_m_y_salvagoon_01',   playanim = true,  scenario = 'WORLD_HUMAN_CLIPBOARD', useblip = false, title = 'Supplier', colour = 5, id = 51, scale = 0.8, targeticon = 'fa-solid fa-boxes-packing', targetlabel = 'Speak With Supplier', targetdistance = 2.0,}, -- ped spawned for crafting supplies
+    {
+        useped = true,  -- use ped?
+        name = 'heroinSupplyPed',  --must be unique
+        coords = vector4(962.00, -2189.64, 30.51, 85.25), -- coords
+        model = 'g_m_y_salvagoon_01', -- ped model
+        targeticon = 'fa-solid fa-boxes-packing', -- target icon
+        targetlabel = 'Speak With Supplier', -- target label
+        targetdistance = 2.0, -- target distance
+        playanim = true, -- play animation?
+        scenario = 'WORLD_HUMAN_CLIPBOARD', -- scenario name 
+        useblip = true, -- use blip?
+        title = 'Supplier', -- blip name
+        colour = 5, -- blip colour
+        id = 51, -- blip id
+        scale = 0.8, -- blip scale
+    },
 }
 
 
@@ -226,22 +264,22 @@ Config.XP = { -- use xp
 
 Config.Processing = { -- ItemName and ItemLabel MUST MATCH with items and labels in qb-core/shared/items.lua to work properly
     Mission = {
-        DelayTime = 1000 * 30, -- delay time in minutes before getting the email with information so 1000 ms * 30 becomes 30 seconds - you could also use 60000 for MS or math.random(30000,60000) for MS instead
+        DelayTime = 30 * 1000, -- delay time in minutes before getting the email with information so 1000 ms * 30 becomes 30 seconds - you could also use 60000 for MS or math.random(30000,60000) for MS instead
         ItemChance = 80, -- the chance to get chemicals when searching guards
-        PoliceChance = 75, -- the chance to notify police when searching guards
+        PoliceChance = 100, -- the chance to notify police when searching guards
         FindCash = true, -- set to true for a chance to find cash when searching guards
         CashChance = 75, -- the chance to find cash when searching guards
         CashAmount = math.random(100,500), -- amount of cash found if set to true and chance value is met
         Vehicle = { 
             { 
-                model = 'gburrito2',
-                driverweapon = 'weapon_combatshotgun',
-                drivermodel = 'g_m_y_lost_02',
-                passengerweapon = 'weapon_microsmg',
-                passengermodel = 'g_m_y_salvaboss_01',
-                targeticon = 'fa-solid fa-users',
-                targetlabel = 'Search Body',
-                targetdistance = 2.0,
+                model = 'gburrito2', -- vehicle spawn name
+                driverweapon = 'weapon_combatshotgun', -- drivers weapon name
+                drivermodel = 'g_m_y_lost_02', -- driver ped model
+                passengerweapon = 'weapon_microsmg', -- passenger weapon name
+                passengermodel = 'g_m_y_salvaboss_01', -- passenger ped model
+                targeticon = 'fa-solid fa-users', -- target icon
+                targetlabel = 'Search Body', -- target label
+                targetdistance = 2.0, -- target distance
             },
         },
         StartLocations = { -- locations for the van to spawn at - must be vector4
@@ -274,16 +312,15 @@ Config.Processing = { -- ItemName and ItemLabel MUST MATCH with items and labels
         RequiredItemAmount = 10, -- required item amount
         RequiredItem2Name = 'ether',  -- required item name
         RequiredItem2Label = 'Ether', -- required item label
-        RequiredItem2Amount = 1, -- required item amount
+        RequiredItem2Amount = 3, -- required item amount
         RequiredItem3Name = 'limepowder',  -- required item name
         RequiredItem3Label = 'Lime Powder', -- required item label
-        RequiredItem3Amount = 1, -- required item amount
+        RequiredItem3Amount = 3, -- required item amount
         RequiredItem4Name = 'hydrochloricacid',  -- required item name
         RequiredItem4Label = 'Hydrochloric Acid', -- required item label
-        RequiredItem4Amount = 1, -- required item amount
+        RequiredItem4Amount = 3, -- required item amount
         ProcessedItemName = 'heroin_base', -- given item name
         ProcessedItemLabel = 'Heroin Base', -- given item label
-        ProcessedItemAmount = math.random(2,5),  -- given item amount
     },
     PureHeroin = {  
         RequiredItemName = 'heroin_base',  -- required item name
@@ -297,13 +334,12 @@ Config.Processing = { -- ItemName and ItemLabel MUST MATCH with items and labels
         RequiredItem3Amount = 1, -- required item amount
         ProcessedItemName = 'pure_heroin', -- given item name
         ProcessedItemLabel = 'Pure Heroin', -- given item label
-        ProcessedItemAmount = math.random(1,3),  -- given item amount
     },
     Bagging = {
         HeroinVial = {
             RequiredItemName = 'pure_heroin', -- required item name
             RequiredItemLabel = 'Pure Heroin', -- required item label
-            RequiredItemAmount = 2, -- required item amount
+            RequiredItemAmount = 3, -- required item amount
             RequiredItem2Name = 'scales', -- required item name
             RequiredItem2Label = 'Scales', -- required item label [SCALES DOESNT NEED AN ITEM AMOUNT AS ITS JUST A CHECK FOR THE ITEM ITSELF IN THE PLAYERS INVENTORY - IT DOESNT GET REMOVED WHEN BAGGING]
             RequiredItem3Name = 'emptyvial', -- required item name
@@ -311,7 +347,6 @@ Config.Processing = { -- ItemName and ItemLabel MUST MATCH with items and labels
             RequiredItem3Amount = 1, -- required item amount
             BaggedItemName = 'heroin_vial', -- given item name
             BaggedItemLabel = 'Vial of Heroin', -- given item label
-            BaggedItemAmount = math.random(3,6), -- given item amount
         },
     },
     Curing = {
@@ -324,9 +359,8 @@ Config.Processing = { -- ItemName and ItemLabel MUST MATCH with items and labels
         RequiredItem3Name = 'noscapine',  -- required item name
         RequiredItem3Label = 'Noscapine', -- required item label
         RequiredItem3Amount = 2, -- required item amount
-        ProcessedItemName = 'overdosecure', -- given item name
+        ProcessedItemName = 'heroinoverdosecure', -- given item name
         ProcessedItemLabel = 'Overdose Cure', -- given item label
-        ProcessedItemAmount = 1,  -- given item amount
     },
     TakeDrugs = {
         RequiredItemName = 'heroin_vial',  -- required item name
@@ -344,10 +378,10 @@ Config.DrugSettings = {
         Enabled = true, -- enables screen visuals and armour, health and stress effects setting to false will disable everything
         EffectsTimer = 10000, -- timer for drug effects when consumed before wearing off - perfect time is around 10000 ms {10 seconds}
         GiveArmour = true, -- enables the player to gain armour when consuming coke and crack
-        ArmourGained = math.random(5,10), -- amount of armour gained SET TO 0 FOR NOTHING
+        ArmourGained = math.random(20,30), -- amount of armour gained SET TO 0 FOR NOTHING
         ReduceStress = true, -- enables the player to get stress relief when consuming coke and crack
-        StressReduced = math.random(5,10), -- amount of stress reduced SET TO 0 FOR NOTHING
-        OverDose = true, -- set to true for a chance for the player to become overdosed after a certain amount of times taking magic mushrooms
+        StressReduced = math.random(20,30), -- amount of stress reduced SET TO 0 FOR NOTHING
+        OverDose = false, -- set to true for a chance for the player to become overdosed after a certain amount of times taking magic mushrooms
         OverDoseMetaDataName = 'overdose', -- The name of your overdose metadata if you edit this make sure to also edit the line you added into qb-core/server/player.lua --USE /overdose TO CHECK YOUR OVERDOSE LEVEL if OverDose is set to true above
         OverDoseAmount = math.random(5,10), -- overdose counter each time cocaine and crack is consumed if OverDose is set to true -- this will eventually add up to the number you specify below as the minimum level required to overdose
         OverDoseLevel = 2500, -- minimum level needed to overdose - set fairly high to prevent constant overdoses or match your highest level stated in the OverDoseLevels table below
@@ -374,22 +408,37 @@ Config.Animations = { -- change animations below for various tasks
         AnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
         Anim = 'machinic_loop_mechandplayer',
         Flags = 41,
-        Prop = "prop_cs_trowel",
-    },
-    GetLime = {
-        AnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
-        Anim = 'machinic_loop_mechandplayer',
-        Flags = 41,
+        Prop = 'prop_cs_trowel',
+        Bone = 18905,
+        Pos = vec3(0.12, 0.0, 0.02),
+        Rot = vec3(76.0, 188.0, 34.0),
     },
     GetEther = {
         AnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
         Anim = 'machinic_loop_mechandplayer',
         Flags = 41,
+        Prop = 'prop_ld_jerrycan_01',
+        Bone = 60309,
+        Pos = vec3(0.06, 0.04, 0.02),
+        Rot = vec3(194.0, 0.0, 0.0),
+    },
+    GetLime = {
+        AnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
+        Anim = 'machinic_loop_mechandplayer',
+        Flags = 41,
+        Prop = 'prop_cs_trowel',
+        Bone = 18905,
+        Pos = vec3(0.12, 0.0, 0.02),
+        Rot = vec3(76.0, 188.0, 34.0),
     },
     GetHydrochloricAcid = {
         AnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
         Anim = 'machinic_loop_mechandplayer',
         Flags = 41,
+        Prop = 'prop_ld_jerrycan_01',
+        Bone = 60309,
+        Pos = vec3(0.06, 0.04, 0.02),
+        Rot = vec3(194.0, 0.0, 0.0),
     },
     SearchGuards = {
         AnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
@@ -406,50 +455,62 @@ Config.Animations = { -- change animations below for various tasks
         Anim = 'think_01_hi_amy_skater_01',
         Flags = 41,
     },
-    TakeDrugs = {
+    TakeHeroin = {
         AnimDict = 'rcmpaparazzo1ig_4',
         Anim = 'miranda_shooting_up',
         Flags = 49,
+        Prop = 'prop_syringe_01',
+        Bone = 28422,
+        Pos = vec3(0.0, 0.0, 0.0),
+        Rot = vec3(0.0, 0.0, 0.0),
+    },
+    TakOverdoseCure = {
+        AnimDict = "amb@world_human_drinking@coffee@male@idle_a",
+        Anim = "idle_c", 
+        Flags = 49,
+        Prop = 'p_ing_coffeecup_02',
+        Bone = 28422,
+        Pos = vec3(0.01, -0.01, 0.0),
+        Rot = vec3(0.0, 0.0, 0.0),
     },
 }
 
 
 
 Config.Language = {
-	Notifications = {
-        FailedName = 'Action Failed!',
-        BusyName = 'You Are Already Doing Something!',
-        PoliceNotifiedName = 'The Police Have Been Called!',
-        AlreadyCuredName = 'You Are Not Close To Overdosing Any Time Soon, You Dont Need This At The Moment!',
-        OverDosedName = 'You Have Overdosed Go See A Doctor Immediately!',
-        OverDoseWarningName = 'Careful You Dont Overdose If You Take Too Many Drugs!',
-        OverDoseCuredName = 'You Start To Feel Better And Less Likely To Overdose!',
-        EarnedXpName = 'You Earned Some XP!',
-        CancelledName = 'Cancelled',
-        NothingFoundName = 'You Found Nothing This Time!',
-        DrugEffectsName = 'Holy Shit That Stuff Is Strong!',
-        SearchTimerName = 'You Must Wait  ',
-        EmailWaitName = 'Chemical Run Requested - You Will Receive An Email Shortly!',
-        WrongPhoneName = 'You Cant Receive Emails Without The Correct Phone!',
-        AlreadySpawnedName = 'Truck Is Already Spawned!',
-        PropErrorName = 'You Cant Spawn Another Processing Table Without Removing The Other One First!',
-        NoItemsName = 'You Are Missing Items',
-        NotEnoughName = 'You Dont Have Enough Of The Required Item(s) To Do That!',
-        NoCopsName = 'Not Enough Police On Duty!',
+    ProgressBar = { 
+        PickOpiumPlants = 'Picking opium plants',
+        GetLime = 'Searching pallet',
+        GetEther = 'Siphoning ether',
+        GetHydrochloricAcid = 'Siphoning hydrochloric acid',
+        SearchGuards = 'Searching guards',
+        PlaceProcessingTable = 'Placing processing table',
+        ProcessHeroinBase = 'Processing heroin base',
+        ProcessPureHeroin = 'Processing pure heroin',
+        ProcessHeroinVial = 'Processing vial of heroin',
+        CreateOverDoseCure = 'Creating overdose cure',
+        TakeHeroin = 'Injecting heroin',
+        TakeOverDoseCure = 'Taking overdose cure',
     },
-	ProgressBar = { 
-        PickOpiumPlants = 'Picking Opium Plants',
-        GetLime = 'Getting Lime',
-        GetEther = 'Siphoning Ether',
-        GetHydrochloricAcid = 'Siphoning Hydrochloric Acid',
-        TakeHeroin = 'Injecting Heroin',
-        ProcessHeroinBase = 'Processing Heroin Base',
-        ProcessPureHeroin = 'Processing Pure Heroin',
-        ProcessHeroinVial = 'Processing Vial of Heroin',
-        CreateOverDoseCure = 'Creating Overdose Cure',
-        TakeOverDoseCure = 'Taking Overdose Cure',
-        SearchGuards = 'Searching Guards',
-        PlaceProcessingTable = 'Placing Processing Table',
+	Notifications = {
+        Failed = 'Action Failed!',
+        Busy = 'You Are Already Doing Something!',
+        PoliceNotified = 'The Police Have Been Called!',
+        AlreadyCured = 'You Are Not Close To Overdosing Any Time Soon, You Dont Need This At The Moment!',
+        OverDosed = 'You Have Overdosed Go See A Doctor Immediately!',
+        OverDoseWarning = 'Careful You Dont Overdose If You Take Too Many Drugs!',
+        OverDoseCured = 'You Start To Feel Better And Less Likely To Overdose!',
+        EarnedXp = 'You Earned Some XP!',
+        Cancelled = 'Cancelled',
+        NothingFound = 'You Found Nothing This Time!',
+        DrugEffects = 'Holy Shit That Stuff Is Strong!',
+        EmailWait = 'Chemical Run Requested - You Will Receive An Email Shortly!',
+        WrongPhone = 'You Cant Receive Emails Without The Correct Phone!',
+        AlreadySpawned = 'Truck Is Already Spawned!',
+        PropError = 'You Cant Spawn Another Processing Table Without Removing The Other One First!',
+        NoItems = 'You Are Missing Items',
+        NotEnough = 'You Dont Have Enough Of The Required Item(s) To Do That!',
+        NoCops = 'Not Enough Police On Duty!',
     },
 }
 

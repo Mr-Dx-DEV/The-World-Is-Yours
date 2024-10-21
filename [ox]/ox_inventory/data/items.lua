@@ -1,4 +1,195 @@
 return {
+
+	--- heroin
+	--- 
+	
+
+	["pure_heroin"] = {
+		label = "Pure Heroin",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pure_heroin.png",
+		}
+	},
+
+	["heroin_vial"] = {
+		label = "Vioal of Heroin",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "heroin_vial.png",
+		}
+	},
+
+	["opiumsap"] = {
+		label = "Opium Sap",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "opiumsap.png",
+		}
+	},
+
+	["scales"] = {
+		label = "Scales",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "scales.png",
+		}
+	},
+
+	["emptyvial"] = {
+		label = "Empty Vial",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "emptyvial.png",
+		}
+	},
+
+	["heroinoverdosecure"] = {
+		label = "Overdose Cure",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "overdosecure.png",
+		}
+	},
+
+	["dirtyneedle"] = {
+		label = "Dirty Needle",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "dirtyneedle.png",
+		}
+	},
+
+	["trowel"] = {
+		label = "Trowel",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "trowel.png",
+		}
+	},
+
+	["hydrochloricacid"] = {
+		label = "Hydrochloric Acid",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "hydrochloricacid.png",
+		}
+	},
+
+	["papaverine"] = {
+		label = "Papaverine",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "papaverine.png",
+		}
+	},
+
+	["plasticjerrycan"] = {
+		label = "Empty Plastic Jerry Can",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "plasticjerrycan.png",
+		}
+	},
+
+	["noscapine"] = {
+		label = "Noscapine",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "noscapine.png",
+		}
+	},
+
+	["heroin_base"] = {
+		label = "Heroin Base",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "heroin_base.png",
+		}
+	},
+
+	["acetone"] = {
+		label = "Acetone",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "acetone.png",
+		}
+	},
+
+	["limepowder"] = {
+		label = "Lime Powder",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "limepowder.png",
+		}
+	},
+
+	["heroinprocessingtable"] = {
+		label = "Heroin Processing Table",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "heroinprocessingtable.png",
+		}
+	},
+
+	["ether"] = {
+		label = "Ether",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "ether.png",
+		}
+	},
  ------ coke
  ---
  
@@ -2123,82 +2314,8 @@ return {
     }
 },
 
--- MATERIALS
-['opiumsap'] = {
-    label = 'Opium Sap',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'opiumsap.png'
-    }
-},
-['limepowder'] = {
-    label = 'Lime Powder',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'limepowder.png'
-    }
-},
-
-['noscapine'] = {
-    label = 'Noscapine',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'noscapine.png'
-    }
-},
-['papaverine'] = {
-    label = 'Papaverine',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'papaverine.png'
-    }
-},
-['heroin_base'] = {
-    label = 'Heroin Base',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'heroin_base.png'
-    }
-},
-['pure_heroin'] = {
-    label = 'Pure Heroin',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'pure_heroin.png'
-    }
-},
 
 
-
--- DRUGS
-['heroin_vial'] = {
-    label = 'Vial of Heroin',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'heroin_vial.png'
-    }
-},
 
 
 ['overdosecure'] = {

@@ -22,9 +22,7 @@ SCRIPT SUPPORT VIA DISCORD: https://discord.gg/BJGFrThmA8
 - Consume heroin for visual screen effects and player buffs such as armour and stress removal
 - A chance to overdose if consuming too many drugs with configurable effects
 - Consume overdose cure to reduce your chances of overdosing and coming to an untimely demise!
-- Support for qb-policejob and ps-dispatch for police alerts
 - Extensive config file
-- Change core settings to suit your server such as progressbar timers, notify lengths, event names, cooldown timers, prop types and much more
 - Language settings for custom translations
 
 
@@ -48,8 +46,11 @@ If you are using the inbuilt XP and overdose system then you must add the metada
 
 #old core
 
-PlayerData.metadata['drugxp'] = PlayerData.metadata['drugxp'] or 0 -- Added for lusty94_heroin
-PlayerData.metadata['overdosexp'] = PlayerData.metadata['overdosexp'] or 0 -- Added for lusty94_heroin
+-- Added for lusty94_heroin - shared across multiple drug scripts either change to heroinxp or use drugxp globally
+PlayerData.metadata['drugxp'] = PlayerData.metadata['drugxp'] or 0 
+
+-- Added for lusty94_heroin  - shared across multiple drug scripts either change to heroinoverdosexp or use overdosexp globally
+PlayerData.metadata['overdosexp'] = PlayerData.metadata['overdosexp'] or 0 
 
 #new core
 
@@ -60,25 +61,23 @@ overdosexp = 0,
 
 
 ## OX INVENTORY USERS - SUPPLIES SHOP
-
+- items list is below under ox_inventory items
 - this resource automatically creates the supply shop for you, to change item names or prices look in heroin_server.lua for the function
 
 
 
 ## DEPENDENCIES
 
-- QB-CORE - https://github.com/qbcore-framework/qb-core
-- QB-TARGET - https://github.com/qbcore-framework/qb-target
-- QB-MENU - https://github.com/qbcore-framework/qb-menu
-- QB-INVENTORY - https://github.com/qbcore-framework/qb-inventory
-- QB-POLICEJOB - https://github.com/qbcore-framework/qb-policejob
-- QB-PHONE - https://github.com/qbcore-framework/qb-phone
-- OX_LIB - https://github.com/overextended/ox_lib/releases
+- [qb-core](https://github.com/qbcore-framework/qb-core)
+- [qb-target](https://github.com/qbcore-framework/qb-target)
+- [qb-inventory](https://github.com/qbcore-framework/qb-inventory)
+- [qb-policejob](https://github.com/qbcore-framework/qb-policejob)
+- [qb-phone](https://github.com/qbcore-framework/qb-phone)
+- [ox_lib](https://github.com/overextended/ox_lib/releases/)
 
 
 
-
-## ITEMS
+## QB-CORE ITEMS
 
 ```
 
@@ -110,3 +109,196 @@ overdosexp = 0,
 ```
 
 
+## OX_INVENTORY ITEMS
+
+```
+
+
+	["pure_heroin"] = {
+		label = "Pure Heroin",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pure_heroin.png",
+		}
+	},
+
+	["heroin_vial"] = {
+		label = "Vioal of Heroin",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "heroin_vial.png",
+		}
+	},
+
+	["opiumsap"] = {
+		label = "Opium Sap",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "opiumsap.png",
+		}
+	},
+
+	["scales"] = {
+		label = "Scales",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "scales.png",
+		}
+	},
+
+	["emptyvial"] = {
+		label = "Empty Vial",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "emptyvial.png",
+		}
+	},
+
+	["heroinoverdosecure"] = {
+		label = "Overdose Cure",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "overdosecure.png",
+		}
+	},
+
+	["dirtyneedle"] = {
+		label = "Dirty Needle",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "dirtyneedle.png",
+		}
+	},
+
+	["trowel"] = {
+		label = "Trowel",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "trowel.png",
+		}
+	},
+
+	["hydrochloricacid"] = {
+		label = "Hydrochloric Acid",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "hydrochloricacid.png",
+		}
+	},
+
+	["papaverine"] = {
+		label = "Papaverine",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "papaverine.png",
+		}
+	},
+
+	["plasticjerrycan"] = {
+		label = "Empty Plastic Jerry Can",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "plasticjerrycan.png",
+		}
+	},
+
+	["noscapine"] = {
+		label = "Noscapine",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "noscapine.png",
+		}
+	},
+
+	["heroin_base"] = {
+		label = "Heroin Base",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "heroin_base.png",
+		}
+	},
+
+	["acetone"] = {
+		label = "Acetone",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "acetone.png",
+		}
+	},
+
+	["limepowder"] = {
+		label = "Lime Powder",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "limepowder.png",
+		}
+	},
+
+	["heroinprocessingtable"] = {
+		label = "Heroin Processing Table",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "heroinprocessingtable.png",
+		}
+	},
+
+	["ether"] = {
+		label = "Ether",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "ether.png",
+		}
+	},
+
+```
