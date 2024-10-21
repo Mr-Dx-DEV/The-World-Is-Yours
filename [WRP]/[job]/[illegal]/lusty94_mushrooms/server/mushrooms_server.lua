@@ -5,17 +5,15 @@ local NotifyType = Config.CoreSettings.Notify.Type
 local InvType = Config.CoreSettings.Inventory.Type
 local Levels = Config.XP.Levels
 local OverDoseLevels = Config.DrugSettings.OverDoseLevels
-local xpAmount = Config.XP.XPAmount
-local xpChance = Config.XP.XPChance
 
 
 ----------< USEABLE ITEMS >-------------
 
 local useItems = {
-    { name = 'processingtable',     event = 'lusty94_mushrooms:client:openProcessingTable'},
-    { name = 'magic_mushroom',      event = 'lusty94_mushrooms:client:TakeMagicMushrooms'},
-    { name = 'indigo_mycota_cure',  event = 'lusty94_mushrooms:client:TakeOverDoseCure'},
-    { name = 'deathcap_mushroom',   event = 'lusty94_mushrooms:client:TakeDeathCapMushroom'},
+    { name = 'mushroomprocessingtable',     event = 'lusty94_mushrooms:client:openProcessingTable'},
+    { name = 'magic_mushroom',              event = 'lusty94_mushrooms:client:TakeMagicMushrooms'},
+    { name = 'mushroomoverdosecure',        event = 'lusty94_mushrooms:client:TakeOverDoseCure'},
+    { name = 'deathcap_mushroom',           event = 'lusty94_mushrooms:client:TakeDeathCapMushroom'},
 }
 
 for k,v in pairs(useItems) do
@@ -44,17 +42,79 @@ local function SendNotify(src, msg, type, time, title)
     end
 end
 
+--remove items
+local function removeItem(src, item, amount)
+    if InvType == 'qb' then
+        if exports['qb-inventory']:RemoveItem(src, item, amount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'remove', amount)
+        end
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src, item, amount)
+    end
+end
+
+--add items
+local function addItem(src, item, amount)
+    if InvType == 'qb' then
+        if exports['qb-inventory']:AddItem(src, item, amount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add', amount)
+        end
+    elseif InvType == 'ox' then
+        if exports.ox_inventory:CanCarryItem(src, item, amount) then
+            exports.ox_inventory:AddItem(src, item, amount)
+        else
+            SendNotify(src, Config.Language.Notifications.CantCarry, 'error', 5000)
+        end
+    end
+end
+
+
+--give xp
+local function giveDrugXP()
+    if Config.XP.Enabled then
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        local MetaDataName = Config.XP.MetaDataName
+        local DrugXP = Player.PlayerData.metadata[MetaDataName]
+        local xpChance = Config.XP.XPChance
+        local xpAmount = Config.XP.XPGain
+        if xpChance >= math.random(1,100) then
+            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
+            SendNotify(src,Config.Language.Notifications.EarnedXp, 'error', 2000)
+        end
+    end	
+end
+
+--return amount for events
+local function calculateDrugXP(DrugXP)
+    if Config.XP.Enabled then
+        if DrugXP <= 150 then
+            return math.random(1, 3)
+        elseif DrugXP <= 500 then
+            return math.random(3, 5)
+        elseif DrugXP <= 750 then
+            return math.random(5, 7)
+        elseif DrugXP <= 1250 then
+            return math.random(7, 9)
+        elseif DrugXP <= 1500 then
+            return math.random(9, 11)
+        elseif DrugXP <= 2200 then
+            return math.random(11, 13)
+        end
+    else
+        return math.random(3,5) -- edit item reward amounts if not using XP here
+    end
+end
 
 
 --------------CALL BACKS-----------
 -- raw mushroom callback
-QBCore.Functions.CreateCallback('lusty94_mushrooms:get:RawMushroomItems', function(source, cb)
+QBCore.Functions.CreateCallback('lusty94_mushrooms:get:RawMushroomItems', function(source, cb, amount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local item1 = Player.Functions.GetItemByName(Config.Processing.Drying.RequiredItemName)
-    local item1amount = Config.Processing.Drying.RequiredItemAmount
-    local item2 = Player.Functions.GetItemByName(Config.Processing.Drying.RequiredItem2Name)
-    if item1 and item1.amount >= item1amount and item2 and item2.amount >= 1 then
+    local item2 = Player.Functions.GetItemByName(Config.Processing.Drying.RequiredItem2Name) -- drying rack is only checked for it doesnt remove it
+    if item1 and item1.amount >= amount and item2 and item2.amount >= 1 then
         cb(true)
     else
         cb(false)
@@ -62,14 +122,12 @@ QBCore.Functions.CreateCallback('lusty94_mushrooms:get:RawMushroomItems', functi
 end)
 
 -- dried mushroom callback
-QBCore.Functions.CreateCallback('lusty94_mushrooms:get:MagicMushroomItems', function(source, cb)
+QBCore.Functions.CreateCallback('lusty94_mushrooms:get:MagicMushroomItems', function(source, cb, amount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local item1 = Player.Functions.GetItemByName(Config.Processing.Processing.RequiredItemName)
-    local item1amount = Config.Processing.Processing.RequiredItemAmount
     local item2 = Player.Functions.GetItemByName(Config.Processing.Processing.RequiredItem2Name)
-    local item2amount = Config.Processing.Processing.RequiredItem2Amount
-    if item1 and item1.amount >= item1amount and item2 and item2.amount >= item2amount then
+    if item1 and item1.amount >= amount and item2 and item2.amount >= amount then
         cb(true)
     else
         cb(false)
@@ -79,14 +137,12 @@ end)
 
 
 --overdose cure callback
-QBCore.Functions.CreateCallback('lusty94_mushrooms:get:OverDoseCureItems', function(source, cb)
+QBCore.Functions.CreateCallback('lusty94_mushrooms:get:OverDoseCureItems', function(source, cb, amount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local item1 = Player.Functions.GetItemByName(Config.Processing.Curing.RequiredItemName)
-    local item1amount = Config.Processing.Curing.RequiredItemAmount
     local item2 = Player.Functions.GetItemByName(Config.Processing.Curing.RequiredItem2Name)
-    local item2amount = Config.Processing.Curing.RequiredItem2Amount
-    if item1 and item1.amount >= item1amount and item2 and item2.amount >= item2amount then
+    if item1 and item1.amount >= amount and item2 and item2.amount >= amount then
         cb(true)
     else
         cb(false)
@@ -140,186 +196,62 @@ RegisterServerEvent('lusty94_mushrooms:server:PickMushrooms', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
-    local probability = math.random(1, 100)
-    local items = {'libertycap_mushroom', 'indigomilkcap_mushroom', 'deathcap_mushroom', }
-    local selectItems = items[math.random(#items)]
+    local items = { 'libertycap_mushroom', 'indigomilkcap_mushroom', 'deathcap_mushroom', }
+    local selectedItems = items[math.random(#items)]
+    local rewardAmount = calculateDrugXP(DrugXP)
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            amount = math.random(2,5)
-        elseif DrugXP <= 500 then
-            amount = math.random(5,8)
-        elseif DrugXP <= 750 then
-            amount = math.random(8, 11)
-        elseif DrugXP <= 1250 then
-            amount = math.random(11, 14)
-        elseif DrugXP <= 1500 then
-            amount = math.random(14, 17)
-        elseif DrugXP <= 2000 then
-            amount = math.random(17, 20)
-        end
-    else amount = math.random(1,3) end
-    if InvType == 'qb' then
-        Player.Functions.AddItem(selectItems, amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[selectItems], 'add', amount)
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, selectItems, amount) then
-            exports.ox_inventory:AddItem(src,selectItems, amount)
-        else
-            SendNotify(src, Config.Language.Notifications.CantCarryName, 'error', 2000)
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src, Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    addItem(src, selectedItems, rewardAmount)
+    giveDrugXP()
 end)
 
 
 --dry mushrooms
-RegisterServerEvent('lusty94_mushrooms:server:DryMushroom', function()
+RegisterServerEvent('lusty94_mushrooms:server:DryMushroom', function(amount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
+    local requiredAmount = 1
+    local rewardAmount = calculateDrugXP(DrugXP)
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
-        end
-    else returnAmount = Config.Processing.Drying.DriedItemAmount end
-    if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.Drying.RequiredItemName, Config.Processing.Drying.RequiredItemAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Drying.RequiredItemName], 'remove', Config.Processing.Drying.RequiredItemAmount)        
-        Player.Functions.AddItem(Config.Processing.Drying.DriedItemName, returnAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Drying.DriedItemName], 'add', returnAmount)
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.Drying.DriedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Drying.RequiredItemName, Config.Processing.Drying.RequiredItemAmount)
-            exports.ox_inventory:AddItem(src,Config.Processing.Drying.DriedItemName, returnAmount)
-        else
-            SendNotify(src, Config.Language.Notifications.CantCarryName, 'error', 2000)
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src, Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    removeItem(src, Config.Processing.Drying.RequiredItemName, requiredAmount * amount)	
+    Wait(500)
+    addItem(src, Config.Processing.Drying.DriedItemName, amount * rewardAmount)
+    giveDrugXP()	
 end)
 
 
 --make magic mushrooms
-RegisterServerEvent('lusty94_mushrooms:server:MakeMagicMushrooms', function()
+RegisterServerEvent('lusty94_mushrooms:server:MakeMagicMushrooms', function(amount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
+    local requiredAmount = 1
+    local rewardAmount = calculateDrugXP(DrugXP)
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
-        end
-    else returnAmount = Config.Processing.Processing.ProcessedItemAmount end
-    if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.Processing.RequiredItemName, Config.Processing.Processing.RequiredItemAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Processing.RequiredItemName], 'remove', Config.Processing.Processing.RequiredItemAmount)        
-        Player.Functions.RemoveItem(Config.Processing.Processing.RequiredItem2Name, Config.Processing.Processing.RequiredItem2Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Processing.RequiredItem2Name], 'remove', Config.Processing.Processing.RequiredItem2Amount)        
-        Player.Functions.AddItem(Config.Processing.Processing.ProcessedItemName, returnAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Processing.ProcessedItemName], 'add', returnAmount)
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.Processing.ProcessedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Processing.RequiredItemName, Config.Processing.Processing.RequiredItemAmount)
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Processing.RequiredItem2Name, Config.Processing.Processing.RequiredItem2Amount)
-            exports.ox_inventory:AddItem(src,Config.Processing.Processing.ProcessedItemName, returnAmount)
-        else
-            SendNotify(src, Config.Language.Notifications.CantCarryName, 'error', 2000)
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src, Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    removeItem(src, Config.Processing.Processing.RequiredItemName, requiredAmount * amount)	
+    Wait(500)
+    removeItem(src, Config.Processing.Processing.RequiredItem2Name, requiredAmount * amount)	
+    Wait(500)
+    addItem(src, Config.Processing.Processing.ProcessedItemName, amount * rewardAmount)
+    giveDrugXP()
 end)
 
 
 --make overdose cure
-RegisterServerEvent('lusty94_mushrooms:server:MakeOverdoseCure', function()
+RegisterServerEvent('lusty94_mushrooms:server:MakeOverdoseCure', function(amount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
+    local requiredAmount = 1
+    local rewardAmount = calculateDrugXP(DrugXP)
     if not Player then return end
-    if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
-        end
-    else returnAmount = Config.Processing.Curing.ProcessedItemAmount end
-    if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.Curing.RequiredItemName, Config.Processing.Curing.RequiredItemAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.RequiredItemName], 'remove', Config.Processing.Curing.RequiredItemAmount)        
-        Player.Functions.RemoveItem(Config.Processing.Curing.RequiredItem2Name, Config.Processing.Curing.RequiredItem2Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.RequiredItem2Name], 'remove', Config.Processing.Curing.RequiredItem2Amount)        
-        Player.Functions.AddItem(Config.Processing.Curing.ProcessedItemName, returnAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.ProcessedItemName], 'add', returnAmount)
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.Curing.ProcessedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Curing.RequiredItemName, Config.Processing.Curing.RequiredItemAmount)
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Curing.RequiredItem2Name, Config.Processing.Curing.RequiredItem2Amount)
-            exports.ox_inventory:AddItem(src,Config.Processing.Curing.ProcessedItemName, returnAmount)
-        else
-            SendNotify(src, Config.Language.Notifications.CantCarryName, 'error', 2000)
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpAmount))
-            SendNotify(src, Config.Language.Notifications.EarnedXpName, 'error', 2000)
-        end
-    end	
+    removeItem(src, Config.Processing.Curing.RequiredItemName, requiredAmount * amount)	
+    Wait(500)
+    removeItem(src, Config.Processing.Curing.RequiredItem2Name, requiredAmount * amount)	
+    Wait(500)
+    addItem(src, Config.Processing.Curing.ProcessedItemName, amount * rewardAmount)
+    giveDrugXP()
 end)
-
-
-
-
-
-
-
-
-
 
 
 
@@ -329,26 +261,16 @@ end)
 RegisterServerEvent('lusty94_mushrooms:server:TakeMagicMushrooms', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
-    
-    if InvType == 'qb' then
-	    Player.Functions.RemoveItem(Config.Processing.Processing.ProcessedItemName, 1)
-	    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Processing.ProcessedItemName], "remove")
-    elseif InvType == 'ox' then
-        exports.ox_inventory:RemoveItem(src, Config.Processing.Processing.ProcessedItemName, 1)        
-    end
+    if not Player then return end
+    removeItem(src, Config.Processing.Processing.ProcessedItemName, 1)
 end)
 
 -- take deathcap mushrooms
 RegisterServerEvent('lusty94_mushrooms:server:TakeDeathCapMushrooms', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
-    if InvType == 'qb' then
-	    Player.Functions.RemoveItem("deathcap_mushroom", 1)
-	    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["deathcap_mushroom"], "remove")
-    elseif InvType == 'ox' then
-        exports.ox_inventory:RemoveItem(src, "deathcap_mushroom", 1)        
-    end
-
+    if not Player then return end
+    removeItem(src, 'deathcap_mushroom', 1)
 end)
 
 -- update overdose
@@ -369,14 +291,10 @@ RegisterServerEvent('lusty94_mushrooms:server:CureOverDose', function()
     local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
     local OverDose = Player.PlayerData.metadata[OverDoseName]
-
-    if OverDose >= 1 then
-        if InvType == 'qb' then
-            Player.Functions.RemoveItem(Config.Processing.Curing.ProcessedItemName, 1)
-	        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.ProcessedItemName], "remove")
-        elseif InvType == 'ox' then
-            exports.ox_inventory:RemoveItem(src, Config.Processing.Curing.ProcessedItemName, 1)   
-        end
+    local rewardAmount = calculateDrugXP(DrugXP)
+    if not Player then return end
+    if OverDose >= 1 then 
+        removeItem(src, Config.Processing.Curing.ProcessedItemName, 1)
         Player.Functions.SetMetaData(OverDoseName, (OverDose - Config.DrugSettings.Effects.OverDoseCureAmount))
         SendNotify(src, Config.Language.Notifications.OverDoseCuredName, 'success', 2000)
     else
@@ -426,17 +344,41 @@ if Config.XP.Enabled then
     end
 end
 
+
+--------------------------< QB-INVENTORY SUPPLY SHOPS >--------------------
+
+--supply shop
+RegisterServerEvent('lusty94_mushrooms:server:SupplyShop', function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local mushroomSupplies = {
+        {name = "acetone",                 price = 250,  amount = 1000, info = {}, type = "item", slot = 1,},
+        {name = "dimethylformamide",       price = 500,  amount = 1000, info = {}, type = "item", slot = 2,},
+        {name = "dryingrack",              price = 100,  amount = 1000, info = {}, type = "item", slot = 3,},
+        {name = "mushroomprocessingtable", price = 1000, amount = 1000, info = {}, type = "item", slot = 4,},
+    }
+    exports['qb-inventory']:CreateShop({
+        name = 'mushroomSupplies',
+        label = 'Magic Mushroom Supply Shop',
+        slots = 4,
+        items = mushroomSupplies
+    })
+    if Player then
+        exports['qb-inventory']:OpenShop(source, 'mushroomSupplies')
+    end
+end)
+
+
+--------------------------< OX_INVENTORY SUPPLY SHOPS >--------------------
 --supplies shop
 function MushroomSupplyStore()
     exports.ox_inventory:RegisterShop('MushroomSupplyStore', {
         name = 'Mushroom Supply Shop',
         inventory = {
-            { name = 'acetone', price = 250 },
-            { name = 'dimethylformamide', price = 500 },
-            { name = 'dryingrack', price = 100 },
-            { name = 'scales', price = 250 },
-            { name = 'processingtable', price = 1000 },
-            { name = 'emptybaggies', price = 10 },
+            { name = 'acetone',             price = 250 },
+            { name = 'dimethylformamide',   price = 500 },
+            { name = 'dryingrack',          price = 100 },
+            { name = 'mushroomprocessingtable',     price = 1000 },
         },
     })
 end
@@ -459,7 +401,6 @@ local function CheckVersion()
 		local advice = "^1You are currently running an outdated version^7, ^1please update^7"
 		if newestVersion:gsub("%s+", "") == currentVersion:gsub("%s+", "") then advice = '^6You are running the latest version.^7'
 		else print("^3Version Check^7: ^2Current^7: "..currentVersion.." ^2Latest^7: "..newestVersion..advice) end
-		--print(advice)
 	end)
 end
 CheckVersion()

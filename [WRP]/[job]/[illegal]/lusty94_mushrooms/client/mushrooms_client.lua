@@ -1,9 +1,9 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-local mushroomPlants = {}
+local mushroomPlants, mushroomBlips = {}, {}
 local busy, mushroomTablePlaced = false, false
 local NotifyType = Config.CoreSettings.Notify.Type
 local TargetType = Config.CoreSettings.Target.Type
-local ShopType = Config.CoreSettings.Shop.Type
+local InvType = Config.CoreSettings.Inventory.Type
 local EvidenceEvent = Config.CoreSettings.EventNames.Evidence
 
 
@@ -30,23 +30,6 @@ local function SendNotify(msg,type,time,title)
     end
 end
 
-
---blip for mushroom field
-CreateThread(function()
-	for k, v in pairs(Config.Blips) do
-        if v.useblip then
-            v.blip = AddBlipForCoord(v.coords.x, v.coords.y, v.coords.z)
-            SetBlipSprite(v.blip, v.id)
-            SetBlipDisplay(v.blip, 4)
-            SetBlipScale(v.blip, v.scale)
-            SetBlipColour(v.blip, v.colour)
-            SetBlipAsShortRange(v.blip, true)
-            BeginTextCommandSetBlipName('STRING')
-            AddTextComponentString(v.title)
-            EndTextCommandSetBlipName(v.blip)
-        end
-    end
-end)
 
 --supplies ped
 CreateThread(function()
@@ -81,7 +64,17 @@ CreateThread(function()
 end)
 
 
-
+-- Function to remove all blips from a table
+function clearBlips(blipTable)
+    for _, blip in pairs(blipTable) do
+        if DoesBlipExist(blip) then
+            RemoveBlip(blip)
+        end
+    end
+    for k, _ in pairs(blipTable) do
+        blipTable[k] = nil
+    end
+end
 
 
 
@@ -106,13 +99,25 @@ end)
 function spawnMushrooms()
 	for k,v in pairs(Config.Mushrooms) do
 		lib.requestModel(Config.CoreSettings.Props.Mushrooms.Name, 5000)
-		mushrooms = CreateObject(Config.CoreSettings.Props.Mushrooms.Name, v.coords.x, v.coords.y, v.coords.z - 1, false, true, false) -- if plants floating or too low edit the -1 value on the Z axis
-		FreezeEntityPosition(mushrooms, true)
-		mushroomPlants[#mushroomPlants+1] = mushrooms
+		mushroomObjects = CreateObject(Config.CoreSettings.Props.Mushrooms.Name, v.coords.x, v.coords.y, v.coords.z - 1, false, true, false) -- if plants floating or too low edit the -1 value on the Z axis
+		SetEntityHeading(mushroomObjects, v.coords.w + math.random(1, 359))
+		SetModelAsNoLongerNeeded(mushroomObjects)
+		FreezeEntityPosition(mushroomObjects, true)
+		mushroomPlants[#mushroomPlants+1] = mushroomObjects
+		local shroomBlip = AddBlipForCoord(v.coords.x, v.coords.y, v.coords.z)
+        SetBlipSprite(shroomBlip, 106)
+        SetBlipDisplay(shroomBlip, 4)
+        SetBlipScale(shroomBlip, 0.5)
+        SetBlipColour(shroomBlip, 5)
+        SetBlipAsShortRange(shroomBlip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString("Barley")
+        EndTextCommandSetBlipName(shroomBlip)
+        mushroomBlips[mushroomObjects] = shroomBlip
 		if TargetType == 'qb' then
-			exports['qb-target']:AddTargetEntity(mushrooms, { options = { { item = v.item, type = "client", event = "lusty94_mushrooms:client:PickMushroom", icon = v.icon, label = v.label, }, }, distance = v.distance })
+			exports['qb-target']:AddTargetEntity(mushroomObjects, { options = { { item = v.item, type = "client", event = "lusty94_mushrooms:client:PickMushroom", icon = v.icon, label = v.label, }, }, distance = v.distance })
 		elseif TargetType == 'ox' then
-			exports.ox_target:addLocalEntity(mushrooms, ({ name = 'mushrooms', items = v.item, label = v.label, icon = v.icon, event = 'lusty94_mushrooms:client:PickMushroom', distance = v.distance, }))
+			exports.ox_target:addLocalEntity(mushroomObjects, ({ name = 'mushroomObjects', items = v.item, label = v.label, icon = v.icon, event = 'lusty94_mushrooms:client:PickMushroom', distance = v.distance, }))
 		end
 	end
 end
@@ -123,7 +128,7 @@ RegisterNetEvent("lusty94_mushrooms:client:PickMushroom", function()
 	local coords = GetEntityCoords(playerPed)
 	local nearbyObject, nearbyID    
 	for i=1, #mushroomPlants, 1 do
-		if #(coords - GetEntityCoords(mushroomPlants[i])) <= 3 then -- if increasing target distance for props then make sure to increase this number also
+		if #(coords - GetEntityCoords(mushroomPlants[i])) <= 2 then -- if increasing target distance for props then make sure to increase this number also
 			nearbyObject, nearbyID = mushroomPlants[i], i
 		end
 	end   
@@ -131,22 +136,35 @@ RegisterNetEvent("lusty94_mushrooms:client:PickMushroom", function()
 		if IsPedOnFoot(playerPed) then
 			if busy then
 				SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+				return
 			else
-				local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+				local success = lib.skillCheck({'easy', 'easy', 'easy'}, {'e'})
 				if success then
 					busy = true
 					LockInventory(true)
-					FreezeEntityPosition(PlayerPed, true)
-					if lib.progressCircle({ duration = Config.CoreSettings.Timers.Pick, label = Config.Language.ProgressBar.PickMushrooms, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.PickMushrooms.AnimDict, clip = Config.Animations.PickMushrooms.Anim, flag = Config.Animations.PickMushrooms.Flags,}, prop = { model = 'prop_cs_trowel', bone = 18905, pos = vec3(0.12, 0.0, 0.02), rot = vec3(76.0, 188.0, 34.0), }, }) then
-						SetEntityAsMissionEntity(nearbyObject, false, true)
-						DeleteObject(nearbyObject)
-						mushroomPlants[nearbyID] = nil
+					if lib.progressCircle({ 
+						duration = Config.CoreSettings.Timers.Pick, 
+						label = Config.Language.ProgressBar.PickMushrooms, 
+						position = 'bottom', 
+						useWhileDead = false, 
+						canCancel = true, 
+						disable = { car = true, move = true, },
+						anim = { dict = Config.Animations.PickMushrooms.AnimDict, clip = Config.Animations.PickMushrooms.Anim, flag = Config.Animations.PickMushrooms.Flags,}, 
+						prop = { model = 'prop_cs_trowel', bone = 18905, pos = vec3(0.12, 0.0, 0.02), rot = vec3(76.0, 188.0, 34.0), }, 
+					}) then
 						local chance = Config.CoreSettings.Chances.Pick
 						if chance >= math.random(1,100) then
 							TriggerServerEvent('lusty94_mushrooms:server:PickMushrooms')
 						else
 							SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
 						end
+						if mushroomBlips[nearbyObject] then
+							RemoveBlip(mushroomBlips[nearbyObject])
+							mushroomBlips[nearbyObject] = nil
+						end
+						SetEntityAsMissionEntity(nearbyObject, false, true)
+						DeleteObject(nearbyObject)
+						mushroomPlants[nearbyID] = nil
 						busy = false
 						LockInventory(false)
 						FreezeEntityPosition(PlayerPed, false)
@@ -170,11 +188,6 @@ end)
 
 
 
-
-
-
-
-
 ---------------------------------< PROCESSING TABLE >--------------------------------
 
 --place processing table
@@ -186,6 +199,7 @@ RegisterNetEvent('lusty94_mushrooms:client:openProcessingTable', function()
     local TableProp = Config.CoreSettings.Props.ProcessingTable.Name
 	if busy then
         SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+		return
     else
 		if mushroomTablePlaced then
             SendNotify(Config.Language.Notifications.PropErrorName, 'error', 2000)
@@ -193,8 +207,15 @@ RegisterNetEvent('lusty94_mushrooms:client:openProcessingTable', function()
 		end
 		busy = true
         LockInventory(true)
-		if lib.progressCircle({ duration = 5000, label = Config.Language.ProgressBar.PlaceProcessingTable, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.PlaceProcessingTable.AnimDict, clip = Config.Animations.PlaceProcessingTable.Anim, flag = Config.Animations.PlaceProcessingTable.Flags, }, }) 
-        then
+		if lib.progressCircle({ 
+			duration = 5000, 
+			label = Config.Language.ProgressBar.PlaceProcessingTable, 
+			position = 'bottom', 
+			useWhileDead = false, 
+			canCancel = true, 
+			disable = { car = true, move = true, }, 
+			anim = { dict = Config.Animations.PlaceProcessingTable.AnimDict, clip = Config.Animations.PlaceProcessingTable.Anim, flag = Config.Animations.PlaceProcessingTable.Flags, }, 
+		}) then
             lib.requestModel(TableProp, 5000)
             mushroomTableProp = CreateObject(TableProp, x, y, z, true, false, true)
             PlaceObjectOnGroundProperly(mushroomTableProp)
@@ -202,15 +223,22 @@ RegisterNetEvent('lusty94_mushrooms:client:openProcessingTable', function()
             FreezeEntityPosition(mushroomTableProp, true)
 			SetEntityHeading(mushroomTableProp, GetEntityHeading(playerPed))
             if TargetType == 'qb' then
-                exports['qb-target']:AddTargetEntity(mushroomTableProp, {  options = { { event = 'lusty94_mushrooms:client:openMainMenu', type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.IconOpen, label =  Config.CoreSettings.Props.ProcessingTable.LabelOpen, }, { event = 'lusty94_mushroom:client:DeleteProcessingTable', type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.IconRemove, label = Config.CoreSettings.Props.ProcessingTable.LabelRemove, },}, distance = Config.CoreSettings.Props.ProcessingTable.Distance })
+                exports['qb-target']:AddTargetEntity(mushroomTableProp, {  options = { 
+					{ action = function() lib.showContext('MainMenuMushroom') end, type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.IconOpen, label =  Config.CoreSettings.Props.ProcessingTable.LabelOpen, }, 
+					{ event = 'lusty94_mushroom:client:DeleteProcessingTable', type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.IconRemove, label = Config.CoreSettings.Props.ProcessingTable.LabelRemove, },
+				}, distance = Config.CoreSettings.Props.ProcessingTable.Distance })
             elseif TargetType == 'ox' then
-                exports.ox_target:addLocalEntity(mushroomTableProp, { { name = 'mushroomTableProp', icon = Config.CoreSettings.Props.ProcessingTable.IconOpen, label =  Config.CoreSettings.Props.ProcessingTable.LabelOpen, event = 'lusty94_mushrooms:client:openMainMenu', distance = Config.CoreSettings.Props.ProcessingTable.Distance}, { name = 'mushroomTableProp', icon = Config.CoreSettings.Props.ProcessingTable.IconRemove, label = Config.CoreSettings.Props.ProcessingTable.LabelRemove, event = 'lusty94_mushroom:client:DeleteProcessingTable', distance = Config.CoreSettings.Props.ProcessingTable.Distance}  })
+                exports.ox_target:addLocalEntity(mushroomTableProp, { 
+					{ name = 'mushroomTableProp', icon = Config.CoreSettings.Props.ProcessingTable.IconOpen, label =  Config.CoreSettings.Props.ProcessingTable.LabelOpen, onSelect = function() lib.showContext('MainMenuMushroom') end, distance = Config.CoreSettings.Props.ProcessingTable.Distance},
+					{ name = 'mushroomTableProp', icon = Config.CoreSettings.Props.ProcessingTable.IconRemove, label = Config.CoreSettings.Props.ProcessingTable.LabelRemove, event = 'lusty94_mushroom:client:DeleteProcessingTable', distance = Config.CoreSettings.Props.ProcessingTable.Distance} 
+				})
             end
             mushroomTablePlaced = true
             busy = false
             LockInventory(false)
         else
             busy = false
+			LockInventory(false)
             SendNotify(Config.Language.Notifications.CancelledName, 'error', 3000)
         end
 	end
@@ -227,7 +255,11 @@ end
 -- delete processing table
 RegisterNetEvent('lusty94_mushroom:client:DeleteProcessingTable', function()
     if mushroomTableProp then
-		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(mushroomTableProp, 'mushroomTableProp') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(mushroomTableProp, 'mushroomTableProp') end
+		if TargetType == 'qb' then 
+			exports['qb-target']:RemoveTargetEntity(mushroomTableProp, 'mushroomTableProp') 
+		elseif TargetType == 'ox' then 
+			exports.ox_target:removeLocalEntity(mushroomTableProp, 'mushroomTableProp') 
+		end
         delete_prop(mushroomTableProp)
         mushroomTableProp = nil
         mushroomTablePlaced = false
@@ -236,116 +268,209 @@ end)
 
 --dry raw mushroom
 RegisterNetEvent("lusty94_mushrooms:client:DryMushroom", function()
-    QBCore.Functions.TriggerCallback('lusty94_mushrooms:get:RawMushroomItems', function(HasItems)  
-        if HasItems then
-            if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-            else
-                local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-                if success then
-                    busy = true
-                    LockInventory(true)
-					FreezeEntityPosition(PlayerPedId(), true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.Timers.ProcessRaw, label = Config.Language.ProgressBar.DryMushrooms, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-						FreezeEntityPosition(PlayerPedId(), false)
-						local chance = Config.CoreSettings.Chances.Process
-						if chance >= math.random(1,100) then
-                        	TriggerServerEvent('lusty94_mushrooms:server:DryMushroom')
-						else
-							SendNotify(Config.Language.Notifications.ProcessFailedName, 'error', 2000)
-						end
-                    else 
-                        busy = false
-                        LockInventory(false)
-						FreezeEntityPosition(PlayerPedId(), false)
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+	local playerPed = PlayerPedId()
+    if busy then
+        SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+        return
+    else
+        local input = lib.inputDialog('Dry Mushrooms', {
+            {
+                type = 'input',
+                placeholder = 'How much do you want to dry?',
+                disabled = true,
+                icon = 'arrow-right',
+            },
+            {
+                type = 'slider',
+                required = true,
+                default = 1,
+                min = 1,
+                max = 5, -- edit maximum allowed amount to process at once here
+            },
+        })
+        if input then
+            if input and tonumber(input[2]) > 0 then
+                local amount = tonumber(input[2])
+                QBCore.Functions.TriggerCallback('lusty94_mushrooms:get:RawMushroomItems', function(HasItems)  
+                    if HasItems then
+                        local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+                        if success then
+                            busy = true
+                            LockInventory(true)
+                            if lib.progressCircle({ 
+                                duration = Config.CoreSettings.Timers.ProcessRaw * amount,
+                                label = Config.Language.ProgressBar.DryMushrooms,
+                                position = 'bottom',
+                                useWhileDead = false,
+                                canCancel = true,
+                                disable = { car = true, move = true, },
+                                anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+                            }) then
+                                local chance = Config.CoreSettings.Chances.Process
+								if chance >= math.random(1,100) then
+									TriggerServerEvent('lusty94_mushrooms:server:DryMushroom', amount)
+								else
+									SendNotify(Config.Language.Notifications.ProcessFailedName, 'error', 2000)
+								end
+								busy = false
+								LockInventory(false)
+                            else 
+                                busy = false
+                                LockInventory(false)
+                                SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+                            end
+                        else
+                            SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
+                        end
+                    else
+                        SendNotify(Config.Language.Notifications.NotEnoughName, 'error', 2000)
                     end
-                else
-                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-                end
+                end, amount)
+            else
+                SendNotify(Config.Language.Notifications.InvalidAmountName, 'error', 2000)
             end
-		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
+        else
+            SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
         end
-    end)
+	end
 end)
 
 --make magic mushrooms
 RegisterNetEvent("lusty94_mushrooms:client:MakeMagicMushrooms", function()
-    QBCore.Functions.TriggerCallback('lusty94_mushrooms:get:MagicMushroomItems', function(HasItems)  
-        if HasItems then
-            if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-            else
-                local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-                if success then
-                    busy = true
-                    LockInventory(true)
-					FreezeEntityPosition(PlayerPedId(), true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.Timers.ProcessMagic, label = Config.Language.ProgressBar.MakeMagicMushrooms, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-						FreezeEntityPosition(PlayerPedId(), false)
-						local chance = Config.CoreSettings.Chances.Process
-						if chance >= math.random(1,100) then
-                        	TriggerServerEvent('lusty94_mushrooms:server:MakeMagicMushrooms')
-						else
-							SendNotify(Config.Language.Notifications.ProcessFailedName, 'error', 2000)
-						end
-                    else 
-                        busy = false
-                        LockInventory(false)
-						FreezeEntityPosition(PlayerPedId(), false)
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+	local playerPed = PlayerPedId()
+    if busy then
+        SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+        return
+    else
+        local input = lib.inputDialog('Magic Mushrooms', {
+            {
+                type = 'input',
+                placeholder = 'How much do you want to make?',
+                disabled = true,
+                icon = 'arrow-right',
+            },
+            {
+                type = 'slider',
+                required = true,
+                default = 1,
+                min = 1,
+                max = 5, -- edit maximum allowed amount to process at once here
+            },
+        })
+        if input then
+            if input and tonumber(input[2]) > 0 then
+                local amount = tonumber(input[2])
+                QBCore.Functions.TriggerCallback('lusty94_mushrooms:get:MagicMushroomItems', function(HasItems)  
+                    if HasItems then
+                        local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+                        if success then
+                            busy = true
+                            LockInventory(true)
+                            if lib.progressCircle({ 
+                                duration = Config.CoreSettings.Timers.ProcessMagic * amount,
+                                label = Config.Language.ProgressBar.MakeMagicMushrooms,
+                                position = 'bottom',
+                                useWhileDead = false,
+                                canCancel = true,
+                                disable = { car = true, move = true, },
+                                anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+                            }) then
+                                local chance = Config.CoreSettings.Chances.Process
+								if chance >= math.random(1,100) then
+									TriggerServerEvent('lusty94_mushrooms:server:MakeMagicMushrooms', amount)
+								else
+									SendNotify(Config.Language.Notifications.ProcessFailedName, 'error', 2000)
+								end
+								busy = false
+								LockInventory(false)
+                            else 
+                                busy = false
+                                LockInventory(false)
+                                SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+                            end
+                        else
+                            SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
+                        end
+                    else
+                        SendNotify(Config.Language.Notifications.NotEnoughName, 'error', 2000)
                     end
-                else
-                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-                end
+                end, amount)
+            else
+                SendNotify(Config.Language.Notifications.InvalidAmountName, 'error', 2000)
             end
-		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
+        else
+            SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
         end
-    end)
+	end
 end)
 
 --make overdose cure
 RegisterNetEvent("lusty94_mushrooms:client:MakeOverDoseCure", function()
-    QBCore.Functions.TriggerCallback('lusty94_mushrooms:get:OverDoseCureItems', function(HasItems)  
-        if HasItems then
-            if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-            else
-                local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-                if success then
-                    busy = true
-                    LockInventory(true)
-					FreezeEntityPosition(PlayerPedId(), true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.Timers.CreateCure, label = Config.Language.ProgressBar.CreateOverDoseCure, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-						FreezeEntityPosition(PlayerPedId(), false)
-						local chance = Config.CoreSettings.Chances.Process
-						if chance >= math.random(1,100) then
-                        	TriggerServerEvent('lusty94_mushrooms:server:MakeOverdoseCure')
-						else
-							SendNotify(Config.Language.Notifications.ProcessFailedName, 'error', 2000)
-						end
-                    else 
-                        busy = false
-                        LockInventory(false)
-						FreezeEntityPosition(PlayerPedId(), false)
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+	local playerPed = PlayerPedId()
+    if busy then
+        SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+        return
+    else
+        local input = lib.inputDialog('Overdose Cure', {
+            {
+                type = 'input',
+                placeholder = 'How much do you want to make?',
+                disabled = true,
+                icon = 'arrow-right',
+            },
+            {
+                type = 'slider',
+                required = true,
+                default = 1,
+                min = 1,
+                max = 5, -- edit maximum allowed amount to process at once here
+            },
+        })
+        if input then
+            if input and tonumber(input[2]) > 0 then
+                local amount = tonumber(input[2])
+                QBCore.Functions.TriggerCallback('lusty94_mushrooms:get:OverDoseCureItems', function(HasItems)  
+                    if HasItems then
+                        local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+                        if success then
+                            busy = true
+                            LockInventory(true)
+                            if lib.progressCircle({ 
+                                duration = Config.CoreSettings.Timers.CreateCure * amount,
+                                label = Config.Language.ProgressBar.CreateOverDoseCure,
+                                position = 'bottom',
+                                useWhileDead = false,
+                                canCancel = true,
+                                disable = { car = true, move = true, },
+                                anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+                            }) then
+                                local chance = Config.CoreSettings.Chances.Process
+								if chance >= math.random(1,100) then
+									TriggerServerEvent('lusty94_mushrooms:server:MakeOverdoseCure', amount)
+								else
+									SendNotify(Config.Language.Notifications.ProcessFailedName, 'error', 2000)
+								end
+								busy = false
+								LockInventory(false)
+                            else 
+                                busy = false
+                                LockInventory(false)
+                                SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+                            end
+                        else
+                            SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
+                        end
+                    else
+                        SendNotify(Config.Language.Notifications.NotEnoughName, 'error', 2000)
                     end
-                else
-                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-                end
+                end, amount)
+            else
+                SendNotify(Config.Language.Notifications.InvalidAmountName, 'error', 2000)
             end
-		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
+        else
+            SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
         end
-    end)
+	end
 end)
 
 
@@ -387,6 +512,9 @@ local function TakeMushrooms()
         SetPedToRagdoll(playerPed, math.random(1000, 3000), math.random(1000, 3000), 3, false, false, false)
     end
 	TriggerEvent(EvidenceEvent, "widepupils", 300)
+	AddArmourToPed(playerPed, Config.DrugSettings.Effects.ArmourGained)
+	SetEntityHealth(playerPed, GetEntityHealth(playerPed) + Config.DrugSettings.Effects.HealthGained)
+	TriggerServerEvent(StressEvent, Config.DrugSettings.Effects.StressReduced)
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.10)
 	Wait(2000)
@@ -428,11 +556,8 @@ local function TakeMushrooms()
     SetPedMotionBlur(playerPed, false)
 	SetEntityInvincible(playerPed, false)
 	ClearPedTasks(playerPed)
-	AddArmourToPed(playerPed, Config.DrugSettings.Effects.ArmourGained)
-	SetEntityHealth(playerPed, GetEntityHealth(playerPed) + Config.DrugSettings.Effects.HealthGained)
-	TriggerServerEvent(StressEvent, Config.DrugSettings.Effects.StressReduced)
-	SendNotify(Config.Language.Notifications.OverDoseWarningName, 'error', 2000)
 	if Config.DrugSettings.Effects.OverDose then
+		SendNotify(Config.Language.Notifications.OverDoseWarningName, 'error', 2000)
 		TriggerServerEvent('lusty94_mushrooms:server:OverDose')
 	end 
 end
@@ -451,9 +576,6 @@ local function TakeDeathCaps()
     end
 	TriggerEvent(EvidenceEvent, "widepupils", 300)
 	SendNotify(Config.Language.Notifications.BadTripName, 'error', 2000)
-	if Config.DrugSettings.Effects.OverDose then
-		TriggerServerEvent('lusty94_mushrooms:server:OverDose')
-	end
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.10)
 	Wait(2500)
@@ -466,8 +588,8 @@ local function TakeDeathCaps()
 	ShakeGameplayCam('DRUNK_SHAKE', 1.10)
 	DoScreenFadeOut(2500)
 	Wait(3000)
+	SetEntityCoords(playerPed, graveyardCoords.x, graveyardCoords.y, graveyardCoords.z, true, true, false, false )
 	SetEntityHealth(playerPed, 0) -- change the health the player is set with -- SET TO 0 SO THEY DIE IF HAVING A BBAD TRIP
-	SetEntityCoords(playerPed, coords.x, coords.y, coords.z, true, true, false, false ) -- change teleport coords for bad trip here default is the graveyard in the church
 	Wait(1000)
 	DoScreenFadeIn(2500)
 	SetFlash(0, 0, 500, 7000, 500)
@@ -479,6 +601,9 @@ local function TakeDeathCaps()
 	ClearTimecycleModifier()
 	StopGameplayCamShaking(playerPed, true)
 	ClearPedTasks(playerPed)
+	if Config.DrugSettings.Effects.OverDose then
+		TriggerServerEvent('lusty94_mushrooms:server:OverDose')
+	end
 end
 
 
@@ -492,10 +617,18 @@ RegisterNetEvent('lusty94_mushrooms:client:TakeMagicMushrooms', function()
 			if HasItems then
 				busy = true
 				LockInventory(true)
-				if lib.progressCircle({ duration = Config.CoreSettings.Timers.Take, label = Config.Language.ProgressBar.TakeDrugs, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,},}) then
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.Timers.Take, 
+					label = Config.Language.ProgressBar.TakeDrugs, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = false, }, 
+					anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,},
+				}) then
+					TriggerServerEvent('lusty94_mushrooms:server:TakeMagicMushrooms')
 					busy = false
 					LockInventory(false)
-					TriggerServerEvent('lusty94_mushrooms:server:TakeMagicMushrooms')
 					if Config.DrugSettings.Effects.Enabled then
 						TakeMushrooms()
 					end
@@ -540,10 +673,18 @@ RegisterNetEvent('lusty94_mushrooms:client:TakeOverDoseCure', function()
 			if HasItems then
 				busy = true
 				LockInventory(true)
-				if lib.progressCircle({ duration = Config.CoreSettings.Timers.Take, label = Config.Language.ProgressBar.TakeOverDoseCure, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,},}) then
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.Timers.Take, 
+					label = Config.Language.ProgressBar.TakeOverDoseCure, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = false, },  
+					anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,},
+				}) then
+					TriggerServerEvent('lusty94_mushrooms:server:CureOverDose')
 					busy = false
 					LockInventory(false)
-					TriggerServerEvent('lusty94_mushrooms:server:CureOverDose')
 				else 
 					busy = false
 					LockInventory(false)
@@ -566,7 +707,15 @@ RegisterNetEvent('lusty94_mushrooms:client:TakeDeathCapMushroom', function()
 			if HasItems then
 				busy = true
 				LockInventory(true)
-				if lib.progressCircle({ duration = Config.CoreSettings.Timers.Take, label = Config.Language.ProgressBar.TakeDeathCap, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,},}) then
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.Timers.Take, 
+					label = Config.Language.ProgressBar.TakeDeathCap, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = false, },  
+					anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,},
+				}) then
 					TriggerServerEvent('lusty94_mushrooms:server:TakeDeathCapMushrooms')
 					busy = false
 					LockInventory(false)
@@ -592,23 +741,9 @@ end)
 
 -- open supplies shop
 AddEventHandler("lusty94_mushrooms:client:openSuppliesShop", function()
-	local mushroomSupplyStore = {
-        label = "Supplies", 
-        slots = 6,
-        items = {
-            [1] = {name = "acetone",                 price = 250, amount = 1000, info = {}, type = "item", slot = 1,},
-            [2] = {name = "dimethylformamide",       price = 500, amount = 1000, info = {}, type = "item", slot = 2,},
-            [3] = {name = "dryingrack",              price = 100, amount = 1000, info = {}, type = "item", slot = 3,},
-            [4] = {name = "scales",                  price = 250, amount = 1000, info = {}, type = "item", slot = 4,},
-            [5] = {name = "processingtable",         price = 1000, amount = 1000, info = {}, type = "item", slot = 5,},
-            [6] = {name = "emptybaggies",          price = 10, amount = 1000, info = {}, type = "item", slot = 6,},
-        },
-    }
-	if ShopType == 'qb'then
-		TriggerServerEvent("inventory:server:OpenInventory", "shop", "MushroomSupplyStore", mushroomSupplyStore)
-	elseif ShopType == 'jim' then
-		TriggerServerEvent("jim-shops:ShopOpen", "shop", "MushroomSupplyStore", mushroomSupplyStore)
-	elseif ShopType == 'ox' then
+	if InvType == 'qb'then
+		TriggerServerEvent('lusty94_mushrooms:server:SupplyShop')
+	elseif InvType == 'ox' then
 		exports.ox_inventory:openInventory('shop',{ type = 'MushroomSupplyStore' })
 	end
 end)
@@ -616,30 +751,21 @@ end)
 
 
 -- function to lock inventory to prevent exploits
-function LockInventory(toggle) -- big up to jim for how to do this
+function LockInventory(toggle)
 	if toggle then
-        LocalPlayer.state:set("inv_busy", true, true) -- used by qb, ps and ox
-        --this is the old method below
-        --[[         
-        if InvType == 'qb' then
-            this is for the old method if using old qb and ox
-            TriggerEvent('inventory:client:busy:status', true) TriggerEvent('canUseInventoryAndHotbar:toggle', false)
-        elseif InvType == 'ox' then
-            LocalPlayer.state:set("inv_busy", true, true)
-        end         
-        ]]
+        LocalPlayer.state:set("inv_busy", true, true)
     else 
-        LocalPlayer.state:set("inv_busy", false, true) -- used by qb, ps and ox
-        --this is the old method below
-        --[[        
-        if InvType == 'qb' then
-            this is for the old method if using old qb and ox
-         TriggerEvent('inventory:client:busy:status', false) TriggerEvent('canUseInventoryAndHotbar:toggle', true)
-        elseif InvType == 'ox' then
-            LocalPlayer.state:set("inv_busy", false, true)
-        end        
-        ]]
+        LocalPlayer.state:set("inv_busy", false, true)
     end
+end
+
+--function to display item images for ox_lib menu
+function ItemImage(img)
+	if InvType == 'ox' then
+		return "nui://ox_inventory/web/images/".. img.. '.png'
+	elseif InvType == 'qb' then
+		return "nui://qb-inventory/html/images/".. QBCore.Shared.Items[img].image
+	end
 end
 
 AddEventHandler('onResourceStop', function(resource)
@@ -651,10 +777,10 @@ AddEventHandler('onResourceStop', function(resource)
         mushroomTablePlaced = false
 		busy = false
 		LockInventory(false)
-		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(mushrooms, 'mushrooms') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(mushrooms, 'mushrooms') end
+		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(mushroomObjects, 'mushroomObjects') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(mushroomObjects, 'mushroomObjects') end
 		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(mushroomPeds, 'mushroomPeds') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(mushroomPeds, 'mushroomPeds') end
 		DeletePed(mushroomPeds)
-		print('^5--<^3!^5>-- ^7| Lusty94 |^5 ^5--<^3!^5>--^7 Mushrooms V1.2.1 Stopped Successfully ^5--<^3!^5>--^7')
+		print('^5--<^3!^5>-- ^7| Lusty94 |^5 ^5--<^3!^5>--^7 Mushrooms V2.0.1 Stopped Successfully ^5--<^3!^5>--^7')
 	end
 end)
 
@@ -664,4 +790,11 @@ AddEventHandler('onResourceStart', function(resourceName)
     if (GetCurrentResourceName() == resourceName) then
 		spawnMushrooms()
     end
+end)
+
+--dont touch
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    for _, v in pairs(mushroomPlants) do SetEntityAsMissionEntity(v, false, true) DeleteObject(v) end
+	mushroomPlants = {}
+	spawnMushrooms()
 end)
