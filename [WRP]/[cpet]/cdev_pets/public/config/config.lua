@@ -94,7 +94,7 @@ PublicSharedPetsConfig = {
     Range = 5.0,
 
     Keybinds = {
-        Enabled = true,
+        Enabled = false,
 
         -- Quick action for following/staying
         QuickAction_Follow = "G",
@@ -122,7 +122,7 @@ PublicSharedPetsConfig = {
         petfollow = "petfollow",
 
         -- Command for opening the menu
-        openpetmenu = "openpetmenu",
+        openpetmenu = "petopenmenu",
 
         -- Command for cuddling
         petcuddle = "petcuddle",
