@@ -69,9 +69,13 @@ CreateThread(function()
     SetBlockingOfNonTemporaryEvents(missionPed, true)
     TaskStartScenarioInPlace(missionPed, 'WORLD_HUMAN_SMOKING', true)
     if TargetType == 'qb' then
-		exports['qb-target']:AddTargetEntity(missionPed, { options = { { type = "client", event = "lusty94_oxy:client:StartDelivery", icon = targetIcon, label = targetLabel, } }, distance = targetDistance })
+		exports['qb-target']:AddTargetEntity(missionPed, { options = { 
+            { type = "client", event = "lusty94_oxy:client:StartDelivery", icon = targetIcon, label = targetLabel, },
+        }, distance = targetDistance })
 	elseif TargetType == 'ox' then
-		exports.ox_target:addLocalEntity(missionPed, { { name = 'deliveryPed', icon = targetIcon, label = targetLabel, event = 'lusty94_oxy:client:StartDelivery', distance = targetDistance} })
+		exports.ox_target:addLocalEntity(missionPed, { 
+            { name = 'deliveryPed', icon = targetIcon, label = targetLabel, event = 'lusty94_oxy:client:StartDelivery', distance = targetDistance, }, 
+        })
 	end
     if Config.StartPedBlip then
         pedBlip = AddBlipForCoord(coords)
@@ -101,9 +105,13 @@ function createDeliveryPed(coords)
 	FreezeEntityPosition(deliveryPed, true)
     SetEntityInvincible(deliveryPed, true)
 	if TargetType == 'qb' then
-		exports['qb-target']:AddTargetEntity(deliveryPed, { options = { { type = "client", item = "suspiciouspackage", event = "lusty94_oxy:client:deliverSuspiciousPackage", icon = targetIcon, label = targetLabel, } }, distance = targetDistance })
+		exports['qb-target']:AddTargetEntity(deliveryPed, { options = { 
+            { type = "client", item = "suspiciouspackage", event = "lusty94_oxy:client:deliverSuspiciousPackage", icon = targetIcon, label = targetLabel, },
+        }, distance = targetDistance })
 	elseif TargetType == 'ox' then
-		exports.ox_target:addLocalEntity(deliveryPed, { { name = 'deliveryPed', items = 'suspiciouspackage', icon = targetIcon, label = targetLabel, event = 'lusty94_oxy:client:deliverSuspiciousPackage', distance = targetDistance} })
+		exports.ox_target:addLocalEntity(deliveryPed, { 
+            { name = 'deliveryPed', items = 'suspiciouspackage', icon = targetIcon, label = targetLabel, event = 'lusty94_oxy:client:deliverSuspiciousPackage', distance = targetDistance, },
+        })
 	end
 end
 
@@ -167,6 +175,7 @@ RegisterNetEvent("lusty94_oxy:client:StartDelivery", function()
     local playerPed = PlayerPedId()
     if busy then
         SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+        return
     else
         if deliveryStarted then
             SendNotify(Config.Language.Notifications.AlreadyStartedName, 'error', 5000)
@@ -222,6 +231,7 @@ RegisterNetEvent('lusty94_oxy:client:deliverSuspiciousPackage', function()
     local playerPed = PlayerPedId()
     if busy then
         SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+        return
     else
         QBCore.Functions.TriggerCallback('lusty94_oxy:get:GetPackage', function(package)
             if package then
@@ -320,12 +330,27 @@ RegisterNetEvent('lusty94_oxy:client:TakeOxy', function(itemName)
             local prop = 'prop_cs_pills'
             local bone = 18905
             local pos = vec3(0.13, 0.03, 0.0)
-            local rot = vec3(80.0, 398.0, 167.0)  
-            if lib.progressCircle({ duration = 5000, position = 'bottom', label = Config.Language.ProgressBar.Consume, useWhileDead = false, canCancel = true, disable = { car = false, move = false,}, anim = { dict = animDict, clip = anim, flag = flags,} ,prop = { model = prop, bone = bone, pos = pos, rot = rot,}, }) then 
+            local rot = vec3(80.0, 398.0, 167.0)
+            busy = true
+            LockInventory(true)
+            if lib.progressCircle({ 
+                duration = 5000, 
+                label = Config.Language.ProgressBar.Consume, 
+                position = 'bottom', 
+                useWhileDead = false, 
+                canCancel = true, 
+                disable = { car = false, move = false,}, 
+                anim = { dict = animDict, clip = anim, flag = flags,},
+                prop = { model = prop, bone = bone, pos = pos, rot = rot,},
+            }) then 
                 TriggerServerEvent('lusty94_oxy:server:RemoveOxy')
                 ClearPedBloodDamage(playerPed)
+                busy = false
+                LockInventory(false)
                 healPlayer() 
-            else 
+            else
+                busy = false
+                LockInventory(false)
                 SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
             end
         else
@@ -365,9 +390,13 @@ function createSalePed(saleCoords)
 	FreezeEntityPosition(salePed, true)
     SetEntityInvincible(salePed, true)
 	if TargetType == 'qb' then
-		exports['qb-target']:AddTargetEntity(salePed, { options = { { type = "client", item = "oxy", event = "lusty94_oxy:client:sellOxy", icon = targetIcon, label = targetLabel, } }, distance = targetDistance })
+		exports['qb-target']:AddTargetEntity(salePed, { options = { 
+            { type = "client", item = "oxy", event = "lusty94_oxy:client:sellOxy", icon = targetIcon, label = targetLabel, },
+        }, distance = targetDistance })
 	elseif TargetType == 'ox' then
-		exports.ox_target:addLocalEntity(salePed, { { name = 'salePed', items = 'oxy', icon = targetIcon, label = targetLabel, event = 'lusty94_oxy:client:sellOxy', distance = targetDistance} })
+		exports.ox_target:addLocalEntity(salePed, { 
+            { name = 'salePed', items = 'oxy', icon = targetIcon, label = targetLabel, event = 'lusty94_oxy:client:sellOxy', distance = targetDistance, },
+        })
 	end
 end
 
@@ -407,7 +436,16 @@ function startSale()
                 local phoneBone = Config.Animations.TextClients.Player.Bone
                 local phonePos = Config.Animations.TextClients.Player.Pos
                 local phoneRot = Config.Animations.TextClients.Player.Rot
-                if lib.progressCircle({ duration = 5000, position = 'bottom', label = Config.Language.ProgressBar.TextCustomers, useWhileDead = false, canCancel = true, disable = { car = false, move = false, }, anim = { dict = phoneDict, clip = phoneAnim, flag = phoneFlag,} ,prop = { model = phoneProp, bone = phoneBone, pos = phonePos, rot = phoneRot,}, }) then 
+                if lib.progressCircle({ 
+                    duration = 5000, 
+                    label = Config.Language.ProgressBar.TextCustomers, 
+                    position = 'bottom', 
+                    useWhileDead = false, 
+                    canCancel = true, 
+                    disable = { car = false, move = false, }, 
+                    anim = { dict = phoneDict, clip = phoneAnim, flag = phoneFlag,}, 
+                    prop = { model = phoneProp, bone = phoneBone, pos = phonePos, rot = phoneRot,}, 
+                }) then 
                     saleStarted = true
                     SendNotify(Config.Language.Notifications.LocationSentName, 'success', 5000)
                     busy = false
@@ -559,21 +597,9 @@ end)
 -- function to lock inventory to prevent exploits
 function LockInventory(toggle) -- big up to jim for how to do this
 	if toggle then
-        LocalPlayer.state:set("inv_busy", true, true) -- used by qb, ps and ox
-        --[[ if InvType == 'qb' then
-            -- this might need to be changed now qb have updated their shite inventory - same for ps inventory - look for their events and make suit
-            TriggerEvent('inventory:client:busy:status', true) TriggerEvent('canUseInventoryAndHotbar:toggle', false)
-        elseif InvType == 'ox' then
-            LocalPlayer.state:set("inv_busy", true, true)
-        end ]]
+        LocalPlayer.state:set("inv_busy", true, true)
     else 
-        LocalPlayer.state:set("inv_busy", false, true) -- used by qb, ps and ox
-        --[[ if InvType == 'qb' then
-            -- this might need to be changed now qb have updated their shite inventory - same for ps inventory - look for their events and make suit
-         TriggerEvent('inventory:client:busy:status', false) TriggerEvent('canUseInventoryAndHotbar:toggle', true)
-        elseif InvType == 'ox' then
-            LocalPlayer.state:set("inv_busy", false, true)
-        end ]]
+        LocalPlayer.state:set("inv_busy", false, true)
     end
 end
 
@@ -599,6 +625,6 @@ AddEventHandler('onResourceStop', function(resource)
         DeletePed(missionPed)               
         if DoesEntityExist(salePed) then DeletePed(salePed) end
         if DoesEntityExist(deliveryPed) then DeletePed(deliveryPed) end         
-        print('^5--<^3!^5>-- ^7| Lusty94 |^5 ^5--<^3!^5>--^7 Oxy V2.0.0 Stopped Successfully ^5--<^3!^5>--^7')
+        print('^5--<^3!^5>-- ^7| Lusty94 |^5 ^5--<^3!^5>--^7 Oxy V2.0.2 Stopped Successfully ^5--<^3!^5>--^7')
 	end
 end)

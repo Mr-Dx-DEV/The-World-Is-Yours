@@ -3,14 +3,13 @@ local InvType = Config.CoreSettings.Inventory.Type
 local NotifyType = Config.CoreSettings.Notify.Type
 local Levels = Config.XP.Levels
 local MetaDataName = Config.XP.MetaDataName
-local xpChance = Config.XP.XPChance
 
 
 
 -------------------< FUNCTIONS >--------------------
 
 --notification function
-function SendNotify(src, msg, type, time, title)
+local function SendNotify(src, msg, type, time, title)
     if NotifyType == nil then print("Lusty94_Oxy: NotifyType Not Set in Config.CoreSettings.Notify.Type!") return end
     if not title then title = "Oxy" end
     if not time then time = 5000 end
@@ -45,6 +44,69 @@ end
 
 
 
+--remove items
+local function removeItem(src, item, amount)
+    if InvType == 'qb' then
+        if exports['qb-inventory']:RemoveItem(src, item, amount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'remove', amount)
+        end
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src, item, amount)
+    end
+end
+
+--add items
+local function addItem(src, item, amount)
+    if InvType == 'qb' then
+        if exports['qb-inventory']:AddItem(src, item, amount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add', amount)
+        end
+    elseif InvType == 'ox' then
+        if exports.ox_inventory:CanCarryItem(src, item, amount) then
+            exports.ox_inventory:AddItem(src, item, amount)
+        else
+            SendNotify(src, Config.Language.Notifications.CantCarry, 'error', 5000)
+        end
+    end
+end
+
+
+--give xp
+local function giveOxyXP()
+    if Config.XP.Enabled then
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        local MetaDataName = Config.XP.MetaDataName
+        local OxyXP = Player.PlayerData.metadata[MetaDataName]
+        local xpChance = Config.XP.XPChance
+        local xpAmount = Config.XP.XPGain
+        if xpChance >= math.random(1,100) then
+            Player.Functions.SetMetaData(MetaDataName, (OxyXP + xpAmount))
+            SendNotify(src,Config.Language.Notifications.EarnedXp, 'error', 2000)
+        end
+    end	
+end
+
+--return amount for events
+local function calculateOxyXP(OxyXP)
+    if Config.XP.Enabled then
+        if OxyXP <= 150 then
+            return math.random(1, 3)
+        elseif OxyXP <= 500 then
+            return math.random(3, 5)
+        elseif OxyXP <= 750 then
+            return math.random(5, 7)
+        elseif OxyXP <= 1250 then
+            return math.random(7, 9)
+        elseif OxyXP <= 1500 then
+            return math.random(9, 11)
+        elseif OxyXP <= 2200 then
+            return math.random(11, 13)
+        end
+    else
+        return math.random(3,5) -- edit item reward amounts if not using XP here
+    end
+end
 
 --------------------< USEABLE ITEMS >-----------------
 
@@ -148,16 +210,7 @@ RegisterNetEvent('lusty94_oxy:server:GetDeliveryPackage', function(packagesAmoun
     local Player = QBCore.Functions.GetPlayer(src)
     local packagesAmount = Config.InteractionLocations.Settings.MaxDelivery
     if not Player then return end
-    if InvType == 'qb' then     
-        Player.Functions.AddItem('suspiciouspackage', packagesAmount, false)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['suspiciouspackage'], "add", packagesAmount)
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, 'suspiciouspackage', packagesAmount) then
-            exports.ox_inventory:AddItem(src, 'suspiciouspackage', packagesAmount)
-        else
-            SendNotify(src,Config.Language.Notifications.CantCarryName, 'error', 5000)
-        end
-    end
+    addItem(src, 'suspiciouspackage', packagesAmount)
 end)
 
 -- reward for completing deliver mission
@@ -165,42 +218,11 @@ RegisterNetEvent('lusty94_oxy:server:deliveryReward', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local OxyXP = Player.PlayerData.metadata[MetaDataName]
-    local xpAmount = math.random(5,10) -- edit xp amount here
     if not Player then return end
-    if Config.XP.Enabled then
-        if OxyXP <= 150 then
-            oxyAmount = math.random(1,4)
-        elseif OxyXP <= 500 then
-            oxyAmount = math.random(2,5)
-        elseif OxyXP <= 750 then
-            oxyAmount = math.random(3,6)
-        elseif OxyXP <= 1250 then
-            oxyAmount = math.random(4,7)
-        elseif OxyXP <= 1500 then
-            oxyAmount = math.random(5,8)
-        elseif OxyXP <= 2200 then
-            oxyAmount = math.random(6,9)
-        end
-    else oxyAmount = math.random(1,4) end -- edit oxy amount if not using xp here
-    if InvType == 'qb' then  
-        Player.Functions.RemoveItem('suspiciouspackage', 1, false)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['suspiciouspackage'], "remove", 1)   
-        Player.Functions.AddItem('oxy', oxyAmount, false)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['oxy'], "add", oxyAmount)
-    elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, 'oxy', oxyAmount) then
-            exports.ox_inventory:RemoveItem(src, 'suspiciouspackage', 1)
-            exports.ox_inventory:AddItem(src, 'oxy', oxyAmount)
-        else
-            SendNotify(src,Config.Language.Notifications.CantCarryName, 'error', 5000)
-        end
-    end
-    if Config.XP.Enabled then
-        if math.random(1,100) <= xpChance then
-            Player.Functions.SetMetaData(MetaDataName, (OxyXP + xpAmount))
-            SendNotify(src,Config.Language.Notifications.EarnedXPName, 'success', 2000)
-        end
-    end	
+    local rewardAmount = calculateOxyXP(OxyXP)
+    removeItem(src,'suspiciouspackage', 1)
+    addItem(src, 'oxy', rewardAmount)
+    giveOxyXP()
 end)
 
 
@@ -209,42 +231,36 @@ RegisterNetEvent('lusty94_oxy:server:RemoveOxy', function(item)
     local src = source
     local Player = QBCore.Functions.GetPlayer(source)
     if not Player then return end
-    if InvType == 'qb' then
-        Player.Functions.RemoveItem('oxy', 1)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['oxy'], "remove")
-    elseif InvType == 'ox' then
-        exports.ox_inventory:RemoveItem(src, 'oxy', 1)
-    end
+    removeItem(src, 'oxy', 1)
 end)
 
--- rsell oxy and get cash
+-- sell oxy and get cash
 RegisterNetEvent('lusty94_oxy:server:sellOxy', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local OxyXP = Player.PlayerData.metadata[MetaDataName]
     if not Player then return end
     if Config.XP.Enabled then
-        if OxyXP <= 150 then
+        if OxyXP >= 150 then
             payment = math.random(150,400)
-        elseif OxyXP <= 500 then
+        elseif OxyXP >= 500 then
             payment = math.random(200,500)
-        elseif OxyXP <= 750 then
+        elseif OxyXP >= 750 then
             payment = math.random(300,600)
-        elseif OxyXP <= 1250 then
+        elseif OxyXP >= 1250 then
             payment = math.random(400,700)
-        elseif OxyXP <= 1500 then
+        elseif OxyXP >= 1500 then
             payment = math.random(500,800)
-        elseif OxyXP <= 2200 then
+        elseif OxyXP >= 2200 then
             payment = math.random(600,900)
         end
     else payment = math.random(350,700) end -- edit oxy payment if not using xp here
+    removeItem(src, 'oxy', 1)
     if InvType == 'qb' then  
-        Player.Functions.RemoveItem('oxy', 1, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['oxy'], "remove", 1)   
         Player.Functions.AddMoney('cash', payment, 'oxy-sales')
     elseif InvType == 'ox' then
         if exports.ox_inventory:CanCarryItem(src, 'money', payment) then
-            exports.ox_inventory:RemoveItem(src, 'oxy', 1)
             exports.ox_inventory:AddItem(src, 'money', payment)
         else
             SendNotify(src,Config.Language.Notifications.CantCarryName, 'error', 5000)

@@ -8,7 +8,7 @@ author 'Lusty94'
 
 description 'Oxy Run Script For QB-Core'
 
-version '2.0.0'
+version '2.0.2'
 
 
 client_scripts {

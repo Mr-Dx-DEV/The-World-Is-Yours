@@ -14,31 +14,30 @@ Config = {}
 --Below you can change multiple options to suit your server needs.
 
 Config.DebugZones = false -- set to true to enable visual zones where peds spawn for interactions when delivering packages and selling oxy - only used for debugging and moving locations
-Config.StartPedBlip = false -- set to false if you dont wany blips for the suspicious package mission ped and make players find the ped on their own
+Config.StartPedBlip = true -- set to false if you dont wany blips for the suspicious package mission ped and make players find the ped on their own
 Config.CreateUseableOxyItem = true -- set to false if you have your own methods of handling oxy consumption [ consumables ] this disables the in built features for consuming oxy if set to true make sure there is no other script that creates a useable item for oxy as it may clash
 Config.CreateUseableBurnerPhone = true -- set to false if you have your own methods of selling oxy i.e a drug sale script
 
 Config.CoreSettings = {
     Target = {
-        Type = 'ox', -- support for qb-target and ox_target    
+        Type = 'qb', -- support for qb-target and ox_target    
         --use 'qb' for qb-target
         --use 'ox' for ox_target
     },
     Notify = {
-        Type = 'qb', -- notification type, support for qb-core notify, okokNotify, mythic_notify, boii_ui notify and ox_lib notify
+        Type = 'qb', -- notification type, support for qb-core notify, okokNotify, mythic_notify and ox_lib notify
         --use 'qb' for default qb-core notify
         --use 'okok' for okokNotify
         --use 'mythic' for myhthic_notify
-        --use 'boii' for boii_ui notify
         --use 'ox' for ox_lib notify
     },
     Inventory = { -- support for qb-inventory and ox_inventory
-        Type = 'ox',
+        Type = 'qb',
         --use 'qb' for qb-inventory
         --use 'ox' for ox_inventory
     },
     Police = { -- support for qb-policejob and ps-dispatch
-        Type = 'ps',
+        Type = 'qb',
         --use 'qb' for qb-policejob
         --use 'ps' for ps-dispatch
     },
@@ -49,7 +48,8 @@ Config.XP = { -- use xp
     Enabled = false, -- Toggles xp system on or off; true = on, false = off
     Command = false, -- Toggles commands on or off use /oxyxp or whatever you have named the metadata
     MetaDataName = 'oxyxp', -- The name of your xp if you edit this make sure to also edit the line you added into qb-core/server/player.lua - new core goes into config - you might also need to change how metadata is assigned
-    XPChance = 75, -- chance to earn xp when delivering packages
+    XPChance = 75, -- chance to earn XP from events
+    XPAmount = math.random(5,10), -- amount of xp given from events
     Levels = { -- Change your xp requirements here to suit your server set these as high as you want preset xp increase = (xp / 0.8) if changing amounts dont forget to edit server file also where items are given to match new xp amounts
         150, -- level 2 
         250, -- level 3 
@@ -67,13 +67,13 @@ Config.XP = { -- use xp
 Config.InteractionLocations = {
     Settings = {
         StartCost = 1000, -- cost to start suspicious package delivery
-        MaxDelivery = 3, --math.random(7,13), -- maximum delivery amount player can do in 1 mission
-        MaxSales = 3, --math.random(10,20), -- maximum sale amount player can do in 1 mission - THIS IS ALSO THE MINIMUM AMOUNT OF OXY A PLAYER IS REQUIRED TO HAVE ON THEM BEFORE BEING ALLOWED TO REQUEST SALE MISSIONS
+        MaxDelivery = math.random(7,13),-- maximum delivery of suspicious packages amount player can do in 1 mission
+        MaxSales = 10, -- maximum sale of oxy amount player can do in 1 mission - THIS IS ALSO THE MINIMUM AMOUNT OF OXY A PLAYER IS REQUIRED TO HAVE ON THEM BEFORE BEING ALLOWED TO REQUEST SALE MISSIONS
         SaleChance = 80, -- chance for successful sale when selling oxy
     },
     PoliceSettings = {
-        MinCops = 0, -- minimum amount of on duty cops required to start delivery mission and to sell oxy
-        CallChance = 25, -- chance to call cops upon hand off of packages and selling 
+        MinCops = 1, -- minimum amount of on duty cops required to start delivery mission and to sell oxy
+        CallChance = 75, -- chance to call cops upon hand off of packages and selling 
     },
     PedModels = { -- add more ped models for the mission start ped here
         'g_m_y_lost_02',
@@ -85,9 +85,9 @@ Config.InteractionLocations = {
         'g_f_y_vagos_01',
     },
     PedTargets = {
-        Icon = 'fas fa-capsules',
-        Label = 'Suspicious Package Delivery',
-        Disance = 2.0,
+        Icon = 'fas fa-capsules', -- target iocon
+        Label = 'Suspicious Package Delivery', -- target label
+        Disance = 2.0, -- target distance
     },
     StartLocations = { -- add more random locations for the suspcious package delivery start ped to spawn at here
         vector4(-83.04, -1399.58, 29.32, 187.07),
@@ -106,9 +106,9 @@ Config.InteractionLocations = {
         's_m_m_dockwork_01',
     },
     DeliveryTargets = {
-        Icon = 'fas fa-capsules',
-        Label = 'Deliver Suspicious Package',
-        Disance = 2.0,
+        Icon = 'fas fa-capsules', -- target icon
+        Label = 'Deliver Suspicious Package', -- target label
+        Disance = 2.0, -- target distance
     },
     DeliveryLocations = { -- add more random delivery locations here for suspcious packages
         vector4(249.91, -1958.5, 23.16, 318.16),
@@ -133,9 +133,9 @@ Config.InteractionLocations = {
         's_m_y_garbage',
     },
     SaleTargets = {
-        Icon = 'fas fa-capsules',
-        Label = 'Sell Oxy',
-        Disance = 2.0,
+        Icon = 'fas fa-capsules', -- target icon
+        Label = 'Sell Oxy', -- target label
+        Disance = 2.0, -- target distance
     },
     SaleLocations = { -- add more random sale locations for oxy when players request to sell through the burner phone
         vector4(-1276.72, -1097.12, 7.28, 293.71),
@@ -257,7 +257,7 @@ Config.Language = {
         MissingItemsName = 'You are missing items!',
         SaleName = 'You have a sale, check your GPS for a delivery location!', 
         SellingErrorName = 'You have already started selling, please complete your sales before requesting more.',
-        SaleFailedNotify = 'What kind of whack ass shit is this? get the fuck out of here asshole!',
+        SaleFailedName = 'What kind of whack ass shit is this? get the fuck out of here asshole!',
         NoMoreRequestsName = 'You dont have any more requests!',
         NotEnoughPoliceName = 'There is not enough police on duty!',
         CantCarryName = 'You cant carry anymore of that!',

@@ -29,6 +29,27 @@ SCRIPT SUPPORT VIA DISCORD: https://discord.gg/BJGFrThmA8
 
 
 
+## INSTALLATION
+
+- Add the ##ITEMS snippet below into your core items.lua file
+- Add all .png images inside [images] folder into your inventory images folder
+- Ensure all listed dependencies start BEFORE lusty94_oxy
+
+
+
+## DEPENDENCIES
+
+- [qb-core](https://github.com/qbcore-framework/qb-core)
+- [qb-target](https://github.com/qbcore-framework/qb-target)
+- [qb-inventory](https://github.com/qbcore-framework/qb-inventory)
+- [qb-policejob](https://github.com/qbcore-framework/qb-policejob)
+- [ox_lib](https://github.com/overextended/ox_lib/releases)
+- [polyzone](https://github.com/mkafrin/PolyZone)
+
+
+
+
+
 ## XP
 If you are using the inbuilt XP system then you must add the metadata lines below to your player.lua file in core
 - new qb method is via the config but you might need to edit how metadata is assigned in server files
@@ -49,27 +70,9 @@ oxyxp = 0,
 ```
 
 
-## DEPENDENCIES
-
-- qb-core - https://github.com/qbcore-framework/qb-core
-- qb-target - https://github.com/qbcore-framework/qb-target
-- qb-inventory - https://github.com/qbcore-framework/qb-inventory
-- qb-policejob - https://github.com/qbcore-framework/qb-policejob
-- ox_lib - https://github.com/overextended/ox_lib/releases
-- polyzone - https://github.com/mkafrin/PolyZone
 
 
-
-
-
-## INSTALLATION
-
-- Add the ##ITEMS snippet below into your core items.lua file
-- Add all .png images inside [images] folder into your inventory images folder
-- Ensure all listed dependencies start BEFORE lusty94_oxy
-
-
-## ITEMS
+## QB-CORE ITEMS
 
 ```
     --oxy
@@ -78,5 +81,45 @@ oxyxp = 0,
     suspiciouspackage            = { name = 'suspiciouspackage', label = 'Suspicious Package',  weight = 0, type = 'item', image = 'suspiciouspackage.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'A Suspicious Package' },
     
     burnerphone                  = { name = 'burnerphone',       label = 'Oxy Burner Phone',        weight = 0, type = 'item', image = 'burnerphone.png',       unique = true,  useable = true, shouldClose = true, combinable = nil, description = 'A Burner Phone Used To Sell Oxy' },
+
+```
+
+
+## OX_INVENTORY ITEMS
+
+```
+
+	["burnerphone"] = {
+		label = "Oxy Burner Phone",
+		weight = 0,
+		stack = false,
+		close = true,
+		description = "A Burner Phone Used To Sell Oxy",
+		client = {
+			image = "burnerphone.png",
+		}
+	},
+
+	["suspiciouspackage"] = {
+		label = "Suspicious Package",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "A Suspicious Package",
+		client = {
+			image = "suspiciouspackage.png",
+		}
+	},
+
+	["oxy"] = {
+		label = "Prescription Oxy",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "The Label Has Been Ripped Off",
+		client = {
+			image = "oxy.png",
+		}
+	},
 
 ```

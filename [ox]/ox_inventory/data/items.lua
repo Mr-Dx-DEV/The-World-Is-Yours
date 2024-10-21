@@ -1,5 +1,41 @@
 return {
 
+
+	---- oxy
+	---
+	
+	["burnerphone"] = {
+		label = "Oxy Burner Phone",
+		weight = 0,
+		stack = false,
+		close = true,
+		description = "A Burner Phone Used To Sell Oxy",
+		client = {
+			image = "burnerphone.png",
+		}
+	},
+
+	["suspiciouspackage"] = {
+		label = "Suspicious Package",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "A Suspicious Package",
+		client = {
+			image = "suspiciouspackage.png",
+		}
+	},
+
+	["oxy"] = {
+		label = "Prescription Oxy",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "The Label Has Been Ripped Off",
+		client = {
+			image = "oxy.png",
+		}
+	},
 	--- heroin
 	--- 
 	
@@ -2462,18 +2498,7 @@ return {
     }
 },
 
--- ITEMS
 
-['suspiciouspackage'] = {
-    label = 'Suspicious Package',
-    weight = 0,
-    stack = true,  -- You can stack multiple suspicious packages.
-    close = true,
-    description = 'A Suspicious Package',
-    client = {
-        image = 'suspiciouspackage.png'
-    }
-},
 
 -- MAGIC MUSHROOMS
 
@@ -3142,14 +3167,7 @@ return {
 	 	}
 	},
 
-	['burnerphone'] = { label = 'Burner Phone', weight = 150, stack = false, close = true, description = 'Some kind of old phone?' },
-
-	['burnerphone_wep'] = { label = 'Burner Phone', weight = 150, stack = false, close = true, description = 'Some kind of old phone?' },
 	
-	['burnerphonevpn'] = { label = 'Soleware VPN', weight = 250, stack = false, close = true, description = 'Some kind of lost VPN from Soleware?' },
-	
-
-
 	["ngd_tobaccotrimmer"] = {
 		label = "Tobacco Trimmer",
 		weight = 0,
@@ -6011,16 +6029,7 @@ return {
 		}
 	},
 
-	["oxy"] = {
-		label = "Prescription Oxy",
-		weight = 0,
-		stack = true,
-		close = true,
-		description = "The Label Has Been Ripped Off",
-		client = {
-			image = "oxy.png",
-		}
-	},
+
 
 	["binoculars"] = {
 		label = "Binoculars",
