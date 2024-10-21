@@ -1,5 +1,226 @@
 return {
+ ------ coke
+ ---
+ 
+ ["water_bottle"] = {
+	label = "Bottled Water",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "water_bottle.png",
+	}
+},
 
+["cokeprocessingtable"] = {
+	label = "Coke Processing Table",
+	weight = 200,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "cokeprocessingtable.png",
+	}
+},
+
+["coke_baggy"] = {
+	label = "Bag of Cocaine",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "coke_baggy.png",
+	}
+},
+
+["sodiumcarbonate"] = {
+	label = "Sodium Carbonate",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "sodiumcarbonate.png",
+	}
+},
+
+["scales"] = {
+	label = "Scales",
+	weight = 200,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "scales.png",
+	}
+},
+
+["iodine"] = {
+	label = "Iodine",
+	weight = 200,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "iodine.png",
+	}
+},
+
+["plasticjerrycan"] = {
+	label = "Empty Plastic Jerry Can",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "plasticjerrycan.png",
+	}
+},
+
+["crack_baggy"] = {
+	label = "Bag of Crack",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "crack_baggy.png",
+	}
+},
+
+["dimethylformamide"] = {
+	label = "Dimethylformamide",
+	weight = 200,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "dimethylformamide.png",
+	}
+},
+
+["pure_cocaine"] = {
+	label = "Pure Cocaine",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "pure_cocaine.png",
+	}
+},
+
+["emptybaggies"] = {
+	label = "Empty Baggies",
+	weight = 200,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "emptybaggies.png",
+	}
+},
+
+["acetone"] = {
+	label = "Acetone",
+	weight = 200,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "acetone.png",
+	}
+},
+
+["cement"] = {
+	label = "Cement",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "cement.png",
+	}
+},
+
+["gasoline"] = {
+	label = "Gasoline",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "gasoline.png",
+	}
+},
+
+["cocaleaf"] = {
+	label = "Coca Leaf",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "cocaleaf.png",
+	}
+},
+
+["cokeoverdosecure"] = {
+	label = "Coke Overdose Cure",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "overdosecure.png",
+	}
+},
+
+["hydrochloricacid"] = {
+	label = "Hydrochloric Acid",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "hydrochloricacid.png",
+	}
+},
+
+["trowel"] = {
+	label = "Trowel",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "trowel.png",
+	}
+},
+
+["pure_crack"] = {
+	label = "Pure Crack",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "pure_crack.png",
+	}
+},
+
+["lighter"] = {
+	label = "Lighter",
+	weight = 0,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "lighter.png",
+	}
+},
 	--detection
 
 
@@ -1880,16 +2101,7 @@ return {
 
 -- REQUIRED ITEMS
 
-['plasticjerrycan'] = {
-    label = 'Empty Plastic Jerry Can',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'plasticjerrycan.png'
-    }
-},
+
 ['dirtyneedle'] = {
     label = 'Dirty Needle',
     weight = 100,
@@ -1974,16 +2186,7 @@ return {
     }
 },
 
-['scales'] = {
-    label = 'Scales',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'scales.png'
-    }
-},
+
 
 -- DRUGS
 ['heroin_vial'] = {
@@ -1998,119 +2201,6 @@ return {
 },
 
 
-
--- COCAINE
-
--- REQUIRED ITEMS
-
-
-['cokeprocessingtable'] = {
-    label = 'Coke Processing Table',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'cokeprocessingtable.png'
-    }
-},
-['lighter'] = {
-    label = 'Lighter',
-    weight = 0,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'lighter.png'
-    }
-},
-
--- MATERIALS
-
-
-['gasoline'] = {
-    label = 'Gasoline',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'gasoline.png'
-    }
-},
-
-['sodiumcarbonate'] = {
-    label = 'Sodium Carbonate',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'sodiumcarbonate.png'
-    }
-},
-['pure_cocaine'] = {
-    label = 'Pure Cocaine',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'pure_cocaine.png'
-    }
-},
-['pure_crack'] = {
-    label = 'Pure Crack',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'pure_crack.png'
-    }
-},
-['water_bottle'] = {
-    label = 'Bottled Water',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'water_bottle.png'
-    }
-},
-['emptybaggies'] = {
-    label = 'Empty Baggies',
-    weight = 0,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'emptybaggies.png'
-    }
-},
-
-
-['dimethylformamide'] = {
-    label = 'Dimethylformamide',
-    weight = 200,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'dimethylformamide.png'
-    }
-},
-['iodine'] = {
-    label = 'Iodine',
-    weight = 30,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'iodine.png'
-    }
-},
 ['overdosecure'] = {
     label = 'Overdose Cure',
     weight = 100,
@@ -2122,17 +2212,6 @@ return {
     }
 },
 
--- DRUGS
-['coke_baggy'] = {
-    label = 'Bag of Cocaine',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = '',
-    client = {
-        image = 'coke_baggy.png'
-    }
-},
 
 -- KETAMINE
 
@@ -5383,33 +5462,10 @@ return {
     }
 },
 
--- Meth
--- Tools
-
-['trowel'] = {
-    label = 'Trowel',
-    weight = 100,
-    stack = true,
-    close = true,
-    description = 'Just a simple gardening tool.',
-    client = {
-        image = 'trowel.png'
-    }
-},
-
 
 
 -- Drug Materials
-['hydrochloricacid'] = {
-    label = 'Hydrochloric Acid',
-    weight = 1500,
-    stack = true,
-    close = false,
-    description = 'Dissolves food pretty well..',
-    client = {
-        image = 'hydrochloricacid.png'
-    }
-},
+
 
 ['lithium'] = {
     label = 'Lithium',
@@ -5481,26 +5537,8 @@ return {
 
 
 -- Drug materials
-['cement'] = {
-    label = 'Cement',
-    weight = 1000,
-    stack = true,
-    close = true,
-    description = 'Just a regular bag of builders cement.',
-    client = {
-        image = 'cement.png'
-    }
-},
-['cocaleaf'] = {
-    label = 'Cocaine Leaf',
-    weight = 50,
-    stack = true,
-    close = false,
-    description = 'Makes that premium nose candy!',
-    client = {
-        image = 'cocaineleaf.png'
-    }
-},
+
+
 ['sodiumbicarbonate'] = {
     label = 'Baking Soda',
     weight = 1000,
@@ -5573,16 +5611,7 @@ return {
         image = 'crack_1oz.png'
     }
 },
-['crack_baggy'] = {
-    label = '1g Bag of Crack',
-    weight = 10,
-    stack = true,
-    close = true,
-    description = 'Man your about to lose some teeth!',
-    client = {
-        image = 'crack_baggy.png'
-    }
-},
+
 
 --<!>-- KETAMINE --<!>--
 -- Tools
@@ -6796,16 +6825,6 @@ return {
 		}
 	},
 
-	["water_bottle"] = {
-		label = "Bottle of Water",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "For all the thirsty out there",
-		client = {
-			image = "water_bottle.png",
-		}
-	},
 
 	["leopardcamo_attachment"] = {
 		label = "Leopard Camo",
@@ -10419,17 +10438,6 @@ return {
 	},
 
 	
-
-	["acetone"] = {
-		label = "Acetone",
-		weight = 1500,
-		stack = true,
-		close = false,
-		description = "A highly volitile and flamable liquid..",
-		client = {
-			image = "acetone.png",
-		}
-	},
 
 
 	["aceticacid"] = {

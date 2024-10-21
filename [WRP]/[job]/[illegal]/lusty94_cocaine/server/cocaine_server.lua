@@ -8,10 +8,10 @@ local OverDoseLevels = Config.DrugSettings.OverDoseLevels
 
 --notification function
 local function SendNotify(src, msg, type, time, title)
-    if not title then title = "Cocaine" end
+    if not title then title = 'Cocaine' end
     if not time then time = 5000 end
     if not type then type = 'success' end
-    if not msg then print("Notification Sent With No Message") return end
+    if not msg then print('Notification Sent With No Message') return end
     if NotifyType == 'qb' then
         TriggerClientEvent('QBCore:Notify', src, msg, type, time)
     elseif NotifyType == 'okok' then
@@ -27,23 +27,24 @@ end
 
 ----------USEABLE ITEMS-------------
 
-QBCore.Functions.CreateUseableItem("cokeprocessingtable", function(source)
-	TriggerClientEvent("lusty94_cocaine:client:openProcessingTable", source)
-end)
-
-QBCore.Functions.CreateUseableItem("coke_baggy", function(source)
-	TriggerClientEvent("lusty94_cocaine:client:TakeCokeBaggy", source)
-end)
-
-QBCore.Functions.CreateUseableItem("crack_baggy", function(source)
-	TriggerClientEvent("lusty94_cocaine:client:TakeCrackBaggy", source)
-end)
-
-QBCore.Functions.CreateUseableItem("overdosecure", function(source)
-	TriggerClientEvent("lusty94_cocaine:client:TakeOverDoseCure", source)
-end)
+local cokeItems = {
+    { item = 'cokeprocessingtable', event = 'lusty94_cocaine:client:openProcessingTable', },
+    { item = 'coke_baggy',          event = 'lusty94_cocaine:client:TakeCokeBaggy', },
+    { item = 'crack_baggy',         event = 'lusty94_cocaine:client:TakeCrackBaggy', },
+}
 
 
+for k,v in pairs(cokeItems) do
+    QBCore.Functions.CreateUseableItem(v.item, function(source)
+        TriggerClientEvent(v.event, source)
+    end)
+end
+
+if Config.DrugSettings.Effects.OverDose then
+    QBCore.Functions.CreateUseableItem('cokeoverdosecure', function(source)
+        TriggerClientEvent('lusty94_cocaine:client:TakeOverDoseCure', source)
+    end)
+end
 
 
 --------------CALL BACKS-----------
@@ -160,7 +161,7 @@ QBCore.Functions.CreateCallback('lusty94_cocaine:get:TakeCrackBaggy', function(s
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local item1 = Player.Functions.GetItemByName(Config.Processing.Bagging.Crack.BaggedItemName)
-    local item2 = Player.Functions.GetItemByName("lighter")
+    local item2 = Player.Functions.GetItemByName('lighter')
     if item1 and item1.amount >= 1 and item2 then
         cb(true)
     else
@@ -192,33 +193,39 @@ RegisterServerEvent('lusty94_cocaine:server:PickCocaLeaves', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
+    local xpReward = math.random(5,10) -- edit xp reward here
     if not Player then return end
     if Config.XP.Enabled then
-        if DrugXP <= 150 then
+        if DrugXP >= 150 then
             amount = math.random(2,5)
-        elseif DrugXP <= 500 then
+        elseif DrugXP >= 500 then
             amount = math.random(5,9)
-        elseif DrugXP <= 750 then
+        elseif DrugXP >= 750 then
             amount = math.random(9, 13)
-        elseif DrugXP <= 1250 then
+        elseif DrugXP >= 1250 then
             amount = math.random(13, 18)
-        elseif DrugXP <= 1500 then
+        elseif DrugXP >= 1500 then
             amount = math.random(18, 25)
-        elseif DrugXP <= 2200 then
+        elseif DrugXP >= 2200 then
             amount = math.random(25, 32)
-        else
-            amount = math.random(32,40)
         end
-    else amount = math.random(3,6) end
+    else
+        amount = math.random(1,3) -- edit return amount here if not using xp
+    end
     if InvType == 'qb' then
-        Player.Functions.AddItem("cocaleaf", amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["cocaleaf"], "add")
+        if exports['qb-inventory']:AddItem(src, 'cocaleaf', amount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items['cocaleaf'], 'add', amount)
+        end
     elseif InvType == 'ox' then
-        exports.ox_inventory:AddItem(src,"cocaleaf", amount)
+        if exports.ox_inventory:CanCarryItem(src, 'cocaleaf', amount) then
+            exports.ox_inventory:AddItem(src,'cocaleaf', amount)
+        else
+            SendNotify(src,Config.Language.Notifications.CantCarry, 'error', 2000)
+        end
     end
     if Config.XP.Enabled then
-        Player.Functions.SetMetaData(MetaDataName, (DrugXP + math.random(5,10))) -- Edit xp reward here
-        SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
+        Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpReward))
+        SendNotify(src,Config.Language.Notifications.EarnedXpName, 'success', 2000)
     end	
 end)
 
@@ -228,33 +235,39 @@ RegisterServerEvent('lusty94_cocaine:server:GetCement', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
+    local xpReward = math.random(5,10) -- edit xp reward here
     if not Player then return end
     if Config.XP.Enabled then
-        if DrugXP <= 150 then
+        if DrugXP >= 150 then
             amount = math.random(2,5)
-        elseif DrugXP <= 500 then
+        elseif DrugXP >= 500 then
             amount = math.random(5,9)
-        elseif DrugXP <= 750 then
+        elseif DrugXP >= 750 then
             amount = math.random(9, 13)
-        elseif DrugXP <= 1250 then
+        elseif DrugXP >= 1250 then
             amount = math.random(13, 18)
-        elseif DrugXP <= 1500 then
+        elseif DrugXP >= 1500 then
             amount = math.random(18, 25)
-        elseif DrugXP <= 2000 then
+        elseif DrugXP >= 2200 then
             amount = math.random(25, 32)
-        else
-            amount = math.random(32,40)
         end
-    else amount = math.random(3,6) end
+    else
+        amount = math.random(1,3) -- edit return amount here if not using xp
+    end
     if InvType == 'qb' then
-        Player.Functions.AddItem("cement", amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["cement"], "add")
+        if exports['qb-inventory']:AddItem(src, 'cement', amount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items['cement'], 'add', amount)
+        end
     elseif InvType == 'ox' then
-        exports.ox_inventory:AddItem(src,"cement", amount)
+        if exports.ox_inventory:CanCarryItem(src, 'cement', amount) then
+            exports.ox_inventory:AddItem(src,'cement', amount)
+        else
+            SendNotify(src,Config.Language.Notifications.CantCarry, 'error', 2000)
+        end
     end
     if Config.XP.Enabled then
-        Player.Functions.SetMetaData(MetaDataName, (DrugXP + math.random(5,10))) -- Edit xp reward here
-        SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
+        Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpReward))
+        SendNotify(src,Config.Language.Notifications.EarnedXpName, 'success', 2000)
     end	
 end)
 
@@ -263,36 +276,43 @@ RegisterServerEvent('lusty94_cocaine:server:GetGasoline', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
+    local xpReward = math.random(5,10) -- edit xp reward here
     if not Player then return end
     if Config.XP.Enabled then
-        if DrugXP <= 150 then
+        if DrugXP >= 150 then
             amount = math.random(2,5)
-        elseif DrugXP <= 500 then
+        elseif DrugXP >= 500 then
             amount = math.random(5,9)
-        elseif DrugXP <= 750 then
+        elseif DrugXP >= 750 then
             amount = math.random(9, 13)
-        elseif DrugXP <= 1250 then
+        elseif DrugXP >= 1250 then
             amount = math.random(13, 18)
-        elseif DrugXP <= 1500 then
+        elseif DrugXP >= 1500 then
             amount = math.random(18, 25)
-        elseif DrugXP <= 2000 then
+        elseif DrugXP >= 2200 then
             amount = math.random(25, 32)
-        else
-            amount = math.random(32,40)
         end
-    else amount = math.random(3,6) end
+    else
+        amount = math.random(1,3) -- edit return amount here if not using xp
+    end
     if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.CoreSettings.Props.Gasoline.RequiredItem, 1)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.CoreSettings.Props.Gasoline.RequiredItem], "remove")
-        Player.Functions.AddItem("gasoline", amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["gasoline"], "add")
+        if exports['qb-inventory']:RemoveItem(src, Config.CoreSettings.Props.Gasoline.RequiredItem, 1, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.CoreSettings.Props.Gasoline.RequiredItem], 'remove', 1)
+            exports['qb-inventory']:AddItem(src, 'gasoline', amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items['gasoline'], 'add', amount)
+        end
     elseif InvType == 'ox' then
-        exports.ox_inventory:RemoveItem(src,Config.CoreSettings.Props.Gasoline.RequiredItem, 1)
-        exports.ox_inventory:AddItem(src,"gasoline", amount)
+        if exports.ox_inventory:RemoveItem(src,Config.CoreSettings.Props.Gasoline.RequiredItem, 1) then
+            if exports.ox_inventory:CanCarryItem(src, 'gasoline', amount) then
+                exports.ox_inventory:AddItem(src,'gasoline', amount)
+            else
+                SendNotify(src,Config.Language.Notifications.CantCarry, 'error', 2000)
+            end
+        end
     end
     if Config.XP.Enabled then
-        Player.Functions.SetMetaData(MetaDataName, (DrugXP + math.random(5,10))) -- Edit xp reward here
-        SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
+        Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpReward))
+        SendNotify(src,Config.Language.Notifications.EarnedXpName, 'success', 2000)
     end	
 end)
 
@@ -301,36 +321,43 @@ RegisterServerEvent('lusty94_cocaine:server:GetHydrochloricAcid', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
+    local xpReward = math.random(5,10) -- edit xp reward here
     if not Player then return end
     if Config.XP.Enabled then
-        if DrugXP <= 150 then
+        if DrugXP >= 150 then
             amount = math.random(2,5)
-        elseif DrugXP <= 500 then
+        elseif DrugXP >= 500 then
             amount = math.random(5,9)
-        elseif DrugXP <= 750 then
+        elseif DrugXP >= 750 then
             amount = math.random(9, 13)
-        elseif DrugXP <= 1250 then
+        elseif DrugXP >= 1250 then
             amount = math.random(13, 18)
-        elseif DrugXP <= 1500 then
+        elseif DrugXP >= 1500 then
             amount = math.random(18, 25)
-        elseif DrugXP <= 2000 then
+        elseif DrugXP >= 2200 then
             amount = math.random(25, 32)
-        else
-            amount = math.random(32,40)
         end
-    else amount = math.random(3,6) end
+    else
+        amount = math.random(1,3) -- edit return amount here if not using xp
+    end
     if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, 1)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.CoreSettings.Props.HydrochloricAcid.RequiredItem], "remove")
-        Player.Functions.AddItem("hydrochloricacid", amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["hydrochloricacid"], "add")
+        if exports['qb-inventory']:RemoveItem(src, Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, 1, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.CoreSettings.Props.HydrochloricAcid.RequiredItem], 'remove', 1)
+            exports['qb-inventory']:AddItem(src, 'hydrochloricacid', amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items['hydrochloricacid'], 'add', amount)
+        end
     elseif InvType == 'ox' then
-        exports.ox_inventory:RemoveItem(src,Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, 1)
-        exports.ox_inventory:AddItem(src,"hydrochloricacid", amount)
+        if exports.ox_inventory:RemoveItem(src, Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, 1) then
+            if exports.ox_inventory:CanCarryItem(src, 'hydrochloricacid', amount) then
+                exports.ox_inventory:AddItem(src,'hydrochloricacid', amount)
+            else
+                SendNotify(src,Config.Language.Notifications.CantCarry, 'error', 2000)
+            end
+        end
     end
     if Config.XP.Enabled then
-        Player.Functions.SetMetaData(MetaDataName, (DrugXP + math.random(5,10))) -- Edit xp reward here
-        SendNotify(src,Config.Language.Notifications.EarnedXpName, 'error', 2000)
+        Player.Functions.SetMetaData(MetaDataName, (DrugXP + xpReward))
+        SendNotify(src,Config.Language.Notifications.EarnedXpName, 'success', 2000)
     end	
 end)
 
@@ -342,43 +369,47 @@ RegisterNetEvent('lusty94_cocaine:server:ProcessPureCocaine', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
-    local xpAmount = math.random(5,10) -- Edit xp reward here
+    local xpReward = math.random(5,10) -- edit xp reward here
     if not Player then return end
     if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
+        if DrugXP >= 150 then
+            amount = math.random(2,5)
+        elseif DrugXP >= 500 then
+            amount = math.random(5,9)
+        elseif DrugXP >= 750 then
+            amount = math.random(9, 13)
+        elseif DrugXP >= 1250 then
+            amount = math.random(13, 18)
+        elseif DrugXP >= 1500 then
+            amount = math.random(18, 25)
+        elseif DrugXP >= 2200 then
+            amount = math.random(25, 32)
         end
-    else returnAmount = Config.Processing.Cocaine.ProcessedItemAmount end -- edit amount given if not using xp here
+    else
+        amount = Config.Processing.Cocaine.ProcessedItemAmount -- edit return amount here if not using xp
+    end
     if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.Cocaine.RequiredItemName, Config.Processing.Cocaine.RequiredItemAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Cocaine.RequiredItemName], 'remove', Config.Processing.Cocaine.RequiredItemAmount)
-        Player.Functions.RemoveItem(Config.Processing.Cocaine.RequiredItem2Name, Config.Processing.Cocaine.RequiredItem2Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Cocaine.RequiredItem3Name], 'remove', Config.Processing.Cocaine.RequiredItem2Amount)
-        Player.Functions.RemoveItem(Config.Processing.Cocaine.RequiredItem3Name, Config.Processing.Cocaine.RequiredItem3Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Cocaine.RequiredItem3Name], 'remove', Config.Processing.Cocaine.RequiredItem3Amount)
-        Player.Functions.RemoveItem(Config.Processing.Cocaine.RequiredItem4Name, Config.Processing.Cocaine.RequiredItem4Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Cocaine.RequiredItem4Name], 'remove', Config.Processing.Cocaine.RequiredItem4Amount)
-        Player.Functions.AddItem(Config.Processing.Cocaine.ProcessedItemName, returnAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Cocaine.ProcessedItemName], 'add', returnAmount)
+        if exports['qb-inventory']:RemoveItem(src, Config.Processing.Cocaine.RequiredItemName, Config.Processing.Cocaine.RequiredItemAmount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Cocaine.RequiredItemName], 'remove', Config.Processing.Cocaine.RequiredItemAmount)
+            exports['qb-inventory']:RemoveItem(src, Config.Processing.Cocaine.RequiredItem2Name, Config.Processing.Cocaine.RequiredItem2Amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Cocaine.RequiredItem2Name], 'remove', Config.Processing.Cocaine.RequiredItem2Amount)
+            exports['qb-inventory']:RemoveItem(src, Config.Processing.Cocaine.RequiredItem3Name, Config.Processing.Cocaine.RequiredItem3Amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Cocaine.RequiredItem3Name], 'remove', Config.Processing.Cocaine.RequiredItem3Amount)
+            exports['qb-inventory']:RemoveItem(src, Config.Processing.Cocaine.RequiredItem4Name, Config.Processing.Cocaine.RequiredItem4Amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Cocaine.RequiredItem4Name], 'remove', Config.Processing.Cocaine.RequiredItem4Amount)            
+            exports['qb-inventory']:AddItem(src, Config.Processing.Cocaine.ProcessedItemName, amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Cocaine.ProcessedItemName], 'add', amount)
+        end
     elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.Cocaine.ProcessedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Cocaine.RequiredItemName, Config.Processing.Cocaine.RequiredItemAmount)
+        if exports.ox_inventory:RemoveItem(src,Config.Processing.Cocaine.RequiredItemName, Config.Processing.Cocaine.RequiredItemAmount) then
             exports.ox_inventory:RemoveItem(src,Config.Processing.Cocaine.RequiredItem2Name, Config.Processing.Cocaine.RequiredItem2Amount)
             exports.ox_inventory:RemoveItem(src,Config.Processing.Cocaine.RequiredItem3Name, Config.Processing.Cocaine.RequiredItem3Amount)
             exports.ox_inventory:RemoveItem(src,Config.Processing.Cocaine.RequiredItem4Name, Config.Processing.Cocaine.RequiredItem4Amount)
-            exports.ox_inventory:AddItem(src,Config.Processing.Cocaine.ProcessedItemName, returnAmount)
-        else
-            SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
+            if exports.ox_inventory:CanCarryItem(src, Config.Processing.Cocaine.ProcessedItemName, amount) then
+                exports.ox_inventory:AddItem(src,Config.Processing.Cocaine.ProcessedItemName, amount)
+            else
+                SendNotify(src,Config.Language.Notifications.CantCarry, 'error', 2000)
+            end
         end
     end
     if Config.XP.Enabled then
@@ -395,40 +426,44 @@ RegisterServerEvent('lusty94_cocaine:server:ProcessPureCrack', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
-    local xpAmount = math.random(5,10) -- Edit xp reward here
+    local xpReward = math.random(5,10) -- edit xp reward here
     if not Player then return end
     if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
+        if DrugXP >= 150 then
+            amount = math.random(2,5)
+        elseif DrugXP >= 500 then
+            amount = math.random(5,9)
+        elseif DrugXP >= 750 then
+            amount = math.random(9, 13)
+        elseif DrugXP >= 1250 then
+            amount = math.random(13, 18)
+        elseif DrugXP >= 1500 then
+            amount = math.random(18, 25)
+        elseif DrugXP >= 2200 then
+            amount = math.random(25, 32)
         end
-    else returnAmount = Config.Processing.Crack.ProcessedItemAmount end -- edit amount given if not using xp here
+    else
+        amount = Config.Processing.Crack.ProcessedItemAmount -- edit return amount here if not using xp
+    end
     if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.Crack.RequiredItemName, Config.Processing.Crack.RequiredItemAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Crack.RequiredItemName], 'remove', Config.Processing.Crack.RequiredItemAmount)
-        Player.Functions.RemoveItem(Config.Processing.Crack.RequiredItem2Name, Config.Processing.Crack.RequiredItem2Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Crack.RequiredItem3Name], 'remove', Config.Processing.Crack.RequiredItem2Amount)
-        Player.Functions.RemoveItem(Config.Processing.Crack.RequiredItem3Name, Config.Processing.Crack.RequiredItem3Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Crack.RequiredItem4Name], 'remove', Config.Processing.Crack.RequiredItem3Amount)
-        Player.Functions.AddItem(Config.Processing.Crack.ProcessedItemName, returnAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Crack.ProcessedItemName], 'add', returnAmount)
+        if exports['qb-inventory']:RemoveItem(src, Config.Processing.Crack.RequiredItemName, Config.Processing.Crack.RequiredItemAmount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Crack.RequiredItemName], 'remove', Config.Processing.Crack.RequiredItemAmount)
+            exports['qb-inventory']:RemoveItem(src, Config.Processing.Crack.RequiredItem2Name, Config.Processing.Crack.RequiredItem2Amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Crack.RequiredItem2Name], 'remove', Config.Processing.Crack.RequiredItem2Amount)
+            exports['qb-inventory']:RemoveItem(src, Config.Processing.Crack.RequiredItem3Name, Config.Processing.Crack.RequiredItem3Amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Crack.RequiredItem3Name], 'remove', Config.Processing.Crack.RequiredItem3Amount)          
+            exports['qb-inventory']:AddItem(src, Config.Processing.Crack.ProcessedItemName, amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Crack.ProcessedItemName], 'add', amount)
+        end
     elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.Crack.ProcessedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Crack.RequiredItemName, Config.Processing.Crack.RequiredItemAmount)
+        if exports.ox_inventory:RemoveItem(src,Config.Processing.Crack.RequiredItemName, Config.Processing.Crack.RequiredItemAmount) then
             exports.ox_inventory:RemoveItem(src,Config.Processing.Crack.RequiredItem2Name, Config.Processing.Crack.RequiredItem2Amount)
             exports.ox_inventory:RemoveItem(src,Config.Processing.Crack.RequiredItem3Name, Config.Processing.Crack.RequiredItem3Amount)
-            exports.ox_inventory:AddItem(src,Config.Processing.Crack.ProcessedItemName, returnAmount)
-        else
-            SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
+            if exports.ox_inventory:CanCarryItem(src, Config.Processing.Crack.ProcessedItemName, amount) then
+                exports.ox_inventory:AddItem(src,Config.Processing.Crack.ProcessedItemName, amount)
+            else
+                SendNotify(src,Config.Language.Notifications.CantCarry, 'error', 2000)
+            end
         end
     end
     if Config.XP.Enabled then
@@ -445,37 +480,41 @@ RegisterServerEvent('lusty94_cocaine:server:ProcessCokeBaggy', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
-    local xpAmount = math.random(5,10) -- Edit xp reward here
+    local xpReward = math.random(5,10) -- edit xp reward here
     if not Player then return end
     if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
+        if DrugXP >= 150 then
+            amount = math.random(2,5)
+        elseif DrugXP >= 500 then
+            amount = math.random(5,9)
+        elseif DrugXP >= 750 then
+            amount = math.random(9, 13)
+        elseif DrugXP >= 1250 then
+            amount = math.random(13, 18)
+        elseif DrugXP >= 1500 then
+            amount = math.random(18, 25)
+        elseif DrugXP >= 2200 then
+            amount = math.random(25, 32)
         end
-    else returnAmount = Config.Processing.Bagging.Cocaine.BaggedItemAmount end -- edit amount given if not using xp here
+    else
+        amount = Config.Processing.Bagging.Cocaine.BaggedItemAmount -- edit return amount here if not using xp
+    end
     if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.Bagging.Cocaine.RequiredItemName, Config.Processing.Bagging.Cocaine.RequiredItemAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Cocaine.RequiredItemName], 'remove', Config.Processing.Bagging.Cocaine.RequiredItemAmount)
-        Player.Functions.RemoveItem(Config.Processing.Bagging.Cocaine.RequiredItem3Name, Config.Processing.Bagging.Cocaine.RequiredItem3Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Cocaine.RequiredItem3Name], 'remove', Config.Processing.Bagging.Cocaine.RequiredItem3Amount)
-        Player.Functions.AddItem(Config.Processing.Bagging.Cocaine.BaggedItemName, returnAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Cocaine.BaggedItemName], 'add', returnAmount)
+        if exports['qb-inventory']:RemoveItem(src, Config.Processing.Bagging.Cocaine.RequiredItemName, Config.Processing.Bagging.Cocaine.RequiredItemAmount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Cocaine.RequiredItemName], 'remove', Config.Processing.Bagging.Cocaine.RequiredItemAmount)
+            exports['qb-inventory']:RemoveItem(src, Config.Processing.Bagging.Cocaine.RequiredItem3Name, Config.Processing.Crack.RequiredItem2Amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Cocaine.RequiredItem3Name], 'remove', Config.Processing.Crack.RequiredItem2Amount)         
+            exports['qb-inventory']:AddItem(src, Config.Processing.Bagging.Cocaine.BaggedItemName, amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Cocaine.BaggedItemName], 'add', amount)
+        end
     elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.Bagging.Cocaine.BaggedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Bagging.Cocaine.RequiredItemName, Config.Processing.Bagging.Cocaine.RequiredItemAmount)
+        if exports.ox_inventory:RemoveItem(src,Config.Processing.Bagging.Cocaine.RequiredItemName, Config.Processing.Bagging.Cocaine.RequiredItemAmount) then
             exports.ox_inventory:RemoveItem(src,Config.Processing.Bagging.Cocaine.RequiredItem3Name, Config.Processing.Bagging.Cocaine.RequiredItem3Amount)
-            exports.ox_inventory:AddItem(src,Config.Processing.Bagging.Cocaine.BaggedItemName, returnAmount)
-        else
-            SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
+            if exports.ox_inventory:CanCarryItem(src, Config.Processing.Bagging.Cocaine.BaggedItemName, amount) then
+                exports.ox_inventory:AddItem(src,Config.Processing.Bagging.Cocaine.BaggedItemName, amount)
+            else
+                SendNotify(src,Config.Language.Notifications.CantCarry, 'error', 2000)
+            end
         end
     end
     if Config.XP.Enabled then
@@ -491,37 +530,41 @@ RegisterServerEvent('lusty94_cocaine:server:ProcessCrackBaggy', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
-    local xpAmount = math.random(5,10) -- Edit xp reward here
+    local xpReward = math.random(5,10) -- edit xp reward here
     if not Player then return end
     if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
+        if DrugXP >= 150 then
+            amount = math.random(2,5)
+        elseif DrugXP >= 500 then
+            amount = math.random(5,9)
+        elseif DrugXP >= 750 then
+            amount = math.random(9, 13)
+        elseif DrugXP >= 1250 then
+            amount = math.random(13, 18)
+        elseif DrugXP >= 1500 then
+            amount = math.random(18, 25)
+        elseif DrugXP >= 2200 then
+            amount = math.random(25, 32)
         end
-    else returnAmount = Config.Processing.Bagging.Crack.BaggedItemAmount end -- edit amount given if not using xp here
+    else
+        amount = Config.Processing.Bagging.Crack.BaggedItemAmount -- edit return amount here if not using xp
+    end
     if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.Bagging.Crack.RequiredItemName, Config.Processing.Bagging.Crack.RequiredItemAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Crack.RequiredItemName], 'remove', Config.Processing.Bagging.Crack.RequiredItemAmount)
-        Player.Functions.RemoveItem(Config.Processing.Bagging.Crack.RequiredItem3Name, Config.Processing.Bagging.Crack.RequiredItem3Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Crack.RequiredItem3Name], 'remove', Config.Processing.Bagging.Crack.RequiredItem3Amount)
-        Player.Functions.AddItem(Config.Processing.Bagging.Crack.BaggedItemName, returnAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Crack.BaggedItemName], 'add', returnAmount)
+        if exports['qb-inventory']:RemoveItem(src, Config.Processing.Bagging.Crack.RequiredItemName, Config.Processing.Bagging.Crack.RequiredItemAmount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Crack.RequiredItemName], 'remove', Config.Processing.Bagging.Crack.RequiredItemAmount)
+            exports['qb-inventory']:RemoveItem(src, Config.Processing.Bagging.Crack.RequiredItem3Name, Config.Processing.Crack.RequiredItem2Amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Crack.RequiredItem3Name], 'remove', Config.Processing.Crack.RequiredItem2Amount)         
+            exports['qb-inventory']:AddItem(src, Config.Processing.Bagging.Crack.BaggedItemName, amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Crack.BaggedItemName], 'add', amount)
+        end
     elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.Bagging.Crack.BaggedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Bagging.Crack.RequiredItemName, Config.Processing.Bagging.Crack.RequiredItemAmount)
+        if exports.ox_inventory:RemoveItem(src,Config.Processing.Bagging.Crack.RequiredItemName, Config.Processing.Bagging.Crack.RequiredItemAmount) then
             exports.ox_inventory:RemoveItem(src,Config.Processing.Bagging.Crack.RequiredItem3Name, Config.Processing.Bagging.Crack.RequiredItem3Amount)
-            exports.ox_inventory:AddItem(src,Config.Processing.Bagging.Crack.BaggedItemName, returnAmount)
-        else
-            SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
+            if exports.ox_inventory:CanCarryItem(src, Config.Processing.Bagging.Crack.BaggedItemName, amount) then
+                exports.ox_inventory:AddItem(src,Config.Processing.Bagging.Crack.BaggedItemName, amount)
+            else
+                SendNotify(src,Config.Language.Notifications.CantCarry, 'error', 2000)
+            end
         end
     end
     if Config.XP.Enabled then
@@ -539,40 +582,44 @@ RegisterServerEvent('lusty94_cocaine:server:CreateOverDoseCure', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local DrugXP = Player.PlayerData.metadata[MetaDataName]
-    local xpAmount = math.random(5,10) -- Edit xp reward here
+    local xpReward = math.random(5,10) -- edit xp reward here
     if not Player then return end
     if Config.XP.Enabled then
-        if DrugXP <= 150 then
-            returnAmount = math.random(1,4)
-        elseif DrugXP <= 500 then
-            returnAmount = math.random(3,7)
-        elseif DrugXP <= 750 then
-            returnAmount = math.random(6,9)
-        elseif DrugXP <= 1250 then
-            returnAmount = math.random(10,14)
-        elseif DrugXP <= 1500 then
-            returnAmount = math.random(13,17)
-        elseif DrugXP <= 2200 then
-            returnAmount = math.random(17,20)
+        if DrugXP >= 150 then
+            amount = math.random(2,5)
+        elseif DrugXP >= 500 then
+            amount = math.random(5,9)
+        elseif DrugXP >= 750 then
+            amount = math.random(9, 13)
+        elseif DrugXP >= 1250 then
+            amount = math.random(13, 18)
+        elseif DrugXP >= 1500 then
+            amount = math.random(18, 25)
+        elseif DrugXP >= 2200 then
+            amount = math.random(25, 32)
         end
-    else returnAmount = Config.Processing.Curing.ProcessedItemAmount end -- edit amount given if not using xp here
+    else
+        amount = Config.Processing.Curing.ProcessedItemAmount -- edit return amount here if not using xp
+    end
     if InvType == 'qb' then
-        Player.Functions.RemoveItem(Config.Processing.Curing.RequiredItemName, Config.Processing.Curing.RequiredItemAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.RequiredItemName], 'remove', Config.Processing.Curing.RequiredItemAmount)
-        Player.Functions.RemoveItem(Config.Processing.Curing.RequiredItem2Name, Config.Processing.Curing.RequiredItem2Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.RequiredItem3Name], 'remove', Config.Processing.Curing.RequiredItem2Amount)
-        Player.Functions.RemoveItem(Config.Processing.Curing.RequiredItem3Name, Config.Processing.Curing.RequiredItem3Amount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.RequiredItem3Name], 'remove', Config.Processing.Curing.RequiredItem3Amount)
-        Player.Functions.AddItem(Config.Processing.Curing.ProcessedItemName, returnAmount)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.ProcessedItemName], 'add', returnAmount)
+        if exports['qb-inventory']:RemoveItem(src, Config.Processing.Curing.RequiredItemName, Config.Processing.Curing.RequiredItemAmount, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.RequiredItemName], 'remove', Config.Processing.Curing.RequiredItemAmount)
+            exports['qb-inventory']:RemoveItem(src, Config.Processing.Curing.RequiredItem2Name, Config.Processing.Curing.RequiredItem2Amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.RequiredItem2Name], 'remove', Config.Processing.Curing.RequiredItem2Amount)
+            exports['qb-inventory']:RemoveItem(src, Config.Processing.Curing.RequiredItem3Name, Config.Processing.Curing.RequiredItem3Amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.RequiredItem3Name], 'remove', Config.Processing.Curing.RequiredItem3Amount)          
+            exports['qb-inventory']:AddItem(src, Config.Processing.Curing.ProcessedItemName, amount, false, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.ProcessedItemName], 'add', amount)
+        end
     elseif InvType == 'ox' then
-        if exports.ox_inventory:CanCarryItem(src, Config.Processing.Curing.ProcessedItemName, returnAmount) then
-            exports.ox_inventory:RemoveItem(src,Config.Processing.Curing.RequiredItemName, Config.Processing.Curing.RequiredItemAmount)
+        if exports.ox_inventory:RemoveItem(src,Config.Processing.Curing.RequiredItemName, Config.Processing.Curing.RequiredItemAmount) then
             exports.ox_inventory:RemoveItem(src,Config.Processing.Curing.RequiredItem2Name, Config.Processing.Curing.RequiredItem2Amount)
             exports.ox_inventory:RemoveItem(src,Config.Processing.Curing.RequiredItem3Name, Config.Processing.Curing.RequiredItem3Amount)
-            exports.ox_inventory:AddItem(src,Config.Processing.Curing.ProcessedItemName, returnAmount)
-        else
-            SendNotify(src,"You Can\'t Carry Anymore of This Item!", 'error', 2000)
+            if exports.ox_inventory:CanCarryItem(src, Config.Processing.Curing.ProcessedItemName, amount) then
+                exports.ox_inventory:AddItem(src,Config.Processing.Curing.ProcessedItemName, amount)
+            else
+                SendNotify(src,Config.Language.Notifications.CantCarry, 'error', 2000)
+            end
         end
     end
     if Config.XP.Enabled then
@@ -594,8 +641,9 @@ RegisterServerEvent('lusty94_cocaine:server:TakeCokeBaggy', function()
 	local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
     if InvType == 'qb' then
-	    Player.Functions.RemoveItem(Config.Processing.Bagging.Cocaine.BaggedItemName, 1) -- coke_baggy
-	    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Cocaine.BaggedItemName], "remove")
+	    if exports['qb-inventory']:RemoveItem(src, Config.Processing.Bagging.Cocaine.BaggedItemName, 1, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Cocaine.BaggedItemName], 'remove', 1)
+        end
     elseif InvType == 'ox' then
         exports.ox_inventory:RemoveItem(src, Config.Processing.Bagging.Cocaine.BaggedItemName, 1)
     end
@@ -607,8 +655,9 @@ RegisterServerEvent('lusty94_cocaine:server:TakeCrackBaggy', function()
 	local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
     if InvType == 'qb' then
-	    Player.Functions.RemoveItem(Config.Processing.Bagging.Crack.BaggedItemName, 1) -- crack_baggy
-	    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Crack.BaggedItemName], "remove")
+	    if exports['qb-inventory']:RemoveItem(src, Config.Processing.Bagging.Crack.BaggedItemName, 1, false, false, false) then
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Bagging.Crack.BaggedItemName], 'remove', 1)
+        end
     elseif InvType == 'ox' then
         exports.ox_inventory:RemoveItem(src, Config.Processing.Bagging.Crack.BaggedItemName, 1)
     end
@@ -645,8 +694,13 @@ RegisterServerEvent('lusty94_cocaine:server:CureOverDose', function()
     if not Player then return end
     if OverDose >= 1 then
         Player.Functions.SetMetaData(OverDoseName, (OverDose - Config.DrugSettings.Effects.OverDoseCureAmount)) -- Edit value here to set the amount that of metadata for overdose
-        Player.Functions.RemoveItem(Config.Processing.Curing.ProcessedItemName, 1)
-	    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.ProcessedItemName], "remove")
+        if InvType == 'qb' then
+            if exports['qb-inventory']:RemoveItem(src, Config.Processing.Curing.ProcessedItemName, 1, false, false, false) then
+                TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Processing.Curing.ProcessedItemName], 'remove', 1)
+            end
+        elseif InvType == 'ox' then
+            exports.ox_inventory:RemoveItem(src, Config.Processing.Curing.ProcessedItemName, 1)
+        end
         SendNotify(src, Config.Language.Notifications.OverDoseCuredName, 'error', 2000)
     else
         SendNotify(src, Config.Language.Notifications.AlreadyCuredName, 'error', 2000)
@@ -658,7 +712,7 @@ end)
 
 -- /commands
 if Config.DrugSettings.Effects.OverDose then
-    QBCore.Commands.Add(OverDoseName, "Check Your OverDose Level", {}, true, function(source, args)
+    QBCore.Commands.Add(OverDoseName, 'Check Your OverDose Level', {}, true, function(source, args)
         local source = source
         local src = source
         local level = 1
@@ -678,7 +732,7 @@ end
 -- /commands
 if Config.XP.Enabled then
     if Config.XP.Command then
-        QBCore.Commands.Add(MetaDataName, "Check Your Drug XP Level", {}, true, function(source, args)
+        QBCore.Commands.Add(MetaDataName, 'Check Your Drug XP Level', {}, true, function(source, args)
             local source = source
             local src = source
             local level = 1
@@ -696,7 +750,36 @@ if Config.XP.Enabled then
     end
 end
 
---change items and prices here for ox_iventory
+------------------------< QB-INVENTORY SHOPS >--------------------
+
+RegisterNetEvent('lusty94_cocaine:server:SuppliesShop', function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local cocaineSupplies = {
+        {name = "trowel",                 price = 5,      amount = 1000, info = {}, type = "item", slot = 1,},
+        {name = "emptybaggies",           price = 10,     amount = 1000, info = {}, type = "item", slot = 2,},
+        {name = "scales",                 price = 500,    amount = 1000, info = {}, type = "item", slot = 3,},
+        {name = "plasticjerrycan",        price = 100,    amount = 1000, info = {}, type = "item", slot = 4,},
+        {name = "cokesodiumcarbonate",    price = 50,     amount = 1000, info = {}, type = "item", slot = 5,},
+        {name = "water_bottle",           price = 10,     amount = 1000, info = {}, type = "item", slot = 6,},
+        {name = "cokeprocessingtable",    price = 1000,   amount = 1000, info = {}, type = "item", slot = 7,},
+        {name = "cokeacetone",            price = 250,    amount = 1000, info = {}, type = "item", slot = 8,},
+        {name = "cokedimethylformamide",  price = 500,    amount = 1000, info = {}, type = "item", slot = 9,},
+    }
+    exports['qb-inventory']:CreateShop({
+        name = 'cocaineSupplies',
+        label = 'Cocaine Supplies Shop',
+        slots = 9,
+        items = cocaineSupplies
+    })
+    if Player then
+        exports['qb-inventory']:OpenShop(source, 'cocaineSupplies')
+    end
+end)
+
+
+------------------------< OX_INVENTORY SHOPS >--------------------
+
 function CocaineSupplyShop()
     exports.ox_inventory:RegisterShop('CocaineSupplyShop', {
         name = 'Cocaine Supply Shop',
@@ -705,11 +788,11 @@ function CocaineSupplyShop()
             { name = 'emptybaggies', price = 10 },
             { name = 'scales', price = 500 },
             { name = 'plasticjerrycan', price = 100 },
-            { name = 'sodiumcarbonate', price = 50 },
+            { name = 'cokesodiumcarbonate', price = 50 },
             { name = 'water_bottle', price = 10 },
             { name = 'cokeprocessingtable', price = 1000 },
-            { name = 'acetone', price = 250 },
-            { name = 'dimethylformamide', price = 500 },
+            { name = 'cokeacetone', price = 250 },
+            { name = 'cokedimethylformamide', price = 500 },
         },
     })
 end
@@ -732,10 +815,10 @@ end)
 local function CheckVersion()
 	PerformHttpRequest('https://raw.githubusercontent.com/Lusty94/UpdatedVersions/main/Cocaine/version.txt', function(err, newestVersion, headers)
 		local currentVersion = GetResourceMetadata(GetCurrentResourceName(), 'version')
-		if not newestVersion then print("Currently unable to run a version check.") return end
-		local advice = "^1You are currently running an outdated version^7, ^1please update^7"
-		if newestVersion:gsub("%s+", "") == currentVersion:gsub("%s+", "") then advice = '^6You are running the latest version.^7'
-		else print("^3Version Check^7: ^2Current^7: "..currentVersion.." ^2Latest^7: "..newestVersion..advice) end
+		if not newestVersion then print('Currently unable to run a version check.') return end
+		local advice = '^1You are currently running an outdated version^7, ^1please update^7'
+		if newestVersion:gsub('%s+', '') == currentVersion:gsub('%s+', '') then advice = '^6You are running the latest version.^7'
+		else print('^3Version Check^7: ^2Current^7: '..currentVersion..' ^2Latest^7: '..newestVersion..advice) end
 	end)
 end
 CheckVersion()

@@ -33,27 +33,13 @@ Config.CoreSettings = {
         --use 'boii' for boii_ui notify
         --use 'ox' for -x_lib notify
     },    
-    Menu = {
-        Type = 'qb', -- menu script name, support for qb-menu, jixel-menu and ox_lib context menu
-        --EDITS MENUS.LUA TO ADD YOUR CUSTOM MENU OR CHANGE VALUES
-        --use 'qb' for qb-menu
-        --use 'jixel' for jixel-menu
-        --use 'ox' for ox_lib context menu
-        --use 'custom' for your own custom menu
-    },
     Inventory = {
         Type = 'ox' -- support for qb-inventory & ox_inventory
         --use 'qb' for qb-inventory
         --use 'ox' for ox_inventory
     },
-    Shop = { -- support for qb-inventory shops, jim-shops and ox_inventory shops
-        Type = 'ox',
-        --use 'qb' for qb-inventory shops
-        --use 'jim' for jim-shops
-        --use 'ox' for ox_inventory shops
-    },
     Police = {
-        Type = 'ps' -- support for qb-policejob and ps_dispatch
+        Type = 'qb' -- support for qb-policejob and ps_dispatch
         --use 'qb' for qb-policejob
         --use 'ps' for ps-dispatch
     },
@@ -62,6 +48,7 @@ Config.CoreSettings = {
 		GetCement = 10000, -- time it takes to get cement
 		GetGasoline = 5000, -- time it takes to get gasoline
 		GetHydrochloricAcid = 5000, -- time it takes to get acid
+        PlaceProcessingTable = 5000, -- time to place processing table
 		ProcessCocaine = 5000, -- time it takes to process all ingredients required to make cocaine
 		ProcessCrack = 5000, -- time it takes to process all ingredients required to make crack
 		ProcessCokeBaggy = 5000, -- time it takes to consume crack
@@ -85,20 +72,20 @@ Config.CoreSettings = {
             TargetDistance = 2.0,
         },
         Cement = {
-            Name = 'prop_cons_cements01',
+            Name = 'prop_cons_cements01', -- uses same prop as other drug scripts - if causing issues then change prop model or use 1 item for all recipes
             TargetIcon = 'fa-solid fa-hand-point-up',
             TargetLabel = 'Get Cement',
             TargetDistance = 2.0,
         },
         Gasoline = {
-            Name = 'prop_barrel_exp_01a',
+            Name = 'prop_barrel_exp_01a', -- uses same prop as other drug scripts - if causing issues then change prop model or use 1 item for all recipes
             RequiredItem = 'plasticjerrycan',
             TargetIcon = 'fa-solid fa-gas-pump',
             TargetLabel = 'Siphon Gasoline',
             TargetDistance = 2.0,
         },
         HydrochloricAcid = {
-            Name = 'prop_storagetank_02b',
+            Name = 'prop_storagetank_02b', -- uses same prop as other drug scripts - if causing issues then change prop model or use 1 item for all recipes
             RequiredItem = 'plasticjerrycan',
             TargetIcon = 'fa-solid fa-jug-detergent',
             TargetLabel = 'Siphon Hydrochloric Acid',
@@ -122,9 +109,9 @@ Config.CoreSettings = {
     Chances = { -- chances for individual events
         CallPolice = 90, -- chance to call police when searching for items
         GetLeaves = 90, -- chance to get coca leaves
-        GetCement = 75, -- chance to get cement
-        GetGas = 75, -- chance to get gasoline
-        GetHydro = 75, -- chance to get hydrochloric acid
+        GetCement = 90, -- chance to get cement
+        GetGas = 90, -- chance to get gasoline
+        GetHydro = 90, -- chance to get hydrochloric acid
         ProcessSuccess = 100, -- chance to process drugs successfuly
     }   
 }
@@ -140,7 +127,22 @@ Config.Blips = {-- if adding more coca leaves in random locations then make sure
 
 Config.Peds = {
     -- if setting useped to false make sure to set useblip to false also and add your own methods of obtaining the items for the supplier store
-    {name = 'supplies_ped',  useped = true, coords = vector4(91.11, -1604.26, 30.9, 233.24),   model = 'g_m_m_chicold_01',   playanim = true,  scenario = 'WORLD_HUMAN_CLIPBOARD', useblip = false, title = 'Supplier', colour = 5, id = 51, scale = 0.8, targeticon = 'fa-solid fa-boxes-packing', targetlabel = 'Speak With Supplier', targetdistance = 2.0,}, -- ped spawned for crafting supplies
+    {
+        name = 'supplies_ped',  
+        useped = true, 
+        coords = vector4(91.11, -1604.26, 30.9, 233.24),   
+        model = 'g_m_m_chicold_01',   
+        playanim = true,  
+        scenario = 'WORLD_HUMAN_CLIPBOARD', 
+        useblip = true, 
+        title = 'Supplier', 
+        colour = 5, 
+        id = 51, 
+        scale = 0.8, 
+        targeticon = 'fa-solid fa-boxes-packing', 
+        targetlabel = 'Speak With Supplier', 
+        targetdistance = 2.0,
+    },
 }
 
 
@@ -150,32 +152,33 @@ Config.Plants = { -- add or remove plants as you wish
      --label is target label
      --icon is target icon
      --coords are plant locations
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1937.94, 4535.57, 10.56), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1931.42, 4532.3, 11.05), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1940.55, 4540.43, 10.22), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1939.57, 4543.84, 9.87), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1934.64, 4545.18, 9.93), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1930.71, 4543.22, 10.44), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1926.92, 4535.39, 11.6), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1922.0, 4539.74, 11.53), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1914.72, 4541.63, 11.61), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1916.13, 4548.66, 9.56), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1918.18, 4553.98, 8.08), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1921.54, 4557.79, 7.36), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1926.16, 4560.36, 7.2), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1932.84, 4562.26, 6.68), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1942.21, 4567.03, 5.4), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1947.69, 4567.06, 5.11), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1951.78, 4559.63, 5.89), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1951.27, 4555.43, 6.65), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1951.17, 4547.96, 7.83), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1951.94, 4539.66, 8.28), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1947.66, 4534.37, 9.51), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1942.3, 4529.29, 10.52), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1936.96, 4525.56, 12.33), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1932.68, 4525.13, 12.89), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1927.96, 4527.63, 12.3), },
-    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1918.34, 4530.86, 12.94), },
+     --distance is target distance
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1937.94, 4535.57, 10.56), distance = 2.0, },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1931.42, 4532.3, 11.05), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1940.55, 4540.43, 10.22), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1939.57, 4543.84, 9.87), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1934.64, 4545.18, 9.93), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1930.71, 4543.22, 10.44), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1926.92, 4535.39, 11.6), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1922.0, 4539.74, 11.53), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1914.72, 4541.63, 11.61), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1916.13, 4548.66, 9.56), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1918.18, 4553.98, 8.08), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1921.54, 4557.79, 7.36), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1926.16, 4560.36, 7.2), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1932.84, 4562.26, 6.68), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1942.21, 4567.03, 5.4), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1947.69, 4567.06, 5.11), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1951.78, 4559.63, 5.89), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1951.27, 4555.43, 6.65), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1951.17, 4547.96, 7.83), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1951.94, 4539.66, 8.28), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1947.66, 4534.37, 9.51), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1942.3, 4529.29, 10.52), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1936.96, 4525.56, 12.33), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1932.68, 4525.13, 12.89), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1927.96, 4527.63, 12.3), distance = 2.0,  },
+    { item = 'trowel', label = 'Pick Coca Leaves', icon = 'fa-solid fa-hand-point-up', coords = vector3(-1918.34, 4530.86, 12.94), distance = 2.0,  },
 }
 
 -- XP settings
@@ -267,7 +270,7 @@ Config.Processing = { -- ItemName and ItemLabel MUST MATCH with items and labels
         RequiredItem3Name = 'iodine',  -- required item name
         RequiredItem3Label = 'Iodine', -- required item label
         RequiredItem3Amount = 2, -- required item amount
-        ProcessedItemName = 'overdosecure', -- given item name
+        ProcessedItemName = 'cokeoverdosecure', -- given item name
         ProcessedItemLabel = 'Overdose Cure', -- given item label
         ProcessedItemAmount = 1,  -- given item amount if not using xp
     },
@@ -282,8 +285,8 @@ Config.DrugSettings = {
         ArmourGained = math.random(5,10), -- amount of armour gained SET TO 0 FOR NOTHING
         ReduceStress = true, -- enables the player to get stress relief when consuming coke and crack
         StressReduced = math.random(5,10), -- amount of stress reduced SET TO 0 FOR NOTHING
-        OverDose = false, -- set to true for a chance for the player to become overdosed after a certain amount of times taking magic mushrooms
-        OverDoseMetaDataName = 'overdose', -- The name of your overdose metadata if you edit this make sure to also edit the line you added into qb-core/server/player.lua --USE /overdose TO CHECK YOUR OVERDOSE LEVEL if OverDose is set to true above
+        OverDose = false, -- set to true for a chance for the player to become overdosed after a certain amount of times taking drugs
+        OverDoseMetaDataName = 'overdose', -- The name of your overdose metadata if you edit this make sure to also edit the line you added into core also --USE /overdose TO CHECK YOUR OVERDOSE LEVEL if OverDose is set to true above
         OverDoseAmount = math.random(5,10), -- overdose counter each time cocaine and crack is consumed if OverDose is set to true -- this will eventually add up to the number you specify below as the minimum level required to overdose
         OverDoseLevel = 2500, -- minimum level needed to overdose - set fairly high to prevent constant overdoses or match your highest level stated in the OverDoseLevels table below
         HealthRemoved = 50, -- amount of health to be removed when overdosing
@@ -309,21 +312,37 @@ Config.Animations = { -- change animations below for various tasks
         AnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
         Anim = 'machinic_loop_mechandplayer',
         Flags = 41,
+        Prop = 'prop_cs_trowel',
+        Bone = 18905,
+        Pos = vec3(0.12, 0.0, 0.02),
+        Rot = vec3(76.0, 188.0, 34.0),
     },
     GetCement = {
         AnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
         Anim = 'machinic_loop_mechandplayer',
         Flags = 41,
+        Prop = 'prop_cs_trowel',
+        Bone = 18905,
+        Pos = vec3(0.12, 0.0, 0.02),
+        Rot = vec3(76.0, 188.0, 34.0),
     },
     GetGasoline = {
         AnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
         Anim = 'machinic_loop_mechandplayer',
         Flags = 41,
+        Prop = 'prop_ld_jerrycan_01',
+        Bone = 60309,
+        Pos = vec3(0.06, 0.04, 0.02),
+        Rot = vec3(194.0, 0.0, 0.0),
     },
     GetHydrochloricAcid = {
         AnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
         Anim = 'machinic_loop_mechandplayer',
         Flags = 41,
+        Prop = 'prop_ld_jerrycan_01',
+        Bone = 60309,
+        Pos = vec3(0.06, 0.04, 0.02),
+        Rot = vec3(194.0, 0.0, 0.0),
     },
     PlaceProcessingTable = {
         AnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
@@ -347,7 +366,7 @@ Config.Animations = { -- change animations below for various tasks
 Config.Language = {
 	Notifications = { 
         BusyName = 'You Are Already Doing Something',
-        FailedName = 'Processing Failed! Try Again',
+        FailedName = 'Action failed!',
         PoliceNotifiedName = 'The Police Have Been Called!',
         AlreadyCuredName = 'You Are Not Close To Overdosing Any Time Soon, You Dont Need This At The Moment!',
         OverDosedName = 'You Have Overdosed Go See A Doctor Immediately!',
@@ -367,6 +386,7 @@ Config.Language = {
         GetHydrochloricAcid = 'Siphoning Hydrochloric Acid',
         TakeCocaine = 'Snorting Cocaine',
         TakeCrack = 'Smoking Crack',
+        PlaceTableName = 'Placing processing table',
         ProcessCocaine = 'Processing Pure Cocaine',
         ProcessCrack = 'Processing Pure Crack',
         ProcessCokeBaggy = 'Processing Bag of Coke',

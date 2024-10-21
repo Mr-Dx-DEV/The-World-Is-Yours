@@ -1,13 +1,12 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-local cocaLeaves = {}
-local busy, isCokeTablePlaced  = false, false
+local spawnedCokeLeaves = {}
+local busy, cokeTablePlaced  = false, false
 local isCementOnCooldown, isGasolineOnCooldown, isHydrochloricAcidOnCooldown = false, false, false
 local lastCementUsage, lastGasolineUsage, lastHydrochloricAcidUsage = 0, 0, 0
 local cokeTableProp = nil
 local NotifyType = Config.CoreSettings.Notify.Type
 local TargetType = Config.CoreSettings.Target.Type
 local InvType = Config.CoreSettings.Inventory.Type
-local ShopType = Config.CoreSettings.Shop.Type
 local PoliceType = Config.CoreSettings.Police.Type
 local EvidenceEvent = Config.CoreSettings.EventNames.Evidence
 local CementModel = Config.CoreSettings.Props.Cement.Name
@@ -67,10 +66,7 @@ end)
 CreateThread(function()
     for k, v in pairs(Config.Peds) do
         if v.useped then
-            RequestModel(GetHashKey(v.model))
-            while not HasModelLoaded(GetHashKey(v.model)) do
-                Wait(1000)
-            end
+            lib.requestModel(v.model, 10000)
             CokeSuppliesPed = CreatePed(0, v.model, v.coords.x, v.coords.y, v.coords.z-1, v.coords.w, false, false)
             FreezeEntityPosition(CokeSuppliesPed, true)
             SetEntityInvincible(CokeSuppliesPed, true)
@@ -137,29 +133,26 @@ end)
 CreateThread(function()
     while true do
         Wait(Config.CoreSettings.CoolDownTimers.RespawnLeaves) -- waits 30 minutes DONT TOUCH THIS EDIT THE TIMER CONFIG SIDE
-        for _, plant in pairs(cocaLeaves) do SetEntityAsMissionEntity(plant, false, true) DeleteObject(plant) SetEntityAsNoLongerNeeded(plant) end
-        cocaLeaves = {}
+        for _, plant in pairs(spawnedCokeLeaves) do SetEntityAsMissionEntity(plant, false, true) DeleteObject(plant) SetEntityAsNoLongerNeeded(plant) end
+        spawnedCokeLeaves = {}
         Wait(2500) -- wait 2.5 seconds before spawning new leaves
-        spawnLeaves() -- spawns new leaves
+        spawnCokeLeaves() -- spawns new leaves
     end
 end)
 
 --new method to spawn multiple leaves anywhere via config location
-function spawnLeaves()
+function spawnCokeLeaves()
 	for k,v in pairs(Config.Plants) do
 		local CokeModel = Config.CoreSettings.Props.CocaLeaves.Name
-		RequestModel(CokeModel)
-		while not HasModelLoaded(CokeModel) do
-			Wait(1000)
-		end
-		plant = CreateObject(CokeModel, v.coords.x, v.coords.y, v.coords.z-1, false, true, false) -- if plants floating or too low edit the -1 value on the Z axis
-		PlaceObjectOnGroundProperly(plant)
-		FreezeEntityPosition(plant, true)
-		cocaLeaves[#cocaLeaves+1] = plant
+		lib.requestModel(CokeModel, 10000)
+		cokePlants = CreateObject(CokeModel, v.coords.x, v.coords.y, v.coords.z-1, false, true, false) -- if plants floating or too low edit the -1 value on the Z axis
+		PlaceObjectOnGroundProperly(cokePlants)
+		FreezeEntityPosition(cokePlants, true)
+		spawnedCokeLeaves[#spawnedCokeLeaves+1] = cokePlants
 		if TargetType == 'qb' then
-			exports['qb-target']:AddTargetEntity(plant, { options = { { item = v.item,type = "client", event = "lusty94_cocaine:client:PickCocaLeaves", icon = v.icon, label = v.label, }, }, distance = v.distance })
+			exports['qb-target']:AddTargetEntity(cokePlants, { options = { { item = v.item,type = "client", event = "lusty94_cocaine:client:PickCocaLeaves", icon = v.icon, label = v.label, }, }, distance = v.distance })
 		elseif TargetType == 'ox' then
-			exports.ox_target:addLocalEntity(plant, ({ name = 'plant', items = v.item, label = v.label, icon = v.icon, event = 'lusty94_cocaine:client:PickCocaLeaves', distance = v.distance, }))
+			exports.ox_target:addLocalEntity(cokePlants, ({ name = 'cokePlants', items = v.item, label = v.label, icon = v.icon, event = 'lusty94_cocaine:client:PickCocaLeaves', distance = v.distance, }))
 		end
 	end
 end
@@ -170,40 +163,47 @@ RegisterNetEvent("lusty94_cocaine:client:PickCocaLeaves", function()
 	local playerPed = PlayerPedId()
 	local coords = GetEntityCoords(playerPed)
 	local nearbyObject, nearbyID    
-	for i=1, #cocaLeaves, 1 do
-		if #(coords - GetEntityCoords(cocaLeaves[i])) < 3 then
-			nearbyObject, nearbyID = cocaLeaves[i], i
+	for i=1, #spawnedCokeLeaves, 1 do
+		if #(coords - GetEntityCoords(spawnedCokeLeaves[i])) < 3 then
+			nearbyObject, nearbyID = spawnedCokeLeaves[i], i
 		end
 	end   
 	if nearbyObject and IsPedOnFoot(playerPed) then
 		if busy then
-			SendNotify('You Are Already Doing Something!', 'error', 2000)
+			SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
 		else
 			local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
 			if success then
 				busy = true
 				LockInventory(true)
-				if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.PickCocaLeaves, label = Config.Language.ProgressBar.PickCocaLeaves, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.PickCocaLeaves.AnimDict, clip = Config.Animations.PickCocaLeaves.Anim, flag = Config.Animations.PickCocaLeaves.Flags,}, prop = { model = 'prop_cs_trowel', bone = 18905, pos = vec3(0.12, 0.0, 0.02), rot = vec3(76.0, 188.0, 34.0), }, }) then
-					busy = false
-					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
-					SetEntityAsMissionEntity(nearbyObject, false, true)
-					DeleteObject(nearbyObject)
-					cocaLeaves[nearbyID] = nil
-					local chance2 = Config.CoreSettings.Chances.GetLeaves
-					if chance2 >= math.random(1,100) then
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.ProgressBar.PickCocaLeaves, 
+					label = Config.Language.ProgressBar.PickCocaLeaves, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = true, },  
+					anim = { dict = Config.Animations.PickCocaLeaves.AnimDict, clip = Config.Animations.PickCocaLeaves.Anim, flag = Config.Animations.PickCocaLeaves.Flags,}, 
+					prop = { model = Config.Animations.PickCocaLeaves.Prop, bone = Config.Animations.PickCocaLeaves.Bone, pos = Config.Animations.PickCocaLeaves.Pos, rot = Config.Animations.PickCocaLeaves.Rot, }, 
+				}) then
+					local chance = Config.CoreSettings.Chances.GetLeaves
+					if chance >= math.random(1,100) then
 						TriggerServerEvent('lusty94_cocaine:server:PickCocaLeaves')
 					else
 						SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
 					end
+					SetEntityAsMissionEntity(nearbyObject, false, true)
+					DeleteObject(nearbyObject)
+					spawnedCokeLeaves[nearbyID] = nil
+					busy = false
+					LockInventory(false)
 				else 
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
 					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
 				end
 			else
-				SendNotify("Action failed.", 'error', 2000)
+				SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
 			end
 		end 
 	end
@@ -222,35 +222,45 @@ RegisterNetEvent('lusty94_cocaine:client:openProcessingTable', function()
 	if busy then
         SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
     else
-		if isCokeTablePlaced then
+		if cokeTablePlaced then
             SendNotify(Config.Language.Notifications.PropErrorName, 'error', 2000)
 			return
 		end
 		busy = true
         LockInventory(true)
-		if lib.progressCircle({ duration = 5000, label = 'Placing processing table...', position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.PlaceProcessingTable.AnimDict, clip = Config.Animations.PlaceProcessingTable.Anim, flag = Config.Animations.PlaceProcessingTable.Flags, }, }) 
-        then
-            RequestModel(tableModel)
-            while (not HasModelLoaded(tableModel)) do
-                Wait(1000)
-            end
+		if lib.progressCircle({ 
+			duration = Config.CoreSettings.ProgressBar.PlaceProcessingTable, 
+			label = Config.Language.ProgressBar.PlaceTableName, 
+			position = 'bottom', 
+			useWhileDead = false, 
+			canCancel = true, 
+			disable = { car = true, move = true, }, 
+			anim = { dict = Config.Animations.PlaceProcessingTable.AnimDict, clip = Config.Animations.PlaceProcessingTable.Anim, flag = Config.Animations.PlaceProcessingTable.Flags, }, 
+		}) then
+            lib.requestModel(tableModel, 10000)
             cokeTableProp = CreateObject(tableModel, x, y, z, true, false, true)
             PlaceObjectOnGroundProperly(cokeTableProp)
-            SetEntityAsMissionEntity(cokeTableProp)
+            SetEntityAsMissionEntity(cokeTableProp, false, false)
             FreezeEntityPosition(cokeTableProp, true)
             if TargetType == 'qb' then
-                exports['qb-target']:AddTargetEntity(cokeTableProp, {  options = { { event = 'lusty94_cocaine:client:openMainMenu', type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconOpen, label =  Config.CoreSettings.Props.ProcessingTable.TargetLabelOpen, }, { event = 'lusty94_cocaine:client:DeleteProcessingTable', type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconRemove, label = Config.CoreSettings.Props.ProcessingTable.TargetLabelRemove, },}, distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance })
+                exports['qb-target']:AddTargetEntity(cokeTableProp, {  
+					options = { 
+						{ event = 'lusty94_cocaine:client:openMainMenu', 			type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconOpen, 	label =  Config.CoreSettings.Props.ProcessingTable.TargetLabelOpen, }, 
+						{ event = 'lusty94_cocaine:client:DeleteProcessingTable', 	type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconRemove, label = Config.CoreSettings.Props.ProcessingTable.TargetLabelRemove, },
+					}, distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance 
+				})
             elseif TargetType == 'ox' then
-                exports.ox_target:addLocalEntity(cokeTableProp, { { name = 'cokeTableProp', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconOpen, label =  Config.CoreSettings.Props.ProcessingTable.TargetLabelOpen, event = 'lusty94_cocaine:client:openMainMenu', distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance}, { name = 'furnaceProp', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconRemove, label = Config.CoreSettings.Props.ProcessingTable.TargetLabelRemove, event = 'lusty94_cocaine:client:DeleteProcessingTable', distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance}  })
+                exports.ox_target:addLocalEntity(cokeTableProp, { 
+					{ name = 'cokeTableProp', 	icon = Config.CoreSettings.Props.ProcessingTable.TargetIconOpen, 	label =  Config.CoreSettings.Props.ProcessingTable.TargetLabelOpen, 	event = 'lusty94_cocaine:client:openMainMenu', 			distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance}, 
+					{ name = 'cokeTableProp', 	icon = Config.CoreSettings.Props.ProcessingTable.TargetIconRemove, 	label = Config.CoreSettings.Props.ProcessingTable.TargetLabelRemove, 	event = 'lusty94_cocaine:client:DeleteProcessingTable', distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance}  
+				})
             end
-            ClearPedTasks(playerPed)
-            isCokeTablePlaced = true
+            cokeTablePlaced = true
             busy = false
             LockInventory(false)
         else
-            busy = false                                
-            ClearPedTasks(playerPed)
-            SendNotify("Action cancelled.", 'error', 3000)
+            busy = false
+            SendNotify(Config.Language.Notifications.CancelledName, 'error', 3000)
         end
 	end
 end)
@@ -269,7 +279,7 @@ RegisterNetEvent('lusty94_cocaine:client:DeleteProcessingTable', function()
 		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(cokeTableProp, 'cokeTableProp') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(cokeTableProp, 'cokeTableProp') end
         delete_prop(cokeTableProp)
         cokeTableProp = nil
-        isCokeTablePlaced = false
+        cokeTablePlaced = false
     end
 end)
 
@@ -285,15 +295,15 @@ end
 ------------------------------< PROP EVENTS >---------------------------------
 --chance to call police
 function PoliceCallChance()
-	local chance = math.random(1,100)
-	local chance2 = Config.CoreSettings.Chances.CallPolice
-	if chance <= chance2 then
+	local chance = Config.CoreSettings.Chances.CallPolice
+	if chance >= math.random(1,100) then
 		if PoliceType == 'qb' then
 			TriggerServerEvent('police:server:policeAlert', 'Suspicious Activity')
 		elseif PoliceType == 'ps' then
 			exports['ps-dispatch']:SuspiciousActivity()
-		end				
-		SendNotify(Config.Language.Notifications.PoliceNotifiedName, 'error', 2000)
+		elseif PoliceType == 'custom' then
+			--insert your own police notification methods here
+		end
 	end
 end
 
@@ -306,32 +316,38 @@ RegisterNetEvent('lusty94_cocaine:client:GetCement', function()
 			local remainingTime = math.ceil((lastCementUsage + cooldownTimeCement))
 			ShowCooldownNotification(remainingTime)
 		else
-			local success = lib.skillCheck({'easy', 'easy', 'medium', 'easy', 'easy'}, {'e'})
+			local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
 			if success then
 				busy = true
 				LockInventory(true)
-				if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.GetCement, label = Config.Language.ProgressBar.GetCement, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.GetCement.AnimDict, clip = Config.Animations.GetCement.Anim, flag = Config.Animations.GetCement.Flags,}, prop = { model = 'prop_cs_trowel', bone = 18905, pos = vec3(0.12, 0.0, 0.02), rot = vec3(76.0, 188.0, 34.0), }, }) then
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.ProgressBar.GetCement, 
+					label = Config.Language.ProgressBar.GetCement, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = true, },  
+					anim = { dict = Config.Animations.GetCement.AnimDict, clip = Config.Animations.GetCement.Anim, flag = Config.Animations.GetCement.Flags,}, 
+					prop = { model = Config.Animations.GetCement.Prop, bone = Config.Animations.GetCement.Bone, pos = Config.Animations.GetCement.Pos, rot = Config.Animations.GetCement.Rot, }, 
+				}) then
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
-					isCementOnCooldown = true
-					SetTimeout(cooldownTimeCement, function() isCementOnCooldown = false end)
-					local chance = math.random(1,100)
-					local chance2 = Config.CoreSettings.Chances.GetCement
-					if chance <= chance2 then
+					local chance = Config.CoreSettings.Chances.GetCement
+					if chance >= math.random(1,100) then
 						TriggerServerEvent('lusty94_cocaine:server:GetCement')
 					else
 						SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
 						PoliceCallChance()
 					end
+					isCementOnCooldown = true
+					SetTimeout(cooldownTimeCement, function() isCementOnCooldown = false end)
 				else 
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
 					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
 				end
 			else
-				SendNotify("Action failed.", 'error', 2000)
+				SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
 			end
 		end
 	end
@@ -349,32 +365,38 @@ RegisterNetEvent('lusty94_cocaine:client:GetGasoline', function()
 					local remainingTime = math.ceil((lastGasolineUsage + cooldownTimeGasoline))
 					ShowCooldownNotification(remainingTime)
 				else
-					local success = lib.skillCheck({'easy', 'easy', 'medium', 'easy', 'easy'}, {'e'})
+					local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
 					if success then
 						busy = true
 						LockInventory(true)
-						if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.GetGasoline, label = Config.Language.ProgressBar.GetGasoline, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.GetGasoline.AnimDict, clip = Config.Animations.GetGasoline.Anim, flag = Config.Animations.GetGasoline.Flags,}, prop = { model = 'prop_ld_jerrycan_01', bone = 60309, pos = vec3(0.06, 0.04, 0.02), rot = vec3(194.0, 0.0, 0.0), }, }) then
+						if lib.progressCircle({ 
+							duration = Config.CoreSettings.ProgressBar.GetGasoline, 
+							label = Config.Language.ProgressBar.GetGasoline, 
+							position = 'bottom', 
+							useWhileDead = false, 
+							canCancel = true, 
+							disable = { car = true, move = true, },  
+							anim = { dict = Config.Animations.GetGasoline.AnimDict, clip = Config.Animations.GetGasoline.Anim, flag = Config.Animations.GetGasoline.Flags,}, 
+							prop = { model = Config.Animations.GetGasoline.Prop, bone = Config.Animations.GetGasoline.Bone, pos = Config.Animations.GetGasoline.Pos, rot = Config.Animations.GetGasoline.Rot, }, 
+						}) then
 							busy = false
-							LockInventory(false)
-							ClearPedTasks(PlayerPedId())
-							isGasolineOnCooldown = true
-							SetTimeout(cooldownTimeGasoline, function() isGasolineOnCooldown = false end)
-							local chance = math.random(1,100)
-							local chance2 = Config.CoreSettings.Chances.GetGas
-							if chance <= chance2 then
+							LockInventory(false)	
+							local chance = Config.CoreSettings.Chances.GetGas
+							if chance >= math.random(1,100) then
 								TriggerServerEvent('lusty94_cocaine:server:GetGasoline')
 							else
 								SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
 								PoliceCallChance()
 							end
+							isGasolineOnCooldown = true
+							SetTimeout(cooldownTimeGasoline, function() isGasolineOnCooldown = false end)
 						else 
 							busy = false
-							LockInventory(false)
-							ClearPedTasks(PlayerPedId())
+							LockInventory(false)	
 							SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
 						end
 					else
-						SendNotify("Action failed.", 'error', 2000)
+						SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
 					end
 				end
 			end
@@ -396,19 +418,26 @@ RegisterNetEvent('lusty94_cocaine:client:GetHydrochloricAcid', function()
 					local remainingTime = math.ceil((lastHydrochloricAcidUsage + cooldownTimeHydrochloricAcid))
 					ShowCooldownNotification(remainingTime)
 				else
-					local success = lib.skillCheck({'easy', 'easy', 'medium', 'easy', 'easy'}, {'e'})
+					local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
 					if success then
 						busy = true
 						LockInventory(true)
-						if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.GetHydrochloricAcid, label = Config.Language.ProgressBar.GetHydrochloricAcid, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.GetHydrochloricAcid.AnimDict, clip = Config.Animations.GetHydrochloricAcid.Anim, flag = Config.Animations.GetHydrochloricAcid.Flags,}, prop = { model = 'prop_ld_jerrycan_01', bone = 60309, pos = vec3(0.06, 0.04, 0.02), rot = vec3(194.0, 0.0, 0.0), }, }) then
+						if lib.progressCircle({ 
+							duration = Config.CoreSettings.ProgressBar.GetHydrochloricAcid, 
+							label = Config.Language.ProgressBar.GetHydrochloricAcid, 
+							position = 'bottom', 
+							useWhileDead = false, 
+							canCancel = true, 
+							disable = { car = true, move = tre, },  
+							anim = { dict = Config.Animations.GetHydrochloricAcid.AnimDict, clip = Config.Animations.GetHydrochloricAcid.Anim, flag = Config.Animations.GetHydrochloricAcid.Flags,}, 
+							prop = { model = Config.Animations.GetHydrochloricAcid.Prop, bone = Config.Animations.GetHydrochloricAcid.Bone, pos = Config.Animations.GetHydrochloricAcid.Pos, rot = Config.Animations.GetHydrochloricAcid.Rot, }, 
+						}) then
 							busy = false
-							LockInventory(false)
-							ClearPedTasks(PlayerPedId())
+							LockInventory(false)	
 							isHydrochloricAcidOnCooldown = true
 							SetTimeout(cooldownTimeHydrochloricAcid, function() isHydrochloricAcidOnCooldown = false end)
-							local chance = math.random(1,100)
-							local chance2 = Config.CoreSettings.Chances.GetHydro
-							if chance <= chance2 then
+							local chance = Config.CoreSettings.Chances.GetHydro
+							if chance >= math.random(1,100) then
 								TriggerServerEvent('lusty94_cocaine:server:GetHydrochloricAcid')
 							else
 								SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
@@ -416,12 +445,11 @@ RegisterNetEvent('lusty94_cocaine:client:GetHydrochloricAcid', function()
 							end
 						else 
 							busy = false
-							LockInventory(false)
-							ClearPedTasks(PlayerPedId())
+							LockInventory(false)	
 							SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
 						end
 					else
-						SendNotify("Action failed.", 'error', 2000)
+						SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
 					end
 				end
 			end
@@ -449,24 +477,31 @@ RegisterNetEvent("lusty94_cocaine:client:ProcessPureCocaine", function()
                 if success then
                     busy = true
                     LockInventory(true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.ProcessCocaine, label = Config.Language.ProgressBar.ProcessCocaine, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
+                    if lib.progressCircle({ 
+						duration = Config.CoreSettings.ProgressBar.ProcessCocaine, 
+						label = Config.Language.ProgressBar.ProcessCocaine, 
+						position = 'bottom', 
+						useWhileDead = false, 
+						canCancel = true, 
+						disable = { car = true, move = true, }, 
+						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+					}) then
 						local chance = Config.CoreSettings.Chances.ProcessSuccess
 						if chance >= math.random(1,100) then
                         	TriggerServerEvent('lusty94_cocaine:server:ProcessPureCocaine')
 						else
 							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
 						end
+						busy = false
+						LockInventory(false)
                     else 
                         busy = false
                         LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
+
                         SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
                     end
                 else
-                    SendNotify("Action failed.", 'error', 2000)
+                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
                 end
             end
 		else
@@ -490,24 +525,30 @@ RegisterNetEvent('lusty94_cocaine:client:ProcessPureCrack', function()
                 if success then
                     busy = true
                     LockInventory(true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.ProcessCrack, label = Config.Language.ProgressBar.ProcessCrack, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
+                    if lib.progressCircle({ 
+						duration = Config.CoreSettings.ProgressBar.ProcessCrack, 
+						label = Config.Language.ProgressBar.ProcessCrack, 
+						position = 'bottom', 
+						useWhileDead = false, 
+						canCancel = true, 
+						disable = { car = true, move = true, }, 
+						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+					}) then
 						local chance = Config.CoreSettings.Chances.ProcessSuccess
 						if chance >= math.random(1,100) then
                         	TriggerServerEvent('lusty94_cocaine:server:ProcessPureCrack')
 						else
 							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
 						end
+						busy = false
+						LockInventory(false)
                     else 
                         busy = false
                         LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
                         SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
                     end
                 else
-                    SendNotify("Action failed.", 'error', 2000)
+                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
                 end
             end
 		else
@@ -528,24 +569,30 @@ RegisterNetEvent('lusty94_cocaine:client:ProcessCokeBaggy', function()
                 if success then
                     busy = true
                     LockInventory(true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.ProcessCokeBaggy, label = Config.Language.ProgressBar.ProcessCokeBaggy, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
+                    if lib.progressCircle({ 
+						duration = Config.CoreSettings.ProgressBar.ProcessCokeBaggy, 
+						label = Config.Language.ProgressBar.ProcessCokeBaggy, 
+						position = 'bottom', 
+						useWhileDead = false, 
+						canCancel = true, 
+						disable = { car = true, move = true, }, 
+						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+					}) then
 						local chance = Config.CoreSettings.Chances.ProcessSuccess
 						if chance >= math.random(1,100) then
                         	TriggerServerEvent('lusty94_cocaine:server:ProcessCokeBaggy')
 						else
 							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
 						end
+						busy = false
+						LockInventory(false)
                     else 
                         busy = false
                         LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
                         SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
                     end
                 else
-                    SendNotify("Action failed.", 'error', 2000)
+                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
                 end
             end
 		else
@@ -566,24 +613,30 @@ RegisterNetEvent('lusty94_cocaine:client:ProcessCrackBaggy', function()
                 if success then
                     busy = true
                     LockInventory(true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.ProcessCrackBaggy, label = Config.Language.ProgressBar.ProcessCrackBaggy, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
+                    if lib.progressCircle({ 
+						duration = Config.CoreSettings.ProgressBar.ProcessCrackBaggy, 
+						label = Config.Language.ProgressBar.ProcessCrackBaggy, 
+						position = 'bottom', 
+						useWhileDead = false, 
+						canCancel = true, 
+						disable = { car = true, move = true, }, 
+						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+					}) then
 						local chance = Config.CoreSettings.Chances.ProcessSuccess
 						if chance >= math.random(1,100) then
                         	TriggerServerEvent('lusty94_cocaine:server:ProcessCrackBaggy')
 						else
 							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
 						end
+						busy = false
+						LockInventory(false)
                     else 
                         busy = false
                         LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
                         SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
                     end
                 else
-                    SendNotify("Action failed.", 'error', 2000)
+                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
                 end
             end
 		else
@@ -605,24 +658,30 @@ RegisterNetEvent('lusty94_cocaine:client:CreateOverDoseCure', function()
                 if success then
                     busy = true
                     LockInventory(true)
-                    if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.CreateOverDoseCure, label = Config.Language.ProgressBar.CreateOverDoseCure, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, }, anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, }) then
-                        busy = false
-                        LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
+                    if lib.progressCircle({ 
+						duration = Config.CoreSettings.ProgressBar.CreateOverDoseCure, 
+						label = Config.Language.ProgressBar.CreateOverDoseCure, 
+						position = 'bottom', 
+						useWhileDead = false, 
+						canCancel = true, 
+						disable = { car = true, move = true, }, 
+						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
+					}) then
 						local chance = Config.CoreSettings.Chances.ProcessSuccess
 						if chance >= math.random(1,100) then
                         	TriggerServerEvent('lusty94_cocaine:server:CreateOverDoseCure')
 						else
 							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
 						end
+						busy = false
+						LockInventory(false)
                     else 
                         busy = false
                         LockInventory(false)
-                        ClearPedTasks(PlayerPedId())
                         SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
                     end
                 else
-                    SendNotify("Action failed.", 'error', 2000)
+                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
                 end
             end
 		else
@@ -639,24 +698,25 @@ end)
 local effectstimer = Config.DrugSettings.Effects.EffectsTimer
 
 -- Function to take cocaine
-local function TakeCocaine()	
+local function TakeCocaine()
+	local playerPed = PlayerPedId()	
 	Wait(2000)
     TriggerEvent(EvidenceEvent, 'widepupils', 300)
-    SetRunSprintMultiplierForPlayer(PlayerId(), 1.49)
+    SetRunSprintMultiplierForPlayer(playerPed, 1.49)
 	Wait(1000)
 	SetTimecycleModifier('spectator1')
 	Wait(5000)
 	if Config.DrugSettings.Effects.GiveArmour then
-		AddArmourToPed(PlayerPedId(), ArmourAmount)
+		AddArmourToPed(playerPed, ArmourAmount)
 	end
+	if Config.DrugSettings.Effects.ReduceStress then
+		TriggerServerEvent(Config.CoreSettings.EventNames.Stress, StressAmount)
+	end      
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.00)
 	Wait(2000)
 	ShakeGameplayCam('DRUNK_SHAKE', 1.10)
 	Wait(3000)
-	if Config.DrugSettings.Effects.ReduceStress then
-		TriggerServerEvent(Config.CoreSettings.EventNames.Stress, StressAmount)
-	end      
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.00)
 	Wait(8000)      
@@ -666,38 +726,38 @@ local function TakeCocaine()
 	ShakeGameplayCam('DRUNK_SHAKE', 1.10)
 	Wait(3000)       
 	SetTimecycleModifier('spectator5')
-	SetPedMotionBlur(PlayerPedId(), true)           
+	SetPedMotionBlur(playerPed, true)           
     Wait(effectstimer)
-    SetRunSprintMultiplierForPlayer(PlayerId(), 1.0)
+    SetRunSprintMultiplierForPlayer(playerPed, 1.0)
     ClearTimecycleModifier()
-    SetPedMotionBlur(PlayerPedId(), false)
-	StopGameplayCamShaking(PlayerPedId(), true)
-    ClearPedTasks(PlayerPedId())
-	SendNotify(Config.Language.Notifications.OverDoseWarningName, 'error', 2000)
+    SetPedMotionBlur(playerPed, false)
+	StopGameplayCamShaking(playerPed, true)
 	if Config.DrugSettings.Effects.OverDose then
+		SendNotify(Config.Language.Notifications.OverDoseWarningName, 'error', 2000)
 		TriggerServerEvent('lusty94_cocaine:server:OverDose')
 	end 
 end
 
 --function to take crack
 local function TakeCrack()
+	local playerPed = PlayerPedId()	
 	Wait(2000)
     TriggerEvent(EvidenceEvent, 'widepupils', 300)
-    SetRunSprintMultiplierForPlayer(PlayerId(), 1.49)
+    SetRunSprintMultiplierForPlayer(playerPed, 1.49)
 	Wait(1000)
 	SetTimecycleModifier('spectator1')
 	Wait(5000)
 	if Config.DrugSettings.Effects.GiveArmour then
-		AddArmourToPed(PlayerPedId(), ArmourAmount)
+		AddArmourToPed(playerPed, ArmourAmount)
+	end
+	if Config.DrugSettings.Effects.ReduceStress then
+		TriggerServerEvent(Config.CoreSettings.EventNames.Stress, StressAmount)
 	end
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.00)
 	Wait(2000)
 	ShakeGameplayCam('DRUNK_SHAKE', 1.10)
 	Wait(3000)
-	if Config.DrugSettings.Effects.ReduceStress then
-		TriggerServerEvent(Config.CoreSettings.EventNames.Stress, StressAmount)
-	end
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.00)
 	Wait(8000)      
@@ -707,20 +767,19 @@ local function TakeCrack()
 	ShakeGameplayCam('DRUNK_SHAKE', 1.10)
 	Wait(3000)       
 	SetTimecycleModifier('spectator5')
-	SetPedMotionBlur(PlayerPedId(), true)           
-    SetRunSprintMultiplierForPlayer(PlayerId(), 1.0)
+	SetPedMotionBlur(playerPed, true)           
     Wait(effectstimer)
+    SetRunSprintMultiplierForPlayer(playerPed, 1.0)
     SetFlash(0, 0, 500, 7000, 500)
     ShakeGameplayCam('DRUNK_SHAKE', 0.00)
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
-    SetRunSprintMultiplierForPlayer(PlayerId(), 1.0)
-    StopGameplayCamShaking(PlayerPedId(), true)
-    SetPedIsDrunk(PlayerPedId(), false)
-    SetPedMotionBlur(PlayerPedId(), false)
-    ClearPedTasks(PlayerPedId())
-	SendNotify(Config.Language.Notifications.OverDoseWarningName, 'error', 2000)
+    SetRunSprintMultiplierForPlayer(playerPed, 1.0)
+    StopGameplayCamShaking(playerPed, true)
+    SetPedIsDrunk(playerPed, false)
+    SetPedMotionBlur(playerPed, false)
 	if Config.DrugSettings.Effects.OverDose then
+		SendNotify(Config.Language.Notifications.OverDoseWarningName, 'error', 2000)
 		TriggerServerEvent('lusty94_cocaine:server:OverDose')
 	end 
 end
@@ -731,22 +790,28 @@ RegisterNetEvent('lusty94_cocaine:client:TakeCokeBaggy', function()
 	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:TakeCokeBaggy', function(HasItems)  
         if HasItems then
 			if busy then
-				SendNotify('You Are Already Doing Something!', 'error', 2000)
+				SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
 			else
 				busy = true
 				LockInventory(true)
-				if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.TakeCocaine, label = Config.Language.ProgressBar.TakeCocaine, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,}, }) then
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.ProgressBar.TakeCocaine, 
+					label = Config.Language.ProgressBar.TakeCocaine, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = false, },  
+					anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,}, 
+				}) then
+					TriggerServerEvent('lusty94_cocaine:server:TakeCokeBaggy')
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
-					TriggerServerEvent('lusty94_cocaine:server:TakeCokeBaggy')
 					if Config.DrugSettings.Effects.Enabled then
 						TakeCocaine()
 					end
 				else 
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
 					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
 				end
 			end
@@ -761,22 +826,27 @@ RegisterNetEvent('lusty94_cocaine:client:TakeCrackBaggy', function()
 	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:TakeCrackBaggy', function(HasItems)  
         if HasItems then
 			if busy then
-				SendNotify('You Are Already Doing Something!', 'error', 2000)
+				SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
 			else
 				busy = true
 				LockInventory(true)
-				if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.TakeCrack, label = Config.Language.ProgressBar.TakeCrack, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,}, }) then
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.ProgressBar.TakeCrack, 
+					label = Config.Language.ProgressBar.TakeCrack, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, disable = { car = true, move = false, },  
+					anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,}, 
+				}) then
+					TriggerServerEvent('lusty94_cocaine:server:TakeCrackBaggy')
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
-					TriggerServerEvent('lusty94_cocaine:server:TakeCrackBaggy')
 					if Config.DrugSettings.Effects.Enabled then
 						TakeCrack()
 					end
 				else 
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
 					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
 				end
 			end
@@ -796,19 +866,19 @@ end)
 
 -- overdose effect
 RegisterNetEvent('lusty94_cocaine:client:OverDose', function()
-	local player = PlayerPedId()
+	local playerPed = PlayerPedId()
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.10)
 	DoScreenFadeOut(2000)
 	Wait(2000)
-	SetEntityHealth(player, GetEntityHealth(player) - Config.DrugSettings.Effects.HealthRemoved)
+	SetEntityHealth(playerPed, GetEntityHealth(playerPed) - Config.DrugSettings.Effects.HealthRemoved)
 	Wait(2000)
 	DoScreenFadeIn(2000)
 	SendNotify(Config.Language.Notifications.OverDosedName, 'error', 2000)
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.10)
 	SetFlash(0, 0, 500, 7000, 500)
-	StopGameplayCamShaking(player, true)
+	StopGameplayCamShaking(playerPed, true)
 end)
 
 -- Take overdose cure
@@ -816,19 +886,25 @@ RegisterNetEvent('lusty94_cocaine:client:TakeOverDoseCure', function()
 	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:TakeOverDoseCure', function(HasItems)  
         if HasItems then
 			if busy then
-				SendNotify('You Are Already Doing Something!', 'error', 2000)
+				SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
 			else
 				busy = true
 				LockInventory(true)
-				if lib.progressCircle({ duration = Config.CoreSettings.ProgressBar.TakeOverDoseCure, label = Config.Language.ProgressBar.TakeOverDoseCure, position = 'bottom', useWhileDead = false, canCancel = true, disable = { car = true, move = false, },  anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,}, }) then
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.ProgressBar.TakeOverDoseCure, 
+					label = Config.Language.ProgressBar.TakeOverDoseCure, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = false, },  
+					anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,}, 
+				}) then
+					TriggerServerEvent('lusty94_cocaine:server:CureOverDose')
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
-					TriggerServerEvent('lusty94_cocaine:server:CureOverDose')
 				else 
 					busy = false
 					LockInventory(false)
-					ClearPedTasks(PlayerPedId())
 					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
 				end
 			end
@@ -844,26 +920,9 @@ end)
 
 -- cocaine supplies shop
 AddEventHandler("lusty94_cocaine:client:openSuppliesShop", function()
-	local cokeItems = {
-        label = "Coke Supplies", 
-        slots = 9,
-        items = {
-            [1] = {name = "trowel",                 price = 5,      amount = 1000, info = {}, type = "item", slot = 1,},
-            [2] = {name = "emptybaggies",         	price = 10,     amount = 1000, info = {}, type = "item", slot = 2,},
-            [3] = {name = "scales",                 price = 500,    amount = 1000, info = {}, type = "item", slot = 3,},
-            [4] = {name = "plasticjerrycan",        price = 100,    amount = 1000, info = {}, type = "item", slot = 4,},
-            [5] = {name = "sodiumcarbonate",        price = 50,     amount = 1000, info = {}, type = "item", slot = 5,},
-            [6] = {name = "water_bottle",          	price = 10,     amount = 1000, info = {}, type = "item", slot = 6,},
-            [7] = {name = "cokeprocessingtable",    price = 1000,   amount = 1000, info = {}, type = "item", slot = 7,},
-            [8] = {name = "acetone",                price = 250,    amount = 1000, info = {}, type = "item", slot = 8,},
-            [9] = {name = "dimethylformamide",      price = 500,    amount = 1000, info = {}, type = "item", slot = 9,},
-        },
-    }
-	if ShopType == 'qb'then
-		TriggerServerEvent("inventory:server:OpenInventory", "shop", "Cocaine Supply Shop", cokeItems)
-	elseif ShopType == 'jim' then
-		TriggerServerEvent("jim-shops:ShopOpen", "shop", "Cocaine Supply Shop", cokeItems)
-	elseif ShopType == 'ox' then
+	if InvType == 'qb'then
+		TriggerServerEvent('lusty94_cocaine:server:SuppliesShop')
+	elseif InvType == 'ox' then
 		exports.ox_inventory:openInventory('shop',{ type = 'CocaineSupplyShop' })
 	end
 end)
@@ -896,13 +955,29 @@ function LockInventory(toggle) -- big up to jim for how to do this
     end
 end
 
+--function to display item images for ox_lib menu
+function ItemImage(img)
+	if InvType == 'ox' then
+		return "nui://ox_inventory/web/images/".. img.. '.png'
+	elseif InvType == 'qb' then
+		return "nui://qb-inventory/html/images/".. QBCore.Shared.Items[img].image
+	end
+end
+
 --dont touch
 AddEventHandler('onResourceStart', function(resourceName)
     if (GetCurrentResourceName() == resourceName) then
-		spawnLeaves()
+		spawnCokeLeaves()
     end
 end)
 
+--spawn leaves on player load
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    for _, v in pairs(spawnedCokeLeaves) do SetEntityAsMissionEntity(v, false, true) DeleteObject(v) SetEntityAsNoLongerNeeded(v) end
+    spawnedCokeLeaves = {}
+	Wait(1000)
+    spawnCokeLeaves()
+end)
 
 --dont touch
 AddEventHandler('onResourceStop', function(resource)
@@ -910,11 +985,14 @@ AddEventHandler('onResourceStop', function(resource)
         delete_prop(cokeTableProp)
 		busy = false
         cokeTableProp = nil
-        isCokeTablePlaced = false
+        cokeTablePlaced = false
 		LockInventory(false)
-		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(plant, 'plant') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(plant, 'plant') end
-		for _, v in pairs(cocaLeaves) do SetEntityAsMissionEntity(v, false, true) DeleteObject(v) end
+		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(cokePlants, 'cokePlants') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(cokePlants, 'cokePlants') end
 		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(CokeSuppliesPed, 'CokeSuppliesPed') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(CokeSuppliesPed, 'CokeSuppliesPed') end
-		print('^5--<^3!^5>-- ^7| Lusty94 |^5 ^5--<^3!^5>--^7 Cocaine V2.0.0 Stopped Successfully ^5--<^3!^5>--^7')
+		for _, v in pairs(spawnedCokeLeaves) do SetEntityAsMissionEntity(v, false, true) DeleteObject(v) end
+		spawnedCokeLeaves = {}
+		print('^5--<^3!^5>-- ^7| Lusty94 |^5 ^5--<^3!^5>--^7 Cocaine V2.0.1 Stopped Successfully ^5--<^3!^5>--^7')
 	end
 end)
+
+
