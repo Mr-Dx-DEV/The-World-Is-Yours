@@ -119,23 +119,32 @@ RegisterNetEvent('qb-cityhall:server:sendDriverTest', function(instructors)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
+    
     for i = 1, #instructors do
         local citizenid = instructors[i]
+        print("[Debug] Sending request to instructor with citizenid: " .. tostring(citizenid))
+
         local SchoolPlayer = QBCore.Functions.GetPlayerByCitizenId(citizenid)
         if SchoolPlayer then
+            -- Send mail to online player
             TriggerClientEvent("qb-cityhall:client:sendDriverEmail", SchoolPlayer.PlayerData.source, Player.PlayerData.charinfo)
         else
+            -- Send offline mail using the new server event
             local mailData = {
                 sender = "Township",
                 subject = "Driving lessons request",
                 message = "Hello,<br><br>We have just received a message that someone wants to take driving lessons.<br>If you are willing to teach, please contact them:<br>Name: <strong>" .. Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname .. "<br />Phone Number: <strong>" .. Player.PlayerData.charinfo.phone .. "</strong><br><br>Kind regards,<br>Township Los Santos",
                 button = {}
             }
-            exports["qb-phone"]:sendNewMailToOffline(citizenid, mailData)
+
+            -- Trigger the new event for offline mail handling
+            TriggerEvent("lb-phone:server:sendNewMailToOffline", citizenid, mailData)
         end
     end
+
     TriggerClientEvent('QBCore:Notify', src, "An email has been sent to driving schools, and you will be contacted automatically", "success", 5000)
 end)
+
 
 RegisterNetEvent('qb-cityhall:server:ApplyJob', function(job, cityhallCoords)
     local src = source

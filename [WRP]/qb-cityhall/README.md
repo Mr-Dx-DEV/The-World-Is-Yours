@@ -5,7 +5,7 @@ City Services for QB-Core Framework
 - [qb-core](https://github.com/qbcore-framework/qb-core)
 - [PolyZone](https://github.com/mkafrin/PolyZone) - For Interaction (DrawText and qb-target both require this)
 - [qb-target](https://github.com/BerkieBb/qb-target) - For Interaction (Optional)
-- [qb-phone](https://github.com/qbcore-framework/qb-phone) - For E-Mail
+- [lb-phone](https://github.com/qbcore-framework/lb-phone) - For E-Mail
 
 ## Features
 - Ability to request birth certificate when lost
@@ -25,7 +25,7 @@ City Services for QB-Core Framework
 ```
 ensure qb-core
 ensure qb-target # Optional
-ensure qb-phone
+ensure lb-phone
 ensure qb-cityhall
 ```
 
