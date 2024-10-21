@@ -113,12 +113,19 @@ RegisterNetEvent('fireworks:client:UseFirework', function(itemName, assetName)
         flags = 16,
     }, {}, {}, function() -- Done
         StopAnimTask(PlayerPedId(), 'anim@narcotics@trash', 'drop_front', 1.0)
+        
+        -- Play the firework sound here using InteractSound
+        local pos = GetEntityCoords(PlayerPedId())
+        TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 50, 'fireworks', 1.0) -- Triggering the sound, 50 units range
+
         TriggerServerEvent('consumables:server:UseFirework', itemName)
         TriggerEvent('qb-inventory:client:ItemBox', QBCore.Shared.Items[itemName], 'remove')
-        local pos = GetEntityCoords(PlayerPedId())
+        
+        -- Start the firework
         startFirework(assetName, pos)
     end, function() -- Cancel
         StopAnimTask(PlayerPedId(), 'anim@narcotics@trash', 'drop_front', 1.0)
         QBCore.Functions.Notify(Lang:t('firework.canceled'), 'error')
     end)
 end)
+
