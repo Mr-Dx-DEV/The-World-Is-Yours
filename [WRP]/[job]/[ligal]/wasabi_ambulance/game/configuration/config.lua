@@ -164,7 +164,7 @@ Config.GPSBlips = {
         plane = 307,     -- Blip for when in planes
     },
     settings = {
-        color = 1,
+        color = 49,
         scale = 0.75,
         short = false,
         category = 7
@@ -206,8 +206,8 @@ Config.EnableLiveInjury = true                             -- Enable live injury
 Config.DamageDetectThreshold = { armour = 5, health = 10 } -- Damage threshold to detect injury (Default: {armour = 5, health = 10})
 
 Config.BleedMultiplier = {
-    shot = 2,    -- How much blood rate to loose when shot
-    stabbed = 2, -- How much blood rate to loose when stabbed
+    shot = 1,    -- How much blood rate to loose when shot
+    stabbed = 1, -- How much blood rate to loose when stabbed
     beat = 0,    -- How much blood rate to loose when beat
     burned = 0,  -- How much blood rate to loose when burned
 }
