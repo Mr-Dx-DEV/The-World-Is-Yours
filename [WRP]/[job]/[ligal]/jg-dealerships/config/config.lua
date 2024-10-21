@@ -99,6 +99,7 @@ Config.Categories = {
   GANG = "GANG",
   IMPORT = "IMPORT",
   ADMINONLY = "ADMINONLY",
+  emergency = "emergency",
   
 }
 
@@ -167,6 +168,48 @@ Config.DealershipLocations = {
       positions = {5.0, 8.0, 12.0, 8.0}
     },
     categories = {"oneofone", "oneoffive", "oneoften", "oneoftenbikes", "DEALERSHIP", "GANG", "IMPORT", "ADMINONLY"},
+    enableSellVehicle = false, -- Allow players to sell vehicles back to dealer
+    sellVehiclePercent = 0.6,  -- 60% of current sale price
+    enableTestDrive = true,
+    enableFinance = true,
+    hideBlip = false,
+    blip = {
+      id = 523,
+      color = 2,
+      scale = 0.6
+    },
+    hideMarkers = false,
+    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+    showroomJobWhitelist = {},
+    showroomGangWhitelist = {},
+    societyPurchaseJobWhitelist = {},
+    societyPurchaseGangWhitelist = {},
+    disableShowroomPurchase = false,
+    job = "dealership", -- Owned dealerships only
+    directSaleDistance = 50,
+  },
+  ["emergency"] = {
+    type = "owned", -- or "owned", "self-service"
+    openShowroom = {
+      coords = vector3(-38.57, -1672.55, 29.48),
+      size = 5
+    },
+    openManagement = {
+      coords = vector3(-34.27, -1669.31, 29.48),
+      size = 5
+    },
+    sellVehicle = {
+      coords = vector3(-1233.46, -346.81, 37.33),
+      size = 5
+    },
+    purchaseSpawn = vector4(-44.94, -1653.44, 29.29, 330.25),
+    testDriveSpawn = vector4(-44.94, -1653.44, 29.29, 330.25),
+    camera = {
+      name = "Car",
+      coords = vector4(-146.6166, -596.6301, 166.0, 270.0),
+      positions = {5.0, 8.0, 12.0, 8.0}
+    },
+    categories = {"emergency"},
     enableSellVehicle = false, -- Allow players to sell vehicles back to dealer
     sellVehiclePercent = 0.6,  -- 60% of current sale price
     enableTestDrive = true,
