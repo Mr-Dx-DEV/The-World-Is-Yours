@@ -162,7 +162,8 @@ return {
 			{ name = 'mikrosil', price = 100, grade = 0 },
 			{ name = 'keepcompanionshepherd', price = 1000, grade = 0 },
 			{ name = 'gunrepairkit', price = 100, grade = 0 },
-
+			{ name = 'policepouches', price = 100, grade = 0 },
+			{ name = 'policepouches1', price = 100, grade = 0 },
 
 
 			{ name = 'WEAPON_PDBATON', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
