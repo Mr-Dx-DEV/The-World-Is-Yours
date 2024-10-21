@@ -1677,7 +1677,7 @@ Config.market_categories = {
 				['img'] = 'paramedicbag.png',
 			},
 			 ]]
-			['policepouches'] = {
+			--[[ ['policepouches'] = {
 				['name'] = "Police Pouches",
 				['price_to_customer'] = 4000,
 				['price_to_customer_min'] = 200,
@@ -1699,7 +1699,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 7,
 				['amount_to_delivery'] = 7,
 				['img'] = 'policepouches1.png',
-			},
+			}, ]]
 			
 			['briefcaselockpicker'] = {
 				['name'] = "Briefcase Lockpicker",
@@ -1710,7 +1710,7 @@ Config.market_categories = {
 				['price_to_owner'] = 560,
 				['amount_to_owner'] = 1,
 				['amount_to_delivery'] = 1,
-				['img'] = 'briefcaselockpicker.png',
+				['img'] = 'evidence_briefcase.png',
 			},
 			
 		
@@ -1773,7 +1773,7 @@ Config.market_categories = {
 				['img'] = 'lockpick.png',
 			},
 			
-			['weapon_wrench'] = {
+			--[[ ['weapon_wrench'] = {
 				['name'] = "Wrench",
 				['price_to_customer'] = 350,
 				['price_to_customer_min'] = 175,
@@ -1783,7 +1783,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'weapon_wrench.png',
-			},
+			}, ]]
 			
 			['weapon_hammer'] = {
 				['name'] = "Hammer",
@@ -1868,7 +1868,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'advancedkit.png',
 			}, ]]
-			
+			--[[ 
 			['razorblade'] = {
 				['name'] = "Razor Blade",
 				['price_to_customer'] = 350,
@@ -1879,7 +1879,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'razorblade.png',
-			},
+			}, ]]
 			
 			['plasticjerrycan'] = {
 				['name'] = "Plastic Jerrycan",
@@ -1987,7 +1987,7 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'walkstick.png',
 			},
-			['wheelchair'] = {
+			--[[ ['wheelchair'] = {
 				['name'] = "wheelchair",
 				['price_to_customer'] = 350,
 				['price_to_customer_min'] = 175,
@@ -1997,7 +1997,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'wheelchair.png',
-			},
+			}, ]]
 			['kq_outfitbag'] = {
 				['name'] = "Outfit bag",
 				['price_to_customer'] = 350,
@@ -2080,7 +2080,7 @@ Config.market_categories = {
 				['max_amount_to_purchase'] = 1,
 				['img'] = 'weapon_hammer.png',
 			},
-			['weapon_wrench'] = {
+			--[[ ['weapon_wrench'] = {
 				['name'] = "Wrench",
 				['price_to_customer'] = 250,
 				['price_to_customer_min'] = 125,
@@ -2093,7 +2093,7 @@ Config.market_categories = {
 				['requires_license'] = false,
 				['max_amount_to_purchase'] = 1,
 				['img'] = 'weapon_wrench.png',
-			},
+			}, ]]
 		}
 	},
 
