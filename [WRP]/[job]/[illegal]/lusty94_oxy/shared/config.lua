@@ -14,7 +14,7 @@ Config = {}
 --Below you can change multiple options to suit your server needs.
 
 Config.DebugZones = false -- set to true to enable visual zones where peds spawn for interactions when delivering packages and selling oxy - only used for debugging and moving locations
-Config.StartPedBlip = true -- set to false if you dont wany blips for the suspicious package mission ped and make players find the ped on their own
+Config.StartPedBlip = false -- set to false if you dont wany blips for the suspicious package mission ped and make players find the ped on their own
 Config.CreateUseableOxyItem = true -- set to false if you have your own methods of handling oxy consumption [ consumables ] this disables the in built features for consuming oxy if set to true make sure there is no other script that creates a useable item for oxy as it may clash
 Config.CreateUseableBurnerPhone = true -- set to false if you have your own methods of selling oxy i.e a drug sale script
 
