@@ -56,8 +56,8 @@ Config.SpawnVehiclesWithServerSetter = false
 Config.GarageVehicleTransferCost = 2500 -- Cost to transfer between garages
 Config.TransferHidePlayerNames = false
 Config.EnableTransfers = {
-  betweenGarages = true,
-  betweenPlayers = true
+  betweenGarages = false,
+  betweenPlayers = false
 }
 Config.DisableTransfersToUnregisteredGarages = false -- Potential hacking protection for vigilant servers - unregistered garages are ones created via events in third-party script integrations, such as housing scripts, and therefore could be prone to script kiddie attacks.
 
