@@ -214,7 +214,7 @@ Config = {
     },
 
     Text = {
-        Position = 'bottom-right', -- This is the position of the text ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+        Position = 'top-left', -- This is the position of the text ['top-left', 'top-right', 'bottom-left', 'bottom-right']
     },
 
     Subtitles = {
@@ -461,17 +461,20 @@ Config = {
     Canteen = {
         Enable = true, -- This is used for enabling canteen system
         CreditItems = {
-            { name = 'water', price = 30 },
+            { name = 'water_bottle', price = 30 },
             { name = 'fries', price = 7 },
             { name = 'sprunk', price = 7 },
+            { name = 'tosti', price = 7 },
+            { name = 'twerks_candy', price = 7 },
+            { name = 'coffee', price = 7 },
             { name = 'cigarrete', price = 80 },
         },
         
         FreeFoodPackage = true, -- This is used for enabling free food package system
         FreeFoodPackageCooldown = 5, -- This is the cooldown for free food package system (5 min)
         FreeFoodPackageItems = {
-            { name = 'water', count = 1 },
-            { name = 'sprunk', count = 1 },
+            { name = 'water_bottle', count = 1 },
+            { name = 'tosti', count = 1 },
         }
     },
 
