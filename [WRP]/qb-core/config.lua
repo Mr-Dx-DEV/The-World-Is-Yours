@@ -104,7 +104,7 @@ QBConfig.Player.PlayerDefaults = {
     },
     position = QBConfig.DefaultSpawn,
     items = {},
-}
+} 
 
 QBConfig.Server = {}                                    -- General server config
 QBConfig.Server.Closed = false                          -- Set server closed (no one can join except people with ace permission 'qbadmin.join')
@@ -114,7 +114,7 @@ QBConfig.Server.Whitelist = false                       -- Enable or disable whi
 QBConfig.Server.WhitelistPermission = 'admin'           -- Permission that's able to enter the server when the whitelist is on
 QBConfig.Server.PVP = true                              -- Enable or disable pvp on the server (Ability to shoot other players)
 QBConfig.Server.Discord = 'https://discord.gg/TdKUp5bCG2'                            -- Discord invite link
-QBConfig.Server.CheckDuplicateLicense = true            -- Check for duplicate rockstar license on join
+QBConfig.Server.CheckDuplicateLicense = false            -- Check for duplicate rockstar license on join
 QBConfig.Server.Permissions = { 'god', 'admin', 'mod' } -- Add as many groups as you want here after creating them in your server.cfg
 
 QBConfig.Commands = {}                                  -- Command Configuration
