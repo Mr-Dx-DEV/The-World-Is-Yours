@@ -119,7 +119,7 @@ Config.AtmsLocations = {
 Config.enableAtmsFillingUp = true               -- Set it to false, if you want to make script just source -> target transportation. When it's true, you also need to fill out some atms around the city, only then deliver the money to target
 Config.howMuchAtmFillWillRemoveFromLoot = 5000  -- The heist loot will be smaller every ATM filling, here you can change this value
 Config.neededAtms = 3                           -- Set how many ATM's you need to fill up
-Config.AtmGuardModel = `s_m_m_prisguard_01`     -- Model of ped that will be spawned near the ATM
+Config.AtmGuardModel = `s_m_m_armoured_0`     -- Model of ped that will be spawned near the ATM
 
 Config.VaultDoorsModels = {
 

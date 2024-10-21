@@ -40,7 +40,7 @@ Locations = {
         ["label"] = "contract",
 		["type"] = "items",
 		["model"] = {
-			`a_m_y_hippy_01`,
+			`csb_tomcasino`,
 		},
 		["killable"] = false,
 		["logo"] = "https://i.imgur.com/bPcM0TM.png",
