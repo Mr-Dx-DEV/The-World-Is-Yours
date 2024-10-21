@@ -929,7 +929,7 @@ return {
 	
 	["zatwaterbottleempty"] = {
 		label = "Water Bottle Empty",
-		weight = 100,
+		weight = 0,
 		stack = true,
 		close = true,
 		description = "Water Bottle...",
@@ -2081,7 +2081,7 @@ return {
 },
 ['emptybaggies'] = {
     label = 'Empty Baggies',
-    weight = 200,
+    weight = 0,
     stack = true,
     close = true,
     description = '',
@@ -7032,7 +7032,7 @@ return {
 
 	["empty_weed_bag"] = {
 		label = "Empty Weed Bag",
-		weight = 100,
+		weight = 0,
 		stack = true,
 		close = true,
 		description = "A small empty bag",
@@ -21046,7 +21046,7 @@ return {
 
 	["cagoule"] = {
 		label = "Empty Bag",
-		weight = 100,
+		weight = 0,
 		stack = true,
 		close = true,
 		description = "Bravo Six, Going Dark",
