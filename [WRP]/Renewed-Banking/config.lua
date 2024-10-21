@@ -43,7 +43,7 @@ Config = {
         },
         [8] = { -- paleto
             model = 'u_m_m_bankman',
-            coords = vector4(-112.22, 6471.01, 31.63, 134.18),
+            coords = vector4(-110.716, 6469.963, 31.634, 227.711),
             createAccounts = true
         }
     }
