@@ -1625,7 +1625,10 @@ return {
 	weight = 0.5,
 	stack = true,
 	close = true,
-	description = "Briefcase Lockpicker"
+	description = "Briefcase Lockpicker",
+	client = {
+        image = 'evidence_briefcase.png'
+    }
 },
 	---- heist
 ['blue_keycard'] = {
@@ -8806,7 +8809,7 @@ return {
 		close = true,
 		description = "",
 		client = {
-			image = "boba.png",
+			image = "tofu.png",
 		}
 	},
 
@@ -11837,7 +11840,7 @@ return {
 	},
 
 	["sake"] = {
-		label = "Cat Coffee",
+		label = "Sake",
 		weight = 200,
 		stack = true,
 		close = true,
@@ -34386,6 +34389,17 @@ return {
 		description = "",
 		client = {
 			image = "chair90.png",
+		}
+	},
+
+	["burnerphonevpn"] = {
+		label = "Soleware VPN",
+		weight = 250,
+		stack = false,
+		close = false,
+		description = "Somekind of lost VPN from Soleware?",
+		client = {
+			image = "burnerphonevpn.png",
 		}
 	},
 }
