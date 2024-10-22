@@ -1,4 +1,98 @@
 return {
+
+
+	--- boii_hunting
+    ['hide_shark'] = {
+        label = 'Shark Hide',
+        weight = 1500,
+    },
+    ['hide_whale'] = {
+        label = 'Whale Hide',
+        weight = 2000,
+    },
+    ['hide_dolphin'] = {
+        label = 'Dolphin Hide',
+        weight = 1250,
+    },
+    ['hide_stingray'] = {
+        label = 'Stingray Hide',
+        weight = 850,
+    },
+    ['hide_boar'] = {
+        label = 'Boar Hide',
+        weight = 1100,
+    },
+    ['hide_coyote'] = {
+        label = 'Coyote Hide',
+        weight = 800,
+    },
+    ['hide_deer'] = {
+        label = 'Deer Hide',
+        weight = 500,
+    },
+    ['hide_mtlion'] = {
+        label = 'Mt Lion Hide',
+        weight = 1000,
+    },
+    ['hide_rabbit'] = {
+        label = 'Rabbit Hide',
+        weight = 300,
+    },
+    ['hide_cow'] = {
+        label = 'Cow Hide',
+        weight = 1300,
+    },
+    ['hide_rat'] = {
+        label = 'Rat Hide',
+        weight = 300,
+    },
+    ['meat_shark'] = {
+        label = 'Shark Meat',
+        weight = 900,
+    },
+    ['meat_whale'] = {
+        label = 'Whale Meat',
+        weight = 1200,
+    },
+    ['meat_dolphin'] = {
+        label = 'Dolphin Meat',
+        weight = 750,
+    },
+    ['meat_stingray'] = {
+        label = 'Stingray Meat',
+        weight = 450,
+    },
+    ['meat_boar'] = {
+        label = 'Boar Meat',
+        weight = 600,
+    },
+    ['meat_coyote'] = {
+        label = 'Coyote Meat',
+        weight = 500,
+    },
+    ['meat_deer'] = {
+        label = 'Deer Meat',
+        weight = 300,
+    },
+    ['meat_mtlion'] = {
+        label = 'Mt Lion Meat',
+        weight = 650,
+    },
+    ['meat_rabbit'] = {
+        label = 'Rabbit Meat',
+        weight = 200,
+    },
+    ['meat_cow'] = {
+        label = 'Cow Meat',
+        weight = 800,
+    },
+    ['meat_rat'] = {
+        label = 'Rat Meat',
+        weight = 100,
+    },
+
+
+	
 	['gps_tracker'] = {
 		label = 'Police Tracker',
 		weight = 1000,
