@@ -122,7 +122,7 @@ Config.Bags = {
      {
           item = 'policepouches',
           slots = 6,
-          size = 200000,
+          size = 300000,
           cloth = {
                male = {
                     ["accessory"] = { item = 146, texture = 0 }
@@ -135,7 +135,7 @@ Config.Bags = {
      {
           item = 'policepouches1',
           slots = 12,
-          size = 400000,
+          size = 600000,
           cloth = {
                male = {
                     ["accessory"] = { item = 147, texture = 0 }
