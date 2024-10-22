@@ -242,7 +242,7 @@ Config.policeJobs = { -- Police jobs
 
 
 Config.GPSBlips = {
-    enabled = true,     -- Enabled?
+    enabled = false,     -- Enabled?
     item = false,        -- Item required? Note: You have to use it then
     sprites = {
         none = 1,        -- Blip for when not in a vehicle

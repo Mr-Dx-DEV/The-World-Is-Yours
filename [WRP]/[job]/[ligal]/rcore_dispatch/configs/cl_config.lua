@@ -121,7 +121,19 @@ CL_CONFIG.GunshotAlerts = {
         distance = 50.0
     },
     whitelisted_jobs = {
-        'police'
+        'police',
+    'sheriff',
+    'fbi',
+    'lspd',
+    'bcso',
+    'sahp',
+    'lsso',
+    'safw',
+    'sadoc',
+    'usms',
+    'dhs',
+    'ss',
+    'ambulance'
     },
     areas = {
         { coords = vector3(2170.38, 2749.54, 45.27), radius = 20 }

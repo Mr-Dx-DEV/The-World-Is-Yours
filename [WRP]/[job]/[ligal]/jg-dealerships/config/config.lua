@@ -191,7 +191,7 @@ Config.DealershipLocations = {
   ["emergency"] = {
     type = "owned", -- or "owned", "self-service"
     openShowroom = {
-      coords = vector3(-38.57, -1672.55, 29.48),
+      coords = vector3(-32.204, -1663.042, 29.48),
       size = 5
     },
     openManagement = {

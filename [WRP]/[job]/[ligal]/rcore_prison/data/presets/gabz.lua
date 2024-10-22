@@ -762,7 +762,7 @@ return {
         {
             coords = vec3(1783.22, 2560.78, 45.67),
             type = INTERACT_TYPES.CANTEEN,
-            distance = 3,
+            distance = 6,
             zone = {
                 size = vec3(1, 1, 1),
                 icon = "fa-solid fa-paper-plane",

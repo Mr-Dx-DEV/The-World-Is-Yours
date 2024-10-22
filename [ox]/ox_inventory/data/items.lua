@@ -1,5 +1,13 @@
 return {
-
+	['gps_tracker'] = {
+		label = 'Police Tracker',
+		weight = 1000,
+		stack = false,
+		consume = 0,
+		server = {
+			export = 'Renewed-Dutyblips.toggleItem'
+		}
+	},
 ---- ngd_tobaccotrimmer
 ---
 ["ngd_tobaccotrimmer"] = {
@@ -657,7 +665,16 @@ return {
 			image = "heroinprocessingtable.png",
 		}
 	},
-
+	["mushroomprocessingtable"] = {
+		label = "Mushroom Processing Table",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "heroinprocessingtable.png",
+		}
+	},
 	["ether"] = {
 		label = "Ether",
 		weight = 100,
@@ -714,7 +731,16 @@ return {
 		image = "sodiumcarbonate.png",
 	}
 },
-
+["cokesodiumcarbonate"] = {
+	label = "Coke Sodium Carbonate",
+	weight = 100,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "sodiumcarbonate.png",
+	}
+},
 ["scales"] = {
 	label = "Scales",
 	weight = 200,
@@ -769,7 +795,16 @@ return {
 		image = "dimethylformamide.png",
 	}
 },
-
+["cokedimethylformamide"] = {
+	label = "Coke Dimethylformamide",
+	weight = 200,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "dimethylformamide.png",
+	}
+},
 ["pure_cocaine"] = {
 	label = "Pure Cocaine",
 	weight = 100,
@@ -802,7 +837,16 @@ return {
 		image = "acetone.png",
 	}
 },
-
+["cokeacetone"] = {
+	label = "Coke Acetone",
+	weight = 200,
+	stack = true,
+	close = true,
+	description = "",
+	client = {
+		image = "acetone.png",
+	}
+},
 ["cement"] = {
 	label = "Cement",
 	weight = 100,
