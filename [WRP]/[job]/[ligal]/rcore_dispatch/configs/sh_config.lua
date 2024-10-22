@@ -43,7 +43,13 @@ CONFIG.JOBS = {
             ['none'] = './assets/police-hat.svg',
         },
         Perms = {
-            ['Captain'] = true
+            ['Captain'] = true,
+            ['Commander'] = true,
+            ['Deputy Chief'] = true,
+            ['Asst. Chief'] = true,
+            ['Chief'] = true,
+            ['Deputy Commissioner'] = true,
+            ['Commissioner'] = true,
         },
         Units = {
             { 'Command', 805, false, { 'ambulance' } },
@@ -79,7 +85,13 @@ CONFIG.JOBS = {
             ['none'] = './assets/police-hat.svg',
         },
         Perms = {
-            ['Captain'] = true
+            ['Captain'] = true,
+            ['Commander'] = true,
+            ['Deputy Chief'] = true,
+            ['Asst. Chief'] = true,
+            ['Chief'] = true,
+            ['Deputy Commissioner'] = true,
+            ['Commissioner'] = true,
         },
         Units = {
             { 'Command', 805, false, { 'ambulance' } },
@@ -113,7 +125,11 @@ CONFIG.JOBS = {
             ['none'] = './assets/police-hat.svg',
         },
         Perms = {
-            ['Captain'] = true
+            ['Captain'] = true,
+            ['Major'] = true,
+            ['Chief Deputy'] = true,
+            ['Under Sheriff'] = true,
+            ['Sheriff'] = true,
         },
         Units = {
             { 'Command', 805, false, { 'ambulance' } },
@@ -148,7 +164,11 @@ CONFIG.JOBS = {
             ['none'] = './assets/police-hat.svg',
         },
         Perms = {
-            ['Captain'] = true
+            ['Captain'] = true,
+            ['Commander'] = true,
+            ['Major'] = true,
+            ['Lt Colonel'] = true,
+            ['Colonel'] = true,
         },
         Units = {
             { 'Command', 805, false, { 'ambulance' } },
@@ -183,7 +203,11 @@ CONFIG.JOBS = {
             ['none'] = './assets/police-hat.svg',
         },
         Perms = {
-            ['Captain'] = true
+            ['Captain'] = true,
+            ['Major'] = true,
+            ['Chief Deputy'] = true,
+            ['Under Sheriff'] = true,
+            ['Sheriff'] = true,
         },
         Units = {
             { 'Command', 805, false, { 'ambulance' } },
@@ -218,7 +242,11 @@ CONFIG.JOBS = {
             ['none'] = './assets/police-hat.svg',
         },
         Perms = {
-            ['Captain'] = true
+            ['Captain'] = true,
+            ['Commander'] = true,
+            ['Deputy Chief'] = true,
+            ['Asst. Chief'] = true,
+            ['Chief'] = true,
         },
         Units = {
             { 'Command', 805, false, { 'ambulance' } },
@@ -253,7 +281,11 @@ CONFIG.JOBS = {
             ['none'] = './assets/police-hat.svg',
         },
         Perms = {
-            ['Captain'] = true
+            ['Captain'] = true,
+            ['Major'] = true,
+            ['Colonel'] = true,
+            ['Deputy Warden'] = true,
+            ['Warden'] = true,
         },
         Units = {
             { 'Command', 805, false, { 'ambulance' } },
@@ -262,7 +294,6 @@ CONFIG.JOBS = {
             { 'TAC', 805, true },
         }
     },
-    
     ['usms'] = {
         Jobname = 'usms',
         SharedBlips = { 'ambulance' },
@@ -288,7 +319,11 @@ CONFIG.JOBS = {
             ['none'] = './assets/police-hat.svg',
         },
         Perms = {
-            ['Captain'] = true
+            ['Witness Security Div'] = true,
+            ['Judicial Security Div'] = true,
+            ['Associate Director'] = true,
+            ['Deputy Director'] = true,
+            ['Director'] = true
         },
         Units = {
             { 'Command', 805, false, { 'ambulance' } },
@@ -323,7 +358,11 @@ CONFIG.JOBS = {
             ['none'] = './assets/police-hat.svg',
         },
         Perms = {
-            ['Captain'] = true
+            ['Labor/Finance SAIC'] = true,
+            ['National Security SAIC'] = true,
+            ['Associate Deputy Director'] = true,
+            ['Deputy Director'] = true,
+            ['Director'] = true
         },
         Units = {
             { 'Command', 805, false, { 'ambulance' } },
@@ -358,7 +397,11 @@ CONFIG.JOBS = {
             ['none'] = './assets/police-hat.svg',
         },
         Perms = {
-            ['Captain'] = true
+            ['Special Agent in Charge'] = true,
+            ['Deputy Chief'] = true,
+            ['Chief'] = true,
+            ['Deputy Director'] = true,
+            ['Director'] = true
         },
         Units = {
             { 'Command', 805, false, { 'ambulance' } },
@@ -393,7 +436,11 @@ CONFIG.JOBS = {
             ['none'] = './assets/police-hat.svg',
         },
         Perms = {
-            ['Captain'] = true
+            ['Special special Agent'] = true,
+            ['Deputy SAiC'] = true,
+            ['Special Agent in Charge'] = true,
+            ['Deputy Director'] = true,
+            ['Director'] = true
         },
         Units = {
             { 'Command', 805, false, { 'ambulance' } },
@@ -414,9 +461,8 @@ CONFIG.JOBS = {
             [2] = 'SR. EMT',
             [3] = 'EMT Supervisor',
         },
-        Blips = {                     -- Each vehicle type has a blip, and no vehicle is equals to 'none'
-            ['automobile'] =
-            './assets/ambulance.svg', -- The path of the image, you can use a link or a local path
+        Blips = { -- Each vehicle type has a blip, and no vehicle is equals to 'none'
+            ['automobile'] = './assets/ambulance.svg', -- The path of the image, you can use a link or a local path
             ['bike'] = './assets/ambulance.svg',
             ['heli'] = './assets/ambulance.svg',
             ['none'] = './assets/ambulance.svg'
@@ -431,6 +477,7 @@ CONFIG.JOBS = {
             { 'Charlie', 808, false },
         }
     },
+    
 
 }
 

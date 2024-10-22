@@ -55,11 +55,15 @@ Config.billingData = {
     creditSociety = true,
 
     fines = { --Fine presets
-        { label = 'Attempt Robbery of Shop', amount = 1200 },
-        { label = 'Attempt Robbery of Bank', amount = 2400 },
-        { label = 'On-Duty Crime',           amount = 10000 },
-        { label = 'Driving On Off-Road',     amount = 2200 },
-        { label = 'Anti Gravity',            amount = 4200 },
+        { label = 'Summary Traffic',amount = 500 }, 
+        { label = 'Summary Non-Traffic', amount = 600 },
+        { label = 'Misdemeanor 3',  amount = 1000 },
+        { label = 'Misdemeanor 2',  amount = 2000 },
+        { label = 'Misdemeanor 1',  amount = 3000 },
+        { label = 'Felony 3',       amount = 10000 },
+        { label = 'Felony 2',       amount = 12000 },
+        { label = 'Felony 1',       amount = 15000 },
+        
     }
 }
 
@@ -150,16 +154,16 @@ Config.RadarPosts = {           -- Radar posts for speed detection
         [5] = 50,    -- 5 over = $50 fine
         [10] = 100,  -- 10 over = $100 fine
         [20] = 500,  -- 20 over = $500 fine
-        [30] = 1000, -- 30 over = $1000 fine
-        [40] = 2000, -- 40 over = $2000 fine
-        [50] = 5000, -- 50 over = $5000 fine
+        [30] = 800, -- 30 over = $1000 fine
+        [40] = 1000, -- 40 over = $2000 fine
+        [50] = 2500, -- 50 over = $5000 fine
     },
 
     blip = {
-        enabled = false,      -- Enable blips for radar posts?
+        enabled = true,      -- Enable blips for radar posts?
         label = 'Radar Post', -- Blip label
         sprite = 184,         -- Blip sprite
-        color = 5,            -- Blip color
+        color = 27,            -- Blip color
         scale = 0.5,          -- Blip scale
         short = false,        -- Short range blip?
     },
