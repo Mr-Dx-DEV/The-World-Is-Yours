@@ -96,7 +96,7 @@ end)
 
 
 --new method to spawn multiple plants anywhere via config location
-function spawnMushrooms()
+--[[ function spawnMushrooms()
 	for k,v in pairs(Config.Mushrooms) do
 		lib.requestModel(Config.CoreSettings.Props.Mushrooms.Name, 5000)
 		mushroomObjects = CreateObject(Config.CoreSettings.Props.Mushrooms.Name, v.coords.x, v.coords.y, v.coords.z - 1, false, true, false) -- if plants floating or too low edit the -1 value on the Z axis
@@ -121,6 +121,39 @@ function spawnMushrooms()
 		end
 	end
 end
+ ]]
+ function spawnMushrooms()
+	for k, v in pairs(Config.Mushrooms) do
+		lib.requestModel(Config.CoreSettings.Props.Mushrooms.Name, 5000)
+		mushroomObjects = CreateObject(Config.CoreSettings.Props.Mushrooms.Name, v.coords.x, v.coords.y, v.coords.z - 1, false, true, false) -- if plants floating or too low edit the -1 value on the Z axis
+		SetEntityHeading(mushroomObjects, v.coords.w + math.random(1, 359))
+		SetModelAsNoLongerNeeded(mushroomObjects)
+		FreezeEntityPosition(mushroomObjects, true)
+		mushroomPlants[#mushroomPlants+1] = mushroomObjects
+
+		-- Remove the blip creation section
+		--[[
+		local shroomBlip = AddBlipForCoord(v.coords.x, v.coords.y, v.coords.z)
+		SetBlipSprite(shroomBlip, 106)
+		SetBlipDisplay(shroomBlip, 4)
+		SetBlipScale(shroomBlip, 0.5)
+		SetBlipColour(shroomBlip, 5)
+		SetBlipAsShortRange(shroomBlip, true)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString("Barley")
+		EndTextCommandSetBlipName(shroomBlip)
+		mushroomBlips[mushroomObjects] = shroomBlip
+		]]
+
+		if TargetType == 'qb' then
+			exports['qb-target']:AddTargetEntity(mushroomObjects, { options = { { item = v.item, type = "client", event = "lusty94_mushrooms:client:PickMushroom", icon = v.icon, label = v.label, }, }, distance = v.distance })
+		elseif TargetType == 'ox' then
+			exports.ox_target:addLocalEntity(mushroomObjects, ({ name = 'mushroomObjects', items = v.item, label = v.label, icon = v.icon, event = 'lusty94_mushrooms:client:PickMushroom', distance = v.distance, }))
+		end
+	end
+end
+
+
 
 
 RegisterNetEvent("lusty94_mushrooms:client:PickMushroom", function()
