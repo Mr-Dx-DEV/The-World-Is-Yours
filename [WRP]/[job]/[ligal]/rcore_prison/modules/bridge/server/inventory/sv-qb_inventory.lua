@@ -193,7 +193,7 @@ CreateThread(function()
                 item = item:lower()
             end    
 
-            return player.Functions.RemoveItem(item, amount)
+            return player.Functions.RemoveItem(item, amount, nil, data or {})
         end
 
         Inventory.addMultipleItems = function(client, items)

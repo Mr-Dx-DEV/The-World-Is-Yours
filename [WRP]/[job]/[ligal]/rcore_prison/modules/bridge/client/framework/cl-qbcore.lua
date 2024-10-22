@@ -107,4 +107,4 @@ CreateThread(function()
             Framework.job = job
         end
     end    
-end, "cl-qbcore code name: Phoenix")
+end)

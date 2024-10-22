@@ -5,9 +5,6 @@ Config = {
     DebugAPI = false,             -- This enable debug related to the API system
 
     DebugEnviroment = false,     -- This enable debug related to the enviroment
-    ErrorDebug = false, -- will make errors easier to track
-
-    InitInfo = false, -- This disable orange show resource informations in your server console.
 
     DebugLevel = {
         'NETWORK',
@@ -43,9 +40,9 @@ Config = {
     Clothing = Clothing.AUTO_DETECT,              -- [NONE - None, ESX - skin_changer, QB - qb-clothing, FAPPEARANCE - fivem-appearance, IAPPEARANCE - illennium-appearance, TGIANN - tgiann-clothing, CRM - crm_appearance]
     Phone = Phones.AUTO_DETECT,                   -- [NONE - None, QB_PHONE - qb_phone, LB_PHONE - lb_phone]
     Notify = Notifies.AUTO_DETECT,                -- [NONE - Native, NATIVE - GTA:V Notify, OX - ox_lib, QBCORE - qb-core, OKOK - okok_notify, ESX - esx_notify, MYTHIC - mythic_notify, PNOTIFY - pNotify, BRUTAL - brutal_notify]
-    TextUI = TextUI.AUTO_DETECT,                  -- [NONE - RCore, ESX - esx_textui, OX - ox_lib, QBCORE - qb-core, OKOK - okokTextUI]
+    TextUI = TextUI.AUTO_DETECT,                  -- [NONE - RCore, ESX - esx_textui, OX - ox_lib, QBCORE - qb-core]
     Menus = MenuList.QB,                       -- [RCORE - RCore, ESX_CONTEXT - esx_context, ESX_MENU - es_extended, OX - ox_menu, QB - qb-core]
-    Dispatch = DispatchList.AUTO_DETECT,                 -- [NONE - Standalone, RCORE - rcore_dispatch, PS - ps_dispatch, QS - qs_dispatch, CORE - core_dispatch, CD - cd_dispatch, DUSA - dusa_dispatch, REDUTZU - redutzu-mdt, LOVE_SCRIPTS - emergencydispatch, ORIGEN - origen_polic, CODEMe] 
+    Dispatch = DispatchList.RCORE,                 -- [NONE - Standalone, RCORE - rcore_dispatch, PS - ps_dispatch, QS - qs_dispatch, CORE - core_dispatch, CD - cd_dispatch, DUSA - dusa_dispatch] 
     
 
     ---------------------------------------------------------------------------------------------------------------
@@ -63,15 +60,12 @@ Config = {
     AllowAdminGroupsUseJailCommands = false, -- This is used for allowing admin groups to use prison commands which are restricted to police/sheriff jobs
 
     RestrictCommandsForDistance = true, -- This is used for restricting commands for distance to inmates.
-
     RestrictDistance = 10.0, -- This is the distance for restricting commands
 
     Prisoners = {
         Companion = true, -- This is used for enabling companion system, player with the specific job are not going to be attacked by Prison Guards
         CompanionRefreshCycleTime = 1.5, -- This is the time for refreshing prisoners (default in sec)
         CompanionJobList = {
-            ['police'] = true,
-            ['sheriff'] = true,
             ['lspd'] = true,
             ['bcso'] = true,
             ['sahp'] = true,
@@ -82,14 +76,14 @@ Config = {
             ['fbi'] = true,
             ['dhs'] = true,
             ['ss'] = true,
-            ['ambulance'] = true,
+            ['police'] = true,
+            ['sheriff'] = true,
+            ['ambulance'] = false,
         },
-
+        
         RemovePlayerJobWhenJailed = false, -- This is used for removing player job when citizen is jailed (supports: ESX, QBCore)
         RemovePlayerSetDefaultJob = 'unemployed', -- This is the default job set when RemovePlayerJobWhenJailed is enabled
         RemoveJobList = {
-            ['police'] = true, -- 
-            ['ambulance'] = true,
             ['lspd'] = true,
             ['bcso'] = true,
             ['sahp'] = true,
@@ -100,7 +94,9 @@ Config = {
             ['fbi'] = true,
             ['dhs'] = true,
             ['ss'] = true,
+            ['police'] = true,
             ['sheriff'] = true,
+            ['ambulance'] = false,
         }
     },
 
@@ -131,14 +127,7 @@ Config = {
 
     -- Prison break settings
 
-    DispatchSettings = {
-        InvokeWhenDestroyedWall = false, -- This is used for invoking dispatch when wall is destroyed (without NPC seen player destroying wall)
-        InvokeWhenPlayerEscapePrison = false, -- This is used for invoking dispatch when player escaped from Prison (without NPC seen player escaping)
-    },
-
     Escape = {
-        RequiredPolice = 0, -- How many police officers are need to be online?
-        PoliceCheck = false, -- This is used for enabling checking if there is enough Police officers to start Prison break
         Enable = true, -- This is used for enabling prison break system
         MarkerColor = { r = 255, g = 0, b = 0, a = 100 }, -- This is the color of the marker
         WallLodSyncDistance = 300, -- This is the distance for syncing walls
@@ -154,16 +143,11 @@ Config = {
         EnableAutomaticReset = true, -- This is used for enabling automatic reset of the escape
         NeedItem = true, -- This is used for needing item to escape from the prison
         ItemName = 'wire_cutter', -- This is the item name for escaping from the prison
-        NotifyJobs = {'lspd', 'bcso', 'sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police', 'leo'}, -- This is the list of the jobs which are going to be notified when prisoner is escaping using supported dispatch system
-
-        Experimental = {
-            RemoveCuttersAfterWallDestroyed = false, -- This will enable removing wire_cutter (ItemName) from player inventory when destroying wall 
-            CuttingSequence = false, -- This will enable/disable cutting sequence
-            CuttingSequenceTime = 15, -- How much the cutting should take before wall breaks (in seconds)
-            ClearPlayerInventoryWhenEscape = false, -- This will enable/disable clearing of player inventory if he escaped
-        }
+        NotifyJobs = {'lspd', 'bcso', 'sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police', 'leo'},
     },
 
+    
+ 
     Guards = {
         EnableJailAllCitizensWhenAttackedGuard = true, -- This is used for jailing all citizens when guard is attacked
         JailTime = 20, -- This is the jail time for attacking guard (default in min)
@@ -196,8 +180,8 @@ Config = {
     Commands = {
         Jail = 'jail', -- This is the command for jailing player
         Unjail = 'unjail', -- This is the command for unjailing player
-        Startcs = 'startcs', -- This is the command for starting the community service
-        Removecs = 'removecs', -- This is the command for removing the community service
+        Startcs = 'Startcs', -- This is the command for starting the community service
+        Removecs = 'Removecs', -- This is the command for removing the community service
         JailCP = 'jailcp', -- This is command for opening jail dashboard
         StopAlarm = 'stopalarm', -- This is the command for stopping the alarm
         Solitary = 'solitary', -- This is the command for sending player to solitary cell(s)
@@ -214,11 +198,11 @@ Config = {
     },
 
     Text = {
-        Position = 'top-left', -- This is the position of the text ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+        Position = 'right-center', -- This is the position of the text ['top-left', 'top-right', 'bottom-left', 'bottom-right']
     },
 
     Subtitles = {
-        Position = 'top-right', -- This is the position of the subtitles ['top-left', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right']
+        Position = 'bottom-center', -- This is the position of the subtitles ['top-left', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right']
     },
  
  
@@ -244,8 +228,6 @@ Config = {
         ['fbi'] = true,
         ['dhs'] = true,
         ['ss'] = true,
-            
-            ['ambulance'] = false,
     },
 
 
@@ -254,9 +236,6 @@ Config = {
         ResetJobPoolCooldown = 1, -- This is the cooldown for resetting job pool (default: 1 min)
         RequiredDelivery = 5, -- This is the required delivery for prisoner to be released
         
-        TargetHighlight = false, -- This is used for highlighting the target (Only for targets)
-        TargetHiglightColor = { r = 50, g = 149, b = 1, a = 255 }, -- This is the color of the target highlight
-
         SetCustomRequiredDeliveries = true, -- This is used for setting custom required deliveries for each job
     
         Electrician = {
@@ -296,7 +275,7 @@ Config = {
         RequiredDeliveries = { -- This is the required deliveries for each job
             [JOBS.ELECTRICIAN] = 2,
             [JOBS.GARDENER] = 2,
-            [JOBS.CLEAN_GROUND] = 1,
+            [JOBS.CLEAN_GROUND] = 3,
             [JOBS.BUSH_TRIMMING] = 3,
             [JOBS.COOK] = 1,
             [JOBS.LAUNDRY] = 3,
@@ -304,8 +283,8 @@ Config = {
     },
 
     DisplayPrisonMap = true, -- This is used for displaying prison map on the game map! (The map consumes 0.02ms to render!)
-    PrisonYardAnnoucement = true, -- This is used for announcing prisoners about the yard time!
-    BroadcastNewPrisoner = true, -- This is used for broadcasting new prisoner to all players on server.
+    PrisonYardAnnoucement = false, -- This is used for announcing prisoners about the yard time!
+    BroadcastNewPrisoner = false, -- This is used for broadcasting new prisoner to all players on server.
     AutoUncuffNewPrisoner = true, -- This is used for auto uncuffing new prisoner when they are jailed.
 
     Time = TIMES.MIN, -- This is the time unit for jail time ['SEC', 'MIN', 'HOURS', 'DAYS', 'WEEK', 'MONTHS']
@@ -367,7 +346,7 @@ Config = {
                     stamina = 0.1,  
                 }
             },
-        },
+        },s
     },
 
     Mugshot = {
@@ -397,7 +376,7 @@ Config = {
         Blip = {
             enable = true, -- Do you want to show blip on map?
             sprite = 643,
-            scale = 1.0,
+            scale = 0.5,
         },
 
         StartLocations = {
@@ -450,31 +429,28 @@ Config = {
 
     ImagePath = {
         [Inventories.OX] = 'nui://ox_inventory/web/images',
-        [Inventories.QB] = 'nui://qb-inventory/html/images',
-        [Inventories.LJ] = 'nui://lj-inventory/html/images',
-        [Inventories.QS] = 'nui://qs-inventory/html/images',
-        [Inventories.PS] = 'nui://ps-inventory/html/images',
-        [Inventories.TGIANN] = 'nui://inventory_images/images',
-        [Inventories.ESX] = '', -- When running es_extended the images are being loaded from rcore_prison/modules/nui/web/build/images/items
+       -- [Inventories.QB] = 'nui://qb-inventory/html/images',
+      --  [Inventories.LJ] = 'nui://lj-inventory/html/images',
+      --  [Inventories.QS] = 'nui://qs-inventory/html/images',
+      --  [Inventories.PS] = 'nui://ps-inventory/html/images',
+      --  [Inventories.TGIANN] = 'nui://inventory_images/images',
+      --  [Inventories.ESX] = '', -- When running es_extended the images are being loaded from rcore_prison/modules/nui/web/build/images/items
     }, 
 
     Canteen = {
         Enable = true, -- This is used for enabling canteen system
         CreditItems = {
-            { name = 'water_bottle', price = 30 },
-            { name = 'fries', price = 7 },
-            { name = 'sprunk', price = 7 },
-            { name = 'tosti', price = 7 },
-            { name = 'twerks_candy', price = 7 },
-            { name = 'coffee', price = 7 },
-            { name = 'cigarrete', price = 80 },
+            { name = 'water_bottle', price = 40 },
+            { name = 'fries', price = 70 },
+            { name = 'sprunk', price = 70 },
+            { name = 'cigarrete', price = 10 },
         },
         
         FreeFoodPackage = true, -- This is used for enabling free food package system
         FreeFoodPackageCooldown = 5, -- This is the cooldown for free food package system (5 min)
         FreeFoodPackageItems = {
             { name = 'water_bottle', count = 1 },
-            { name = 'tosti', count = 1 },
+            { name = 'sprunk', count = 1 },
         }
     },
 
@@ -485,10 +461,8 @@ Config = {
         KeepItemsState = true, -- This is used for keeping items when citizen is jailed into prison.
         KeepItems = {
             ['bread'] = true,
-            ['water'] = true,
+            ['water_bottle'] = true,
             ['sludgie'] = true,
-            ['money'] = true, -- Doesnt work with qs-inventory
-            ['cash'] = true, -- Doesnt work with qs-inventory
         }
     },
 
@@ -551,62 +525,6 @@ Config = {
 
     Teleport = {
         WhenReleasedTeleportPrisonerInFrontOfPrison = true, -- This is used for teleporting prisoner in front of the prison when released
-    }
-}
-
-Config.RestrictCommands = {
-    Enable = false, -- Do you want to restrict command based off job grades?
-    UseGradeNumbers = false, -- This will use check via jobGrade number (this will disable check via ListGrades)
-    GradeNumber = 2, -- Which grades are able to access specific commands (>=)
-    ListGrades = { -- List of grades with access state (true = yes | false = no access) to use specific commands.
-        [Config.Commands.Jail] = {
-            ['recruit'] = false,
-            ['officer'] = true,
-            ['sergeant'] = true,
-            ['lieutenant'] = true,
-            ['chief'] = true,
-            ['boss'] = true,
-        },
-        [Config.Commands.JailCP] = {
-            ['recruit'] = false,
-            ['officer'] = true,
-            ['sergeant'] = true,
-            ['lieutenant'] = true,
-            ['chief'] = true,
-            ['boss'] = true,
-        },
-        [Config.Commands.Unjail] = {
-            ['recruit'] = false,
-            ['officer'] = true,
-            ['sergeant'] = true,
-            ['lieutenant'] = true,
-            ['chief'] = true,
-            ['boss'] = true,
-        },
-        [Config.Commands.Startcs] = {
-            ['recruit'] = false,
-            ['officer'] = true,
-            ['sergeant'] = true,
-            ['lieutenant'] = true,
-            ['chief'] = true,
-            ['boss'] = true,
-        },
-        [Config.Commands.Removecs] = {
-            ['recruit'] = false,
-            ['officer'] = true,
-            ['sergeant'] = true,
-            ['lieutenant'] = true,
-            ['chief'] = true,
-            ['boss'] = true,
-        },
-        [Config.Commands.RemoveSolitary] = {
-            ['recruit'] = false,
-            ['officer'] = true,
-            ['sergeant'] = true,
-            ['lieutenant'] = true,
-            ['chief'] = true,
-            ['boss'] = true,
-        }
     }
 }
 

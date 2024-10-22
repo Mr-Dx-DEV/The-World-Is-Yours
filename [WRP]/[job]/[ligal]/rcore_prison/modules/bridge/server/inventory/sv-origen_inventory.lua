@@ -1,17 +1,9 @@
 CreateThread(function()
     if isBridgeLoaded('Inventory', Inventories.ORIGEN) then
         Inventory.hasItem = function(client, itemName, amount)
-            local src = source
             amount = amount or 1
-
-            local item = exports[Bridge.Inventory]:GetItemByName(src, itemName)
-            local hasItem = exports[Bridge.Inventory]:HasItem(src, itemName, amount)
-
-            if not hasItem then
-                dbg.debugInventory("Inventory.hasItem: Item %s doesnt exist!", itemName)
-                return false
-            end
-            
+    
+            local item = exports[Bridge.Inventory]:GetItemByName(source, itemName)
             local ItemInfo = {
                 name = itemName,
                 count = item.amount or item.count or 0,
@@ -29,7 +21,19 @@ CreateThread(function()
         end
     
         Inventory.getInventoryItems = function(playerId)
-            return exports.origen_inventory:GetInventory(playerId)
+            local player = Framework.getPlayer(playerId)
+    
+            if player == nil then return {} end
+    
+            if isBridgeLoaded('Framework', Framework.QBCore) then
+                return player.PlayerData.items
+            end
+    
+            if isBridgeLoaded('Framework', Framework.ESX) then
+                return player.inventory
+            end
+    
+            return {}
         end
     
         Inventory.registerUsableItem = function(itemName, cb)

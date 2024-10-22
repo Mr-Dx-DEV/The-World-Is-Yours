@@ -8,17 +8,11 @@ Inventory.CreatePrisonerStash = function(playerId, charId)
         dbg.critical("Cannot create prisoner stash - no charId")
         return
     end
-        
-    local success, result = pcall(function()
-        local stash = db.CreateStashForPrisoner(charId)
-    
-        if stash then
-            Inventory.SaveAndTakePrisonerItems(playerId, charId)        
-        end
-    end)
 
-    if not success then 
-        dbg.critical("ERROR: Failed to create prisoner stash, seems like issue with your database - create support ticket on our RCore discord")
+    local stash = db.CreateStashForPrisoner(charId)
+    
+    if stash then
+        Inventory.SaveAndTakePrisonerItems(playerId, charId)        
     end
 end
 
@@ -30,13 +24,13 @@ Inventory.DoesItemExist = function(itemName, playerId)
     local isValidItem = false
     local error_message = nil
 
-    dbg.debug('Init >> DoesItemExist: Checking if item named [%s] exists in inventory system: %s', itemName, Bridge.Inventory)
+    dbg.debugInventory('Init >> DoesItemExist: Checking if item named [%s] exists in inventory system: %s', itemName, Bridge.Inventory)
 
     if Bridge.Inventory == Inventories.OX then
         local retval, state = pcall(function()
             local itemList = exports[Bridge.Inventory]:Items(itemName)
 
-            dbg.debug('OX check >> DoesItemExist: Checking ox_inventory item named [%s] registered item state: %s', itemName, itemList and 'REGISTERED' or 'NOT_REGISTERED')
+            dbg.debugInventory('OX check >> DoesItemExist: Checking ox_inventory item named [%s] registered item state: %s', itemName, itemList and 'REGISTERED' or 'NOT_REGISTERED')
 
             if itemList then
                 return true
@@ -91,8 +85,22 @@ Inventory.DoesItemExist = function(itemName, playerId)
             isValidItem = state
             error_message = error_message
         else
-            isValidItem = true
-            error_message = 'OK'
+            local retval, state = pcall(function()
+                local match = string.match(itemName, "^WEAPON_(.*)")
+            
+                if match then
+                    return true
+                end
+
+                if Framework.object and Framework.object.Items and Framework.object.Items[itemName] then
+                    return true
+                else
+                    return false
+                end
+            end)
+
+            isValidItem = state
+            error_message = error_message
         end
     elseif Bridge.Framework == Framework.QBCore then
         if Bridge.Inventory == Inventories.QS then
@@ -129,12 +137,12 @@ Inventory.DoesItemExist = function(itemName, playerId)
     -- If customer is running without inventory system, we can't check if item exists
 
     if resourceList['Inventory'] == nil and Bridge.Inventory == Inventories.NONE then
-        dbg.debug('Inventory system is not loaded - cannot check if item exists, skipping validation.')
+        dbg.debugInventory('Inventory system is not loaded - cannot check if item exists, skipping validation.')
         return true, 'OK'
     end
 
     if playerId then
-        dbg.debug('DoesItemExist: Item [%s] registered item state: %s | Error: %s -> request by citizen: %s (%s)', itemName, not isValidItem and 'NOT_REGISTERED' or 'REGISTERED', error_message, GetPlayerName(playerId), playerId)
+        dbg.debugInventory('DoesItemExist: Item [%s] registered item state: %s | Error: %s -> request by citizen: %s (%s)', itemName, not isValidItem and 'NOT_REGISTERED' or 'REGISTERED', error_message, GetPlayerName(playerId), playerId)
     end
 
     if Bridge.Framework == Framework.ESX and (Bridge.Inventory == Inventories.ESX or Bridge.Inventory == Inventories.CORE or Bridge.Inventory == Inventories.CHEEZA) then
@@ -142,7 +150,7 @@ Inventory.DoesItemExist = function(itemName, playerId)
             local itemList = Framework.object and Framework.object.Items and Framework.object.Items
 
             if itemList and not next(itemList) then
-                dbg.debug('Failed to find any cached items in ESX.Items from - items not proparly cached running inventory named (%s) with Framework (%s), skipping check', Bridge.Inventory, Bridge.Framework)
+                dbg.bridge('Failed to find any cached items in ESX.Items from - items not proparly cached running inventory named (%s) with Framework (%s), skipping check', Bridge.Inventory, Bridge.Framework)
 
                 if not isValidItem then
                     isValidItem, error_message = true, 'OK'
@@ -167,11 +175,11 @@ Inventory.GatherInventoryData = function(playerId)
         return Inventory.getInventoryItems(playerId)
     end)
 
+
     local inventory, statusCode = {}, INVENTORY_STATUS_CODES.EMPTY_INVENTORY
     local p = promise.new()
     local iterCount = 0
-    local id = 0
-    
+
     if not inventoryData or not success then
         dbg.debugInventory('Failed to gather player inventory data for user : %s', GetPlayerName(playerId))
         return inventory, statusCode
@@ -180,9 +188,10 @@ Inventory.GatherInventoryData = function(playerId)
     if inventoryData and next(inventoryData) then
         for k, item in pairs(inventoryData) do
             iterCount = iterCount + 1
-            id = id + 1
 
-            if item then
+            local id = #inventory + 1
+
+            if item and not inventory[id] then
                 inventory[id] = {
                     name = item and item.name or 'UNK-NAME',
                     label = item and item.label or item.name or 'UNK-LABEL',
@@ -214,23 +223,7 @@ Inventory.ClearPlayerInventory = function(playerId)
 
     local retval = false
 
-    if Bridge.Inventory == Inventories.OX then
-        retval = Inventory.clearInventory(playerId)
-    end
-    
     if Bridge.Inventory == Inventories.CODEM then
-        retval = Inventory.clearInventory(playerId)
-    end
-
-    if Bridge.Inventory == Inventories.AK47 then
-        retval = Inventory.clearInventory(playerId)
-    end
-
-    if Bridge.Inventory == Inventories.QS then
-        retval = Inventory.clearInventory(playerId)
-    end
-
-    if Bridge.Inventory == Inventories.CHEEZA then
         retval = Inventory.clearInventory(playerId)
     end
 
@@ -240,6 +233,10 @@ Inventory.ClearPlayerInventory = function(playerId)
     
     if Bridge.Inventory == Inventories.NONE then
         retval = Framework.clearInventory(playerId)
+    end
+
+    if Bridge.Inventory == Inventories.OX then
+        retval = Inventory.clearInventory(playerId)
     end
 
     if not retval then
@@ -252,25 +249,13 @@ Inventory.ClearPlayerInventory = function(playerId)
 end
 
 Inventory.HandleOpenState = function(playerId, state)
-    dbg.debug('Inventory handle open for user named: %s with state %s', GetPlayerName(playerId), state)
-
-    if not playerId then
-        return false
-    end
-
     local ply = Player(playerId)
 
     if not ply then
-        return false
+        return
     end
 
-    if isResourcePresentProvideless(Inventories.OX) then
-        ply.state:set('invBusy', state, true)
-    elseif Bridge.Framework == Framework.QBCore then
-        ply.state:set('inv_busy', state, true)
-    end
-
-    return true
+    ply.state:set('inv_busy', state)
 end
 
 Inventory.SaveVirtualMoney = function(playerId, charId)
@@ -342,7 +327,7 @@ Inventory.SaveAndTakePrisonerItems = function(playerId, charId)
     local virtualMoneyState, virtualMoneyRetval = pcall(function()
         return Inventory.SaveVirtualMoney(playerId, charId)
     end)
-
+    
     if inventoryState ~= nil then
         dbg.debugInventory("SaveAndTakePrisonerItems: Status: %s for %s (%s)", statusCode, GetPlayerName(playerId), playerId)
 
@@ -363,11 +348,7 @@ Inventory.SaveAndTakePrisonerItems = function(playerId, charId)
                         local itemName = playerInventory[i].name
 
                         if Bridge.Inventory ~= Inventories.ESX and Inventory.KeepSessionItemsWithName[itemName] then
-                            if useCashAsItem and isResourceLoaded(Inventories.QS) and itemName == cashItem then
-
-                            else
-                                playerInventory[i] = {}
-                            end
+                            playerInventory[i] = {}
                         end
 
                         if i >= size then

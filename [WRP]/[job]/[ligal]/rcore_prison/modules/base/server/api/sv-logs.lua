@@ -11,17 +11,10 @@ NetworkService.EventListener('heartbeat', function(eventType, data)
         return
     end
 
-    local playerId = prisoner.source
-
     if eventType == 'PRISONER_NEW' then
         NewPrisoner(prisoner)
     elseif eventType == 'PRISONER_RELEASED' and not prisoner.escaped then
         PrisonerReleased(prisoner)
-        Inventory.HandleOpenState(playerId, false)
-
-        if RegisterNetworkFlow[tostring(playerId)] then
-            RegisterNetworkFlow[tostring(playerId)] = nil
-        end
     end
 end)
 

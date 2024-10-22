@@ -9,7 +9,7 @@ CreateThread(function()
                 end
                 Wait(0)
             end
-        end, "cl-bridge code name: Alfa")
+        end)
     
 
         function Inventory.HandleInventoryOpenState(state)
@@ -34,4 +34,4 @@ CreateThread(function()
             })
         end
     end    
-end, "cl-ndcore code name: Phoenix")
+end)

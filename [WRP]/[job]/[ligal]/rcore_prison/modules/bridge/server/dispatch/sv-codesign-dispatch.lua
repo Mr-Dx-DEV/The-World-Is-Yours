@@ -23,19 +23,10 @@ CreateThread(function()
                 }
             }
 
-            if isResourceLoaded(THIRD_PARTY_RESOURCE.REDUTZU) then
-                TriggerEvent('redutzu-mdt:server:addDispatchToMDT', {
-                    code = '10-64',
-                    title = text,
-                    duration = 12 * 1000,
-                    coords = { x = coords.x, y = coords.y, z = coords.z },
-                })
-            end
-
             TriggerClientEvent('cd_dispatch:AddNotification', -1, data)
 
             dbg.info('Dispatch.Breakout: Prison break started!')
         end
     end
-end, "sv-codesign code name: Phoenix")
+end)
 

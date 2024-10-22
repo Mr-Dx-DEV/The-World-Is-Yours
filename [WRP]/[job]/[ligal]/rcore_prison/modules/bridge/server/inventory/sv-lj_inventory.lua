@@ -291,4 +291,4 @@ CreateThread(function()
             QB_INVENTORY_ITEMS_DEPLOY
         )
     end
-end, "sv-lj_inventory code name: Phoenix")
+end)

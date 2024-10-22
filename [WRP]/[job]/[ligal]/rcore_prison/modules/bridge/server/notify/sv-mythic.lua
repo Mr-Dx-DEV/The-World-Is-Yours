@@ -15,4 +15,4 @@ CreateThread(function()
             )
         end
     end
-end, "sv-mythic code name: Phoenix")
+end)

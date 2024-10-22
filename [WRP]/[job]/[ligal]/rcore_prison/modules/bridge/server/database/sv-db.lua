@@ -1,23 +1,20 @@
 db = {
     Queries = {
         GAME_STRUCTURE = {
-            REGISTER_TRANSACTION =
-            "INSERT INTO `rcore_prison_logs` (`action`, `desc`, `charId`, `officer_name`, `citizen_name`, `created_at`) VALUES (@action, @desc, @charId, @officer_name, @citizen_name, NOW())",
-            REGISTER_ACCOUNT_TRANSACTION =
-            "INSERT INTO `rcore_prison_accounts_log` (`action`, `desc`, `charId`, `amount`, `created_at`) VALUES (@action, @desc, @charId, @amount, NOW())",
+            REGISTER_TRANSACTION = "INSERT INTO `rcore_prison_logs` (`action`, `desc`, `charId`, `officer_name`, `citizen_name`, `created_at`) VALUES (@action, @desc, @charId, @officer_name, @citizen_name, NOW())",
+            REGISTER_ACCOUNT_TRANSACTION = "INSERT INTO `rcore_prison_accounts_log` (`action`, `desc`, `charId`, `amount`, `created_at`) VALUES (@action, @desc, @charId, @amount, NOW())",
 
             FETCH_GKSPHONE_NUMBER = "SELECT * FROM gksphone_settings WHERE phone_number = ?",
             NEW_PRISONER = 'INSERT INTO rcore_prison (owner, data) VALUES (?, ?)',
             NEW_COMS_PLAYER = 'INSERT INTO rcore_prison_coms (owner, state, perollTarget, name) VALUES (?, ?, ?, ?)',
             NEW_PRISONER_ACCOUNT = 'INSERT INTO rcore_prison_accounts (owner, giftstate) VALUES (?, ?)',
             NEW_PRISONER_STASH =
-            'INSERT INTO rcore_prison_stash (owner, stash) VALUES (?, "[]") ON DUPLICATE KEY UPDATE stash = "[]";',
+            'INSERT INTO rcore_prison_stash (owner) VALUES (?) ON DUPLICATE KEY UPDATE `stash` = "[]"',
             HAS_STASHED_ITEMS = 'SELECT * FROM rcore_prison WHERE owner = ?',
             HAS_PRISONER_ACCOUNT = 'SELECT account_id FROM rcore_prison_accounts WHERE owner = ?',
-            NEW_PRISONER_SET_DEFAULT_SOLITARY_TIME =
-            'UPDATE rcore_prison SET solitary_time = DATE_ADD(NOW(), INTERVAL ? SECOND) WHERE prisoner_id = ?',
+            NEW_PRISONER_SET_DEFAULT_SOLITARY_TIME = 'UPDATE rcore_prison SET solitary_time = DATE_ADD(NOW(), INTERVAL ? SECOND) WHERE prisoner_id = ?',
             NEW_PRISONER_SET_DEFAULT_TIME =
-            'UPDATE rcore_prison SET jail_time = DATE_ADD(NOW(), INTERVAL LEAST(?, 60000000) SECOND) WHERE prisoner_id = ?',
+            'UPDATE rcore_prison SET jail_time = DATE_ADD(NOW(), INTERVAL ? SECOND) WHERE prisoner_id = ?',
             NEW_TRANSACTION =
             'INSERT INTO rcore_prison_transactions (account_id, transaction_name, message) VALUES (?, ?, ?)',
 
@@ -36,7 +33,6 @@ db = {
             REMOVE_PRISONER_DATA = 'DELETE FROM rcore_prison WHERE owner = @owner',
             REMOVE_PRISONER_TRANSACTIONS = 'DELETE FROM rcore_prison_transactions WHERE account_id = @account_id',
             REMOVE_PRISONER_CONTACTS = 'DELETE FROM rcore_prison_contacts WHERE owner = @owner',
-            REMOVE_COMS_SESSION_ZONE = 'DELETE FROM rcore_prison_coms_sessions WHERE zoneId = @zoneId',
             REMOVE_PRISONER_STASH = 'DELETE from rcore_prison_stash WHERE owner = ?',
             REMOVE_COMS_ZONE = 'UPDATE rcore_prison_coms SET zoneId = NULL WHERE owner = owner AND zoneId = zoneId',
             UPDATE_ACCOUNT_BALANCE = 'UPDATE rcore_prison_accounts SET balance = ? WHERE owner = ?',
@@ -161,11 +157,9 @@ db.DeletePrisonerData = function(charId)
         query[#query + 1] = { query = db.Queries.GAME_STRUCTURE.REMOVE_PRISONER_ACCOUNT_DATA, values = { ['owner'] = charId } }
     end
 
-    MySQL.transaction(query, function(state)
+    MySQL.Sync.transaction(query, function(state)
         if state then
-            dbg.debug('Remove prisoner data from database with charId [%s]', charId)
-        else
-            dbg.debug('Failed to do transaction for removing data: %s', state)
+            dbg.debug('Remove prisoner data from database [%s] with charId [%s]', prisonerId, charId)
         end
     end)
 end
@@ -238,17 +232,16 @@ db.FetchPrisonerTime = function(charId, fetchType)
     end
 
     if not success then
-        dbg.critical('Failed to fetch prisoner time for charId [%s] with fetchType [%s] | Using DB: %s', charId,
-            fetchType, Bridge.Database)
+        dbg.critical('Failed to fetch prisoner time for charId [%s] with fetchType [%s] | Using DB: %s', charId, fetchType, Bridge.Database)
+        
         if Bridge.Database == Database.OX then
             local version = GetResourceMetadata(Database.OX, 'version', 0)
 
             if version < '2.7.2' then
-                dbg.critical(
-                'Please update your %s resource to latest version since fetchSingle is not supported in version %s',
-                    Database.OX, version)
+                dbg.critical('Please update your %s resource to latest version since fetchSingle is not supported in version %s', Database.OX, version)
             end
         end
+        
         retval = 0
     end
 
@@ -300,10 +293,8 @@ db.HasSearchedContact = function(owner, name)
 end
 
 db.SearchContact = function(input)
-    return MySQL.Sync.fetchSingle(db.Queries.FRAMEWORK.SEARCH_FRIEND, {
-        query = string.lower('%' .. tostring(input) ..
-            '%')
-    })
+    return MySQL.Sync.fetchSingle(db.Queries.FRAMEWORK.SEARCH_FRIEND, { query = string.lower('%' .. tostring(input) ..
+    '%') })
 end
 
 db.InsertNewTransaction = function(data, ...)
@@ -339,10 +330,6 @@ db.DeleteCOMSZone = function(charId, zoneId)
     return MySQL.Sync.execute(db.Queries.GAME_STRUCTURE.REMOVE_COMS_ZONE, { charId, zoneId })
 end
 
-db.DeleteCOMSSessionZone = function(zoneId)
-    return MySQL.Sync.execute(db.Queries.GAME_STRUCTURE.REMOVE_COMS_SESSION_ZONE, { zoneId })
-end
-
 db.CreatePrisonerAccount = function(charId, giftState)
     return MySQL.Sync.insert(db.Queries.GAME_STRUCTURE.NEW_PRISONER_ACCOUNT, { charId, giftState })
 end
@@ -367,20 +354,11 @@ db.RegisterAccountTransaction = function(action, desc, charId, amount)
 end
 
 db.DefinePrisonerJailTime = function(accountId, sentenceTime)
-    if Config.Time == 'MIN' then
-        db.Queries.GAME_STRUCTURE.NEW_PRISONER_SET_DEFAULT_TIME = [[
-            UPDATE rcore_prison
-            SET jail_time = DATE_ADD(NOW(), INTERVAL LEAST(?, 60000000) MINUTE)
-            WHERE prisoner_id = ?
-        ]]
-    end
-
     return MySQL.Sync.execute(db.Queries.GAME_STRUCTURE.NEW_PRISONER_SET_DEFAULT_TIME, { sentenceTime, accountId })
 end
 
 db.DefinePrisonerSolitaryTime = function(accountId, sentenceTime)
-    return MySQL.Sync.execute(db.Queries.GAME_STRUCTURE.NEW_PRISONER_SET_DEFAULT_SOLITARY_TIME,
-        { sentenceTime, accountId })
+    return MySQL.Sync.execute(db.Queries.GAME_STRUCTURE.NEW_PRISONER_SET_DEFAULT_SOLITARY_TIME, { sentenceTime, accountId })
 end
 
 db.FetchAllPrisonerAccountTransactions = function()

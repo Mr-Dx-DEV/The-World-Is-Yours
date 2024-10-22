@@ -8,68 +8,12 @@ CreateThread(function()
 
         Framework.object = QBox
 
-        
-        NetworkService.EventListener('heartbeat', function(eventType, data)
-            if not next(data) then
-                return
-            end
-        
-            local prisoner = data.prisoner
-        
-            if not prisoner then
-                return
-            end
-
-            local playerId = prisoner.source
-            local jailTime = prisoner.jail_time
-        
-            if eventType == HEARTBEAT_EVENTS.PRISONER_NEW then
-                local applyState, applyRetval = pcall(function()
-                    return Framework.applyJailMetaData(playerId, jailTime)
-                end)
-            elseif eventType == HEARTBEAT_EVENTS.PRISONER_RELEASED then
-                local applyState, applyRetval = pcall(function()
-                    return Framework.removeJailMetaData(playerId)
-                end)
-            end
-        end)
-
         function Framework.getPlayer(client)
             if not client then
                 return nil
             end
 
             return exports.qbx_core:GetPlayer(client)
-        end
-
-
-        function Framework.canStartPrisonBreak()
-            local retval = false
-            local officers = Framework.getOfficers()
-        
-            if type(officers) == "table" then
-                if Config.Escape.PoliceCheck then
-                    if officers and next(officers) then
-                        local size = #officers
-        
-                        if not size or size == 0 then
-                            size = table.size(officers)
-                        end
-        
-                        if size and size >= Config.Escape.RequiredPolice then
-                            retval = true
-                        end
-                    end
-                else
-                    retval = true
-                end
-            elseif type(officers) == "number" then
-                if officers >= Config.Escape.RequiredPolice then
-                    retval = true
-                end
-            end
-        
-            return retval
         end
 
         function Framework.getPlayerCuffState(client)
@@ -122,41 +66,21 @@ CreateThread(function()
         function Framework.canPerformJobCommand(client, commandName)
             local job = Framework.getJob(client)
             
-            if job == nil then return false, false end
+            if job == nil then return false end
     
             local jobName = job.name
-            local jobGrade = job.grade
-            local gradeName = job.gradeName:lower()
-            
+    
             if jobName == nil then return false end
-            
-            if Config.RestrictCommands and Config.RestrictCommands.Enable and commandName and next(Config.RestrictCommands.ListGrades[commandName]) then
-                if Config.RestrictCommands.UseGradeNumbers and jobGrade ~= nil then
-                    if jobGrade >= Config.RestrictCommands.GradeNumber then
-                        return true, true
-                    else
-                        return false, _U('PERMISSION.NOT_ENOUGH_RANK')
-                    end
-                else
-                    local hasPermission = Config.RestrictCommands.ListGrades[commandName][gradeName]
-
-                    if not hasPermission then
-                        return false, _U('PERMISSION.NOT_ENOUGH_RANK')
-                    else
-                        return true, true
-                    end
-                end
-            end
 
             if Config.AllowAdminGroupsUseJailCommands and Framework.isAdmin(client) then
-                return true, true
+                return true
             end
-    
+
             if Config.Jobs[jobName] then
-                return true, true
+                return true
             end
             
-            return false, false
+            return false
         end
     
         function Framework.getCharacterShortName(client)
@@ -353,4 +277,4 @@ CreateThread(function()
             Inventory.CheckItemExistList(PRISON_ITEMS)
         end)
     end    
-end, "sv-qbox code name: Phoenix")
+end)

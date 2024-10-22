@@ -62,4 +62,4 @@ CreateThread(function()
             })
         end
     end
-end, "cl-main code name: Omega")
+end)
