@@ -45,7 +45,7 @@ Config.OldQBManagement = false -- If you are using QBCore and want to use the ol
 
 Config.ambulanceJobs = {       -- Jobs that are considered ambulance jobs (If unsure, likely leave the way it is)
     'ambulance',               -- You must have a job with this name registered
-    --'emt',             -- They will be treated just like EMS (Job menu, loctions access, etc)
+    'police',             -- They will be treated just like EMS (Job menu, loctions access, etc)
     --'doctor',
     --'fire',
 }
@@ -58,7 +58,7 @@ Config.ReviveLogs = false -- Enable admin revive logs via Discord webhook? (Link
 Config.LogIPs = false     -- If Config.DeathLogs/Config.ReviveLogs enabled, do you want to logs IP addresses as well?
 
 -- Stretcher Settings
-Config.EnableStretcher = false     -- Enable stretcher system?
+Config.EnableStretcher = true     -- Enable stretcher system?
 Config.StretcherProp = 'wasabi_stretcher'
 Config.StretcherKey = 38          -- Key to place the stretcher on the ground
 Config.HoldingStretcherOffSet = { -- Offset for holding stretcher
@@ -153,7 +153,7 @@ Config.AmbulanceOffsets = {
 }
 
 Config.GPSBlips = {
-    enabled = true,      -- Enabled?
+    enabled = false,      -- Enabled?
     item = false,        -- Item required? Note: You have to use it then
     sprites = {
         none = 443,        -- Blip for when not in a vehicle
@@ -408,12 +408,12 @@ Config.lowHealthAlert = {
     }
 }
 
-Config.EnableStandaloneCheckIns = false -- Enable stand-alone check-in locations? For grandmas, prisons, whatever
+Config.EnableStandaloneCheckIns = true -- Enable stand-alone check-in locations? For grandmas, prisons, whatever
 Config.StandaloneCheckIns = {
 
     Prison = {                                        -- Example, QB Prison check-in
         Ped = 's_m_m_scientist_01',                   -- Check in ped
-        Coords = vec3(1729.03, 2563.33, 45.56 - 0.9), -- Coords of ped
+        Coords = vec3(1768.582, 2570.589, 45.73 - 0.9), -- Coords of ped
         Distance = 4.85,                              -- Distance to show textUI (If target is not enabled below)
         Heading = 181.42,                             -- Heading of ped
         Cost = 5,                                     -- Cost of using hospital check-in. Set to false for free
@@ -422,7 +422,7 @@ Config.StandaloneCheckIns = {
         Label = '[E] - Check In',                     -- label of text UI if target is not enabled below
         HotKey = 38,                                  -- Default: 38 (E) (If target below is not enabled)
         Target = {
-            enabled = true,                           -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
+            enabled = false,                           -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
             label = 'Check In',
             coords = vec3(1729.03, 2563.33, 45.56),
             heading = 63.26,
@@ -432,11 +432,11 @@ Config.StandaloneCheckIns = {
             minZ = 43.28 - 0.9,
             maxZ = 43.28 + 0.9
         },
-        DisableHospitalBeds = true,                                                          -- Disable hospital beds for check-in at this location?(Player will spend Duration checking in before respawning in RespawnNoBedLocation coords when set to true)
+        DisableHospitalBeds = false,                                                          -- Disable hospital beds for check-in at this location?(Player will spend Duration checking in before respawning in RespawnNoBedLocation coords when set to true)
         RespawnNoBedLocation = { coords = vec3(1729.03, 2563.33, 45.56), heading = 339.02 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds full
         HospitalBeds = {
             --              { coords = vec3(332.62, -587.17, 42.84+0.3), heading = 160.0 },
-            { coords = vec3(317.67, -585.37, 42.84 + 0.3), heading = 160.0 },
+            { coords = vec3(1762.108, 2594.49, 46.659), heading = 8.633 },
         }
     },
 

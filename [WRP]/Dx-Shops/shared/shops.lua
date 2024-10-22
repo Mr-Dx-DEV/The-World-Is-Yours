@@ -1,5 +1,40 @@
 Locations = {
-
+	["policeshop"] = {
+        ["label"] = "Police Shop",
+		["type"] = "items",
+		["model"] = {
+			`ig_trafficwarden`,
+		},
+		["killable"] = false,
+		["logo"] = "https://i.imgur.com/bPcM0TM.png",
+        ["coords"] = {
+			vector4(608.55, 14.91, 82.63, 263.66),
+			
+		},
+		["scenario"] = "WORLD_HUMAN_COP_IDLES",
+        ["products"] = Products["policeshop"],
+        ["blipsprite"] = 458,
+		["blipcolour"] = 5,
+		["hideblip"] = true,
+    },
+	["emsshop"] = {
+        ["label"] = "EMS Shop",
+		["type"] = "items",
+		["model"] = {
+			`s_m_m_doctor_01`,
+		},
+		["killable"] = false,
+		["logo"] = "https://i.imgur.com/bPcM0TM.png",
+        ["coords"] = {
+			vector4(-458.13, -312.46, 34.80, 19.66),
+			
+		},
+		["scenario"] = "WORLD_HUMAN_COP_IDLES",
+        ["products"] = Products["policeshop"],
+        ["blipsprite"] = 458,
+		["blipcolour"] = 5,
+		["hideblip"] = true,
+    },
 
 	--[[ ["petshop"] = {
         ["label"] = "Pet Shop",
@@ -18,6 +53,24 @@ Locations = {
 		["blipcolour"] = 5,
 		["hideblip"] = false,
     }, ]]
+	["dealershop"] = {
+        ["label"] = "Dealer Smoke",
+		["type"] = "items",
+		["model"] = {
+			`a_m_y_hippy_01`,
+		},
+		["killable"] = false,
+		["logo"] = "https://i.imgur.com/bPcM0TM.png",
+        ["coords"] = {
+			vector4(96.76, 3683.933, 39.702, 270.831),
+		},
+		["scenario"] = "WORLD_HUMAN_AA_SMOKE",
+        ["products"] = Products["dealershop"],
+        ["blipsprite"] = 140,
+		['blipscale'] = 0.8,
+		["blipcolour"] = 0,
+		["hideblip"] = true,
+    },
 	["weedshop"] = {
         ["label"] = "Smoke On The Water",
 		["type"] = "items",

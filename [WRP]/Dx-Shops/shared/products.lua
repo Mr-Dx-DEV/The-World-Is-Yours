@@ -7,6 +7,10 @@ Products = {
         { name = "bobby_pin", price = 1250, amount = 50 },
         
     },
+    ["policeshop"] = {
+        { name = "gps_tracker", price = 1, amount = 50 },
+        
+    },
    --[[  ["leisureshop"] = {
         { name = "parachute", price = 2500, amount = 50 },
         { name = "diving_gear", price = 2500, amount = 50 },
@@ -16,6 +20,19 @@ Products = {
         { name = "contract", price = 2000, amount = 50 },
         { name = "pdmcontract", price = 10000, amount = 50 },
     }, ]]
+    
+    ["dealershop"] = {
+        { name = "pickaxe", price = 1000, amount = 250 },
+        { name = "painkillers", price = 5000, amount = 250 },
+        { name = "citricacid", price = 2000, amount = 250 },
+        { name = "steviapowder", price = 10000, amount = 250 },
+        { name = "butane_gas", price = 20000, amount = 250 },
+        { name = "plasticjerrycan", price = 10000, amount = 250 },
+        { name = "pressurecooker", price = 5000, amount = 250 },
+        { name = "mortarpestle", price = 100, amount = 250 },
+        { name = "ketprocessingtable", price = 10000, amount = 250 },
+        
+    },
     ["weedshop"] = {
         { name = "zatbluelight", price = 1000, amount = 250 },
         { name = "zatceilinglight", price = 5000, amount = 250 },
@@ -33,6 +50,19 @@ Products = {
         { name = "zatweedrackxs", price = 10000, amount = 250 },
         { name = "zatweedseed", price = 200, amount = 250 },
         { name = "zatweedtable", price = 15000, amount = 250 },
+
+        { name = "sodiumcarbonate", price = 15000, amount = 250 },
+        { name = "sodiumbicarbonate", price = 15000, amount = 250 },
+        { name = "acetone", price = 15000, amount = 250 },
+        { name = "dimethylformamide", price = 15000, amount = 250 },
+
+        { name = "scales", price = 15000, amount = 250 },
+        { name = "heroinprocessingtable", price = 15000, amount = 250 },
+        { name = "ketprocessingtable", price = 15000, amount = 250 },
+        { name = "processingtable", price = 15000, amount = 250 },
+        { name = "cokeprocessingtable", price = 15000, amount = 250 },
+        { name = "emptybaggies", price = 15000, amount = 250 },
+
 
         { name = "joint", price = 500, amount = 1200 },
     },
