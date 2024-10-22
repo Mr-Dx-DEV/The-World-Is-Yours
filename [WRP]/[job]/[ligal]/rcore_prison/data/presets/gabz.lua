@@ -760,7 +760,7 @@ return {
             access = INTERACT_ACCESS_TYPES.PRISONER_ONLY
         },
         {
-            coords = vec3(1783.22, 2560.78, 45.67),
+            coords = vec3(1784.003, 2558.772, 45.673),
             type = INTERACT_TYPES.CANTEEN,
             distance = 6,
             zone = {
@@ -769,7 +769,7 @@ return {
                 label = _U('TARGET_ZONE.CANTEEN_LABEL'),
             },
             npc = {
-                coords = vec3(1783.22, 2560.78, 45.67),
+                coords = vec3(1784.003, 2558.772, 45.673),
                 heading = 170.87,
                 model = 's_m_m_prisguard_01',
                 scenario = {
