@@ -1785,7 +1785,7 @@ Config.market_categories = {
 				['img'] = 'weapon_wrench.png',
 			}, ]]
 			
-			['weapon_hammer'] = {
+			--[[ ['weapon_hammer'] = {
 				['name'] = "Hammer",
 				['price_to_customer'] = 350,
 				['price_to_customer_min'] = 175,
@@ -1795,7 +1795,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'weapon_hammer.png',
-			},
+			}, ]]
 			
 			['binoculars'] = {
 				['name'] = "Binoculars",
@@ -2066,7 +2066,7 @@ Config.market_categories = {
 				['max_amount_to_purchase'] = 1,
 				['img'] = 'weapon_crowbar.png',
 			},
-			['weapon_hammer'] = {
+			--[[ ['weapon_hammer'] = {
 				['name'] = "Hammer",
 				['price_to_customer'] = 250,
 				['price_to_customer_min'] = 125,
@@ -2079,7 +2079,7 @@ Config.market_categories = {
 				['requires_license'] = false,
 				['max_amount_to_purchase'] = 1,
 				['img'] = 'weapon_hammer.png',
-			},
+			}, ]]
 			--[[ ['weapon_wrench'] = {
 				['name'] = "Wrench",
 				['price_to_customer'] = 250,
