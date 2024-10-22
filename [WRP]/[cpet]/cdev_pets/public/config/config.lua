@@ -14,7 +14,7 @@ PublicSharedPetsConfig = {
 
     -- If true, there will be a button for opening the pet shop in your Pet Bag
     -- If false, you must integrate the pet shop by yourself, check docs for cdev_pets
-    WantPetShopButton = true,
+    WantPetShopButton = false,
 
     -- When true, if the pet is loyal enough it will attack players you aim at, if you decide to keep this disabled use the export to trigger attacks from your own script ":Attack(ped)"
     WantAttackWhenAiming = true,
@@ -38,10 +38,10 @@ PublicSharedPetsConfig = {
         WantPedShop = true,
 
         -- Coords to define where the ped will spawn
-        PedCoords = vector4(78.661, -228.305, 54.673, 93.981),
+        PedCoords = vector4(78.661, -228.305, 53.673, 93.981),
 
         -- Parameter to define the ped model.
-        PedModel = "a_m_m_beach_01",
+        PedModel = "s_m_m_doctor_01",
 
     },
 
