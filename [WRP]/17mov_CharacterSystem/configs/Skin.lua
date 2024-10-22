@@ -2026,13 +2026,13 @@ Skin.InputsDependency = {
 
         ["ZONE_RIGHT_LEG"] = {
             -- While changing chest hair, torso should be taken off
-            { componentId = 4, value = 15 },
+            { componentId = 4, value = 103 },
             { componentId = 6,  value = 35 },
         },
 
         ["ZONE_LEFT_LEG"] = {
             -- While changing chest hair, torso should be taken off
-            { componentId = 4, value = 15 },
+            { componentId = 4, value = 103 },
             { componentId = 6,  value = 35 },
         },
     }
