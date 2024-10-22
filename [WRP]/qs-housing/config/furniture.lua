@@ -520,7 +520,6 @@ Config.FurnitureList = {
 					{ ['object'] = 'prop_pool_rack_01', ['price'] = 120, ['label'] = 'Pool Rack' }
 				}
 			},
-			
 			{
 				['object'] = 'prop_table_02',
 				['price'] = 120,

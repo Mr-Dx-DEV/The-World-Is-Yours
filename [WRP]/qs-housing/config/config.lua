@@ -178,7 +178,7 @@ Config.Language = 'en'
 local esxHas = GetResourceState('es_extended') == 'started'
 local qbHas = GetResourceState('qb-core') == 'started'
 
-Config.Framework = 'qb' -- You can change to 'qb' or 'esx'
+Config.Framework = esxHas and 'esx' or qbHas and 'qb' or 'none' -- You can change to 'qb' or 'esx'
 
 
 Config.MenuType = 'ox_lib'
@@ -201,7 +201,7 @@ Config.DefaultBucket = 0 -- Default bucket, you can ignore it
     you need to give it a description.
 ]]
 
-Config.Smartphone = true -- This enables dispatch email to real estate agents
+Config.Smartphone = false -- This enables dispatch email to real estate agents
 
 Config.RemoveRain = false
 Config.HideMapDecorateMode = true
@@ -304,7 +304,7 @@ Config.Realestatejob = {
         'none' -- Don't give money to anyone
 ]]
 
-Config.Society = 'qb-management' -- or "Society" options.
+Config.Society = 'ap-government' -- or "Society" options.
 Config.SocietyPorcentage = 50
 Config.PercentageForSell = 50
 Config.Taxes = { AgencyFee = 7, BankFee = 10, TaxesFee = 20 }
@@ -374,7 +374,7 @@ Config.TimeAutoCloseDoor = 5            -- In minutes
 
 Config.HouseRobbery = false              --If you activate this, the players will be able to rob the houses.
 Config.RequiredCops = 1                 --Minimum number of police officers available to initiate house robberies.
-Config.RobberyItem = 'advancedlockpick'         --This is the item needed to rob the houses.
+Config.RobberyItem = 'lockpick'         --This is the item needed to rob the houses.
 Config.LockpickBrokenChance = 80        --You can modify the chance that the item will break, if you place 0, it will never break, if you place 100, it will always break.
 
 Config.PoliceJob = {
