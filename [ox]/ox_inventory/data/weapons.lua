@@ -1185,7 +1185,7 @@ return {
 			label = 'Sniper Rifle',
 			weight = 5000,
 			durability = 0.5,
-			ammoname = 'ammo-sniper'
+			ammoname = 'snp_ammo'
 		},
 
 		['WEAPON_SNOWBALL'] = {
@@ -3532,6 +3532,10 @@ return {
 			label = 'Sniper Ammo',
 			weight = 2,
 		},
-
+		['snp_ammo'] = {
+			label = 'Sniper Ammo',
+			weight = 2,
+		},
+		
 	}
 }
