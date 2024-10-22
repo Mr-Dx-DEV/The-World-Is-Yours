@@ -214,7 +214,7 @@ Config.Locations =  {
             Ped = { model = `G_M_M_ChemWork_01`, scenario = "WORLD_HUMAN_CLIPBOARD", },
             Blip = { blipEnable = true, name = "Bottle Bank", sprite = 642, col = 2, },
         },
-        {  coords = vec4(84.01, -220.32, 54.64 , 337.89),
+        {  coords = vec4(71.343, -207.508, 54.491, 246.001),
             Ped = { model = `G_M_M_ChemWork_01`, scenario = "WORLD_HUMAN_CLIPBOARD", },
             Blip = { blipEnable = true, name = "Bottle Bank", sprite = 642, col = 2, },
         },
