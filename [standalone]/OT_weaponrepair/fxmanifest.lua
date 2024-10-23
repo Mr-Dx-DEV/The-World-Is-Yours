@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
-author 'KyrosFiveM'
-version '1.0.0'
+author 'stuxxy'
+version '1.5.1'
 lua54 'yes'
 
 shared_scripts {
@@ -11,14 +11,14 @@ shared_scripts {
 }
 
 server_scripts {
-    'server/server.lua'
+    'server.lua'
 }
 
 client_scripts {
-    'client/client.lua'
+    'client.lua'
 }
 
 escrow_ignore {
-    'config.lua'
+    '*.lua'
 }
 dependency '/assetpacks'
