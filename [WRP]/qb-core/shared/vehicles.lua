@@ -1,4 +1,4 @@
-('pdm', 'contender', 0, 95000),
+
 ('pdm', 'cruiser', 0, 1000),
 ('pdm', 'cyclone', 0, 3000000),
 ('pdm', 'cypher', 0, 2100000),
