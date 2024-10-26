@@ -12,7 +12,7 @@ Config.restaurants.mpburgershot = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(1241.0842, -367.8490, 69.0822), sprite = 106, color = 1, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(1241.0842, -367.8490, 69.0822), sprite = 106, color = 1, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(1224.916992, -366.008911, 68.0),

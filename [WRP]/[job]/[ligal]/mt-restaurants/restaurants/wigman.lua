@@ -12,7 +12,7 @@ Config.restaurants.wigman = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(-853.36, -1140.7, 6.27), sprite = 106, color = 17, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(-853.36, -1140.7, 6.27), sprite = 106, color = 17, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(-830.6, -1137.47, 7.70),

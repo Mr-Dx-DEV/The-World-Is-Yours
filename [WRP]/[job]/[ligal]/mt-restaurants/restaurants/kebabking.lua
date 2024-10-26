@@ -12,7 +12,7 @@ Config.restaurants.kebabking = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(326.49, -806.33, 29.27), sprite = 674, color = 5, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(326.49, -806.33, 29.27), sprite = 674, color = 5, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(318.55, -815.48, 29.0),

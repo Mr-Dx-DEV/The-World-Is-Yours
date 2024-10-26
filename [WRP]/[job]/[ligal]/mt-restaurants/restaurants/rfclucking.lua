@@ -12,7 +12,7 @@ Config.restaurants.rfclucking = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(-137.46, -256.82, 43.6), sprite = 89, color = 5, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(-137.46, -256.82, 43.6), sprite = 89, color = 5, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(-143.91, -288.87, 40.0),

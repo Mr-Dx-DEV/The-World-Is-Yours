@@ -12,7 +12,7 @@ Config.restaurants.ssburgershot = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(1577.48, 3746.3, 34.43), sprite = 106, color = 1, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(1577.48, 3746.3, 34.43), sprite = 106, color = 1, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(1576.78, 3723.9, 34.0),

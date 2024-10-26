@@ -12,7 +12,7 @@ Config.restaurants.lustresort = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(-576.92, 241.28, 82.7), sprite = 279, color = 1, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(-576.92, 241.28, 82.7), sprite = 279, color = 1, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(-558.9, 241.95, 82.0),

@@ -12,7 +12,7 @@ Config.restaurants.cafe = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(-1395.19, -229.73, 44.33), sprite = 106, color = 17, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(-1395.19, -229.73, 44.33), sprite = 106, color = 17, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(-1385.03, -234.32, 43.50),

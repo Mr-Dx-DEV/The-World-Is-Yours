@@ -12,7 +12,7 @@ Config.restaurants.malibuclub = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(104.88, -637.83, 31.64), sprite = 590, color = 7, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(104.88, -637.83, 31.64), sprite = 590, color = 7, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(110.73, -601.59, 31.0),

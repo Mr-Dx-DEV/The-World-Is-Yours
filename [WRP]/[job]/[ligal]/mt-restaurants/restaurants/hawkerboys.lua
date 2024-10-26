@@ -12,7 +12,7 @@ Config.restaurants.hawkerboys = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(-1390.06, -697.49, 24.53), sprite = 96, color = 6, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(-1390.06, -697.49, 24.53), sprite = 96, color = 6, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(-1358.71, -682.1, 25.0),

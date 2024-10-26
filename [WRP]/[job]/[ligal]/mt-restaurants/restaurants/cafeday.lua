@@ -12,7 +12,7 @@ Config.restaurants.cafeday = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(-509.35, -22.03, 45.61), sprite = 621, color = 41, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(-509.35, -22.03, 45.61), sprite = 621, color = 41, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(-492.75, -9.86, 45.0),

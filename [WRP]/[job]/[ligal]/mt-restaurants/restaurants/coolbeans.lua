@@ -12,7 +12,7 @@ Config.restaurants.coolbeans = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(-1208.488770, -1134.933838, 7.709276), sprite = 106, color = 41, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(-1208.488770, -1134.933838, 7.709276), sprite = 106, color = 41, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(-1203.380981, -1157.074341, 7.0),
