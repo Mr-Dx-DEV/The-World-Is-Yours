@@ -128,7 +128,7 @@ Config.Shops = {
             enabled = true, -- Enable or disable this blip
             sprite = 103, -- Blip sprite ID (https://docs.fivem.net/docs/game-references/blips/)
             color = 0, -- Blip color (https://docs.fivem.net/docs/game-references/blips/#blip-colors)
-            scale = 0.8, -- Size of blip
+            scale = 0.5, -- Size of blip
             label = 'Metal Detectors' -- Label
         }
     },
