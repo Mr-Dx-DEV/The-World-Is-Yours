@@ -4,9 +4,11 @@ Config.DebugPoly = false -- Show target polys (true or false)
 
 Config.CoffeItem = "coffee"
 
-Config.ReviveClientEvent = 'wasabi_ambulance:revive'
+Config.ReviveClientEvent = 'hospital:client:Revive'
 
 Config.Locale = "en"
+
+Config.OxInventory = false
 
 --Mr desk
 Config.MrCoord = vector4(-447.2, -291.19, 34.81, 111.64)
@@ -135,7 +137,7 @@ Config.TargetInfos = {
 -- Armory items
 Config.Items = {
     label = "Ambulance Armory",
-    slots = 8,
+    slots = 45,
     items = {
         [1] = {
             name = "radio",
@@ -147,7 +149,7 @@ Config.Items = {
         },
         [2] = {
             name = "bandage",
-            price = 10,
+            price = 50,
             amount = 10,
             info = {},
             type = "item",
@@ -155,7 +157,7 @@ Config.Items = {
         },
         [3] = {
             name = "weapon_flashlight",
-            price = 10,
+            price = 500,
             amount = 10,
             info = {},
             type = "item",
@@ -163,7 +165,7 @@ Config.Items = {
         },
         [4] = {
             name = "weapon_fireextinguisher",
-            price = 10,
+            price = 500,
             amount = 10,
             info = {},
             type = "item",
@@ -171,7 +173,7 @@ Config.Items = {
         },
         [5] = {
             name = "painkillers",
-            price = 10,
+            price = 500,
             amount = 10,
             info = {},
             type = "item",
@@ -179,7 +181,7 @@ Config.Items = {
         },
         [6] = {
             name = "emptytube",
-            price = 10,
+            price = 500,
             amount = 10,
             info = {},
             type = "item",
@@ -187,7 +189,7 @@ Config.Items = {
         },
         [7] = {
             name = "emptysyringe",
-            price = 10,
+            price = 500,
             amount = 10,
             info = {},
             type = "item",
@@ -195,30 +197,30 @@ Config.Items = {
         },
         [8] = {
             name = "emptybaggy",
-            price = 10,
+            price = 500,
             amount = 10,
             info = {},
             type = "item",
             slot = 8,
         },
         [9] = {
-            name = "medbag",
-            price = 10,
+            name = "ifaks",
+            price = 100,
             amount = 10,
             info = {},
             type = "item",
             slot = 9,
         },
         [10] = {
-            name = "medikit",
-            price = 10,
+            name = "handcuffs",
+            price = 100,
             amount = 10,
             info = {},
             type = "item",
             slot = 10,
         },
         [11] = {
-            name = "advancedlockpick",
+            name = "diving_gear",
             price = 0,
             amount = 50,
             info = {},
@@ -226,7 +228,7 @@ Config.Items = {
             slot = 11,
         },
         [12] = {
-            name = "diving_gear",
+            name = "nikon",
             price = 0,
             amount = 50,
             info = {},
@@ -234,7 +236,7 @@ Config.Items = {
             slot = 12,
         },
         [13] = {
-            name = "oxy",
+            name = "repairkit",
             price = 0,
             amount = 50,
             info = {},
@@ -242,7 +244,7 @@ Config.Items = {
             slot = 13,
         },
         [14] = {
-            name = "morphine",
+            name = "cleaningkit",
             price = 0,
             amount = 50,
             info = {},
@@ -250,229 +252,32 @@ Config.Items = {
             slot = 14,
         },
         [15] = {
-            name = "syringe",
+            name = "binoculars",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
             slot = 15,
         },
+       
         [16] = {
-            name = "nikon",
+            name = "parachute",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
             slot = 16,
         },
+        
         [17] = {
-            name = "harness",
+            name = "accesstool",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
             slot = 17,
         },
-        [18] = {
-            name = "advancedrepairkit",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 18,
-        },
-        [19] = {
-            name = "repairkit",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 19,
-        },
-        [20] = {
-            name = "cleaningkit",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 20,
-        },
-        [21] = {
-            name = "binoculars",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 21,
-        },
-        [22] = {
-            name = "armor",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 22,
-        },
-        [23] = {
-            name = "parachute",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 23,
-        },
-        [24] = {
-            name = "defib",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 24,
-        },
-        [25] = {
-            name = "accesstool",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 25,
-        },
-        [26] = {
-            name = "tylenol",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 26,
-        },
-        [27] = {
-            name = "peptobismol",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 27,
-        },
-        [28] = {
-            name = "loperamide",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 28,
-        },
-        [29] = {
-            name = "aspirin",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 29,
-        },
-        [30] = {
-            name = "ibuprofen",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 30,
-        },
-        [31] = {
-            name = "dramamine",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 31,
-        },
-        [32] = {
-            name = "covidvaccine",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 32,
-        },
-        [33] = {
-            name = "doxycycline",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 33,
-        },
-        [34] = {
-            name = "azithromycin",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 34,
-        },
-        [35] = {
-            name = "acyclovir",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 35,
-        },
-        [36] = {
-            name = "sedative",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 36,
-        },
-        [37] = {
-            name = "tweezers",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 37,
-        },
-        [38] = {
-            name = "suturekit",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 38,
-        },
-        [39] = {
-            name = "icepack",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 39,
-        },
-        [40] = {
-            name = "burncream",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 40,
-        },
-        [41] = {
-            name = "liquidheroin",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 41,
-        },
-        [42] = {
-            name = "ketamine",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 42,
-        },
+        
     }
 }
 
@@ -551,20 +356,46 @@ Config.EmsVehicles = {
 -- Npc doctor
 
 Config.NpcDoctors = {
-    {coord = vector4(312.77, -594.62, 43.28, 345.11), name = "Dr. Eric Forman"}, -- Gabz
+    {coord = vector4(312.77, -594.62, 43.28, 345.11), name = "John" }, -- Gabz
 }
 
-Config.ReviveTime = 50000
-Config.RestTime = 30000
+Config.ReviveTime = 70000
+Config.RestTime = 50000
 
-Config.NpcDoctorCost = 1000
-Config.NpcDoctorMoney = "bank" -- or "bank"
+Config.NpcDoctorCost = 150
+Config.NpcDoctorMoney = "cash" -- or "bank"
 
 Config.UseCheckOnlineDoc = true
 
 Config.Beds = {
-    ["Dr. Eric Forman"] = {
-        ["dead"] = {vector4(-1862.91, -334.58, 49.44, 326.14), vector4(-1865.74, -332.19, 49.44, 317.79)},
-        ["rest"] = {vector4(-1868.61, -330.21, 49.44, 316.49), vector4(-1872.08, -327.19, 49.44, 319.81), vector4(-1878.58, -322.15, 49.44, 317.24), vector4(-1875.07, -317.92, 49.44, 151.89), vector4(-1871.84, -320.47, 49.44, 140.84), vector4(-1868.94, -323.25, 49.44, 142.59), vector4(-1861.59, -326.36, 50.0, 207.67)}
+    ["John"] = {
+        ["dead"] = {vector4(326.84, -570.82, 43.26, 161.06), vector4(315.28, -566.61, 43.28, 155.03)},
+        ["rest"] = {vector4(307.81, -581.69, 43.2, 340.96), vector4(311.12, -583.02, 43.2, 333.79), vector4(314.52, -584.28, 43.2, 337.71), vector4(317.74, -585.4, 43.2, 337.33), vector4(322.69, -587.23, 43.2, 339.7), vector4(324.22, -582.84, 43.2, 158.46), vector4(319.32, -580.99, 43.2, 162.94)}
     },
+}
+
+
+-- Photos
+Config.MrPhotos = {
+    ["beyin"] = "https://www.hekimoglugoruntuleme.com/wp-content/uploads/2022/01/beyin-mr-fiyatlari.jpg",
+    ["kalca"] = "https://www.acikemar.info/wp-content/uploads/2023/03/kalca-mr-640x400.jpg",
+    ["tabdomen"] = "https://www.hekimoglugoruntuleme.com/wp-content/uploads/2021/12/abdominal-mr-2-300x123.png",
+    ["tchest"] = "https://greaterwaterburyimagingcenter.org/wp-content/uploads/2022/11/Chest-image-118252.png",
+    ["elbilek"] = "https://www.hekimoglugoruntuleme.com/wp-content/uploads/2022/01/el-ve-el-bilegi-mr-fiyatlari-1000x400.jpg",
+    ["omuz"] = "https://www.hekimoglugoruntuleme.com/wp-content/uploads/2022/01/omuz-mr-fiyatlari.jpg",
+    ["diz"] = "https://www.hekimoglugoruntuleme.com/wp-content/uploads/2022/01/diz-mr-fiyatlari.png",
+    ["tboyun"] = "https://www.hekimoglugoruntuleme.com/wp-content/uploads/2021/12/servikal-mr-1000x400.jpg",
+    ["hipofiz"] = "https://bosstanci.com/wp-content/uploads/2017/02/fgff.png",
+}
+
+Config.XrayPhotos = {
+    ["kafa"] = "https://www.hekimoglugoruntuleme.com/wp-content/uploads/2016/01/kafa-grafisi-fiyatlari.png",
+    ["omuz"] = "https://acilci.net/wp-content/uploads/2019/03/Posteriyor-omuz-%C3%A7%C4%B1k%C4%B1%C4%9F%C4%B1-ve-normal-g%C3%B6r%C3%BCn%C3%BCm.jpg",
+    ["humerus"] = "https://sedatseven.com.tr/image/saglik/26042021005048_humeruskirigi.jpg",
+    ["onkol"] = "https://bookacil.wordpress.com/wp-content/uploads/2015/10/f2.png",
+    ["pelvis"] = "https://www.acilci.net/wp-content/uploads/2015/10/Slide11.jpg",
+    ["femur"] = "https://www.kalcacerrahi.org/images/fas-radyoloji/1.jpg",
+    ["diz"] = "https://www.drserhatelci.com/wp-content/uploads/2021/12/2.-DIZ-PROTEZI.jpg",
+    ["ayak"] = "https://www.acilcalisanlari.com/wp-content/uploads/2023/05/ayak-bilegi-grafisi-3-yonlu.jpg",
+    ["ciger"] = "https://toraks.org.tr/site/sf/nmf/pre_migration/0e0199e61ef936c46ef0f75bebaaba56e4ec9480ab8d824a9853af3bdd0630fa.jpg",
 }
