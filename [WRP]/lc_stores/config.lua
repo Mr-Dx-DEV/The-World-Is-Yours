@@ -1087,7 +1087,7 @@ Config.market_categories = {
 		['category_buy_price'] = 750000,
 		['category_sell_price'] = 500000,
 		['items'] = {
-			['fitbit'] = {
+			--[[ ['fitbit'] = {
 				['name'] = "Fitbit",
 				['price_to_customer'] = 400,
 				['price_to_customer_min'] = 175,
@@ -1097,7 +1097,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'fitbit.png',
-			},
+			}, ]]
 			['radio'] = {
 				['name'] = "Radio",
 				['price_to_customer'] = 250,
@@ -1701,7 +1701,7 @@ Config.market_categories = {
 				['img'] = 'policepouches1.png',
 			}, ]]
 			
-			['briefcaselockpicker'] = {
+			--[[ ['briefcaselockpicker'] = {
 				['name'] = "Briefcase Lockpicker",
 				['price_to_customer'] = 20000,
 				['price_to_customer_min'] = 350,
@@ -1711,7 +1711,7 @@ Config.market_categories = {
 				['amount_to_owner'] = 1,
 				['amount_to_delivery'] = 1,
 				['img'] = 'evidence_briefcase.png',
-			},
+			}, ]]
 			
 		
 			
