@@ -12,7 +12,7 @@ Config.restaurants.bwsaloon = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(-299.55, 6255.84, 31.53), sprite = 293, color = 40, scale = 0.6, display = 4 },
+    blip = { enabled = true, coords = vec3(-299.55, 6255.84, 31.53), sprite = 293, color = 40, scale = 0.5, display = 4 },
     zone = {
         points = {
             vec3(-305.58, 6249.13, 31.0),

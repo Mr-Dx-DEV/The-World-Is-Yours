@@ -12,7 +12,7 @@ Config.restaurants.lsbeanmachine = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(112.33, -1037.91, 29.42), sprite = 106, color = 10, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(112.33, -1037.91, 29.42), sprite = 106, color = 10, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(113.35, -1021.47, 29.0),

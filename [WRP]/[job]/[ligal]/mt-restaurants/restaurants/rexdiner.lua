@@ -12,7 +12,7 @@ Config.restaurants.rexdiner = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(2543.61, 2594.64, 38.1), sprite = 739, color = 15, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(2543.61, 2594.64, 38.1), sprite = 739, color = 15, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(2558.54, 2612.07, 37.0),

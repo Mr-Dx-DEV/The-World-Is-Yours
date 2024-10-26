@@ -12,7 +12,7 @@ Config.restaurants.centrelperk = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(-1192.2, -1197.82, 7.63), sprite = 267, color = 11, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(-1192.2, -1197.82, 7.63), sprite = 267, color = 11, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(-1195.89, -1201.75, 7.0),

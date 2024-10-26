@@ -12,7 +12,7 @@ Config.restaurants.beanmachine = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(336.997070, -776.170959, 29.266912), sprite = 106, color = 10, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(336.997070, -776.170959, 29.266912), sprite = 106, color = 10, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(343.247040, -739.652161, 29.0),

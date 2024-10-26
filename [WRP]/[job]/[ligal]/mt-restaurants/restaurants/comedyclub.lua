@@ -12,7 +12,7 @@ Config.restaurants.comedyclub = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(-430.03, 260.49, 83.01), sprite = 102, color = 61, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(-430.03, 260.49, 83.01), sprite = 102, color = 61, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(-410.2, 251.88, 83.0),

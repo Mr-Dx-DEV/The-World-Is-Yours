@@ -12,7 +12,7 @@ Config.restaurants.gsupnatom = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(1801.43, 4589.51, 37.14), sprite = 76, color = 1, scale = 0.6, display = 4 },
+    blip = { enabled = false, coords = vec3(1801.43, 4589.51, 37.14), sprite = 76, color = 1, scale = 0.6, display = 4 },
     zone = {
         points = {
             vec3(1826.72, 4582.14, 36.0),
