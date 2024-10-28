@@ -431,8 +431,17 @@ return {
 			weight = 125,
 			durability = 0.1,
 		},
-
-
+		['WEAPON_PEPPERSPRAY'] = {
+			label = 'Pepper Spray',
+			weight = 125,
+			durability = 0.1,
+		},
+		['WEAPON_ANTIDOTE'] = {
+			label = 'ANTIDOTE',
+			weight = 125,
+			durability = 0.1,
+		},
+		
 
 		
 		['WEAPON_1928BAR'] = {
