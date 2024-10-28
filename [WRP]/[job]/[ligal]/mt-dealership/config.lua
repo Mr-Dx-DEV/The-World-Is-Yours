@@ -52,13 +52,13 @@ Config.importLocs = {
 
 Config.vehicleCategories = {
     { label = 'Planes', id = 'planes' },
+    { label = 'Helicopters', id = 'helicopters' },
     { label = 'Sports Classics', id = 'sportsclassics' },
     { label = 'Sedans', id = 'sedans' },
     { label = 'Compacts', id = 'compacts' },
     { label = 'Motorcycles', id = 'motorcycles' },
     { label = 'Super', id = 'super' },
     { label = 'Offroad', id = 'offroad' },
-    { label = 'Helicopters', id = 'helicopters' },
     { label = 'Coupes', id = 'coupes' },
     { label = 'Muscle', id = 'muscle' },
     { label = 'Boats', id = 'boats' },
@@ -86,7 +86,7 @@ Config.managementMenus = {
         coords = vec3(-26.4, -1104.9, 27.3),
         size = vec3(0.6, 0.7, 0.95),
         rotation = 340.0,
-        job = 'cardealer',
+        job = 'pdm',
         truckSpawnCoords = vec4(-69.8, -1084.68, 26.73, 161.65),
         vehicleCategories = {
             { label = 'Custom PDM', id = 'customspdm' },
@@ -111,7 +111,7 @@ Config.managementMenus = {
         coords = vec3(-27.2, -1107.45, 27.4),
         size = vec3(0.6, 0.75, 0.95),
         rotation = 340.0,
-        job = 'cardealer',
+        job = 'pdm',
         truckSpawnCoords = vec4(-69.8, -1084.68, 26.73, 161.65),
         vehicleCategories = {
             { label = 'Custom PDM', id = 'customspdm' },
@@ -133,6 +133,42 @@ Config.managementMenus = {
     },
 
 
+    {
+        coords = vec3(1201.2, -3178.27, 5.61),               --- truck
+        size = vec3(0.6, 0.75, 0.95),
+        rotation = 80.27,
+        job = 'truckdealership',
+        truckSpawnCoords = vec4(1196.73, -3205.27, 6.0, 80.27),
+        vehicleCategories = {
+            { label = 'Industrial', id = 'industrial' },
+            { label = 'Commercial', id = 'commercial' },
+            { label = 'Vans', id = 'vans' }
+        },
+        sellVehicleCoords = vec4(1196.73, -3205.27, 6.0, 80.27),
+    },
+    {
+        coords = vec3(-1629.99, -3163.14, 13.99),               --- air
+        size = vec3(0.6, 0.75, 0.95),
+        rotation = 324.78,
+        job = 'airdealership',
+        truckSpawnCoords = vec4(-1654.9, -3147.58, 13.99, 324.78),
+        vehicleCategories = {
+            { label = 'Planes', id = 'planes' },
+            { label = 'Helicopters', id = 'helicopters' }
+        },
+        sellVehicleCoords = vec4(-1654.9, -3147.58, 13.99, 324.78),
+    },
+    {
+        coords = vec3(-731.37, -1310.35, 5.0),               --- boat
+        size = vec3(0.6, 0.75, 0.95),
+        rotation = 139.38,
+        job = 'boatdealership',
+        truckSpawnCoords = vec4(-714.42, -1340.01, -0.18, 139.38),
+        vehicleCategories = {
+            { label = 'Boats', id = 'boats' }
+        },
+        sellVehicleCoords = vec4(-714.42, -1340.01, -0.18, 139.38),
+    },
 
 
 
@@ -141,7 +177,7 @@ Config.managementMenus = {
         coords = vec3(-71.38, 76.99, 71.62),               --- WIY
         size = vec3(0.6, 0.75, 0.95),
         rotation = 250.0,
-        job = 'cardealer',
+        job = 'wiydealership',
         truckSpawnCoords = vec4(-68.36, 82.67, 71.52, 65.74),
         vehicleCategories = {
             { label = 'oneofone', id = 'oneofone' },
@@ -162,7 +198,7 @@ Config.managementMenus = {
         coords = vec3(-21.55, -1661.68, 29.48),               --- Emergency
         size = vec3(0.6, 0.75, 0.95),
         rotation = 320.0,
-        job = 'cardealer',
+        job = 'emergencydealership',
         truckSpawnCoords = vec4(-12.99, -1639.37, 29.17, 234.67),
         vehicleCategories = {
             { label = 'emergency', id = 'emergency' }
@@ -170,6 +206,7 @@ Config.managementMenus = {
         sellVehicleCoords = vec4(-12.99, -1639.37, 29.17, 234.67),
     },
 }
+
 
 Config.catalogueLocations = {
     {
@@ -197,7 +234,7 @@ Config.catalogueLocations = {
             { label = 'Vans', id = 'vans' }
             
         },  -- All the vehicle categories that will show at catalogue
-        job = 'cardealer', -- Job that will be able to change the showroom vehicle
+        job = 'pdm', -- Job that will be able to change the showroom vehicle
     },
     {
         coords = vec3(-40.25, -1094.5, 27.55),
@@ -224,7 +261,7 @@ Config.catalogueLocations = {
             { label = 'Vans', id = 'vans' }
             
         },
-        job = 'cardealer',
+        job = 'pdm',
     },
     {
         coords = vec3(-46.95, -1095.25, 27.5),
@@ -251,7 +288,7 @@ Config.catalogueLocations = {
             { label = 'Vans', id = 'vans' }
             
         },
-        job = 'cardealer',
+        job = 'pdm',
     },
     {
         coords = vec3(-51.8, -1095.05, 27.45),
@@ -278,7 +315,7 @@ Config.catalogueLocations = {
             { label = 'Vans', id = 'vans' }
             
         },
-        job = 'cardealer',
+        job = 'pdm',
     },
     {
         coords = vec3(-51.05, -1086.9, 27.6),
@@ -305,7 +342,7 @@ Config.catalogueLocations = {
             { label = 'Vans', id = 'vans' }
             
         },
-        job = 'cardealer',
+        job = 'pdm',
     },
 
 
@@ -332,14 +369,56 @@ Config.catalogueLocations = {
             { label = 'IMPORT', id = 'import' },
             { label = 'ADMINONLY', id = 'adminonly' }
         },
-        job = 'cardealer',
+        job = 'wiydealership',
     },
 
+    {
+        coords = vec3(-1654.9, -3147.58, 13.99),      -- air
+        size = vec3(0.8, 1.0, 0.9),
+        rotation = 327.78,
+        vehicleLoc = vec4(-1654.9, -3147.58, 13.99, 324.78),
+        vehicle = 't20',
+        vehicleColor = 134,
+        vehicleID = 'airdealership', -- THIS NEEDS TO BE UNIQUE!!!!
+        testDriveLoc = vec4(-1654.9, -3147.58, 13.99, 324.78),
+        vehicleCategories = {
+            { label = 'Planes', id = 'planes' },
+            { label = 'Helicopters', id = 'helicopters' }
+        },
+        job = 'airdealership',
+    },
+    {
+        coords = vec3(1196.73, -3205.27, 6.0),      -- truck
+        size = vec3(0.8, 1.0, 0.9),
+        rotation = 320,
+        vehicleLoc = vec4(1196.73, -3205.27, 6.0, 80.27),
+        vehicle = 't20',
+        vehicleColor = 134,
+        vehicleID = 'TruckVehicle', -- THIS NEEDS TO BE UNIQUE!!!!
+        testDriveLoc = vec4(1196.73, -3205.27, 6.0, 80.27),
+        vehicleCategories = {
+            { label = 'Industrial', id = 'industrial' },
+            { label = 'Commercial', id = 'commercial' },
+            { label = 'Vans', id = 'vans' }
+        },
+        job = 'truckdealership',
+    },
 
-
-
-
-
+    
+    {
+        coords = vec3(-714.42, -1340.01, -0.18),      -- boat
+        size = vec3(0.8, 1.0, 0.9),
+        rotation = 139.38,
+        vehicleLoc = vec4(-714.42, -1340.01, -0.18, 139.38),
+        vehicle = 't20',
+        vehicleColor = 134,
+        vehicleID = 'EmergencyVehicle', -- THIS NEEDS TO BE UNIQUE!!!!
+        testDriveLoc = vec4(-714.42, -1340.01, -0.18, 139.38),
+        vehicleCategories = {
+            { label = 'Boats', id = 'boats' }
+        },
+        job = 'boatdealership',
+    },
     {
         coords = vec3(-38.8, -1671.42, 29.48),      -- Emergency
         size = vec3(0.8, 1.0, 0.9),
@@ -352,7 +431,7 @@ Config.catalogueLocations = {
         vehicleCategories = {
             { label = 'emergency', id = 'emergency' }
         },
-        job = 'cardealer',
+        job = 'emergencydealership',
     },
 }
 
@@ -360,4 +439,8 @@ Config.blips = {
     { label = 'Premium Deluxe Motorsports', color = 12, sprite = 326, display = 4, scale = 0.6, coords = vec3(-47.89, -1105.21, 27.26) },
     { label = 'WIY DealerShip', color = 12, sprite = 326, display = 4, scale = 0.6, coords = vec3(-64.04, 73.81, 71.62) },
     { label = 'Emergency DealerShip', color = 12, sprite = 326, display = 4, scale = 0.6, coords = vec3(-38.8, -1671.42, 29.48) },
+
+    { label = 'Boats DealerShip', color = 12, sprite = 326, display = 4, scale = 0.6, coords = vec3(-714.42, -1340.01, -0.18) },
+    { label = 'Truck DealerShip', color = 12, sprite = 326, display = 4, scale = 0.6, coords = vec3(1196.73, -3205.27, 6.0) },
+    { label = 'Air DealerShip', color = 12, sprite = 326, display = 4, scale = 0.6, coords = vec3(-1654.9, -3147.58, 13.99) },
 }
