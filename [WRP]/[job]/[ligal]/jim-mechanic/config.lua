@@ -24,7 +24,7 @@ Config = {
 		JobLocationRequired = true, -- Are the mecahanics locked to specific locations?
 		LocationBlips = true, 		-- Enable to grab the blip locations from locations.lua
 		CosmeticsJob = false, 		-- Do vehicle cosmetics require a mechanic job role?
-		JobRoles = { "mechanic", "kittys", }, -- These are the job roles who can use items if RequiresJob is enabled.
+		JobRoles = { "mechanic", "kittys", "mosleys", }, -- These are the job roles who can use items if RequiresJob is enabled.
 									-- Add your extra job roles here or just leave as "mechanic"
 									-- Example-- --JobRoles = { "mechanic", "tuner" }
 	},
@@ -345,6 +345,8 @@ Config = {
 			["ambulance"] = 0,
 			["mechanic"] = 0,
 			["kittys"] = 0,
+			["mosleys"] = 0,
+			
 		},
 		LockEmergency = false,  -- Enable this to lock make only "Emergency" (Class 18) vehicles to be used with the bench
 		Locations = {

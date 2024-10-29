@@ -64,3 +64,67 @@ Config.Locations[#Config.Locations+1] = { --[[ GABZ ALTA STREET BENNYS ]]--
 		color = 16711680,
 	}
 }
+
+
+Config.Locations[#Config.Locations+1] = { --[[ GABZ ALTA STREET BENNYS ]]--
+	Enabled = true,
+	job = "mosleys",
+	zones = {
+		vec2(-21.942, -1630.619),
+		vec2(-71.221, -1685.383),
+		vec2(-56.687, -1705.98),
+		vec2(23.215, -1671.199)
+		
+	},
+	autoClock = { enter = true, exit = true, },
+	stash = {
+		{ coords = vec4(-5.88, -1660.17, 29.48, 320.0), w = 1.0, d = 4.0, },
+		
+	},
+	store = {
+		{ coords = vec4(-8.42, -1657.98, 29.48, 320.0), w = 1.0, d = 3.0 },
+		
+	},
+	crafting = {
+		{ coords = vec4(0.0, 0.0, 0.0, 0.0), w = 2.0, d = 1.0 },
+		
+	},
+	clockin = {
+		{ coords = vec4(-14.93, -1662.66, 29.48, 50.0), prop = false },
+	},
+	manualRepair = {
+		{ coords = vec4(-19.49, -1682.75, 29.45, 17.26), prop = true, },
+	},
+	carLift = {
+        { coords = vec4(-7.05, -1674.42, 29.83, 200.58), useMLOLift = false },
+        { coords = vec4(-10.94, -1676.32, 29.83, 200.16), useMLOLift = false },
+    },
+	garage = {
+		spawn = vec4(-31.66, -1677.67, 29.47, 142.88),
+		out = vec4(-25.44, -1673.35, 29.49, 139.31),
+		list = { "towtruck", "panto", "slamtruck", "cheburek", "utillitruck3" },
+		prop = true
+	},
+	payments = {
+		img = "https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png",
+		{ coords = vec4(-15.16, -1660.66, 33.04, 50.0), prop = false },
+	},
+	Restrictions = {
+		Vehicle = { "Compacts", "Sedans", "SUVs", "Coupes", "Muscle", "Sports Classics", "Sports", "Super", "Motorcycles", "Off-road", "Industrial", "Utility", "Vans", "Cycles", "Service", "Emergency", "Commercial", },
+		Allow = { "tools", "cosmetics", "repairs", "nos", "perform" },
+	},
+	blip = {
+		coords = vec3(-16.43, -1673.17, 29.48),
+		label = "Mosley's Customs",
+		color = 1,
+		sprite = 446,
+		disp = 6,
+		scale = 0.7,
+		cat = nil,
+		previewImg = "https://i.imgur.com/kKC2Mw2.png",
+	},
+	discord = {
+		link = "",
+		color = 16711680,
+	}
+}
