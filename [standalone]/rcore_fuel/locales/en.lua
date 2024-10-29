@@ -53,7 +53,7 @@ Locales["en"] = {
     ["bought_property_title_no_money"] = "You don't have enough money",
 
     ["your_company_blip"] = "Your company",
-    ["for_sale_company_blip"] = "Fuel station for sale",
+    ["for_sale_company_blip"] = "Fuel station",
 
     -- fuel pump notif
     ["vehicle_is_full"] = "This vehicle you're trying to refuel is full!",

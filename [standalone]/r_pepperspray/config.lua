@@ -24,10 +24,10 @@ Config = {
     For QBCore: https://docs.rytrak.fr/framework-compatibility/add-a-custom-weapon-on-qbcore
                                           IMPORTANT
     ---------------------------------------------------------------------------------*/
-    UseFramework = true,
+    UseFramework = false,
 
     AcePermission = { -- Use of the ace permission system (you can modify this function on cl_utils.lua)
-        enabled = true,
+        enabled = false,
         permission = 'pepperspray'
     },
 
@@ -48,6 +48,8 @@ Config = {
         vector3(1840.7, 2575.99, 46.01), --sadoc prison
         vector3(1696.62, 4879.0, 42.3), --safw HQ grapeseed 
         vector3(-1299.62, -557.64, 30.57), --ss gov office
+        vector3(-323.72, -1465.74, 30.55),
+        vector3(-313.63, -1461.49, 30.54),
     },
     RechargeRadius = 3.0, -- Distance to recharge
 
@@ -69,19 +71,19 @@ Config = {
         ['pepperspray'] = {
             weapon = `WEAPON_PEPPERSPRAY`, -- Model of the weapon for the spray
             requiredJob = { -- Job required to recover this gas (this configuration is enabled when you activate ESX or QB above)
-    'police', 
-    'lspd',
-    'bcso',
-    'lsso',
-    'safw',
-    'sahp',
-    'sadoc',
-    'fbi',
-    'dhs',
-    'usms',
-    'ss',
-},
-
+            'police', 
+            'lspd',
+            'bcso',
+            'lsso',
+            'safw',
+            'sahp',
+            'sadoc',
+            'fbi',
+            'dhs',
+            'usms',
+            'ss'
+                
+            },
 
             sprayQuantity = 500, -- Quantity of spray
             sprayDescent = 10, -- Time in milliseconds to lower the recovery rate (The higher the number, the longer the time)
@@ -90,9 +92,9 @@ Config = {
 
             gasDescent = 500, -- Rate of descent of the progress bar
 
-            splitEnabled = true, -- Active or not to spit
-            splitDescent = 5, -- How many percent when you spit the recovery rate will decrease
-            splitTimeout = 10000, -- Time in milliseconds to spit again
+            spitEnabled = true, -- Active or not to spit
+            spitDescent = 5, -- How many percent when you spit the recovery rate will decrease
+            spitTimeout = 10000, -- Time in milliseconds to spit again
 
             rubbingEnabled = true, -- Active or not for rubbing the eyes
             rubbingDescent = 2.0, -- The above descentSpeed will be divided into this number when you rub your eyes
@@ -131,7 +133,7 @@ Config = {
                 },
                 [`mp_f_freemode_01`] = { -- Female
                     [1] = {},
-                    [1] = {}
+                    [2] = {}
                 }
             }
         }
@@ -141,21 +143,19 @@ Config = {
         command = 'antidote', -- Command to recover the decontamination spray (you can modify the command from cl_utils.lua)
         weapon = `WEAPON_ANTIDOTE`, -- Decontamination spray weapon
         requiredJob = { -- Job required to recover this gas (this configuration is enabled when you activate ESX or QB above)
-    'police',
-    'sheriff',
-    'fbi',
-    'ambulance',
-    'lspd',
-    'bcso',
-    'sahp',
-    'lsso',
-    'safw',
-    'sadoc',
-    'usms',
-    'dhs',
-    'ss'
-},
-
+            'police', 
+            'lspd',
+            'bcso',
+            'lsso',
+            'safw',
+            'sahp',
+            'sadoc',
+            'fbi',
+            'dhs',
+            'usms',
+            'ss'
+                
+            },
 
         decontaminationQuantity = 100, -- Quantity of decontamination spray
         decontaminationDescent = 10, -- Time in milliseconds to lower the recovery rate (The higher the number, the longer the time)
@@ -182,8 +182,8 @@ Config.Design = {
 
 -- https://docs.fivem.net/docs/game-references/controls/
 Config.Keys = {
-    SplitKey = 47, -- Key to spit
-    SplitKeyString = '~INPUT_DETONATE~', -- Key string to spit
+    SpitKey = 47, -- Key to spit
+    SpitKeyString = '~INPUT_DETONATE~', -- Key string to spit
 
     RubbingKey = 104, -- Key to rub the eyes
     RubbingKeyString = '~INPUT_VEH_SHUFFLE~', -- Key string to rub the eyes
@@ -196,14 +196,14 @@ Config.Keys = {
 Config.Languages = {
     ['en'] = {
         ['quantity'] = 'You have ~b~{s}ml',
-        ['split'] = 'To spit press '..Config.Keys.SplitKeyString,
+        ['spit'] = 'To spit press '..Config.Keys.SpitKeyString,
         ['rubbing'] = 'Rubbing the eyes press '..Config.Keys.RubbingKeyString,
         ['replacepepperspray'] = 'Replace your pepper spray press '..Config.Keys.ReplaceKeyString,
         ['replacedecontamination'] = 'Replace your decontamination spray press '..Config.Keys.ReplaceKeyString
     },
     ['fr'] = {
         ['quantity'] = 'Il vous reste ~b~{s}ml',
-        ['split'] = 'Pour cracher presse '..Config.Keys.SplitKeyString,
+        ['spit'] = 'Pour cracher presse '..Config.Keys.SpitKeyString,
         ['rubbing'] = 'Pour se frotter les yeux presse '..Config.Keys.RubbingKeyString,
         ['replacepepperspray'] = 'Remplacer la gazeuse presse '..Config.Keys.ReplaceKeyString,
         ['replacedecontamination'] = 'Changer de décontaminant presse '..Config.Keys.ReplaceKeyString
