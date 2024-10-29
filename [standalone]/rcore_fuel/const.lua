@@ -1,22 +1,22 @@
 TargetType = {
-    NO_TARGET = 0,
-    Q_TARGET = 1,
-    BT_TARGET = 2,
-    QB_TARGET = 3,
+--    NO_TARGET = 0,
+--   Q_TARGET = 1,
+--    BT_TARGET = 2,
+--    QB_TARGET = 3,
     OX_TARGET = 4
 }
 
 Inventory = {
     AUTOMATIC = 0,
     OX = 1,
-    QS = 2,
-    MF = 3,
-    PS = 4,
-    LJ = 5,
-    CORE = 6,
+--    QS = 2,
+--    MF = 3,
+--    PS = 4,
+--    LJ = 5,
+--    CORE = 6,
 
 
-    ESX = 100,
+--    ESX = 100,
     QB = 101,
 }
 
@@ -33,18 +33,18 @@ MeasurementTypes = {
 
 InventoryResourceNames = {
     [Inventory.OX] = "ox_inventory",
-    [Inventory.QS] = "qs-inventory",
-    [Inventory.MF] = "mf-inventory",
-    [Inventory.PS] = "ps-inventory",
-    [Inventory.LJ] = "lj-inventory",
-    [Inventory.CORE] = "core_inventory",
+ --   [Inventory.QS] = "qs-inventory",
+ --   [Inventory.MF] = "mf-inventory",
+  --  [Inventory.PS] = "ps-inventory",
+  --  [Inventory.LJ] = "lj-inventory",
+ --   [Inventory.CORE] = "core_inventory",
 }
 
 TargetTypeResourceName = {
-    [TargetType.NO_TARGET] = "none",
-    [TargetType.Q_TARGET] = "qtarget",
-    [TargetType.BT_TARGET] = "bt-target",
-    [TargetType.QB_TARGET] = "qb-target",
+  --  [TargetType.NO_TARGET] = "none",
+ --   [TargetType.Q_TARGET] = "qtarget",
+  --  [TargetType.BT_TARGET] = "bt-target",
+   -- [TargetType.QB_TARGET] = "qb-target",
     [TargetType.OX_TARGET] = "ox_target"
 }
 

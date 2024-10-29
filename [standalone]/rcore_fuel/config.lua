@@ -74,7 +74,7 @@ Config.KeyForTargetSystem = 19
 -- Inventory.PS        = ps_inventory
 -- Inventory.LJ        = lj_inventory
 -- Inventory.CORE      = core_inventory
-Config.InventorySystem = Inventory.AUTOMATIC
+Config.InventorySystem = Inventory.OX
 
 -- Measurement system
 -- metric    = MeasurementUnits.METRIC
