@@ -258,6 +258,12 @@ Crafting = {
 			{ ["rollcage"] = { ["steel"] = 1, },
 				["amount"] = 1,
 			},
+			{ ["radiocar"] = { ["steel"] = 5, },
+				["amount"] = 1,
+			},
+			{ ["radiocar_blue"] = { ["steel"] = 5, },
+				["amount"] = 1,
+			},
 		},
 	},
 }
