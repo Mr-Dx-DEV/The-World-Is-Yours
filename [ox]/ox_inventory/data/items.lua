@@ -1,6 +1,97 @@
 return {
 
-
+---- sabotage
+ ['spanner'] = {
+     label = 'Spanner',
+     weight = 1000,
+     stack = true,
+     close = true,
+     description = nil
+ },
+ ['firelighter'] = {
+     label = 'Firelighters',
+     weight = 500,
+     stack = false,
+     close = true,
+     description = nil
+ },
+ ['adjustable_spanner'] = {
+     label = 'Spanner',
+     weight = 1000,
+     stack = true,
+     close = true,
+     description = nil
+ },
+ ['drill'] = {
+     label = 'Drill',
+     weight = 3000,
+     stack = true,
+     close = true,
+     description = nil
+ },
+ ['buzz_saw'] = {
+     label = 'Buzz Saw',
+     weight = 6000,
+     stack = true,
+     close = true,
+     description = nil
+ },
+ ['impact_driver'] = {
+     label = 'Impact Driver',
+     weight = 4000,
+     stack = true,
+     close = true,
+     description = nil
+ },
+ ['pliers'] = {
+     label = 'Pliers',
+     weight = 1000,
+     stack = true,
+     close = true,
+     description = nil
+ },
+ ['impact_bomb'] = {
+     label = 'Impact Explosive',
+     weight = 3000,
+     stack = true,
+     close = true,
+     description = nil
+ },
+ ['ignition_bomb'] = {
+     label = 'Ignition Explosive',
+     weight = 3000,
+     stack = true,
+     close = true,
+     description = nil
+ },
+ ['remote_bomb'] = {
+     label = 'Remote Explosive',
+     weight = 3000,
+     stack = true,
+     close = true,
+     description = nil
+ },
+ ['phone_bomb'] = {
+     label = 'Detonator Device',
+     weight = 1000,
+     stack = false,
+     close = true,
+     description = nil
+ },
+ ['speed_bomb'] = {
+     label = 'Speed Bomb',
+     weight = 1000,
+     stack = false,
+     close = true,
+     description = nil
+ },
+ ['screwdriver'] = {
+     label = 'Screwdriver',
+     weight = 1000,
+     stack = false,
+     close = true,
+     description = nil
+ },
 	--- boii_hunting
     ['hide_shark'] = {
         label = 'Shark Hide',
@@ -14640,28 +14731,24 @@ return {
 			image = "torso.png",
 		}
 	},
-
-	["car_door"] = {
-		label = "car door part",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "...",
-		client = {
-			image = "car_door.png",
-		}
-	},
-
-	["car_wheel"] = {
-		label = "car wheel",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "...",
-		client = {
-			image = "car_wheel.png",
-		}
-	},
+	["car_door"] = {label = "car door",weight = 100,stack = true,close = false,description = "",client = {	image = "car_door.png",}
+},
+["car_wheel"] = {label = "car wheel",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_wheel.png",}
+},
+["car_battery"] = {label = "car battery",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_battery.png",}
+},
+["car_gearbox"] = {label = "car gearbox",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_gearbox.png",}
+},
+["car_radiator"] = {label = "car radiator",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_radiator.png",}
+},
+["car_scrap"] = {label = "car scrap",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_scrap.png",}
+},
+["car_hood"] = {label = "car hood",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_hood.png",}
+},
+["car_trunk"] = {label = "car trunk",weight = 100,stack = true,close = false,description = " :D",client = {	image = "car_trunk.png",}
+},
+["chop_contract"] = {label = "chop_contract",weight = 100,stack = true,close = false,description = " :D",client = {	image = "chop_contract.png",}
+},
 
 	["juice"] = {
 		label = "Juice",
@@ -15014,16 +15101,7 @@ return {
 		}
 	},
 
-	["car_radiator"] = {
-		label = "car radiator",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "...",
-		client = {
-			image = "car_radiator.png",
-		}
-	},
+	
 
 	["burger-torpedo"] = {
 		label = "Torpedo",
@@ -15962,16 +16040,6 @@ return {
 		}
 	},
 
-	["car_gearbox"] = {
-		label = "car gearbox ",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "...",
-		client = {
-			image = "car_gearbox.png",
-		}
-	},
 
 	["cormorantbeak"] = {
 		label = "Cormorant Beak",
@@ -16017,17 +16085,7 @@ return {
 		}
 	},
 
-	["car_scrap"] = {
-		label = "car scrap",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "...",
-		client = {
-			image = "car_scrap.png",
-		}
-	},
-
+	
 	["emp_flower_box"] = {
 		label = "Empty Flower Box",
 		weight = 70,
@@ -16138,16 +16196,7 @@ return {
 		}
 	},
 
-	["car_hood"] = {
-		label = "car hood",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "...",
-		client = {
-			image = "car_hood.png",
-		}
-	},
+	
 
 	["car_battery"] = {
 		label = "car battery",
@@ -16292,16 +16341,7 @@ return {
 		}
 	},
 
-	["car_trunk"] = {
-		label = "car trunk",
-		weight = 500,
-		stack = true,
-		close = true,
-		description = "...",
-		client = {
-			image = "car_trunk.png",
-		}
-	},
+	
 
 	["weed_blunt"] = {
 		label = "Blunt",
@@ -16829,16 +16869,7 @@ return {
 		}
 	},
 
-	["chop_contract"] = {
-		label = "chop_contract",
-		weight = 0,
-		stack = false,
-		close = true,
-		description = "chop_contract..",
-		client = {
-			image = "chop_contract.png",
-		}
-	},
+	
 
 	["finewood"] = {
 		label = "finewood",
