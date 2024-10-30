@@ -82,7 +82,7 @@ Config.vehicleCategories = {
 
 
 Config.managementMenus = {
-    {
+    --[[ {
         coords = vec3(-26.4, -1104.9, 27.3),
         size = vec3(0.6, 0.7, 0.95),
         rotation = 340.0,
@@ -131,7 +131,7 @@ Config.managementMenus = {
         },
         sellVehicleCoords = vec4(-23.64, -1094.87, 27.30, 340.59),
     },
-
+ ]]
 
     {
         coords = vec3(1201.2, -3178.27, 5.61),               --- truck
@@ -209,7 +209,7 @@ Config.managementMenus = {
 
 
 Config.catalogueLocations = {
-    {
+    --[[ {
         coords = vec3(-38.9, -1100.3, 27.6), -- Catalogue interaction target location
         size = vec3(0.8, 1.0, 0.9), -- Catalogue interaction target size
         rotation = 19.0, -- Catalogue interaction target rotation
@@ -343,7 +343,7 @@ Config.catalogueLocations = {
             
         },
         job = 'pdm',
-    },
+    }, ]]
 
 
 
@@ -436,7 +436,7 @@ Config.catalogueLocations = {
 }
 
 Config.blips = {
-    { label = 'Premium Deluxe Motorsports', color = 12, sprite = 326, display = 4, scale = 0.6, coords = vec3(-47.89, -1105.21, 27.26) },
+  --  { label = 'Premium Deluxe Motorsports', color = 12, sprite = 326, display = 4, scale = 0.6, coords = vec3(-47.89, -1105.21, 27.26) },
     { label = 'WIY DealerShip', color = 12, sprite = 326, display = 4, scale = 0.6, coords = vec3(-64.04, 73.81, 71.62) },
     { label = 'Emergency DealerShip', color = 12, sprite = 326, display = 4, scale = 0.6, coords = vec3(-38.8, -1671.42, 29.48) },
 
