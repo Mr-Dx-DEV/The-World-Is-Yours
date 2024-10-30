@@ -180,10 +180,12 @@ return {
 			{ name = 'WEAPON_PDP88', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'WEAPON_PDHK45', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'WEAPON_PDHK33', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
-			{ name = 'WEAPON_PDHKUSP', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 }
+			{ name = 'WEAPON_PDHKUSP', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			
 
-
+			{ name = 'WEAPON_PEPPERSPRAY', price = 500, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			{ name = 'WEAPON_ANTIDOTE', price = 200, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 }
+			
 
 
 		},
