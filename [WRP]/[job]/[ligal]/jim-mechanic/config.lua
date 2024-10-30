@@ -3,7 +3,7 @@ Config = {
 	System = {
 		Debug = false, -- Set to true to show green debug boxes to help track any issues
 
-		Menu = "qb",  				-- "qb", "ox", "gta"
+		Menu = "ox",  				-- "qb", "ox", "gta"
 		Notify = "qb",				-- "qb", "ox", "gta", "esx"
 		ProgressBar = "qb", 		-- "qb", "ox", "gta", "esx"
 
