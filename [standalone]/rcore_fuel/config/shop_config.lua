@@ -2124,7 +2124,7 @@ Config.ShopList = {
         enableBlip = true,
         blipScale = 0.5,
         blipPosition = vec3(-1234.913086, -2281.494385, 12.944557),
-        blipSprite = 307,
+        blipSprite = 361,
         blipName = "Airplanes Fuel pump",
 
         -- boss marker for the owner of the company
