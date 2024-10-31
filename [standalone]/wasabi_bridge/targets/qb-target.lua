@@ -110,6 +110,14 @@ function WSB.target.removeTarget(id)
     exports['qb-target']:RemoveZone(id)
 end
 
+function WSB.target.disable(bool)
+    return exports['qb-target']:AllowTargeting(bool)
+end
+
+function WSB.disableTarget(bool)
+    return exports['qb-target']:AllowTargeting(bool)
+end
+
 local function resourceStopped(resource)
     for targetType, targets in pairs(ActiveTargets) do
         for resourceName, targetData in pairs(targets) do
@@ -155,4 +163,5 @@ function WSB.target.removeZone(id)
     if not id then return end
     WSB.target.removeTarget(id)
 end
+
 -- END: Compatibility for older versions of Wasabi Scripts, will remove in future --
