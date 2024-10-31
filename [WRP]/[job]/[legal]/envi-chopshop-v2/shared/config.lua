@@ -24,10 +24,10 @@ Config.DropToolsKey = 73 -- Key to drop the tools [Default: X]
 
 -- Cool Down Time
 Config.CooldownTime = 30 -- Time in minutes before you can chop another vehicle
-Config.ShowTimeRemaining = true -- Shows a notification with the time remaining until you can chop another vehicle
+Config.ShowTimeRemaining = false -- Shows a notification with the time remaining until you can chop another vehicle
 
 -- Contract Settings
-Config.SpecialContractCooldown = 60 -- Time in minutes before you can generate another contract
+Config.SpecialContractCooldown = 5 -- Time in minutes before you can generate another contract
 Config.ContractItem = 'chop_contract' -- Item to receive when generating a contract
 Config.ContractCompleteBonus = 5000 -- Bonus for completing a contract
 
@@ -114,7 +114,7 @@ Config.ChopShops = { -- Add as many as you need
 
 Config.TargetDistance = 1.2 -- Distance to show the target options
 
-Config.HardcoreMode = false -- Set to true to enable PLAYER OWNED VEHICLE CHOPPING
+Config.HardcoreMode = true -- Set to true to enable PLAYER OWNED VEHICLE CHOPPING
 -- [IMPORTANT - PLEASE READ] -- 
 -- [IF NOT USING QB/QBOX OR ESX THIS WILL REQUIRE YOU TO CODE YOUR OWN LOGIC IN THE SERVER_EDIT.LUA FILE FOR CHECKING OWNERSHIP AND IF YOU WANT TO DELETE, OR RETURN THE VEHICLE TO THE IMPOUND ETC ]
 -- EDIT envi-chopshop:isVehOwned AND HardcoreChopComplete()
