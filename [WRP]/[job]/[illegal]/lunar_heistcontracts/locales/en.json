@@ -40,6 +40,16 @@
     "large_drill_description": "A powerful drill used to open deposit boxes.",
     "signal_booster_description": "Boosts signal strength to hack car key fob signals.",
     "bomb_c4_description": "A very strong explosive that is able to blow up the most secure vaults.",
+
+"speed_bomb_description": "A very strong explosive that is able to blow up the most secure vaults.",
+"phone_bomb_description": "A very strong explosive that is able to blow up the most secure vaults.",
+"remote_bomb_description": "A very strong explosive that is able to blow up the most secure vaults.",
+"ignition_bomb_description": "A very strong explosive that is able to blow up the most secure vaults.",
+"impact_bomb_description": "A very strong explosive that is able to blow up the most secure vaults.",
+"firelighter_description": "A very strong explosive that is able to blow up the most secure vaults.",
+
+
+
     "weapon_pistol_description": "A reliable handgun for self-defense and tactical operations.",
     "weapon_combatpistol_description": "A pistol designed for high-stress situations, providing extra firepower.",
     "contract_not_available": "This contract is no longer available.",

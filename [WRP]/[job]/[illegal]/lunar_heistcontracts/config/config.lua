@@ -124,6 +124,15 @@ Config.ped = {
        -- { name = 'weapon_pistol', description = locale('weapon_pistol_description'), price = { money = 12500, crypto = 500 }, stock = 2, chance = 25 },
         { name = 'weapon_combatpistol', description = locale('weapon_combatpistol_description'), price = { money = 17500, crypto = 750 }, stock = 2, chance = 25 },
 
+
+        { name = 'speed_bomb', description = locale('speed_bomb_description'), price = { money = 45000, crypto = 1500 }, stock = 5 },
+        { name = 'phone_bomb', description = locale('phone_bomb_description'), price = { money = 25000, crypto = 1500 }, stock = 5 },
+        { name = 'remote_bomb', description = locale('remote_bomb_description'), price = { money = 30000, crypto = 1200 }, stock = 5 },
+        { name = 'ignition_bomb', description = locale('ignition_bomb_description'), price = { money = 40000, crypto = 1300 }, stock = 5 },
+        { name = 'impact_bomb', description = locale('impact_bomb_description'), price = { money = 30000, crypto = 1500 }, stock = 5 },
+        { name = 'firelighter', description = locale('firelighter_description'), price = { money = 15000, crypto = 1100 }, stock = 5 },
+
+
     },--
     sellAccount = 'money',
     ---@type ShopSellItem[]
