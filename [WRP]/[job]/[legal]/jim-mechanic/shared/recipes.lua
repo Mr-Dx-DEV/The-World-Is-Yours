@@ -75,6 +75,51 @@ Crafting = {
 					["job"] = { ["mechanic"] = 4, ["tuner"] = 4, }
 				},
 					-- Example : Delete me --
+
+
+
+
+			{ ["spanner"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			{ ["firelighter"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			{ ["adjustable_spanner"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			{ ["drill"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			{ ["buzz_saw"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			{ ["impact_driver"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			{ ["pliers"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			--[[ { ["impact_bomb"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			{ ["ignition_bomb"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			{ ["remote_bomb"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			{ ["phone_bomb"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			{ ["speed_bomb"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			}, ]]
+			{ ["screwdriver"] = { ["rubber"] = 1, },
+				["amount"] = 1,
+			},
+			
+
 		},
 	},
 	Perform = {
