@@ -9898,78 +9898,7 @@ return {
 			export = 'rcore_itemradio.radiocar',
 		},
 	},
-	-- envi-sabotage
-	['spanner'] = {
-		label = 'Spanner',
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = nil
-	},
-	['firelighter'] = {
-		label = 'Firelighters',
-		weight = 500,
-		stack = false,
-		close = true,
-		description = nil
-	},
-	['adjustable_spanner'] = {
-		label = 'Spanner',
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = nil
-	},
-
-	['buzz_saw'] = {
-		label = 'Buzz Saw',
-		weight = 6000,
-		stack = true,
-		close = true,
-		description = nil
-	},
-	['impact_driver'] = {
-		label = 'Impact Driver',
-		weight = 4000,
-		stack = true,
-		close = true,
-		description = nil
-	},
-	['pliers'] = {
-		label = 'Pliers',
-		weight = 1000,
-		stack = true,
-		close = true,
-		description = nil
-	},
-	['impact_bomb'] = {
-		label = 'Impact Explosive',
-		weight = 3000,
-		stack = true,
-		close = true,
-		description = nil
-	},
-	['ignition_bomb'] = {
-		label = 'Ignition Explosive',
-		weight = 3000,
-		stack = true,
-		close = true,
-		description = nil
-	},
-	['remote_bomb'] = {
-		label = 'Remote Explosive',
-		weight = 3000,
-		stack = true,
-		close = true,
-		description = nil
-	},
-	['phone_bomb'] = {
-		label = 'Detonator Device',
-		weight = 1000,
-		stack = false,
-		close = true,
-		description = nil
-	},
+	
 	["trap_phone"] = {
 		label = "V Phone",
 		weight = 1000,
