@@ -1156,7 +1156,7 @@ Config.market_categories = {
 				['img'] = 'boombox.png',
 			},
 			['contracts_tablet'] = {
-				['name'] = "Contract Tablet",
+				['name'] = "Tablet",
 				['price_to_customer'] = 80000,
 				['price_to_customer_min'] = 75000,
 				['price_to_customer_max'] = 90000,
@@ -1482,7 +1482,7 @@ Config.market_categories = {
 			
 			['bandage'] = {
 				['name'] = "Bandage",
-				['price_to_customer'] = 1000,
+				['price_to_customer'] = 100,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 315,
