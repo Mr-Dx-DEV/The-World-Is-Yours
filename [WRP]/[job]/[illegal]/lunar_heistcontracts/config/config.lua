@@ -131,6 +131,14 @@ Config.ped = {
         { name = 'ignition_bomb', description = locale('ignition_bomb_description'), price = { money = 40000, crypto = 1300 }, stock = 5 },
         { name = 'impact_bomb', description = locale('impact_bomb_description'), price = { money = 30000, crypto = 1500 }, stock = 5 },
         { name = 'firelighter', description = locale('firelighter_description'), price = { money = 15000, crypto = 1100 }, stock = 5 },
+        { name = 'WEAPON_ILLGLOCK17', description = locale('glock17_description'), price = { money = 15000, crypto = 500 }, stock = 5 },
+        { name = 'WEAPON_BSCAR', description = locale('scar_description'), price = { money = 20000, crypto = 500 }, stock = 5 },
+        { name = 'WEAPON_BAR15', description = locale('ar15_description'), price = { money = 20000, crypto = 500 }, stock = 5 },
+        { name = 'WEAPON_P30L', description = locale('p30l_description'), price = { money = 10000, crypto = 100 }, stock = 5 },
+        { name = 'Heavy Armor', description = locale('heavy_armor_description'), price = { money = 10000, crypto = 100 }, stock = 5 },
+        { name = 'WEAPON_TEC9S', description = locale('tec9_description'), price = { money = 15000, crypto = 350 }, stock = 5 },
+        { name = 'Weapon_compactrifle', description = locale('compactrifle_description'), price = { money = 18000, crypto = 300 }, stock = 5 },
+
 
 
     },--

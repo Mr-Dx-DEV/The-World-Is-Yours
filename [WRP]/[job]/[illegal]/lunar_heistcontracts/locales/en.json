@@ -41,12 +41,21 @@
     "signal_booster_description": "Boosts signal strength to hack car key fob signals.",
     "bomb_c4_description": "A very strong explosive that is able to blow up the most secure vaults.",
 
-"speed_bomb_description": "A very strong explosive that is able to blow up the most secure vaults.",
-"phone_bomb_description": "A very strong explosive that is able to blow up the most secure vaults.",
-"remote_bomb_description": "A very strong explosive that is able to blow up the most secure vaults.",
-"ignition_bomb_description": "A very strong explosive that is able to blow up the most secure vaults.",
-"impact_bomb_description": "A very strong explosive that is able to blow up the most secure vaults.",
-"firelighter_description": "A very strong explosive that is able to blow up the most secure vaults.",
+    "glock17_description": "A standard issue Glock 17 pistol, reliable and effective.",
+    "scar_description": "The SCAR, a powerful and versatile assault rifle.",
+    "ar15_description": "The AR-15, a semi-automatic rifle with precision and power.",
+    "p30l_description": "The H&K P30L, a lightweight and accurate handgun.",
+    "heavy_armor_description": "Heavy armor providing superior protection against attacks.",
+    "tec9_description": "The TEC-9, a compact and fast-firing submachine gun.",
+    "compactrifle_description": "A compact rifle, ideal for close-quarters combat.",
+
+    "speed_bomb_description": "An explosive designed to detonate with a quick, timed trigger, effective against reinforced vaults.",
+    "phone_bomb_description": "An explosive disguised as a phone, capable of remote detonation for high-security breaches.",
+    "remote_bomb_description": "A remote-activated bomb, allowing detonation from a safe distance to access secure areas.",
+    "ignition_bomb_description": "An ignition-based bomb, primed to explode upon activation, effective for hardened vaults.",
+    "impact_bomb_description": "An impact-sensitive explosive, detonates upon impact, ideal for heavily fortified doors.",
+    "firelighter_description": "A powerful incendiary device, designed to ignite upon contact, useful for security breaching.",
+
 
 
 
