@@ -324,100 +324,105 @@ Stores = {
 	RepairItems = {
 		label = Loc[Config.Lan]["stores"].repairs,
 		items = {
-			{ name = "mechanic_tools", price = 2000, amount = 10, info = {}, type = "item", },
-			{ name = "sparetire", price = 3000, amount = 100, info = {}, type = "item", },
-			{ name = "axleparts", price = 10000, amount = 1000, info = {}, type = "item", },
-			{ name = "carbattery", price = 3000, amount = 1000, info = {}, type = "item", },
-			{ name = "sparkplugs", price = 3000, amount = 1000, info = {}, type = "item", },
-			{ name = "newoil", price = 5000, amount = 1000, info = {}, type = "item", },
-		--	{ name = "advancedrepairkit", price = 2000, amount = 10, info = {}, type = "item", },
+			{ name = "mechanic_tools", price = 500, amount = 10, info = {}, type = "item", }, -- adjusted
+			{ name = "sparetire", price = 250, amount = 100, info = {}, type = "item", }, -- adjusted
+			{ name = "axleparts", price = 1500, amount = 1000, info = {}, type = "item", }, -- adjusted
+			{ name = "carbattery", price = 500, amount = 1000, info = {}, type = "item", }, -- adjusted
+			{ name = "sparkplugs", price = 800, amount = 1000, info = {}, type = "item", }, -- adjusted
+			{ name = "newoil", price = 500, amount = 1000, info = {}, type = "item", }, -- adjusted
 		},
 	},
 	ToolItems = {
 		label = Loc[Config.Lan]["stores"].tools,
 		items = {
-			{ name = "toolbox", price = 2000, amount = 10, info = {}, type = "item", },
-			{ name = "ducttape", price = 500, amount = 100, info = {}, type = "item", },
-			{ name = "paintcan", price = 5000, amount = 50, info = {}, type = "item", },
-			{ name = "tint_supplies", price = 5000, amount = 50, info = {}, type = "item", },
-			{ name = "underglow_controller", price = 5000, amount = 50, info = {}, type = "item", },
-			{ name = "cleaningkit", price = 1000, amount = 100, info = {}, type = "item", },
+			{ name = "toolbox", price = 500, amount = 10, info = {}, type = "item", }, -- adjusted
+			{ name = "ducttape", price = 150, amount = 100, info = {}, type = "item", }, -- adjusted
+			{ name = "paintcan", price = 500, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "tint_supplies", price = 2000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "underglow_controller", price = 3000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "cleaningkit", price = 200, amount = 100, info = {}, type = "item", }, -- adjusted
 		},
 	},
 	PerformItems = {
 		label = Loc[Config.Lan]["stores"].perform,
 		items = {
-			{ name = "turbo", price = 140000, amount = 50, info = {}, type = "item", },
-			{ name = "engine1", price = 70000, amount = 50, info = {}, type = "item", },
-			{ name = "engine2", price = 85000, amount = 50, info = {}, type = "item", },
-			{ name = "engine3", price = 110000, amount = 50, info = {}, type = "item", },
-			{ name = "engine4", price = 140000, amount = 50, info = {}, type = "item", },
-			{ name = "engine5", price = 180000, amount = 50, info = {}, type = "item", },
-			{ name = "transmission1", price = 45000, amount = 50, info = {}, type = "item", },
-			{ name = "transmission2", price = 55000, amount = 50, info = {}, type = "item", },
-			{ name = "transmission3", price = 70000, amount = 50, info = {}, type = "item", },
-			{ name = "transmission4", price = 85000, amount = 50, info = {}, type = "item", },
-			{ name = "brakes1", price = 35000, amount = 50, info = {}, type = "item", },
-			{ name = "brakes2", price = 50000, amount = 50, info = {}, type = "item", },
-			{ name = "brakes3", price = 70000, amount = 50, info = {}, type = "item", },
-			{ name = "car_armor", price = 154000, amount = 50, info = {}, type = "item", },
-			{ name = "suspension1", price = 15000, amount = 50, info = {}, type = "item", },
-			{ name = "suspension2", price = 25000, amount = 50, info = {}, type = "item", },
-			{ name = "suspension3", price = 40000, amount = 50, info = {}, type = "item", },
-			{ name = "suspension4", price = 55000, amount = 50, info = {}, type = "item", },
-			{ name = "suspension5", price = 70000, amount = 50, info = {}, type = "item", },
-		--	{ name = "bprooftires", price = 0, amount = 50, info = {}, type = "item", },
-			{ name = "drifttires", price = 3000, amount = 50, info = {}, type = "item", },
+			{ name = "turbo", price = 15000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "engine1", price = 8000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "engine2", price = 10000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "engine3", price = 12000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "engine4", price = 14000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "engine5", price = 16000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "transmission1", price = 8000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "transmission2", price = 10000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "transmission3", price = 12000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "transmission4", price = 14000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "brakes1", price = 8000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "brakes2", price = 10000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "brakes3", price = 12000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "car_armor", price = 20000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "suspension1", price = 8000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "suspension2", price = 10000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "suspension3", price = 12000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "suspension4", price = 14000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "suspension5", price = 16000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "drifttires", price = 1500, amount = 50, info = {}, type = "item", }, -- adjusted
 
-			{ name = "oilp1", price = 1000, amount = 50, info = {}, type = "item", },
-			{ name = "oilp2", price = 2000, amount = 50, info = {}, type = "item", },
-			{ name = "oilp3", price = 3000, amount = 50, info = {}, type = "item", },
 
-			{ name = "drives1", price = 1000, amount = 50, info = {}, type = "item", },
-			{ name = "drives2", price = 2000, amount = 50, info = {}, type = "item", },
-			{ name = "drives3", price = 3000, amount = 50, info = {}, type = "item", },
+			{ name = "oilp1", price = 8000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "oilp2", price = 10000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "oilp3", price = 12000, amount = 50, info = {}, type = "item", }, -- adjusted
 
-			{ name = "cylind1", price = 2000, amount = 50, info = {}, type = "item", },
-			{ name = "cylind2", price = 4000, amount = 50, info = {}, type = "item", },
-			{ name = "cylind3", price = 8000, amount = 50, info = {}, type = "item", },
 
-			{ name = "cables1", price = 1000, amount = 50, info = {}, type = "item", },
-			{ name = "cables2", price = 2000, amount = 50, info = {}, type = "item", },
-			{ name = "cables3", price = 3000, amount = 50, info = {}, type = "item", },
+			{ name = "drives1", price = 8000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "drives2", price = 10000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "drives3", price = 12000, amount = 50, info = {}, type = "item", }, -- adjusted
 
-			{ name = "fueltank1", price = 10000, amount = 50, info = {}, type = "item", },
-			{ name = "fueltank2", price = 15000, amount = 50, info = {}, type = "item", },
-			{ name = "fueltank3", price = 20000, amount = 50, info = {}, type = "item", },
 
-			{ name = "harness", price = 10000, amount = 50, info = {}, type = "item", },
-			{ name = "antilag", price = 1000, amount = 50, info = {}, type = "item", },
+			{ name = "cylind1", price = 8000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "cylind2", price = 10000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "cylind3", price = 12000, amount = 50, info = {}, type = "item", }, -- adjusted
 
-			{ name = "manual", price = 2000, amount = 50, info = {}, type = "item", },
+
+			{ name = "cables1", price = 8000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "cables2", price = 10000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "cables3", price = 12000, amount = 50, info = {}, type = "item", }, -- adjusted
+
+
+			{ name = "fueltank1", price = 8000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "fueltank2", price = 10000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "fueltank3", price = 12000, amount = 50, info = {}, type = "item", }, -- adjusted
+
+
+			{ name = "harness", price = 35000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "antilag", price = 10000, amount = 50, info = {}, type = "item", }, -- adjusted
+			
+			{ name = "manual", price = 7000, amount = 50, info = {}, type = "item", }, -- adjusted
 		},
 	},
 	CosmeticItems = {
 		label = Loc[Config.Lan]["stores"].cosmetic,
 		items = {
-			{ name = "hood", price = 20000, amount = 50, info = {}, type = "item", },
-			{ name = "roof", price = 10000, amount = 50, info = {}, type = "item", },
-			{ name = "spoiler", price = 25000, amount = 50, info = {}, type = "item", },
-			{ name = "bumper", price = 15000, amount = 50, info = {}, type = "item", },
-			{ name = "skirts", price = 5000, amount = 50, info = {}, type = "item", },
-			{ name = "exhaust", price = 20000, amount = 50, info = {}, type = "item", },
-			{ name = "seat", price = 2000, amount = 50, info = {}, type = "item", },
-			{ name = "livery", price = 20000, amount = 50, info = {}, type = "item", },
-			{ name = "tires", price = 3000, amount = 50, info = {}, type = "item", },
-			{ name = "horn", price = 2000, amount = 50, info = {}, type = "item", },
-			{ name = "internals", price = 1000, amount = 50, info = {}, type = "item", },
-			{ name = "externals", price = 1000, amount = 50, info = {}, type = "item", },
-			{ name = "customplate", price = 2000, amount = 50, info = {}, type = "item", },
-			{ name = "headlights", price = 10000, amount = 50, info = {}, type = "item", },
-			{ name = "rims", price = 35000, amount = 100, info = {}, type = "item", },
-			{ name = "rollcage", price = 20000, amount = 50, info = {}, type = "item", },
-			{ name = "underglow", price = 40000, amount = 50, info = {}, type = "item", },
+			{ name = "hood", price = 2500, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "roof", price = 2500, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "spoiler", price = 1500, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "bumper", price = 2000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "skirts", price = 1500, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "exhaust", price = 1000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "seat", price = 3000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "livery", price = 1000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "tires", price = 750, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "horn", price = 500, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "internals", price = 750, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "externals", price = 1000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "customplate", price = 250, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "headlights", price = 500, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "rims", price = 2500, amount = 100, info = {}, type = "item", }, -- adjusted
+			{ name = "rollcage", price = 5000, amount = 50, info = {}, type = "item", }, -- adjusted
+			{ name = "underglow", price = 2000, amount = 50, info = {}, type = "item", }, -- adjusted
 		},
 	},
 }
+
 
 MaterialRecieve = {
 	turbo = {
