@@ -2065,61 +2065,6 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'pliers.png',
 			},
-			--[[ ['impact_bomb'] = {
-				['name'] = "Impact Explosive",
-				['price_to_customer'] = 400,
-				['price_to_customer_min'] = 200,
-				['price_to_customer_max'] = 800,
-				['price_to_export'] = 360,
-				['price_to_owner'] = 350,
-				['amount_to_owner'] = 1,
-				['amount_to_delivery'] = 1,
-				['img'] = 'impact_bomb.png',
-			},
-			['ignition_bomb'] = {
-				['name'] = "Ignition Explosive",
-				['price_to_customer'] = 400,
-				['price_to_customer_min'] = 200,
-				['price_to_customer_max'] = 800,
-				['price_to_export'] = 360,
-				['price_to_owner'] = 350,
-				['amount_to_owner'] = 1,
-				['amount_to_delivery'] = 1,
-				['img'] = 'ignition_bomb.png',
-			},
-			['remote_bomb'] = {
-				['name'] = "Remote Explosive",
-				['price_to_customer'] = 400,
-				['price_to_customer_min'] = 200,
-				['price_to_customer_max'] = 800,
-				['price_to_export'] = 360,
-				['price_to_owner'] = 350,
-				['amount_to_owner'] = 1,
-				['amount_to_delivery'] = 1,
-				['img'] = 'remote_bomb.png',
-			},
-			['phone_bomb'] = {
-				['name'] = "Detonator Device",
-				['price_to_customer'] = 200,
-				['price_to_customer_min'] = 100,
-				['price_to_customer_max'] = 400,
-				['price_to_export'] = 180,
-				['price_to_owner'] = 175,
-				['amount_to_owner'] = 1,
-				['amount_to_delivery'] = 1,
-				['img'] = 'phone_bomb.png',
-			},
-			['speed_bomb'] = {
-				['name'] = "Speed Bomb",
-				['price_to_customer'] = 200,
-				['price_to_customer_min'] = 100,
-				['price_to_customer_max'] = 400,
-				['price_to_export'] = 180,
-				['price_to_owner'] = 175,
-				['amount_to_owner'] = 1,
-				['amount_to_delivery'] = 1,
-				['img'] = 'speed_bomb.png',
-			}, ]]
 			['screwdriver'] = {
 				['name'] = "Screwdriver",
 				['price_to_customer'] = 100,
@@ -2189,34 +2134,20 @@ Config.market_categories = {
 				['max_amount_to_purchase'] = 1,
 				['img'] = 'weapon_crowbar.png',
 			},
-			--[[ ['weapon_hammer'] = {
-				['name'] = "Hammer",
-				['price_to_customer'] = 250,
-				['price_to_customer_min'] = 125,
-				['price_to_customer_max'] = 500,
-				['price_to_export'] = 250,
-				['price_to_owner'] = 250,
+			['WEAPON_AXE'] = {
+				['name'] = "AXE",
+				['price_to_customer'] = 1000,
+				['price_to_customer_min'] = 250,
+				['price_to_customer_max'] = 1000,
+				['price_to_export'] = 750,
+				['price_to_owner'] = 375,
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['is_weapon'] = true,
 				['requires_license'] = false,
 				['max_amount_to_purchase'] = 1,
-				['img'] = 'weapon_hammer.png',
-			}, ]]
-			--[[ ['weapon_wrench'] = {
-				['name'] = "Wrench",
-				['price_to_customer'] = 250,
-				['price_to_customer_min'] = 125,
-				['price_to_customer_max'] = 500,
-				['price_to_export'] = 250,
-				['price_to_owner'] = 250,
-				['amount_to_owner'] = 2,
-				['amount_to_delivery'] = 2,
-				['is_weapon'] = true,
-				['requires_license'] = false,
-				['max_amount_to_purchase'] = 1,
-				['img'] = 'weapon_wrench.png',
-			}, ]]
+				['img'] = 'WEAPON_AXE.png',
+			},
 		}
 	},
 
@@ -2230,7 +2161,7 @@ Config.market_categories = {
 		['items'] = {
 			['weapon_pistol'] = {
 				['name'] = "Pistol",
-				['price_to_customer'] = 2500,
+				['price_to_customer'] = 1200,
 				['price_to_customer_min'] = 1250,
 				['price_to_customer_max'] = 5000,
 				['price_to_export'] = 2500,
@@ -2256,20 +2187,7 @@ Config.market_categories = {
 				['max_amount_to_purchase'] = 1,
 				['img'] = 'weapon_snspistol.png',
 			},
-			['weapon_vintagepistol'] = {
-				['name'] = "Vintage Pistol",
-				['price_to_customer'] = 4000,
-				['price_to_customer_min'] = 2000,
-				['price_to_customer_max'] = 8000,
-				['price_to_export'] = 3600,
-				['price_to_owner'] = 3000,
-				['amount_to_owner'] = 1,
-				['amount_to_delivery'] = 1,
-				['is_weapon'] = true,
-				['requires_license'] = true,
-				['max_amount_to_purchase'] = 1,
-				['img'] = 'weapon_vintagepistol.png',
-			},
+			
 		}
 	},
 
@@ -2309,9 +2227,66 @@ Config.market_categories = {
 				['max_amount_to_purchase'] = 1,
 				['img'] = 'weapon_carbinerifle.png',
 			},
+			['weapon_tglock19'] = {
+				['name'] = "Glock 19",
+				['price_to_customer'] = 3000,
+				['price_to_customer_min'] = 1500,
+				['price_to_customer_max'] = 3000,
+				['price_to_export'] = 2700,
+				['price_to_owner'] = 2400,
+				['amount_to_owner'] = 1,
+				['amount_to_delivery'] = 1,
+				['is_weapon'] = true,
+				['requires_license'] = true,
+				['max_amount_to_purchase'] = 1,
+				['img'] = 'weapon_tglock19.png',
+			},
+			['weapon_fn57'] = {
+				['name'] = "FN Five-seven",
+				['price_to_customer'] = 2000,
+				['price_to_customer_min'] = 1000,
+				['price_to_customer_max'] = 2000,
+				['price_to_export'] = 1800,
+				['price_to_owner'] = 1600,
+				['amount_to_owner'] = 1,
+				['amount_to_delivery'] = 1,
+				['is_weapon'] = true,
+				['requires_license'] = true,
+				['max_amount_to_purchase'] = 1,
+				['img'] = 'weapon_fn57.png',
+			},
+			['weapon_p210'] = {
+				['name'] = "SIG P210",
+				['price_to_customer'] = 2000,
+				['price_to_customer_min'] = 1000,
+				['price_to_customer_max'] = 2000,
+				['price_to_export'] = 1800,
+				['price_to_owner'] = 1600,
+				['amount_to_owner'] = 1,
+				['amount_to_delivery'] = 1,
+				['is_weapon'] = true,
+				['requires_license'] = true,
+				['max_amount_to_purchase'] = 1,
+				['img'] = 'weapon_p210.png',
+			},
+			['weapon_sr40'] = {
+				['name'] = "SR40",
+				['price_to_customer'] = 2100,
+				['price_to_customer_min'] = 1050,
+				['price_to_customer_max'] = 2100,
+				['price_to_export'] = 1890,
+				['price_to_owner'] = 1680,
+				['amount_to_owner'] = 1,
+				['amount_to_delivery'] = 1,
+				['is_weapon'] = true,
+				['requires_license'] = true,
+				['max_amount_to_purchase'] = 1,
+				['img'] = 'weapon_sr40.png',
+			},
+
 		}
 	},
-
+--[[ 
 	['shotgun_weapons'] = {
 		['page_name'] = "Shotgun Weapons",
 		['page_desc'] = "Get up close and personal with our devastating assault shotguns, designed for maximum impact and stopping power at close range combat",
@@ -2374,7 +2349,7 @@ Config.market_categories = {
 				['img'] = 'weapon_smg.png',
 			},
 		}
-	},
+	}, ]]
 
 	['throwable_weapons'] = {
 		['page_name'] = "Throwable Weapons",
@@ -2398,20 +2373,7 @@ Config.market_categories = {
 				['max_amount_to_purchase'] = 1,
 				['img'] = 'weapon_molotov.png',
 			},
-			['weapon_flare'] = {
-				['name'] = "Flare",
-				['price_to_customer'] = 700,
-				['price_to_customer_min'] = 350,
-				['price_to_customer_max'] = 1400,
-				['price_to_export'] = 550,
-				['price_to_owner'] = 475,
-				['amount_to_owner'] = 1,
-				['amount_to_delivery'] = 1,
-				['is_weapon'] = true,
-				['requires_license'] = true,
-				['max_amount_to_purchase'] = 1,
-				['img'] = 'weapon_flare.png',
-			},
+			
 		}
 	},
 
@@ -2482,7 +2444,7 @@ Config.market_categories = {
 		['category_buy_price'] = 5000,
 		['category_sell_price'] = 2500,
 		['items'] = {
-			['weapon_flaregun'] = {
+			--[[ ['weapon_flaregun'] = {
 				['name'] = "Flare Gun",
 				['price_to_customer'] = 1000,
 				['price_to_customer_min'] = 500,
@@ -2495,7 +2457,7 @@ Config.market_categories = {
 				['requires_license'] = false,
 				['max_amount_to_purchase'] = 1,
 				['img'] = 'weapon_flaregun.png',
-			},
+			}, ]]
 			['parachute'] = {
 				['name'] = "Parachute",
 				['price_to_customer'] = 2500,
