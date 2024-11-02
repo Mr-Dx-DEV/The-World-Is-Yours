@@ -72,7 +72,7 @@ Config.InteractionLocations = {
         SaleChance = 80, -- chance for successful sale when selling oxy
     },
     PoliceSettings = {
-        MinCops = 1, -- minimum amount of on duty cops required to start delivery mission and to sell oxy
+        MinCops = 0, -- minimum amount of on duty cops required to start delivery mission and to sell oxy
         CallChance = 75, -- chance to call cops upon hand off of packages and selling 
     },
     PedModels = { -- add more ped models for the mission start ped here
