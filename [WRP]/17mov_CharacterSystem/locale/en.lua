@@ -366,7 +366,7 @@ Locale["en"] = {
         ["Selector.Remove.Warning"] = "I understand that this operation is irreversible",
         ["Selector.Remove.Button"] = "Delete this character",
 
-        ["Skin.Header.Title"] = "The World Is Yours",
+        ["Skin.Header.Title"] = "World Is Yours",
         ["Skin.Header.Subtitle"] = "Clothing",
         ["Skin.Camera.Title"] = "Camera",
         ["Skin.Camera.Subtitle"] = "Adjust your camera",
