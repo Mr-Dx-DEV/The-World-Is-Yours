@@ -24460,7 +24460,7 @@ return {
 		close = true,
 		description = "Your description here",
 		client = {
-			image = "gpstracker.png",
+			image = "leo-gps.png",
 		}
 	},
 
