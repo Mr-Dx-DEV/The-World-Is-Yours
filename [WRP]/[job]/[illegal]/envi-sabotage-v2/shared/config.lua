@@ -183,7 +183,7 @@ Config.BlacklistedVehClasses = { -- Blacklisted vehicle classes
     21, -- Trains
 }
 
-Config.RepairAll = true -- Set to true to allow players to repair all damamges on a vehicle
+Config.RepairAll = false -- Set to true to allow players to repair all damamges on a vehicle
 
 -- EDITABLE FUNCTIONS --
 
