@@ -2480,6 +2480,28 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'armor.png',
+			},
+			['microfibercloth'] = {
+				['name'] = "Microfiber Cloth",
+				['price_to_customer'] = 100,
+				['price_to_customer_min'] = 50,
+				['price_to_customer_max'] = 200,
+				['price_to_export'] = 100,
+				['price_to_owner'] = 100,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'microfibercloth.png',
+			},
+			['blox'] = {
+				['name'] = "Blox Multisurface",
+				['price_to_customer'] = 100,
+				['price_to_customer_min'] = 50,
+				['price_to_customer_max'] = 200,
+				['price_to_export'] = 100,
+				['price_to_owner'] = 100,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'blox.png',
 			}
 		}
 	},
