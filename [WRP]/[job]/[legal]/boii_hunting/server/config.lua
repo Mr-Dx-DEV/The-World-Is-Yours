@@ -23,7 +23,7 @@ config.stores = {
             weapon_pistol = { id = 'weapon_pistol', label = 'Pistol', image = 'weapon_pistol.png', price = 100, categories = { 'pistols' } },
             weapon_sniperrifle = { id = 'weapon_sniperrifle', label = 'Sniper Rifle', image = 'weapon_sniperrifle.png', price = 5000, categories = { 'rifles' } },
             pistol_ammo = { id = 'pistol_ammo', label = 'Pistol Ammo', image = 'ammo_pistol.png', price = 100, categories = { 'ammo' } },
-            snp_ammo = { id = 'snp_ammo', label = 'Sniper Ammo', image = 'ammo_sniper.png', price = 200, categories = { 'ammo' } }
+            snp_ammo = { id = 'snp_ammo', label = 'Sniper Ammo', image = 'ammo_sniper.png', price = 300, categories = { 'ammo' } }
             --- Add more hunting store items here..
         }
     },
