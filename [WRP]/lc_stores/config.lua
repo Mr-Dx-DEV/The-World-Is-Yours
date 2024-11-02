@@ -2187,46 +2187,6 @@ Config.market_categories = {
 				['max_amount_to_purchase'] = 1,
 				['img'] = 'weapon_snspistol.png',
 			},
-			
-		}
-	},
-
-	['rifle_weapons'] = {
-		['page_name'] = "Rifle Weapons",
-		['page_desc'] = "Dominate the battlefield with our high-performance assault rifles, built to provide accuracy, range, and stopping power in any combat situation",
-		['page_icon'] = '<img src="img/categories/weapons-rifle-icon.png" style="padding:15px">',
-		['page_img'] = 'img/categories/weapons-rifle.png',
-		['category_buy_price'] = 60000,
-		['category_sell_price'] = 30000,
-		['items'] = {
-			['weapon_assaultrifle'] = {
-				['name'] = "Assault Rifle",
-				['price_to_customer'] = 25000,
-				['price_to_customer_min'] = 12500,
-				['price_to_customer_max'] = 50000,
-				['price_to_export'] = 25000,
-				['price_to_owner'] = 18750,
-				['amount_to_owner'] = 1,
-				['amount_to_delivery'] = 1,
-				['is_weapon'] = true,
-				['requires_license'] = true,
-				['max_amount_to_purchase'] = 1,
-				['img'] = 'weapon_assaultrifle.png',
-			},
-			['weapon_carbinerifle'] = {
-				['name'] = "Carbine Rifle",
-				['price_to_customer'] = 40000,
-				['price_to_customer_min'] = 20000,
-				['price_to_customer_max'] = 80000,
-				['price_to_export'] = 36000,
-				['price_to_owner'] = 30000,
-				['amount_to_owner'] = 1,
-				['amount_to_delivery'] = 1,
-				['is_weapon'] = true,
-				['requires_license'] = true,
-				['max_amount_to_purchase'] = 1,
-				['img'] = 'weapon_carbinerifle.png',
-			},
 			['weapon_tglock19'] = {
 				['name'] = "Glock 19",
 				['price_to_customer'] = 3000,
@@ -2283,9 +2243,50 @@ Config.market_categories = {
 				['max_amount_to_purchase'] = 1,
 				['img'] = 'weapon_sr40.png',
 			},
-
+			
 		}
 	},
+--[[ 
+	['rifle_weapons'] = {
+		['page_name'] = "Rifle Weapons",
+		['page_desc'] = "Dominate the battlefield with our high-performance assault rifles, built to provide accuracy, range, and stopping power in any combat situation",
+		['page_icon'] = '<img src="img/categories/weapons-rifle-icon.png" style="padding:15px">',
+		['page_img'] = 'img/categories/weapons-rifle.png',
+		['category_buy_price'] = 60000,
+		['category_sell_price'] = 30000,
+		['items'] = {
+			['weapon_assaultrifle'] = {
+				['name'] = "Assault Rifle",
+				['price_to_customer'] = 25000,
+				['price_to_customer_min'] = 12500,
+				['price_to_customer_max'] = 50000,
+				['price_to_export'] = 25000,
+				['price_to_owner'] = 18750,
+				['amount_to_owner'] = 1,
+				['amount_to_delivery'] = 1,
+				['is_weapon'] = true,
+				['requires_license'] = true,
+				['max_amount_to_purchase'] = 1,
+				['img'] = 'weapon_assaultrifle.png',
+			},
+			['weapon_carbinerifle'] = {
+				['name'] = "Carbine Rifle",
+				['price_to_customer'] = 40000,
+				['price_to_customer_min'] = 20000,
+				['price_to_customer_max'] = 80000,
+				['price_to_export'] = 36000,
+				['price_to_owner'] = 30000,
+				['amount_to_owner'] = 1,
+				['amount_to_delivery'] = 1,
+				['is_weapon'] = true,
+				['requires_license'] = true,
+				['max_amount_to_purchase'] = 1,
+				['img'] = 'weapon_carbinerifle.png',
+			},
+			
+
+		}
+	}, ]]
 --[[ 
 	['shotgun_weapons'] = {
 		['page_name'] = "Shotgun Weapons",
