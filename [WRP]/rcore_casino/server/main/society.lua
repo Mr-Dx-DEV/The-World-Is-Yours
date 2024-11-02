@@ -40,18 +40,18 @@ SocietyBanking = {
             exports["qb-management"]:RemoveMoney(Config.SocietyName, money)
         end,
         GetBalance = function()
-            return exports['Renewed-Banking']:getAccountMoney(Config.SocietyName)
+            return exports['qb-management']:GetAccount(Config.SocietyName)
         end
     },
     [Society.RenewedBanking] = {
         AddMoney = function(money)
-            exports['Renewed-Banking']:addAccountMoney(Config.SocietyName, money)
+            exports['qb-management']:AddMoney(Config.SocietyName, money)
         end,
         RemoveMoney = function(money)
-            exports['Renewed-Banking']:removeAccountMoney(Config.SocietyName, money)
+            exports['qb-management']:RemoveMoney(Config.SocietyName, money)
         end,
         GetBalance = function()
-            return exports['Renewed-Banking']:getAccountMoney(Config.SocietyName)
+            return exports['qb-management']:GetAccount(Config.SocietyName)
         end
     },
     [Society.OkokBanking] = {

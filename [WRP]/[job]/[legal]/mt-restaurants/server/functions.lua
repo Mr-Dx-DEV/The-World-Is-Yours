@@ -1,6 +1,6 @@
 addAccountMoney = function(account, amount)
     if Config.banking == 'Renewed-Banking' then
-        exports['Renewed-Banking']:addAccountMoney(account, amount)
+        exports['qb-management']:AddMoney(account, amount)
     elseif Config.banking == 'esx_addonaccount' then
         TriggerEvent('esx_addonaccount:getSharedAccount', 'society_' .. account, function(account)
             account.addMoney(amount)
