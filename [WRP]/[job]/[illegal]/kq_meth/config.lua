@@ -182,7 +182,7 @@ Config.policeAlerts = {
         color = 1,
         scale = 0.5,
         text = 'Suspicious van',
-        flash = true,
+        flash = false,
     },
 }
 
@@ -277,22 +277,22 @@ Config.itemCollection = {
             { -- Humane labs A
                 coords = vector3(3561.24, 3648.0, 41.34),
                 rotation = vector3(0, 0, 350),
-                blip = true,
+                blip = false,
             },
             { -- Humane labs B
                 coords = vector3(3418.28, 3679.89, 41.34),
                 rotation = vector3(0, 0, 80),
-                blip = true,
+                blip = false,
             },
             { -- Humane labs C
                 coords = vector3(3458.36, 3641.99, 42.62),
                 rotation = vector3(0, 0, 170),
-                blip = true,
+                blip = false,
             },
             { -- Docks
                 coords = vector3(334.61, -2679.0, 6.0),
                 rotation = vector3(0, 0, 0),
-                blip = true,
+                blip = false,
             },
         }
     },
@@ -337,17 +337,17 @@ Config.itemCollection = {
                 {
                     coords = vector3(-551.0, -1712.5, 17.74),
                     rotation = vector3(0, 0, 40),
-                    blip = true,
+                    blip = false,
                 },
                 {
                     coords = vector3(-179.59, 6242.13, 30.4),
                     rotation = vector3(0, 0, 0),
-                    blip = true,
+                    blip = false,
                 },
                 {
                     coords = vector3(2355.24, 3116.08, 47.1),
                     rotation = vector3(0, 0, 30),
-                    blip = true,
+                    blip = false,
                 },
             },
         },
@@ -391,7 +391,7 @@ Config.itemCollection = {
                 {
                     coords = vector3(1393.06, 3607.85, 33.99),
                     rotation = vector3(0, 0, 32),
-                    blip = true,
+                    blip = false,
                 },
             },
         },
@@ -435,12 +435,12 @@ Config.itemCollection = {
                 {
                     coords = vector3(1387.46, 3607.65, 33.99),
                     rotation = vector3(0, 0, 250),
-                    blip = true,
+                    blip = false,
                 },
                 {
                     coords = vector3(1392.87, 3600.58, 38.24),
                     rotation = vector3(0, 0, 40),
-                    blip = true,
+                    blip = false,
                 },
             },
         },
@@ -484,7 +484,7 @@ Config.itemCollection = {
                 {
                     coords = vector3(1398.0, 3611.27, 35.22),
                     rotation = vector3(0, 0, 250),
-                    blip = true,
+                    blip = false,
                 },
             },
         },
@@ -528,7 +528,7 @@ Config.itemCollection = {
                 {
                     coords = vector3(156.01, 3130.21, 42.53),
                     rotation = vector3(0, 0, 99),
-                    blip = true,
+                    blip = false,
                 },
             },
         },
