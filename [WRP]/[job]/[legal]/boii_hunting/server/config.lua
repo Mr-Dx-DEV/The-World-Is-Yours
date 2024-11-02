@@ -13,12 +13,12 @@ config.stores = {
         blip = { type = 'hunting', label = 'Hunting Store', category = 'boii_hunting', sprite = 141, colour = 0, scale = 0.6 },
         ped = { type = 'hunting', label = 'Shop Keeper', model = 'mp_m_exarmy_01', scenario = 'WORLD_HUMAN_CLIPBOARD', category = 'boii_hunting', networked = false, distance = 2.0 },
         locations = {
-            { id = 'paleto_forest', coords = vector4(-776.18, 5603.131, 33.741, 256.278), show_blip = true, opening_times = { open = 10, close = 18} },
+            { id = 'paleto_forest', coords = vector4(-776.18, 5603.131, 33.741, 256.278), show_blip = true, --[[ opening_times = { open = 10, close = 18} ]] },
             --- Add more hunting store locations here..
         },
         items = {
-            water = { id = 'water', label = 'Water', image = 'water.png', price = 3, categories = { 'consumables' } },
-            burger = { id = 'burger', label = 'Burger', image = 'burger.png', price = 5, categories = { 'consumables' } },
+            water = { id = 'water', label = 'Water', image = 'water.png', price = 10, categories = { 'consumables' } },
+            burger = { id = 'burger', label = 'Burger', image = 'burger.png', price = 12, categories = { 'consumables' } },
             weapon_knife = { id = 'weapon_knife', label = 'Knife', image = 'weapon_knife.png', price = 100, categories = { 'melee' } },
             weapon_pistol = { id = 'weapon_pistol', label = 'Pistol', image = 'weapon_pistol.png', price = 100, categories = { 'pistols' } },
             weapon_sniperrifle = { id = 'weapon_sniperrifle', label = 'Sniper Rifle', image = 'weapon_sniperrifle.png', price = 5000, categories = { 'rifles' } },
@@ -32,7 +32,7 @@ config.stores = {
         blip = { type = 'meat', label = 'Meat Buyer', category = 'boii_hunting', sprite = 141, colour = 0, scale = 0.6 },
         ped = { type = 'meat', label = 'Chef', model = 's_m_m_linecook', scenario = 'WORLD_HUMAN_CLIPBOARD', category = 'boii_hunting', networked = false, distance = 2.0 },
         locations = {
-            { id = 'forum_drive', coords = vector4(-42.38, -1473.82, 31.81, 4.12), show_blip = true, opening_times = { open = 10, close = 18} },
+            { id = 'forum_drive', coords = vector4(-42.38, -1473.82, 31.81, 4.12), show_blip = true, --[[ opening_times = { open = 10, close = 18} ]] },
             --- Add more meat store locations here..
         },
         items = {
@@ -52,7 +52,7 @@ config.stores = {
         blip = { type = 'hides', label = 'Hide Buyer', category = 'boii_hunting', sprite = 141, colour = 0, scale = 0.6 },
         ped = { type = 'hides', label = 'Textiles Dealer', model = 's_m_m_linecook', scenario = 'WORLD_HUMAN_CLIPBOARD', category = 'boii_hunting', networked = false, distance = 2.0 },
         locations = {
-            { id = 'textile_city', coords = vector4(464.65, -786.75, 27.36, 93.47), show_blip = true, opening_times = { open = 10, close = 18} },
+            { id = 'textile_city', coords = vector4(464.65, -786.75, 27.36, 93.47), show_blip = true, --[[ opening_times = { open = 10, close = 18} ]] },
             --- Add more hides store locations here..
         },
         items = {
@@ -71,7 +71,7 @@ config.stores = {
         blip = { type = 'exotic', label = 'Exotic Dealer', category = 'boii_hunting', sprite = 141, colour = 1, scale = 0.6 },
         ped = { type = 'exotic', label = 'Suspicious Person', model = 'ig_gustavo', scenario = 'WORLD_HUMAN_SMOKING', category = 'boii_hunting', networked = false, distance = 2.0 },
         locations = {
-            { id = 'paleto_forest', coords = vector4(1159.22, -1374.77, 34.72, 273.25), show_blip = true, opening_times = { open = 10, close = 18} },
+            { id = 'paleto_forest', coords = vector4(1159.22, -1374.77, 34.72, 273.25), show_blip = true, --[[ opening_times = { open = 10, close = 18} ]] },
             --- Add more exotic dealer locations here..
         },
         items = {
