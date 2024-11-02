@@ -35,10 +35,10 @@ Config.SpecialVehicles = {
 -- Insurance & Registration Settings
 Config.InsuranceSettings = {
     Blip = { 
-        [1] = { enable = true, coords = vector3(834.99, -813.01, 26.33), sprite = 89, colour = 5, scale = 0.5, name = "Insurance" },
+        [1] = { enable = false, coords = vector3(834.99, -813.01, 26.33), sprite = 89, colour = 5, scale = 0.5, name = "Insurance" },
     },
     Peds = {
-        [1] = { coords = vector3(834.99, -813.01, 26.33), pedModel = "s_m_m_fiboffice_01", heading = 90.62},
+        [1] = { coords = vector3(-65.414, -1100.41, 26.218), pedModel = "s_m_m_gaffer_01", heading = 90.62},
     }
 }
 
