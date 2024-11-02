@@ -94,27 +94,27 @@ Config.RelieveWeedStress = math.random(15, 20) -- stress relief amount (100 max)
 
 Config.Consumables = {
     eat = {
-        ['fries'] = math.random(35, 54),
-        ['pizza_ham'] = math.random(35, 54),
-        ['chips'] = math.random(35, 54),
-        ['donut'] = math.random(35, 54),
+        ['fries'] = math.random(5, 10),
+        ['pizza_ham'] = math.random(5, 10),
+        ['chips'] = math.random(5, 10),
+        ['donut'] = math.random(5, 10),
 
-        ['fries'] = math.random(35, 54),
-        ['pizza_ham'] = math.random(35, 54),
-        ['chips'] = math.random(35, 54),
-        ['donut'] = math.random(35, 54),
+        ['fries'] = math.random(5, 10),
+        ['pizza_ham'] = math.random(5, 10),
+        ['chips'] = math.random(5, 10),
+        ['donut'] = math.random(5, 10),
  -- default food items
-        ['sandwich'] = math.random(35, 54),
-        ['tosti'] = math.random(40, 50),
-        ['twerks_candy'] = math.random(35, 54),
-        ['snikkel_candy'] = math.random(40, 50),
+        ['sandwich'] = math.random(5, 10),
+        ['tosti'] = math.random(4, 5),
+        ['twerks_candy'] = math.random(5, 10),
+        ['snikkel_candy'] = math.random(4, 5),
 
-        ["b-hotdog"] = math.random(35, 54),
-        ["b-burger"] = math.random(35, 54),
-        ["b-brisket"] = math.random(35, 54),
-        ["b-chicken"] = math.random(35, 54),
-        ["b-ribs"] = math.random(35, 54),
-        ["b-jacket"] = math.random(35, 54),
+        ["b-hotdog"] = math.random(5, 10),
+        ["b-burger"] = math.random(5, 10),
+        ["b-brisket"] = math.random(5, 10),
+        ["b-chicken"] = math.random(5, 10),
+        ["b-ribs"] = math.random(5, 10),
+        ["b-jacket"] = math.random(5, 10),
 
         -- Casino Bar Snacks
 ["casino_burger"] = math.random(25, 40),
@@ -125,21 +125,21 @@ Config.Consumables = {
 
     },
     drink = {
-        ['sprunk'] = math.random(35, 54),
-        ['sludgie'] = math.random(35, 54),
-        ['ecola_light'] = math.random(35, 54),
-        ['ecola'] = math.random(35, 54),
-        ['water'] = math.random(35, 54),
+        ['sprunk'] = math.random(5, 10),
+        ['sludgie'] = math.random(5, 10),
+        ['ecola_light'] = math.random(5, 10),
+        ['ecola'] = math.random(5, 10),
+        ['water'] = math.random(5, 10),
 
-        ['sprunk'] = math.random(35, 54),
-        ['sludgie'] = math.random(35, 54),
-        ['ecola_light'] = math.random(35, 54),
-        ['ecola'] = math.random(35, 54),
-        ['water'] = math.random(35, 54),
+        ['sprunk'] = math.random(5, 10),
+        ['sludgie'] = math.random(5, 10),
+        ['ecola_light'] = math.random(5, 10),
+        ['ecola'] = math.random(5, 10),
+        ['water'] = math.random(5, 10),
  -- default drink items
-        ['water_bottle'] = math.random(35, 54),
-        ['kurkakola'] = math.random(35, 54),
-        ['coffee'] = math.random(40, 50),
+        ['water_bottle'] = math.random(5, 10),
+        ['kurkakola'] = math.random(5, 10),
+        ['coffee'] = math.random(4, 5),
 
         -- Casino Bar Drinks
 ["casino_beer"] = math.random(25, 40),
