@@ -6,7 +6,7 @@ Config.Core = 'qb' -- qb or esx
 Config.CoreName = 'qb-core' -- qb-core, qbx_core, es_extended, ...
 Config.Fuel = 'LegacyFuel' -- LegacyFuel, cc-fuel, ps-fuel, ox_fuel, qs-fuelstations, Renewed-Fuel, pb-fuel ...
 Config.Target = 'ox_target' -- qb-target, ox_target, ...
-Config.Management = 'Renewed-Banking' -- (only for qb-core or qbx_core not esx) qb-banking, Renewed-Banking, qb-management ...
+Config.Management = 'qb-management' -- (only for qb-core or qbx_core not esx) qb-banking, Renewed-Banking, qb-management ...
 Config.VehicleKeys = 'qb-vehiclekeys' -- qb-vehiclekeys, qs-vehiclekeys, ... (can change export at editable.lua)
 Config.BossGradeESX = 4 -- The boss grade for job (only for esx, qb use the isboss value)
 Config.Debug = false
@@ -29,7 +29,7 @@ Config.truckName = 'phantom'
 Config.trailerName = 'trflat'
 
 Config.testDriveTime = 60 -- Time that a test drive will take (it can be canceled any time)
-Config.testDriveInstance = true -- If true the palyers that start a test drive will entry a new instance only with other people and test drive
+Config.testDriveInstance = false -- If true the palyers that start a test drive will entry a new instance only with other people and test drive
 
 Config.Commands = {
     SellVehiclePlayer = { -- Command to sell vehicle to players
@@ -178,7 +178,7 @@ Config.managementMenus = {
         size = vec3(0.6, 0.75, 0.95),
         rotation = 250.0,
         job = 'wiydealership',
-        truckSpawnCoords = vec4(-68.36, 82.67, 71.52, 65.74),
+        truckSpawnCoords = vec4(-100.66, 92.726, 71.784, 53.984),
         vehicleCategories = {
             { label = 'oneofone', id = 'oneofone' },
             { label = 'one of five', id = 'oneoffive' },
