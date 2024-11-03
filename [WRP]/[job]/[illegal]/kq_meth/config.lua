@@ -158,7 +158,7 @@ Config.policeAlerts = {
     'sadoc',
     'usms',
     'dhs',
-    'ss' ,
+    'ss',
     },
     
     -- List of possible titles for the dispatch message
