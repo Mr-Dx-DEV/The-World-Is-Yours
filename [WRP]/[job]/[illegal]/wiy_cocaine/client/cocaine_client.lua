@@ -172,8 +172,6 @@ RegisterNetEvent("lusty94_cocaine:client:PickCocaLeaves", function()
 		if busy then
 			SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
 		else
-			local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-			if success then
 				busy = true
 				LockInventory(true)
 				if lib.progressCircle({ 
@@ -202,9 +200,6 @@ RegisterNetEvent("lusty94_cocaine:client:PickCocaLeaves", function()
 					LockInventory(false)
 					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
 				end
-			else
-				SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-			end
 		end 
 	end
 end)
