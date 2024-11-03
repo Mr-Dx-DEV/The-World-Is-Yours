@@ -25,7 +25,7 @@ Config.FuelTypeUnitsMeasurementsUnits = {
 }
 
 -- will the fuel overflow? if player wont stop tanking after 100% it will simply start going outside the fuel
-Config.OverflowFuel = false
+Config.OverflowFuel = true
 
 -- what types of vehicles will have disabled fuel consumption?
 Config.IsVehicleTypeAllowed = {
@@ -71,7 +71,7 @@ Config.JerrycanRefuelingAllowedForSpecificTypes = {
 -- if he will pump natural into diesel the engine will result in failure and break
 -- true = the script wont allow him to do that
 -- false = the script will let him do whatever he wants after all he is already adult and got some responsibilities doesn't he?
-Config.CheckForFuelType = true
+Config.CheckForFuelType = false
 
 -- example: EV dispenser gun cannot possibly be plug into NATURAL, DIESEL vehicles.
 -- So this will prevent people sticking stuff where they are not suppose to
@@ -93,7 +93,7 @@ Config.NonLiquidFueLTypes = {
 
 -- if the player does pump wrong fuel type into his vehicle then how many meters is he allowed to drive
 -- before his engine breaks?
-Config.VehicleFailureMileage = 100
+Config.VehicleFailureMileage = 250
 
 -- if the fuel level will go below certain percentage level should be turn off the engine?
 Config.DisableEngineAfterCertainFuelLevel = {

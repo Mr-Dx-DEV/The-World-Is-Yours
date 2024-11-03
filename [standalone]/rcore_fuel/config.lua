@@ -56,7 +56,7 @@ Config.SkinChangerType = SkinChangerType.AUTOMATIC
 -- 2 = BT Target
 -- 3 = QB Target
 -- 4 = OX Target
-Config.TargetZoneType = 4
+Config.TargetZoneType = 0
 
 -- key for ALT? ( for target resources )
 Config.KeyForTargetSystem = 19

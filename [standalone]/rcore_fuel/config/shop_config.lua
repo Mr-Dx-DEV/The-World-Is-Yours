@@ -50,7 +50,7 @@ Config.AutomaticRestock = true
 Config.AutomaticRestockTax = 0.1
 
 -- will be taxes enabled?
-Config.EnableTax = false
+Config.EnableTax = true
 
 -- 20% will be taken from what player will pay for gas and given to specific society
 Config.TaxPercentage = 0.2 -- 0.2 = 20%
