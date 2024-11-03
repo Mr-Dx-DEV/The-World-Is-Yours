@@ -23,7 +23,7 @@ Editable.minigames = {
         end,
         lockpick = function()
             -- args: number of rings, duration in seconds
-            return exports.lunar_minigames:lockpick(4, 10)
+            return exports.lunar_minigames:lockpick(6, 20)
         end
     },
     ['pacific'] = {
