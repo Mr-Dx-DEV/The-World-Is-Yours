@@ -9,7 +9,7 @@ Config.Menu = "ox" -- "qb" or "ox"
 Config.EmoteMenu = "rp" -- "rp" or "dp" or "scully" or "aty_emote" or "cylex_animmenuv2"
 Config.SpacePlate = false -- If true if your plate has space | Example: QQS 224
 Config.Debug = false -- If true, some prints happen on console
-Config.TargetDistances = 3.0 -- Distance of targets
+Config.TargetDistances = 5.0 -- Distance of targets
 Config.TargetOption = "ped" -- "zone" or "ped" ( If zone, the ped dont appear )
 
 Config.Societys = {
@@ -39,6 +39,7 @@ Config.InsuranceSettings = {
     },
     Peds = {
         [1] = { coords = vector3(-65.414, -1100.41, 26.218), pedModel = "s_m_m_gaffer_01", heading = 90.62},
+        [2] = { coords = vector3(-1193.038, -2302.933, 13.945), pedModel = "s_m_m_gaffer_01", heading = 90.62},
     }
 }
 
@@ -92,7 +93,16 @@ Config.Commands = {
         needJob = true, -- Need job to execute the command?
         jobs = { -- List of jobs can execute the command
             "police",
-            "lspd"
+            "lspd",
+            "bcso",
+            "sahp",
+            "lsso",
+            "safw",
+            "sadoc",
+            "usms",
+            "fbi",
+            "dhs",
+            "ss"
         },
     },
     removeInsurance = {
@@ -102,7 +112,16 @@ Config.Commands = {
         needJob = true, -- Need job to execute the command?
         jobs = { -- List of jobs can execute the command
             "police",
-            "lspd"
+            "lspd",
+            "bcso",
+            "sahp",
+            "lsso",
+            "safw",
+            "sadoc",
+            "usms",
+            "fbi",
+            "dhs",
+            "ss"
         },
     },
     checkHealthInsurance = {
@@ -112,7 +131,16 @@ Config.Commands = {
         needJob = true, -- Need job to execute the command?
         jobs = { -- List of jobs can execute the command
             "police",
-            "lspd"
+            "lspd",
+            "bcso",
+            "sahp",
+            "lsso",
+            "safw",
+            "sadoc",
+            "usms",
+            "fbi",
+            "dhs",
+            "ss"
         },
     },
     removeHealthInsurance = {
@@ -122,7 +150,16 @@ Config.Commands = {
         needJob = true, -- Need job to execute the command?
         jobs = { -- List of jobs can execute the command
             "police",
-            "lspd"
+            "lspd",
+            "bcso",
+            "sahp",
+            "lsso",
+            "safw",
+            "sadoc",
+            "usms",
+            "fbi",
+            "dhs",
+            "ss"
         },
     },
     checkHomeInsurance = {
@@ -132,7 +169,16 @@ Config.Commands = {
         needJob = true, -- Need job to execute the command?
         jobs = { -- List of jobs can execute the command
             "police",
-            "lspd"
+            "lspd",
+            "bcso",
+            "sahp",
+            "lsso",
+            "safw",
+            "sadoc",
+            "usms",
+            "fbi",
+            "dhs",
+            "ss"
         },
     },
     removeHomeInsurance = {
@@ -142,7 +188,16 @@ Config.Commands = {
         needJob = true, -- Need job to execute the command?
         jobs = { -- List of jobs can execute the command
             "police",
-            "lspd"
+            "lspd",
+            "bcso",
+            "sahp",
+            "lsso",
+            "safw",
+            "sadoc",
+            "usms",
+            "fbi",
+            "dhs",
+            "ss"
         },
     },
 }

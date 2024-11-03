@@ -2,8 +2,8 @@ Language = {}
 
 Language = {
     -- Targets:
-    registerVehicle = "Registration Vehicle",
-    insuranceVehicle = "Insurance Vehicle",
+    registerVehicle = "Register Vehicle",
+    insuranceVehicle = "Insure Vehicle",
     checkVehicles = "Check Vehicles",
     healthInsurance = "Health Insurance",
     homeInsurance = "Home Insurance",
