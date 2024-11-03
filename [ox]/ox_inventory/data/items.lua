@@ -34564,4 +34564,224 @@ return {
 			image = "burnerphonevpn.png",
 		}
 	},
+
+	["water_bottle"] = {
+		label = "Bottled Water",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "water_bottle.png",
+		}
+	},
+
+	["cokeprocessingtable"] = {
+		label = "Coke Processing Table",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "cokeprocessingtable.png",
+		}
+	},
+
+	["coke_baggy"] = {
+		label = "Bag of Cocaine",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "coke_baggy.png",
+		}
+	},
+
+	["sodiumcarbonate"] = {
+		label = "Sodium Carbonate",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "sodiumcarbonate.png",
+		}
+	},
+
+	["scales"] = {
+		label = "Scales",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "scales.png",
+		}
+	},
+
+	["iodine"] = {
+		label = "Iodine",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "iodine.png",
+		}
+	},
+
+	["plasticjerrycan"] = {
+		label = "Empty Plastic Jerry Can",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "plasticjerrycan.png",
+		}
+	},
+
+	["crack_baggy"] = {
+		label = "Bag of Crack",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "crack_baggy.png",
+		}
+	},
+
+	["dimethylformamide"] = {
+		label = "Dimethylformamide",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "dimethylformamide.png",
+		}
+	},
+
+	["pure_cocaine"] = {
+		label = "Pure Cocaine",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pure_cocaine.png",
+		}
+	},
+
+	["emptybaggies"] = {
+		label = "Empty Baggies",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "emptybaggies.png",
+		}
+	},
+
+	["acetone"] = {
+		label = "Acetone",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "acetone.png",
+		}
+	},
+
+	["cement"] = {
+		label = "Cement",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "cement.png",
+		}
+	},
+
+	["gasoline"] = {
+		label = "Gasoline",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "gasoline.png",
+		}
+	},
+
+	["cocaleaf"] = {
+		label = "Coca Leaf",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "cocaleaf.png",
+		}
+	},
+
+	["cokeoverdosecure"] = {
+		label = "Coke Overdose Cure",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "overdosecure.png",
+		}
+	},
+
+	["hydrochloricacid"] = {
+		label = "Hydrochloric Acid",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "hydrochloricacid.png",
+		}
+	},
+
+	["trowel"] = {
+		label = "Trowel",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "trowel.png",
+		}
+	},
+
+	["pure_crack"] = {
+		label = "Pure Crack",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "pure_crack.png",
+		}
+	},
+
+	["lighter"] = {
+		label = "Lighter",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "",
+		client = {
+			image = "lighter.png",
+		}
+	},
 }
