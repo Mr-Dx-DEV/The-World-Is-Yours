@@ -13,9 +13,25 @@ RegisterServerEvent('AttackTransport:akceptujto', function()
 			for _, v in pairs(QBCore.Functions.GetPlayers()) do
 				local Player = QBCore.Functions.GetPlayer(v)
 				if Player ~= nil then
-					if (Player.PlayerData.job.name == 'police' or Player.PlayerData.job.type == 'leo') and Player.PlayerData.job.onduty then
+					local leoJobs = {
+						police = true,
+						sheriff = true,
+						fbi = true,
+						lspd = true,
+						bcso = true,
+						sahp = true,
+						lsso = true,
+						safw = true,
+						sadoc = true,
+						usms = true,
+						dhs = true,
+						ss = true
+					}
+					
+					if (leoJobs[Player.PlayerData.job.name] or Player.PlayerData.job.type == 'leo') and Player.PlayerData.job.onduty then
 						copsOnDuty = copsOnDuty + 1
 					end
+					
 				end
 			end
 			if copsOnDuty >= Config.ActivePolice then
