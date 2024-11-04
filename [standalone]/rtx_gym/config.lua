@@ -38,7 +38,7 @@ Config.Showers = true -- enable shower system
 
 Config.ShowerTime = 25 -- shower time in seconds
 
-Config.OwneableGyms = true -- enable this if you want to have owneable gyms
+Config.OwneableGyms = false -- enable this if you want to have owneable gyms
 
 Config.GymSellMultipler = 0.75 -- money which player will get when he sell gym 
 
@@ -153,7 +153,7 @@ Config.Exercises = {
 	["bench"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 1.0,
+				adddata = 0.5,
 			},
 		},
 		statsneed = {
@@ -167,7 +167,7 @@ Config.Exercises = {
 	["squat"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 1.0,
+				adddata = 0.2,
 			},
 		},
 		statsneed = {
@@ -181,7 +181,7 @@ Config.Exercises = {
 	["chinups"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 1.0,
+				adddata = 0.3,
 			},
 		},
 		statsneed = {
@@ -195,7 +195,7 @@ Config.Exercises = {
 	["barbell1"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 1.0,
+				adddata = 0.3,
 			},
 		},
 		statsneed = {
@@ -209,7 +209,7 @@ Config.Exercises = {
 	["barbell2"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 1.0,
+				adddata = 0.3,
 			},
 		},
 		statsneed = {
@@ -223,7 +223,7 @@ Config.Exercises = {
 	["box"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 1.0,
+				adddata = 0.6,
 			},
 		},
 		statsneed = {
@@ -237,7 +237,7 @@ Config.Exercises = {
 	["run"] = {
 		statsadd = {
 			["condition"] = {
-				adddata = 1.0,
+				adddata = 0.2,
 			},
 		},
 		statsneed = {
@@ -251,7 +251,7 @@ Config.Exercises = {
 	["pushups"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 1.0
+				adddata = 0.1,
 			},
 		},
 		statsneed = {
@@ -265,7 +265,7 @@ Config.Exercises = {
 	["situps"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 1.0,
+				adddata = 0.1,
 			},
 		},
 		statsneed = {
@@ -293,7 +293,7 @@ Config.Exercises = {
 	["swimming"] = {
 		statsadd = {
 			["swimming"] = {
-				adddata = 1.0,
+				adddata = 0.5,
 			},
 		},
 		statsneed = {
