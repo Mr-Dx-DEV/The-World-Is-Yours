@@ -1,5 +1,12 @@
 return {
 	Weapons = {
+		['weapon_paintball'] = {
+			label = 'PaintBall Weapon',
+			weight = 1000,
+			ammoname = 'pistol_ammo'
+			
+		},
+		
 		--Kyros Weapon Pack Mafia
 		-- Weapon Definitions with Correct Ammo Types
 
