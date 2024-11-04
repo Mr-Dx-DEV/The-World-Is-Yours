@@ -4,7 +4,7 @@ SV_CONFIG = {}
 -- 0 = oxmysql
 -- 1 = ghmattimysql
 -- 2 = mysql-async
-SV_CONFIG.MysqlType = nil             -- We recommend letting this as nil
+SV_CONFIG.MysqlType = 0             -- We recommend letting this as nil
 
 SV_CONFIG.SaveStatsTime = 5           -- In minutes
 SV_CONFIG.TimeToCheckAlerts = 8       -- Will check in minutes to delete alerts
