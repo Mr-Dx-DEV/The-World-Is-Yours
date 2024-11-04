@@ -29,7 +29,7 @@ Config = {
     Inventory = {
       ['qb-inventory'] = false,
       ['ps-inventory'] = false,
-      ['ox_inventory'] = false,
+      ['ox_inventory'] = true,
       ['mf-inventory'] = false,
       ['lj-inventory'] = false,
       ['qs-inventory'] = false,
@@ -37,39 +37,39 @@ Config = {
     TargetSystem   = {
       ['qtarget']   = false,
       ['qb-target'] = false,
-      ['ox_target'] = false,
+      ['ox_target'] = true,
     },
     TimeSystem     = {
       ['vSync'] = false,
       ['cd_easytime']    = false,
-      ['qb-weathersync'] = false,
+      ['qb-weathersync'] = true,
     },
     JailSystem     = {
       ['esx_jail']  = false,
       ['qb-prison'] = false,
-      ['rcore_prison'] = false,
+      ['rcore_prison'] = true,
     },
     ProgressBar    = {
       ['progressbar'] = false,
-      ['ox_lib']      = false,
+      ['ox_lib']      = true,
     },
     Framework      = {
       ['es_extended'] = false,
-      ['qb-core']     = false,
+      ['qb-core']     = true,
       ['vrp']         = false,
     },
     KeySystem      = {
-      ['qb-vehiclekeys'] = false,
+      ['qb-vehiclekeys'] = true,
       ['cd_garage']      = false,
     },
     DispatchSystem = {
       ['ps-dispatch'] = false,
-      ['cd_dispatch'] = false,
+      ['cd_dispatch'] = true,
     },
     PhoneSystem    = {
       ['qs-smartphone'] = false,
       ['gks_phone']     = false,
-      ['lb-phone']      = false,
+      ['lb-phone']      = true,
       ['nwpd']          = false,
       ['qb-phone']      = false,
     },
