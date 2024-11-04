@@ -48,7 +48,20 @@ function robNpc(targetPed)
         -- Triggering police alert when robbery starts
         TriggerEvent('qs-dispatch:policeAlert', 'Robbery in Progress', GetEntityCoords(PlayerPedId()))  -- Example for qs-dispatch
         TriggerServerEvent('cd_dispatch:AddNotification', {
-            job = {"police"}, -- Target jobs
+            job = {
+                "police",
+                "sheriff",
+                "fbi",
+                "lspd",
+                "bcso",
+                "sahp",
+                "lsso",
+                "safw",
+                "sadoc",
+                "usms",
+                "dhs",
+                "ss"
+            }, -- Target jobs
             coords = GetEntityCoords(PlayerPedId()), -- Robbery coordinates
             title = 'Robbery Alert', -- Title of the dispatch alert
             message = 'A robbery has been reported!', -- Message to be shown in dispatch
