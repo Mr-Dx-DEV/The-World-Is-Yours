@@ -27,7 +27,7 @@ Config = {
   ]]
   AlternativeResourceNames = { --## Replace false with the alternative name you have used for that resource if you are renaming resources.
     Inventory = {
-      ['qb-inventory'] = false,
+      ['qb-inventory'] = true,
       ['ps-inventory'] = false,
       ['ox_inventory'] = true,
       ['mf-inventory'] = false,
@@ -36,7 +36,7 @@ Config = {
     },
     TargetSystem   = {
       ['qtarget']   = false,
-      ['qb-target'] = false,
+      ['qb-target'] = true,
       ['ox_target'] = true,
     },
     TimeSystem     = {

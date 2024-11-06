@@ -16,7 +16,7 @@ Config.UnlockedColor = 'rgb(27 195 63)' -- The color of the box of the popup tex
 Config.Consumables = { ['ticket'] = 1, ['paperclip'] = 1 } -- The items will get removed once used on a door that has the item on it
 
 Config.DoorList = {
-	-- bobcart robbery
+	--[[ -- bobcart robbery
 	{ --  Union: 1 66
 		objHash = GetHashKey('v_ilev_fingate'),
 		objHeading =  -110.0 + 360,
@@ -229,6 +229,6 @@ Config.DoorList = {
         garage = false,
         slides = false,
         fixText = false,
-    },
+    }, ]]
 
 }

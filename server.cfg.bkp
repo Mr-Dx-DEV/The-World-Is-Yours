@@ -1,50 +1,63 @@
 ## You CAN edit the following:
 endpoint_add_tcp "0.0.0.0:30120"
 endpoint_add_udp "0.0.0.0:30120"
-sv_maxclients 128
+
 set steam_webApiKey "598BC69C0F36C236B7042EB9FC643B79"
 sets tags "default, deployer, qbcore, qb-core, The World Is Yours, thwworldisyour, worldisyour, The World, World Is Yours"
 
 ## You MAY edit the following:
 sv_licenseKey "cfxk_lhatWQ9tXEFPMQWjyOTP_gzVQX"
-sv_hostname "^8The World Is Yours"
-sets sv_projectName "^8The World Is Yours"
+sv_hostname "^8The ^7World ^6Is ^3Yours"
+sets sv_projectName "^8The ^7World ^6Is ^3Yours"
 sets sv_projectDesc "An advanced FiveM RP framework including jobs, gangs, housing & more!"
 sets locale "en-US"
 load_server_icon myLogo.png
-set sv_enforceGameBuild 2699
 
 set mysql_connection_string "mysql://root@localhost/worldisyours?charset=utf8mb4"
 
-# Enable OneSync to handle more than 32 players
-onesync_enabled 1
+#####  Core
+sv_maxclients 128
+set sv_enforceGameBuild 2699
+sv_pureLevel 1
 
-# Increase player streaming distance (optional)
-onesync_population true
-
-# Enable player routing bucket support for OneSync
-onesync_enableInfinity 1
-
-# Ensure you have enough entity buffer for 128 players
-sv_entityLockdown true
-
-# Resource manager optimization
-set fxdkUseResourceCache 1
-
-# Add a higher streaming distance for players
-set onesync_forceMigration true
-
+set PedPopulationBudget 3         # Controls density of AI pedestrians, set between 1-3 for larger servers
+set VehiclePopulationBudget 3     # Controls density of vehicles, similar range for larger environments
+set streamingMaxMemory 2048      # Controls maximum memory for streaming assets
+set assetStorageLimit 2048       # Additional limit for stored assets
+set streamingMaxMemory 2048      # Controls maximum memory for streaming assets
+set assetStorageLimit 2048       # Additional limit for stored assets
+set sv_timeout 300000            # Timeout in milliseconds before dropping a player (5 minutes)
+set TxdStoreSize 204800
 # Reduce entity creation timeouts
 set sv_maxEntityCreationTime 5000
-
 # Ensure larger pool sizes for resources (this is automatic)
 set sv_increaseResourceCacheLimits true
-
 #set sv_poolSizesIncrease 512
-
 # Some performance tweaks for larger servers
-sv_scriptHookAllowed 1
+set sv_scriptHookAllowed 0
 
+# Pool and cache settings
+set TxdStoreSize 204800
+set CMoveObjectPoolSize 75
+set FragmentStoreSize 14000
+set LightEntityPoolSize 1000
+set OcclusionInteriorInfoPoolSize 20
+set OcclusionPathNodePoolSize 5000
+set OcclusionPortalEntityPoolSize 750
+set OcclusionPortalInfoPoolSize 750
+set PortalInstPoolSize 225
+set ScaleformStoreSize 200
+set StaticBoundsPoolSize 5000
+
+# Recommended additions
+set PedPopulationBudget 3
+set VehiclePopulationBudget 3
+set streamingMaxMemory 2048
+set assetStorageLimit 2048
+set sv_maxPlayerChannels 1024
+set sv_timeout 300000
+
+increase_pool_size "TxdStore" 26000
 
 sets banner_detail "https://i.ibb.co/jfZDCzQ/standard.gif"
 sets banner_connecting "https://i.ibb.co/jfZDCzQ/standard.gif"
