@@ -37,7 +37,7 @@ Config.CoreSettings = {
         --use 'ox' for ox_inventory
     },
     Police = { -- support for qb-policejob and ps-dispatch
-        Type = 'qb',
+        Type = 'ps',
         --use 'qb' for qb-policejob
         --use 'ps' for ps-dispatch
     },

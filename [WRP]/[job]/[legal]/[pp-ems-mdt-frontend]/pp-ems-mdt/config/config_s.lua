@@ -13,12 +13,12 @@ elseif GetResourceState('your_custom_framework') ~= 'missing' then -- fill it wh
 end
 
 return {
-    debug = true,
+    debug = false,
     locales = 'en', -- EN | PL
 
     imageUpload = {
-        type = 'fivemanage', -- fivemanage | fmsdk | discord | custom
-        token = '', -- fivemanage token | discord webhook
+        type = 'discord', -- fivemanage | fmsdk | discord | custom
+        token = 'MTIyMTI3NTk5NDgwODEyNzUzOQ.GuVXBB.c8roX5j8f505LRlqw-Nv1lZZkxrwvF3nrgxilY', -- fivemanage token | discord webhook
         custom = function(source)
             return nil --return url
         end

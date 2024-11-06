@@ -46,7 +46,7 @@ Config.CoreSettings = {
     },
     Police = {
         MinCops = 1, -- minimum amount of cops required on duty to request mission
-        Type = 'qb' -- support for qb-policejob and ps_dispatch
+        Type = 'ps' -- support for qb-policejob and ps_dispatch
         --use 'qb' for qb-policejob
         --use 'ps' for ps-dispatch
     },
