@@ -367,9 +367,9 @@ Config.Locations = {
         
 
         clockInAndOut = {
-            enabled = false,                        -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for each e.x. offpolice for police offsheriff for sheriff AND have grades for each pd grade - QBCORE REQUIRES NOTHING)
+            enabled = true,                        -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for each e.x. offpolice for police offsheriff for sheriff AND have grades for each pd grade - QBCORE REQUIRES NOTHING)
             jobLock = false,                    -- This must be set to which job will be utilizing (ESX MUST HAVE OFF DUTY JOB / GRADES FOR THIS - ex. offpolice or offsheriff)
-            coords = vec3(464.87, -977.37, 30.69), -- Location of where to go on and off duty(If not using target)
+            coords = vec3(614.898, 15.713, 82.628), -- Location of where to go on and off duty(If not using target)
             label = '[E] - Go On/Off Duty',        -- Text to display(If not using target)
             distance = 3.0,                        -- Distance to display text UI(If not using target)
             target = {
