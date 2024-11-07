@@ -63,8 +63,8 @@ Config = {
       ['cd_garage']      = false,
     },
     DispatchSystem = {
-      ['ps-dispatch'] = false,
-      ['cd_dispatch'] = true,
+      ['ps-dispatch'] = true,
+      ['cd_dispatch'] = false,
     },
     PhoneSystem    = {
       ['qs-smartphone'] = false,

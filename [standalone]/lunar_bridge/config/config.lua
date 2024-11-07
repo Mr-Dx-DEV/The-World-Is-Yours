@@ -9,7 +9,7 @@ Config.Keybinds = {
 
 Config.Dispatch = {
     Enable = true, -- Enable dispatch
-    Type = 'rcore_dispatch', --['normal'/'cd_dispatch'/'qs-dispatch'/'ps-dispatch']
+    Type = 'ps-dispatch', --['normal'/'cd_dispatch'/'qs-dispatch'/'ps-dispatch']
 	Jobs = {
 		'police',
 		'sheriff',
