@@ -38,7 +38,7 @@ Config.OnlyOnePersonToAccessOneATMAtOneTime = false
 
 Blips = {
     unique_blips = false, -- this will create each blip which will show individually in the side bar. If you see flashing side bar due to the high number of blips, set this to false.
-    blip_scale = 0.8,
+    blip_scale = 0.5,
     blip_sprite = 108,
     generic_blip_label = "Bank", -- only shows if you set unique_blips to false
     generic_blip_color = 2 -- only shows if you set unique_blips to false

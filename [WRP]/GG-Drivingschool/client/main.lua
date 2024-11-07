@@ -88,7 +88,7 @@ CreateThread(function()
 	local blip = AddBlipForCoord(Config.Zones.DMVSchool.Pos.x, Config.Zones.DMVSchool.Pos.y, Config.Zones.DMVSchool.Pos.z)
 	SetBlipSprite(blip, 616)
 	SetBlipDisplay(blip, 4)
-	SetBlipScale(blip, 1.0)
+	SetBlipScale(blip, 0.5)
 	SetBlipColour(blip, 3)
 	SetBlipAsShortRange(blip, true)
 

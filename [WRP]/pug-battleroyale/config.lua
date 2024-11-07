@@ -14,7 +14,7 @@ Config.MaxWager = 25000 -- maximum bet players can make
 Config.IconBlip = { -- The blip settings for if Config.UseVrHeadSet is false
     Icon = 94,
     Color = 83,
-    Size = 0.7,
+    Size = 0.5,
 }
 ----------
 Config.VrHeadSetPropMale = 176 -- whatever number the vr headset is for you in your clothing menu hat section (MALE) [clothing hat prop can be found here: https://www.gta5-mods.com/player/oculus-rift-cv1-eup]
