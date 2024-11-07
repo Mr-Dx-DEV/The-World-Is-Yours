@@ -62,9 +62,9 @@ Config.textScale = 1
 Config.dispatch = {
     enabled = true, -- Whether to enable the dispatch
 
-    alertChance = 10, -- chance in %, how often smash n grab events get called
+    alertChance = 100, -- chance in %, how often smash n grab events get called
 
-    system = 'cd-dispatch',  -- Setting for the dispatch system to use ('default' for the built-in system or 'cd-dispatch', 'core-dispatch-old', 'core-dispatch-new' or 'ps-dispatch' for external systems)
+    system = 'rcore_dispatch',  -- Setting for the dispatch system to use ('default' for the built-in system or 'cd-dispatch', 'core-dispatch-old', 'core-dispatch-new' or 'ps-dispatch' for external systems)
     policeCode = '10-31',  -- Police code for the smash n grab
     eventName = 'Smash and grab',  -- Name of the theft event
     description = 'Vehicle broken into. Possible theft',  -- Description of the theft event
