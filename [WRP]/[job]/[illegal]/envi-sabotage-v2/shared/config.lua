@@ -158,10 +158,10 @@ Config.Bombs = {
 }
 
 -- Repair Settings
-Config.RepairJob = {'mechanic', 'hobo'}               -- Job to use for repairs
+Config.RepairJob = {'mechanic', 'hobo', 'kittys'}               -- Job to use for repairs
 Config.RepairTime = 10                      -- Time in seconds to repair a vehicle
 
-Config.RealisticRepair = false              -- enable/disable realistic repairs for brakes, controls, gas tank etc. 
+Config.RealisticRepair = true              -- enable/disable realistic repairs for brakes, controls, gas tank etc. 
 -- if true you must be holding the right tool for some repairs (brakes = spanner, controls = adjustable spanner)
 --(to enable this you must use vehicle lifts (such as in wasabi_mechanic) as it will require you to be underneath the vehicle for some repairs)
 
@@ -176,11 +176,11 @@ Config.MiniGame = false -- Set to true to enable the minigames
 -- [[ NEW ]] --
 
 Config.BlacklistedVehClasses = { -- Blacklisted vehicle classes
-    17, -- Service
-    18, -- Emergency
-    19, -- Military
-    20, -- Commercial
-    21, -- Trains
+--  17, -- Service
+--    18, -- Emergency
+--    19, -- Military
+--   20, -- Commercial
+--    21, -- Trains
 }
 
 Config.RepairAll = false -- Set to true to allow players to repair all damamges on a vehicle
