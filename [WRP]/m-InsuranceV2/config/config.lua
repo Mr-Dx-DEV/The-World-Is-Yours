@@ -43,7 +43,7 @@ Config.InsuranceSettings = {
     }
 }
 
-Config.InsuranceTypePayment = "cash" -- "cash" or "bank"
+Config.InsuranceTypePayment = "bank" -- "cash" or "bank"
 Config.RegistrationPrice = 500 -- Price of registration vehicle
 Config.InsurancePrice = {
     [1] = 500, -- 1 Month
