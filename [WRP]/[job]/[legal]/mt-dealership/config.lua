@@ -199,7 +199,7 @@ Config.managementMenus = {
         size = vec3(0.6, 0.75, 0.95),
         rotation = 320.0,
         job = 'emergencydealership',
-        truckSpawnCoords = vec4(-12.99, -1639.37, 29.17, 234.67),
+        truckSpawnCoords = vec4(-6.323, -1640.733, 29.251, 230.1),
         vehicleCategories = {
             { label = 'emergency', id = 'emergency' }
         },
