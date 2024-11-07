@@ -185,7 +185,7 @@ Config.FreezeOnRevive = true -- Set to true if you want to freeze the player whe
 -- NEW IN 1.7.0 -- 
 Config.CallAnimDisabled = true -- Set to true if you want to disable the call animation
 
-Config.HideOnRevive = true -- Set to true if you want to hide the player when they are being revived - this was added to 'fix' some onesync syncronised anim issues that were introudced into FiveM recently
+Config.HideOnRevive = false -- Set to true if you want to hide the player when they are being revived - this was added to 'fix' some onesync syncronised anim issues that were introudced into FiveM recently
 
 function AddSocietyFunds(amount)
   -- this will work for qbcore-management, qbx-management and esx_society by default -- edit here for others
