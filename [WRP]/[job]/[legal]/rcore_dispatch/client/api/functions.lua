@@ -51,7 +51,7 @@ function carRobbery()
     'sadoc',
     'usms',
     'dhs',
-    'ss'
+    'ss',
 },
 
                     text = text,
@@ -84,7 +84,7 @@ function carRobbery()
     'sadoc',
     'usms',
     'dhs',
-    'ss'
+    'ss',
 },
 
             text = text,
@@ -154,7 +154,7 @@ function shopRobbery()
     'sadoc',
     'usms',
     'dhs',
-    'ss'
+    'ss',
 },
 
         text = text,
@@ -192,7 +192,7 @@ function bankRobbery()
     'sadoc',
     'usms',
     'dhs',
-    'ss'
+    'ss',
 },
 
         text = text,
@@ -260,7 +260,7 @@ function DrugSale(text, blip_text, options)
             'sadoc',
             'usms',
             'dhs',
-            'ss'
+            'ss',
         },
         
         text = text or 'Someone is selling drugs in this position, please come as fast as possible.',
