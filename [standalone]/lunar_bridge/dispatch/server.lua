@@ -52,7 +52,22 @@ function Dispatch.call(coords, data)
             code = data.Code,
             coords = coords,
             priority = 2,
-            jobs = { 'leo' },
+            jobs = {
+                'leo',
+                'police',
+                'sheriff',
+                'fbi',
+                'lspd',
+                'bcso',
+                'sahp',
+                'lsso',
+                'safw',
+                'sadoc',
+                'usms',
+                'dhs',
+                'ss'
+            },
+            
             alert = { 
                 displayCode = data.Code,
                 description = data.Message,

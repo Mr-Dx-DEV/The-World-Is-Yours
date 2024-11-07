@@ -46,8 +46,8 @@ function robNpc(targetPed)
         QBCore.Functions.Notify(_U('robbery_started'))
 
         -- Triggering police alert when robbery starts
-        TriggerEvent('qs-dispatch:policeAlert', 'Robbery in Progress', GetEntityCoords(PlayerPedId()))  -- Example for qs-dispatch
-        TriggerServerEvent('cd_dispatch:AddNotification', {
+        TriggerEvent('ps-dispatch:policeAlert', 'Robbery in Progress', GetEntityCoords(PlayerPedId()))  -- Example for qs-dispatch
+        TriggerServerEvent('ps-dispatch:AddNotification', {
             job = {
                 "police",
                 "sheriff",

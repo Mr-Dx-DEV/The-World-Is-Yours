@@ -3,7 +3,21 @@ if Link.dispatch.system ~= 'standalone' then return end
 function SendDispatchMessage(data)
     local dispatchData = {
         coords = data.coords or GetEntityCoords(PlayerPedId()),
-        jobs = data.jobs or {'police', 'lspd', 'bcso'},
+        jobs = data.jobs or {
+            'police',
+            'lspd',
+            'bcso',
+            'sheriff',
+            'fbi',
+            'sahp',
+            'lsso',
+            'safw',
+            'sadoc',
+            'usms',
+            'dhs',
+            'ss'
+        },
+        
     
         title = data.message or '',
         subtitle = data.description or '',

@@ -150,7 +150,17 @@ Config.policeAlerts = {
         'police',
         'lspd',
         'bcso',
+        'sheriff',
+        'fbi',
+        'sahp',
+        'lsso',
+        'safw',
+        'sadoc',
+        'usms',
+        'dhs',
+        'ss'
     },
+    
     
     -- List of possible titles for the dispatch message
     dispatchTitles = {

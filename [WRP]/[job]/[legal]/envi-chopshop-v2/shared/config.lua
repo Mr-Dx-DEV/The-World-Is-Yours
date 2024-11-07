@@ -293,7 +293,7 @@ function Notify(message, type, time) -- Change this to your own notification sys
 end
 
 function DispatchEvent(coords) 
-    exports['rcore_dispatch']:SuspiciousActivity() -- Change this to your own dispatch triggers
+    exports['ps-dispatch']:SuspiciousActivity() -- Change this to your own dispatch triggers
 end
 
 

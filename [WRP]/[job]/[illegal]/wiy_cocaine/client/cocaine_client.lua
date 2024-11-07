@@ -295,7 +295,7 @@ function PoliceCallChance()
 		if PoliceType == 'qb' then
 			TriggerServerEvent('police:server:policeAlert', 'Suspicious Activity')
 		elseif PoliceType == 'ps' then
-			exports['rcore_dispatch']:SuspiciousActivity()
+			exports['ps-dispatch']:SuspiciousActivity()
 		elseif PoliceType == 'custom' then
 			--insert your own police notification methods here
 		end

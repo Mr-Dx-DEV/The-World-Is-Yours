@@ -32,8 +32,22 @@ Config.ServerStartCooldownTime = 30 -- Server Start Specific Cooldown (Time Is I
 
 --Police & Dispatch Settings
 Config.Police = {
-    PoliceJobs = {"police"}, -- Name of the police jobs| Can support multiple jobs
-    Dispatch = "cd", -- "qb-policejob" = qb-policeJob | "cd" = Code Design's Dispatch | "core" = Core Dispatch | "ps-dispatch" | "ESX" = ESX
+    PoliceJobs = {
+        "police",
+        "sheriff",
+        "fbi",
+        "lspd",
+        "bcso",
+        "sahp",
+        "lsso",
+        "safw",
+        "sadoc",
+        "usms",
+        "dhs",
+        "ss"
+    },
+     -- Name of the police jobs| Can support multiple jobs
+    Dispatch = "ps-dispatch", -- "qb-policejob" = qb-policeJob | "cd" = Code Design's Dispatch | "core" = Core Dispatch | "ps-dispatch" | "ESX" = ESX
     TenCode = "911", -- 10-code used for the robbery call (CD Dispatch + Core Dispatch)
 }
 

@@ -433,7 +433,7 @@ local function PoliceCallChance()
 		if PoliceType == 'qb' then
 			TriggerServerEvent('police:server:policeAlert', 'Suspicious Activity')
 		elseif PoliceType == 'ps' then
-			exports['rcore_dispatch']:SuspiciousActivity()
+			exports['ps-dispatch']:SuspiciousActivity()
 		end				
 		--SendNotify(Config.Language.Notifications.PoliceNotified, 'error', 2000) --uncomment this line if you want the player to be notified that police have been called
 	end
