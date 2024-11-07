@@ -9877,27 +9877,6 @@ return {
 		}
 	},
 
---rcore_radiocar
-	['radiocar_dismounter'] = {
-		label = 'radiocar_dismounter',
-		weight = 250,
-		close = true,
-		consume = 0,
-		client = {},
-		server = {
-			export = 'rcore_itemradio.radiocar_dismounter',
-		},
-	},
-	['radiocar'] = {
-		label = 'radiocar',
-		weight = 250,
-		close = true,
-		consume = 0,
-		client = {},
-		server = {
-			export = 'rcore_itemradio.radiocar',
-		},
-	},
 	
 	["trap_phone"] = {
 		label = "V Phone",
@@ -17343,15 +17322,35 @@ return {
 	},
 
 
-	["radiocar_blue"] = {
-		label = "radiocar blue style",
-		weight = 100,
-		stack = true,
+	['radiocar_dismounter'] = {
+		label = 'radiocar_dismounter',
+		weight = 250,
 		close = true,
-		description = "radiocar",
-		client = {
-			image = "radiocar.png",
-		}
+		consume = 0,
+		client = {},
+		server = {
+			export = 'rcore_itemradio.radiocar_dismounter',
+		},
+	},
+	['radiocar'] = {
+		label = 'radiocar gray style',
+		weight = 250,
+		close = true,
+		consume = 0,
+		client = {},
+		server = {
+			export = 'rcore_itemradio.radiocar',
+		},
+	},
+	['radiocar_blue'] = {
+		label = 'radiocar blue style',
+		weight = 250,
+		close = true,
+		consume = 0,
+		client = {},
+		server = {
+			export = 'rcore_itemradio.radiocar_blue',
+		},
 	},
 
 	["umbrella"] = {
