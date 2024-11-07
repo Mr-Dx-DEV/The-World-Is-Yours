@@ -6,7 +6,7 @@ Config.contracts.boosting = {
         requiredExperience = 0,
         expiry = 35 * 60,
         timeToStart = 2 * 60,
-        minMembers = 2,
+        minMembers = 1,
         minPolice = 0
     },
 

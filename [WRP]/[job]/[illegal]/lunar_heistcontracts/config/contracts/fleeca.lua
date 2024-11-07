@@ -2,14 +2,14 @@ Config.contracts.fleeca = {
     ---@type ContractSettings
     settings = {
         disabled = false,
-        chance = 10,
+        chance = 100,
         price = 250,
         requiredExperience = 1000,
         expiry = 24 * 60,
         timeToStart = 2 * 60,
         minMembers = 4,
         rewards = { crypto = 125, experience = 750 }, -- Other rewards such as items are listed below
-        minPolice = 6
+        minPolice = 1
     },
 
     duration = 120, -- minutes before reset
