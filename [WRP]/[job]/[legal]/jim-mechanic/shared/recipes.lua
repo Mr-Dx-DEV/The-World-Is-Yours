@@ -90,6 +90,9 @@ Crafting = {
 			{ ["screwdriver"] = { ["rubber"] = 1, },
 				["amount"] = 1,
 			},
+			{ ["fuel_pump"] = { ["plastic"] = 10, ["steel"] = 10, ["iron"] = 5, },
+				["amount"] = 1,
+			},
 			
 
 		},
@@ -316,6 +319,7 @@ Stores = {
 			{ name = "impact_driver", price = 500, amount = 100, info = {}, type = "item", },
 			{ name = "pliers", price = 500, amount = 100, info = {}, type = "item", },
 			{ name = "screwdriver", price = 500, amount = 100, info = {}, type = "item", },
+			{ name = "fuel_pump", price = 2000, amount = 100, info = {}, type = "item", },
 
 		},
 	},
