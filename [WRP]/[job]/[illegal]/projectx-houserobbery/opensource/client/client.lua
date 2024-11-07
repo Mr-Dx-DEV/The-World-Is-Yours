@@ -297,9 +297,9 @@ function Dispatch()
             type = 'alert',
             blip_time = 5,
             blip = {
-                sprite = 272, 
+                sprite = 42, 
                 colour = 3,
-                scale = 0.7,
+                scale = 1.7,
                 text = 'House Robbery', 
                 flashes = false,
                 radius = 0,
