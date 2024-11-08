@@ -209,8 +209,8 @@ Config.BlacklistedScenarios = {
 }
 
 Config.BlacklistedVehs = {
-    [`shamal`] = true,
-    [`luxor`] = true,
+    
+    
     [`luxor2`] = true,
     [`jet`] = true,
     [`lazer`] = true,
