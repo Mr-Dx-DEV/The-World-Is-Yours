@@ -71,7 +71,7 @@ config.stores = {
         blip = { type = 'exotic', label = 'Exotic Dealer', category = 'boii_hunting', sprite = 141, colour = 1, scale = 0.6 },
         ped = { type = 'exotic', label = 'Suspicious Person', model = 'ig_gustavo', scenario = 'WORLD_HUMAN_SMOKING', category = 'boii_hunting', networked = false, distance = 2.0 },
         locations = {
-            { id = 'paleto_forest', coords = vector4(1159.22, -1374.77, 34.72, 273.25), show_blip = true, --[[ opening_times = { open = 10, close = 18} ]] },
+            { id = 'paleto_forest', coords = vector4(1159.22, -1374.77, 34.72, 273.25), show_blip = false, --[[ opening_times = { open = 10, close = 18} ]] },
             --- Add more exotic dealer locations here..
         },
         items = {

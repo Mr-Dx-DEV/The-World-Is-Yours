@@ -26,6 +26,7 @@ if PublicSharedPetsConfig.PedShop.WantPedShop then
     local blip = AddBlipForCoord(pedCoords.x, pedCoords.y, pedCoords.z)
     SetBlipSprite(blip, 442)
     SetBlipAsShortRange(blip, true)
+    SetBlipScale(blip, 0.5)
     BeginTextCommandSetBlipName("STRING")
     AddTextComponentString("Pet Shop")
     EndTextCommandSetBlipName(blip)

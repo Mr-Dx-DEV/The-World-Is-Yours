@@ -22,7 +22,7 @@ config = config or {}
 
 --- Debug
 --- @field debug: Toggle debug prints for the library
-config.debug = true
+config.debug = false
 
 --- @section Resource settings
 
