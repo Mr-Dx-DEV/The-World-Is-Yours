@@ -346,7 +346,7 @@ Config.TransferLimits.Weekly = false -- The maximum amount of money that can be 
 Config.EnableMessagePay = true -- Allow players to pay other players via messages?
 Config.EnableVoiceMessages = true -- Allow players to send voice messages?
 
-Config.CityName = "The World is Your" -- The name that's being used in the weather app etc.
+Config.CityName = "The World is Yours" -- The name that's being used in the weather app etc.
 Config.RealTime = true -- if true, the time will use real life time depending on where the user lives, if false, the time will be the ingame time.
 Config.CustomTime = false -- NOTE: disable Config.RealTime if using this. you can set this to a function that returns custom time, as a table: { hour = 0-24, minute = 0-60 }
 
