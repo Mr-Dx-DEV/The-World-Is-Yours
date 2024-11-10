@@ -69,12 +69,12 @@ QBShared.Jobs = {
             },
             ['11'] = {
                 name = 'Deputy Commissioner',
-                isboss = false,
+                isboss = true,
                 payment = 4000
             },
             ['12'] = {
                 name = 'Commissioner',
-                isboss = false,
+                isboss = true,
                 payment = 5000
             },
         },
@@ -711,6 +711,30 @@ QBShared.Jobs = {
 			['4'] = { name = 'Manager', isboss = true, payment = 150 },
 		},
 	},
+    jobresetelectrician = {
+		label = 'etelectrician',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+			['0'] = { name = 'Recruit', payment = 50 },
+			['1'] = { name = 'Driver', payment = 75 },
+			['2'] = { name = 'Event Driver', payment = 100 },
+			['3'] = { name = 'Sales', payment = 125 },
+			['4'] = { name = 'Manager', isboss = true, payment = 150 },
+		},
+	},
+    jobresetgardener = {
+		label = 'gardener',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+			['0'] = { name = 'Recruit', payment = 50 },
+			['1'] = { name = 'Driver', payment = 75 },
+			['2'] = { name = 'Event Driver', payment = 100 },
+			['3'] = { name = 'Sales', payment = 125 },
+			['4'] = { name = 'Manager', isboss = true, payment = 150 },
+		},
+	},
     truckdealership = {
 		label = 'Truck Vehicle Dealer',
 		defaultDuty = true,
@@ -836,6 +860,19 @@ QBShared.Jobs = {
 	mechanic3 = {
 		label = 'LS Customs',
 		type = 'mechanic',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+			['0'] = { name = 'Recruit', payment = 50 },
+			['1'] = { name = 'Novice', payment = 75 },
+			['2'] = { name = 'Experienced', payment = 100 },
+			['3'] = { name = 'Advanced', payment = 125 },
+			['4'] = { name = 'Manager', isboss = true, payment = 150 },
+		},
+	},
+    diver = {
+		label = 'Diving',
+		type = 'diver',
 		defaultDuty = true,
 		offDutyPay = false,
 		grades = {
