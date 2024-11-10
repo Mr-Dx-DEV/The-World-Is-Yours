@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tworst-Gardener</title>
+        <script src="./js/vue.global.js"></script>
+        <script src="./js/vuex.global.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="main.css" />
+    </head>
+    <body>
+        <div id="app">
+            <div class="finishBox" v-show="finishShow">
+                <div class="earnBox">
+                    <h2 class="earnTitle">{{this.Locales["your_earnings"]}}</h2>
+                    <div class="earnList">
+                        <div class="earn expEarn">
+                            <div class="earnTopSide">{{this.Locales["LEVELEXP"]}}</div>
+                            <div class="earnTextBox">
+                                <h2 class="earnText">{{formatNumber(finishjobData.xp)}} {{this.Locales["EXP"]}}</h2>
+                                <p class="earnSubText">{{this.Locales["Received"]}}</p>
+                            </div>
+                        </div>
+                        <div class="earn moneyEarn">
+                            <div class="earnTopSide">{{this.Locales["REWARDMONEY"]}}</div>
+                            <div class="earnTextBox">
+                                <h2 class="earnText">{{serverMoneyType}} {{formatNumber(finishjobData.money)}}</h2>
+                                <p class="earnSubText">{{this.Locales["Received"]}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="finishTitleBox">
+                    <p class="finishSubTitle">{{this.Locales["MISSION"]}}</p>
+                    <h2 class="finishTitle">{{this.Locales["COMPLETED"]}}</h2>
+                    <h3 class="finishName">{{finishjobData.name}}</h3>
+                </div>
+                <div class="earnBox" style="background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.06) 100%)">
+                    <h2 class="earnTitle">{{this.Locales["YOUR_SCORE"]}}</h2>
+                    <div class="earnList">
+                        <div class="earn moneyEarn scoreEarn">
+                            <div class="earnTopSide">{{Locales['YOUR_SCORE']}}</div>
+                            <div class="earnTextBox">
+                                <h2 class="earnText">{{finishjobData.scoreAmount}} {{Locales['MOWING']}}</h2>
+                                <p class="earnSubText">{{this.Locales["Received"]}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img src="./img/finishEffect.png" alt="" class="finishEffect" />
+            </div>
+            <div class="scoreList" v-show="playerShow">
+                <div class="scoreBox" v-if="progressData && progressData.Players" v-for="(data, index) in progressData.Players" :key="index">
+                    <div class="scorePlayerBox">
+                        <div class="scorePlayerImg" :style="`background-image: url('${data.image}')`"></div>
+                        <div class="scorePlayerTextBox">
+                            <h2 class="scorePlayerName">{{data.name}}</h2>
+                            <div class="scorePlayerLevel">
+                                <div class="scorePlayerLevelLine"></div>
+                                <h2 class="scorePlayerLevelText">{{this.Locales["LEVEL"]}} {{data.level}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scoreSay">
+                        <img src="./img/tb.png" alt="" class="kn" />
+                        <h2 class="scoreSayText">{{data.scoreAmount}}</h2>
+                    </div>
+                </div>
+            </div>
+            <div v-if="progressbar > 0" class="loadingBarBox">
+                <div class="loadingTextBox">
+                    <div class="loadingTextLine"></div>
+
+                    {{progressbarLabel}}
+                </div>
+                <div class="loadingBar">
+                    <div class="loading" :style="{'width' : progressbar + '%'}"></div>
+                </div>
+            </div>
+            <div class="allScoreBox" v-show="scoreBoxShow">
+                <div class="allScore" v-if="progressData && progressData.JobTask && progressData.JobTask[0].amount">
+                    <img src="./img/kn.png" alt="" class="allScoreImg" />
+                    <h2 class="allScoreText">
+                        {{progressData.JobTask[0].madeAmount}}
+                        <span>/{{progressData.JobTask[0].amount}}</span>
+                    </h2>
+                </div>
+                <div class="allScore" v-if="progressData && progressData.JobTask && progressData.JobTask[1].amount">
+                    <img src="./img/tb.png" alt="" class="allScoreImg" />
+                    <h2 class="allScoreText">
+                        {{progressData.JobTask[1].madeAmount}}
+                        <span>/{{progressData.JobTask[1].amount}}</span>
+                    </h2>
+                </div>
+            </div>
+            <div class="requestMenu" v-show="requestMenuShow">
+                <h2 class="requestTitle">{{Locales['INVITE_REQUIEST']}}</h2>
+                <p class="requestText" v-if="this.reqestHostName">{{Locales['INVITE_TEXT']}} {{reqestHostName}}</p>
+                <div class="requestButtonList">
+                    <div class="denyButton requestButton" @click="declineInvite">{{Locales['DENY']}}</div>
+                    <div class="acceptButton requestButton" @click="acceptInvite">{{Locales['ACCEPT']}}</div>
+                </div>
+            </div>
+            <div class="General" v-show="mainShow">
+                <div class="exitBox" @click="closeNUI">
+                    <svg xmlns="http://www.w3.org/2000/svg" width=".7813vw" height=".7813vw" viewBox="0 0 15 15" fill="none">
+                        <g clip-path="url(#clip0_8_1375)">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.50016 8.72008L10.5494 11.7693C10.7112 11.9311 10.9306 12.022 11.1595 12.022C11.3883 12.022 11.6077 11.9311 11.7695 11.7693C11.9313 11.6075 12.0222 11.3881 12.0222 11.1592C12.0222 10.9304 11.9313 10.711 11.7695 10.5492L8.71916 7.49993L11.769 4.4507C11.849 4.37059 11.9126 4.27548 11.9559 4.17082C11.9992 4.06616 12.0215 3.95399 12.0215 3.84071C12.0214 3.72744 11.9991 3.61528 11.9557 3.51064C11.9124 3.40599 11.8488 3.31092 11.7687 3.23084C11.6886 3.15076 11.5935 3.08725 11.4888 3.04393C11.3841 3.0006 11.272 2.97832 11.1587 2.97834C11.0454 2.97837 10.9332 3.00071 10.8286 3.04408C10.724 3.08745 10.6289 3.15101 10.5488 3.23113L7.50016 6.28035L4.45094 3.23113C4.37141 3.14871 4.27627 3.08296 4.17107 3.03771C4.06586 2.99246 3.95269 2.96861 3.83817 2.96757C3.72365 2.96652 3.61007 2.98829 3.50405 3.0316C3.39803 3.07492 3.3017 3.13892 3.22068 3.21986C3.13966 3.30081 3.07557 3.39708 3.03216 3.50305C2.98874 3.60903 2.96686 3.72259 2.9678 3.83711C2.96874 3.95164 2.99248 4.06482 3.03763 4.17007C3.08279 4.27532 3.14845 4.37053 3.23079 4.45013L6.28116 7.49993L3.23136 10.5497C3.14902 10.6293 3.08336 10.7245 3.03821 10.8298C2.99306 10.935 2.96932 11.0482 2.96838 11.1627C2.96744 11.2773 2.98931 11.3908 3.03273 11.4968C3.07615 11.6028 3.14024 11.6991 3.22126 11.78C3.30228 11.8609 3.39861 11.9249 3.50462 11.9683C3.61064 12.0116 3.72423 12.0333 3.83875 12.0323C3.95327 12.0312 4.06643 12.0074 4.17164 11.9621C4.27685 11.9169 4.37199 11.8511 4.45151 11.7687L7.50016 8.72008Z" fill="white" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_8_1375">
+                                <rect width="13.8" height="13.8" fill="white" transform="translate(0.600098 0.599976)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="Title">
+                    <div class="titleIcon">
+                        <img src="./img/title.png" alt="" class="Logo" />
+                    </div>
+                    <div class="titleTextBox">
+                        <h2 class="titleText" v-if="serverName.length < 10">{{serverName}}</h2>
+                        <span class="titleSubText">{{Locales["GARDENER"]}}</span>
+                    </div>
+                    <div class="titleLine"></div>
+                </div>
+                <div class="topSide">
+                    <div class="levelBox">
+                        <div class="levelTextBox">
+                            <div class="levelText">
+                                <div class="levelLine"></div>
+                                <h2 class="levelSay">{{Locales['LEVEL']}} {{playerData.level}}</h2>
+                            </div>
+                            <div class="requiredExpText">
+                                {{Locales['REQUIRE_EXP']}}
+                                <span>{{formatNumber(playerData.xp)}} {{Locales['EXP']}}</span>
+                            </div>
+                        </div>
+                        <div class="levelProgressBox">
+                            <div class="levelProgress">
+                                <div class="levelProg" :style="{ width: progressPercentage + '%' }"></div>
+                            </div>
+                            <div class="levelProgText">
+                                <h2 class="levelProgTexts">{{formatNumber(playerData.xp)}} {{Locales['EXP']}}</h2>
+                                <h2 class="levelProgTexts">{{formatNumber(playerData.nextxp)}} {{Locales['EXP']}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profileBox">
+                        <div class="profileImg" :style="`background-image: url('${playerData.image}')`"></div>
+                        <div class="profileTextBox">
+                            <h2 class="profileText">{{playerData.name}}</h2>
+                            <p class="profileSubText">{{serverMoneyType}} {{formatNumber(playerData.bank)}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="centerSide">
+                    <div class="regionBox">
+                        <div class="regionTitleBox">
+                            <div class="regionTitle">
+                                <svg width="1.7188vw" height="1.7188vw" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="mdi:location">
+                                        <path id="Vector" d="M16.5 15.8125C15.5883 15.8125 14.714 15.4503 14.0693 14.8057C13.4247 14.161 13.0625 13.2867 13.0625 12.375C13.0625 11.4633 13.4247 10.589 14.0693 9.94432C14.714 9.29966 15.5883 8.9375 16.5 8.9375C17.4117 8.9375 18.286 9.29966 18.9307 9.94432C19.5753 10.589 19.9375 11.4633 19.9375 12.375C19.9375 12.8264 19.8486 13.2734 19.6758 13.6905C19.5031 14.1075 19.2499 14.4865 18.9307 14.8057C18.6115 15.1249 18.2325 15.3781 17.8155 15.5508C17.3984 15.7236 16.9514 15.8125 16.5 15.8125ZM16.5 2.75C13.9473 2.75 11.4991 3.76406 9.6941 5.5691C7.88906 7.37413 6.875 9.82229 6.875 12.375C6.875 19.5938 16.5 30.25 16.5 30.25C16.5 30.25 26.125 19.5938 26.125 12.375C26.125 9.82229 25.1109 7.37413 23.3059 5.5691C21.5009 3.76406 19.0527 2.75 16.5 2.75Z" fill="white" />
+                                    </g>
+                                </svg>
+                                <div class="regionTitleText">
+                                    {{Locales['SELECT_JOB_REGION']}}
+                                    <p>{{Locales['CHOOSE']}}</p>
+                                </div>
+                            </div>
+                            <div class="regionTitleText" style="align-items: flex-end">
+                                <p>{{Locales['TOTAL_REGION']}}</p>
+                                {{Object.values(missionData).length}} {{Locales['REGIONS']}}
+                            </div>
+                        </div>
+                        <swiper-container class="regionList" space-between="25" slides-per-view="3">
+                            <swiper-slide
+                                class="region"
+                                v-for="(data, key) in missionData"
+                                @click="selectMission(data)"
+                                :style="{
+                  'opacity': selectJobData && data.name === selectJobData.name ? 1 : (selectJobData ? 0.5 : 1)
+                }"
+                            >
+                                <div class="awardBox">
+                                    <h2 class="awardText">{{Locales['AWARDS']}}</h2>
+                                    <div class="awardPrice">{{serverMoneyType}} {{formatNumber(data.awards.money)}}</div>
+                                </div>
+                                <div class="regionTextBox">
+                                    <h2 class="regionText">{{Locales['REGIONS']}} {{key + 1}}</h2>
+                                    <p class="regionSubText">{{data.location}}</p>
+                                    <div class="regionInfoList">
+                                        <div class="regionInfoBox" v-if="data.minLevel == 0">{{Locales['NO_LEVEL_REQUIRED']}}</div>
+                                        <div class="regionInfoBox" :class="playerData.level >= data.minLevel ? '' : 'redBackground'" v-else>{{data.minLevel}} {{Locales['LEVEL']}}</div>
+
+                                        <div class="regionPlayerBox">{{Locales['1-4PLAYER']}}</div>
+                                    </div>
+                                </div>
+                                <div class="jobTaskBox">
+                                    <h2 class="jobTaskTitle">{{Locales['JOBTASK']}}</h2>
+                                    <div class="jobTask" v-for="(jobData, key) in data.jobTask">
+                                        <div class="jobTaskLine"></div>
+                                        <h2 class="jobTaskText">{{ Object.values(playerList).length === 1 ? jobData.singleAmount : jobData.amount }} : {{ jobData.label }}</h2>
+                                    </div>
+                                </div>
+                                <img :src="data.image" alt="" class="regionImg" />
+                            </swiper-slide>
+                        </swiper-container>
+                    </div>
+                    <div class="bottomSide">
+                        <div class="playerListBox">
+                            <div class="playerListTitle">
+                                <svg width="1.5104vw" height="1.5104vw" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="mdi:users">
+                                        <path id="Vector" d="M19.3333 20.5416V22.9583H2.41663V20.5416C2.41663 20.5416 2.41663 15.7083 10.875 15.7083C19.3333 15.7083 19.3333 20.5416 19.3333 20.5416ZM15.1041 9.06248C15.1041 8.22603 14.8561 7.40837 14.3914 6.71288C13.9267 6.0174 13.2662 5.47534 12.4934 5.15524C11.7206 4.83515 10.8703 4.75139 10.0499 4.91458C9.22951 5.07776 8.47595 5.48055 7.88449 6.07201C7.29303 6.66347 6.89024 7.41703 6.72705 8.23741C6.56387 9.05779 6.64762 9.90813 6.96772 10.6809C7.28781 11.4537 7.82988 12.1142 8.52536 12.5789C9.22084 13.0436 10.0385 13.2916 10.875 13.2916C11.9966 13.2916 13.0723 12.8461 13.8654 12.053C14.6586 11.2598 15.1041 10.1841 15.1041 9.06248ZM19.2608 15.7083C20.0036 16.2832 20.6114 17.0138 21.0415 17.8489C21.4715 18.6839 21.7134 19.6031 21.75 20.5416V22.9583H26.5833V20.5416C26.5833 20.5416 26.5833 16.1554 19.2608 15.7083ZM18.125 4.83332C17.2932 4.82868 16.4798 5.07735 15.7929 5.54623C16.5269 6.57179 16.9215 7.80133 16.9215 9.06248C16.9215 10.3236 16.5269 11.5532 15.7929 12.5787C16.4798 13.0476 17.2932 13.2963 18.125 13.2916C19.2466 13.2916 20.3223 12.8461 21.1154 12.053C21.9086 11.2598 22.3541 10.1841 22.3541 9.06248C22.3541 7.94084 21.9086 6.86513 21.1154 6.07201C20.3223 5.27889 19.2466 4.83332 18.125 4.83332Z" fill="white" />
+                                    </g>
+                                </svg>
+                                {{Locales['PLAYER_LIST']}}
+                            </div>
+                            <div class="playerList">
+                                <div v-for="(index, key) in 4" :key="key">
+                                    <div class="playerBox" v-if="playerList && playerList[key]" @click="firePlayer(playerList[key].identifier, key)">
+                                        <div class="playerImg" :style="`background-image: url('${ playerList[key].image}')`"></div>
+
+                                        <div class="playerTextBox">
+                                            <h2 class="playerName">
+                                                {{playerList[key].name}}
+                                                <span v-if="playerList[key].owner">({{Locales['OWNER']}})</span>
+                                            </h2>
+                                            <div class="playerLevel">
+                                                <div class="playerLevelLine"></div>
+                                                <h2 class="playerLevelText">{{Locales['LEVEL']}} {{playerList[key].level}}</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div v-else>
+                                        <div v-if="this.invitePlayer[key]">
+                                            <div class="playerBox invitePlayer">
+                                                <div class="input-wrapper">
+                                                    <input type="text" placeholder="player ID..." class="modern-input" v-model="inviteModal" />
+                                                </div>
+
+                                                <div class="inviteButton" @click="InvitePlayer(key)">
+                                                    <svg viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <g id="ph:plus-fill">
+                                                            <path id="Vector" d="M20.3125 3.125H4.6875C4.2731 3.125 3.87567 3.28962 3.58265 3.58265C3.28962 3.87567 3.125 4.2731 3.125 4.6875V20.3125C3.125 20.7269 3.28962 21.1243 3.58265 21.4174C3.87567 21.7104 4.2731 21.875 4.6875 21.875H20.3125C20.7269 21.875 21.1243 21.7104 21.4174 21.4174C21.7104 21.1243 21.875 20.7269 21.875 20.3125V4.6875C21.875 4.2731 21.7104 3.87567 21.4174 3.58265C21.1243 3.28962 20.7269 3.125 20.3125 3.125ZM17.9688 13.2812H13.2812V17.9688C13.2812 18.176 13.1989 18.3747 13.0524 18.5212C12.9059 18.6677 12.7072 18.75 12.5 18.75C12.2928 18.75 12.0941 18.6677 11.9476 18.5212C11.8011 18.3747 11.7188 18.176 11.7188 17.9688V13.2812H7.03125C6.82405 13.2812 6.62534 13.1989 6.47882 13.0524C6.33231 12.9059 6.25 12.7072 6.25 12.5C6.25 12.2928 6.33231 12.0941 6.47882 11.9476C6.62534 11.8011 6.82405 11.7188 7.03125 11.7188H11.7188V7.03125C11.7188 6.82405 11.8011 6.62534 11.9476 6.47882C12.0941 6.33231 12.2928 6.25 12.5 6.25C12.7072 6.25 12.9059 6.33231 13.0524 6.47882C13.1989 6.62534 13.2812 6.82405 13.2812 7.03125V11.7188H17.9688C18.176 11.7188 18.3747 11.8011 18.5212 11.9476C18.6677 12.0941 18.75 12.2928 18.75 12.5C18.75 12.7072 18.6677 12.9059 18.5212 13.0524C18.3747 13.1989 18.176 13.2812 17.9688 13.2812Z" />
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div v-else>
+                                            <div class="playerBox playerInvite" @click="openInveteModel(this.playerData.identifier, key)">
+                                                <svg width="1.3021vw" height="1.3021vw" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="ph:plus-fill">
+                                                        <path id="Vector" d="M20.3125 3.125H4.6875C4.2731 3.125 3.87567 3.28962 3.58265 3.58265C3.28962 3.87567 3.125 4.2731 3.125 4.6875V20.3125C3.125 20.7269 3.28962 21.1243 3.58265 21.4174C3.87567 21.7104 4.2731 21.875 4.6875 21.875H20.3125C20.7269 21.875 21.1243 21.7104 21.4174 21.4174C21.7104 21.1243 21.875 20.7269 21.875 20.3125V4.6875C21.875 4.2731 21.7104 3.87567 21.4174 3.58265C21.1243 3.28962 20.7269 3.125 20.3125 3.125ZM17.9688 13.2812H13.2812V17.9688C13.2812 18.176 13.1989 18.3747 13.0524 18.5212C12.9059 18.6677 12.7072 18.75 12.5 18.75C12.2928 18.75 12.0941 18.6677 11.9476 18.5212C11.8011 18.3747 11.7188 18.176 11.7188 17.9688V13.2812H7.03125C6.82405 13.2812 6.62534 13.1989 6.47882 13.0524C6.33231 12.9059 6.25 12.7072 6.25 12.5C6.25 12.2928 6.33231 12.0941 6.47882 11.9476C6.62534 11.8011 6.82405 11.7188 7.03125 11.7188H11.7188V7.03125C11.7188 6.82405 11.8011 6.62534 11.9476 6.47882C12.0941 6.33231 12.2928 6.25 12.5 6.25C12.7072 6.25 12.9059 6.33231 13.0524 6.47882C13.1989 6.62534 13.2812 6.82405 13.2812 7.03125V11.7188H17.9688C18.176 11.7188 18.3747 11.8011 18.5212 11.9476C18.6677 12.0941 18.75 12.2928 18.75 12.5C18.75 12.7072 18.6677 12.9059 18.5212 13.0524C18.3747 13.1989 18.176 13.2812 17.9688 13.2812Z" fill="white" fill-opacity="0.51" />
+                                                    </g>
+                                                </svg>
+                                                {{Locales['PLAYER_INVITE']}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detailBox" v-if="selectJobData">
+                            <div class="detailTitle">
+                                <svg width="1.1458vw" height="1.1458vw" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="bxs:detail">
+                                        <path id="Vector" d="M17.8462 2.677H3.56928C3.09597 2.677 2.64205 2.86502 2.30737 3.1997C1.97269 3.53438 1.78467 3.98831 1.78467 4.46162V16.9539C1.78467 17.4272 1.97269 17.8812 2.30737 18.2158C2.64205 18.5505 3.09597 18.7385 3.56928 18.7385H17.8462C18.3195 18.7385 18.7734 18.5505 19.1081 18.2158C19.4428 17.8812 19.6308 17.4272 19.6308 16.9539V4.46162C19.6308 3.98831 19.4428 3.53438 19.1081 3.1997C18.7734 2.86502 18.3195 2.677 17.8462 2.677ZM9.81544 15.1693H4.46159V13.3847H9.81544V15.1693ZM16.9539 11.6001H4.46159V9.81546H16.9539V11.6001ZM16.9539 8.03085H4.46159V6.24623H16.9539V8.03085Z" fill="white" />
+                                    </g>
+                                </svg>
+                                {{Locales['JOB_DETAILS']}}
+                            </div>
+                            <div class="detailInfoBox">
+                                <div class="detailInfo">
+                                    <h2 class="detailInfoText">{{Locales['JOB_STEP_ONE']}}</h2>
+                                    <p class="detailInfoSubText">{{selectJobData.jobDescription1}}</p>
+                                </div>
+                                <div class="detailInfo">
+                                    <h2 class="detailInfoText">{{Locales['JOB_STEP_TWO']}}</h2>
+                                    <p class="detailInfoSubText">{{selectJobData.jobDescription2}}</p>
+                                </div>
+                            </div>
+                            <div class="detailBottomBox">
+                                <div class="detailGivenBox">
+                                    {{Locales['ITEMS_GIVEN']}}
+                                    <div class="detailGivenList">
+                                        <div class="detailGiven">
+                                            <div class="givenLine"></div>
+                                            <h2 class="detailGivenText">{{formatJobRequeire(Object.values(playerList).length)}} {{Locales['MOWING_SHEARS']}}</h2>
+                                        </div>
+                                        <div class="detailGiven">
+                                            <div class="givenLine"></div>
+                                            <h2 class="detailGivenText" style="width: 5.1563vw !important">{{Object.values(playerList).length}} {{Locales['VEHICLE']}}</h2>
+                                        </div>
+                                    </div>
+                                    <div class="detailGivenList">
+                                        <div class="detailGiven">
+                                            <div class="givenLine"></div>
+                                            <h2 class="detailGivenText">{{Object.values(playerList).length}} {{Locales['LAWN_MOWERS']}}</h2>
+                                        </div>
+                                        <div class="detailGiven">
+                                            <div class="givenLine"></div>
+                                            <h2 class="detailGivenText" style="width: 5.1563vw !important">{{Object.values(playerList).length}} {{Locales['TRAILER']}}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rewardBox">
+                                    <div class="rewardTop">{{Locales['REWARDS_RECEIVE']}}</div>
+                                    <div class="reward">
+                                        <h2 class="rewardPrice">{{serverMoneyType}} {{formatNumber(selectJobData.awards.newMoney)}}</h2>
+                                        <h2 class="rewardExp">{{formatNumber(selectJobData.awards.xp)}} {{Locales['EXP']}}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-else>
+                            <div class="detailBoxND">
+                                <div class="detailTitle">
+                                    <svg width="1.1458vw" height="1.1458vw" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="bxs:detail">
+                                            <path id="Vector" d="M17.8462 2.677H3.56928C3.09597 2.677 2.64205 2.86502 2.30737 3.1997C1.97269 3.53438 1.78467 3.98831 1.78467 4.46162V16.9539C1.78467 17.4272 1.97269 17.8812 2.30737 18.2158C2.64205 18.5505 3.09597 18.7385 3.56928 18.7385H17.8462C18.3195 18.7385 18.7734 18.5505 19.1081 18.2158C19.4428 17.8812 19.6308 17.4272 19.6308 16.9539V4.46162C19.6308 3.98831 19.4428 3.53438 19.1081 3.1997C18.7734 2.86502 18.3195 2.677 17.8462 2.677ZM9.81544 15.1693H4.46159V13.3847H9.81544V15.1693ZM16.9539 11.6001H4.46159V9.81546H16.9539V11.6001ZM16.9539 8.03085H4.46159V6.24623H16.9539V8.03085Z" fill="white" />
+                                        </g>
+                                    </svg>
+                                    {{Locales['JOB_DETAILS']}}
+                                </div>
+                                <div class="noDetail">
+                                    <svg width="1.5104vw" height="1.5625vw" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="bxs:detail">
+                                            <path id="Vector" d="M24.167 4.125H4.83366C4.19272 4.125 3.57803 4.37961 3.12482 4.83283C2.6716 5.28604 2.41699 5.90073 2.41699 6.54167V23.4583C2.41699 24.0993 2.6716 24.714 3.12482 25.1672C3.57803 25.6204 4.19272 25.875 4.83366 25.875H24.167C24.8079 25.875 25.4226 25.6204 25.8758 25.1672C26.329 24.714 26.5837 24.0993 26.5837 23.4583V6.54167C26.5837 5.90073 26.329 5.28604 25.8758 4.83283C25.4226 4.37961 24.8079 4.125 24.167 4.125ZM13.292 21.0417H6.04199V18.625H13.292V21.0417ZM22.9587 16.2083H6.04199V13.7917H22.9587V16.2083ZM22.9587 11.375H6.04199V8.95833H22.9587V11.375Z" fill="white" fill-opacity="0.42" />
+                                        </g>
+                                    </svg>
+                                    <h2 class="noDetailText">{{Locales['SELECT_REGION']}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="startButton" @click="startJob">
+                    <img src="./img/button.png" alt="" class="startImg" />
+                    <h2 class="startText">{{ jobStart ? Locales['JOB_RESET'] : Locales['JOB_START'] }}</h2>
+                </div>
+                <img src="./img/effect.png" alt="" class="effect" />
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://unpkg.com/swiper@5.3.8/js/swiper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="./js/app.js" type="module"></script>
+    </body>
+</html>
