@@ -14,7 +14,7 @@ Config = {
 	-- Default Job Payment Systems --
 	---------------------------------
 
-	Banking = "renewed", 	
+	Banking = "qb-management", 	
 								-- "qb-management" 	- This is for the older version of QBCore
 								-- "qb-banking" 	- This is for the latest QBCore updates
 								-- "renewed"
@@ -118,9 +118,20 @@ Config = {
 	-- The /polcharge command requires specific jobs to be set
 	-- No tickets for these, it's just commission (0.25 = 25%)
 	FineJobs = {
-		['police'] = { Commission = 0.25, },
-		['ambulance'] = { Commission = 0.25, },
+		['police'] = { Commission = 0.25 },
+		['ambulance'] = { Commission = 0.25 },
+		['lspd'] = { Commission = 0.25 },
+		['bcso'] = { Commission = 0.25 },
+		['sahp'] = { Commission = 0.25 },
+		['lsso'] = { Commission = 0.25 },
+		['safw'] = { Commission = 0.25 },
+		['sadoc'] = { Commission = 0.25 },
+		['usms'] = { Commission = 0.25 },
+		['fbi'] = { Commission = 0.25 },
+		['dhs'] = { Commission = 0.25 },
+		['ss'] = { Commission = 0.25 }
 	},
+	
 	FineJobConfirmation = false, --"true" makes it so fines need confirmation, "false" skips this ands just removes the money
 	FineJobList = true, -- "true" to use nearby player list feature in the cash registers, "false" for manual id entry
 

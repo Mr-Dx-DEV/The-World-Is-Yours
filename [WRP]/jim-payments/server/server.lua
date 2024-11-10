@@ -16,11 +16,11 @@ end)
 
 CreateThread(function()
     if Config.Enablecommand then
-        QBCore.Commands.Add("cashregister", Loc[Config.Lan].command["cash_reg"], {}, false, function(source) TriggerClientEvent("jim-payments:client:Charge", source, {}, true) end)
+        QBCore.Commands.Add("billing", Loc[Config.Lan].command["cash_reg"], {}, false, function(source) TriggerClientEvent("jim-payments:client:Charge", source, {}, true) end)
     end
 end)
 
-QBCore.Commands.Add("polcharge", Loc[Config.Lan].command["charge"], {}, false, function(source) TriggerClientEvent("jim-payments:client:PolCharge", source) end)
+QBCore.Commands.Add("billingpol", Loc[Config.Lan].command["charge"], {}, false, function(source) TriggerClientEvent("jim-payments:client:PolCharge", source) end)
 
 RegisterServerEvent('jim-payments:Tickets:Give', function(data, biller, gang)
     local billed = QBCore.Functions.GetPlayer(source) -- This should always be from the person who accepted the payment
@@ -41,8 +41,8 @@ RegisterServerEvent('jim-payments:Tickets:Give', function(data, biller, gang)
 				exports.fd_banking:AddGangMoney(tostring(biller.PlayerData.gang.name), data.amount - takecomm)
 				if Config.Debug then print("^5Debug^7: ^3FD-Banking^7(^3Gang^7): ^2Adding ^7$^6"..data.amount - takecomm.." ^2to account ^7'^6"..tostring(biller.PlayerData.gang.name).."^7' ($^6"..exports.fd_banking:GetGangAccount(biller.PlayerData.gang.name).."^7)") end
 			elseif Config.Banking == "okok" then
-				exports['okokBanking']:AddMoney(tostring(biller.PlayerData.gang.name), data.amount - takecomm)
-				if Config.Debug then print("^5Debug^7: ^3okokBanking^7(^3Job^7): ^2Adding ^7$^6"..data.amount - takecomm.." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports['okokBanking']:GetAccount(biller.PlayerData.gang.name).."^7)") end
+				exports['snipe-banking']:AddMoney(tostring(biller.PlayerData.gang.name), data.amount - takecomm)
+				if Config.Debug then print("^5Debug^7: ^3okokBanking^7(^3Job^7): ^2Adding ^7$^6"..data.amount - takecomm.." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports['snipe-banking']:GetAccount(biller.PlayerData.gang.name).."^7)") end
 			end
 		elseif not gang then
 			if Config.Banking == "renewed"
@@ -58,8 +58,8 @@ RegisterServerEvent('jim-payments:Tickets:Give', function(data, biller, gang)
 				exports.fd_banking:AddMoney(tostring(biller.PlayerData.job.name), data.amount - takecomm)
 				if Config.Debug then print("^5Debug^7: ^3FD-Banking^7(^3Job^7): ^2Adding ^7$^6"..data.amount - takecomm.." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports.fd_banking:GetAccount(biller.PlayerData.job.name).."^7)") end
 			elseif Config.Banking == "okok" then
-				exports['okokBanking']:AddMoney(tostring(biller.PlayerData.job.name), data.amount - takecomm)
-				if Config.Debug then print("^5Debug^7: ^3okokBanking^7(^3Job^7): ^2Adding ^7$^6"..data.amount - takecomm.." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports['okokBanking']:GetAccount(biller.PlayerData.job.name).."^7)") end
+				exports['snipe-banking']:AddMoney(tostring(biller.PlayerData.job.name), data.amount - takecomm)
+				if Config.Debug then print("^5Debug^7: ^3okokBanking^7(^3Job^7): ^2Adding ^7$^6"..data.amount - takecomm.." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports['snipe-banking']:GetAccount(biller.PlayerData.job.name).."^7)") end
 			end
 		end
 	elseif not biller then	--Find the biller from their citizenid
@@ -224,8 +224,8 @@ RegisterServerEvent("jim-payments:server:PolCharge", function(citizen, price)
 				exports.fd_banking:AddMoney(tostring(biller.PlayerData.job.name), (price - commission))
 				if Config.Debug then print("^5Debug^7: ^3FD-Banking^7(^3Job^7): ^2Adding ^7$^6"..(price - takecomm).." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports.fd_banking:GetAccount(biller.PlayerData.job.name).."^7)") end
 			elseif Config.Banking == "okok" then
-				exports['okokBanking']:AddMoney(tostring(biller.PlayerData.job.name), (price - commission))
-				if Config.Debug then print("^5Debug^7: ^3okokBanking^7(^3Job^7): ^2Adding ^7$^6"..(price - takecomm).." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports['okokBanking']:GetAccount(biller.PlayerData.job.name).."^7)") end
+				exports['snipe-banking']:AddMoney(tostring(biller.PlayerData.job.name), (price - commission))
+				if Config.Debug then print("^5Debug^7: ^3okokBanking^7(^3Job^7): ^2Adding ^7$^6"..(price - takecomm).." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports['snipe-banking']:GetAccount(biller.PlayerData.job.name).."^7)") end
 			
 			end
 			triggerNotify(nil, billed.PlayerData.charinfo.firstname..Loc[Config.Lan].success["charged"]..(price - commission), "success", src)
@@ -261,8 +261,8 @@ RegisterServerEvent("jim-payments:server:PolPopup", function(data)
 			exports.fd_banking:AddMoney(tostring(biller.PlayerData.job.name), data.amount - commission)
 			if Config.Debug then print("^5Debug^7: ^3FD-Banking^7(^3Job^7): ^2Adding ^7$^6"..data.amount - takecomm.." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports.fd_banking:GetAccount(biller.PlayerData.job.name).."^7)") end
 		elseif Config.Banking == "okok" then
-			exports['okokBanking']:AddMoney(tostring(biller.PlayerData.job.name), data.amount - commission)
-			if Config.Debug then print("^5Debug^7: ^3okokBanking^7(^3Job^7): ^2Adding ^7$^6"..data.amount - takecomm.." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports['okokBanking']:GetAccount(biller.PlayerData.job.name).."^7)") end
+			exports['snipe-banking']:AddMoney(tostring(biller.PlayerData.job.name), data.amount - commission)
+			if Config.Debug then print("^5Debug^7: ^3okokBanking^7(^3Job^7): ^2Adding ^7$^6"..data.amount - takecomm.." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports['snipe-banking']:GetAccount(biller.PlayerData.job.name).."^7)") end
 		end
 	else
 		triggerNotify(nil, Loc[Config.Lan].error["declined_payment"], nil, src)
