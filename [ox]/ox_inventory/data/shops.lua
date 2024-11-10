@@ -202,7 +202,7 @@ return {
 		
 		locations = {
 			vector3(607.97, -20.68, 76.63), -- Vinewood PD
-			vector3(1836.2866, 3686.9396, 34.189239), -- BCSO Sandy
+			vector3(1821.086, 3667.164, 30.315), -- BCSO Sandy
 			vector3(-446.8, 6016.74, 37.0), -- BCSO Paleto
 			vector3(1553.86, 839.99, 77.66), -- Highway Patrol
 			vector3(386.97, 799.72, 187.46), -- Game Warden
@@ -240,8 +240,8 @@ return {
 			{
 				ped = `u_m_m_doa_01`, -- Sandy Shores BCSO
 				scenario = 'WORLD_HUMAN_AA_COFFEE',
-				loc = vec3(1836.2866, 3686.9396, 33.189239),
-				heading = 220.0
+				loc = vec3(1821.086, 3667.164, 30.315),
+				heading = 115.213
 			},
 			{
 				ped = `u_m_m_doa_01`, -- Paleto BCSO

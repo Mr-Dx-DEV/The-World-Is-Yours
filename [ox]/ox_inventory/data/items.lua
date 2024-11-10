@@ -1,4 +1,19 @@
 return {
+
+	---- diving
+	['scuba_gear'] = {
+		label = 'Scuba Gear',
+		weight = 4750,
+		stack = false,
+		close = true
+	},
+	
+	['diving_crate'] = {
+		label = 'Crate',
+		weight = 1500,
+		stack = true,
+		close = true
+	},
 	--- store
 	["x_device"] = {
 		label = "X Device",

@@ -1116,7 +1116,7 @@ return {
 		},
 
 		['WEAPON_PUMPSHOTGUN'] = {
-			label = 'Pump Shotgun',
+			label = 'less than lethal shotgun',
 			weight = 3400,
 			durability = 0.1,
 			ammoname = 'shotgun_ammo'
