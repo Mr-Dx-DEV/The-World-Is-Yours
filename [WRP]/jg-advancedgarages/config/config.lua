@@ -380,7 +380,22 @@ Config.ImpoundLocations = { -- IMPORTANT - Every impound name must be unique
     },
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  }
+  },
+  ["Impound Heli"] = {
+    coords = vector3(-1666.75, -3148.88, 13.99),
+    spawn = vector4(-1666.75, -3148.88, 13.99, 348.51),
+    distance = 15,
+    type = "air",
+    job = { 'lspd', 'bcso', 'sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police', 'ambulance' },
+    hideBlip = false,
+    blip = {
+      id = 359,
+      color = 6,
+      scale = 0.5
+    },
+    hideMarkers = true,
+    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  },
   --[[ ["Impound B"] = {
     coords = vector3(1649.71, 3789.61, 34.79),
     spawn = vector4(1643.66, 3798.36, 34.49, 216.16),
