@@ -153,7 +153,7 @@ Config.Exercises = {
 	["bench"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 0.5,
+				adddata = 0.2,
 			},
 		},
 		statsneed = {
@@ -167,7 +167,7 @@ Config.Exercises = {
 	["squat"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 0.2,
+				adddata = 0.1,
 			},
 		},
 		statsneed = {
@@ -181,7 +181,7 @@ Config.Exercises = {
 	["chinups"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 0.3,
+				adddata = 0.2,
 			},
 		},
 		statsneed = {
@@ -195,7 +195,7 @@ Config.Exercises = {
 	["barbell1"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 0.3,
+				adddata = 0.1,
 			},
 		},
 		statsneed = {
@@ -209,7 +209,7 @@ Config.Exercises = {
 	["barbell2"] = {
 		statsadd = {
 			["strenght"] = {
-				adddata = 0.3,
+				adddata = 0.2,
 			},
 		},
 		statsneed = {
@@ -237,7 +237,7 @@ Config.Exercises = {
 	["run"] = {
 		statsadd = {
 			["condition"] = {
-				adddata = 0.2,
+				adddata = 0.1,
 			},
 		},
 		statsneed = {
@@ -293,7 +293,7 @@ Config.Exercises = {
 	["swimming"] = {
 		statsadd = {
 			["swimming"] = {
-				adddata = 0.5,
+				adddata = 0.1,
 			},
 		},
 		statsneed = {
