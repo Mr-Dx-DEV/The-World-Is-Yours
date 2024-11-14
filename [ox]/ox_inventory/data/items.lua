@@ -3,7 +3,7 @@ return {
 	---- diving
 	['scuba_gear'] = {
 		label = 'Scuba Gear',
-		weight = 4750,
+		weight = 8750,
 		stack = false,
 		close = true
 	},
