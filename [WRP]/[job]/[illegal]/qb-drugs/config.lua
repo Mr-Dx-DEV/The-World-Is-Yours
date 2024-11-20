@@ -136,37 +136,32 @@ Config = {
     DrugsPrice = {
 
         ['cokebaggy'] = {
-            min = 500,
-            max = 1000,
+            min = 125,
+            max = 125,
         },
         ['weed_bag'] = {
-            min = 300,
-            max = 500,
+            min = 100,
+            max = 110,
         },
-
        ['kq_meth_low'] = {
-            min = 1500,
-            max = 3000,
+            min = 25,
+            max = 25,
         },
         ['kq_meth_mid'] = {
-            min = 3500,
-            max = 4000,
+            min = 50,
+            max = 50,
         },
         ['kq_meth_high'] = {
-            min = 3500,
-            max = 5000,
+            min = 100,
+            max = 100,
         },
-
-
         ['zatpackedweed'] = {
-            min = 1500,
-            max = 2000,
+            min = 200,
+            max = 200,
         },
-
-
         ['moon_moonshine'] = {
-            min = 1500,
-            max = 2500,
+            min = 80,
+            max = 80,
         },
 
         

@@ -68,7 +68,7 @@ Config.Gardener              = {
             },
             image = "https://r2.fivemanage.com/biv23I9cFWICSObhZsr4C/Mask_group1.png",
             awards = {
-                money = 10000,
+                money = 3000,
                 xp = 1000,
                 onlinejobextra = 2 -- how many percent of the money will increase when a player enters onlinejob
             },
@@ -202,7 +202,7 @@ Config.Gardener              = {
                 { name = "puring", label = "Puring" }
             },
             awards = {
-                money = 15000,
+                money = 8000,
                 xp = 3000,
                 onlinejobextra = 2.0 -- how many percent of the money will increase when a player enters onlinejob
             },
@@ -369,7 +369,7 @@ Config.Gardener              = {
             },
             image = "https://r2.fivemanage.com/biv23I9cFWICSObhZsr4C/3region (1).png",
             awards = {
-                money = 20000,
+                money = 12000,
                 xp = 3000,
                 onlinejobextra = 2.0 -- how many percent of the money will increase when a player enters onlinejob
             },

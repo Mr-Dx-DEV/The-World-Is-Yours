@@ -160,12 +160,24 @@ Config.GrantWeaponLicenses = {
 
 Config.CCTVCameras = { -- CCTV Cameras
     enabled = true,     -- Enable CCTV Cameras?
-    jobLock = 'police', -- Job lock? or access to all police jobs by using false
+    jobLock = false, -- Job lock? or access to all police jobs by using false
     saveToDatabase = true, -- Save CCTV data to database? (If false, data will be stored in server memory/reset on server restarts)
 
     jobs = {            -- Jobs & minimum ranks that can add/modify/delete CCTV Cameras
         -- Must be in Config.policeJobs as well
-        police = 0,     -- Job 'police' with minimum rank 0
+        police = 0,             -- Job 'police' with minimum rank 0
+        sheriff = 0,            -- Job 'sheriff' with minimum rank 2
+        fbi = 0,                -- Job 'fbi' with minimum rank 0
+        ambulance = 0,          -- Job 'ambulance' with minimum rank 0
+        lspd = 0,               -- Job 'lspd' with minimum rank 0
+        bcso = 0,               -- Job 'bcso' with minimum rank 0
+        sahp = 0,               -- Job 'sahp' with minimum rank 0
+        lsso = 0,               -- Job 'lsso' with minimum rank 0
+        safw = 0,               -- Job 'safw' with minimum rank 0
+        sadoc = 0,              -- Job 'sadoc' with minimum rank 0
+        usms = 0,               -- Job 'usms' with minimum rank 0
+        dhs = 0,                -- Job 'dhs' with minimum rank 0
+        ss = 0                  -- Job 'ss' with minimum rank 0
         --        sheriff = 2,    -- Job 'sheriff' with minimum rank 2
     },
     destoryable = true, -- Can players destroy CCTV Cameras?
@@ -307,7 +319,7 @@ Config.RadarPosts = {           -- Radar posts for speed detection
     jobs = {                    -- Jobs & minimum ranks that can add/modify/delete radar posts
     -- Must be in Config.policeJobs as well
     police = 0,             -- Job 'police' with minimum rank 0
-    sheriff = 2,            -- Job 'sheriff' with minimum rank 2
+    sheriff = 0,            -- Job 'sheriff' with minimum rank 2
     fbi = 0,                -- Job 'fbi' with minimum rank 0
     ambulance = 0,          -- Job 'ambulance' with minimum rank 0
     lspd = 0,               -- Job 'lspd' with minimum rank 0
