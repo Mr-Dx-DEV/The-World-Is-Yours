@@ -1,7 +1,7 @@
 Config                   = {}
 Config.SQL               = "oxmysql"
 Config.ServerName        = "The World Is Yours"
-Config.Thema             = "blue"            -- white, red, blue, green
+Config.Thema             = "red"            -- white, red, blue, green
 Config.MoneyType         = "$"               -- €, $, £
 Config.multipleRent      = true              -- If you want to allow multiple rents at the same time
 Config.TestDrive         = true              -- If you want to allow test drives

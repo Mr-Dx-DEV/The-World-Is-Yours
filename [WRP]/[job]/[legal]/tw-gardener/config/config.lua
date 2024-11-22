@@ -4,7 +4,7 @@ Config.Framework             = 'qb'       -- esx, oldesx, qb, oldqb
 
 Config.CurrencyUnit          = '$'        -- '€' -- '₺'  '$'
 Config.SQL                   = "oxmysql"
-Config.ServeName             = "TWORST"   -- Server Name MAX 10
+Config.ServeName             = "TWIY"   -- Server Name MAX 10
 Config.MoneyType             = "$"        -- Money Type
 Config.InteractionHandler    = 'ox-target' --  qb-target, drawtext,ox-target
 Config.ExampleProfilePicture = "https://r2.fivemanage.com/biv23I9cFWICSObhZsr4C/LogoNEW.png"
@@ -42,7 +42,7 @@ Config.Gardener              = {
         ['grasscutt'] = "GRASS CUTT",
         ['grasscuttmarker'] = "Press ~g~[E]~s~ to cut the grass",
     },
-    ['gardenerjobTruck'] = 'sadler',
+    ['gardenerjobTruck'] = 'Bison',
     ['gardenerjobTrailler'] = 'trailersmall',
     ['gardenerjobLower'] = 'mower',
     ['GardenerSpawnCoords'] = {
