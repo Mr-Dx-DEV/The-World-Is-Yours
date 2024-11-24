@@ -31,9 +31,9 @@ config.debug = false
 --- @field notify: Specifies the active notification system. Options: 'boii_ui', 'qb-core', 'es_extended', 'ox_lib', 'okokNotify', 'custom'.
 --- @field progressbar: Specifies the active progressbar system. Options: 'boii_ui', 'custom'.
 config.ui = {
-    drawtext = 'boii_ui',
-    notify = 'boii_ui',
-    progressbar = 'boii_ui'
+    drawtext = 'qb-core',
+    notify = 'qb-core',
+    progressbar = 'qb-core'
 }
 
 --- @section Script settings

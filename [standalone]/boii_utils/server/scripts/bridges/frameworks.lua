@@ -297,12 +297,13 @@ local function has_item(_src, item_name, item_amount)
         return exports.boii_inventory:has_item(_src, item_name, required_amount)
     end
 
-    -- ox_inventory
-    if GetResourceState('ox_inventory') == 'started' then
-        local count = exports.ox_inventory:Search(_src, 'count', item_name)
-        return count ~= nil and count[item_name] >= required_amount
-    end
-    
+ -- ox_inventory
+if GetResourceState('ox_inventory') == 'started' then
+    local count = exports.ox_inventory:Search(_src, 'count', item_name)
+    -- Check if count is valid and greater than or equal to the required amount
+    return count and count >= required_amount
+end
+
     -- Framework-specific logic
     if FRAMEWORK == 'boii_core' then
         return player.has_item(item_name, required_amount)
