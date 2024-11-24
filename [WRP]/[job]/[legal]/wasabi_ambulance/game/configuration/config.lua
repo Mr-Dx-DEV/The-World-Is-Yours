@@ -684,6 +684,8 @@ Config.Locations = {
                 { item = 'bandage',      label = 'Bandage',  price = 30 },
              --   { item = 'bobby_pin',      label = 'Pin',  price = 30 },
                 { item = 'handcuffs',      label = 'Handcuffs',  price = 30 },
+                { item = 'scuba_gear',      label = 'Scuba Gear',  price = 30 },
+                
             }
         },
 

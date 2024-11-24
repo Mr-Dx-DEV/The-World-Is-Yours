@@ -197,7 +197,9 @@ return {
 			{ name = 'kq_outfitbag', price = 4000, grade = 0 },
 			{ name = 'diving_gear', price = 1000, grade = 0 },
 			{ name = 'police_stormram', price = 2000, grade = 0 },
-			{ name = 'parachute', price = 10000, grade = 0 }
+			{ name = 'parachute', price = 10000, grade = 0 },
+			{ name = 'scuba_gear', price = 10000, grade = 0 }
+			
 		},
 		
 		locations = {
