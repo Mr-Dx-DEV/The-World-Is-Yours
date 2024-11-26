@@ -71,7 +71,7 @@ Config.ScubaGear = {
     Tank = 'p_s_scuba_tank_s', -- Object model name of tank
     Sell = true, -- Enable or disable being sold in main menu
     Price = 1000, -- If Sell = true, how much does it cost?
-    Time = 120.0, -- How long in seconds the gear lasts underwater (must include .0)
+    Time = 360.0, -- How long in seconds the gear lasts underwater (must include .0)
     Cooldown = false, -- Toggle cooldowns between uses
     Duration = 30, -- If Cooldown = true, how long is the cooldown?
     Notify = true -- If Cooldown = true, notify player about status?
@@ -96,7 +96,7 @@ Config.Boat = {
 Config.Crate = {
     Item = 'diving_crate', -- Item spawn name
     Model = 'sm_prop_smug_crate_s_bones', -- Object model name
-    MinWait = 50, -- How long it takes minimum to assign a crate
+    MinWait = 20, -- How long it takes minimum to assign a crate
     MaxWait = 180 -- How long it takes maximum to assign a crate
 }
 
@@ -118,7 +118,7 @@ Config.CrateRewards = {
     ['bandage'] = { chance = 40, quantity = {min = 1, max = 2} },
     ['money'] = { chance = 30, quantity = {min = 500, max = 1000} },
     ['lockpick'] = { chance = 20, quantity = {min = 1, max = 2} },
-    ['phone'] = { chance = 5, quantity = {min = 1, max = 1} },
+    ['phone'] = { chance = 10, quantity = {min = 1, max = 1} },
     -- Add more items here, following the same format as above
 }
 

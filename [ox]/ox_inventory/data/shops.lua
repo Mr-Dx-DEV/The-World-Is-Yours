@@ -147,7 +147,7 @@ return {
 			{ name = 'snp_ammo', price = 100, grade = 0 },
 		
 			-- Non-lethal Weapons
-			{ name = 'weapon_stungun', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			---{ name = 'weapon_stungun', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'WEAPON_BTASER', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'WEAPON_YTASER', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'taser_cartridge', price = 50, grade = 0 },

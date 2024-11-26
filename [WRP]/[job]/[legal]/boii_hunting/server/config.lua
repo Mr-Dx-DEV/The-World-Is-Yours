@@ -206,6 +206,13 @@ config.animals = {
             { item = 'hide_rat', min = 1, max = 1 }, 
             { item = 'meat_rat', min = 1, max = 2 } 
         } 
+    },
+    a_c_pig = { 
+        skinning_time = { min = 5, max = 9 }, 
+        items = { 
+            { item = 'hide_rat', min = 1, max = 1 }, 
+            { item = 'meat_rat', min = 1, max = 2 } 
+        } 
     }
 }
 

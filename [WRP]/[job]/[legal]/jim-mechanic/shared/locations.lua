@@ -86,18 +86,18 @@ Config.Locations[#Config.Locations+1] = { --[[ GABZ ALTA STREET BENNYS ]]--
 		
 	},
 	crafting = {
-		{ coords = vec4(0.0, 0.0, 0.0, 0.0), w = 2.0, d = 1.0 },
+		{ coords = vec4(-3.71, -1661.85, 30.34, 130.6), w = 2.0, d = 1.0 },
 		
 	},
 	clockin = {
 		{ coords = vec4(-14.93, -1662.66, 29.48, 50.0), prop = false },
 	},
 	manualRepair = {
-		{ coords = vec4(-19.49, -1682.75, 29.45, 17.26), prop = true, },
+		{ coords = vec4(-19.49, -1682.75, 29.45, 17.26), prop = false, },
 	},
 	carLift = {
-        { coords = vec4(-7.05, -1674.42, 29.83, 200.58), useMLOLift = false },
-        { coords = vec4(-10.94, -1676.32, 29.83, 200.16), useMLOLift = false },
+        { coords = vec4(0.0, 0.0, 0.0, 0.0), useMLOLift = false },
+        { coords = vec4(0.0, 0.0, 0.0, 0.0), useMLOLift = false },
     },
 	garage = {
 		spawn = vec4(-31.66, -1677.67, 29.47, 142.88),

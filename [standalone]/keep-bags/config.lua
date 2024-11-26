@@ -125,7 +125,7 @@ Config.Bags = {
           size = 30000,
           cloth = {
                male = {
-                    ["accessory"] = { item = 146, texture = 0 }
+                    ["undershirt"] = { item = 312, texture = 0 }
                },
                female = {
                     ["accessory"] = { item = 123, texture = 0 }
@@ -138,7 +138,7 @@ Config.Bags = {
           size = 60000,
           cloth = {
                male = {
-                    ["accessory"] = { item = 147, texture = 0 }
+                    ["undershirt"] = { item = 312, texture = 0 }
                },
                female = {
                     ["accessory"] = { item = 123, texture = 0 }
