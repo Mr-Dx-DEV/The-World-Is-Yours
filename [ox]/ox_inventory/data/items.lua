@@ -1,4 +1,26 @@
 return {
+----- an_badge
+	['badge'] = {
+		label = 'PD Badge',
+		weight = 500,
+		stack = false, -- Unique item
+		close = true, -- Closes inventory on use
+		description = 'Police Officer Badge',
+		client = {
+			image = 'badge.png'
+		}
+	},
+	['sdbadge'] = {
+		label = 'BCSO Badge',
+		weight = 500,
+		stack = false, -- Unique item
+		close = true, -- Closes inventory on use
+		description = 'Deputy Badge',
+		client = {
+			image = 'sdbadge.png'
+		}
+	},
+	
 
 	---- diving
 	['scuba_gear'] = {

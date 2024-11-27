@@ -179,7 +179,7 @@ return {
 			{ name = 'portablecopier', price = 10, grade = 0 },
 			{ name = 'microfibercloth', price = 50, grade = 0 },
 			{ name = 'blox', price = 50, grade = 0 },
-			{ name = 'pd_badge', price = 50, grade = 0 }, -- Added Police ID
+			{ name = 'badge', price = 50, grade = 0 }, -- Added Police ID
 			{ name = 'accesstool', price = 1000, grade = 0 },
 			{ name = 'breathalyzer', price = 1000, grade = 0 },
 			{ name = 'drugtestkit', price = 1000, grade = 0 },
