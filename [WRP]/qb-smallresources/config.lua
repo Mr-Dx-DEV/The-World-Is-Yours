@@ -72,10 +72,10 @@ Config.Discord = {
 }
 
 Config.Density = {
-    parked = 0.5,
-    vehicle = 0.9,
-    multiplier = 0.3,
-    peds = 15.0,
+    parked = 0.8,
+    vehicle = 0.4,
+    multiplier = 0.8,
+    peds = 0.8,
     scenario = 0.8
 }
 
@@ -94,10 +94,6 @@ Config.RelieveWeedStress = math.random(15, 20) -- stress relief amount (100 max)
 
 Config.Consumables = {
     eat = {
-        ['fries'] = math.random(5, 10),
-        ['pizza_ham'] = math.random(5, 10),
-        ['chips'] = math.random(5, 10),
-        ['donut'] = math.random(5, 10),
 
         ['fries'] = math.random(5, 10),
         ['pizza_ham'] = math.random(5, 10),
@@ -125,11 +121,6 @@ Config.Consumables = {
 
     },
     drink = {
-        ['sprunk'] = math.random(5, 10),
-        ['sludgie'] = math.random(5, 10),
-        ['ecola_light'] = math.random(5, 10),
-        ['ecola'] = math.random(5, 10),
-        ['water'] = math.random(5, 10),
 
         ['sprunk'] = math.random(5, 10),
         ['sludgie'] = math.random(5, 10),
