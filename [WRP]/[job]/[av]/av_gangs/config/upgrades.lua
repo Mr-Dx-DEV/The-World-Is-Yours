@@ -4,14 +4,14 @@ Config.Upgrades = {
     ['drugs'] = {
         ['production'] = {
             default = {
-                processTime = 120, -- in minutes, time needed to process 1 package
+                processTime = 2, -- in minutes, time needed to process 1 package
                 purity = {min = 40, max = 50}, -- min and max purity the drug can have by default
                 amount = {min = 1, max = 2}, -- min and max to add to Product stash
             },
             processTime = { -- upgrades for processTime (in minutes)
                 [1] = 100,
                 [2] = 80,
-                [3] = 60,
+                [3] = 1,
             },
             purity = { -- upgrades for purity, needs a min and a max, will be random every time
                 [1] = {min = 70, max = 80},

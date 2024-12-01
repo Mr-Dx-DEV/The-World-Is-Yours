@@ -1,5 +1,5 @@
 Config = Config or {}
-Config.Inventory = false -- false it will auto detect your inventory, or set manually your inventory name "qb-inventory", "ox_inventory", etc.
+Config.Inventory = "ox_inventory" -- false it will auto detect your inventory, or set manually your inventory name "qb-inventory", "ox_inventory", etc.
 Config.OldQBInventory = false -- true if you are using old qb-inventory (check the fxmanifest.lua, version should be 1.x)
 Config.InventoryPath = {
     ['qb-inventory'] = "qb-inventory/html/images/",
