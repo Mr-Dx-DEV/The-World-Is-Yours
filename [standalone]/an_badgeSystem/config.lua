@@ -4,13 +4,13 @@ Config.Settings = {
     { -- LSPD Example
         itemName = "badge", -- item name -- you need to add this item on your qbcore/shared/items.lua
         design = "lspd-2.png", -- imagename.png
-        job = "police", -- job name that will show this badge
+        job = "lspd", -- job name that will show this badge
         number = "#69", -- callsign department number - It shows before the officer callsign
     },
     { -- BCSO Example
         itemName = "sdbadge", -- you need to add this item on your qbcore/shared/items.lua
         design = "bcso-2.png",
-        job = "sheriff",
+        job = "bcso",
         number = "#14",
     },
 }
@@ -156,12 +156,13 @@ Config.Ranks = {
     [10] = "Dir.", -- Director
 },
 
-    ["sheriff"] = {
-        [0] = "Cdt.",
-        [1] = "Dep.",
-        [2] = "Cpl.",
-        [3] = "Lt.",
-        [4] = "S.",
+    ["SALSA"] = {
+        [0] = "R.A.", -- Recruit Agent
+        [1] = "Agnt.", -- Agent
+        [2] = "S.A.", -- Senior Agent
+        [3] = "Inspt.", -- Inspector
+        [4] = "D.Cmr.", -- Deputy Commissioner
+        [5] = "Cmr.", -- Commissioner
     },
 }
 

@@ -177,8 +177,8 @@ Config.CCTVCameras = { -- CCTV Cameras
         sadoc = 0,              -- Job 'sadoc' with minimum rank 0
         usms = 0,               -- Job 'usms' with minimum rank 0
         dhs = 0,                -- Job 'dhs' with minimum rank 0
-        ss = 0                  -- Job 'ss' with minimum rank 0
-        --        sheriff = 2,    -- Job 'sheriff' with minimum rank 2
+        ss = 0,                  -- Job 'ss' with minimum rank 0
+        salsa = 0,               -- Job 'salsa' with minimum rank 2
     },
     destoryable = true, -- Can players destroy CCTV Cameras?
     blip = {
@@ -330,7 +330,9 @@ Config.RadarPosts = {           -- Radar posts for speed detection
     sadoc = 0,              -- Job 'sadoc' with minimum rank 0
     usms = 0,               -- Job 'usms' with minimum rank 0
     dhs = 0,                -- Job 'dhs' with minimum rank 0
-    ss = 0                  -- Job 'ss' with minimum rank 0
+    ss = 0,                  -- Job 'ss' with minimum rank 0
+    salsa = 0                -- Job 'salsa' with minimum rank 0
+
 },
 
     whitelistJobs = { -- Jobs that do not get fined for speeding
@@ -439,7 +441,8 @@ Config.policeJobs = { -- Police jobs
     'sadoc',
     'usms',
     'dhs',
-    'ss'
+    'ss',
+    'salsa',
 }
 
 Config.GPSBlips = {
@@ -481,7 +484,8 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         ['sadoc'] = 0,
         ['usms'] = 0,
         ['dhs'] = 0,
-        ['ss'] = 0
+        ['ss'] = 0,
+        ['salsa'] = 0
     }
     },
     {
@@ -502,7 +506,8 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
             ['sadoc'] = 0,
             ['usms'] = 0,
             ['dhs'] = 0,
-            ['ss'] = 0
+            ['ss'] = 0,
+            ['salsa'] = 0
         }
     },
     {
@@ -523,7 +528,8 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
             ['sadoc'] = 0,
             ['usms'] = 0,
             ['dhs'] = 0,
-            ['ss'] = 0
+            ['ss'] = 0,
+            ['salsa'] = 0
         }
     },
     {
@@ -544,7 +550,8 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
             ['sadoc'] = 0,
             ['usms'] = 0,
             ['dhs'] = 0,
-            ['ss'] = 0
+            ['ss'] = 0,
+            ['salsa'] = 0
         }
     },
 

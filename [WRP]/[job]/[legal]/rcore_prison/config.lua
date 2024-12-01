@@ -76,6 +76,7 @@ Config = {
             ['fbi'] = true,
             ['dhs'] = true,
             ['ss'] = true,
+            ['salsa'] = true,
             ['police'] = true,
             ['sheriff'] = true,
             ['ambulance'] = false,
@@ -94,6 +95,7 @@ Config = {
             ['fbi'] = true,
             ['dhs'] = true,
             ['ss'] = true,
+            ['salsa'] = true,
             ['police'] = true,
             ['sheriff'] = true,
             ['ambulance'] = false,
@@ -228,6 +230,7 @@ Config = {
         ['fbi'] = true,
         ['dhs'] = true,
         ['ss'] = true,
+        ['salsa'] = true,
     },
 
 

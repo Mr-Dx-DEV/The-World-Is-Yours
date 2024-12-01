@@ -449,6 +449,41 @@ CONFIG.JOBS = {
             { 'TAC', 805, true },
         }
     },
+
+    ['salsa'] = {
+        Jobname = 'salsa',
+        SharedBlips = { 'ambulance' },
+        GlobalFrequency = 900,
+        Ispolice = true,
+        Ranks = {
+        [0] = 'Recruit Agent', 
+        [1] = 'Agent',
+        [2] = 'Senior Agent',
+        [3] = 'Inspector',
+        [4] = 'Deputy Commissioner',
+        [5] = 'Commissioner',
+        },
+        Blips = {
+            ['automobile'] = './assets/police-car.svg',
+            ['bike'] = './assets/motorbike.svg',
+            ['heli'] = './assets/helicopter.svg',
+            ['none'] = './assets/police-hat.svg',
+        },
+        Perms = {
+            ['Recruit Agent'] = true,
+            ['Agent'] = true,
+            ['Senior Agent'] = true,
+            ['Inspector'] = true,
+            ['Deputy Commissioner'] = true,
+            ['Commissioner'] = true
+        },
+        Units = {
+            { 'Command', 805, false, { 'ambulance' } },
+            { 'Adam-10', 805, false },
+            { 'Adam-20', 805, false },
+            { 'TAC', 805, true },
+        }
+    },
     
     ['ambulance'] = {
         Jobname = 'ambulance',

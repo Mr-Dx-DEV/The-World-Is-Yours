@@ -11,14 +11,14 @@ sv_hostname "^1The ^1World ^3Is ^3Yours"
 sets sv_projectName "^1The ^1World ^3Is ^3Yours"
 sets sv_projectDesc "An advanced FiveM RP framework including jobs, gangs, housing & more!"
 sets locale "en-US"
-load_server_icon myLogo.png
+load_server_icon logo.png
 
 set mysql_connection_string "mysql://root@localhost/worldisyours?charset=utf8mb4"
 
 #####  Core
-sv_maxclients 128
+sv_maxclients 75
 set sv_enforceGameBuild 2699
-sv_pureLevel 1
+#sv_pureLevel 1
 
 set PedPopulationBudget 3         # Controls density of AI pedestrians, set between 1-3 for larger servers
 set VehiclePopulationBudget 3     # Controls density of vehicles, similar range for larger environments

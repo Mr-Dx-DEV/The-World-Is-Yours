@@ -124,13 +124,11 @@ QBShared.Jobs = {
             ['9'] = {
                 name = 'Under Sheriff',
                 isboss = true,
-               
                 payment = 2500
             },
             ['10'] = {
                 name = 'Sheriff',
                 isboss = true,
-               
                 payment = 3500
             },
         },
@@ -180,13 +178,11 @@ QBShared.Jobs = {
             ['9'] = {
                 name = 'Lt Colonel',
                 isboss = true,
-               
                 payment = 2500
             },
             ['10'] = {
                 name = 'Colonel',
                 isboss = true,
-               
                 payment = 3500
             },
         },
@@ -236,13 +232,11 @@ QBShared.Jobs = {
             ['9'] = {
                 name = 'Under Sheriff',
                 isboss = true,
-               
                 payment = 2500
             },
             ['10'] = {
                 name = 'Sheriff',
                 isboss = true,
-               
                 payment = 3500
             },
         },
@@ -292,13 +286,11 @@ QBShared.Jobs = {
             ['9'] = {
                 name = 'Asst. Chief',
                 isboss = true,
-               
                 payment = 2500
             },
             ['10'] = {
                 name = 'Chief',
                 isboss = true,
-               
                 payment = 3500
             },
         },
@@ -348,13 +340,11 @@ QBShared.Jobs = {
             ['9'] = {
                 name = 'Deputy Warden',
                 isboss = true,
-               
                 payment = 2500
             },
             ['10'] = {
                 name = 'Warden',
                 isboss = true,
-               
                 payment = 3500
             },
         },
@@ -404,13 +394,11 @@ QBShared.Jobs = {
             ['9'] = {
                 name = 'Deputy Director',
                 isboss = true,
-               
                 payment = 2500
             },
             ['10'] = {
                 name = 'Director',
                 isboss = true,
-               
                 payment = 3500
             },
         },
@@ -460,13 +448,11 @@ QBShared.Jobs = {
             ['9'] = {
                 name = 'Deputy Director',
                 isboss = true,
-               
                 payment = 2500
             },
             ['10'] = {
                 name = 'Director',
                 isboss = true,
-               
                 payment = 3500
             },
         },
@@ -516,13 +502,11 @@ QBShared.Jobs = {
             ['9'] = {
                 name = 'Deputy Diector',
                 isboss = true,
-               
                 payment = 2500
             },
             ['10'] = {
                 name = 'Director',
                 isboss = true,
-               
                 payment = 3500
             },
         },
@@ -572,18 +556,50 @@ QBShared.Jobs = {
             ['9'] = {
                 name = 'Deputy Director',
                 isboss = true,
-               
                 payment = 2500
             },
             ['10'] = {
                 name = 'Director',
                 isboss = true,
-               
                 payment = 3500
             },
         },
 	},
-	
+    ['salsa'] = {
+		label = 'salsa',
+        type = "leo",
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Recruit Agent',
+                payment = 400
+            },
+            ['1'] = {
+                name = 'Agent',
+                payment = 600
+            },
+            ['2'] = {
+                name = 'Senior Agent',
+                payment = 800
+            },
+            ['3'] = {
+                name = 'Inspector',
+                payment = 1000
+            },
+            ['4'] = {
+                name = 'Deputy Commissioner',
+                isboss = true,
+                payment = 2500
+            },
+            ['5'] = {
+                name = 'Commissioner',
+                isboss = true,
+                payment = 3500
+            },
+           
+        },
+	},
 	police = {
 		label = 'Law Enforcement',
 		type = 'leo',

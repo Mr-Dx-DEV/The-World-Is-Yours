@@ -40,7 +40,8 @@ Config = {
 'sadoc',
 'usms',
 'dhs',
-'ss'
+'ss',
+'salsa'
 
         }
     },

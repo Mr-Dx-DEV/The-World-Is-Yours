@@ -45,7 +45,7 @@ Config.Locations = {
 
 Config.AuthorizedJobs = {
     LEO = { -- this is for job checks which should only return true for police officers
-        Jobs = {['police'] = true, ['fbi'] = true, ['sahp'] = true, ['lspd'] = true, ['bcso'] = true, ['safw'] = true, ['usms'] = true, ['lsso'] = true, ['ss'] = true, ['sadoc'] = true, ['dhs'] = true},
+        Jobs = {['police'] = true, ['fbi'] = true, ['sahp'] = true, ['lspd'] = true, ['bcso'] = true, ['safw'] = true, ['usms'] = true, ['lsso'] = true, ['ss'] = true, ['sadoc'] = true, ['dhs'] = true},['salsa'] = true},
         Types = {['police'] = true, ['leo'] = true},
         Check = function(PlyData)
             PlyData = PlyData or QBCore.Functions.GetPlayerData()
@@ -54,6 +54,7 @@ Config.AuthorizedJobs = {
             if Config.AuthorizedJobs.LEO.Jobs[job] or Config.AuthorizedJobs.LEO.Types[jobtype] then return true end
         end
     },
+    
     EMS = { -- this if for job checks which should only return true for ems workers
         Jobs = {['ambulance'] = true, ['fire'] = true},
         Types = {['ambulance'] = true, ['fire'] = true, ['ems'] = true},
@@ -72,7 +73,6 @@ Config.AuthorizedJobs = {
             if Config.AuthorizedJobs.LEO.Check(PlyData, jobtype, job) or Config.AuthorizedJobs.EMS.Check(PlyData, jobtype, job) then return true end            
         end
     }
-}
 
 for k, v in pairs(Config.Enable) do
     print(k, v, json.encode(v))

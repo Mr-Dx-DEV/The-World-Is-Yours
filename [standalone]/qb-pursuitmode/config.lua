@@ -28,6 +28,7 @@ Config.AuthorizedJobs = { -- empty => everyone can use it
     "fbi",
     "dhs",
     "ss",
+    "salsa",
     "ambulance",
     "police"
 }
@@ -50,7 +51,7 @@ Config.VehicleModifications = {
     },
     ["A+"] = {
         ["Turbo"] = false,
-        ["XenonHeadlights"] = true,
+        ["XenonHeadlights"] = false,
         ["Engine"] = 2,
         ["Brakes"] = 1,
         ["Transmission"] = 2,

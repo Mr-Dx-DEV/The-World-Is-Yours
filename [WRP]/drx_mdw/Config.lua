@@ -92,7 +92,7 @@ Config = {
     Opacity = 0.35, -- Percentage it'll show (0-1)
     
     -- If person is hired & online
-    HiredJob = 'police','lspd','safw','bcso','lsso','sahp','sadoc','usms','fbi','dhs','ss', -- Job to assign
+    HiredJob = 'police','lspd','safw','bcso','lsso','sahp','sadoc','usms','fbi','dhs','ss','salsa', -- Job to assign
     HiredGrade = 0, -- Grade to assign
 
     -- If person is fired & online
