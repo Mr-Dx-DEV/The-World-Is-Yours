@@ -1,0 +1,26 @@
+
+
+:root{
+    --accent: #e8b532;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+*{
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+body{
+    /* background-image: url(../img/HUD/bg.png); */
+    /* background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(40, 40, 49); */
+}
