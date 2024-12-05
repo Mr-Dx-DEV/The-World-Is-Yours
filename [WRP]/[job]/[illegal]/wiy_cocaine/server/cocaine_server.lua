@@ -762,7 +762,7 @@ RegisterNetEvent('lusty94_cocaine:server:SuppliesShop', function()
         {name = "plasticjerrycan",        price = 100,    amount = 1000, info = {}, type = "item", slot = 4,},
         {name = "cokesodiumcarbonate",    price = 50,     amount = 1000, info = {}, type = "item", slot = 5,},
         {name = "water_bottle",           price = 10,     amount = 1000, info = {}, type = "item", slot = 6,},
-        {name = "cokeprocessingtable",    price = 1000,   amount = 1000, info = {}, type = "item", slot = 7,},
+    --    {name = "cokeprocessingtable",    price = 1000,   amount = 1000, info = {}, type = "item", slot = 7,},
         {name = "cokeacetone",            price = 250,    amount = 1000, info = {}, type = "item", slot = 8,},
         {name = "cokedimethylformamide",  price = 500,    amount = 1000, info = {}, type = "item", slot = 9,},
     }
@@ -790,7 +790,7 @@ function CocaineSupplyShop()
             { name = 'plasticjerrycan', price = 100 },
             { name = 'cokesodiumcarbonate', price = 50 },
             { name = 'water_bottle', price = 10 },
-            { name = 'cokeprocessingtable', price = 1000 },
+        --    { name = 'cokeprocessingtable', price = 1000 },
             { name = 'cokeacetone', price = 250 },
             { name = 'cokedimethylformamide', price = 500 },
         },
