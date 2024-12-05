@@ -13,7 +13,7 @@ lib.callback.register('av_drugs:getMarket', function(source) -- used to fetch av
 end)
 
 Config.Market = {
-    ['baggies'] = {-- item name
+    --[[ ['baggies'] = {-- item name
         label = "Baggies",
         price = 1,
         account = 'cosmo',
@@ -44,6 +44,20 @@ Config.Market = {
     },
     ['fentanyl_table'] = {-- item name
         label = "Fentanyl Table",
+        price = 1000,
+        account = 'cosmo',
+        accountLabel = "Cosmo",
+        image = false, -- just in case u want to use a different image (URL) from the one in the inventory, if false it will use itemname.png from inventory images
+        canAccess = function(source, identifier) -- this gets triggered server side (line 7)
+             -- Return true or false, add your own check here:
+            return not exports['av_laptop']:hasJob(source, Config.PoliceJobs) -- if Player have any of this job names/types block the item
+        end,
+        setMetadata = function(source, identifier) -- adds metadata for item or return false
+            return false
+        end,
+    }, ]]
+    ['coke_table'] = {-- item name
+        label = "Coke Table",
         price = 1000,
         account = 'cosmo',
         accountLabel = "Cosmo",
