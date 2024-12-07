@@ -12,7 +12,7 @@ Config = {
 
 	Inv = "ox",				--"qb" or "ox"
 	Menu = "ox",			--"qb" or "ox"
-	ProgressBar = "qb",		--"qb" or "ox"
+	ProgressBar = "ox",		--"qb" or "ox"
 	Notify = "qb",			--"qb" or "ox"
 
 	DrillSound = true,		-- disable drill sounds
@@ -146,15 +146,15 @@ Config = {
 Items = {
 	label = "Mining Store",  slots = 12,
 	items = {
-		{ name = "water_bottle", price = 0, amount = 100, info = {}, type = "item", slot = 1, },
-		{ name = "sandwich", price = 0, amount = 250, info = {}, type = "item", slot = 2, },
-		{ name = "bandage", price = 0, amount = 100, info = {}, type = "item", slot = 3, },
+		{ name = "water_bottle", price = 5, amount = 100, info = {}, type = "item", slot = 1, },
+		{ name = "sandwich", price = 5, amount = 250, info = {}, type = "item", slot = 2, },
+		{ name = "bandage", price = 25, amount = 100, info = {}, type = "item", slot = 3, },
 		{ name = "WEAPON_FLASHLIGHT", price = 0, amount = 100, info = {}, type = "item", slot = 4, },
-		{ name = "goldpan", price = 0, amount = 100, info = {}, type = "item", slot = 5, },
-		{ name = "pickaxe",	price = 100, amount = 100, info = {}, type = "item", slot = 6, },
-		{ name = "miningdrill",	price = 10000, amount = 50, info = {}, type = "item", slot = 7, },
-		{ name = "mininglaser",	price = 60000, amount = 5, info = {}, type = "item", slot = 8, },
-		{ name = "drillbit", price = 0, amount = 100, info = {}, type = "item", slot = 9, },
+		{ name = "goldpan", price = 250, amount = 100, info = {}, type = "item", slot = 5, },
+		{ name = "pickaxe",	price = 1500, amount = 100, info = {}, type = "item", slot = 6, },
+		{ name = "miningdrill",	price = 30000, amount = 50, info = {}, type = "item", slot = 7, },
+		{ name = "mininglaser",	price = 90000, amount = 5, info = {}, type = "item", slot = 8, },
+		{ name = "drillbit", price = 3500, amount = 100, info = {}, type = "item", slot = 9, },
 	},
 },
 }
