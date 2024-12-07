@@ -282,100 +282,119 @@ Config.Helicopters = {
             [1] = "AIR AMBULANCE"
         }
     },
+    [`ec145med`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`safr412`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`swatec135`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`pd_heli`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`fibheli`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`polheli`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`eheli`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`aw139`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`frogger2`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`as365`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`fdhawk`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`blackhawk`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`seahawk`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`ec145med`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`safr412`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
+    [`909_seahawk`] = {
+        offset = vector3(0.0, 2.65, -1.0),
+        labels = { -- Liveries
+            [0] = "LOS SANTOS POLICE DEPARTMENT", -- 0 is default
+            [1] = "AIR AMBULANCE"
+        }
+    },
 
-    [pd_heli] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "SAN ANDREAS STATE POLICE"
-        }
-    },
-    [fibheli] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "FEDERAL BUREAU OF INVESTIGATION"
-        }
-    },
-    [polheli] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "LOS SANTOS POLICE DEPARTMENT"
-        }
-    },
-    [ehelli] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "LOS SANTOS COUNTY SHERIFF OFFICE"
-        }
-    },
-    [aw139] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "AIR MEDICAL"
-        }
-    },
-    [frogger2] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "FEDERAL BUREAU OF INVESTIGATION"
-        }
-    },
-    [as365] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "DOLPHIN"
-        }
-    },
-    [blackhawk] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "BLACKHAWK/SEAHAWK"
-        }
-    },
-    [fdhawk] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "FIRE DEPARTMENT HAWK"
-        }
-    },
-    [ec145med] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "EC145 MEDICAL"
-        }
-    },
-    [safr412] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "SAN ANDREAS FIRE RESCUE 412"
-        }
-    },
-    --[[ [909_seahawk] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { -- Liveries
-            [0] = "909 SEAHAWK"
-        }
-    }, ]]
-    
-    
-    
-    [`polas350`] = {
-        offset = vector3(0.0, 3.0, -1.15),
-        labels = { --  Liveries
-                 [0] = "LOS SANTOS POLICE DEPARTMENT",
-                 [1] = "SAN ANDREAS HIGHWAY PATROL",
-                 [2] = "BLAIN COUNTY SHERIFF OFFICE",
-                 [3] = "SAN ANDREAS FIRE DEPARTMENT"
-             }
-         },
-         [`emsaw139`] = {
-            offset = vector3(0.0, 3.0, -1.15),
-            labels = { --  Liveries
-                     [0] = "LOS SANTOS POLICE DEPARTMENT",
-                     [1] = "SAN ANDREAS HIGHWAY PATROL",
-                     [2] = "BLAIN COUNTY SHERIFF OFFICE",
-                     [3] = "SAN ANDREAS FIRE DEPARTMENT"
-                 }
-             },
     [-1804332227] = {
         offset = vector3(0.0, 2.65, -1.0),
         labels = { -- Liveries
