@@ -17873,6 +17873,9 @@ description = 'Can store personal data'
 		stack = true,
 		close = true,
 		description = "Ammo for your taser",
+		client = {
+			image = "taserammo.png",
+		}
 	},
 
 
