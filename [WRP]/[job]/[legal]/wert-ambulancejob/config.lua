@@ -219,8 +219,16 @@ Config.Items = {
             type = "item",
             slot = 10,
         },
-        [11] = {
+        --[[ [11] = {
             name = "diving_gear",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 11,
+        }, ]]
+        [11] = {
+            name = "nikon",
             price = 0,
             amount = 50,
             info = {},
@@ -228,7 +236,7 @@ Config.Items = {
             slot = 11,
         },
         [12] = {
-            name = "nikon",
+            name = "repairkit",
             price = 0,
             amount = 50,
             info = {},
@@ -236,7 +244,7 @@ Config.Items = {
             slot = 12,
         },
         [13] = {
-            name = "repairkit",
+            name = "cleaningkit",
             price = 0,
             amount = 50,
             info = {},
@@ -244,38 +252,30 @@ Config.Items = {
             slot = 13,
         },
         [14] = {
-            name = "cleaningkit",
+            name = "binoculars",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
             slot = 14,
         },
+       
         [15] = {
-            name = "binoculars",
+            name = "parachute",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
             slot = 15,
         },
-       
-        [16] = {
-            name = "parachute",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 16,
-        },
         
-        [17] = {
+        [16] = {
             name = "accesstool",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
-            slot = 17,
+            slot = 16,
         },
         
     }
