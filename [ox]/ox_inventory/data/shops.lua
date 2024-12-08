@@ -136,7 +136,7 @@ return {
 			{ name = 'weapon_heavysniper_mk2', price = 80000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 		
 			-- SMGs
-			{ name = 'weapon_smg', price = 30000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
+			--{ name = 'weapon_smg', price = 30000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 		
 			-- Ammunition
 			{ name = 'pistol_ammo', price = 10, grade = 0 },
@@ -195,7 +195,7 @@ return {
 			{ name = 'weapon_fireextinguisher', price = 500, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'gunrepairkit', price = 500, grade = 0 }, -- Added repair bench
 			{ name = 'kq_outfitbag', price = 4000, grade = 0 },
-			{ name = 'diving_gear', price = 1000, grade = 0 },
+		--	{ name = 'diving_gear', price = 1000, grade = 0 },
 			{ name = 'police_stormram', price = 2000, grade = 0 },
 			{ name = 'parachute', price = 10000, grade = 0 },
 			{ name = 'scuba_gear', price = 10000, grade = 0 }
