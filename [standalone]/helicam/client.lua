@@ -1809,10 +1809,10 @@ if Config.AllowMarkers then
 end
 
 if Config.AllowRappeling then
-    -- RegisterKeyMapping('rappel', Config.Localisation.KeyMapping.Rappel, Config.Keybinds.Rappel.Type, Config.Keybinds.Rappel.Key)
-    -- RegisterCommand('rappel', function()
-    --     AttemptRappel()
-    -- end, false)
+    RegisterKeyMapping('rappel', Config.Localisation.KeyMapping.Rappel, Config.Keybinds.Rappel.Type, Config.Keybinds.Rappel.Key)
+    RegisterCommand('rappel', function()
+        AttemptRappel()
+    end, false)
 end
 
 if Config.AllowSpotlight or DoesAnyHeliHaveSpotlightOverwrite() then
