@@ -119,6 +119,19 @@ tasers = {
         ableToDriveStun = true, -- This enables/disables Arc Mode of the taser
         ableToReactivate = true, -- This enables/disables reactivating the taser
     },
+    [`WEAPON_BTASER`] = { -- This is the model of the taser
+    name = "PD Black Taser", -- This is the name of the taser and will appear in logs
+    loadedCartridges = 2, -- Always keep loadedCartrides as 2
+    ableToDriveStun = true, -- This enables/disables Arc Mode of the taser
+    ableToReactivate = true, -- This enables/disables reactivating the taser
+    },
+    [`WEAPON_YTASER`] = { -- This is the model of the taser
+        name = "PD Yellow Taser", -- This is the name of the taser and will appear in logs
+        loadedCartridges = 2, -- Always keep loadedCartrides as 2
+        ableToDriveStun = true, -- This enables/disables Arc Mode of the taser
+        ableToReactivate = true, -- This enables/disables reactivating the taser
+    },
+
 }
 
 -- This section allows you to define which notification resource you want to use
@@ -126,7 +139,7 @@ tasers = {
 main.notifications = {
     gtaAboveMap = true,
     mythicNotify = {
-        enabled = false,
+        enabled = true,
         mythicNotifyResourceName = "mythic_notify"
     }
 }
