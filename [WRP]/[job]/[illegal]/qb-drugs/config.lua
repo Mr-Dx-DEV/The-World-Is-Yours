@@ -135,6 +135,11 @@ Config = {
 
     DrugsPrice = {
 
+        
+        ['coke_baggy'] = {
+            min = 125,
+            max = 125,
+        },
         ['cokebaggy'] = {
             min = 125,
             max = 125,
