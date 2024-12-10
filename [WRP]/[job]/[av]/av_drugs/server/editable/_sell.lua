@@ -62,13 +62,7 @@ Config.Sells = {
         icon = "fa-solid fa-flask", -- Used for target
         minCops = 0, -- Min cops online to sell this specific drug
         zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
-            ['ROCKF'] = true,
-            ['WVINE'] = true,
-            ['DTVINE'] = true,
-            ['HAWICK'] = true,
-            ['MIRR'] = true,
-            ['RICHM'] = true,
-            ['GOLF'] = true,
+            ['ALL'] = true,
         },
         basePrice = 50, -- base price per bag, price get higher based on drug purity
         maxPrice = 300, -- max price per bag, even when price get higher based on purity it won't be higher than this
