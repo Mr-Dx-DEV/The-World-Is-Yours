@@ -29,7 +29,7 @@ Config = {
 		["Pickaxe"] = math.random(15000, 18000),
 		["Mining"] = math.random(10000, 15000),
 		["Laser"] = math.random(7000, 10000),
-		["OreRespawn"] = math.random(10000, 15000),
+		["OreRespawn"] = math.random(180000, 190000),
 		["Crafting"] = 5000,
 	},
 
