@@ -62,11 +62,11 @@ Config.Tables = { -- items used to place tables for cooking
     ['coke_table'] = { -- item name and key index that needs to match with config/tables.lua > Config.Tables
         drug = "coke", -- Drug linked to this table, should exist in server/editable/_drugs.lua too
         model = `v_ret_ml_tablea`, -- model to spawn
-        slots = 5, -- stash slots
-        weight = 5000, -- stash weight
+        slots = 10, -- stash slots
+        weight = 50000, -- stash weight
         ingredients = { -- needed ingredients for cooking (['itemName'] = amount needed)
             ['gasoline'] = 1, -- needs 4x water
-            ['cocaleaf'] = 2, -- needs 4x burger
+            ['cocaleaf'] = 1, -- needs 4x burger
             ['hydrochloricacid'] = 1,
             ['cement'] = 1,
             ['emptybaggies'] = 1,
@@ -81,8 +81,8 @@ Config.Tables = { -- items used to place tables for cooking
             {name = "coke_baggy", min = 1, max = 2}, -- it will give item moonshine a min of 3 and max 5
         },
         cookingXP = {min = 3, max = 5}, -- XP received for every successful cook / every 100XP is 1 level
-        cookingTime = 30, -- in minutes, time for completing a cook
-        cooldownTime = 60, -- in minutes, after every cook the table enters in cooldown
+        cookingTime = 3, -- in minutes, time for completing a cook
+        cooldownTime = 6, -- in minutes, after every cook the table enters in cooldown
         particles = { -- particles used for object when is cooking, smoke by default or false (particles = false)
             dict = "core",
             asset = "ent_amb_smoke_scrap",
@@ -92,10 +92,10 @@ Config.Tables = { -- items used to place tables for cooking
     ['heroin_table'] = { -- item name and key index that needs to match with config/tables.lua > Config.Tables
         drug = "heroin", -- Drug linked to this table, should exist in server/editable/_drugs.lua too
         model = `v_ret_ml_tablea`, -- model to spawn
-        slots = 5, -- stash slots
-        weight = 5000, -- stash weight
+        slots = 9, -- stash slots
+        weight = 50000, -- stash weight
         ingredients = { -- needed ingredients for cooking (['itemName'] = amount needed)
-            ['opiumsap'] = 2, -- needs 4x water
+            ['opiumsap'] = 1, -- needs 4x water
             ['hydrochloricacid'] = 1, -- needs 4x burger
             ['ether'] = 1,
             ['limepowder'] = 1,
@@ -110,8 +110,8 @@ Config.Tables = { -- items used to place tables for cooking
             {name = "heroin_base", min = 1, max = 2}, -- it will give item moonshine a min of 3 and max 5
         },
         cookingXP = {min = 3, max = 5}, -- XP received for every successful cook / every 100XP is 1 level
-        cookingTime = 30, -- in minutes, time for completing a cook
-        cooldownTime = 60, -- in minutes, after every cook the table enters in cooldown
+        cookingTime = 3, -- in minutes, time for completing a cook
+        cooldownTime = 6, -- in minutes, after every cook the table enters in cooldown
         particles = { -- particles used for object when is cooking, smoke by default or false (particles = false)
             dict = "core",
             asset = "ent_amb_smoke_scrap",
