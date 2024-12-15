@@ -168,11 +168,18 @@ description = 'Can store personal data'
 	},
 	['heroin_table'] = {
 	label = 'Heroin Table',
-	weight = 1,
+	weight = 8000,
 	stack = false,
 	close = true,
 	description = ''
 	},
+	['coke_table'] = {
+		label = 'Coke Table',
+		weight = 8000,
+		stack = false,
+		close = true,
+		description = ''
+		},
 	['ketamine_table'] = {
 	label = 'Ketamine Table',
 	weight = 1,
@@ -243,13 +250,7 @@ description = 'Can store personal data'
 	close = true,
 	description = ''
 	},
-	['coke_baggy'] = {
-	label = 'Coke Baggy',
-	weight = 1,
-	stack = true,
-	close = true,
-	description = ''
-	},
+	
 	['lsd_stamp'] = {
 	label = 'LSD Stamp',
 	weight = 1,
@@ -1440,38 +1441,8 @@ description = 'Can store personal data'
  ------ coke
  ---
  
- ["water_bottle"] = {
-	label = "Bottled Water",
-	weight = 100,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "water_bottle.png",
-	}
-},
 
-["cokeprocessingtable"] = {
-	label = "Coke Processing Table",
-	weight = 200,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "cokeprocessingtable.png",
-	}
-},
 
-["coke_baggy"] = {
-	label = "Bag of Cocaine",
-	weight = 100,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "coke_baggy.png",
-	}
-},
 
 ["sodiumcarbonate"] = {
 	label = "Sodium Carbonate",
@@ -3612,7 +3583,7 @@ description = 'Can store personal data'
 -- REQUIRED ITEMS
 ['pickaxe'] = {
     label = 'Pickaxe',
-    weight = 100,
+    weight = 3000,
     stack = true,
     close = false,
     description = '',
@@ -11984,7 +11955,7 @@ description = 'Can store personal data'
 
 	["miningdrill"] = {
 		label = "Mining Drill",
-		weight = 1000,
+		weight = 6000,
 		stack = true,
 		close = false,
 		description = "",
@@ -12061,7 +12032,7 @@ description = 'Can store personal data'
 
 	["goldpan"] = {
 		label = "Gold Panning Tray",
-		weight = 10,
+		weight = 1000,
 		stack = true,
 		close = false,
 		description = "",
@@ -12358,7 +12329,7 @@ description = 'Can store personal data'
 
 	["drillbit"] = {
 		label = "Drill Bit",
-		weight = 10,
+		weight = 1000,
 		stack = true,
 		close = false,
 		description = "",
@@ -12369,7 +12340,7 @@ description = 'Can store personal data'
 
 	["mininglaser"] = {
 		label = "Mining Laser",
-		weight = 900,
+		weight = 9000,
 		stack = true,
 		close = false,
 		description = "",
