@@ -152,9 +152,9 @@ Config.InstructionButtons = {
 -- M = Meters
 -- MI = Miles
 Config.Units = {
-    Speed = "KMH", -- The speed of the helicopter                               (unit type: speed)
+    Speed = "MPH", -- The speed of the helicopter                               (unit type: speed)
     Altitude = "M", -- The altitude of the helicopter                          (unit type: distance)
-    TargetSpeed = "KMH", -- The speed of the target the camera is looking at    (unit type: speed)
+    TargetSpeed = "MPH", -- The speed of the target the camera is looking at    (unit type: speed)
     TargetElevation = "M", -- The elevation of where the camera is aming       (unit type: distance)
     TargetDistance = "M" -- The distance from the helicopter to the target      (unit type: distance)
 }
