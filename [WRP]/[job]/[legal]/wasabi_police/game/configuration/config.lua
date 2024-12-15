@@ -783,7 +783,7 @@ Config.Locations = {
         },
 
         evidenceLocker = {
-            enabled = true,                      -- Enable evidence locker for this station?
+            enabled = false,                      -- Enable evidence locker for this station?
             jobLock = false,                   -- Job lock?
             coords = vec3(618.318, -14.108, 76.628), -- Area to prompt personal locker
             range = 2.0,                          -- Range it will prompt from coords above
