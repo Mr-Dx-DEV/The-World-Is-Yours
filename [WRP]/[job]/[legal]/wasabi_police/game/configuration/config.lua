@@ -764,7 +764,7 @@ Config.Locations = {
         -- Personal Locker. Supports inventories: ox_inventory, qb-inventory, and qs-inventory
         --        Custom inventories can easily be added in wasabi_bridge/inventories/
         personalLocker = {
-            enabled = true,                       -- Enable personal locker for this station?
+            enabled = false,                       -- Enable personal locker for this station?
             jobLock = false,                    -- Job lock?
             coords = vec3(604.902, -16.657, 76.628), -- Area to prompt personal locker
             range = 2.0,                           -- Range it will prompt from coords above
