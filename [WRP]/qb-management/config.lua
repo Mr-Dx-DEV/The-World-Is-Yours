@@ -1,7 +1,7 @@
 -- Zones for Menus
 Config = Config or {}
 
-Config.UseTarget = GetConvar('UseTarget', 'false') == 'true' -- Use qb-target interactions (don't change this, go to your server.cfg and add `setr UseTarget true` to use this and just that from true to false or the other way around)
+Config.UseTarget = GetConvar('UseTarget', 'false') == 'false' -- Use qb-target interactions (don't change this, go to your server.cfg and add `setr UseTarget true` to use this and just that from true to false or the other way around)
 
 Config.BossMenus = {
     police = {
@@ -46,37 +46,37 @@ Config.BossMenus = {
     },
     lspd = {
         vector3(-1099.21, -830.7, 34.28),
-        vector3(626.008, -28.235, 90.507),
+        vector3(625.515, -29.829, 90.507),
     },
     bcso = {
-        vector3(1824.92, 3671.98, 38.86),
-        vector3(1825.174, 3692.048, 39.127),
+        vector3(1824.591, 3689.342, 39.127),
+      
     },
     lsso = {
-        vector3(364.94, -1582.53, 33.36),
-        vector3(387.119, -1626.17, 34.174),
+        vector3(386.639, -1623.522, 34.174),
+        
     },
     safw = {
-        vector3(1681.09, 4875.88, 42.3),
-        vector3(-798.651, 5397.358, 36.06),
+        vector3(-797.214, 5398.881, 35.865),
+        
     },
     sahp = {
-        vector3(1540.89, 814.85, 82.13),
-        vector3(1540.549, 815.003, 82.131),
+        vector3(1539.022, 815.879, 82.13),
+        
     },
     sadoc = {
-        vector3(1838.7, 2575.35, 46.01),
-        vector3(1838.7, 2575.35, 46.01),
+        vector3(1839.967, 2574.631, 46.014),
+        
     },
     dhs = {
-        vector3(460.74, -985.55, 30.73),
+        vector3(463.258, -1007.493, 35.931),
     },
     fbi = {
-        vector3(122.06, -768.14, 45.75),
+        vector3(2515.035, -445.471, 106.913),
     },
     usms = {
-        vector3(-811.25, -712.82, 28.06),
-        vector3(-813.0, -713.491, 28.06),
+        vector3(-811.236, -712.704, 28.06),
+        
     },
     ss = {
         vector3(856.73, -1301.2, 28.26),
