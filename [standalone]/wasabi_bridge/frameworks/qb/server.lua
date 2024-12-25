@@ -1,8 +1,6 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
-local qboxFound = GetResourceState('qbx_core')
-if qboxFound == 'started' or qboxFound == 'starting' then return end
 
 local found = GetResourceState('qb-core')
 if found ~= 'started' and found ~= 'starting' then return end
@@ -13,26 +11,41 @@ WSB.framework = 'qb'
 
 ---@diagnostic disable: duplicate-set-field
 
+local qbx = GetResourceState('qbx_core')
+local qboxFound = qbx == 'started' or qbx == 'starting' or false
+
+local oxInventory = GetResourceState('ox_inventory')
+local oxFound = oxInventory == 'started' or oxInventory == 'starting' or false
+
 function WSB.getCore()
     return QBCore
 end
 
 function WSB.getPlayer(source)
+    if qboxFound then
+        return exports.qbx_core:GetPlayer(source)
+    end
+
     return QBCore.Functions.GetPlayer(source)
 end
 
 function WSB.getPlayerFromIdentifier(identifier)
-    local player = QBCore.Functions.GetPlayerByCitizenId(identifier)
+    local player = qboxFound and exports.qbx_core:GetPlayerByCitizenId(identifier) or
+        QBCore.Functions.GetPlayerByCitizenId(identifier)
     if not player then return false end
     return player
 end
 
 function WSB.getPlayers()
+    if qboxFound then
+        return exports.qbx_core:GetQBPlayers()
+    end
+
     return QBCore.Functions.GetPlayers()
 end
 
 function WSB.getAllJobs()
-    local jobs = QBCore and QBCore.Shared and QBCore.Shared.Jobs or nil
+    local jobs = qboxFound and exports.qbx_core:GetJobs() or QBCore and QBCore.Shared and QBCore.Shared.Jobs or nil
     local returnTb = {}
     if not jobs or #jobs < 1 then return end
     for k, v in pairs(jobs) do
@@ -62,10 +75,17 @@ function WSB.registerCallback(name, cb)
 end
 
 function WSB.kickPlayer(source, reason)
+    if qboxFound then
+        return exports.qbx_core:ExploitBan(source, reason)
+    end
     QBCore.Functions.Kick(source, reason, true, true)
 end
 
 function WSB.hasPermission(source, group)
+    if qboxFound then
+        return exports.qbx_core:HasPermission(source, group) or false
+    end
+
     return QBCore.Functions.HasPermission(source, group) or false
 end
 
@@ -161,10 +181,17 @@ function WSB.getName(source)
 end
 
 function WSB.registerUsableItem(item, cb)
-    QBCore.Functions.CreateUseableItem(item, cb)
+    if qboxFound then
+        exports.qbx_core:CreateUseableItem(item, cb)
+    else
+        QBCore.Functions.CreateUseableItem(item, cb)
+    end
 end
 
 function WSB.hasItem(source, _item)
+    if qboxFound or oxFound then
+        return exports.ox_inventory:GetItem(source, _item, nil, true) or 0
+    end
     local player = WSB.getPlayer(source)
     if not player then return end
     local item = player.Functions.GetItemByName(_item)
@@ -172,6 +199,10 @@ function WSB.hasItem(source, _item)
 end
 
 function WSB.addItem(source, item, count, slot, metadata)
+    if qboxFound or oxFound then
+        return exports.ox_inventory:AddItem(source, item, count, metadata, slot)
+    end
+
     local player = WSB.getPlayer(source)
     if not player then return end
     local giveItem = player.Functions.AddItem(item, count, slot, metadata)
@@ -182,12 +213,20 @@ function WSB.addItem(source, item, count, slot, metadata)
 end
 
 function WSB.addWeapon(source, weapon, ammo)
+    if qboxFound or oxFound then
+        return exports.ox_inventory:AddItem(source, weapon, 1)
+    end
+
     local player = WSB.getPlayer(source)
     if not player then return end
     return player.Functions.AddItem(weapon, 1, nil, nil)
 end
 
 function WSB.removeItem(source, item, count, slot, metadata)
+    if qboxFound or oxFound then
+        return exports.ox_inventory:RemoveItem(source, item, count, metadata, slot)
+    end
+
     local player = WSB.getPlayer(source)
     if not player then return end
     player.Functions.RemoveItem(item, count, slot, metadata)

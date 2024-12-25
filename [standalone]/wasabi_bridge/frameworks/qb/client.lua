@@ -1,9 +1,6 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
-local qboxFound = GetResourceState('qbx_core')
-if qboxFound == 'started' or qboxFound == 'starting' then return end
-
 local found = GetResourceState('qb-core')
 if found ~= 'started' and found ~= 'starting' then return end
 
