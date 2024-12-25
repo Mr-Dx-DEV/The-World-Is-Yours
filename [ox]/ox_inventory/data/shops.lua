@@ -208,7 +208,7 @@ return {
 			vector3(-446.8, 6016.74, 37.0), -- BCSO Paleto
 			vector3(1553.86, 839.99, 77.66), -- Highway Patrol
 			vector3(386.97, 799.72, 187.46), -- Game Warden
-			vector3(836.76, -1287.34, 28.24), -- Popular Secret Service
+			vector3(837.317, -1287.456, 28.245), -- Popular Secret Service
 
 			
 			vector3(153.08, -757.41, 45.75), -- FBI
@@ -219,9 +219,27 @@ return {
 			vector3(1696.53, 4876.39, 42.3), -- Game Warden Grapeseed
 			vector3(479.25, -996.3, 30.69), -- MRPD DHS
 			vector3(365.58, -1609.6, 29.29), -- Davis Street
-			vector3(-1300.77, -555.32, 30.57), -- Secret Service Gov Office
-			vector3(-1306.4, -564.77, 41.19), -- Gov Safe Room
+			vector3(-1301.321, -556.592, 30.567), -- Secret Service Gov Office
+			vector3(-1306.128, -565.326, 41.188), -- Gov Safe Room
 			vector3(1841.63, 2573.82, 46.01), -- Prison
+
+
+			vector3(1551.286, 841.462, 77.656),   --- sasp
+			vector3(-3053.903, 625.871, 7.493),    ---sahp
+			vector3(2523.732, -340.859, 101.893),
+			vector3(1820.796, 3666.704, 30.315),
+			vector3(-448.473, 6004.804, 32.096),
+			vector3(382.288, -1601.327, 25.362),
+			vector3(-822.11, -716.69, 22.96),
+			vector3(1843.0, 2574.532, 46.014),
+			vector3(454.15, -980.105, 30.689),
+			vector3(-1238.325, -2813.628, 14.3),
+			vector3(-819.997, 5399.011, 35.865),
+
+
+
+
+			
 		},
 		targets = {
 			{ 
