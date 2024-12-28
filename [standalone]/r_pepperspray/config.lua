@@ -1,9 +1,4 @@
-/*--------------------------------------
-  % Made with ❤️ for: Rytrak Store
-  % Author: Rytrak https://rytrak.fr
-  % Script documentation: https://docs.rytrak.fr/scripts/advanced-pepper-spray
-  % Full support on discord: https://discord.gg/k22buEjnpZ
---------------------------------------*/
+
 
 -- [[ Configuration ]]
 
@@ -14,16 +9,6 @@ Config = {
 
     Debug = false, -- Allows to display messages in the client console when the player takes different actions
 
-    /*---------------------------------------------------------------------------------
-                                          IMPORTANT
-    If you are using ESX or QBCore, please set the UseFramework variable to true below, then follow 
-    the video tutorial in our documentation to make the script compatible.
-    This variable is used to remove the command to give the weapon and thus use it from your inventory.
-
-    For ESX: https://docs.rytrak.fr/framework-compatibility/add-a-custom-weapon-on-esx
-    For QBCore: https://docs.rytrak.fr/framework-compatibility/add-a-custom-weapon-on-qbcore
-                                          IMPORTANT
-    ---------------------------------------------------------------------------------*/
     UseFramework = false,
 
     AcePermission = { -- Use of the ace permission system (you can modify this function on cl_utils.lua)
@@ -50,6 +35,39 @@ Config = {
         vector3(-1299.62, -557.64, 30.57), --ss gov office
         vector3(-323.72, -1465.74, 30.55),
         vector3(-313.63, -1461.49, 30.54),
+
+        vector3(839.061, -1284.294, 28.245),
+        vector3(2521.271, -336.801, 101.88),
+        vector3(1555.324, 834.862, 77.656),
+        vector3(-3062.147, 623.141, 7.493),
+        vector3(1833.615, 3696.222, 34.712),
+        vector3(380.52, -1633.083, 29.759),
+        vector3(-817.076, -715.645, 22.96),
+        vector3(1842.16, 2576.06, 46.014),
+        vector3(450.935, -978.612, 30.689),
+        vector3(-825.19, 5398.945, 35.865),
+        vector3(1641.991, 4848.938, 42.613),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     },
     RechargeRadius = 3.0, -- Distance to recharge
 
