@@ -11,7 +11,7 @@ sv_hostname "^1The ^1World ^3Is ^3Yours"
 sets sv_projectName "^1The ^1World ^3Is ^3Yours"
 sets sv_projectDesc "An advanced FiveM RP framework including jobs, gangs, housing & more!"
 sets locale "en-US"
-load_server_icon logo.png
+load_server_icon mylogo.png
 
 set mysql_connection_string "mysql://root@localhost/worldisyours?charset=utf8mb4"
 
@@ -206,6 +206,7 @@ add_ace resource.ox_lib command.remove_principal allow
 add_ace group.admin command allow # allow all commands
 add_principal identifier.fivem:5751927 group.admin #SBDemon
 add_principal identifier.license:a045ed84bc7b147ab67442c4be4c70a4bb7d0ad5 group.admin ## Mr_Dx Dev
+add_principal identifier.license:a045ed84bc7b147ab67442c4be4c70a4bb7d0ad5 qbcore.god ## Mr_Dx Dev
 add_principal identifier.license:f90cd271ae404268c3728c7b32d31095b7092b5b group.admin ## SB-Demon
 add_principal identifier.license:f90cd271ae404268c3728c7b32d31095b7092b5b qbcore.god ## SB-Demon
 add_principal identifier.license:53d63cef03bd84bee2778d19ae409b18c859187a group.admin ## Demon Angle
