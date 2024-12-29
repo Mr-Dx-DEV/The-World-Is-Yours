@@ -262,286 +262,6 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
 
 
 
-  ["p1"] = {
-    coords = vector3(591.719, -10.54, 70.628),
-    spawn = vector4(591.719, -10.54, 70.628, 355.639),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["p2"] = {
-    coords = vector3(859.267, -1357.928, 26.096),
-    spawn = vector4(859.267, -1357.928, 26.096, 96.814),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["p3"] = {
-    coords = vector3(2435.839, -370.81, 92.993),
-    spawn = vector4(2435.839, -370.81, 92.993, 276.11),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["p4"] = {
-    coords = vector3(1543.77, 793.604, 77.201),
-    spawn = vector4(1543.77, 793.604, 77.201, 60.48),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["p5"] = {
-    coords = vector3(-3053.099, 603.076, 7.29),
-    spawn = vector4(-3053.099, 603.076, 7.29, 297.715),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["p6"] = {
-    coords = vector3(1857.428, 3705.183, 33.572),
-    spawn = vector4(1857.428, 3705.183, 33.572, 34.108),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["p7"] = {
-    coords = vector3(-479.017, 6027.607, 31.341),
-    spawn = vector4(-479.017, 6027.607, 31.341, 217.764),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["p8"] = {
-    coords = vector3(357.482, -1585.74, 29.292),
-    spawn = vector4(357.482, -1585.74, 29.292, 218.665),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["p9"] = {
-    coords = vector3(-811.026, -754.223, 22.6),
-    spawn = vector4(-811.026, -754.223, 22.6, 103.89),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-
-  ["p10"] = {
-    coords = vector3(1869.489, 2594.321, 45.673),
-    spawn = vector4(1869.489, 2594.321, 45.673, 89.264),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-
-  ["p11"] = {
-    coords = vector3(451.843, -1016.756, 28.482),
-    spawn = vector4(451.843, -1016.756, 28.482, 92.384),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["p12"] = {
-    coords = vector3(-1216.621, -2802.307, 13.951),
-    spawn = vector4(-1216.621, -2802.307, 13.951, 156.882),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["p13"] = {
-    coords = vector3(-825.49, 5407.471, 34.437),
-    spawn = vector4(-825.49, 5407.471, 34.437, 12.269),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-  ["p14"] = {
-    coords = vector3(1639.962, 4816.872, 42.038),
-    spawn = vector4(1639.962, 4816.872, 42.038, 38.086),
-    distance = 15,
-    type = "car",
-    hideBlip = true,
-    blip = {
-      id = 357,
-      color = 0,
-      scale = 0.5
-    },
-    hideMarkers = true,
-    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
@@ -564,6 +284,239 @@ Config.JobGarageUniqueBlips = false
 Config.JobGarageUniqueLocations = true
 Config.JobGarageEnableInteriors = true
 Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
+
+
+
+["p1"] = {
+  coords = vector3(591.719, -10.54, 70.628),
+  spawn = vector4(591.719, -10.54, 70.628, 355.639),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["p2"] = {
+  coords = vector3(859.267, -1357.928, 26.096),
+  spawn = vector4(859.267, -1357.928, 26.096, 96.814),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["p3"] = {
+  coords = vector3(2435.839, -370.81, 92.993),
+  spawn = vector4(2435.839, -370.81, 92.993, 276.11),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["p4"] = {
+  coords = vector3(1543.77, 793.604, 77.201),
+  spawn = vector4(1543.77, 793.604, 77.201, 60.48),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["p5"] = {
+  coords = vector3(-3053.099, 603.076, 7.29),
+  spawn = vector4(-3053.099, 603.076, 7.29, 297.715),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["p6"] = {
+  coords = vector3(1857.428, 3705.183, 33.572),
+  spawn = vector4(1857.428, 3705.183, 33.572, 34.108),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["p7"] = {
+  coords = vector3(-479.017, 6027.607, 31.341),
+  spawn = vector4(-479.017, 6027.607, 31.341, 217.764),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["p8"] = {
+  coords = vector3(357.482, -1585.74, 29.292),
+  spawn = vector4(357.482, -1585.74, 29.292, 218.665),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["p9"] = {
+  coords = vector3(-811.026, -754.223, 22.6),
+  spawn = vector4(-811.026, -754.223, 22.6, 103.89),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+["p10"] = {
+  coords = vector3(1869.489, 2594.321, 45.673),
+  spawn = vector4(1869.489, 2594.321, 45.673, 89.264),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+["p11"] = {
+  coords = vector3(451.843, -1016.756, 28.482),
+  spawn = vector4(451.843, -1016.756, 28.482, 92.384),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["p12"] = {
+  coords = vector3(-1216.621, -2802.307, 13.951),
+  spawn = vector4(-1216.621, -2802.307, 13.951, 156.882),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["p13"] = {
+  coords = vector3(-825.49, 5407.471, 34.437),
+  spawn = vector4(-825.49, 5407.471, 34.437, 12.269),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["p14"] = {
+  coords = vector3(1639.962, 4816.872, 42.038),
+  spawn = vector4(1639.962, 4816.872, 42.038, 38.086),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "car",
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+
+
+
   ["Mechanic"] = {
     coords = vector3(157.86, -3005.9, 7.03),
     spawn = vector4(165.26, -3014.94, 5.9, 268.8),
