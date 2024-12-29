@@ -509,6 +509,33 @@ Config.market_locations = {
 			['store'] = 'bank',
 		}
 	},
+	["market_19"] = {
+		['buy_price'] = 70000,
+		['sell_price'] = 35000,
+		['coord'] = {1743.934, 3613.234, 34.888},
+		['garage_coord'] = {146.9,6634.98,31.61,175.81},
+		['truck_parking_location'] = {164.0575,6625.502, 32.0364,225.7734},
+		['map_blip_coord'] = {1743.934, 3613.234, 34.888},
+		['sell_blip_coords'] = {
+			{1744.8, 3613.48, 34.89},
+			
+		},
+		['deliveryman_coord'] = {157.05537414551,6641.224609375,31.605260848999},
+		['type'] = '247store',
+		['account'] = {
+			['item'] = {
+				[1] = {
+					['icon'] = 'img/credit_card.png',
+					['account'] = 'bank'
+				},
+				[2] = {
+					['icon'] = 'img/cash.png',
+					['account'] = 'cash'
+				}
+			},
+			['store'] = 'bank',
+		}
+	},
 	--[[ ["market_19"] = {
 		['buy_price'] = 70000,
 		['sell_price'] = 35000,
