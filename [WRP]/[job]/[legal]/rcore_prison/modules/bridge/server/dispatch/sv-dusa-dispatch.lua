@@ -1,5 +1,5 @@
 CreateThread(function()
-    if (isBridgeLoaded('Dispatch', DispatchList.DUSA)) then
+    if Config.Dispatches == Dispatches.DUSA then
         Dispatch.Breakout = function(playerId)
             local text = _U('DISPATCH.BREAKOUT_ACTIVE_MESSAGE')
             local coords = vec3(SH.data.prisonYard.x,SH.data.prisonYard.y, SH.data.prisonYard.z)
@@ -26,12 +26,21 @@ CreateThread(function()
                 },
                 recipientJobs = Config.Escape.NotifyJobs,
             }
+
+            if isResourceLoaded(THIRD_PARTY_RESOURCE.REDUTZU) then
+                TriggerEvent('redutzu-mdt:server:addDispatchToMDT', {
+                    code = '10-64',
+                    title = text,
+                    duration = 12 * 1000,
+                    coords = { x = coords.x, y = coords.y, z = coords.z },
+                })
+            end
     
             TriggerClientEvent('rcore_prison:client:setDispatch', playerId, dispatchData)
             dbg.info('Dispatch.Breakout: Prison break started!')
         end
     end
-end)
+end, "sv-dusa code name: Phoenix")
 
 
 

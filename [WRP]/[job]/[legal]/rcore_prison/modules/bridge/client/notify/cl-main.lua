@@ -15,7 +15,7 @@ Notify.Standalone = function(message)
 end
 
 CreateThread(function()
-    if lib and Bridge.Notify == Notifies.OX and isResourceLoaded(Notifies.OX) then
+    if lib and Config.Notifies == Notifies.OX and isResourceLoaded(Notifies.OX) then
         Framework.sendNotification = function(message, type)
             lib.notify({
                 title = _U('NOTIFY.TITLE'),
@@ -25,18 +25,18 @@ CreateThread(function()
         end
     end
 
-    if Bridge.Notify == Notifies.NATIVE then
+    if Config.Notifies == Notifies.NATIVE then
         Framework.sendNotification = function(message)
 			Notify.Standalone(message)
         end
     end
 
-    if Bridge.Notify == Notifies.NONE or Bridge.Notify == Notifies.AUTO_DETECT then
-        if isBridgeLoaded('Framework', Framework.ESX) then
+    if Config.Notifies == Notifies.NONE or Config.Notifies == Notifies.AUTO_DETECT then
+        if Config.Framework == Framework.ESX then
             return 
         end
 
-        if isBridgeLoaded('Framework', Framework.QBCore) then
+        if Config.Framework == Framework.QBCore then
             return
         end
 
@@ -45,13 +45,13 @@ CreateThread(function()
         end
     end
 
-    if Bridge.Notify == Notifies.BRUTAL then
+    if Config.Notifies == Notifies.BRUTAL then
         Framework.sendNotification = function(message, type)
 			exports[Notifies.BRUTAL]:SendAlert(_U('NOTIFY.TITLE'), message, 5500, type)
         end
     end
 
-    if Bridge.Notify == Notifies.PNOTIFY then
+    if Config.Notifies == Notifies.PNOTIFY then
         Framework.sendNotification = function(message, type)
             exports[Notifies.PNOTIFY]:SendNotification({
                 text = ('%s %s'):format(_U('NOTIFY.TITLE'), message),
@@ -62,4 +62,4 @@ CreateThread(function()
             })
         end
     end
-end)
+end, "cl-main code name: Omega")

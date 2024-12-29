@@ -1,5 +1,5 @@
 CreateThread(function()
-    if isBridgeLoaded('Notify', Notifies.PNOTIFY) then
+    if Config.Notifies == Notifies.PNOTIFY then
         Framework.sendNotification = function(client, message, type)
             TriggerClientEvent('pNotify:SendNotification', client, {
                 text = ('%s %s'):format(_U('NOTIFY.TITLE'), message),
@@ -10,4 +10,4 @@ CreateThread(function()
             })
         end
     end
-end)
+end, "sv-pNotify code name: Phoenix")

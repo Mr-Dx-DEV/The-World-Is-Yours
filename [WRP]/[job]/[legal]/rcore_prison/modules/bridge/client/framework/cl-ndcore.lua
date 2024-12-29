@@ -1,5 +1,5 @@
 CreateThread(function()
-    if isBridgeLoaded('Framework', Framework.NDCore) then
+    if Config.Framework == Framework.NDCore then
         CreateThread(function()
             while true do
                 if NetworkIsPlayerActive(PlayerId()) then
@@ -9,10 +9,10 @@ CreateThread(function()
                 end
                 Wait(0)
             end
-        end)
+        end, "cl-bridge code name: Alfa")
     
 
-        function Inventory.HandleInventoryOpenState(state)
+        function HandleInventoryOpenState(state)
             local ply = LocalPlayer
         
             if not ply then
@@ -34,4 +34,4 @@ CreateThread(function()
             })
         end
     end    
-end)
+end, "cl-ndcore code name: Phoenix")

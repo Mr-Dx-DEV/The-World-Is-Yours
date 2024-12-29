@@ -1,5 +1,5 @@
 CreateThread(function()
-    if (isBridgeLoaded('Dispatch', DispatchList.DUSA)) then
+    if Config.Dispatches == Dispatches.DUSA then
         RegisterNetEvent('rcore_prison:client:setDispatch', function(payload)
             if not payload then
                 return
@@ -8,7 +8,7 @@ CreateThread(function()
             TriggerServerEvent('dusa_dispatch:sendDispatch', payload)
         end)
     end
-end)
+end, "cl-dusa-dispatch code name: Phoenix")
 
 
 

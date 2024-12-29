@@ -1,5 +1,5 @@
 CreateThread(function()
-    if isBridgeLoaded('Inventory', Inventories.CORE) then
+    if Config.Inventories == Inventories.CORE then
         Inventory.hasItem = function(client, itemname, amount)
             if client == nil then return {} end
     
@@ -7,10 +7,10 @@ CreateThread(function()
     
             amount = amount or 1
     
-            if isBridgeLoaded('Framework', Framework.ESX) then
+            if Config.Framework == Framework.ESX then
                 local item = player.getInventoryItem(itemname)
                 return item and item.count >= amount
-            elseif isBridgeLoaded('Framework', Framework.QBCore) then
+            elseif Config.Framework == Framework.QBCore then
                 local items = player.Functions.GetItemsByName(itemname)
                 return items and #items >= amount
             end
@@ -57,11 +57,11 @@ CreateThread(function()
             end
     
             if item == 'cash' or item == 'money' then
-                if isBridgeLoaded('Framework', Framework.QBCore) then
+                if Config.Framework == Framework.QBCore then
                     return player.Functions.AddMoney('cash', amount)
                 end
         
-                if isBridgeLoaded('Framework', Framework.ESX) then
+                if Config.Framework == Framework.ESX then
                     return player.addMoney(amount)
                 end
             end
@@ -72,9 +72,9 @@ CreateThread(function()
                 item = item:lower()
             end
 
-            if isBridgeLoaded('Framework', Framework.ESX) then
+            if Config.Framework == Framework.ESX then
                 player.addInventoryItem(item, amount, data)
-            elseif isBridgeLoaded('Framework', Framework.QBCore) then
+            elseif Config.Framework == Framework.QBCore then
                 player.Functions.AddItem(item, amount, nil, data)
             end
     
@@ -89,11 +89,11 @@ CreateThread(function()
             end
     
             if item == 'cash' or item == 'money' then
-                if isBridgeLoaded('Framework', Framework.QBCore) then
+                if Config.Framework == Framework.QBCore then
                     return player.Functions.RemoveMoney('cash', amount)
                 end
         
-                if isBridgeLoaded('Framework', Framework.ESX) then
+                if Config.Framework == Framework.ESX then
                     return player.removeMoney(amount)
                 end
             end
@@ -104,9 +104,9 @@ CreateThread(function()
                 item = item:lower()
             end
     
-            if isBridgeLoaded('Framework', Framework.ESX) then
+            if Config.Framework == Framework.ESX then
                 player.removeInventoryItem(item, amount)
-            elseif isBridgeLoaded('Framework', Framework.QBCore) then
+            elseif Config.Framework == Framework.QBCore then
                 player.Functions.RemoveItem(item, amount, nil)
             end
     
@@ -114,11 +114,11 @@ CreateThread(function()
         end
     
         Inventory.registerUsableItem = function(name, cb)
-            if isBridgeLoaded('Framework', Framework.ESX) then
+            if Config.Framework == Framework.ESX then
                 Framework.object.RegisterUsableItem(name, function(source)
                     cb(source, name)
                 end)
-            elseif isBridgeLoaded('Framework', Framework.QBCore) then
+            elseif Config.Framework == Framework.QBCore then
                 Framework.object.Functions.CreateUseableItem(name, function(source, item)
                     cb(source, item.name, item)
                 end)
@@ -134,14 +134,14 @@ CreateThread(function()
             local content = {}
             local primary = {}
 
-            if Bridge.Framework == Framework.ESX then
-                content = exports[Bridge.Inventory]:getInventory('content-' .. player.getIdentifier():gsub(':',''))
-                primary = exports[Bridge.Inventory]:getInventory('primary-' .. player.getIdentifier():gsub(':',''))
+            if Config.Framework == Framework.ESX then
+                content = exports[Config.Inventories]:getInventory('content-' .. player.getIdentifier():gsub(':',''))
+                primary = exports[Config.Inventories]:getInventory('primary-' .. player.getIdentifier():gsub(':',''))
 
                 inventory = table.merge(content, primary)
             else
-                content = exports[Bridge.Inventory]:getInventory('content-' .. player.PlayerData.citizenid)
-                primary = exports[Bridge.Inventory]:getInventory('primary-' .. player.PlayerData.citizenid)
+                content = exports[Config.Inventories]:getInventory('content-' .. player.PlayerData.citizenid)
+                primary = exports[Config.Inventories]:getInventory('primary-' .. player.PlayerData.citizenid)
 
                 inventory = table.merge(content, primary)
             end
@@ -161,26 +161,26 @@ CreateThread(function()
                 if Config.Stash.KeepItems and Inventory.KeepSessionItems and #Inventory.KeepSessionItems > 0 then
                     dbg.debugInventory('Clear inventory with stash items is not supported, clearing all items and stashing them into prisn stash: for player named %s (%s)', playerId, GetPlayerName)
                     
-                    if Bridge.Framework == Framework.ESX then
-                        exports[Bridge.Inventory]:clearInventory('content-' .. player.getIdentifier():gsub(':',''))
-                        exports[Bridge.Inventory]:clearInventory('primary-' .. player.getIdentifier():gsub(':',''))
-                        exports[Bridge.Inventory]:clearInventory('secondry-' .. player.getIdentifier():gsub(':',''))
+                    if Config.Framework == Framework.ESX then
+                        exports[Config.Inventories]:clearInventory('content-' .. player.getIdentifier():gsub(':',''))
+                        exports[Config.Inventories]:clearInventory('primary-' .. player.getIdentifier():gsub(':',''))
+                        exports[Config.Inventories]:clearInventory('secondry-' .. player.getIdentifier():gsub(':',''))
                     else
-                        exports[Bridge.Inventory]:clearInventory('content-' .. player.PlayerData.citizenid)
-                        exports[Bridge.Inventory]:clearInventory('primary-' .. player.PlayerData.citizenid)
-                        exports[Bridge.Inventory]:clearInventory('secondry-' .. player.PlayerData.citizenid)
+                        exports[Config.Inventories]:clearInventory('content-' .. player.PlayerData.citizenid)
+                        exports[Config.Inventories]:clearInventory('primary-' .. player.PlayerData.citizenid)
+                        exports[Config.Inventories]:clearInventory('secondry-' .. player.PlayerData.citizenid)
                     end
 
                     return true
                 else
-                    if Bridge.Framework == Framework.ESX then
-                        exports[Bridge.Inventory]:clearInventory('content-' .. player.getIdentifier():gsub(':',''))
-                        exports[Bridge.Inventory]:clearInventory('primary-' .. player.getIdentifier():gsub(':',''))
-                        exports[Bridge.Inventory]:clearInventory('secondry-' .. player.getIdentifier():gsub(':',''))
+                    if Config.Framework == Framework.ESX then
+                        exports[Config.Inventories]:clearInventory('content-' .. player.getIdentifier():gsub(':',''))
+                        exports[Config.Inventories]:clearInventory('primary-' .. player.getIdentifier():gsub(':',''))
+                        exports[Config.Inventories]:clearInventory('secondry-' .. player.getIdentifier():gsub(':',''))
                     else
-                        exports[Bridge.Inventory]:clearInventory('content-' .. player.PlayerData.citizenid)
-                        exports[Bridge.Inventory]:clearInventory('primary-' .. player.PlayerData.citizenid)
-                        exports[Bridge.Inventory]:clearInventory('secondry-' .. player.PlayerData.citizenid)
+                        exports[Config.Inventories]:clearInventory('content-' .. player.PlayerData.citizenid)
+                        exports[Config.Inventories]:clearInventory('primary-' .. player.PlayerData.citizenid)
+                        exports[Config.Inventories]:clearInventory('secondry-' .. player.PlayerData.citizenid)
                     end
 
                     return true

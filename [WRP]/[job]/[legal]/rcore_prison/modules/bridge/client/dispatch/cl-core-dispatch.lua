@@ -1,5 +1,5 @@
 CreateThread(function()
-    if (isBridgeLoaded('Dispatch', DispatchList.CORE)) then
+    if Config.Dispatches == Dispatches.CORE then
         RegisterNetEvent('rcore_prison:client:setDispatch', function(payload)
             if not payload then
                 return 
@@ -17,6 +17,3 @@ CreateThread(function()
         end)
     end
 end)
-
-
-

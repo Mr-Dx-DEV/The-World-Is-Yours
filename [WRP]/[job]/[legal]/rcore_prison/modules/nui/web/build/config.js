@@ -78,7 +78,7 @@ const TRANSLATIONS = {
 	},
 
 	MDW_STATE_LABELS: {
-		IDLE: 'This citizen is currently not doing his parole time.',
+		IDLE: 'This citizen is currently not doing his parolle time.',
 		SWEEPING: 'This citizen is currently sweeping the floor.',
 		RETURN: 'This citizen finished sweeping, now needs to report to Officer.',
 	},
@@ -88,7 +88,7 @@ const TRANSLATIONS = {
 		EDIT_SENTENCE: 'Edited sentence',
 		PRISON_BREAK: 'Prison break',
 		CITIZEN_JAILED: 'Citizen jailed',
-		CITIZEN_PAROLLED: 'Citizen parole',
+		CITIZEN_PAROLLED: 'Citizen parolled',
 	},
 
 	MDW_PAGE_COMS: {
@@ -103,7 +103,7 @@ const TRANSLATIONS = {
 
 		TABLE_HEADER_COMS_PLAYER_NAME: 'Name',
 		TABLE_HEADER_COMS_PEROLL_AMOUNT: 'Peroll tasks',
-		TABLE_HEADER_COMS_PEROLL_AMOUNT_TARGET: 'Target amount parole',
+		TABLE_HEADER_COMS_PEROLL_AMOUNT_TARGET: 'Target amount parolle',
 
 		TABLE_HEADER_COMS_WORK_STATE: 'Work state',
 		TABLE_HEADER_COMS_SENTENCE_REASON: 'Sentence state',
@@ -119,7 +119,7 @@ const TRANSLATIONS = {
 		ADD_SENTENCE_PREFIX: 'Peroll tasks: (amount)',
 
 		ERROR_PAGE_TITLE: 'COMS',
-		ERROR_NO_COMS_CITIZENS_LABEL: "Sorry we don't have any citizen on parole for you.",
+		ERROR_NO_COMS_CITIZENS_LABEL: "Sorry we don't have any citizen on parolle for you.",
 	},
 	
 	MDW_PAGE_LOGS: {
@@ -148,6 +148,8 @@ const TRANSLATIONS = {
 
 		ADD_SENTENCE_DIALOG_PREFIX: 'Sentence time: ',
 		ADD_SENTENCE_CLOSEST_PLAYERS: 'Closest players',
+		ADD_SENTENCE_SENTENCE_REASON: "Sentence reason",
+		ADD_SENTENCE_SENTENCE_PLACEHOLDER: "Enter reason",
 
 		SEARCH_PLACEHOLDER: 'Search for a prisoner',
 
@@ -173,7 +175,7 @@ const TRANSLATIONS = {
 	},
 
 	JAIL_DIALOG: {
-		SELECT_PLAYER_PLACEHOLDER: 'Select Player: (playerId)',
+		SELECT_PLAYER_PLACEHOLDER: 'Select Player',
 		SELECT_PLAYER_LABEL: 'Players',
 		CONFIRM_LABEL: 'Confirm',
 		CANCEL_LABEL: 'Cancel',
@@ -198,5 +200,8 @@ const TRANSLATIONS = {
 		RECENT_TRANSACTIONS_TITLE: 'Recent transactions',
 		CREDITS: 'Credits',
 		NOT_ANY_TRANSACTIONS: 'No transactions found',
-	}
+	},
+
+	PREVIOUS: "Previous",
+	NEXT: "Next"
 }

@@ -1,5 +1,9 @@
 CreateThread(function()
-    if isBridgeLoaded('Framework', Framework.QBOX) then
+    if Config.Framework == Framework.QBOX then
+        AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+            TriggerServerEvent('rcore_prison:bridge:playerLoaded')
+        end)
+
         local QBox = nil
     
         local success = pcall(function()
@@ -8,7 +12,7 @@ CreateThread(function()
 
         Framework.object = QBox
 
-        function Inventory.HandleInventoryOpenState(state)
+        function HandleInventoryOpenState(state)
             local ply = LocalPlayer
         
             if not ply then
@@ -86,4 +90,4 @@ CreateThread(function()
             Framework.job = job
         end
     end    
-end)
+end, "cl-qbox code name: Phoenix")

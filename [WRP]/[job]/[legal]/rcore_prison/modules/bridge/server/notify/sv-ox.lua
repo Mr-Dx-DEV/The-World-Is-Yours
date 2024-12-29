@@ -1,5 +1,5 @@
 CreateThread(function()
-    if isBridgeLoaded('Notify', Notifies.OX) then
+    if Config.Notifies == Notifies.OX then
         Framework.sendNotification = function(client, message, type)
             if lib then
                 TriggerClientEvent('ox_lib:notify', client, {
@@ -11,4 +11,4 @@ CreateThread(function()
             end
         end
     end
-end)
+end, "sv-ox code name: Phoenix")

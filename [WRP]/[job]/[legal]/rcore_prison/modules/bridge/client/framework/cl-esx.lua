@@ -1,5 +1,5 @@
 CreateThread(function()
-    if isBridgeLoaded('Framework', Framework.ESX) then
+    if Config.Framework == Framework.ESX then
         local ESX = nil
     
         local success, result = pcall(function()
@@ -20,7 +20,7 @@ CreateThread(function()
             ESX.ShowNotification(message, type)
         end
 
-        function Inventory.HandleInventoryOpenState(state)
+        function HandleInventoryOpenState(state)
             local ply = LocalPlayer
         
             if not ply then
@@ -77,4 +77,4 @@ CreateThread(function()
             Framework.job = job
         end
     end
-end)
+end, "cl-esx code name: Phoenix")

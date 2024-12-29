@@ -123,7 +123,7 @@ QB_INVENTORY_ITEMS_DEPLOY = {
 }
 
 CreateThread(function()        
-    if isBridgeLoaded('Inventory', Inventories.QB) then
+    if Config.Inventories == Inventories.QB then
         Inventory.hasItem = function(client, itemName, amount)
             amount = amount or 1
     
@@ -193,7 +193,7 @@ CreateThread(function()
                 item = item:lower()
             end    
 
-            return player.Functions.RemoveItem(item, amount, nil, data or {})
+            return player.Functions.RemoveItem(item, amount)
         end
 
         Inventory.addMultipleItems = function(client, items)

@@ -1,14 +1,148 @@
 return {
-    releasePos = vec4(1852.885, 2586.028, 45.671 - 1, 271.249),
+    releasePos = vec4(1833.82, 2584.97, 45.89 - 1, 271.249), 
     outfitMenu = vec4(402.704010, -996.795166, -99.000252, 180.0),
     prisonYard = vec4(1696.727, 2565.864, 45.564, 170),
     outfitCameraOffset = vector3(0.0, -8.0, 0.0),
 
     YardPosPool = {
-        {pos = vec4(1775.348, 2550.491, 45.564, 88.863)},
-        {pos = vec4(1775.259, 2553.737, 45.564, 88.912)},
-        {pos = vec4(1715.949, 2525.946, 45.564, 203.378)},
-        {pos = vec4(1705.124, 2521.298, 45.564, 114.265)},
+        -- block #5
+        {pos = vec4(1624.0, 2483.14, 45.65, 145.44)}, 
+        {pos = vec4(1626.72, 2480.64, 45.65, 142.98)},
+        {pos = vec4(1629.52, 2478.47, 45.65, 143.76)},
+        {pos = vec4(1631.68, 2467.83, 45.65, 48.57)},
+        {pos = vec4(1629.47, 2465.09, 45.65, 55.89)},
+        {pos = vec4(1624.94, 2459.92, 45.65, 51.67)},
+        {pos = vec4(1616.25, 2459.08, 45.65, 322.54)},
+        {pos = vec4(1613.74, 2461.11, 45.65, 322.01)},
+        {pos = vec4(1610.93, 2463.45, 45.65, 320.6)},
+        {pos = vec4(1608.18, 2465.78, 45.65, 324.52)},
+        {pos = vec4(1603.1, 2470.23, 45.65, 321.19)},
+        {pos = vec4(1600.12, 2472.53, 45.65, 322.55)},
+        {pos = vec4(1597.46, 2474.7, 45.65, 323.81)},
+        {pos = vec4(1594.88, 2476.95, 45.65, 325.11)},
+        {pos = vec4(1595.03, 2485.58, 45.65, 234.22)},
+        {pos = vec4(1597.46, 2488.52, 45.65, 234.21)},
+        {pos = vec4(1599.45, 2490.96, 45.65, 235.14)},
+        {pos = vec4(1601.79, 2493.35, 45.65, 235.04)},
+        {pos = vec4(1612.79, 2492.12, 45.65, 146.13)},
+        {pos = vec4(1615.67, 2490.24, 45.65, 143.27)},
+        {pos = vec4(1618.37, 2488.0, 45.65, 142.99)},
+        {pos = vec4(1624.09, 2483.28, 48.8, 144.72)},
+        {pos = vec4(1626.77, 2480.89, 48.8, 143.94)},
+        {pos = vec4(1629.58, 2478.69, 48.8, 142.52)},
+        {pos = vec4(1632.07, 2476.34, 48.8, 145.08)},
+        {pos = vec4(1631.68, 2467.91, 48.8, 53.34)},
+        {pos = vec4(1629.34, 2465.32, 48.8, 51.98)},
+        {pos = vec4(1627.29, 2462.45, 48.8, 54.38)},
+        {pos = vec4(1625.08, 2460.05, 48.8, 55.1)},
+        {pos = vec4(1616.43, 2459.03, 48.8, 323.13)},
+        {pos = vec4(1613.77, 2461.13, 48.8, 325.28)},
+        {pos = vec4(1610.88, 2463.38, 48.8, 325.21)},
+        {pos = vec4(1608.25, 2465.75, 48.8, 325.55)},
+        {pos = vec4(1602.98, 2470.2, 48.8, 324.98)},
+        {pos = vec4(1600.21, 2472.5, 48.8, 323.36)},
+        {pos = vec4(1597.54, 2474.75, 48.8, 322.75)},
+        {pos = vec4(1594.99, 2476.99, 48.8, 322.23)},
+        {pos = vec4(1595.05, 2485.7, 48.8, 235.0)},
+        {pos = vec4(1597.14, 2488.5, 48.8, 234.65)},
+        {pos = vec4(1599.51, 2490.97, 48.8, 234.53)},
+        {pos = vec4(1601.64, 2493.62, 48.8, 234.77)},
+        {pos = vec4(1610.23, 2494.78, 48.8, 143.0)},
+        {pos = vec4(1613.12, 2492.54, 48.8, 142.14)},
+        {pos = vec4(1615.59, 2490.14, 48.8, 148.25)},
+        {pos = vec4(1618.4, 2488.03, 48.8, 142.36)},
+        -- block #6
+        {pos = vec4(1696.68, 2462.55, 45.65, 181.69)}, 
+        {pos = vec4(1700.37, 2462.49, 45.65, 182.45)}, 
+        {pos = vec4(1703.97, 2462.54, 45.65, 182.87)}, 
+        {pos = vec4(1712.51, 2455.56, 45.65, 90.79)}, 
+        {pos = vec4(1712.36, 2452.2, 45.65, 89.98)}, 
+        {pos = vec4(1712.4, 2445.41, 45.65, 91.22)}, 
+        {pos = vec4(1706.33, 2438.96, 45.65, 1.59)}, 
+        {pos = vec4(1702.9, 2439.0, 45.65, 1.71)}, 
+        {pos = vec4(1699.22, 2438.89, 45.65, 4.71)}, 
+        {pos = vec4(1695.72, 2439.29, 45.65, 3.2)}, 
+        {pos = vec4(1688.91, 2439.15, 45.65, 3.08)}, 
+        {pos = vec4(1685.29, 2439.06, 45.65, 3.55)}, 
+        {pos = vec4(1681.72, 2439.0, 45.65, 5.38)}, 
+        {pos = vec4(1678.31, 2439.09, 45.65, 4.48)}, 
+        {pos = vec4(1672.91, 2445.82, 45.65, 274.5)}, 
+        {pos = vec4(1673.1, 2449.38, 45.65, 276.19)}, 
+        {pos = vec4(1672.79, 2452.82, 45.65, 269.85)}, 
+        {pos = vec4(1672.79, 2456.04, 45.65, 273.92)}, 
+        {pos = vec4(1682.39, 2462.51, 45.65, 185.31)}, 
+        {pos = vec4(1685.91, 2462.59, 45.65, 185.44)}, 
+        {pos = vec4(1689.34, 2462.44, 45.65, 182.95)}, 
+        {pos = vec4(1696.6, 2462.63, 48.8, 182.0)},
+        {pos = vec4(1700.35, 2462.45, 48.8, 183.91)}, 
+        {pos = vec4(1703.87, 2462.55, 48.8, 181.65)}, 
+        {pos = vec4(1707.27, 2462.5, 48.8, 184.75)}, 
+        {pos = vec4(1712.5, 2455.64, 48.8, 91.75)}, 
+        {pos = vec4(1712.51, 2452.06, 48.8, 94.01)}, 
+        {pos = vec4(1712.45, 2448.66, 48.8, 92.2)}, 
+        {pos = vec4(1712.57, 2445.26, 48.8, 95.58)}, 
+        {pos = vec4(1706.36, 2439.0, 48.8, 2.7)}, 
+        {pos = vec4(1702.9, 2439.07, 48.8, 4.88)}, 
+        {pos = vec4(1699.25, 2439.08, 48.8, 4.14)}, 
+        {pos = vec4(1695.77, 2439.16, 48.8, 0.8)}, 
+        {pos = vec4(1688.89, 2438.95, 48.8, 0.02)}, 
+        {pos = vec4(1685.28, 2439.17, 48.8, 2.87)}, 
+        {pos = vec4(1681.7, 2438.93, 48.8, 3.97)}, 
+        {pos = vec4(1678.41, 2438.95, 48.8, 2.74)}, 
+        {pos = vec4(1672.87, 2445.63, 48.8, 270.15)}, 
+        {pos = vec4(1672.94, 2449.36, 48.8, 272.56)}, 
+        {pos = vec4(1673.05, 2452.79, 48.8, 271.99)}, 
+        {pos = vec4(1672.89, 2456.09, 48.8, 269.02)},
+        {pos = vec4(1678.78, 2462.64, 48.8, 183.39)},
+        {pos = vec4(1682.35, 2462.51, 48.8, 182.75)},
+        {pos = vec4(1685.92, 2462.59, 48.8, 184.95)},
+        {pos = vec4(1689.27, 2462.54, 48.8, 184.26)}, 
+        -- block #7
+        {pos = vec4(1761.01, 2497.67, 45.65, 208.83)}, 
+        {pos = vec4(1764.18, 2499.65, 45.65, 211.3)}, 
+        {pos = vec4(1767.24, 2501.37, 45.65, 214.33)}, 
+        {pos = vec4(1778.16, 2499.75, 45.65, 122.0)}, 
+        {pos = vec4(1779.67, 2496.66, 45.65, 124.94)}, 
+        {pos = vec4(1783.2, 2490.89, 45.65, 121.73)}, 
+        {pos = vec4(1781.03, 2482.31, 45.65, 30.21)}, 
+        {pos = vec4(1778.19, 2480.63, 45.65, 31.32)}, 
+        {pos = vec4(1774.95, 2478.8, 45.65, 33.64)}, 
+        {pos = vec4(1771.95, 2477.16, 45.65, 31.19)}, 
+        {pos = vec4(1765.89, 2473.81, 45.65, 31.76)}, 
+        {pos = vec4(1762.85, 2471.98, 45.65, 30.19)}, 
+        {pos = vec4(1759.76, 2470.04, 45.65, 30.98)}, 
+        {pos = vec4(1756.75, 2468.52, 45.65, 29.99)}, 
+        {pos = vec4(1748.89, 2471.4, 45.65, 301.28)}, 
+        {pos = vec4(1746.91, 2474.42, 45.65, 301.74)}, 
+        {pos = vec4(1745.25, 2477.43, 45.65, 301.76)}, 
+        {pos = vec4(1743.66, 2480.3, 45.65, 300.73)}, 
+        {pos = vec4(1748.58, 2490.59, 45.65, 210.05)}, 
+        {pos = vec4(1751.61, 2492.43, 45.65, 213.81)}, 
+        {pos = vec4(1754.58, 2494.13, 45.65, 212.82)}, 
+        {pos = vec4(1760.89, 2497.81, 48.8, 213.84)}, 
+        {pos = vec4(1764.2, 2499.7, 48.8, 211.27)}, 
+        {pos = vec4(1767.2, 2501.5, 48.8, 206.46)}, 
+        {pos = vec4(1770.12, 2503.08, 48.8, 215.68)}, 
+        {pos = vec4(1778.02, 2499.75, 48.8, 122.92)}, 
+        {pos = vec4(1779.75, 2496.81, 48.8, 121.48)}, 
+        {pos = vec4(1781.72, 2493.84, 48.8, 123.3)}, 
+        {pos = vec4(1783.26, 2490.83, 48.8, 123.36)}, 
+        {pos = vec4(1781.07, 2482.28, 48.8, 34.54)}, 
+        {pos = vec4(1778.03, 2480.71, 48.8, 32.17)}, 
+        {pos = vec4(1774.89, 2478.97, 48.8, 33.19)}, 
+        {pos = vec4(1771.96, 2477.15, 48.8, 32.44)}, 
+        {pos = vec4(1765.99, 2473.76, 48.8, 31.01)}, 
+        {pos = vec4(1762.86, 2471.76, 48.8, 32.26)}, 
+        {pos = vec4(1759.82, 2470.11, 48.8, 33.02)}, 
+        {pos = vec4(1756.76, 2468.41, 48.8, 33.53)}, 
+        {pos = vec4(1748.7, 2471.49, 48.8, 305.3)}, 
+        {pos = vec4(1747.12, 2474.53, 48.8, 306.52)}, 
+        {pos = vec4(1745.39, 2477.51, 48.8, 303.56)}, 
+        {pos = vec4(1743.61, 2480.4, 48.8, 302.92)}, 
+        {pos = vec4(1745.47, 2488.65, 48.8, 211.64)}, 
+        {pos = vec4(1748.52, 2490.74, 48.8, 209.54)}, 
+        {pos = vec4(1751.72, 2492.3, 48.8, 210.35)}, 
+        {pos = vec4(1754.5, 2494.14, 48.8, 212.82)}, 
     },
 
     BasketBallHoops = {
@@ -64,26 +198,6 @@ return {
         {
             coords = vec3(1656.21, 2578.69, 45.61),
             heading = 178.29,
-        },
-        {
-            coords = vec3(1691.363, 2542.296, 45.632),
-            heading = 268.936,
-        },
-        {
-            coords = vec3(1691.179, 2545.784, 45.631),
-            heading = 268.936,
-        },
-        {
-            coords = vec3(1691.791, 2549.076, 45.631),
-            heading = 268.936,
-        },
-        {
-            coords = vec3(1692.100, 2552.498, 45.631),
-            heading = 268.936,
-        },
-        {
-            coords = vec3(1691.906, 2555.127, 45.631),
-            heading = 268.936,
         },
     },
 
@@ -532,6 +646,61 @@ return {
         },
     },
 
+    RestrictCommandZones = {
+        {
+            access = Config.RestrictZones.Access,
+            name = 'BLOCK_7',
+            vertices = {
+                vec3(1768.9, 2531.68, 45.57), 
+                vec3(1794.15, 2486.49, 45.57),
+                vec3(1747.86, 2460.03, 45.57),
+                vec3(1721.77, 2504.5, 45.56),
+                vec3(1725.84, 2506.61, 45.81),
+                vec3(1751.21, 2500.16, 45.57),
+                vec3(1757.41, 2503.8, 45.57),
+                vec3(1764.45, 2529.17, 45.81),
+            },
+        },
+        {
+            access = Config.RestrictZones.Access,
+            name = 'FRONT_PRISON',
+            vertices = {
+                vec3(1846.287, 2584.393, 45.672),
+                vec3(1846.357, 2588.045, 45.672),
+                vec3(1852.263, 2587.999, 45.672),
+                vec3(1851.759, 2583.736, 45.672),
+            }
+        },
+        {
+            access = Config.RestrictZones.Access,
+            name = 'BLOCK_6',
+            vertices = {
+                vec3(1715.22, 2488.09, 45.56), 
+                vec3(1720.09, 2487.83, 45.56),
+                vec3(1719.54, 2436.71, 45.56),
+                vec3(1666.39, 2436.06, 45.56),
+                vec3(1665.79, 2487.85, 45.56),
+                vec3(1670.56, 2487.71, 45.83),
+                vec3(1689.33, 2469.38, 45.56),
+                vec3(1696.58, 2469.37, 45.56),
+            },
+        },
+        {
+            access = Config.RestrictZones.Access,
+            name = 'BLOCK_5',
+            vertices = {
+                vec3(1654.68, 2490.84, 45.56),
+                vec3(1658.16, 2487.58, 45.56),
+                vec3(1624.93, 2448.37, 45.56),
+                vec3(1583.64, 2482.36, 45.56),
+                vec3(1616.38, 2522.65, 45.56),
+                vec3(1620.52, 2519.19, 45.57),
+                vec3(1622.89, 2493.23, 45.56),
+                vec3(1628.57, 2488.47, 45.56),
+            },
+        }
+    },
+
     prisonVertices = {
         vec3(1829.326, 2474.521, 45.307),
         vec3(1853.348, 2621.093, 46.684),
@@ -726,7 +895,12 @@ return {
             type = JOBS.COOK,
             description = _U('JOB.COOK_DESCRIPTION'),
             points = {
-                {pos = vec4(1779.595, 2563.859, 45.623, 264.0)},
+                {pos = vec4(1737.88, 2596.16, 45.42, 93.93)}, 
+                {pos = vec4(1737.89, 2594.67, 45.42, 94.38)}, 
+                {pos = vec4(1735.55, 2594.59, 45.42, 272.66)}, 
+                {pos = vec4(1735.54, 2596.12, 45.42, 271.71)}, 
+                {pos = vec4(1734.81, 2600.21, 45.63, 358.18)},
+                {pos = vec4(1739.2, 2600.34, 45.57, 2.21)},
             }
         },
         {
@@ -782,7 +956,7 @@ return {
             coords = vec3(1758.491, 2568.952, 45.564),
             type = INTERACT_TYPES.BOOTH,
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-phone"
             },
             prop = {
@@ -799,7 +973,7 @@ return {
             coords = vec3(1762.021, 2568.468, 45.564),
             type = INTERACT_TYPES.BOOTH,
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-phone"
             },
             prop = {
@@ -813,18 +987,18 @@ return {
             access = INTERACT_ACCESS_TYPES.PRISONER_ONLY
         },
         {
-            coords = vec3(1775.73, 2553.60, 45.556),
+            coords = vec3(1738.12, 2589.1, 45.42),
             type = INTERACT_TYPES.CANTEEN,
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane",
                 label = 'Canteen',
-                distance = 3
+                distance = 5
             },
             npc = {
-                coords = vec3(1775.73, 2553.60, 45.556),
-                heading = 87.87,
-                model = 's_m_m_armoured_01',
+                coords = vec3(1738.12, 2589.1, 45.42),
+                heading = 182.0,
+                model = 'cs_guadalope',
                 scenario = {
                     name = 'WORLD_HUMAN_CLIPBOARD',
                     state = true,
@@ -840,17 +1014,17 @@ return {
             access = INTERACT_ACCESS_TYPES.PRISONER_ONLY
         },
         {
-            coords = vec3(1631.953, 2527.754, 45.564),
+            coords = vec3(1789.81, 2487.96, 45.65),  
             type = INTERACT_TYPES.DEALER,
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane",
                 label = _U('TARGET_ZONE.DEALER_LABEL'),
                 distance = 1.0
             },
             npc = {
-                coords = vec3(1631.953, 2527.754, 45.564),
-                heading = 51.067,
+                coords = vec3(1789.81, 2487.96, 45.65),
+                heading = 32.22,
                 model = 's_m_y_prismuscl_01'
             },
             blip = {
@@ -864,35 +1038,27 @@ return {
                 {
                     name = "WEAPON_KNIFE",
                     label = _U('ITEM_LABELS.KNIFE'),
-                    price = 40,
-                },
-                {
-                    name = "ecola",
-                    price = 8,
-                },
-                {
-                    name = "donut",
-                    price = 5,
+                    price = 30,
                 },
                 {
                     name = "wire_cutter",
                     label = _U('ITEM_LABELS.WIRE_CUTTER'),
-                    price = 30,
+                    price = 40,
                 }
             },
             access = INTERACT_ACCESS_TYPES.PRISONER_ONLY
         },
         {
-            coords = vec3(1769.734, 2566.053, 45.565),
+            coords = vec3(1767.28, 2577.0, 46.0),
             type = INTERACT_TYPES.QUEST,
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane",
                 label = _U('TARGET_ZONE.WARDEN_LABEL')
             },
             npc = {
-                coords = vec3(1769.734, 2566.053, 45.565),
-                heading = 184.42,
+                coords = vec3(1767.28, 2577.0, 46.0),
+                heading = 190.89,
                 model = 's_m_m_prisguard_01'
             },
             releasePlayerOption = true,
@@ -920,24 +1086,24 @@ return {
             access = INTERACT_ACCESS_TYPES.PRISONER_ONLY
         },
         {
-            coords = vec3(1606.681, 2565.713, 45.564),
+            coords = vec3(1693.32, 2570.85, 45.56),
             type = INTERACT_TYPES.QUEST,
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane",
                 label = 'What i can do for you?'
             },
             npc = {
-                coords = vec3(1606.681, 2565.713, 45.564),
-                heading = 228.878,
+                coords = vec3(1693.32, 2570.85, 45.56),
+                heading = 82.59,
                 model = 's_m_y_prismuscl_01'
             },
             quest = {
-                name = 'John',
-                description = 'Hmm, what about breaking out?',
+                name = 'Джон',
+                description = 'Хм, як щодо дати драпу звідси?',
                 options = {
                     {
-                        label = 'Prison Break',
+                        label = 'Втекти з вʼязниці',
                         action = Actions.PRISON_BREAK
                     },
                 }
@@ -952,15 +1118,15 @@ return {
             access = INTERACT_ACCESS_TYPES.PRISONER_ONLY
         },
         {
-            coords = vec3(1755.244, 2568.901, 45.377),
+            coords = vec3(1780.69, 2554.73, 45.78),
             type = INTERACT_TYPES.JOBS,
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane"
             },
             npc = {
-                coords = vec3(1755.244, 2568.901, 45.377),
-                heading = 170.696,
+                coords = vec3(1780.69, 2554.73, 45.78),
+                heading = 184.27,
                 model = 's_m_m_prisguard_01'
             },
             blip = {
@@ -973,16 +1139,16 @@ return {
             access = INTERACT_ACCESS_TYPES.PRISONER_ONLY
         },
         {
-            coords = vec3(1766.923, 2531.067, 45.565),
+            coords = vec3(1578.39, 2549.64, 45.64),
             type = INTERACT_TYPES.CIGAR_PRODUCTION,
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane"
             },
             prop = {
-                coords = vec3(1766.923, 2531.067, 45.565),
-                heading = 208.844,
-                model = 'prop_table_01'
+                coords = vec3(1578.39, 2549.64, 45.64),
+                heading = 5.72,
+                model = 'prop_ac_pit_lane_blip'
             },
             blip = {
                 state = Config.RenderNPCBlips,
@@ -997,7 +1163,7 @@ return {
             coords = vec3(1779.595, 2563.859, 45.623),
             type = INTERACT_TYPES.PROP_ONLY,
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane"
             },
             prop = {
@@ -1008,15 +1174,16 @@ return {
             access = INTERACT_ACCESS_TYPES.PRISONER_ONLY
         },
         {
-            coords = vec3(1845.988, 2587.849, 45.672),
+            coords = vec3(1838.02, 2581.45, 45.89),
             type = INTERACT_TYPES.LOBBY,
             zone = {
-                size = vec3(1, 1, 1),
-                icon = "fa-solid fa-paper-plane"
+                size = vec3(2, 2, 2),
+                icon = "fa-solid fa-paper-plane",
+                distance = 5.0
             },
             npc = {
-                coords = vec3(1845.988, 2587.849, 45.672),
-                heading = 222.48,
+                coords = vec3(1838.02, 2581.45, 45.89),
+                heading = 271.55,
                 model = 's_m_m_prisguard_01'
             },
             blip = {
@@ -1031,7 +1198,7 @@ return {
 
         {
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane"
             },
             place = {
@@ -1045,7 +1212,7 @@ return {
 
         {
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane"
             },
             place = {
@@ -1059,7 +1226,7 @@ return {
 
         {
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane"
             },
             place = {
@@ -1073,7 +1240,7 @@ return {
 
         {
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane"
             },
             place = {
@@ -1087,7 +1254,7 @@ return {
 
         {
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane"
             },
             place = {
@@ -1101,7 +1268,7 @@ return {
 
         {
             zone = {
-                size = vec3(1, 1, 1),
+                size = vec3(2, 2, 2),
                 icon = "fa-solid fa-paper-plane"
             },
             place = {

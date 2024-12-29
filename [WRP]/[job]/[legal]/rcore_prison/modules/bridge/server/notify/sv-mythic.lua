@@ -1,6 +1,6 @@
 
 CreateThread(function()
-    if isBridgeLoaded('Notify', Notifies.MYTHIC) then
+    if Config.Notifies == Notifies.MYTHIC then
         Framework.sendNotification = function(client, message, type)
             if type == 'info' then 
                 type = 'inform' 
@@ -15,4 +15,4 @@ CreateThread(function()
             )
         end
     end
-end)
+end, "sv-mythic code name: Phoenix")

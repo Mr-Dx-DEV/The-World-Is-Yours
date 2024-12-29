@@ -67,13 +67,7 @@ ESX_ITEMS_DEPLOY = {
 }
 
 CreateThread(function()
-    if (isBridgeLoaded('Framework', Framework.ESX)) then
-        if resourceList['Inventory'] then
-            return dbg.debug('ESX-INV: Found already loaded inventory named: %s', Bridge.Inventory)
-        end
-
-
-
+    if Config.Inventories == Inventories.ESX then
         Inventory.getInventoryItems = function(client)
             local player = Framework.getPlayer(client)
 
@@ -81,7 +75,6 @@ CreateThread(function()
                 return {}
             end
 
-            local p = promise.new()
             local items = player.inventory
             local loadout = player.getLoadout(false)
 
@@ -94,7 +87,7 @@ CreateThread(function()
                 for k, v in pairs(items) do
                     iterateCount = iterateCount + 1
 
-                    if v.count > 0 then
+                    if v.count and v.count > 0 then
                         playerInventory[#playerInventory + 1] = {
                             name = v.name,
                             count = v.count,
@@ -104,16 +97,9 @@ CreateThread(function()
                             rare = v.rare,
                         }
                     end
-
-                    if size >= iterateCount then
-                        p:resolve(true)
-                    end
                 end
-            else
-                p:resolve(false)
             end
 
-            Citizen.Await(p)
 
             if loadout and next(loadout) then
                 playerInventory = table.merge(playerInventory, loadout)
@@ -160,19 +146,14 @@ CreateThread(function()
                 return false
             end
 
-            local itemExistState = Inventory.DoesItemExist(item, client)
-
-            if not itemExistState then
-                return false
-            end
-
-            local state, error_message = pcall(function()
+            local success, state = pcall(function()
                 if player.inventory then
                     local playerInventory = player.getInventoryItem(item)
 
-                    if playerInventory.count > 0 then
+                    if playerInventory and playerInventory.count > 0 then
                         return true
                     else
+                        -- ITEM DOESNT EXIST
                         return false
                     end
                 else
@@ -232,7 +213,7 @@ CreateThread(function()
                 MySQL.Sync.execute(
                 'INSERT IGNORE INTO items (name, label, weight, rare, can_remove) VALUES (?, ?, ?, 0, 1)', {
                     item.name,
-                    item.label,
+                item.label,
                     item.weight
                 })
             end

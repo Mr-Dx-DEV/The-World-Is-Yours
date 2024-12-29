@@ -10,6 +10,52 @@ return {
         {pos = vec4(1715.949, 2525.946, 45.564, 203.378)},
         {pos = vec4(1705.124, 2521.298, 45.564, 114.265)},
     },
+    BasketBallHoops = {
+        {
+            pos = vector3(1719.612304, 2549.735840, 42.577492), 
+            rot = vector4(0.000000, 0.000000, 0.236716, 0.971578),
+            State = nil,
+            Model = `prop_basketball_net`,
+            IsSubscribed = false,
+            threePointFwdDist = 0.0,
+            threePointSideDist = 0.0,
+            threePointRadius = 30.0,
+            hideBlip = true,
+        },
+        {
+            pos = vector3(1731.795532, 2526.293212, 42.577564), 
+            rot = vector4(-0.000000, 0.000000, 0.972842, -0.231466),
+            State = nil,
+            Model = `prop_basketball_net`,
+            IsSubscribed = false,
+            threePointFwdDist = 0.0,
+            threePointSideDist = 0.0,
+            threePointRadius = 30.0,
+            hideBlip = true,
+        },
+        {
+            pos = vector3(1689.109986, 2523.141114, 44.556892), 
+            rot = vector4(0.000000, 0.000000, -0.340030, 0.940414),
+            State = nil,
+            Model = `prop_basketball_net`,
+            IsSubscribed = false,
+            threePointFwdDist = 0.0,
+            threePointSideDist = 0.0,
+            threePointRadius = 30.0,
+            hideBlip = true,
+        },
+        {
+            pos = vector3(1671.621948, 2502.817872, 44.556962), 
+            rot = vector4(0.000000, 0.000000, 0.937966, 0.346728),
+            State = nil,
+            Model = `prop_basketball_net`,
+            IsSubscribed = false,
+            threePointFwdDist = 0.0,
+            threePointSideDist = 0.0,
+            threePointRadius = 30.0,
+            hideBlip = true,
+        },
+    },
 
     SolitaryCells = {
         {
@@ -250,6 +296,20 @@ return {
                     interactCoords = vec3(1823.225220, 2625.877441, 44.729828),
                     zoneType = 'OUTTER',
                 }
+            }
+        }
+    },
+
+
+    RestrictCommandZones = {
+        {
+            access = Config.RestrictZones.Access,
+            name = 'PRISON_RELEASE_PLAYER_POSITION',
+            vertices = {
+                vec3(1846.287, 2584.393, 45.672),
+                vec3(1846.357, 2588.045, 45.672),
+                vec3(1852.263, 2587.999, 45.672),
+                vec3(1851.759, 2583.736, 45.672),
             }
         }
     },
@@ -760,16 +820,16 @@ return {
             access = INTERACT_ACCESS_TYPES.PRISONER_ONLY
         },
         {
-            coords = vec3(1784.003, 2558.772, 45.673),
+            coords = vec3(1783.22, 2560.78, 45.67),
             type = INTERACT_TYPES.CANTEEN,
-            distance = 6,
+            distance = 3,
             zone = {
                 size = vec3(1, 1, 1),
                 icon = "fa-solid fa-paper-plane",
                 label = _U('TARGET_ZONE.CANTEEN_LABEL'),
             },
             npc = {
-                coords = vec3(1784.003, 2558.772, 45.673),
+                coords = vec3(1783.22, 2560.78, 45.67),
                 heading = 170.87,
                 model = 's_m_m_prisguard_01',
                 scenario = {

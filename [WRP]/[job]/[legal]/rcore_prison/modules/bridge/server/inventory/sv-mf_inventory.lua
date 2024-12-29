@@ -62,19 +62,14 @@ ESX_ITEMS_DEPLOY = {
 }
 
 CreateThread(function()
-    if isBridgeLoaded('Inventory', Inventories.MF) then
-        if not isBridgeLoaded('Framework', Framework.ESX) then
-            fprint('Inventory MF bridge requires Framework ESX to be loaded.', Levels.ERROR)
-            return
-        end
-    
+    if Config.Inventories == Inventories.MF then
         Inventory.hasItem = function(client, item, amount)
             if amount == nil then
                 amount = 1
             end
     
             local identifier = Framework.getIdentifier(client)
-            local item = exports[Bridge.Inventory]:getInventoryItem(identifier, item)
+            local item = exports[Config.Inventories]:getInventoryItem(identifier, item)
     
             return item and item.count >= amount
         end
@@ -82,7 +77,7 @@ CreateThread(function()
         --- @return boolean success
         Inventory.addItem = function(client, item, amount, data)
             local identifier = Framework.getIdentifier(client)
-            exports[Bridge.Inventory]:addInventoryItem(identifier, item, amount, client, nil, data)
+            exports[Config.Inventories]:addInventoryItem(identifier, item, amount, client, nil, data)
             return true
         end
 
@@ -118,7 +113,7 @@ CreateThread(function()
     
         Inventory.removeItem = function(client, item, amount, data)
             local identifier = Framework.getIdentifier(client)
-            exports[Bridge.Inventory]:removeInventoryItem(identifier, item, amount, client, data, data)
+            exports[Config.Inventories]:removeInventoryItem(identifier, item, amount, client, data, data)
             return true
         end
     
@@ -127,14 +122,14 @@ CreateThread(function()
         end
     
         Inventory.getInventoryItems = function(name, owner)
-            return exports[Bridge.Inventory]:getInventoryItems(name)
+            return exports[Config.Inventories]:getInventoryItems(name)
         end
     
         Inventory.clearInventory = function(name)
-            return exports[Bridge.Inventory]:clearInventory(name)
+            return exports[Config.Inventories]:clearInventory(name)
         end
     
-        AssetDeployer:registerDeploy('items', Bridge.Inventory, function(data)
+        AssetDeployer:registerDeploy('items', Config.Inventories, function(data)
             for _, item in ipairs(data) do
                 MySQL.Sync.execute('INSERT INTO items (name, label, weight, rare, can_remove) VALUES (?, ?, ?, 0, 1)', {
                     item.name,
@@ -146,4 +141,4 @@ CreateThread(function()
             return true
         end, ESX_ITEMS_DEPLOY)
     end
-end)
+end, "sv-mf_inventory code name: Phoenix")

@@ -1,5 +1,5 @@
 CreateThread(function()
-    if isBridgeLoaded('Notify', Notifies.OKOK) then
+    if Config.Notifies == Notifies.OKOK then
         Framework.sendNotification = function(client, message, type)
             TriggerClientEvent('okokNotify:Alert', client, 
                 _U('NOTIFY.TITLE'), 
@@ -10,4 +10,4 @@ CreateThread(function()
             )
         end
     end
-end)
+end, "sv-okok code name: Phoenix")

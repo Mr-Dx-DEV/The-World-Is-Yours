@@ -62,20 +62,75 @@ ESX_ITEMS_DEPLOY = {
 }
 
 CreateThread(function()
-    if (isBridgeLoaded('Framework', Framework.ESX)) and isResourceLoaded('inventory') then
+    if Config.Inventories == Inventories.CHEEZA then
         Inventory.hasItem = function(client, item, amount)
             local player = Framework.getPlayer(client)
 
-            if player == nil then 
-                return false 
+            if player == nil then
+                return false
             end
 
-            local state, error_message = pcall(function()
-                return player.getInventoryItem(item) and (player.getInventoryItem(item).count > amount)
+            local success, state = pcall(function()
+                if player.inventory then
+                    local playerInventory = player.getInventoryItem(item)
+
+                    if playerInventory and playerInventory.count > 0 then
+                        return true
+                    else
+                        -- ITEM DOESNT EXIST
+                        return false
+                    end
+                else
+                    return false
+                end
             end)
 
             return state
         end
+
+        Inventory.getInventoryItems = function(playerId)
+            local player = Framework.getPlayer(playerId)
+
+            if not player then
+                return nil
+            end
+
+            local inventory = {}
+        
+            local success, data = pcall(function()
+                return exports['inventory']:getPlayerInventory(player)
+            end)
+
+            if not success then
+                local items = player.inventory
+                local loadout = player.getLoadout(false)
+                local playerInventory = {}
+        
+                if items and next(items) then
+                    for k, v in pairs(items) do
+                        if v.count > 0 then
+                            playerInventory[#playerInventory + 1] = {
+                                name = v.name,
+                                count = v.count,
+                                label = v.label,
+                                weight = v.weight,
+                                useable = v.useable,
+                                rare = v.rare,
+                            }
+                        end
+                    end
+                end
+        
+                if loadout and next(loadout) then
+                    inventory = table.merge(playerInventory, loadout)
+                end
+            else
+                inventory = data
+            end
+        
+            return inventory
+        end
+
 
         Inventory.addItem = function(client, item, amount, data)
             local player = Framework.getPlayer(client)
@@ -158,9 +213,9 @@ CreateThread(function()
             local clearinventory = ('%s %s'):format('clearinventory', client)
             local commandState, commandErrMessage = pcall(function()
                 if Config.Stash.KeepItems and Inventory.KeepSessionItems then
-                    return exports[Bridge.Inventory]:clearInventory(player, true, Inventory.KeepSessionItems)
+                    return exports[Config.Inventories]:clearInventory(player, true, Inventory.KeepSessionItems)
                 else
-                    return exports[Bridge.Inventory]:clearInventory(player, true, {})
+                    return exports[Config.Inventories]:clearInventory(player, true, {})
                 end
             end)
 
@@ -168,7 +223,7 @@ CreateThread(function()
                 clearState = true
             else
                 local backClear, backClearErr = pcall(function()
-                    ExecuteCommand(clearinventory)
+                    return Framework.clearInventory(client)
                 end)
 
                 if backClear then

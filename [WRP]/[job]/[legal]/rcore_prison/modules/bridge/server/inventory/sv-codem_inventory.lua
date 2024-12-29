@@ -1,5 +1,5 @@
 CreateThread(function()
-    if isBridgeLoaded('Inventory', Inventories.CODEM) then
+    if Config.Inventories == Inventories.CODEM then
         Inventory.hasItem = function(client, itemName, amount)
             amount = amount or 1
     
@@ -63,11 +63,11 @@ CreateThread(function()
                     return false
                 end
     
-                if isBridgeLoaded('Framework', Framework.QBCore) then
+                if Config.Framework == Framework.QBCore then
                     return player.Functions.AddMoney('cash', amount)
                 end
         
-                if isBridgeLoaded('Framework', Framework.ESX) then
+                if Config.Framework == Framework.ESX then
                     return player.addMoney(amount)
                 end
             end
@@ -79,7 +79,7 @@ CreateThread(function()
             end
     
             local state, error_message = pcall(function()
-                return exports[Bridge.Inventory]:AddItem(client, item, amount, nil, data)
+                return exports[Config.Inventories]:AddItem(client, item, amount, nil, data)
             end)
     
             return state
@@ -93,11 +93,11 @@ CreateThread(function()
                     return false
                 end
     
-                if isBridgeLoaded('Framework', Framework.QBCore) then
+                if Config.Framework == Framework.QBCore then
                     return player.Functions.RemoveMoney('cash', amount)
                 end
         
-                if isBridgeLoaded('Framework', Framework.ESX) then
+                if Config.Framework == Framework.ESX then
                     return player.removeMoney(amount)
                 end
             end
@@ -109,18 +109,18 @@ CreateThread(function()
             end
             
             local state, error_message = pcall(function()
-                return exports[Bridge.Inventory]:RemoveItem(client, item, amount)
+                return exports[Config.Inventories]:RemoveItem(client, item, amount)
             end)
     
             return state
         end
     
         Inventory.registerUsableItem = function(name, cb)
-            if isBridgeLoaded('Framework', Framework.ESX) then
+            if Config.Framework == Framework.ESX then
                 Framework.object.RegisterUsableItem(name, function(source)
                     cb(source, name)
                 end)
-            elseif isBridgeLoaded('Framework', Framework.QBCore) then
+            elseif Config.Framework == Framework.QBCore then
                 Framework.object.Functions.CreateUseableItem(name, function(source, item)
                     cb(source, item.name, item)
                 end)
@@ -138,13 +138,13 @@ CreateThread(function()
                 return {}
             end
 
-            return exports[Bridge.Inventory]:GetInventory(identifier, source)
+            return exports[Config.Inventories]:GetInventory(identifier, source)
         end
     
     
         Inventory.clearInventory = function(playerId)
             local state, error_message = pcall(function()
-                return exports[Bridge.Inventory]:ClearInventory(playerId)
+                return exports[Config.Inventories]:ClearInventory(playerId)
             end)
     
             return state

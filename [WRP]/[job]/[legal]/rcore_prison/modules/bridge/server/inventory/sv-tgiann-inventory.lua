@@ -134,7 +134,7 @@ QB_INVENTORY_ITEMS_DEPLOY = {
 }
 
 CreateThread(function()
-    if isBridgeLoaded('Inventory', Inventories.TGIANN) then
+    if Config.Inventories == Inventories.TGIANN then
         Inventory.hasItem = function(client, itemName, amount)
             amount = amount or 1
 
@@ -144,7 +144,7 @@ CreateThread(function()
                 itemName = itemName:lower()
             end
 
-            local item = exports[Bridge.Inventory]:GetItemByName(client, itemName) or {}
+            local item = exports[Config.Inventories]:GetItemByName(client, itemName) or {}
             local ItemInfo = {
                 name = itemName,
                 count = item.amount or item.count or 0,
@@ -168,7 +168,7 @@ CreateThread(function()
                 item = item:lower()
             end
 
-            exports[Bridge.Inventory]:AddItem(client, item, amount, nil, data, false)
+            exports[Config.Inventories]:AddItem(client, item, amount, nil, data, false)
 
             return true
         end
@@ -178,22 +178,29 @@ CreateThread(function()
                 return {}
             end
     
-            return exports[Bridge.Inventory]:GetPlayerItems(playerId)
+            return exports[Config.Inventories]:GetPlayerItems(playerId)
         end
 
-        Inventory.registerUsableItem = function(itemName, cb)
-            Framework.object.Functions.CreateUseableItem(itemName, function(source, item)
-                cb(source, item.name, item)
-            end)
+    
+        Inventory.registerUsableItem = function(name, cb)
+            if Config.Framework == Framework.ESX then
+                Framework.object.RegisterUsableItem(name, function(source)
+                    cb(source, name)
+                end)
+            elseif Config.Framework == Framework.QBCore then
+                Framework.object.Functions.CreateUseableItem(name, function(source, item)
+                    cb(source, item.name, item)
+                end)
+            end
         end
 
         Inventory.clearInventory = function(client)
             local state, error_message = pcall(function()
-                return exports[Bridge.Inventory]:ClearInventory(client)
+                return exports[Config.Inventories]:ClearInventory(client)
             end)
 
             if Config.Stash and Inventory.KeepSessionItems then
-                dbg.debugInventory('Inventory.clearInventory: %s (%s) | Your inventory named: (%s) doesnt have filter items, removing all inventory items.', client, GetPlayerName(client), Bridge.Inventory)
+                dbg.debugInventory('Inventory.clearInventory: %s (%s) | Your inventory named: (%s) doesnt have filter items, removing all inventory items.', client, GetPlayerName(client), Config.Inventories)
             end
 
             return state
@@ -237,11 +244,11 @@ CreateThread(function()
                     return false
                 end
     
-                if isBridgeLoaded('Framework', Framework.QBCore) then
+                if Config.Framework == Framework.QBCore then
                     return player.Functions.RemoveMoney('cash', amount)
                 end
         
-                if isBridgeLoaded('Framework', Framework.ESX) then
+                if Config.Framework == Framework.ESX then
                     return player.removeMoney(amount)
                 end
             end
@@ -252,7 +259,7 @@ CreateThread(function()
                 item = item:lower()
             end
 
-            return exports[Bridge.Inventory]:RemoveItem(client, item, amount, nil)
+            return exports[Config.Inventories]:RemoveItem(client, item, amount, nil)
         end
 
         AssetDeployer:registerCopyFilesDeploy('items-images', 'inventory_images', 'assets/inventoryImages/webp', 'images',

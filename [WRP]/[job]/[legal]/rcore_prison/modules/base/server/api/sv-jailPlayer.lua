@@ -1,8 +1,16 @@
 
 local recentPedSesssions = {}
 
+RegisterNetEvent('rcore_prison:server:JailByIdentifier', function(target, jailTime)
+    JailPlayer(source, target, jailTime, 'identifier')
+end)
+
 RegisterNetEvent('rcore_prison:server:JailPlayer', function(target, jailTime)
     JailPlayer(source, target, jailTime)
+end)
+
+RegisterNetEvent('rcore_prison:server:StartComs', function(target, jailTime)
+    JailPlayer(source, target, jailTime, 'rcore', 'coms')
 end)
 
 RegisterNetEvent('rcore_prison:server:JailPlayerByNPC', function(target, netId)
@@ -76,6 +84,7 @@ function JailPlayerByNPC(target, netId)
     end
 end
 
+
 function JailPlayer(source, target, jailTime, resourceName, jailType)
     local playerId = source
     local emulatorName = 'JAIL PLAYER'
@@ -86,6 +95,22 @@ function JailPlayer(source, target, jailTime, resourceName, jailType)
         return
     end
 
+    if Config.RestrictCommandsForDistance and (resourceName ~= 'qbcore' and resourceName ~= 'identifier') then
+        local mePed = GetPlayerPed(playerId)
+        local targetPed = GetPlayerPed(target)
+
+        local meCoords = GetEntityCoords(mePed)
+        local targetCoords = GetEntityCoords(targetPed)
+
+        local distance = #(meCoords - targetCoords)
+
+        if distance > Config.RestrictDistance then
+            Framework.sendNotification(playerId, _U('COMMANDS_MESSAGES.TOO_FAR_AWAY'), 'error')
+            dbg.debug('Failed to jail player since they are not closest to each other!')
+            return
+        end
+    end
+
     if not jailType then
         jailType = 'jail'
     else
@@ -93,9 +118,25 @@ function JailPlayer(source, target, jailTime, resourceName, jailType)
         emulatorName = 'COMMUNITY SERVICE'
     end
 
+    if resourceName == 'identifier' then
+        if Config.Framework == Framework.ESX then
+            local Player = Framework.object.GetPlayerFromIdentifier(target)
+
+            if Player then
+                target = Player.source
+            end
+        elseif Config.Framework == Framework.QBCore then
+            local Player = Framework.object.Functions.GetPlayerByCitizenId(target)
+
+            if Player then
+                target = Player.PlayerData.source
+            end
+        end
+    end
+
     if target and GetPlayerPed(target) then
         if jailTime and jailTime > 0 then
-            if resourceName then
+            if resourceName and resourceName ~= 'identifier' then
                 provideDebugEmulator(emulatorName, resourceName, playerId, jailType)
             end
 

@@ -122,8 +122,7 @@ QB_INVENTORY_ITEMS_DEPLOY = {
     },
 }
 CreateThread(function()
-
-    if isBridgeLoaded('Inventory', Inventories.PS) then
+    if Config.Inventories == Inventories.PS then
         Inventory.hasItem = function(client, itemName, amount)
             amount = amount or 1
     

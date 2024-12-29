@@ -3,9 +3,37 @@ Interact = {
 }
 
 local outfitTimeout = false
+local isMapLoaded = false
+
+AddEventHandler('rcore_prison:shared:internal:MapLoaded', function()
+    isMapLoaded = true
+end)
+
+
 
 CreateThread(function()
-    if Config.COMS.Enable then
+    local loadBreaker = 0
+
+    repeat
+        Wait(250)
+
+        loadBreaker = loadBreaker + 1
+
+        if loadBreaker >= 50 then
+            dbg.critical("Failed to load prison map in cl-interact.lua")
+            break
+        end
+    until isMapLoaded
+
+    if not SH.data then
+        return
+    end
+
+    if not SH.data.interaction then
+        return
+    end
+
+    if Config.COMS.Enable then        
         SH.data.interaction[#SH.data.interaction + 1] = Config.COMS.StartLocations
 
         local blip = Config.COMS.Blip
@@ -20,7 +48,7 @@ CreateThread(function()
         end
     end
 
-    if isBridgeLoaded('Target', Target.NONE) then
+    if Config.Interactions == Interactions.NONE then
         Interact.Type = 'ZONE'
         FrontendService.AwaitFrontend()
     else
@@ -36,7 +64,6 @@ CreateThread(function()
             local zoneCoords = place.coords
             local zoneType = place.type
 
-
             local zone = place.zone
             local zoneSize = zone and place.zone.size or vec3(1, 1, 1)
 
@@ -45,7 +72,7 @@ CreateThread(function()
                 return
             end
 
-            if place.booth and GetBridgeStateByType('Phone') then
+            if place.booth and Config.Phones == Phones.NONE then
                 dbg.debug('Since failed to find supported phone for booths, skipping %s', zoneType)
                 goto skip
             end
@@ -67,15 +94,6 @@ CreateThread(function()
             local zoneIcon = zone.icon
             local zoneAccessType = place.access or INTERACT_ACCESS_TYPES.PRISONER_ONLY
 
-            if place.prop then
-                local prop = place.prop
-
-                Entity.SpawnPropAtCoords({
-                    model = prop.model,
-                    coords = prop.coords,
-                    heading = prop.heading
-                })
-            end
 
             if place.npc then
                 Interact.LoadNPC(place, id)
@@ -116,7 +134,51 @@ CreateThread(function()
             :: skip ::
         end
     end
-end)
+end, "cl-interact code name: Phoenix")
+
+CreateThread(function()
+    repeat
+        Wait(250)
+    until isMapLoaded
+
+    if not SH.data then
+        return
+    end
+
+    if not SH.data.interaction then
+        return
+    end
+
+    while true do
+        Wait(1000)
+
+        local ped = PlayerPedId()
+        local pos = GetEntityCoords(ped)
+
+        for id, place in pairs(SH.data.interaction) do
+            local zoneCoords = place.coords
+            local prop = place.prop
+
+            local dist = #(pos - zoneCoords)
+            
+            if dist < 150 and prop then
+                if not place.entityProp then
+                    place.entityProp = Entity.SpawnPropAtCoords({
+                        model = prop.model,
+                        coords = prop.coords,
+                        heading = prop.heading
+                    })
+                end
+            else
+                if place.entityProp then
+                    DeleteEntity(place.entityProp)
+                    place.entityProp = nil
+                    dbg.debug('LOD - Despawning entity named %s', GetEntityArchetypeName(place.entityProp))
+                end
+            end
+        end
+    end
+end, "cl-interact code name: Beta")
 
 
 Interact.EnterZone = function(id, place)
@@ -170,14 +232,7 @@ Interact.HandleZone = function()
                 Interact.LeaveZone(id, place)
             end
 
-            if place.prop and not place.propLoaded then
-                place.propLoaded = true
-                Entity.SpawnPropAtCoords({
-                    model = place.prop.model,
-                    coords = place.prop.coords,
-                    heading = place.prop.heading,
-                })
-            end
+            local skipSpawnNPC = false
 
             if place.npc and not place.npcLoaded then
                 if zoneType == INTERACT_TYPES.QUEST then
@@ -189,14 +244,16 @@ Interact.HandleZone = function()
 
                             if quest.action == Actions.PRISON_BREAK and not Config.Escape.Enable then
                                 place.npcLoaded = true
-                                return
+                                skipSpawnNPC = true
                             end
                         end
                     end
                 end
 
-                place.npcLoaded = true
-                Interact.LoadNPC(place, id)
+                if not skipSpawnNPC then
+                    place.npcLoaded = true
+                    Interact.LoadNPC(place, id)
+                end
             end
         end
 
@@ -305,6 +362,10 @@ function HandleZoneInteract(zoneId)
         startExercise()
     elseif zone.type == INTERACT_TYPES.CANTEEN then
         Canteen.RequestOpen()
+    elseif zone.type == INTERACT_TYPES.TELEPORT then
+        if SH.preset == "alcatraz" then
+            MovePlayerToMap()
+        end
     else
         if zone.type == INTERACT_TYPES.PROP_ONLY then
             return
@@ -313,6 +374,46 @@ function HandleZoneInteract(zoneId)
         Framework.sendNotification('Zone interact is not defined for: ' .. zone.type, 'error', 5000)
         dbg.error('Zone interact is not defined for: %s', zone.type)
     end
+end
+
+local teleportBusy = false
+
+function MovePlayerToMap()
+    if teleportBusy then
+        return
+    end
+
+    if not Config.Alcatraz then
+        return
+    end
+
+    DoScreenFadeOut(0)
+
+    teleportBusy = true
+
+    local ped = PlayerPedId()
+    local time = GetGameTimer()
+
+    local pos = Config.Alcatraz.BackToLosSantosPos
+    local heading = Config.Alcatraz.BackToLosSantosPos.w
+
+    FreezeEntityPosition(ped, true)
+
+    while (not HasCollisionLoadedAroundEntity(ped) and (GetGameTimer() - time) < 5000) do
+        Wait(0)
+    end
+
+    SetEntityCoords(ped, pos.x, pos.y, pos.z, false, false, false, false)
+    SetEntityHeading(ped, heading or 0)
+
+    FreezeEntityPosition(ped, false)
+
+    SetTimeout(1000, function()
+        FreezeEntityPosition(ped, false)
+        DoScreenFadeIn(2000)
+        Framework.sendNotification(_U("ALCATRAZ_TELEPORT_TO_MAP", "success"))
+        teleportBusy = false
+    end)
 end
 
 function HasUserAccessToInteract(accessType)
@@ -336,7 +437,7 @@ AddEventHandler('rcore_prison:executeTask', function(task)
         end
 
         outfitTimeout = true
-        OutfitService.RestorePlayerOutfit()
+        RestoreCivilOutfit()
 
         SetTimeout(10 * 1000, function()
             if outfitTimeout then

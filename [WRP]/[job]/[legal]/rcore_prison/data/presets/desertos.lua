@@ -280,6 +280,19 @@ return {
     },
 
 
+    RestrictCommandZones = {
+        {
+            access = Config.RestrictZones.Access,
+            name = 'PRISON_RELEASE_PLAYER_POSITION',
+            vertices = {
+                vec3(1846.287, 2584.393, 45.672),
+                vec3(1846.357, 2588.045, 45.672),
+                vec3(1852.263, 2587.999, 45.672),
+                vec3(1851.759, 2583.736, 45.672),
+            }
+        }
+    },
+
     Chairs = {
         [`sanhje_prison_playground_table`] = {
             model = 'sanhje_prison_playground_table',

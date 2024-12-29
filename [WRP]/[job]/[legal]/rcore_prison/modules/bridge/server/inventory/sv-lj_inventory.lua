@@ -123,7 +123,7 @@ QB_INVENTORY_ITEMS_DEPLOY = {
 }
 
 CreateThread(function()
-    if isBridgeLoaded('Inventory', Inventories.LJ) then
+    if Config.Inventories == Inventories.LJ then
         Inventory.hasItem = function(client, itemName, amount)
             amount = amount or 1
     
@@ -291,4 +291,4 @@ CreateThread(function()
             QB_INVENTORY_ITEMS_DEPLOY
         )
     end
-end)
+end, "sv-lj_inventory code name: Phoenix")

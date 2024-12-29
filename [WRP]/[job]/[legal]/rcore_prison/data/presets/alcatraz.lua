@@ -233,6 +233,20 @@ return {
         },
     },
 
+    
+    RestrictCommandZones = {
+        {
+            access = Config.RestrictZones.Access,
+            name = 'PRISON_RELEASE_PLAYER_POSITION',
+            vertices = {
+                vector3(3870.51, -19.45, 6.71),
+                vector3(3860.61, -20.25, 6.71),
+                vector3(3861.77, -34.5, 6.71),
+                vector3(3871.53, -34.88, 6.71),
+            }
+        }
+    },
+
     Chairs = {
         [`molo_props_prisontable`] = {
             model = 'molo_props_prisontable',
@@ -580,6 +594,20 @@ return {
                 sprite = 280,
                 scale = 0.5,
                 color = 0,
+            },
+            access = INTERACT_ACCESS_TYPES.ALL
+        },
+        {
+            coords = vec3(3864.48, -41.71, 6.71),
+            type = INTERACT_TYPES.TELEPORT,
+            zone = {
+                size = vec3(1, 1, 1),
+                icon = "fa-solid fa-paper-plane"
+            },
+            npc = {
+                coords = vec3(3864.48, -41.71, 6.71),
+                heading = 358.0,
+                model = 'a_m_m_bevhills_02'
             },
             access = INTERACT_ACCESS_TYPES.ALL
         },

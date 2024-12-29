@@ -114,26 +114,26 @@ OX_INVENTORY_ITEMS_DEPLOY = {
 }
 
 CreateThread(function()
-    if isBridgeLoaded('Inventory', Inventories.OX) then
+    if Config.Inventories == Inventories.OX then
         Inventory.hasItem = function(client, item, amount)
             if amount == nil then
                 amount = 1
             end
 
-            local itemAmount = exports[Bridge.Inventory]:GetItemCount(client, item)
+            local itemAmount = exports[Config.Inventories]:GetItemCount(client, item)
 
             return itemAmount and itemAmount >= amount  or false
         end
 
         --- @return boolean success
         Inventory.addItem = function(client, item, amount, data)
-            if not exports[Bridge.Inventory]:CanCarryItem(client, item, amount) then
+            if not exports[Config.Inventories]:CanCarryItem(client, item, amount) then
                 Framework.sendNotification(client, _U('INVENTORY.FULL_INVENTORY_CAN_CARRY_ITEM'), 'error')
                 dbg.debugInventory('Player named %s (%s) cannot carry item named [%s]!', GetPlayerName(client), client, item)
                 return false
             end
 
-            return exports[Bridge.Inventory]:AddItem(client, item, amount, data)
+            return exports[Config.Inventories]:AddItem(client, item, amount, data)
         end
 
         Inventory.addMultipleItems = function(client, items)
@@ -167,10 +167,10 @@ CreateThread(function()
         end
 
         Inventory.removeItem = function(client, item, amount, data)
-            return exports[Bridge.Inventory]:RemoveItem(client, item, amount, data)
+            return exports[Config.Inventories]:RemoveItem(client, item, amount, data)
         end
 
-        local version = GetResourceMetadata(Bridge.Inventory, 'version', 0)
+        local version = GetResourceMetadata(Config.Inventories, 'version', 0)
         local needExport = false
 
         if version >= '2.40.1' then
@@ -194,8 +194,16 @@ CreateThread(function()
             end
         end
 
+        local function safeCall(func, ...)
+            local success, result = pcall(func, ...)
+            if not success then
+                -- print('Error:', result)
+            end
+            return success, result
+        end
+
         Inventory.getInventoryItems = function(playerId)
-            local inv = exports[Bridge.Inventory]:Inventory(playerId)
+            local inv = exports[Config.Inventories]:Inventory(playerId)
             local inventory, count = {}, 0
 
             for k, v in pairs(inv.items) do
@@ -216,16 +224,28 @@ CreateThread(function()
         Inventory.clearInventory = function(playerId)
             local state, error_message = pcall(function()
                 if Config.Stash.KeepItems and Inventory.KeepSessionItems and #Inventory.KeepSessionItems > 0 then
-                    return exports[Bridge.Inventory]:ClearInventory(playerId, Inventory.KeepSessionItems)
+                    local state = exports[Config.Inventories]:ClearInventory(playerId, Inventory.KeepSessionItems)
+
+                    if not Inventory.KeepSessionItems["money"] or not Inventory.KeepSessionItems["cash"] then
+                        if Config.Framework == Framework.ESX then
+                            local money = safeCall(Framework.getMoney, playerId)
+
+                            if money and money > 0 then
+                                Framework.removeMoney(playerId, money)
+                            end 
+                        end
+                    end
+                    
+                    return state 
                 else
-                    return exports[Bridge.Inventory]:ClearInventory(playerId, '')
+                    return exports[Config.Inventories]:ClearInventory(playerId, '')
                 end
             end)
 
             return state
         end
 
-        AssetDeployer:registerCopyFilesDeploy('items-images', Bridge.Inventory, 'assets/inventoryImages/png', 'web/images',
+        AssetDeployer:registerCopyFilesDeploy('items-images', Config.Inventories, 'assets/inventoryImages/png', 'web/images',
             function(data)
                 local files = {}
 
@@ -239,7 +259,7 @@ CreateThread(function()
                 'wire_cutter', 'cigarrete' }
         )
 
-        AssetDeployer:registerFileDeploy('items', Bridge.Inventory, 'data/items.lua', function(file, data)
+        AssetDeployer:registerFileDeploy('items', Config.Inventories, 'data/items.lua', function(file, data)
             file = file:strtrim():gsub('}$', '')
             file = append(file, ASSET_DEPLOYER_WATERMARK_PREFIX)
 

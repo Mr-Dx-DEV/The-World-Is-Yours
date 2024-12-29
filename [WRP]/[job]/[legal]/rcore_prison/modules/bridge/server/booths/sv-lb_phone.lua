@@ -1,10 +1,12 @@
 CreateThread(function()
-    if (isBridgeLoaded('Phone', Phones.LB_PHONE)) then
+    if Config.Phones == Phones.LB then
+
+        -- THIS EVENT IS NOT USED - MIGHT COME IN FUTURE
+
         RegisterNetEvent('phone:phone:call', function(data)
             if not data then
                 return
             end
-        
             local playerId = source
             local targetNumber = tonumber(data.number)
         
@@ -21,8 +23,8 @@ CreateThread(function()
             local state, statusCode, boothPlayerId = BoothService.CanCall(targetNumber)
         
             if state then
-                local number = exports[Phones.LB_PHONE]:GetEquippedPhoneNumber(playerId)
-                local callId = exports[Phones.LB_PHONE]:CreateCall({
+                local number = exports[Phones.LB]:GetEquippedPhoneNumber(playerId)
+                local callId = exports[Phones.LB]:CreateCall({
                     phoneNumber = tostring(targetNumber),
                     source = boothPlayerId
                 }, number, {
@@ -59,12 +61,14 @@ CreateThread(function()
             end 
         
             if action == 'BOOTH_LEAVE' then
-                local inCall = exports[Phones.LB_PHONE]:IsInCall(playerId)
+                local inCall = exports[Phones.LB]:IsInCall(playerId)
         
                 if inCall then
-                    exports[Phones.LB_PHONE]:EndCall(playerId)
+                    exports[Phones.LB]:EndCall(playerId)
                     dbg.debug('%s | %s: %s (%s) ended call with %s (%s)', 'rcore_prison:server:booth:HeartBeat', 'BOOTH_LEAVE', playerId, GetPlayerName(playerId), targetPlayerId, GetPlayerName(targetPlayerId))
                 end
+
+                StartClient(playerId, "EndCallAtBooth")
         
                 cb(true)
             elseif action == 'BOOTH_START_CALL' then
@@ -74,17 +78,23 @@ CreateThread(function()
                     return cb(false)
                 end
         
-                local targetPlayerId = exports[Phones.LB_PHONE]:GetSourceFromNumber(targetNumber)
-                local inCall = exports[Phones.LB_PHONE]:IsInCall(playerId)
+                local targetPlayerId = exports[Phones.LB]:GetSourceFromNumber(targetNumber)
+                local inCall = exports[Phones.LB]:IsInCall(playerId)
         
                 if inCall then
-                    exports[Phones.LB_PHONE]:EndCall(playerId)
+                    exports[Phones.LB]:EndCall(playerId)
                 end
         
                 Wait(0)
         
-                local number = exports[Phones.LB_PHONE]:GetEquippedPhoneNumber(targetPlayerId)
-                local callId = exports[Phones.LB_PHONE]:CreateCall({
+                local number = exports[Phones.LB]:GetEquippedPhoneNumber(targetPlayerId)
+                
+                if not number or not targetPlayerId then
+                    cb(false)
+                    return
+                end
+
+                local callId = exports[Phones.LB]:CreateCall({
                     phoneNumber = tostring(targetNumber),
                     source = playerId
                 }, number, {
@@ -107,4 +117,4 @@ CreateThread(function()
             end
         end)
     end
-end)
+end, "sv-lb_phone code name: Phoenix")
