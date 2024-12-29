@@ -156,7 +156,8 @@ Config.AuthorizedJobs = {
         ['sadoc'] = true,
         ['usms'] = true,
         ['dhs'] = true,
-        ['ss'] = true
+        ['ss'] = true,
+        ['salsa'] = true
     },
     
         Types = {['police'] = true, ['leo'] = true},

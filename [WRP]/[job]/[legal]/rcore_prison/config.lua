@@ -59,7 +59,7 @@ Config = {
 
     AllowAdminGroupsUseJailCommands = false, -- This is used for allowing admin groups to use prison commands which are restricted to police/sheriff jobs
 
-    RestrictCommandsForDistance = true, -- This is used for restricting commands for distance to inmates.
+    RestrictCommandsForDistance = false, -- This is used for restricting commands for distance to inmates.
     RestrictDistance = 10.0, -- This is the distance for restricting commands
 
     Prisoners = {
@@ -134,18 +134,18 @@ Config = {
         MarkerColor = { r = 255, g = 0, b = 0, a = 100 }, -- This is the color of the marker
         WallLodSyncDistance = 300, -- This is the distance for syncing walls
         AutoCatch = true, -- This is used for auto catching the prisone are escaping
-        SolitaryTime = 5, -- This is the time for solitary (default in min) - when prisoner is escaping and get caughh when AutoCatch enabled.
+        SolitaryTime = 20, -- This is the time for solitary (default in min) - when prisoner is escaping and get caughh when AutoCatch enabled.
         DisableBugEscape = true, -- This is used for disabling bug escape system || Player are only allowed to escape through included Prison break system!
         WhenEscapeRemoveInmateStash = false, -- This is used for removing inmates stash when they are escaping
         BugEscapeCycleTime = 1, -- This is the time for checking if prisoner is in area (default in minutes)
         ViewNPCDistance = 30, -- This is the distance for viewing NPC
-        RepairWallTime = 10, -- This is the time for repairing the wall (default in seconds)
+        RepairWallTime = 30, -- This is the time for repairing the wall (default in seconds)
         RepairWallKey = 'E',
         ResetTime = 30, -- This is the time for resetting the escape (default in min)
         EnableAutomaticReset = true, -- This is used for enabling automatic reset of the escape
         NeedItem = true, -- This is used for needing item to escape from the prison
         ItemName = 'wire_cutter', -- This is the item name for escaping from the prison
-        NotifyJobs = {'lspd', 'bcso', 'sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police', 'leo'},
+        NotifyJobs = {'lspd', 'bcso', 'sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police', 'leo', 'salsa'},
     },
 
     
