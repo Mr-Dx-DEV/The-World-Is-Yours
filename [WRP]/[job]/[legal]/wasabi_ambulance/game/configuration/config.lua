@@ -413,9 +413,9 @@ Config.StandaloneCheckIns = {
 
     Prison = {                                        -- Example, QB Prison check-in
         Ped = 's_m_m_scientist_01',                   -- Check in ped
-        Coords = vec3(1768.582, 2570.589, 45.73 - 0.9), -- Coords of ped
+        Coords = vec3(1759.512, 2573.596, 46.001, - 0.9), -- Coords of ped
         Distance = 4.85,                              -- Distance to show textUI (If target is not enabled below)
-        Heading = 181.42,                             -- Heading of ped
+        Heading = 265.556,                             -- Heading of ped
         Cost = 5,                                     -- Cost of using hospital check-in. Set to false for free
         Duration = 15 * seconds,                      -- Time it takes to spend in hospital bed
         PayAccount = 'bank',                          -- Account dead player pays from to check-in
@@ -433,10 +433,10 @@ Config.StandaloneCheckIns = {
             maxZ = 43.28 + 0.9
         },
         DisableHospitalBeds = false,                                                          -- Disable hospital beds for check-in at this location?(Player will spend Duration checking in before respawning in RespawnNoBedLocation coords when set to true)
-        RespawnNoBedLocation = { coords = vec3(1729.03, 2563.33, 45.56), heading = 339.02 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds full
+        RespawnNoBedLocation = { coords = vec3(1757.18, 2585.448, 47.001), heading = 270.0 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds full
         HospitalBeds = {
             --              { coords = vec3(332.62, -587.17, 42.84+0.3), heading = 160.0 },
-            { coords = vec3(1762.108, 2594.49, 46.659), heading = 8.633 },
+            { coords = vec3(1757.18, 2585.448, 47.004), heading = 270.0 },
         }
     },
 
