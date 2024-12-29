@@ -123,6 +123,7 @@ Config = {
 		['lspd'] = { Commission = 0.25 },
 		['bcso'] = { Commission = 0.25 },
 		['sahp'] = { Commission = 0.25 },
+		['salsa'] = { Commission = 0.25 },
 		['lsso'] = { Commission = 0.25 },
 		['safw'] = { Commission = 0.25 },
 		['sadoc'] = { Commission = 0.25 },

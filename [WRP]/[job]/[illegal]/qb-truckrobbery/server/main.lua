@@ -21,6 +21,7 @@ RegisterServerEvent('AttackTransport:akceptujto', function()
 						bcso = true,
 						sahp = true,
 						lsso = true,
+						salsa = true,
 						safw = true,
 						sadoc = true,
 						usms = true,

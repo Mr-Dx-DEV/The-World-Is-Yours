@@ -172,6 +172,7 @@ Config.CCTVCameras = { -- CCTV Cameras
         lspd = 0,               -- Job 'lspd' with minimum rank 0
         bcso = 0,               -- Job 'bcso' with minimum rank 0
         sahp = 0,               -- Job 'sahp' with minimum rank 0
+        salsa = 0,
         lsso = 0,               -- Job 'lsso' with minimum rank 0
         safw = 0,               -- Job 'safw' with minimum rank 0
         sadoc = 0,              -- Job 'sadoc' with minimum rank 0

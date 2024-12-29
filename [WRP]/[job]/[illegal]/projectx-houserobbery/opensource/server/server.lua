@@ -166,6 +166,7 @@ elseif Config.Framework == "esx" then
                 bcso = true,
                 sahp = true,
                 lsso = true,
+                salsa = true,
                 safw = true,
                 sadoc = true,
                 usms = true,

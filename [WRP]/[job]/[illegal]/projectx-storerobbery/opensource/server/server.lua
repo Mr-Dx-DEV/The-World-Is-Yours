@@ -61,6 +61,7 @@ if Config.Framework == "qb-core" or Config.Framework == "qbox" then
             "sahp",
             "lsso",
             "safw",
+            "salsa",
             "sadoc",
             "usms",
             "dhs",

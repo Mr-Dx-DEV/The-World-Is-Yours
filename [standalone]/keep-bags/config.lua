@@ -29,6 +29,7 @@ Config.lockpick_whitelist = {
          'lspd',
          'bcso',
          'sahp',
+         'salsa',
          'lsso',
          'safw',
          'sadoc',

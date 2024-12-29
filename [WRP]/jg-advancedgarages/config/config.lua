@@ -56,7 +56,7 @@ Config.SpawnVehiclesWithServerSetter = false
 Config.GarageVehicleTransferCost = 2500 -- Cost to transfer between garages
 Config.TransferHidePlayerNames = false
 Config.EnableTransfers = {
-  betweenGarages = false,
+  betweenGarages = true,
   betweenPlayers = false
 }
 Config.DisableTransfersToUnregisteredGarages = false -- Potential hacking protection for vigilant servers - unregistered garages are ones created via events in third-party script integrations, such as housing scripts, and therefore could be prone to script kiddie attacks.
@@ -287,11 +287,12 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
 
 
 
+
 ["p1"] = {
   coords = vector3(591.719, -10.54, 70.628),
   spawn = vector4(591.719, -10.54, 70.628, 355.639),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -307,7 +308,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(859.267, -1357.928, 26.096),
   spawn = vector4(859.267, -1357.928, 26.096, 96.814),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -323,7 +324,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(2435.839, -370.81, 92.993),
   spawn = vector4(2435.839, -370.81, 92.993, 276.11),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -339,7 +340,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(1543.77, 793.604, 77.201),
   spawn = vector4(1543.77, 793.604, 77.201, 60.48),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -355,7 +356,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(-3053.099, 603.076, 7.29),
   spawn = vector4(-3053.099, 603.076, 7.29, 297.715),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -371,7 +372,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(1857.428, 3705.183, 33.572),
   spawn = vector4(1857.428, 3705.183, 33.572, 34.108),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -387,7 +388,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(-479.017, 6027.607, 31.341),
   spawn = vector4(-479.017, 6027.607, 31.341, 217.764),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -403,7 +404,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(357.482, -1585.74, 29.292),
   spawn = vector4(357.482, -1585.74, 29.292, 218.665),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -419,7 +420,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(-811.026, -754.223, 22.6),
   spawn = vector4(-811.026, -754.223, 22.6, 103.89),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -436,7 +437,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(1869.489, 2594.321, 45.673),
   spawn = vector4(1869.489, 2594.321, 45.673, 89.264),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -453,7 +454,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(451.843, -1016.756, 28.482),
   spawn = vector4(451.843, -1016.756, 28.482, 92.384),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -469,7 +470,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(-1216.621, -2802.307, 13.951),
   spawn = vector4(-1216.621, -2802.307, 13.951, 156.882),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -485,7 +486,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(-825.49, 5407.471, 34.437),
   spawn = vector4(-825.49, 5407.471, 34.437, 12.269),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -501,7 +502,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   coords = vector3(1639.962, 4816.872, 42.038),
   spawn = vector4(1639.962, 4816.872, 42.038, 38.086),
   distance = 15,
-  job = {"lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
   hideBlip = true,
   blip = {
@@ -513,6 +514,184 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
+
+
+
+
+
+["h1"] = {
+  coords = vector3(579.303, 13.79, 103.233),
+  spawn = vector4(579.303, 13.79, 103.233, 3.65),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "air", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+["h2"] = {
+  coords = vector3(2511.493, -341.9, 118.185),
+  spawn = vector4(2511.493, -341.9, 118.185, 221.97),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "air", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+["h3"] = {
+  coords = vector3(1823.597, 3686.819, 42.979),
+  spawn = vector4(1823.597, 3686.819, 42.979, 29.174),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "air", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+["h4"] = {
+  coords = vector3(-475.396, 5989.432, 31.337),
+  spawn = vector4(-475.396, 5989.432, 31.337, 311.727),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "air", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+["h5"] = {
+  coords = vector3(387.04, -1620.849, 38.026),
+  spawn = vector4(387.04, -1620.849, 38.026, 233.505),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "air", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+["h6"] = {
+  coords = vector3(-817.687, -766.055, 21.499),
+  spawn = vector4(-817.687, -766.055, 21.499, 2.222),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "air", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+["h7"] = {
+  coords = vector3(1864.439, 2620.74, 45.673),
+  spawn = vector4(1864.439, 2620.74, 45.673, 172.74),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "air", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+["h8"] = {
+  coords = vector3(447.99, -981.969, 43.692),
+  spawn = vector4(447.99, -981.969, 43.692, 95.795),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "air", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+["h9"] = {
+  coords = vector3(-846.155, 5408.647, 34.609),
+  spawn = vector4(-846.155, 5408.647, 34.609, 10.145),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "air", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+["h10"] = {
+  coords = vector3(1656.749, 4803.312, 42.129),
+  spawn = vector4(1656.749, 4803.312, 42.129, 278.777),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "air", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+
+
+
+
 
 
 
@@ -537,7 +716,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
     coords = vector3(434.48, -1016.97, 28.83),
     spawn = vector4(434.55, -1014.54, 28.49, 91.56),
     distance = 15,
-    job = {"police", "lspd", "bsco", "lsso", "sahp", "safw", "usms", "sadoc", "fbi", "dhs", "ss"},
+    job = {"police", "lspd", "bsco", "lsso", "sahp", "salsa", "safw", "usms", "sadoc", "fbi", "dhs", "ss"},
     type = "car",
     hideBlip = false,
     blip = {
@@ -600,7 +779,7 @@ Config.GangGarageLocations = { -- IMPORTANT - Every garage name must be unique
 
 -- Impound
 Config.ImpoundCommand = "iv"
-Config.ImpoundFeesSocietyFund = { 'lspd', 'bcso', 'sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police' } -- Job name of society fund to pay impound fees into (optional)
+Config.ImpoundFeesSocietyFund = { 'lspd', 'bcso', 'sahp', 'salsa', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police' } -- Job name of society fund to pay impound fees into (optional)
 Config.ImpoundShowBlips = true
 Config.ImpoundUniqueBlips = false
 Config.ImpoundTimeOptions = {0, 1, 4, 12, 24, 72, 168} -- in hours
@@ -610,7 +789,7 @@ Config.ImpoundLocations = { -- IMPORTANT - Every impound name must be unique
     spawn = vector4(408.44, -1630.88, 29.29, 136.88),
     distance = 15,
     type = "car",
-    job = {"police","lspd", "bcso", "lsso", "safw", "sahp", "sadoc", "dhs", "usms", "fbi", "ss"},
+    job = {"police","lspd", "bcso", "lsso", "safw", "sahp", "salsa", "sadoc", "dhs", "usms", "fbi", "ss"},
     hideBlip = false,
     blip = {
       id = 68,
@@ -625,7 +804,7 @@ Config.ImpoundLocations = { -- IMPORTANT - Every impound name must be unique
     spawn = vector4(-1666.75, -3148.88, 13.99, 348.51),
     distance = 15,
     type = "air",
-    job = { 'lspd', 'bcso', 'sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police', 'ambulance' },
+    job = { 'lspd', 'bcso', 'sahp', 'salsa', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'police', 'ambulance' },
     hideBlip = false,
     blip = {
       id = 359,
@@ -640,7 +819,7 @@ Config.ImpoundLocations = { -- IMPORTANT - Every impound name must be unique
     spawn = vector4(1643.66, 3798.36, 34.49, 216.16),
     distance = 15,
     type = "car",
-    job = {"police","lspd", "bcso", "lsso", "safw", "sahp", "sadoc", "dhs", "usms", "fbi", "ss"},
+    job = {"police","lspd", "bcso", "lsso", "safw", "sahp", "salsa", "sadoc", "dhs", "usms", "fbi", "ss"},
     hideBlip = false,
     blip = {
       id = 68,

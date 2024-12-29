@@ -39,6 +39,7 @@ Config.Police = {
         "lspd",
         "bcso",
         "sahp",
+        "salsa",
         "lsso",
         "safw",
         "sadoc",

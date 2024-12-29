@@ -94,6 +94,7 @@ Config.policeCanTreat = {
     'lspd',
     'bcso',
     'sahp',
+    'salsa',
     'lsso',
     'safw',
     'sadoc',

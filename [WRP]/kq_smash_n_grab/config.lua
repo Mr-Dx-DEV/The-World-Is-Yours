@@ -32,6 +32,7 @@ Config.policeJobs = {
     'bcso',
     'lsso',
     'sahp',
+    'salsa',
     'usms',
     'sadoc',
     'fbi',

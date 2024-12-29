@@ -55,6 +55,7 @@ function robNpc(targetPed)
                 "lspd",
                 "bcso",
                 "sahp",
+                "salsa",
                 "lsso",
                 "safw",
                 "sadoc",

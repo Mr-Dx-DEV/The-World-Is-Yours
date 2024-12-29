@@ -240,6 +240,7 @@ local function copsOnDuty()
         lspd = true,
         bcso = true,
         sahp = true,
+        salsa = true,
         lsso = true,
         safw = true,
         sadoc = true,

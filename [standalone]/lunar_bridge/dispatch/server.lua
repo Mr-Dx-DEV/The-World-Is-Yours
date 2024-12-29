@@ -60,6 +60,7 @@ function Dispatch.call(coords, data)
                 'lspd',
                 'bcso',
                 'sahp',
+                'salsa',
                 'lsso',
                 'safw',
                 'sadoc',

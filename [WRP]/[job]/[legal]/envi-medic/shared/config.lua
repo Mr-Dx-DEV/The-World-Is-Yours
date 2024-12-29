@@ -125,6 +125,7 @@ Config.JobLocked = false -- Set to true if you want to lock the command to only 
                         ['lspd'] = 0,
                         ['bcso'] = 0,
                         ['sahp'] = 0,
+                        ['salsa'] = 0,
                         ['lsso'] = 0,
                         ['safw'] = 0,
                         ['sadoc'] = 0,

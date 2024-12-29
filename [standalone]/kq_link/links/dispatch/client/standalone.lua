@@ -10,6 +10,7 @@ function SendDispatchMessage(data)
             'sheriff',
             'fbi',
             'sahp',
+            'salsa',
             'lsso',
             'safw',
             'sadoc',

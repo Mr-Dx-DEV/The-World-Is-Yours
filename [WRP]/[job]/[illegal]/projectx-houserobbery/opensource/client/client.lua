@@ -286,6 +286,7 @@ function Dispatch()
                 "bcso",
                 "sahp",
                 "lsso",
+                "salsa",
                 "safw",
                 "sadoc",
                 "usms",
