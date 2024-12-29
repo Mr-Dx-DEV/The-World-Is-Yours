@@ -3,7 +3,7 @@ endpoint_add_tcp "0.0.0.0:30120"
 endpoint_add_udp "0.0.0.0:30120"
 
 set steam_webApiKey "598BC69C0F36C236B7042EB9FC643B79"
-sets tags "default, deployer, qbcore, qb-core, The World Is Yours, thwworldisyour, worldisyour, The World, World Is Yours"
+sets tags "default, deployer, qbcore, qb-core, The World Is Yours, theworldisyour, worldisyour, The World, World Is Yours"
 
 ## You MAY edit the following:
 sv_licenseKey "cfxk_lhatWQ9tXEFPMQWjyOTP_gzVQX"
@@ -90,7 +90,7 @@ setr illenium-appearance:locale "en"
 # Ox Inventory
 setr inventory:framework "qb"
 setr inventory:target true
-setr inventory:police ["lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"]
+setr inventory:police ["lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police", "salsa"]
 setr inventory:imagepath "nui://ox_inventory/web/images/"
 setr inventory:autoreload false
 setr inventory:keys ["TAB", "F2", "Z"]
@@ -145,6 +145,7 @@ ensure wasabi_bridge
 ensure interact
 ensure PolyZone
 ensure pma-voice
+ensure [MEV]
 ensure [ox]
 ensure [standalone]
 ensure [voice]
@@ -153,7 +154,7 @@ ensure [job]
 
 
 
-ensure [MEV]
+
 
 
 
