@@ -112,6 +112,8 @@ Config.Stores = {
     [28] = {price = 1500, shopType = 'tattoo', coords = vector4(-295.52, 6200.63, 30.49, 244.46), radius = 6.0, hideBlip = false },
     [29] = {price = 100, shopType = 'clothing', coords = vector4(-438.147, -307.561, 34.911, 193.523), radius = 1.0, hideBlip = true },
     [30] = {price = 100, shopType = 'clothing', coords = vector4(463.997, -997.784, 29.8, 95.806), radius = 0.1, hideBlip = true },
+
+    [31] = {price = 200, shopType = 'clothing', coords = vector4(1781.334, 3634.444, 34.888, 107.923), radius = 6.0, hideBlip = false },
     
 }
 Config.OutfitChangers = {
@@ -130,7 +132,9 @@ Config.OutfitChangers = {
     [13] = {shopType = 'outfit', coords = vector3(-1108.95, 2709.37, 18.11)},
     [14] = {shopType = 'outfit', coords = vector3(-1203.79, -1454.53, 3.38)},
     [15] = {shopType = 'outfit', coords = vector3(120.44, -227.38, 53.56)},
-    [16] = {shopType = 'outfit', coords = vector3(459.992, -999.278, 30.69)}
+    [16] = {shopType = 'outfit', coords = vector3(459.992, -999.278, 30.69)},
+
+    [17] = {shopType = 'outfit', coords = vector3(1783.115, 3644.886, 34.897)}
 }
 
 -- set isGang to true if the requiredJob is a gang
