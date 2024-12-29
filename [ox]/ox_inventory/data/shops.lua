@@ -210,23 +210,10 @@ return {
 			vector3(386.97, 799.72, 187.46), -- Game Warden
 			vector3(837.317, -1287.456, 28.245), -- Popular Secret Service
 
-			
-			vector3(153.08, -757.41, 45.75), -- FBI
-			vector3(-1070.35, -816.46, 15.64), -- Vesp
-			vector3(-822.11, -717.56, 22.96), -- US Marshalls
-			vector3(438.22, -1116.37, 30.06), -- Training Center
-			vector3(-1238.59, -2813.7, 14.3), -- DHS Airport
-			vector3(1696.53, 4876.39, 42.3), -- Game Warden Grapeseed
-			vector3(479.25, -996.3, 30.69), -- MRPD DHS
-			vector3(365.58, -1609.6, 29.29), -- Davis Street
-			vector3(-1301.321, -556.592, 30.567), -- Secret Service Gov Office
-			vector3(-1306.128, -565.326, 41.188), -- Gov Safe Room
-			vector3(1841.63, 2573.82, 46.01), -- Prison
-
-
-			vector3(1551.286, 841.462, 77.656),   --- sasp
-			vector3(-3053.903, 625.871, 7.493),    ---sahp
+			vector3(-1306.128, -565.326, 41.188),
 			vector3(2523.732, -340.859, 101.893),
+			---vector3(1551.286, 841.462, 77.656),
+			vector3(-3053.903, 625.871, 7.493),
 			vector3(1820.796, 3666.704, 30.315),
 			vector3(-448.473, 6004.804, 32.096),
 			vector3(382.288, -1601.327, 25.362),
@@ -236,12 +223,130 @@ return {
 			vector3(-1238.325, -2813.628, 14.3),
 			vector3(-819.997, 5399.011, 35.865),
 			vector3(1640.877, 4852.339, 42.613),
+			vector3(1766.293, 2583.85, 46.001),
+			
+			-- vector3(153.08, -757.41, 45.75), -- FBI
+			-- vector3(-1070.35, -816.46, 15.64), -- Vesp
+			-- vector3(-822.11, -717.56, 22.96), -- US Marshalls
+			-- vector3(438.22, -1116.37, 30.06), -- Training Center
+			-- vector3(-1238.59, -2813.7, 14.3), -- DHS Airport
+			-- vector3(1696.53, 4876.39, 42.3), -- Game Warden Grapeseed
+			-- vector3(479.25, -996.3, 30.69), -- MRPD DHS
+			-- vector3(365.58, -1609.6, 29.29), -- Davis Street
+			
+			-- vector3(1841.63, 2573.82, 46.01), -- Prison
+			-- vector3(-3053.903, 625.871, 7.493),    ---sahp
+			
+			-- vector3(1820.796, 3666.704, 30.315),
+			-- vector3(-448.473, 6004.804, 32.096),
+			-- vector3(382.288, -1601.327, 25.362),
+			-- vector3(-822.11, -716.69, 22.96),
+			-- vector3(1843.0, 2574.532, 46.014),
+			-- vector3(454.15, -980.105, 30.689),
+			-- vector3(-1238.325, -2813.628, 14.3),
+			-- vector3(-819.997, 5399.011, 35.865),
+			-- vector3(1640.877, 4852.339, 42.613),
 
 
 
 			
 		},
 		targets = {
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(1640.877, 4852.339, 41.613),
+				heading = 340.617
+			},
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(-819.997, 5399.011, 34.865),
+				heading = 278.491
+			},
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(-1238.325, -2813.628, 13.3),
+				heading = 215.241
+			},
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(454.15, -980.105, 29.689),
+				heading = 85.069
+			},
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(1843.0, 2574.532, 45.014),
+				heading = 182.37
+			},
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(-822.11, -716.69, 21.96),
+				heading = 115.127
+			},
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(382.288, -1601.327, 26.362),
+				heading = 141.871
+			},
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(-448.473, 6004.804, 31.096),
+				heading = 48.073
+			},
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(1820.796, 3666.704, 29.315),
+				heading = 305.112
+			},
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(-3053.903, 625.871, 6.493),
+				heading = 31.639
+			},
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(1766.293, 2583.85, 46.001),
+				heading = 183.561
+			},
+
+
+
+
+
+
+
+
+			
+			--[[ { 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(1551.286, 841.462, 77.656),
+				heading = 342.952
+			}, ]]
+
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(-1306.128, -565.326, 41.188),
+				heading = 344.868
+			},
+			{ 
+				ped = `u_m_m_doa_01`,
+				scenario = 'WORLD_HUMAN_AA_COFFEE',
+				loc = vec3(2523.732, -340.859, 101.893),
+				heading = 150.549
+			},
+
 			{ 
 				loc = vec3(482.363, -995.165, 30.69 - 1), 
 				length = 0.5, 
