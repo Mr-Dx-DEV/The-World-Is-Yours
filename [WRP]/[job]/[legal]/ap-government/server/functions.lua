@@ -1,4 +1,4 @@
-GetAccountData = function(business)
+--[[ GetAccountData = function(business)
   return exports[Config.JobManagementScriptName]:GetAccount(business)
 end
 
@@ -15,5 +15,31 @@ BankingTransaction = function(identifier, amount, tax)
     TriggerEvent('okokBanking:AddNewTransaction', "Government", "", getName(identifier), identifier, amount, tax.." Tax")
   elseif Config.Banking.other then
     -- Add event/export here.
+  end
+end ]]
+
+GetAccountData = function(business)
+  return exports[Config.JobManagementScriptName]:GetAccount(business)
+end
+
+AddAccountMoney = function(business, amount)
+  return exports[Config.JobManagementScriptName]:AddMoney(business, amount)
+end
+
+RemoveAccountMoney = function(business, amount)
+  return exports[Config.JobManagementScriptName]:RemoveMoney(business, amount)
+end
+
+BankingTransaction = function(identifier, amount, tax)
+  if Config.Banking.okokbanking then
+    TriggerEvent('okokBanking:AddNewTransaction', "Government", "", getName(identifier), identifier, amount, tax.." Tax")
+  elseif Config.Banking.other then
+    -- Handle snipe-banking integration
+    TriggerEvent('snipe-banking:addTransaction', {
+      sender = "Government",
+      receiver = identifier,
+      amount = amount,
+      description = tax.." Tax"
+    })
   end
 end
