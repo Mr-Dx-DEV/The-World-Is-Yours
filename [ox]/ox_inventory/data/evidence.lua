@@ -178,5 +178,18 @@ return {
 			minZ = 41.613,
 			maxZ = 43.613
 		}
+	},
+	{
+		coords = vec3(-541.016, -125.369, 44.681),
+		target = {
+			name = 'target_zone_15',
+			loc = vec3(-541.016, -125.369, 44.681),
+			length = 1.4,
+			width = 3.2,
+			heading = 199.408,
+			minZ = 43.681,
+			maxZ = 45.681
+		}
 	}
+	
 }
