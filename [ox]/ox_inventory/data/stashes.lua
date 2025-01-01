@@ -32,7 +32,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(852.715, -1312.808, 28.368),
@@ -49,7 +50,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(-1305.177, -566.638, 41.188),
@@ -66,7 +68,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(2522.965, -329.814, 94.093),
@@ -83,7 +86,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(1539.34, 811.397, 77.656),
@@ -100,7 +104,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(-3057.677, 634.754, 7.493),
@@ -117,7 +122,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(1826.23, 3676.16, 34.71),
@@ -134,7 +140,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(-458.561, 6008.296, 32.097),
@@ -151,7 +158,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(380.381, -1612.143, 29.759),
@@ -168,7 +176,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	--[[ {
 		coords = vec3(-810.974, -754.226, 22.599),
@@ -185,7 +194,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	}, ]]
 	{
 		coords = vec3(1840.03, 2574.91, 45.89),
@@ -202,7 +212,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(452.66, -993.97, 30.69),
@@ -219,7 +230,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(-1230.211, -2793.029, 20.05),
@@ -236,7 +248,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(-828.684, 5388.623, 35.867),
@@ -253,7 +266,8 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
 	},
 	{
 		coords = vec3(1640.12, 4862.57, 42.613),
@@ -270,8 +284,28 @@ return {
 		label = 'Stash',
 		owner = true,
 		slots = 70,
-		weight = 70000
+		weight = 70000,
+		groups = shared.police
+	},
+	{
+		coords = vec3(-569.336, -108.031, 33.677),
+		target = {
+			loc = vec3(-569.336, -108.031, 33.677),
+			length = 1.2,
+			width = 2.2,
+			heading = 199.624,
+			minZ = 32.677,
+			maxZ = 34.677,
+			label = 'Open personal locker'
+		},
+		name = 'stash_16',
+		label = 'Stash',
+		owner = true,
+		slots = 70,
+		weight = 70000,
+		groups = shared.police
 	}
+	
 }
 
 
