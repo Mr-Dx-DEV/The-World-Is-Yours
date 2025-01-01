@@ -123,7 +123,7 @@ Config.Locations            = {
         ['showblip'] = true,
         ['blipname'] = 'Rent Vehicle',
         ['blipsprite'] = 38,
-        ['blipscale'] = 0.6,
+        ['blipscale'] = 0.5,
         ['blipcolor'] = 38
     },
     ['two'] = {
@@ -145,7 +145,27 @@ Config.Locations            = {
         ['showblip'] = true,
         ['blipname'] = 'Rent Vehicle',
         ['blipsprite'] = 38,
-        ['blipscale'] = 0.6,
+        ['blipscale'] = 0.5,
+        ['blipcolor'] = 38
+    },
+    ['three'] = {
+        ['vehicleLabel'] = 'Rent you',
+        ['testdrivecoords'] = vector4(1734.24, 3327.422, 41.305, 108.076),
+        ['coords'] = vector4(1734.24, 3327.422, 41.305, 108.076),
+        ['carspawn'] = {
+            vector4(1734.24, 3327.422, 41.305, 108.076),
+            
+        },
+        ['ped'] = 's_m_m_highsec_02',
+        ['scenario'] = 'WORLD_HUMAN_STAND_MOBILE',
+        ['radius'] = 1.5,
+        ['targetIcon'] = 'fas fa-shopping-basket',
+        ['targetLabel'] = 'Rent Vehicle',
+        ["vehicleCategory"] = Config.Cars.two,
+        ['showblip'] = true,
+        ['blipname'] = 'Rent Vehicle',
+        ['blipsprite'] = 38,
+        ['blipscale'] = 0.5,
         ['blipcolor'] = 38
     },
 }
