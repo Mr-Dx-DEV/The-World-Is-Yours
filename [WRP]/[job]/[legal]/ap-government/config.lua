@@ -45,12 +45,12 @@ Config.AddSharedJobs = {
             ['0'] = {
                 name = 'Government Staff',
 				isboss = false,
-                payment = 10
+                payment = 550
             },
 			['1'] = {
                 name = 'Mayor',
 				isboss = true,
-                payment = 100
+                payment = 4000
             },
 		},
     },
@@ -59,8 +59,8 @@ Config.AddSharedJobs = {
 Config.MayorOptions = {
 	funds = {
 		grants = {enable = true, min = 2000, max = 200000},
-		withdrawal = {enable = false, min = 100, max = 200000},
-		deposit = {enable = false, min = 1000, max = 100000}
+		withdrawal = {enable = true min = 100, max = 200000},
+		deposit = {enable = true, min = 1000, max = 100000}
 	}
 }
 
