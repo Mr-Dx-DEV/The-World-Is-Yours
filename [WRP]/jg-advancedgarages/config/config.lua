@@ -257,6 +257,20 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   },
+  ["Sandy Car Rental"] = {
+    coords = vector3(107.32, 6611.77, 31.98),
+    spawn = vector4(1722.234, 3307.751, 40.843, 108.624)  ,
+    distance = 15,
+    type = "car",
+    hideBlip = false,
+    blip = {
+      id = 357,
+      color = 0,
+      scale = 0.5
+    },
+    hideMarkers = true,
+    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  },
 
 
 
@@ -288,7 +302,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
 
 
 
-["p1"] = {
+["LSPD"] = {
   coords = vector3(591.719, -10.54, 70.628),
   spawn = vector4(591.719, -10.54, 70.628, 355.639),
   distance = 15,
@@ -304,7 +318,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["p2"] = {
+["SS"] = {
   coords = vector3(859.267, -1357.928, 26.096),
   spawn = vector4(859.267, -1357.928, 26.096, 96.814),
   distance = 15,
@@ -320,7 +334,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["p3"] = {
+["FBI"] = {
   coords = vector3(2435.839, -370.81, 92.993),
   spawn = vector4(2435.839, -370.81, 92.993, 276.11),
   distance = 15,
@@ -336,7 +350,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["p4"] = {
+["SAHP"] = {
   coords = vector3(1543.77, 793.604, 77.201),
   spawn = vector4(1543.77, 793.604, 77.201, 60.48),
   distance = 15,
@@ -352,7 +366,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["p5"] = {
+["SAHP2"] = {
   coords = vector3(-3053.099, 603.076, 7.29),
   spawn = vector4(-3053.099, 603.076, 7.29, 297.715),
   distance = 15,
@@ -368,7 +382,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["p6"] = {
+["BCSO"] = {
   coords = vector3(1857.428, 3705.183, 33.572),
   spawn = vector4(1857.428, 3705.183, 33.572, 34.108),
   distance = 15,
@@ -384,7 +398,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["p7"] = {
+["BCSO2"] = {
   coords = vector3(-479.017, 6027.607, 31.341),
   spawn = vector4(-479.017, 6027.607, 31.341, 217.764),
   distance = 15,
@@ -400,7 +414,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["p8"] = {
+["LSSO"] = {
   coords = vector3(357.482, -1585.74, 29.292),
   spawn = vector4(357.482, -1585.74, 29.292, 218.665),
   distance = 15,
@@ -416,7 +430,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["p9"] = {
+["USMS"] = {
   coords = vector3(-811.026, -754.223, 22.6),
   spawn = vector4(-811.026, -754.223, 22.6, 103.89),
   distance = 15,
@@ -433,7 +447,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["p10"] = {
+["SADOC"] = {
   coords = vector3(1869.489, 2594.321, 45.673),
   spawn = vector4(1869.489, 2594.321, 45.673, 89.264),
   distance = 15,
@@ -450,7 +464,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["p11"] = {
+["DHS"] = {
   coords = vector3(451.843, -1016.756, 28.482),
   spawn = vector4(451.843, -1016.756, 28.482, 92.384),
   distance = 15,
@@ -466,23 +480,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["p12"] = {
-  coords = vector3(-1216.621, -2802.307, 13.951),
-  spawn = vector4(-1216.621, -2802.307, 13.951, 156.882),
-  distance = 15,
-  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
-  type = "car",
-  hideBlip = true,
-  blip = {
-    id = 357,
-    color = 0,
-    scale = 0.5
-  },
-  hideMarkers = true,
-  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  vehiclesType = "owned",
-},
-["p13"] = {
+["SAFW"] = {
   coords = vector3(-825.49, 5407.471, 34.437),
   spawn = vector4(-825.49, 5407.471, 34.437, 12.269),
   distance = 15,
@@ -498,7 +496,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["p14"] = {
+["SALSA"] = {
   coords = vector3(1639.962, 4816.872, 42.038),
   spawn = vector4(1639.962, 4816.872, 42.038, 38.086),
   distance = 15,
@@ -514,7 +512,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["p15"] = {
+["LSPD2"] = {
   coords = vector3(-613.982, -120.685, 33.677),
   spawn = vector4(-613.982, -120.685, 33.677, 291.425),
   distance = 15,
@@ -534,7 +532,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
 
 
 
-["h1"] = {
+["LSPD Heli"] = {
   coords = vector3(579.303, 13.79, 103.233),
   spawn = vector4(579.303, 13.79, 103.233, 3.65),
   distance = 15,
@@ -551,7 +549,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["h2"] = {
+["FBI Heli"] = {
   coords = vector3(2511.493, -341.9, 118.185),
   spawn = vector4(2511.493, -341.9, 118.185, 221.97),
   distance = 15,
@@ -568,7 +566,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["h3"] = {
+["BCSO Heli"] = {
   coords = vector3(1823.597, 3686.819, 42.979),
   spawn = vector4(1823.597, 3686.819, 42.979, 29.174),
   distance = 15,
@@ -585,7 +583,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["h4"] = {
+["BCSO2 Heli"] = {
   coords = vector3(-475.396, 5989.432, 31.337),
   spawn = vector4(-475.396, 5989.432, 31.337, 311.727),
   distance = 15,
@@ -602,7 +600,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["h5"] = {
+["LSSO Heli"] = {
   coords = vector3(387.04, -1620.849, 38.026),
   spawn = vector4(387.04, -1620.849, 38.026, 233.505),
   distance = 15,
@@ -619,7 +617,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["h6"] = {
+["USMS Heli"] = {
   coords = vector3(-817.687, -766.055, 21.499),
   spawn = vector4(-817.687, -766.055, 21.499, 2.222),
   distance = 15,
@@ -636,7 +634,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["h7"] = {
+["SADOC Heli"] = {
   coords = vector3(1864.439, 2620.74, 45.673),
   spawn = vector4(1864.439, 2620.74, 45.673, 172.74),
   distance = 15,
@@ -653,7 +651,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["h8"] = {
+["DHS Heli"] = {
   coords = vector3(447.99, -981.969, 43.692),
   spawn = vector4(447.99, -981.969, 43.692, 95.795),
   distance = 15,
@@ -670,7 +668,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["h9"] = {
+["SAFW Heli"] = {
   coords = vector3(-846.155, 5408.647, 34.609),
   spawn = vector4(-846.155, 5408.647, 34.609, 10.145),
   distance = 15,
@@ -687,7 +685,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["h10"] = {
+["SALSA Heli"] = {
   coords = vector3(1656.749, 4803.312, 42.129),
   spawn = vector4(1656.749, 4803.312, 42.129, 278.777),
   distance = 15,
@@ -703,7 +701,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["h11"] = {
+["FBI2 Heli"] = {
   coords = vector3(2508.715, -426.83, 118.333),
   spawn = vector4(2508.715, -426.83, 118.333, 50.841),
   distance = 15,
@@ -719,7 +717,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["h12"] = {
+["SAHP Heli"] = {
   coords = vector3(1561.736, 844.153, 77.141),
   spawn = vector4(1561.736, 844.153, 77.141, 109.323),
   distance = 15,
@@ -735,7 +733,7 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["h13"] = {
+["LSPD2 Heli"] = {
   coords = vector3(-547.756, -120.949, 53.83),
   spawn = vector4(-547.756, -120.949, 53.83, 287.543),
   distance = 15,
@@ -752,24 +750,8 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 ---------  type = "sea",
-["b1"] = {
+["LS Dock"] = {
   coords = vector3(-802.453, -1494.512, 1.595),
-  spawn = vector4(-802.453, -1494.512, 1.595, 112.327),
-  distance = 15,
-  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
-  type = "sea", 
-  hideBlip = true,
-  blip = {
-    id = 357,
-    color = 0,
-    scale = 0.5
-  },
-  hideMarkers = true,
-  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  vehiclesType = "owned",
-},
-["b2"] = {
-  coords = vector3(-804.745, -1492.3, 0.542),
   spawn = vector4(-804.745, -1492.3, 0.542, 109.304),
   distance = 15,
   job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
@@ -784,9 +766,25 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   vehiclesType = "owned",
 },
-["b3"] = {
-  coords = vector3(-132.816, 6745.503, 0.465),
-  spawn = vector4(-132.816, 6745.503, 0.465, 59.398),
+["PD Paleto Dock"] = {
+  coords = vector3(1533.366, 6643.193, 1.67),
+  spawn = vector4(1527.507, 6653.357, 0.652, 44.642),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "sea", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["Sandy PD Dock"] = {
+  coords = vector3(1335.934, 4270.018, 31.503),
+  spawn = vector4(1337.465, 4264.826, 30.138, 262.409),
   distance = 15,
   job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "sea", 
@@ -801,57 +799,9 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 
-["b4"] = {
-  coords = vector3(1338.102, 4224.481, 33.916),
-  spawn = vector4(1338.102, 4224.481, 33.916, 271.3),
-  distance = 15,
-  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
-  type = "sea", 
-  hideBlip = true,
-  blip = {
-    id = 357,
-    color = 0,
-    scale = 0.5
-  },
-  hideMarkers = true,
-  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  vehiclesType = "owned",
-},
-["b5"] = {
-  coords = vector3(1332.854, 4220.531, 30.477),
-  spawn = vector4(1332.854, 4220.531, 30.477, 262.48),
-  distance = 15,
-  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
-  type = "sea", 
-  hideBlip = true,
-  blip = {
-    id = 357,
-    color = 0,
-    scale = 0.5
-  },
-  hideMarkers = true,
-  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  vehiclesType = "owned",
-},
-["b6"] = {
-  coords = vector3(-1605.926, 5259.528, 2.091),
-  spawn = vector4(-1605.926, 5259.528, 2.091, 27.93),
-  distance = 15,
-  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
-  type = "sea", 
-  hideBlip = true,
-  blip = {
-    id = 357,
-    color = 0,
-    scale = 0.5
-  },
-  hideMarkers = true,
-  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
-  vehiclesType = "owned",
-},
-["b7"] = {
-  coords = vector3(-1602.443, 5259.004, 0.542),
-  spawn = vector4(-1602.443, 5259.004, 0.542, 25.781),
+["Great Ocean PD Dock"] = {
+  coords = vector3(-1605.395, 5258.744, 2.086),
+  spawn = vector4(-1603.386, 5260.813, 0.172, 27.565),
   distance = 15,
   job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "sea", 
