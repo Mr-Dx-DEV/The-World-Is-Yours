@@ -116,7 +116,7 @@ Config.EvidenceFadeTime = {
     VehFingerprints = 15, -- time, in days, that vehicle fingerprints gets removed from vehicles without player intervention
     VehCasings = 14, -- time, in days, that vehicle casings get removed from vehicles without player intervention
     VehBlood = 21, -- time, in days, that vehicle blood get removed from vehicles without player intervention
-    WeaponPrints = 365, -- time, in days, that fingerprints stay on weapons without player intervention
+    WeaponPrints = 30, -- time, in days, that fingerprints stay on weapons without player intervention
     WeaponBlood = 14, -- time, in days, that blood stays on a weapon without player intervention
 }
 

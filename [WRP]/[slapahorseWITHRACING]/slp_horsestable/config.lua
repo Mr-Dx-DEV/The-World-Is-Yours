@@ -38,17 +38,18 @@ Config.stables = {
     {x = 1461.464, y = 1132.028, z = 114.326, h = 192.315},  -- Dutton Ranch  --add more
     {x = 2385.891, y = 5030.72, z = 45.996, h = 311.578},    -- Grapeseed
     {x = 430.444, y = 6463.42, z = 28.762, h = 318.483},    -- Paleato
+    {x = 1631.957, y = 4848.091, z = 41.907, h = 195.732},  -- SALSA station G.S.
 }
 
 Config.dealers = {
-    {x = 1089.52, y = 51.29, z = 80.89, h = 348.4782}, 
+    {x = 1089.52, y = 51.29, z = 80.89, h = 348.4782},     -- Track 
     {x = 1474.697, y = 1046.183, z = 114.334, h = 3.413}, -- Dutton Ranch add more
     {x = 2410.401, y = 5026.263, z = 46.184, h = 53.438},  --grapeseed
     {x = 419.086, y = 6470.431, z = 28.815, h = 232.828},  --Paleato 
 }
 
 Config.blips = {
-    {title="Horse Stable", colour=0, id=253, x = 1213.65, y = 333.76, z = 81.99},
+    {title="Horse Stable", colour=0, id=253, x = 1213.65, y = 333.76, z = 81.99}, --Track
     {title="Horse Dealer", colour=0, id=253, x = 1089.52, y = 51.29, z =  80.89},
     {title="Horse Stable", colour=0, id=253, x = 2385.891, y = 5030.72, z = 45.996},   --grapeseed
     {title="Horse Dealer", colour=0, id=253, x = 2410.401, y = 5026.263, z = 46.184},  -- grapeseed
