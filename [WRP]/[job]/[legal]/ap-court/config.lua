@@ -8,12 +8,12 @@ Config = {
 	JoinJuryPayment = 1000, -- Set this to the amount you would like to give when a player signs up to the jury.
 	JuryCasePayout = 500, -- Set this to the amount you would like to pay to a jury member for attending the court case.
 	NoShowPenaltyAmount = 3000, -- Set this too the max amount a judge can charge a player for not showing up at the court case.
-	MaxAddFee = 1000000, -- Set this too the max amount the judge can set the settlement fee too.
+	MaxAddFee = 10000000, -- Set this too the max amount the judge can set the settlement fee too.
 	Currency = '$', -- Set this to the currency your server uses.
 	CourtJob = 'judge', -- This is the default job that comes with QBCore, Change if needed.
 	lawyerID = 'lawyerpass', -- Set this to the item players need in order to show there ID Card.
-	Phone = {GKSPhone = false, QBPhone = true, QuasarPhone = false, QSPRO = false, HighPhone = false, RoadPhone = false, LBPhone = false, Custom = false}, -- Set to the phone you use to true, if you do not have one of these phones then set Custom to true and edit the function in webhooks.lua.
-	Interactions = {qbTarget = true, qTarget = false, ox_target = false, drawText = false},
+	Phone = {GKSPhone = false, QBPhone = false, QuasarPhone = false, QSPRO = false, HighPhone = false, RoadPhone = false, LBPhone = true, Custom = false}, -- Set to the phone you use to true, if you do not have one of these phones then set Custom to true and edit the function in webhooks.lua.
+	Interactions = {qbTarget = false, qTarget = false, ox_target = true, drawText = false},
 	Context = {QB = true, OX = false}, -- Set this to to "QB", More added soon.
 	Dialog = {QB = true, OX = false}, -- Set this to to "QB", More added soon.
 	useID_UI = true, -- Set to true if you want too use the UI Lawyer ID Card or false to use Advanced Notification.
