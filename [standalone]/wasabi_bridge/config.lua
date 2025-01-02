@@ -6,7 +6,7 @@ Config = {}
 -------------------------------------------------------
 -- Check for updates? (RECOMMENDED TO LEAVE AS true) --
 -------------------------------------------------------
-Config.CheckForUpdates = true
+Config.CheckForUpdates = false
 
 ----------------------------------------------------------
 --- UI Settings (Only works if using built-in systems) ---
