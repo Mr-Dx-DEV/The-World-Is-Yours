@@ -205,7 +205,93 @@ local function loadInventoryData(data, player)
 
 	return inventory or false
 end
+local function evok9getVehicleNetIdByPlate(plate)
+    local vehicles = GetAllVehicles()
+    for _, vehicle in ipairs(vehicles) do
+        local vehiclePlate = GetVehicleNumberPlateText(vehicle)
+        if vehiclePlate:find(plate) then
+            local netid = NetworkGetNetworkIdFromEntity(vehicle)
+            return netid
+        end
+    end
+    return nil
+end
 
+---@param data table -- The inventory data, including id, type, and entity information
+---@param player table -- The player data (optional)
+---@return table | nil -- Returns the list of items or nil if no items found
+local function evok9PrintAndReturnInventoryItems(data, player)
+    local inventory = setmetatable(Inventory, {
+        __call = function(self, inv, player)
+            if not inv then
+                return self
+            elseif type(inv) == 'table' then
+                if inv.__index then return inv end
+
+                return not inv.owner and Inventories[inv.id] or loadInventoryData(inv, player)
+            end
+
+            return Inventories[inv] or loadInventoryData({ id = inv }, player)
+        end
+    })(data, player)
+
+    if inventory.items then
+        local items = {}
+
+        for slot, item in pairs(inventory.items) do
+            table.insert(items, {name = item.name, count = item.count or 1})
+        end
+        return items
+    else
+        return nil
+    end
+end
+
+exports('evok9PrintAndReturnInventoryItems', evok9PrintAndReturnInventoryItems)
+
+
+---@param plate string -- The plate of the vehicle
+---@return table | nil -- Returns the list of items or nil if no items found
+local function evok9getVehicleTrunkItemsByPlate(plate)
+    local netid = evok9getVehicleNetIdByPlate(plate)
+    if netid then
+        local data = {
+            id = "trunk" .. plate,
+            type = "trunk",
+            netid = netid,
+        }
+        
+        local items = evok9PrintAndReturnInventoryItems(data)
+        if items then
+            for _, item in ipairs(items) do
+            end
+        end
+        return items
+    else
+        return nil
+    end
+end
+
+exports('evok9getVehicleTrunkItemsByPlate', evok9getVehicleTrunkItemsByPlate)
+
+
+---@param plate string -- The vehicle plate number
+---@return table -- Returns the list of items in the glovebox or nil if not found
+local function evok9getVehicleGloveboxItemsByPlate(plate)
+    local netid = evok9getVehicleNetIdByPlate(plate)
+    if netid then
+        local data = {
+            id = "glovebox" .. plate,
+            type = "glovebox",
+            netid = netid,
+        }
+        return evok9PrintAndReturnInventoryItems(data)
+    else
+        return nil
+    end
+end
+
+exports('evok9getVehicleGloveboxItemsByPlate', evok9getVehicleGloveboxItemsByPlate)
 setmetatable(Inventory, {
 	__call = function(self, inv, player)
 		if not inv then

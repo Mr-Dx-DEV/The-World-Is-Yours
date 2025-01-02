@@ -1,6 +1,81 @@
 return {
 
-
+	["k9glowstick"] = {
+		label = "Dog Glow Stick",
+		weight = 0,
+		stack = false,
+		close = true,
+		description = "A glow for your k9",
+		client = {
+			image = "k9glowstick.png",
+		}
+	},
+	
+	["k9weed"] = {
+		label = "K9 Weed",
+		weight = 0.5,
+		stack = false,
+		close = true,
+		description = "Plant weed to train your k9 smell power",
+		client = {
+			image = "k9weed.png",
+		}
+	},
+	
+	["k9revivekit"] = {
+		label = "Revivekit For K9",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Revivekit for your k9 dog",
+		client = {
+			image = "k9revivekit.png",
+		}
+	},
+	
+	["k9food"] = {
+		label = "K9 Food",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Food For Your K9 Dog",
+		client = {
+			image = "k9food.png",
+		}
+	},
+	
+	["k9drink"] = {
+		label = "K9 Drink",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Drink For Your K9 Dog",
+		client = {
+			image = "k9drink.png",
+		}
+	},
+	
+	["k9cage"] = {
+		label = "K9 Cage",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Cage For Your K9 Dog",
+		client = {
+			image = "k9cage.png",
+		}
+	},
+	
+	["k9cage2"] = {
+		label = "K9 Cage",
+		weight = 1,
+		stack = false,
+		close = true,
+		description = "Cage For Your K9 Dog",
+		client = {
+			image = "k9cage2.png",
+		}
+	},
 	--- av_boosting
 	
 ['dongle'] = {
