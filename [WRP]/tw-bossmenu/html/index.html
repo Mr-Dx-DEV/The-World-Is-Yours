@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/vue.global.js"></script>
+    <script src="./js/vuex.global.js"></script>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="notifyList" v-show="notifyShow">
+            <transition-group name="notifyBox">
+                <div class="notifyBox" v-for="(notification, index) in notifications" :key="index">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5625vw" height="1.5625vw" viewBox="0 0 30 30"
+                        fill="none">
+                        <path
+                            d="M13.75 21.25H16.25V13.75H13.75V21.25ZM15 11.25C15.3542 11.25 15.6513 11.13 15.8913 10.89C16.1313 10.65 16.2508 10.3533 16.25 10C16.2492 9.64667 16.1292 9.35 15.89 9.11C15.6508 8.87 15.3542 8.75 15 8.75C14.6458 8.75 14.3492 8.87 14.11 9.11C13.8708 9.35 13.7508 9.64667 13.75 10C13.7492 10.3533 13.8692 10.6504 14.11 10.8913C14.3508 11.1321 14.6475 11.2517 15 11.25ZM15 27.5C13.2708 27.5 11.6458 27.1717 10.125 26.515C8.60417 25.8583 7.28125 24.9679 6.15625 23.8438C5.03125 22.7196 4.14084 21.3967 3.485 19.875C2.82917 18.3533 2.50083 16.7283 2.5 15C2.49917 13.2717 2.8275 11.6467 3.485 10.125C4.1425 8.60333 5.03292 7.28042 6.15625 6.15625C7.27959 5.03208 8.6025 4.14167 10.125 3.485C11.6475 2.82833 13.2725 2.5 15 2.5C16.7275 2.5 18.3525 2.82833 19.875 3.485C21.3975 4.14167 22.7204 5.03208 23.8438 6.15625C24.9671 7.28042 25.8579 8.60333 26.5163 10.125C27.1746 11.6467 27.5025 13.2717 27.5 15C27.4975 16.7283 27.1692 18.3533 26.515 19.875C25.8608 21.3967 24.9704 22.7196 23.8438 23.8438C22.7171 24.9679 21.3942 25.8587 19.875 26.5162C18.3558 27.1737 16.7308 27.5017 15 27.5Z"
+                            fill="#B9CCFF" />
+                    </svg>
+                    <div class="notifyTextBox">
+                        <h2 class="notifyText">{{Locales['Notify']}}</h2>
+                        <p class="notifySubText" v-if="notification.text">{{notification.text}}</p>
+                    </div>
+                </div>
+            </transition-group>
+        </div>
+
+        <div class="popupBox modalSide" v-if="currentPopup === 'inviteEmployeePopup'">
+            <div class="modalTextBox">
+                <h2 class="modalText">{{Locales['InviteEmployee']}}</h2>
+                <p class="modalSubText">{{Locales['AreYouSureInviteEmployee']}}</p>
+            </div>
+            <div class="modalButtonList">
+                <div class="modalButton" @click="currentPopup = false">{{Locales['Decline']}}</div>
+                <div class="modalButton modalAcceptButton" @click="modalBtn">{{Locales['Accept']}}</div>
+            </div>
+        </div>
+        <transition-group name="generalBox">
+            <div class="General" v-if="mainShow">
+                <transition name="popup">
+                    <div class="popupSide" v-show="currentPopup">
+                        <transition-group name="popupBoxs">
+                            <div class="popupBox outfitEdit"
+                                v-if="selectedData.selectedOutfit && currentPopup === 'outfitEditPopup'">
+                                <div class="rankEditTopSide">
+                                    <div class="rankNameBox">
+                                        <div class="rankNameIcon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="18"
+                                                viewBox="0 0 21 18" fill="none">
+                                                <path
+                                                    d="M13.8187 0.777527C13.5835 1.35802 13.1805 1.85518 12.6612 2.20544C12.142 2.55569 11.53 2.74313 10.9037 2.74378C10.2774 2.74313 9.66544 2.55569 9.14618 2.20544C8.62692 1.85518 8.22392 1.35802 7.9887 0.777527L0.851074 3.80253L2.85857 8.53528L5.06545 7.60028V17.25H16.8203V7.63534L18.9468 8.53734L20.9543 3.80459L13.8187 0.777527Z"
+                                                    fill="white" fill-opacity="0.27" />
+                                            </svg>
+                                        </div>
+                                        <div class="rankNameTextBox">
+                                            <h2 class="rankNameText">{{ selectedData.selectedOutfit.name }}</h2>
+                                            <p class="rankNameSubText">{{ selectedData.selectedOutfit.gender }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="menuButton exitBox" @click="currentPopup = false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" fill="none">
+                                            <path
+                                                d="M6.31109 18.0061L4.99394 16.6889L10.2625 11.4203L4.99394 6.15174L6.31109 4.83459L11.5797 10.1032L16.8483 4.83459L18.1654 6.15174L12.8968 11.4203L18.1654 16.6889L16.8483 18.0061L11.5797 12.7375L6.31109 18.0061Z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="outfitListBox">
+                                    {{Locales['Outfit']}};
+                                    <div class="outfitList">
+                                        <div class="outfitInBox" v-for="item in outfitDefaultData" :key="item.name">
+                                            <h2 class="outfitInName">{{ item.name }}</h2>
+                                            <div class="outfitInputList">
+                                                <input type="text" class="outfitInput" v-model="item.value" />
+                                                :
+                                                <input type="text" class="outfitInput" v-model="item.texture" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="outfitGenderBox">
+                                    {{Locales['Gender']}};
+                                    <div class="genderButtonList">
+                                        <div class="genderButton" @click="selectedData.selectedOutfit.gender = 'male'">
+                                            {{Locales['Male']}}</div>
+                                        <div class="genderButton"
+                                            @click="selectedData.selectedOutfit.gender = 'female'">{{Locales['Female']}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="outfitPopupButtonList">
+                                    <div class="deleteButton" @click="deleteOutfit">{{Locales['Delete']}}</div>
+                                    <div class="popupSaveButton" @click="saveOutfit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                            <path
+                                                d="M17.5 5.83333V15.8333C17.5 16.2917 17.3369 16.6842 17.0108 17.0108C16.6847 17.3375 16.2922 17.5006 15.8333 17.5H4.16667C3.70833 17.5 3.31611 17.3369 2.99 17.0108C2.66389 16.6847 2.50056 16.2922 2.5 15.8333V4.16667C2.5 3.70833 2.66333 3.31611 2.99 2.99C3.31667 2.66389 3.70889 2.50056 4.16667 2.5H14.1667L17.5 5.83333ZM10 15C10.6944 15 11.2847 14.7569 11.7708 14.2708C12.2569 13.7847 12.5 13.1944 12.5 12.5C12.5 11.8056 12.2569 11.2153 11.7708 10.7292C11.2847 10.2431 10.6944 10 10 10C9.30556 10 8.71528 10.2431 8.22917 10.7292C7.74306 11.2153 7.5 11.8056 7.5 12.5C7.5 13.1944 7.74306 13.7847 8.22917 14.2708C8.71528 14.7569 9.30556 15 10 15ZM5 8.33333H12.5V5H5V8.33333Z" />
+                                        </svg>
+                                        {{Locales['Save']}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="popupBox modalSide" v-if="currentPopup === 'modalPopup'">
+                                <div class="modalTextBox">
+                                    <h2 class="modalText">{{ modalData.modalText }}</h2>
+                                    <p class="modalSubText">{{ modalData.modalSubText }}</p>
+                                </div>
+                                <div class="modalButtonList">
+                                    <div class="modalButton" @click="currentPopup = false">{{Locales['Cancel']}}</div>
+                                    <div class="modalButton modalDeleteButton" @click="modalBtn">{{
+                                        modalData.modalButtonText }}</div>
+                                </div>
+                            </div>
+                            <div class="popupBox playerEdit"
+                                v-if="selectedData.selectedEmployee && currentPopup === 'playerEditPopup'">
+                                <div class="menuButton exitBox" @click="currentPopup = false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" fill="none">
+                                        <path
+                                            d="M6.31109 18.0061L4.99394 16.6889L10.2625 11.4203L4.99394 6.15174L6.31109 4.83459L11.5797 10.1032L16.8483 4.83459L18.1654 6.15174L12.8968 11.4203L18.1654 16.6889L16.8483 18.0061L11.5797 12.7375L6.31109 18.0061Z" />
+                                    </svg>
+                                </div>
+                                <div class="PlayerProfileSide">
+                                    <img :src="selectedData.selectedEmployee.profilepicture" alt=""
+                                        class="profileImg popupProfileImg" />
+                                    <div class="profileTextBox">
+                                        <h2 class="profileText popupProfileText">{{
+                                            selectedData.selectedEmployee.playerName }}</h2>
+                                        <p class="profileSubText popupProfileSubText">
+                                            {{selectedData.selectedEmployee.boss ? Locales['Boss'] : Locales['Member']}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="playerRankEditListBox">
+                                    <h2 class="menusubtitle">{{Locales['RankEdit']}};</h2>
+                                    <div class="custom-select">
+                                        <div class="select-box" @click="toggleDropdown">{{ selectedData.selectedJobName
+                                            || Locales['SelectOption'] }}</div>
+                                        <div v-if="isOpen" class="options">
+                                            <div v-for="option in bossMenuData.jobRankList" :key="option.name"
+                                                class="option"
+                                                :class="{ selected: selectedData.selectedEmployee.jobGradeName === option.name }"
+                                                @click="selectOption(option)">{{ option.name }}</div>
+                                        </div>
+                                    </div>
+                                    <h2 class="menusubtitle">{{Locales['RankPermissions']}};</h2>
+                                    <div class="playerRankEditList">
+                                        <div class="playerRankItem" v-if="selectedData.selectedEmployee"
+                                            v-for="(permission, key) in selectedData.selectedEmployee.playerPermission"
+                                            :key="permission.id">
+                                            <div class="checkbox-wrapper-13">
+                                                <label :for="'cb-' + key">{{ permission.label }}</label>
+                                                <input :id="'cb-' + key" type="checkbox" v-model="permission.value" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popupSaveButton" @click="savePlayerEdit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M17.5 5.83333V15.8333C17.5 16.2917 17.3369 16.6842 17.0108 17.0108C16.6847 17.3375 16.2922 17.5006 15.8333 17.5H4.16667C3.70833 17.5 3.31611 17.3369 2.99 17.0108C2.66389 16.6847 2.50056 16.2922 2.5 15.8333V4.16667C2.5 3.70833 2.66333 3.31611 2.99 2.99C3.31667 2.66389 3.70889 2.50056 4.16667 2.5H14.1667L17.5 5.83333ZM10 15C10.6944 15 11.2847 14.7569 11.7708 14.2708C12.2569 13.7847 12.5 13.1944 12.5 12.5C12.5 11.8056 12.2569 11.2153 11.7708 10.7292C11.2847 10.2431 10.6944 10 10 10C9.30556 10 8.71528 10.2431 8.22917 10.7292C7.74306 11.2153 7.5 11.8056 7.5 12.5C7.5 13.1944 7.74306 13.7847 8.22917 14.2708C8.71528 14.7569 9.30556 15 10 15ZM5 8.33333H12.5V5H5V8.33333Z" />
+                                    </svg>
+                                    {{Locales['Save']}}
+                                </div>
+                            </div>
+                            <div class="popupBox rankEdit"
+                                v-if="selectedData.selectedRank !== null && currentPopup === 'rankEditPopup'">
+                                <div class="rankEditTopSide">
+                                    <div class="rankNameBox">
+                                        <div class="rankNameIcon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1.1979vw" height="1.1979vw"
+                                                viewBox="0 0 23 23" fill="none">
+                                                <path
+                                                    d="M12.032 2.07777L17.782 5.9111C17.9132 5.99865 18.0207 6.11722 18.0951 6.25631C18.1695 6.3954 18.2084 6.5507 18.2084 6.70844V18.2084C18.2084 18.9709 17.9055 19.7022 17.3663 20.2414C16.8272 20.7805 16.0959 21.0834 15.3334 21.0834H7.66675C6.90425 21.0834 6.17298 20.7805 5.63382 20.2414C5.09465 19.7022 4.79175 18.9709 4.79175 18.2084V6.70844C4.79172 6.5507 4.83064 6.3954 4.90503 6.25631C4.97942 6.11722 5.087 5.99865 5.21821 5.9111L10.9682 2.07777C11.1257 1.9727 11.3108 1.91663 11.5001 1.91663C11.6894 1.91663 11.8745 1.9727 12.032 2.07777ZM11.9285 14.4767C11.7954 14.4102 11.6488 14.3756 11.5001 14.3756C11.3514 14.3756 11.2047 14.4102 11.0717 14.4767L9.15504 15.435C8.9279 15.5487 8.7552 15.748 8.67487 15.9889C8.59455 16.2299 8.61318 16.4929 8.72666 16.7201L8.78225 16.8179C8.91116 17.014 9.10755 17.156 9.33418 17.2169C9.5608 17.2778 9.80191 17.2535 10.0118 17.1485L11.5001 16.4049L12.9884 17.1485C13.2145 17.253 13.4723 17.2653 13.7073 17.1829C13.9423 17.1005 14.136 16.9299 14.2474 16.7071C14.3588 16.4844 14.3791 16.227 14.304 15.9896C14.2289 15.7521 14.0643 15.5532 13.8451 15.435L11.9285 14.4767ZM11.9285 10.6434C11.7954 10.5769 11.6488 10.5423 11.5001 10.5423C11.3514 10.5423 11.2047 10.5769 11.0717 10.6434L9.15504 11.6017C8.9279 11.7154 8.7552 11.9146 8.67487 12.1556C8.59455 12.3966 8.61318 12.6596 8.72666 12.8868L8.78225 12.9846C8.91116 13.1807 9.10755 13.3226 9.33418 13.3836C9.5608 13.4445 9.80191 13.4202 10.0118 13.3152L11.5001 12.5715L12.9884 13.3152C13.2145 13.4196 13.4723 13.4319 13.7073 13.3496C13.9423 13.2672 14.136 13.0965 14.2474 12.8738C14.3588 12.651 14.3791 12.3937 14.304 12.1562C14.2289 11.9188 14.0643 11.7199 13.8451 11.6017L11.9285 10.6434ZM11.9285 6.81002C11.7954 6.74355 11.6488 6.70895 11.5001 6.70895C11.3514 6.70895 11.2047 6.74355 11.0717 6.81002L9.15504 7.76835C8.9279 7.88206 8.7552 8.08128 8.67487 8.32226C8.59455 8.56323 8.61318 8.82623 8.72666 9.05348L8.78225 9.15123C8.91116 9.34732 9.10755 9.4893 9.33418 9.55024C9.5608 9.61118 9.80191 9.58685 10.0118 9.48185L11.5001 8.73819L12.9884 9.48185C13.2145 9.58629 13.4723 9.59862 13.7073 9.51622C13.9423 9.43383 14.136 9.26318 14.2474 9.04044C14.3588 8.81769 14.3791 8.56034 14.304 8.32289C14.2289 8.08545 14.0643 7.88656 13.8451 7.76835L11.9285 6.81002Z"
+                                                    fill="white" fill-opacity="0.41" />
+                                            </svg>
+                                        </div>
+                                        <div class="rankNameTextBox">
+                                            <h2 class="rankNameText" v-if="selectedData.selectedRank !== null">
+                                                {{selectedData.selectedRank.name}}</h2>
+                                            <p class="rankNameSubText">{{Locales['RankDetails']}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="rankEditPlayerBox">
+                                        {{Locales['Players']}};
+                                        <h2 class="rankEditPlayerSay" v-if="selectedData.selectedRank !== null">
+                                            {{selectedData.selectedRank.totalPlayer}}</h2>
+                                    </div>
+                                </div>
+                                <div class="rankEditListBox">
+                                    {{Locales['RankPermissions']}};
+                                    <div class="rankEditList">
+                                        <div class="rankEditBox"
+                                            v-for="(permission, key) in selectedData.selectedRank.permissions"
+                                            :key="permission.id">
+                                            <div class="checkbox-wrapper-7">
+                                                <label>{{ permission.label }}</label>
+                                                <input class="tgl tgl-ios" :id="'cb-' + key" type="checkbox"
+                                                    v-model="permission.value" />
+                                                <label class="tgl-btn" :for="'cb-' + key"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rankEditInputSide">
+                                    {{Locales['RankEdit']}};
+                                    <div class="rankEditInputList" v-if="selectedData.selectedRank !== null">
+                                        <div class="rankEditInputBox">
+                                            {{Locales['RankName']}};
+                                            <input type="text" class="rankEditInput"
+                                                :placeholder="selectedData.selectedRank.name"
+                                                v-model="vModelData.nameInput" />
+                                        </div>
+                                        <div class="rankEditInputBox rankSalaryEdit">
+                                            {{Locales['Salary']}};
+                                            <input type="text" class="rankEditInput"
+                                                :placeholder="selectedData.selectedRank.payment"
+                                                v-model="vModelData.salaryInput" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popupSaveButton" @click="editRank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M17.5 5.83333V15.8333C17.5 16.2917 17.3369 16.6842 17.0108 17.0108C16.6847 17.3375 16.2922 17.5006 15.8333 17.5H4.16667C3.70833 17.5 3.31611 17.3369 2.99 17.0108C2.66389 16.6847 2.50056 16.2922 2.5 15.8333V4.16667C2.5 3.70833 2.66333 3.31611 2.99 2.99C3.31667 2.66389 3.70889 2.50056 4.16667 2.5H14.1667L17.5 5.83333ZM10 15C10.6944 15 11.2847 14.7569 11.7708 14.2708C12.2569 13.7847 12.5 13.1944 12.5 12.5C12.5 11.8056 12.2569 11.2153 11.7708 10.7292C11.2847 10.2431 10.6944 10 10 10C9.30556 10 8.71528 10.2431 8.22917 10.7292C7.74306 11.2153 7.5 11.8056 7.5 12.5C7.5 13.1944 7.74306 13.7847 8.22917 14.2708C8.71528 14.7569 9.30556 15 10 15ZM5 8.33333H12.5V5H5V8.33333Z" />
+                                    </svg>
+                                    {{Locales['Save']}}
+                                </div>
+                            </div>
+                            <div class="popupBox bankPopup"
+                                :class="currentPopup === 'depositPopup' ? 'depositpopup' : 'withdrawpopup'"
+                                v-if="currentPopup === 'depositPopup' || currentPopup === 'withdrawPopup'">
+                                <div class="menuButton exitBox" @click="currentPopup = false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" fill="none">
+                                        <path
+                                            d="M6.31109 18.0061L4.99394 16.6889L10.2625 11.4203L4.99394 6.15174L6.31109 4.83459L11.5797 10.1032L16.8483 4.83459L18.1654 6.15174L12.8968 11.4203L18.1654 16.6889L16.8483 18.0061L11.5797 12.7375L6.31109 18.0061Z" />
+                                    </svg>
+                                </div>
+                                <div class="popupBankTitle"
+                                    :class="currentPopup === 'depositPopup' ? 'depositButton' : 'withdrawButton'"
+                                    style="background: transparent">
+                                    <div class="bankButtonIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="none">
+                                            <path
+                                                d="M15 6.5625H13.125V1.875C13.125 1.62636 13.2238 1.3879 13.3996 1.21209C13.5754 1.03627 13.8139 0.9375 14.0625 0.9375C14.3111 0.9375 14.5496 1.03627 14.7254 1.21209C14.9012 1.3879 15 1.62636 15 1.875V6.5625ZM22.5 14.4867V8.4375C22.5 7.94022 22.3025 7.46331 21.9508 7.11167C21.5992 6.76004 21.1223 6.5625 20.625 6.5625H15V13.6746L17.1492 11.5242C17.2363 11.4371 17.3397 11.368 17.4535 11.3209C17.5673 11.2737 17.6893 11.2495 17.8125 11.2495C17.9357 11.2495 18.0577 11.2737 18.1715 11.3209C18.2853 11.368 18.3887 11.4371 18.4758 11.5242C18.5629 11.6113 18.632 11.7147 18.6791 11.8285C18.7263 11.9423 18.7505 12.0643 18.7505 12.1875C18.7505 12.3107 18.7263 12.4327 18.6791 12.5465C18.632 12.6603 18.5629 12.7637 18.4758 12.8508L14.7258 16.6008C14.6387 16.6879 14.5353 16.7571 14.4215 16.8043C14.3077 16.8515 14.1857 16.8757 14.0625 16.8757C13.9393 16.8757 13.8173 16.8515 13.7035 16.8043C13.5897 16.7571 13.4863 16.6879 13.3992 16.6008L9.64922 12.8508C9.47331 12.6749 9.37448 12.4363 9.37448 12.1875C9.37448 11.9387 9.47331 11.7001 9.64922 11.5242C9.82513 11.3483 10.0637 11.2495 10.3125 11.2495C10.5613 11.2495 10.7999 11.3483 10.9758 11.5242L13.125 13.6746V6.5625H7.5C7.00272 6.5625 6.52581 6.76004 6.17417 7.11167C5.82254 7.46331 5.625 7.94022 5.625 8.4375V23.4375C5.625 23.6861 5.72377 23.9246 5.89959 24.1004C6.0754 24.2762 6.31386 24.375 6.5625 24.375H15.3164C15.3539 24.4535 15.3949 24.532 15.4395 24.6094L15.4676 24.6539L18.0762 28.6383C18.2123 28.8464 18.4255 28.9918 18.6689 29.0427C18.9123 29.0936 19.1659 29.0457 19.374 28.9096C19.5821 28.7734 19.7276 28.5602 19.7785 28.3168C19.8293 28.0734 19.7814 27.8198 19.6453 27.6117L17.052 23.652C16.8681 23.3273 16.8208 22.943 16.9203 22.5834C17.0199 22.2239 17.2582 21.9186 17.5828 21.7348C17.9074 21.5509 18.2918 21.5036 18.6514 21.6031C19.0109 21.7027 19.3162 21.941 19.5 22.2656C19.5082 22.2809 19.5176 22.2961 19.527 22.3102L20.7785 24.2215C20.8891 24.3902 21.0513 24.5187 21.2408 24.588C21.4303 24.6572 21.637 24.6635 21.8304 24.6058C22.0237 24.5482 22.1933 24.4297 22.3139 24.268C22.4346 24.1063 22.4998 23.91 22.5 23.7082V16.875C23.3836 17.693 24.0894 18.6842 24.5733 19.7868C25.0571 20.8894 25.3088 22.0799 25.3125 23.284V28.125C25.3125 28.3736 25.4113 28.6121 25.5871 28.7879C25.7629 28.9637 26.0014 29.0625 26.25 29.0625C26.4986 29.0625 26.7371 28.9637 26.9129 28.7879C27.0887 28.6121 27.1875 28.3736 27.1875 28.125V23.2793C27.1822 21.5426 26.7523 19.8336 25.9353 18.3011C25.1183 16.7686 23.9389 15.4591 22.5 14.4867Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="bankButtonTextBox">
+                                        <h2
+                                            :class="currentPopup === 'depositPopup' ? 'bankButtonTextDeposit' : 'bankButtonTextWithdraw'">
+                                            {{ currentPopup === 'depositPopup' ? Locales['Deposit'] :
+                                            Locales['Withdraw'] }}</h2>
+                                        <p class="bankButtonSubText">{{ currentPopup === 'depositPopup' ?
+                                            Locales['DepositYourMoney'] : Locales['WithdrawYourMoney'] }}</p>
+                                    </div>
+                                </div>
+                                <div class="bankInputList">
+                                    <div class="bankInputBox">
+                                        <input type="text" class="bankInput" :placeholder="Locales['Amount']"
+                                            v-model="vModelData.bankInput" />
+                                    </div>
+                                    <div class="bankInputButton" @click="bankAction(currentPopup)">{{ currentPopup ===
+                                        'depositPopup' ? Locales['Deposit'] : Locales['Withdraw'] }}</div>
+                                </div>
+                            </div>
+                            <div class="popupBox blipEdit" v-if="currentPopup === 'blipEditPopup'">
+                                <div class="menuButton exitBox" @click="currentPopup = false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" fill="none">
+                                        <path
+                                            d="M6.31109 18.0061L4.99394 16.6889L10.2625 11.4203L4.99394 6.15174L6.31109 4.83459L11.5797 10.1032L16.8483 4.83459L18.1654 6.15174L12.8968 11.4203L18.1654 16.6889L16.8483 18.0061L11.5797 12.7375L6.31109 18.0061Z" />
+                                    </svg>
+                                </div>
+                                <h2 class="blipBoxTitle" v-if="blipsData">{{blipsData.blipLabel}}
+                                    {{Locales['blipsettings']}};</h2>
+                                <div class="blipMenuSide">
+                                    <div class="blipMenu">
+                                        {{Locales['review']}};
+                                        <div class="blipMenuReview">
+                                            <img v-if="blipsData.blipImage" :src="blipsData.blipImage" alt=""
+                                                class="blipReviewImg" />
+                                        </div>
+                                    </div>
+                                    <div class="blipMenu blipList">
+                                        {{Locales['blip']}};
+                                        <div class="blipListBox">
+                                            <div class="blipListItem" v-for="(blip, key) in blipsList" :key="key"
+                                                @click="blipsData.blipID = key, blipsData.blipValue = blip.name, blipsData.blipImage = blip.image"
+                                                :class="{ selectBlip: blipsData.blipID === key }">
+                                                <img :src="blip.image || defaultImage" alt="" class="blipImg" />
+                                                {{ key }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="blipMenuSide">
+                                    <div class="blipMenu blipList">
+                                        {{Locales['blipColor']}};
+                                        <div class="blipListBox blipColorList">
+                                            <div class="blipListItem" v-for="(color, key) in blipColor" :key="key"
+                                                style="cursor: pointer; color: #161923"
+                                                @click="blipsData.blipColorID = key" :style="{ backgroundColor: color}"
+                                                :class="{ selectBlipColor: blipsData.blipColorID !== key }">{{ key }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blipRightSide">
+                                        <div class="blipMenu">
+                                            {{Locales['blipSize']}};
+                                            <div class="blipSizeInputBox">
+                                                <input type="number" class="blipSizeInput"
+                                                    :placeholder="Locales['sizeNumber']" v-model="blipsData.blipSize" />
+                                            </div>
+                                        </div>
+                                        <div class="blipMenu">
+                                            {{Locales['blipState']}};
+                                            <div class="checkbox-wrapper-7">
+                                                <input class="tgl tgl-ios" id="cb-blipState" type="checkbox"
+                                                    v-model="blipsData.blipState" />
+                                                <label class="tgl-btn" for="cb-blipState"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popupSaveButton" @click="saveBlip()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M17.5 5.83333V15.8333C17.5 16.2917 17.3369 16.6842 17.0108 17.0108C16.6847 17.3375 16.2922 17.5006 15.8333 17.5H4.16667C3.70833 17.5 3.31611 17.3369 2.99 17.0108C2.66389 16.6847 2.50056 16.2922 2.5 15.8333V4.16667C2.5 3.70833 2.66333 3.31611 2.99 2.99C3.31667 2.66389 3.70889 2.50056 4.16667 2.5H14.1667L17.5 5.83333ZM10 15C10.6944 15 11.2847 14.7569 11.7708 14.2708C12.2569 13.7847 12.5 13.1944 12.5 12.5C12.5 11.8056 12.2569 11.2153 11.7708 10.7292C11.2847 10.2431 10.6944 10 10 10C9.30556 10 8.71528 10.2431 8.22917 10.7292C7.74306 11.2153 7.5 11.8056 7.5 12.5C7.5 13.1944 7.74306 13.7847 8.22917 14.2708C8.71528 14.7569 9.30556 15 10 15ZM5 8.33333H12.5V5H5V8.33333Z" />
+                                    </svg>
+                                    {{Locales['Save']}}
+                                </div>
+                            </div>
+                        </transition-group>
+                    </div>
+                </transition>
+
+                <div class="leftSide">
+                    <div class="categorySide">
+                        <div class="titleBox">
+                            <img v-if="bossMenuData.jobSettings.jobLogo" :src="getLogoImage()" alt=""
+                                class="titleImg" />
+                            <div class="titleTextBox">
+                                <h2 class="titleText">{{ serverName }}</h2>
+                                <p class="titleSubText">{{Locales['BossMenu']}}</p>
+                            </div>
+                        </div>
+                        <div class="menuLine"></div>
+                        <div class="categoryBox">
+                            {{Locales['Category']}};
+                            <div class="categoryList">
+                                <div v-for="category in categories" :key="category.name"
+                                    :class="['category', { selectCategory: currentPage === category.name }]"
+                                    @click="changePage(category.name)">
+                                    <h2 class="categoryText">{{ category.title }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profileSide">
+                        <img :src="playerData.playerImg" alt="" class="profileImg" />
+                        <div class="profileTextBox">
+                            <h2 class="profileText">{{ playerData.playerName }}</h2>
+                            <p class="profileSubText" v-if="bossMenuData && playerData && bossMenuData['employees']">{{
+                                bossMenuData['employees'][playerData.playerIdentifier].boss ? Locales['Boss'] :
+                                Locales['Member'] }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightSide" v-if="bossMenuData">
+                    <div class="waitingOverlay" v-if="waitingOverlay">
+                        <i class="fa fa-cog fa-spin fa-3x"></i>
+                        <h2 class="waitingText">{{Locales['LoadingData']}}</h2>
+                    </div>
+                    <div class="topSide">
+                        <div class="menuTitle" v-if="getCurrentCategory">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none">
+                                <path
+                                    d="M15.1667 10.5V3.5H24.5V10.5H15.1667ZM3.5 15.1667V3.5H12.8333V15.1667H3.5ZM15.1667 24.5V12.8333H24.5V24.5H15.1667ZM3.5 24.5V17.5H12.8333V24.5H3.5Z" />
+                            </svg>
+                            {{ getCurrentCategory.title }} {{Locales['Page']}}
+                        </div>
+                        <div class="menuButtonTopList">
+                            <div class="menuButton" @click="changePage('settingsPage')">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" fill="none">
+                                    <path
+                                        d="M10.4203 13.3666C9.6389 13.3666 8.8895 13.0562 8.33697 12.5036C7.78444 11.9511 7.47404 11.2017 7.47404 10.4203C7.47404 9.63892 7.78444 8.88953 8.33697 8.337C8.8895 7.78447 9.6389 7.47406 10.4203 7.47406C11.2017 7.47406 11.9511 7.78447 12.5036 8.337C13.0561 8.88953 13.3665 9.63892 13.3665 10.4203C13.3665 11.2017 13.0561 11.9511 12.5036 12.5036C11.9511 13.0562 11.2017 13.3666 10.4203 13.3666ZM16.6748 11.2369C16.7084 10.9675 16.7337 10.6981 16.7337 10.4203C16.7337 10.1425 16.7084 9.86474 16.6748 9.57853L18.4509 8.20642C18.6109 8.08015 18.653 7.85287 18.552 7.66767L16.8684 4.75509C16.7674 4.56989 16.5401 4.49413 16.3549 4.5699L14.2588 5.41168C13.8211 5.08339 13.3665 4.79718 12.8362 4.58673L12.5248 2.35599C12.5077 2.25685 12.456 2.16695 12.379 2.10224C12.3019 2.03753 12.2045 2.00217 12.1039 2.00244H8.73672C8.52627 2.00244 8.34949 2.15396 8.31582 2.35599L8.00436 4.58673C7.47404 4.79718 7.01947 5.08339 6.58174 5.41168L4.48569 4.5699C4.3005 4.49413 4.07321 4.56989 3.9722 4.75509L2.28863 7.66767C2.17919 7.85287 2.2297 8.08015 2.38964 8.20642L4.16581 9.57853C4.13214 9.86474 4.10689 10.1425 4.10689 10.4203C4.10689 10.6981 4.13214 10.9675 4.16581 11.2369L2.38964 12.6342C2.2297 12.7605 2.17919 12.9878 2.28863 13.173L3.9722 16.0855C4.07321 16.2707 4.3005 16.3381 4.48569 16.2707L6.58174 15.4205C7.01947 15.7573 7.47404 16.0435 8.00436 16.2539L8.31582 18.4846C8.34949 18.6867 8.52627 18.8382 8.73672 18.8382H12.1039C12.3143 18.8382 12.4911 18.6867 12.5248 18.4846L12.8362 16.2539C13.3665 16.035 13.8211 15.7573 14.2588 15.4205L16.3549 16.2707C16.5401 16.3381 16.7674 16.2707 16.8684 16.0855L18.552 13.173C18.653 12.9878 18.6109 12.7605 18.4509 12.6342L16.6748 11.2369Z" />
+                                </svg>
+                            </div>
+                            <div class="menuButton" @click="closeNUI">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" fill="none">
+                                    <path
+                                        d="M6.31109 18.0061L4.99394 16.6889L10.2625 11.4203L4.99394 6.15174L6.31109 4.83459L11.5797 10.1032L16.8483 4.83459L18.1654 6.15174L12.8968 11.4203L18.1654 16.6889L16.8483 18.0061L11.5797 12.7375L6.31109 18.0061Z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomSide dashboardPage" v-if="currentPage == 'dashboardPage'">
+                        <div class="dashbaord" :style="{ backgroundImage: `url(${getBannerImage()})` }">
+                            <div class="profileDetailList">
+                                <div class="profileDetail profileName">
+                                    <img :src="playerData.playerImg" alt="" class="profileDetailImg" />
+                                    {{ playerData.playerName }}
+                                </div>
+                                <div class="profileDetail details">
+                                    <h2 class="detailsText">{{Locales['Rank']}};</h2>
+                                    <p class="detailsSubText">{{ playerData.playerRank }}</p>
+                                </div>
+                                <div class="profileDetail detailsBank">
+                                    <h2 class="detailsText">{{Locales['Balance']}};</h2>
+                                    <p class="detailsSubText">{{ moneyType }}{{ formatNumber(playerData.playerMoney) }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="dashboardRightSide">
+                                <div class="dashboardCrewDetail">
+                                    <div class="crewDetailLine"></div>
+                                    <div class="crewNameSide">
+                                        <h2 class="crewName">{{ bossMenuData.jobSettings.jobLabel }}</h2>
+                                        <p class="crewDescription">{{ bossMenuData.jobSettings.jobDescription }}</p>
+                                    </div>
+                                </div>
+                                <div class="dashboardButtonList">
+                                    <div class="dashboardButton dashboardSettingsButton"
+                                        v-if="getPlayerPermission('settings')" @click="changePage('settingsPage')">
+                                        <div class="dashboardButtonIcon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
+                                                viewBox="0 0 21 21" fill="none">
+                                                <path
+                                                    d="M10.1283 13.0465C9.3544 13.0465 8.61218 12.739 8.06493 12.1918C7.51769 11.6445 7.21025 10.9023 7.21025 10.1284C7.21025 9.35445 7.51769 8.61223 8.06493 8.06499C8.61218 7.51774 9.3544 7.2103 10.1283 7.2103C10.9022 7.2103 11.6445 7.51774 12.1917 8.06499C12.739 8.61223 13.0464 9.35445 13.0464 10.1284C13.0464 10.9023 12.739 11.6445 12.1917 12.1918C11.6445 12.739 10.9022 13.0465 10.1283 13.0465ZM16.323 10.9371C16.3563 10.6703 16.3813 10.4035 16.3813 10.1284C16.3813 9.85324 16.3563 9.57811 16.323 9.29464L18.0822 7.93565C18.2406 7.81059 18.2823 7.58548 18.1822 7.40206L16.5147 4.51733C16.4147 4.33391 16.1896 4.25888 16.0062 4.33391L13.9302 5.16765C13.4966 4.84249 13.0464 4.55902 12.5211 4.35059L12.2127 2.14119C12.1957 2.04299 12.1446 1.95395 12.0683 1.88986C11.992 1.82576 11.8954 1.79075 11.7958 1.79102H8.46085C8.25242 1.79102 8.07734 1.94109 8.04399 2.14119L7.7355 4.35059C7.21025 4.55902 6.76003 4.84249 6.32649 5.16765L4.25049 4.33391C4.06707 4.25888 3.84196 4.33391 3.74191 4.51733L2.07444 7.40206C1.96605 7.58548 2.01607 7.81059 2.17448 7.93565L3.93367 9.29464C3.90032 9.57811 3.87531 9.85324 3.87531 10.1284C3.87531 10.4035 3.90032 10.6703 3.93367 10.9371L2.17448 12.3211C2.01607 12.4462 1.96605 12.6713 2.07444 12.8547L3.74191 15.7394C3.84196 15.9228 4.06707 15.9895 4.25049 15.9228L6.32649 15.0808C6.76003 15.4143 7.21025 15.6977 7.7355 15.9062L8.04399 18.1156C8.07734 18.3157 8.25242 18.4657 8.46085 18.4657H11.7958C12.0042 18.4657 12.1793 18.3157 12.2127 18.1156L12.5211 15.9062C13.0464 15.6894 13.4966 15.4143 13.9302 15.0808L16.0062 15.9228C16.1896 15.9895 16.4147 15.9228 16.5147 15.7394L18.1822 12.8547C18.2823 12.6713 18.2406 12.4462 18.0822 12.3211L16.323 10.9371Z"
+                                                    fill="white" fill-opacity="0.33" />
+                                            </svg>
+                                        </div>
+                                        <h2 class="dashboardButtonText">{{Locales['Settings']}}</h2>
+                                        <svg class="buttonArrow" xmlns="http://www.w3.org/2000/svg" width=".7292vw"
+                                            height=".7292vw" viewBox="0 0 14 14" fill="none">
+                                            <path
+                                                d="M4.63133 12.5685C4.4673 12.4044 4.37514 12.1819 4.37514 11.9499C4.37514 11.7179 4.4673 11.4954 4.63133 11.3313L8.96258 7.00002L4.63133 2.66877C4.47194 2.50374 4.38375 2.28272 4.38574 2.05329C4.38774 1.82387 4.47976 1.60441 4.64199 1.44218C4.80422 1.27994 5.02368 1.18792 5.25311 1.18593C5.48253 1.18394 5.70355 1.27213 5.86858 1.43152L10.8185 6.38139C10.9825 6.54548 11.0746 6.768 11.0746 7.00002C11.0746 7.23204 10.9825 7.45456 10.8185 7.61864L5.86858 12.5685C5.7045 12.7326 5.48198 12.8247 5.24996 12.8247C5.01794 12.8247 4.79542 12.7326 4.63133 12.5685Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="dashboardButton dashboardLeaveButton" v-show="!playerData.playerIsBoss">
+                                        <div class="dashboardButtonIcon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1.0417vw" height="1.0417vw"
+                                                viewBox="0 0 20 20" fill="none">
+                                                <path
+                                                    d="M1.66504 17.5001V15.8334H3.33171V4.02925C3.33168 3.83409 3.40014 3.64511 3.52517 3.49525C3.6502 3.3454 3.82386 3.24418 4.01587 3.20925L11.9092 1.77425C11.9812 1.7612 12.0552 1.76412 12.126 1.78279C12.1967 1.80147 12.2625 1.83546 12.3187 1.88235C12.3749 1.92924 12.4201 1.98789 12.4512 2.05417C12.4822 2.12045 12.4983 2.19273 12.4984 2.26592V3.33258L15.8317 3.33342C16.0527 3.33342 16.2647 3.42121 16.421 3.57749C16.5772 3.73378 16.665 3.94574 16.665 4.16675V15.8334H18.3317V17.5001H14.9984V5.00008H12.4984V17.5001H1.66504ZM9.99837 9.16675H8.33171V10.8334H9.99837V9.16675Z"
+                                                    fill="#E54C4C" fill-opacity="0.48" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bannerEffect"></div>
+                        </div>
+                        <div class="dashboardBottomSide">
+                            <div class="dashboardInfoBox" @click="changePage('employeePage')">
+                                <div class="dashboardInfoTitleBox">
+                                    <div class="dashboardInfoTitleIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width=".8333vw" height=".5729vw"
+                                            viewBox="0 0 16 11" fill="none">
+                                            <path
+                                                d="M2.35715 4.7143C3.22389 4.7143 3.92858 4.00961 3.92858 3.14286C3.92858 2.27612 3.22389 1.57143 2.35715 1.57143C1.49041 1.57143 0.785716 2.27612 0.785716 3.14286C0.785716 4.00961 1.49041 4.7143 2.35715 4.7143ZM13.3572 4.7143C14.2239 4.7143 14.9286 4.00961 14.9286 3.14286C14.9286 2.27612 14.2239 1.57143 13.3572 1.57143C12.4904 1.57143 11.7857 2.27612 11.7857 3.14286C11.7857 4.00961 12.4904 4.7143 13.3572 4.7143ZM14.1429 5.50001H12.5715C12.1393 5.50001 11.7489 5.67434 11.4641 5.95671C12.4536 6.49934 13.1558 7.47903 13.3081 8.64288H14.9286C15.3632 8.64288 15.7143 8.29176 15.7143 7.85716V7.07144C15.7143 6.2047 15.0096 5.50001 14.1429 5.50001ZM7.85716 5.50001C9.37703 5.50001 10.6072 4.26988 10.6072 2.75001C10.6072 1.23014 9.37703 0 7.85716 0C6.33729 0 5.10715 1.23014 5.10715 2.75001C5.10715 4.26988 6.33729 5.50001 7.85716 5.50001ZM9.74288 6.28573H9.53908C9.02837 6.53126 8.46118 6.67859 7.85716 6.67859C7.25314 6.67859 6.68841 6.53126 6.17524 6.28573H5.97144C4.40983 6.28573 3.14286 7.5527 3.14286 9.11431V9.82145C3.14286 10.4721 3.67077 11 4.32144 11H11.3929C12.0436 11 12.5715 10.4721 12.5715 9.82145V9.11431C12.5715 7.5527 11.3045 6.28573 9.74288 6.28573ZM4.25023 5.95671C3.96541 5.67434 3.57501 5.50001 3.14286 5.50001H1.57143C0.704689 5.50001 0 6.2047 0 7.07144V7.85716C0 8.29176 0.351117 8.64288 0.785716 8.64288H2.4038C2.55849 7.47903 3.26072 6.49934 4.25023 5.95671Z" />
+                                        </svg>
+                                    </div>
+                                    {{Locales['Total']}}
+                                    <br />
+                                    {{Locales['Members']}}
+                                </div>
+                                <h2 class="dashbaordInfoTextSay">{{ Object.keys(bossMenuData.employees).length }}</h2>
+                                <svg class="infoArrow" xmlns="http://www.w3.org/2000/svg" width="1.0417vw"
+                                    height="1.0417vw" viewBox="0 0 20 20" fill="none">
+                                    <path
+                                        d="M6.61619 17.9549C6.38185 17.7205 6.25021 17.4026 6.25021 17.0712C6.25021 16.7397 6.38185 16.4219 6.61619 16.1874L12.8037 9.99994L6.61619 3.81244C6.38849 3.57669 6.2625 3.26094 6.26535 2.93319C6.26819 2.60544 6.39966 2.29193 6.63142 2.06017C6.86318 1.82841 7.17669 1.69695 7.50444 1.6941C7.83218 1.69125 8.14794 1.81724 8.38369 2.04494L15.4549 9.11619C15.6893 9.3506 15.8209 9.66849 15.8209 9.99994C15.8209 10.3314 15.6893 10.6493 15.4549 10.8837L8.38369 17.9549C8.14928 18.1893 7.8314 18.3209 7.49994 18.3209C7.16849 18.3209 6.8506 18.1893 6.61619 17.9549Z"
+                                        fill="white" />
+                                </svg>
+                                <img src="./img/employeeBg.png" alt="" class="dashbaordInfoBg" />
+                            </div>
+                            <div class="dashboardInfoBox" @click="changePage('rankPage')">
+                                <div class="dashboardInfoTitleBox">
+                                    <div class="dashboardInfoTitleIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width=".9375vw" height=".9375vw"
+                                            viewBox="0 0 16 16" fill="none">
+                                            <path
+                                                d="M8.37001 1.44535L12.37 4.11202C12.4613 4.17292 12.5361 4.25541 12.5879 4.35216C12.6396 4.44892 12.6667 4.55696 12.6667 4.66668V12.6667C12.6667 13.1971 12.456 13.7058 12.0809 14.0809C11.7058 14.456 11.1971 14.6667 10.6667 14.6667H5.33334C4.80291 14.6667 4.2942 14.456 3.91913 14.0809C3.54406 13.7058 3.33334 13.1971 3.33334 12.6667V4.66668C3.33333 4.55696 3.3604 4.44892 3.41215 4.35216C3.4639 4.25541 3.53873 4.17292 3.63001 4.11202L7.63001 1.44535C7.73956 1.37226 7.86831 1.33325 8.00001 1.33325C8.13171 1.33325 8.26046 1.37226 8.37001 1.44535ZM8.29801 10.0707C8.20548 10.0244 8.10345 10.0004 8.00001 10.0004C7.89657 10.0004 7.79454 10.0244 7.70201 10.0707L6.36868 10.7374C6.21067 10.8165 6.09053 10.955 6.03465 11.1227C5.97877 11.2903 5.99173 11.4733 6.07068 11.6314L6.10934 11.6994C6.19902 11.8358 6.33564 11.9345 6.49329 11.9769C6.65095 12.0193 6.81867 12.0024 6.96468 11.9294L8.00001 11.412L9.03534 11.9294C9.19262 12.002 9.372 12.0106 9.53548 11.9533C9.69897 11.8959 9.83372 11.7772 9.9112 11.6223C9.98868 11.4673 10.0028 11.2883 9.95055 11.1231C9.89832 10.9579 9.78383 10.8196 9.63134 10.7374L8.29801 10.0707ZM8.29801 7.40402C8.20548 7.35778 8.10345 7.33371 8.00001 7.33371C7.89657 7.33371 7.79454 7.35778 7.70201 7.40402L6.36868 8.07068C6.21067 8.14978 6.09053 8.28838 6.03465 8.45601C5.97877 8.62364 5.99173 8.8066 6.07068 8.96468L6.10934 9.03268C6.19902 9.1691 6.33564 9.26787 6.49329 9.31026C6.65095 9.35265 6.81867 9.33572 6.96468 9.26268L8.00001 8.74535L9.03534 9.26268C9.19262 9.33534 9.372 9.34391 9.53548 9.28659C9.69897 9.22928 9.83372 9.11057 9.9112 8.95561C9.98868 8.80066 10.0028 8.62163 9.95055 8.45645C9.89832 8.29127 9.78383 8.15291 9.63134 8.07068L8.29801 7.40402ZM8.29801 4.73735C8.20548 4.69111 8.10345 4.66704 8.00001 4.66704C7.89657 4.66704 7.79454 4.69111 7.70201 4.73735L6.36868 5.40402C6.21067 5.48312 6.09053 5.62171 6.03465 5.78934C5.97877 5.95697 5.99173 6.13993 6.07068 6.29802L6.10934 6.36602C6.19902 6.50243 6.33564 6.6012 6.49329 6.64359C6.65095 6.68598 6.81867 6.66906 6.96468 6.59602L8.00001 6.07868L9.03534 6.59602C9.19262 6.66867 9.372 6.67724 9.53548 6.61993C9.69897 6.56261 9.83372 6.4439 9.9112 6.28895C9.98868 6.13399 10.0028 5.95497 9.95055 5.78978C9.89832 5.6246 9.78383 5.48625 9.63134 5.40402L8.29801 4.73735Z" />
+                                        </svg>
+                                    </div>
+                                    {{Locales['Total']}}
+                                    <br />
+                                    {{Locales['Ranks']}}
+                                </div>
+                                <h2 class="dashbaordInfoTextSay">{{ Object.keys(bossMenuData.jobRankList).length }}</h2>
+                                <svg class="infoArrow" xmlns="http://www.w3.org/2000/svg" width="1.0417vw"
+                                    height="1.0417vw" viewBox="0 0 20 20" fill="none">
+                                    <path
+                                        d="M6.61619 17.9549C6.38185 17.7205 6.25021 17.4026 6.25021 17.0712C6.25021 16.7397 6.38185 16.4219 6.61619 16.1874L12.8037 9.99994L6.61619 3.81244C6.38849 3.57669 6.2625 3.26094 6.26535 2.93319C6.26819 2.60544 6.39966 2.29193 6.63142 2.06017C6.86318 1.82841 7.17669 1.69695 7.50444 1.6941C7.83218 1.69125 8.14794 1.81724 8.38369 2.04494L15.4549 9.11619C15.6893 9.3506 15.8209 9.66849 15.8209 9.99994C15.8209 10.3314 15.6893 10.6493 15.4549 10.8837L8.38369 17.9549C8.14928 18.1893 7.8314 18.3209 7.49994 18.3209C7.16849 18.3209 6.8506 18.1893 6.61619 17.9549Z"
+                                        fill="white" />
+                                </svg>
+                                <img src="./img/ranksBg.png" alt="" class="dashbaordInfoBg" />
+                            </div>
+                            <div class="dashboardInfoBox" @click="changePage('outfitPage')">
+                                <div class="dashboardInfoTitleBox">
+                                    <div class="dashboardInfoTitleIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width=".9375vw" height=".9375vw"
+                                            viewBox="0 0 16 16" fill="none">
+                                            <path
+                                                d="M10.05 2.02002C9.87893 2.4422 9.58584 2.80377 9.2082 3.0585C8.83056 3.31323 8.38553 3.44955 7.93 3.45002C7.47448 3.44955 7.02945 3.31323 6.65181 3.0585C6.27416 2.80377 5.98107 2.4422 5.81 2.02002L0.619003 4.22002L2.079 7.66202L3.684 6.98202V14H12.233V7.00752L13.7795 7.66352L15.2395 4.22152L10.05 2.02002Z" />
+                                        </svg>
+                                    </div>
+                                    {{Locales['OutfitMenu']}}
+                                    <br />
+                                    {{Locales['Gress']}}
+                                </div>
+                                <div class="outfitBox">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width=".7813vw" height=".7813vw"
+                                        viewBox="0 0 15 15" fill="none">
+                                        <path
+                                            d="M9.42187 1.89386C9.26149 2.28965 8.98672 2.62863 8.63268 2.86743C8.27864 3.10624 7.86142 3.23404 7.43437 3.23448C7.00732 3.23404 6.5901 3.10624 6.23606 2.86743C5.88202 2.62863 5.60725 2.28965 5.44687 1.89386L0.580307 3.95636L1.94906 7.18324L3.45374 6.54573V13.1251H11.4684V6.56964L12.9183 7.18464L14.287 3.95777L9.42187 1.89386Z"
+                                            fill="white" fill-opacity="0.27" />
+                                    </svg>
+                                </div>
+                                <svg class="infoArrow" xmlns="http://www.w3.org/2000/svg" width="1.0417vw"
+                                    height="1.0417vw" viewBox="0 0 20 20" fill="none">
+                                    <path
+                                        d="M6.61619 17.9549C6.38185 17.7205 6.25021 17.4026 6.25021 17.0712C6.25021 16.7397 6.38185 16.4219 6.61619 16.1874L12.8037 9.99994L6.61619 3.81244C6.38849 3.57669 6.2625 3.26094 6.26535 2.93319C6.26819 2.60544 6.39966 2.29193 6.63142 2.06017C6.86318 1.82841 7.17669 1.69695 7.50444 1.6941C7.83218 1.69125 8.14794 1.81724 8.38369 2.04494L15.4549 9.11619C15.6893 9.3506 15.8209 9.66849 15.8209 9.99994C15.8209 10.3314 15.6893 10.6493 15.4549 10.8837L8.38369 17.9549C8.14928 18.1893 7.8314 18.3209 7.49994 18.3209C7.16849 18.3209 6.8506 18.1893 6.61619 17.9549Z"
+                                        fill="white" />
+                                </svg>
+                                <img src="./img/outfitBg.png" alt="" class="dashbaordInfoBg" />
+                            </div>
+                            <div class="dashboardInviteSide">
+                                <div class="dashboardInviteLeftBox">
+                                    <div class="dashboardInfoTitleBox">
+                                        <div class="dashboardInfoTitleIcon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width=".9375vw" height=".9375vw"
+                                                viewBox="0 0 18 18" fill="none">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M5.50875 3.01275C7.82916 2.75584 10.1708 2.75584 12.4912 3.01275C13.776 3.15675 14.8125 4.1685 14.9632 5.45775C15.2382 7.81125 15.2382 10.1888 14.9632 12.5423C14.8125 13.8315 13.776 14.8433 12.4912 14.9873C10.1708 15.2442 7.82916 15.2442 5.50875 14.9873C4.224 14.8433 3.1875 13.8315 3.03675 12.5423C2.76184 10.189 2.76184 7.81175 3.03675 5.4585C3.113 4.83216 3.39853 4.24991 3.84707 3.80614C4.29561 3.36236 4.88087 3.08306 5.508 3.0135M9 5.25525C9.14918 5.25525 9.29226 5.31452 9.39775 5.42001C9.50323 5.5255 9.5625 5.66857 9.5625 5.81775V8.4375H12.1822C12.3314 8.4375 12.4745 8.49677 12.58 8.60226C12.6855 8.70775 12.7447 8.85082 12.7447 9C12.7447 9.14919 12.6855 9.29226 12.58 9.39775C12.4745 9.50324 12.3314 9.5625 12.1822 9.5625H9.5625V12.1823C9.5625 12.3314 9.50323 12.4745 9.39775 12.58C9.29226 12.6855 9.14918 12.7448 9 12.7448C8.85081 12.7448 8.70774 12.6855 8.60225 12.58C8.49676 12.4745 8.4375 12.3314 8.4375 12.1823V9.5625H5.81775C5.66856 9.5625 5.52549 9.50324 5.42 9.39775C5.31451 9.29226 5.25525 9.14919 5.25525 9C5.25525 8.85082 5.31451 8.70775 5.42 8.60226C5.52549 8.49677 5.66856 8.4375 5.81775 8.4375H8.4375V5.81775C8.4375 5.66857 8.49676 5.5255 8.60225 5.42001C8.70774 5.31452 8.85081 5.25525 9 5.25525Z" />
+                                            </svg>
+                                        </div>
+                                        {{Locales['Invite']}}
+                                        <br />
+                                        {{Locales['Employee']}}
+                                    </div>
+                                    <h2 class="dashboardInviteInfoText">{{Locales['InviteInfo']}}</h2>
+                                </div>
+                                <div class="dashboardInviteRightBox">
+                                    <div class="dashboardInviteInputBox">
+                                        <input class="dashboardInviteInput" :placeholder="Locales['PlayerId']"
+                                            v-model="vModelData.playerInviteInput" />
+                                    </div>
+                                    <div class="dashboardInviteButton" @click="inviteEmployee">{{Locales['Invite']}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="miniBankSide">
+                            <div class="miniBankTopSide">
+                                <div class="miniBankTitleBox">
+                                    <div class="miniBankTitleIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1.0417vw" height="1.0417vw"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <path
+                                                d="M2.54468 6.97404V9.95691H3.29021V14.4293H2.54468V16.6659H14.4732L16.7098 16.6667L17.4553 16.6659V14.4293H16.7098V9.95691H17.4553V6.97404L9.99999 2.50085L2.54468 6.97404ZM5.5268 14.4293V9.95691H7.01786V14.4293H5.5268ZM9.25446 14.4293V9.95691H10.7455V14.4293H9.25446ZM14.4732 14.4293H12.9821V9.95691H14.4732V14.4293ZM11.491 6.97404C11.491 7.1699 11.4524 7.36383 11.3774 7.54476C11.3024 7.72569 11.1925 7.89008 11.054 8.02853C10.9154 8.16699 10.751 8.27681 10.57 8.35172C10.389 8.42662 10.1951 8.46515 9.99924 8.4651C9.80338 8.46505 9.60945 8.42643 9.42852 8.35143C9.24759 8.27643 9.08321 8.16653 8.94475 8.02801C8.80629 7.88948 8.69647 7.72504 8.62157 7.54407C8.54666 7.3631 8.50813 7.16915 8.50818 6.97329C8.50828 6.57774 8.66551 6.19843 8.94527 5.9188C9.22504 5.63917 9.60443 5.48213 9.99999 5.48223C10.3955 5.48233 10.7749 5.63956 11.0545 5.91933C11.3341 6.1991 11.4911 6.57849 11.491 6.97404Z"
+                                                fill="white" fill-opacity="0.41" />
+                                        </svg>
+                                    </div>
+                                    {{Locales['BankAccount']}}
+                                </div>
+                                <div class="miniBankResize" @click="changePage('bankPage')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width=".9375vw" height=".9375vw"
+                                        viewBox="0 0 18 18" fill="none">
+                                        <path
+                                            d="M9.75 3V4.5H12.4425L4.5 12.4425V9.75H3V15H8.25V13.5H5.5575L13.5 5.5575V8.25H15V3H9.75Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="miniBankBalanceBox">
+                                <h2 class="miniBankBalanceText">{{Locales['Balance']}}</h2>
+                                <p class="miniBankBalanceSubText" v-if="getPlayerPermission('bankshow')">{{ moneyType
+                                    }}{{ formatNumber(bossMenuData.jobSettings.jobMoney) }}</p>
+                                <p class="miniBankBalanceSubText" v-else>{{ moneyType }} ******</p>
+                            </div>
+                            <div class="miniBankHistoryList">
+                                <div class="miniBankHistoryItem" v-if="getPlayerPermission('banklog')"
+                                    v-for="item in bossMenuData.jobHistory.slice().reverse()"
+                                    :class="item.type == 'deposit' ? 'depositHistory' : 'withdrawHistory'">
+                                    <div class="miniBankHistoryLeftBox">
+                                        <div class="miniBankHistoryTitleIcon">$</div>
+                                        {{ item.type == 'deposit' ? Locales['Deposit'] : Locales['Withdraw'] }}
+                                    </div>
+                                    <div class="miniBankHistoryPrice">{{ moneyType }}{{ formatNumber(item.amount) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="miniBankButtonSide">
+                                <div class="miniBankButton" @click="popupBtn('withdrawPopup')">{{Locales['Withdraw']}}
+                                </div>
+                                <div class="miniBankButton" @click="popupBtn('depositPopup')">{{Locales['Deposit']}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomSide employeePage" v-if="currentPage == 'employeePage'">
+                        <div class="inviteSide" :style="{ backgroundImage: `url(${getBannerImage()})` }">
+                            <div class="inviteLeftSide">
+                                <div class="miniBankTitleBox">
+                                    <div class="miniBankTitleIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1.0417vw" height="1.0417vw"
+                                            viewBox="0 0 18 18" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M5.50875 3.01275C7.82916 2.75584 10.1708 2.75584 12.4912 3.01275C13.776 3.15675 14.8125 4.1685 14.9632 5.45775C15.2382 7.81125 15.2382 10.1888 14.9632 12.5423C14.8125 13.8315 13.776 14.8433 12.4912 14.9873C10.1708 15.2442 7.82916 15.2442 5.50875 14.9873C4.224 14.8433 3.1875 13.8315 3.03675 12.5423C2.76184 10.189 2.76184 7.81175 3.03675 5.4585C3.113 4.83216 3.39853 4.24991 3.84707 3.80614C4.29561 3.36236 4.88087 3.08306 5.508 3.0135M9 5.25525C9.14918 5.25525 9.29226 5.31452 9.39775 5.42001C9.50323 5.5255 9.5625 5.66857 9.5625 5.81775V8.4375H12.1822C12.3314 8.4375 12.4745 8.49677 12.58 8.60226C12.6855 8.70775 12.7447 8.85082 12.7447 9C12.7447 9.14919 12.6855 9.29226 12.58 9.39775C12.4745 9.50324 12.3314 9.5625 12.1822 9.5625H9.5625V12.1823C9.5625 12.3314 9.50323 12.4745 9.39775 12.58C9.29226 12.6855 9.14918 12.7448 9 12.7448C8.85081 12.7448 8.70774 12.6855 8.60225 12.58C8.49676 12.4745 8.4375 12.3314 8.4375 12.1823V9.5625H5.81775C5.66856 9.5625 5.52549 9.50324 5.42 9.39775C5.31451 9.29226 5.25525 9.14919 5.25525 9C5.25525 8.85082 5.31451 8.70775 5.42 8.60226C5.52549 8.49677 5.66856 8.4375 5.81775 8.4375H8.4375V5.81775C8.4375 5.66857 8.49676 5.5255 8.60225 5.42001C8.70774 5.31452 8.85081 5.25525 9 5.25525Z"
+                                                fill="white" fill-opacity="0.41" />
+                                        </svg>
+                                    </div>
+                                    {{Locales['InviteEmployees']}}
+                                </div>
+                                <p class="inviteSideInfoText">{{Locales['InviteInfo']}}</p>
+                            </div>
+                            <div class="InviteRightSide">
+                                <div class="InviteInputBox">
+                                    <input class="InviteInput" :placeholder="Locales['PlayerId']"
+                                        v-model="vModelData.playerInviteInput" />
+                                </div>
+                                <div class="InviteButton" @click="inviteEmployee">{{Locales['Invite']}}</div>
+                            </div>
+                            <div class="inviteBg"></div>
+                        </div>
+                        <div class="playerSide">
+                            <div class="playerTopSide">
+                                <div class="sideMenuTitle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1.25vw" height="1.25vw"
+                                        viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M16 17V19H2V17C2 17 2 13 9 13C16 13 16 17 16 17ZM12.5 7.5C12.5 6.80776 12.2947 6.13108 11.9101 5.5555C11.5256 4.97993 10.9789 4.53133 10.3394 4.26642C9.69985 4.00151 8.99612 3.9322 8.31718 4.06725C7.63825 4.2023 7.01461 4.53564 6.52513 5.02513C6.03564 5.51461 5.7023 6.13825 5.56725 6.81718C5.4322 7.49612 5.50152 8.19985 5.76642 8.83939C6.03133 9.47893 6.47993 10.0256 7.0555 10.4101C7.63108 10.7947 8.30777 11 9 11C9.92826 11 10.8185 10.6313 11.4749 9.97487C12.1313 9.3185 12.5 8.42826 12.5 7.5ZM15.94 13C16.5547 13.4757 17.0578 14.0804 17.4137 14.7715C17.7696 15.4626 17.9697 16.2233 18 17V19H22V17C22 17 22 13.37 15.94 13ZM15 4C14.3118 3.9968 13.6388 4.20253 13.07 4.59C13.6774 5.43874 14.0041 6.45628 14.0041 7.5C14.0041 8.54371 13.6774 9.56126 13.07 10.41C13.6388 10.7975 14.3118 11.0032 15 11C15.9283 11 16.8185 10.6313 17.4749 9.97487C18.1313 9.3185 18.5 8.42826 18.5 7.5C18.5 6.57174 18.1313 5.6815 17.4749 5.02513C16.8185 4.36875 15.9283 4 15 4Z"
+                                            fill="white" />
+                                    </svg>
+                                    {{Locales['EmployeesList']}}
+                                </div>
+                                <div class="searchInputBox">
+                                    <input class="searchInput" :placeholder="Locales['Search']"
+                                        v-model="vModelData.employeeSearch" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width=".7292vw" height=".7292vw"
+                                        viewBox="0 0 14 14" fill="none">
+                                        <path
+                                            d="M11.4333 12.25L7.75833 8.575C7.46667 8.80833 7.13125 8.99305 6.75208 9.12917C6.37292 9.26528 5.96944 9.33333 5.54167 9.33333C4.48194 9.33333 3.58517 8.96622 2.85133 8.232C2.1175 7.49778 1.75039 6.601 1.75 5.54167C1.74961 4.48233 2.11672 3.58556 2.85133 2.85133C3.58594 2.11711 4.48272 1.75 5.54167 1.75C6.60061 1.75 7.49758 2.11711 8.23258 2.85133C8.96758 3.58556 9.3345 4.48233 9.33333 5.54167C9.33333 5.96944 9.26528 6.37292 9.12917 6.75208C8.99306 7.13125 8.80833 7.46667 8.575 7.75833L12.25 11.4333L11.4333 12.25ZM5.54167 8.16667C6.27083 8.16667 6.89072 7.91156 7.40133 7.40133C7.91194 6.89111 8.16706 6.27122 8.16667 5.54167C8.16628 4.81211 7.91117 4.19242 7.40133 3.68258C6.8915 3.17275 6.27161 2.91744 5.54167 2.91667C4.81172 2.91589 4.19203 3.17119 3.68258 3.68258C3.17314 4.19397 2.91783 4.81367 2.91667 5.54167C2.9155 6.26967 3.17081 6.88955 3.68258 7.40133C4.19436 7.91311 4.81406 8.16822 5.54167 8.16667Z"
+                                            fill="white" fill-opacity="0.23" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="playerList">
+                                <div class="playerBox" v-for="(employee, index) in filterbyEmployee"
+                                    :key="employee.playerId">
+                                    <div class="playerBoxTopSide">
+                                        <div class="PlayerProfileSide">
+                                            <img :src="employee.profilepicture" alt="" class="profileImg" />
+                                            <div class="profileTextBox">
+                                                <h2 class="profileText">{{ employee.playerName }}</h2>
+                                                <p class="profileSubText">{{ employee.boss ? Locales['Boss'] :
+                                                    Locales['Member'] }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="playerInfoSide">
+                                            <div class="playerInfo">
+                                                <h2 class="playerInfoText">{{Locales['Rank']}};</h2>
+                                                <p class="playerInfoSubText">{{ employee.jobGradeName }}</p>
+                                            </div>
+                                            <div class="playerInfo">
+                                                <h2 class="playerInfoText">{{Locales['Salary']}};</h2>
+                                                <p class="playerInfoSubText" style="color: #6dff83">{{ moneyType }} {{
+                                                    formatNumber(employee.jobSalary) }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="playerBoxBottomSide">
+                                        <div class="editButton" v-if="getPlayerPermission('editemployess')"
+                                            @click="selectedData.selectedEmployee = employee, selectedData.selectedJobName = employee.jobGradeName, currentPopup = 'playerEditPopup'">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                                                <path
+                                                    d="M10 2C10.864 2 11.664 2.27333 12.318 2.74L6.22867 8.82866C6.16499 8.89016 6.1142 8.96372 6.07927 9.04506C6.04433 9.1264 6.02594 9.21388 6.02517 9.3024C6.0244 9.39091 6.04126 9.4787 6.07478 9.56063C6.10831 9.64256 6.15781 9.717 6.2204 9.77959C6.283 9.84219 6.35743 9.89169 6.43936 9.92521C6.52129 9.95873 6.60908 9.9756 6.6976 9.97483C6.78612 9.97406 6.8736 9.95567 6.95494 9.92073C7.03627 9.88579 7.10984 9.835 7.17133 9.77133L13.2607 3.682C13.7418 4.35915 14.0002 5.1693 14 6V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V3.33333C2 2.97971 2.14048 2.64057 2.39052 2.39052C2.64057 2.14047 2.97971 2 3.33333 2H10ZM14.438 1.562C14.563 1.68702 14.6332 1.85655 14.6332 2.03333C14.6332 2.21011 14.563 2.37965 14.438 2.50466L13.26 3.682C13.0007 3.31726 12.6821 2.99861 12.3173 2.73933L13.4947 1.562C13.6197 1.43702 13.7892 1.36681 13.966 1.36681C14.1428 1.36681 14.313 1.43702 14.438 1.562Z" />
+                                            </svg>
+                                            Edit
+                                        </div>
+                                        <div class="kickButton" @click="FireEmployeePopup(employee)"
+                                            v-if="getPlayerPermission('fireemployee')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M13.3334 3.14167V16.8583C13.3333 17.0399 13.2937 17.2192 13.2173 17.3839C13.1409 17.5486 13.0296 17.6946 12.891 17.8119C12.7525 17.9292 12.5901 18.0149 12.415 18.0631C12.24 18.1113 12.0566 18.1207 11.8775 18.0908L4.72587 16.8992C4.33672 16.8343 3.9832 16.6334 3.72822 16.3324C3.47324 16.0313 3.33333 15.6495 3.33337 15.255V4.745C3.33333 4.35047 3.47324 3.96871 3.72822 3.66765C3.9832 3.36658 4.33672 3.16574 4.72587 3.10084L11.8775 1.90917C12.0567 1.87926 12.2402 1.88875 12.4152 1.93696C12.5903 1.98518 12.7528 2.07096 12.8914 2.18835C13.0299 2.30574 13.1412 2.4519 13.2176 2.61668C13.2939 2.78147 13.3334 2.96007 13.3334 3.14167ZM15 4.16667C15.4205 4.16654 15.8255 4.32534 16.1338 4.61125C16.4421 4.89716 16.631 5.28904 16.6625 5.70834L16.6667 5.83334V14.1667C16.6668 14.5871 16.508 14.9921 16.2221 15.3005C15.9362 15.6088 15.5443 15.7976 15.125 15.8292L15 15.8333H14.1667V4.16667H15ZM9.58337 8.75C9.25185 8.75 8.93391 8.8817 8.69949 9.11612C8.46507 9.35054 8.33337 9.66848 8.33337 10C8.33337 10.3315 8.46507 10.6495 8.69949 10.8839C8.93391 11.1183 9.25185 11.25 9.58337 11.25C9.91489 11.25 10.2328 11.1183 10.4673 10.8839C10.7017 10.6495 10.8334 10.3315 10.8334 10C10.8334 9.66848 10.7017 9.35054 10.4673 9.11612C10.2328 8.8817 9.91489 8.75 9.58337 8.75Z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div :class="employee.id ? 'playerOnlineStatus' : 'playerOfflineStatus'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomSide bankPage" v-if="currentPage == 'bankPage'">
+                        <div class="bankSide" :style="{ backgroundImage: `url(${getBannerImage()})` }">
+                            <div class="bankLeftSide">
+                                <div class="miniBankTitleBox">
+                                    <div class="miniBankTitleIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1.0417vw" height="1.0417vw"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <path
+                                                d="M2.54468 6.97404V9.95691H3.29021V14.4293H2.54468V16.6659H14.4732L16.7098 16.6667L17.4553 16.6659V14.4293H16.7098V9.95691H17.4553V6.97404L9.99999 2.50085L2.54468 6.97404ZM5.5268 14.4293V9.95691H7.01786V14.4293H5.5268ZM9.25446 14.4293V9.95691H10.7455V14.4293H9.25446ZM14.4732 14.4293H12.9821V9.95691H14.4732V14.4293ZM11.491 6.97404C11.491 7.1699 11.4524 7.36383 11.3774 7.54476C11.3024 7.72569 11.1925 7.89008 11.054 8.02853C10.9154 8.16699 10.751 8.27681 10.57 8.35172C10.389 8.42662 10.1951 8.46515 9.99924 8.4651C9.80338 8.46505 9.60945 8.42643 9.42852 8.35143C9.24759 8.27643 9.08321 8.16653 8.94475 8.02801C8.80629 7.88948 8.69647 7.72504 8.62157 7.54407C8.54666 7.3631 8.50813 7.16915 8.50818 6.97329C8.50828 6.57774 8.66551 6.19843 8.94527 5.9188C9.22504 5.63917 9.60443 5.48213 9.99999 5.48223C10.3955 5.48233 10.7749 5.63956 11.0545 5.91933C11.3341 6.1991 11.4911 6.57849 11.491 6.97404Z"
+                                                fill="white" fill-opacity="0.41" />
+                                        </svg>
+                                    </div>
+                                    {{Locales['BankAccount']}}
+                                </div>
+                                <div class="bankBalanceTextBox">
+                                    <h2 class="bankBalanceText">{{Locales['BankAccountBalance']}}</h2>
+
+                                    <p class="bankBalanceSubText" v-if="getPlayerPermission('bankshow')">{{ moneyType
+                                        }}{{ formatNumber(bossMenuData.jobSettings.jobMoney) }}</p>
+                                    <p class="bankBalanceSubText" v-else>{{ moneyType }} ******</p>
+                                </div>
+                            </div>
+                            <div class="bankRightSide">
+                                <div class="bankButton depositButton" @click="popupBtn('depositPopup')">
+                                    <div class="bankButtonIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="none">
+                                            <path
+                                                d="M15 6.5625H13.125V1.875C13.125 1.62636 13.2238 1.3879 13.3996 1.21209C13.5754 1.03627 13.8139 0.9375 14.0625 0.9375C14.3111 0.9375 14.5496 1.03627 14.7254 1.21209C14.9012 1.3879 15 1.62636 15 1.875V6.5625ZM22.5 14.4867V8.4375C22.5 7.94022 22.3025 7.46331 21.9508 7.11167C21.5992 6.76004 21.1223 6.5625 20.625 6.5625H15V13.6746L17.1492 11.5242C17.2363 11.4371 17.3397 11.368 17.4535 11.3209C17.5673 11.2737 17.6893 11.2495 17.8125 11.2495C17.9357 11.2495 18.0577 11.2737 18.1715 11.3209C18.2853 11.368 18.3887 11.4371 18.4758 11.5242C18.5629 11.6113 18.632 11.7147 18.6791 11.8285C18.7263 11.9423 18.7505 12.0643 18.7505 12.1875C18.7505 12.3107 18.7263 12.4327 18.6791 12.5465C18.632 12.6603 18.5629 12.7637 18.4758 12.8508L14.7258 16.6008C14.6387 16.6879 14.5353 16.7571 14.4215 16.8043C14.3077 16.8515 14.1857 16.8757 14.0625 16.8757C13.9393 16.8757 13.8173 16.8515 13.7035 16.8043C13.5897 16.7571 13.4863 16.6879 13.3992 16.6008L9.64922 12.8508C9.47331 12.6749 9.37448 12.4363 9.37448 12.1875C9.37448 11.9387 9.47331 11.7001 9.64922 11.5242C9.82513 11.3483 10.0637 11.2495 10.3125 11.2495C10.5613 11.2495 10.7999 11.3483 10.9758 11.5242L13.125 13.6746V6.5625H7.5C7.00272 6.5625 6.52581 6.76004 6.17417 7.11167C5.82254 7.46331 5.625 7.94022 5.625 8.4375V23.4375C5.625 23.6861 5.72377 23.9246 5.89959 24.1004C6.0754 24.2762 6.31386 24.375 6.5625 24.375H15.3164C15.3539 24.4535 15.3949 24.532 15.4395 24.6094L15.4676 24.6539L18.0762 28.6383C18.2123 28.8464 18.4255 28.9918 18.6689 29.0427C18.9123 29.0936 19.1659 29.0457 19.374 28.9096C19.5821 28.7734 19.7276 28.5602 19.7785 28.3168C19.8293 28.0734 19.7814 27.8198 19.6453 27.6117L17.052 23.652C16.8681 23.3273 16.8208 22.943 16.9203 22.5834C17.0199 22.2239 17.2582 21.9186 17.5828 21.7348C17.9074 21.5509 18.2918 21.5036 18.6514 21.6031C19.0109 21.7027 19.3162 21.941 19.5 22.2656C19.5082 22.2809 19.5176 22.2961 19.527 22.3102L20.7785 24.2215C20.8891 24.3902 21.0513 24.5187 21.2408 24.588C21.4303 24.6572 21.637 24.6635 21.8304 24.6058C22.0237 24.5482 22.1933 24.4297 22.3139 24.268C22.4346 24.1063 22.4998 23.91 22.5 23.7082V16.875C23.3836 17.693 24.0894 18.6842 24.5733 19.7868C25.0571 20.8894 25.3088 22.0799 25.3125 23.284V28.125C25.3125 28.3736 25.4113 28.6121 25.5871 28.7879C25.7629 28.9637 26.0014 29.0625 26.25 29.0625C26.4986 29.0625 26.7371 28.9637 26.9129 28.7879C27.0887 28.6121 27.1875 28.3736 27.1875 28.125V23.2793C27.1822 21.5426 26.7523 19.8336 25.9353 18.3011C25.1183 16.7686 23.9389 15.4591 22.5 14.4867Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="bankButtonTextBox">
+                                        <h2 class="bankButtonText">{{Locales['Deposit']}}</h2>
+                                        <p class="bankButtonSubText">{{Locales['DepositInfo']}}</p>
+                                    </div>
+                                </div>
+                                <div class="bankButton withdrawButton" @click="popupBtn('withdrawPopup')">
+                                    <div class="bankButtonIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="none">
+                                            <path
+                                                d="M15 6.5625H13.125V1.875C13.125 1.62636 13.2238 1.3879 13.3996 1.21209C13.5754 1.03627 13.8139 0.9375 14.0625 0.9375C14.3111 0.9375 14.5496 1.03627 14.7254 1.21209C14.9012 1.3879 15 1.62636 15 1.875V6.5625ZM22.5 14.4867V8.4375C22.5 7.94022 22.3025 7.46331 21.9508 7.11167C21.5992 6.76004 21.1223 6.5625 20.625 6.5625H15V13.6746L17.1492 11.5242C17.2363 11.4371 17.3397 11.368 17.4535 11.3209C17.5673 11.2737 17.6893 11.2495 17.8125 11.2495C17.9357 11.2495 18.0577 11.2737 18.1715 11.3209C18.2853 11.368 18.3887 11.4371 18.4758 11.5242C18.5629 11.6113 18.632 11.7147 18.6791 11.8285C18.7263 11.9423 18.7505 12.0643 18.7505 12.1875C18.7505 12.3107 18.7263 12.4327 18.6791 12.5465C18.632 12.6603 18.5629 12.7637 18.4758 12.8508L14.7258 16.6008C14.6387 16.6879 14.5353 16.7571 14.4215 16.8043C14.3077 16.8515 14.1857 16.8757 14.0625 16.8757C13.9393 16.8757 13.8173 16.8515 13.7035 16.8043C13.5897 16.7571 13.4863 16.6879 13.3992 16.6008L9.64922 12.8508C9.47331 12.6749 9.37448 12.4363 9.37448 12.1875C9.37448 11.9387 9.47331 11.7001 9.64922 11.5242C9.82513 11.3483 10.0637 11.2495 10.3125 11.2495C10.5613 11.2495 10.7999 11.3483 10.9758 11.5242L13.125 13.6746V6.5625H7.5C7.00272 6.5625 6.52581 6.76004 6.17417 7.11167C5.82254 7.46331 5.625 7.94022 5.625 8.4375V23.4375C5.625 23.6861 5.72377 23.9246 5.89959 24.1004C6.0754 24.2762 6.31386 24.375 6.5625 24.375H15.3164C15.3539 24.4535 15.3949 24.532 15.4395 24.6094L15.4676 24.6539L18.0762 28.6383C18.2123 28.8464 18.4255 28.9918 18.6689 29.0427C18.9123 29.0936 19.1659 29.0457 19.374 28.9096C19.5821 28.7734 19.7276 28.5602 19.7785 28.3168C19.8293 28.0734 19.7814 27.8198 19.6453 27.6117L17.052 23.652C16.8681 23.3273 16.8208 22.943 16.9203 22.5834C17.0199 22.2239 17.2582 21.9186 17.5828 21.7348C17.9074 21.5509 18.2918 21.5036 18.6514 21.6031C19.0109 21.7027 19.3162 21.941 19.5 22.2656C19.5082 22.2809 19.5176 22.2961 19.527 22.3102L20.7785 24.2215C20.8891 24.3902 21.0513 24.5187 21.2408 24.588C21.4303 24.6572 21.637 24.6635 21.8304 24.6058C22.0237 24.5482 22.1933 24.4297 22.3139 24.268C22.4346 24.1063 22.4998 23.91 22.5 23.7082V16.875C23.3836 17.693 24.0894 18.6842 24.5733 19.7868C25.0571 20.8894 25.3088 22.0799 25.3125 23.284V28.125C25.3125 28.3736 25.4113 28.6121 25.5871 28.7879C25.7629 28.9637 26.0014 29.0625 26.25 29.0625C26.4986 29.0625 26.7371 28.9637 26.9129 28.7879C27.0887 28.6121 27.1875 28.3736 27.1875 28.125V23.2793C27.1822 21.5426 26.7523 19.8336 25.9353 18.3011C25.1183 16.7686 23.9389 15.4591 22.5 14.4867Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="bankButtonTextBox">
+                                        <h2 class="bankButtonText">{{Locales['Withdraw']}}</h2>
+                                        <p class="bankButtonSubText">{{Locales['WithdrawInfo']}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bannerEffect"></div>
+                        </div>
+                        <div class="historySide">
+                            <div class="sideMenuTitle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.1458vw" height="1.1458vw"
+                                    viewBox="0 0 22 22" fill="none">
+                                    <path
+                                        d="M11 19.25C8.89167 19.25 7.05467 18.5512 5.489 17.1536C3.92333 15.756 3.02561 14.0103 2.79583 11.9167H4.675C4.88889 13.5056 5.59564 14.8194 6.79525 15.8583C7.99486 16.8972 9.39644 17.4167 11 17.4167C12.7875 17.4167 14.304 16.7942 15.5494 15.5494C16.7949 14.3046 17.4173 12.7881 17.4167 11C17.4161 9.21189 16.7936 7.69572 15.5494 6.4515C14.3052 5.20728 12.7887 4.58456 11 4.58333C9.94583 4.58333 8.96042 4.82778 8.04375 5.31667C7.12708 5.80556 6.35556 6.47778 5.72917 7.33333H8.25V9.16667H2.75V3.66667H4.58333V5.82083C5.3625 4.84306 6.31369 4.08681 7.43692 3.55208C8.56014 3.01736 9.74783 2.75 11 2.75C12.1458 2.75 13.2192 2.96786 14.2202 3.40358C15.2212 3.83931 16.0921 4.42719 16.8328 5.16725C17.5734 5.90731 18.1616 6.77814 18.5973 7.77975C19.0331 8.78136 19.2506 9.85478 19.25 11C19.2494 12.1452 19.0318 13.2186 18.5973 14.2202C18.1628 15.2219 17.5746 16.0927 16.8328 16.8328C16.0909 17.5728 15.22 18.161 14.2202 18.5973C13.2205 19.0337 12.1471 19.2512 11 19.25ZM13.5667 14.85L10.0833 11.3667V6.41667H11.9167V10.6333L14.85 13.5667L13.5667 14.85Z"
+                                        fill="white" />
+                                </svg>
+                                {{Locales['HistoryList']}}
+                            </div>
+                            <div class="historyList">
+                                <div class="miniBankHistoryItem" v-if="getPlayerPermission('banklog')"
+                                    v-for="item in bossMenuData.jobHistory.slice().reverse()"
+                                    :class="item.type == 'deposit' ? 'depositHistory' : 'withdrawHistory'  ">
+                                    <div class="miniBankHistoryLeftBox">
+                                        <div class="miniBankHistoryTitleIcon">{{ moneyType }}</div>
+                                        {{ item.type == 'deposit' ? Locales['Deposit'] : Locales['Withdraw'] }}
+                                    </div>
+                                    <h2 class="historyPlayerName">{{ item.name }} - {{ item.date }}</h2>
+                                    <div class="miniBankHistoryPrice">{{ moneyType }}{{ formatNumber(item.amount) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomSide outfitPage" v-if="currentPage == 'outfitPage'">
+                        <div class="inviteSide" :style="{ backgroundImage: `url(${getBannerImage()})` }">
+                            <div class="inviteLeftSide">
+                                <div class="miniBankTitleBox">
+                                    <div class="miniBankTitleIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1.0417vw" height="1.0417vw"
+                                            viewBox="0 0 18 18" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M5.50875 3.01275C7.82916 2.75584 10.1708 2.75584 12.4912 3.01275C13.776 3.15675 14.8125 4.1685 14.9632 5.45775C15.2382 7.81125 15.2382 10.1888 14.9632 12.5423C14.8125 13.8315 13.776 14.8433 12.4912 14.9873C10.1708 15.2442 7.82916 15.2442 5.50875 14.9873C4.224 14.8433 3.1875 13.8315 3.03675 12.5423C2.76184 10.189 2.76184 7.81175 3.03675 5.4585C3.113 4.83216 3.39853 4.24991 3.84707 3.80614C4.29561 3.36236 4.88087 3.08306 5.508 3.0135M9 5.25525C9.14918 5.25525 9.29226 5.31452 9.39775 5.42001C9.50323 5.5255 9.5625 5.66857 9.5625 5.81775V8.4375H12.1822C12.3314 8.4375 12.4745 8.49677 12.58 8.60226C12.6855 8.70775 12.7447 8.85082 12.7447 9C12.7447 9.14919 12.6855 9.29226 12.58 9.39775C12.4745 9.50324 12.3314 9.5625 12.1822 9.5625H9.5625V12.1823C9.5625 12.3314 9.50323 12.4745 9.39775 12.58C9.29226 12.6855 9.14918 12.7448 9 12.7448C8.85081 12.7448 8.70774 12.6855 8.60225 12.58C8.49676 12.4745 8.4375 12.3314 8.4375 12.1823V9.5625H5.81775C5.66856 9.5625 5.52549 9.50324 5.42 9.39775C5.31451 9.29226 5.25525 9.14919 5.25525 9C5.25525 8.85082 5.31451 8.70775 5.42 8.60226C5.52549 8.49677 5.66856 8.4375 5.81775 8.4375H8.4375V5.81775C8.4375 5.66857 8.49676 5.5255 8.60225 5.42001C8.70774 5.31452 8.85081 5.25525 9 5.25525Z"
+                                                fill="white" fill-opacity="0.41" />
+                                        </svg>
+                                    </div>
+                                    {{Locales['CreateNewOutfit']}}
+                                </div>
+                                <p class="inviteSideInfoText">{{Locales['OutfitInfo']}}</p>
+                            </div>
+                            <div class="InviteRightSide">
+                                <div class="InviteInputBox">
+                                    <input class="InviteInput" :placeholder="Locales['OutfitName']"
+                                        v-model="vModelData.nameInput" />
+                                </div>
+                                <div class="InviteButton" @click="createOutfit">{{Locales['CreateOutfit']}}</div>
+                            </div>
+                            <div class="inviteBg"></div>
+                        </div>
+                        <div class="playerSide">
+                            <div class="playerTopSide">
+                                <div class="sideMenuTitle">{{Locales['OutfitList']}}</div>
+                                <div class="searchInputBox">
+                                    <input class="searchInput" :placeholder="Locales['Search']"
+                                        v-model="vModelData.outfitNameInput" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width=".7292vw" height=".7292vw"
+                                        viewBox="0 0 14 14" fill="none">
+                                        <path
+                                            d="M11.4333 12.25L7.75833 8.575C7.46667 8.80833 7.13125 8.99305 6.75208 9.12917C6.37292 9.26528 5.96944 9.33333 5.54167 9.33333C4.48194 9.33333 3.58517 8.96622 2.85133 8.232C2.1175 7.49778 1.75039 6.601 1.75 5.54167C1.74961 4.48233 2.11672 3.58556 2.85133 2.85133C3.58594 2.11711 4.48272 1.75 5.54167 1.75C6.60061 1.75 7.49758 2.11711 8.23258 2.85133C8.96758 3.58556 9.3345 4.48233 9.33333 5.54167C9.33333 5.96944 9.26528 6.37292 9.12917 6.75208C8.99306 7.13125 8.80833 7.46667 8.575 7.75833L12.25 11.4333L11.4333 12.25ZM5.54167 8.16667C6.27083 8.16667 6.89072 7.91156 7.40133 7.40133C7.91194 6.89111 8.16706 6.27122 8.16667 5.54167C8.16628 4.81211 7.91117 4.19242 7.40133 3.68258C6.8915 3.17275 6.27161 2.91744 5.54167 2.91667C4.81172 2.91589 4.19203 3.17119 3.68258 3.68258C3.17314 4.19397 2.91783 4.81367 2.91667 5.54167C2.9155 6.26967 3.17081 6.88955 3.68258 7.40133C4.19436 7.91311 4.81406 8.16822 5.54167 8.16667Z"
+                                            fill="white" fill-opacity="0.23" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="playerList">
+                                <div class="playerBox" v-for="(item, index) in filterbyOutfit" :key="index"
+                                    :data-id="index">
+                                    <div class="playerBoxTopSide">
+                                        <div class="rankNameBox">
+                                            <div class="rankNameIcon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="1.1979vw"
+                                                    height="1.1979vw" viewBox="0 0 23 24" fill="none">
+                                                    <path
+                                                        d="M14.4472 3.40381C14.2013 4.01069 13.78 4.53045 13.2371 4.89662C12.6942 5.2628 12.0545 5.45875 11.3997 5.45943C10.7449 5.45875 10.1052 5.2628 9.56229 4.89662C9.01943 4.53045 8.59811 4.01069 8.3522 3.40381L0.890137 6.56631L2.98889 11.5142L5.29607 10.5367V20.6251H17.5853V10.5733L19.8084 11.5163L21.9071 6.56847L14.4472 3.40381Z"
+                                                        fill="white" fill-opacity="0.27" />
+                                                </svg>
+                                            </div>
+                                            <div class="rankNameTextBox">
+                                                <h2 class="rankNameText">{{ item.name }}</h2>
+                                                <p class="rankNameSubText">{{ item.gender }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="playerBoxBottomSide" style="display: flex">
+                                        <div class="editButton wearButton" @click="wearOutfit(item)">{{Locales['Wear']}}
+                                        </div>
+                                        <div class="editButton openMenuButton" @click="openOutfitMenu(item)">
+                                            {{Locales['OpenMenu']}}</div>
+                                        <div class="editIconButton" v-if="getPlayerPermission('outfit')"
+                                            @click="editOutfit(item)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                viewBox="0 0 18 18" fill="none">
+                                                <path
+                                                    d="M11.25 2.25006C12.222 2.25006 13.122 2.55756 13.8577 3.08256L7.00725 9.93231C6.93562 10.0015 6.87848 10.0843 6.83917 10.1758C6.79987 10.2673 6.77918 10.3657 6.77831 10.4653C6.77745 10.5648 6.79642 10.6636 6.83413 10.7558C6.87184 10.8479 6.92753 10.9317 6.99795 11.0021C7.06837 11.0725 7.15211 11.1282 7.24428 11.1659C7.33646 11.2036 7.43522 11.2226 7.5348 11.2217C7.63439 11.2209 7.7328 11.2002 7.8243 11.1609C7.91581 11.1216 7.99856 11.0644 8.06775 10.9928L14.9183 4.14231C15.4596 4.90411 15.7503 5.81553 15.75 6.75006V14.2501C15.75 14.6479 15.592 15.0294 15.3107 15.3107C15.0294 15.592 14.6478 15.7501 14.25 15.7501H3.75C3.35218 15.7501 2.97064 15.592 2.68934 15.3107C2.40804 15.0294 2.25 14.6479 2.25 14.2501V3.75006C2.25 3.35223 2.40804 2.9707 2.68934 2.6894C2.97064 2.40809 3.35218 2.25006 3.75 2.25006H11.25ZM16.2427 1.75731C16.3834 1.89796 16.4623 2.08869 16.4623 2.28756C16.4623 2.48643 16.3834 2.67716 16.2427 2.81781L14.9175 4.14231C14.6258 3.73198 14.2673 3.3735 13.857 3.08181L15.1815 1.75731C15.3221 1.61671 15.5129 1.53772 15.7117 1.53772C15.9106 1.53772 16.1021 1.61671 16.2427 1.75731Z"
+                                                    fill="#B9CCFF" fill-opacity="0.46" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomSide rankPage" v-if="currentPage == 'rankPage'">
+                        <div class="inviteSide">
+                            <div class="inviteLeftSide">
+                                <div class="miniBankTitleBox">
+                                    <div class="miniBankTitleIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1.0417vw" height="1.0417vw"
+                                            viewBox="0 0 18 18" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M5.50875 3.01275C7.82916 2.75584 10.1708 2.75584 12.4912 3.01275C13.776 3.15675 14.8125 4.1685 14.9632 5.45775C15.2382 7.81125 15.2382 10.1888 14.9632 12.5423C14.8125 13.8315 13.776 14.8433 12.4912 14.9873C10.1708 15.2442 7.82916 15.2442 5.50875 14.9873C4.224 14.8433 3.1875 13.8315 3.03675 12.5423C2.76184 10.189 2.76184 7.81175 3.03675 5.4585C3.113 4.83216 3.39853 4.24991 3.84707 3.80614C4.29561 3.36236 4.88087 3.08306 5.508 3.0135M9 5.25525C9.14918 5.25525 9.29226 5.31452 9.39775 5.42001C9.50323 5.5255 9.5625 5.66857 9.5625 5.81775V8.4375H12.1822C12.3314 8.4375 12.4745 8.49677 12.58 8.60226C12.6855 8.70775 12.7447 8.85082 12.7447 9C12.7447 9.14919 12.6855 9.29226 12.58 9.39775C12.4745 9.50324 12.3314 9.5625 12.1822 9.5625H9.5625V12.1823C9.5625 12.3314 9.50323 12.4745 9.39775 12.58C9.29226 12.6855 9.14918 12.7448 9 12.7448C8.85081 12.7448 8.70774 12.6855 8.60225 12.58C8.49676 12.4745 8.4375 12.3314 8.4375 12.1823V9.5625H5.81775C5.66856 9.5625 5.52549 9.50324 5.42 9.39775C5.31451 9.29226 5.25525 9.14919 5.25525 9C5.25525 8.85082 5.31451 8.70775 5.42 8.60226C5.52549 8.49677 5.66856 8.4375 5.81775 8.4375H8.4375V5.81775C8.4375 5.66857 8.49676 5.5255 8.60225 5.42001C8.70774 5.31452 8.85081 5.25525 9 5.25525Z"
+                                                fill="white" fill-opacity="0.41" />
+                                        </svg>
+                                    </div>
+                                    {{Locales['CreateNewRank']}}
+                                </div>
+                                <p class="inviteSideInfoText">{{Locales['RankInfo']}}</p>
+                            </div>
+                            <div class="InviteRightSide">
+                                <div class="InviteInputBox">
+                                    <input class="InviteInput" :placeholder="Locales['RankNameHolder']"
+                                        v-model="vModelData.rankNameInput" />
+                                </div>
+                                <div class="createRankButton" @click="createRank">{{Locales['CreateRank']}}</div>
+                            </div>
+                            <div class="inviteBg" :style="{ backgroundImage: `url(${getBannerImage()})` }"></div>
+                        </div>
+                        <div class="playerSide">
+                            <div class="playerTopSide">
+                                <div class="sideMenuTitle">{{Locales['RankList']}}</div>
+                                <div class="searchInputBox">
+                                    <input class="searchInput" :placeholder="Locales['Search']"
+                                        v-model="vModelData.rankSearchInput" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width=".7292vw" height=".7292vw"
+                                        viewBox="0 0 14 14" fill="none">
+                                        <path
+                                            d="M11.4333 12.25L7.75833 8.575C7.46667 8.80833 7.13125 8.99305 6.75208 9.12917C6.37292 9.26528 5.96944 9.33333 5.54167 9.33333C4.48194 9.33333 3.58517 8.96622 2.85133 8.232C2.1175 7.49778 1.75039 6.601 1.75 5.54167C1.74961 4.48233 2.11672 3.58556 2.85133 2.85133C3.58594 2.11711 4.48272 1.75 5.54167 1.75C6.60061 1.75 7.49758 2.11711 8.23258 2.85133C8.96758 3.58556 9.3345 4.48233 9.33333 5.54167C9.33333 5.96944 9.26528 6.37292 9.12917 6.75208C8.99306 7.13125 8.80833 7.46667 8.575 7.75833L12.25 11.4333L11.4333 12.25ZM5.54167 8.16667C6.27083 8.16667 6.89072 7.91156 7.40133 7.40133C7.91194 6.89111 8.16706 6.27122 8.16667 5.54167C8.16628 4.81211 7.91117 4.19242 7.40133 3.68258C6.8915 3.17275 6.27161 2.91744 5.54167 2.91667C4.81172 2.91589 4.19203 3.17119 3.68258 3.68258C3.17314 4.19397 2.91783 4.81367 2.91667 5.54167C2.9155 6.26967 3.17081 6.88955 3.68258 7.40133C4.19436 7.91311 4.81406 8.16822 5.54167 8.16667Z"
+                                            fill="white" fill-opacity="0.23" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="playerList" id="rankList">
+                                <div class="playerBox rankListSlot" v-if="selectedData.fakeJobRankList"
+                                    v-for="(rankList, index) in filterbyRank" :key="index" :data-id="index">
+                                    <div class="playerBoxTopSide">
+                                        <div class="rankNameBox">
+                                            <div class="rankNameIcon">
+                                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M12.032 2.07777L17.782 5.9111C17.9132 5.99865 18.0207 6.11722 18.0951 6.25631C18.1695 6.3954 18.2084 6.5507 18.2084 6.70844V18.2084C18.2084 18.9709 17.9055 19.7022 17.3663 20.2414C16.8272 20.7805 16.0959 21.0834 15.3334 21.0834H7.66675C6.90425 21.0834 6.17298 20.7805 5.63382 20.2414C5.09465 19.7022 4.79175 18.9709 4.79175 18.2084V6.70844C4.79172 6.5507 4.83064 6.3954 4.90503 6.25631C4.97942 6.11722 5.087 5.99865 5.21821 5.9111L10.9682 2.07777C11.1257 1.9727 11.3108 1.91663 11.5001 1.91663C11.6894 1.91663 11.8745 1.9727 12.032 2.07777ZM11.9285 14.4767C11.7954 14.4102 11.6488 14.3756 11.5001 14.3756C11.3514 14.3756 11.2047 14.4102 11.0717 14.4767L9.15504 15.435C8.9279 15.5487 8.7552 15.748 8.67487 15.9889C8.59455 16.2299 8.61318 16.4929 8.72666 16.7201L8.78225 16.8179C8.91116 17.014 9.10755 17.156 9.33418 17.2169C9.5608 17.2778 9.80191 17.2535 10.0118 17.1485L11.5001 16.4049L12.9884 17.1485C13.2145 17.253 13.4723 17.2653 13.7073 17.1829C13.9423 17.1005 14.136 16.9299 14.2474 16.7071C14.3588 16.4844 14.3791 16.227 14.304 15.9896C14.2289 15.7521 14.0643 15.5532 13.8451 15.435L11.9285 14.4767ZM11.9285 10.6434C11.7954 10.5769 11.6488 10.5423 11.5001 10.5423C11.3514 10.5423 11.2047 10.5769 11.0717 10.6434L9.15504 11.6017C8.9279 11.7154 8.7552 11.9146 8.67487 12.1556C8.59455 12.3966 8.61318 12.6596 8.72666 12.8868L8.78225 12.9846C8.91116 13.1807 9.10755 13.3226 9.33418 13.3836C9.5608 13.4445 9.80191 13.4202 10.0118 13.3152L11.5001 12.5715L12.9884 13.3152C13.2145 13.4196 13.4723 13.4319 13.7073 13.3496C13.9423 13.2672 14.136 13.0965 14.2474 12.8738C14.3588 12.651 14.3791 12.3937 14.304 12.1562C14.2289 11.9188 14.0643 11.7199 13.8451 11.6017L11.9285 10.6434ZM11.9285 6.81002C11.7954 6.74355 11.6488 6.70895 11.5001 6.70895C11.3514 6.70895 11.2047 6.74355 11.0717 6.81002L9.15504 7.76835C8.9279 7.88206 8.7552 8.08128 8.67487 8.32226C8.59455 8.56323 8.61318 8.82623 8.72666 9.05348L8.78225 9.15123C8.91116 9.34732 9.10755 9.4893 9.33418 9.55024C9.5608 9.61118 9.80191 9.58685 10.0118 9.48185L11.5001 8.73819L12.9884 9.48185C13.2145 9.58629 13.4723 9.59862 13.7073 9.51622C13.9423 9.43383 14.136 9.26318 14.2474 9.04044C14.3588 8.81769 14.3791 8.56034 14.304 8.32289C14.2289 8.08545 14.0643 7.88656 13.8451 7.76835L11.9285 6.81002Z"
+                                                        fill="white" fill-opacity="0.41" />
+                                                </svg>
+                                            </div>
+                                            <div class="rankNameTextBox">
+                                                <h2 class="rankNameText">{{ rankList.name }} #{{ rankList.gradeLevel }}
+                                                </h2>
+                                                <p class="rankNameSubText">{{Locales['RankDetails']}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="playerInfoSide">
+                                            <div class="playerInfo2">
+                                                <h2 class="playerInfoText">{{Locales['Players']}};</h2>
+                                                <p class="playerInfoSubText rankPlayerInfoSubText">{{
+                                                    rankList.totalPlayer }}</p>
+                                            </div>
+                                            <div class="playerInfo2">
+                                                <h2 class="playerInfoText">{{Locales['Salary']}};</h2>
+                                                <p class="playerInfoSubText" style="color: #6dff83">{{ moneyType }} {{
+                                                    formatNumber(rankList.payment) }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="playerBoxBottomSide">
+                                        <div class="editButton" @click="editBtn(rankList)"
+                                            v-if="getPlayerPermission('editrank') && bossMenuData?.jobRankList && Object.values(bossMenuData.jobRankList).some(rank => rank.name === rankList.name)">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M10 2.00001C10.864 2.00001 11.664 2.27335 12.318 2.74001L6.22867 8.82868C6.16499 8.89018 6.1142 8.96374 6.07927 9.04508C6.04433 9.12641 6.02594 9.21389 6.02517 9.30241C6.0244 9.39093 6.04126 9.47872 6.07478 9.56065C6.10831 9.64258 6.15781 9.71701 6.2204 9.77961C6.283 9.8422 6.35743 9.89171 6.43936 9.92523C6.52129 9.95875 6.60908 9.97561 6.6976 9.97484C6.78612 9.97408 6.8736 9.95569 6.95494 9.92075C7.03627 9.88581 7.10984 9.83502 7.17133 9.77134L13.2607 3.68201C13.7418 4.35916 14.0002 5.16932 14 6.00001V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V3.33335C2 2.97972 2.14048 2.64058 2.39052 2.39054C2.64057 2.14049 2.97971 2.00001 3.33333 2.00001H10ZM14.438 1.56201C14.563 1.68703 14.6332 1.85657 14.6332 2.03335C14.6332 2.21012 14.563 2.37966 14.438 2.50468L13.26 3.68201C13.0007 3.31727 12.6821 2.99862 12.3173 2.73935L13.4947 1.56201C13.6197 1.43703 13.7892 1.36682 13.966 1.36682C14.1428 1.36682 14.313 1.43703 14.438 1.56201Z"
+                                                    fill="#B9CCFF" fill-opacity="0.46" />
+                                            </svg>
+                                            {{Locales['Edit']}}
+                                        </div>
+                                        <div class="kickButton"
+                                            v-if="!rankList.isboss && getPlayerPermission('deleterank')"
+                                            @click="deleteRank(rankList)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M13.3334 3.14165V16.8583C13.3333 17.0399 13.2937 17.2192 13.2173 17.3839C13.1409 17.5486 13.0296 17.6946 12.891 17.8119C12.7525 17.9292 12.5901 18.0149 12.415 18.0631C12.24 18.1112 12.0566 18.1207 11.8775 18.0908L4.72587 16.8992C4.33672 16.8343 3.9832 16.6334 3.72822 16.3323C3.47324 16.0313 3.33333 15.6495 3.33337 15.255V4.74499C3.33333 4.35045 3.47324 3.9687 3.72822 3.66763C3.9832 3.36657 4.33672 3.16572 4.72587 3.10082L11.8775 1.90915C12.0567 1.87925 12.2402 1.88873 12.4152 1.93695C12.5903 1.98516 12.7528 2.07095 12.8914 2.18833C13.0299 2.30572 13.1412 2.45189 13.2176 2.61667C13.2939 2.78145 13.3334 2.96005 13.3334 3.14165ZM15 4.16665C15.4205 4.16652 15.8255 4.32533 16.1338 4.61123C16.4421 4.89714 16.631 5.28902 16.6625 5.70832L16.6667 5.83332V14.1667C16.6668 14.5871 16.508 14.9921 16.2221 15.3004C15.9362 15.6088 15.5443 15.7976 15.125 15.8292L15 15.8333H14.1667V4.16665H15ZM9.58337 8.74999C9.25185 8.74999 8.93391 8.88168 8.69949 9.1161C8.46507 9.35052 8.33337 9.66847 8.33337 9.99999C8.33337 10.3315 8.46507 10.6495 8.69949 10.8839C8.93391 11.1183 9.25185 11.25 9.58337 11.25C9.91489 11.25 10.2328 11.1183 10.4673 10.8839C10.7017 10.6495 10.8334 10.3315 10.8334 9.99999C10.8334 9.66847 10.7017 9.35052 10.4673 9.1161C10.2328 8.88168 9.91489 8.74999 9.58337 8.74999Z"
+                                                    fill="#FF5151" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rankSaveSide">
+                            <div class="saveButton" @click="openRankEdit" v-if="getPlayerPermission('editrank')">{{
+                                vModelData.isRankEdit ? Locales['SaveRank'] : Locales['EditRank'] }}</div>
+                        </div>
+                    </div>
+                    <div class="bottomSide settingsPage"
+                        v-if="currentPage == 'settingsPage' && bossMenuData.jobSettings"
+                        v-if="getPlayerPermission('settings')">
+                        <div class="reviewSide" :style="{ backgroundImage: `url(${getBannerImage()})` }">
+                            <div class="reviewTitleBox">
+                                <img v-if="bossMenuData.jobSettings.jobLogo" :src="getLogoImage()" alt=""
+                                    class="reviewLogo" />
+                                <h2 class="reviewTitle">{{ bossMenuData.jobSettings.jobLabel }}</h2>
+                            </div>
+                            <h2 class="reviewDescription">{{ bossMenuData.jobSettings.jobDescription }}</h2>
+                            <div class="bannerEffect"></div>
+                        </div>
+                        <div class="settingsSide">
+                            <div class="settingItemList">
+                                <div class="settingItemBox">
+                                    {{Locales['JobLabel']}};
+                                    <div class="settingItemInputBox">
+                                        <input type="text" class="settingItemInput"
+                                            :placeholder="bossMenuData.jobSettings.jobLabel"
+                                            v-model="vModelData.jobLabelInput" />
+                                        <div class="settingsTickBox">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25vw" height="1.25vw"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M21 6.99997L9 19L3.5 13.5L4.91 12.09L9 16.17L19.59 5.58997L21 6.99997Z"
+                                                    fill="#B9CCFF" fill-opacity="0.54" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settingItemBox">
+                                    {{Locales['BossMenuCordinate']}};
+                                    <div class="settingItemInputBox">
+                                        <input type="text" class="settingItemInput" :placeholder="getBossMenuCoords"
+                                            v-model="getBossMenuCoords" />
+                                        <div class="coordBtn" @click="getCoord('bossmenu')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                                                <mask id="mask0_1061_22" style="mask-type: luminance"
+                                                    maskUnits="userSpaceOnUse" x="0" y="1" width="16" height="15">
+                                                    <path
+                                                        d="M8.00065 4L12.6673 6.66667V12L8.00065 14.6667L3.33398 12V6.66667L8.00065 4Z"
+                                                        fill="white" stroke="white" stroke-width="1.33333"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.00098 2V4" stroke="white" stroke-width="1.33333"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.33398 6.66663L8.00065 9.33329L12.6673 6.66663"
+                                                        stroke="black" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M12.6673 12L14.6673 13M1.33398 13L3.33398 12"
+                                                        stroke="white" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.00098 9.33337V14.6667" stroke="black"
+                                                        stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M10.334 5.33337L12.6673 6.66671V9.33337M5.66732 5.33337L3.33398 6.66671V9.33337M5.66732 13.3334L8.00065 14.6667L10.334 13.3334"
+                                                        stroke="white" stroke-width="1.33333" stroke-linejoin="round" />
+                                                </mask>
+                                                <g mask="url(#mask0_1061_22)">
+                                                    <path d="M0 0H16V16H0V0Z" fill="#B9CCFF" />
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settingItemBox">
+                                    {{Locales['StashCordinate']}};
+                                    <div class="settingItemInputBox">
+                                        <input type="text" class="settingItemInput" :placeholder="getStashCoords"
+                                            v-model="getStashCoords" />
+                                        <div class="coordBtn" @click="getCoord('stash')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                                                <mask id="mask0_1061_22" style="mask-type: luminance"
+                                                    maskUnits="userSpaceOnUse" x="0" y="1" width="16" height="15">
+                                                    <path
+                                                        d="M8.00065 4L12.6673 6.66667V12L8.00065 14.6667L3.33398 12V6.66667L8.00065 4Z"
+                                                        fill="white" stroke="white" stroke-width="1.33333"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.00098 2V4" stroke="white" stroke-width="1.33333"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.33398 6.66663L8.00065 9.33329L12.6673 6.66663"
+                                                        stroke="black" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M12.6673 12L14.6673 13M1.33398 13L3.33398 12"
+                                                        stroke="white" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.00098 9.33337V14.6667" stroke="black"
+                                                        stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M10.334 5.33337L12.6673 6.66671V9.33337M5.66732 5.33337L3.33398 6.66671V9.33337M5.66732 13.3334L8.00065 14.6667L10.334 13.3334"
+                                                        stroke="white" stroke-width="1.33333" stroke-linejoin="round" />
+                                                </mask>
+                                                <g mask="url(#mask0_1061_22)">
+                                                    <path d="M0 0H16V16H0V0Z" fill="#B9CCFF" />
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="settingItemBox">
+                                {{Locales['JobDescription']}};
+                                <div class="settingItemInputBoxArea">
+                                    <textarea class="settingItemInputArea" name="" id=""
+                                        :placeholder="bossMenuData.jobSettings.jobDescription"
+                                        v-model="vModelData.jobDescriptionInput"></textarea>
+                                </div>
+                            </div>
+                            <div class="settingItemList">
+                                <div class="settingItemBox settingBlipBox">
+                                    BossMenu Blip
+                                    <div class="blipOpenPopupButton" @click="openBlipEdit('bossmenu')">
+                                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10 2.00001C10.864 2.00001 11.664 2.27335 12.318 2.74001L6.22867 8.82868C6.16499 8.89018 6.1142 8.96374 6.07927 9.04508C6.04433 9.12641 6.02594 9.21389 6.02517 9.30241C6.0244 9.39093 6.04126 9.47872 6.07478 9.56065C6.10831 9.64258 6.15781 9.71701 6.2204 9.77961C6.283 9.8422 6.35743 9.89171 6.43936 9.92523C6.52129 9.95875 6.60908 9.97561 6.6976 9.97484C6.78612 9.97408 6.8736 9.95569 6.95494 9.92075C7.03627 9.88581 7.10984 9.83502 7.17133 9.77134L13.2607 3.68201C13.7418 4.35916 14.0002 5.16932 14 6.00001V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V3.33335C2 2.97972 2.14048 2.64058 2.39052 2.39054C2.64057 2.14049 2.97971 2.00001 3.33333 2.00001H10ZM14.438 1.56201C14.563 1.68703 14.6332 1.85657 14.6332 2.03335C14.6332 2.21012 14.563 2.37966 14.438 2.50468L13.26 3.68201C13.0007 3.31727 12.6821 2.99862 12.3173 2.73935L13.4947 1.56201C13.6197 1.43703 13.7892 1.36682 13.966 1.36682C14.1428 1.36682 14.313 1.43703 14.438 1.56201Z" />
+                                        </svg>
+                                        Blip Edit
+                                    </div>
+                                </div>
+                                <div class="settingItemBox settingBlipBox">
+                                    Stash Blip
+                                    <div class="blipOpenPopupButton" @click="openBlipEdit('stash')">
+                                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10 2.00001C10.864 2.00001 11.664 2.27335 12.318 2.74001L6.22867 8.82868C6.16499 8.89018 6.1142 8.96374 6.07927 9.04508C6.04433 9.12641 6.02594 9.21389 6.02517 9.30241C6.0244 9.39093 6.04126 9.47872 6.07478 9.56065C6.10831 9.64258 6.15781 9.71701 6.2204 9.77961C6.283 9.8422 6.35743 9.89171 6.43936 9.92523C6.52129 9.95875 6.60908 9.97561 6.6976 9.97484C6.78612 9.97408 6.8736 9.95569 6.95494 9.92075C7.03627 9.88581 7.10984 9.83502 7.17133 9.77134L13.2607 3.68201C13.7418 4.35916 14.0002 5.16932 14 6.00001V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V3.33335C2 2.97972 2.14048 2.64058 2.39052 2.39054C2.64057 2.14049 2.97971 2.00001 3.33333 2.00001H10ZM14.438 1.56201C14.563 1.68703 14.6332 1.85657 14.6332 2.03335C14.6332 2.21012 14.563 2.37966 14.438 2.50468L13.26 3.68201C13.0007 3.31727 12.6821 2.99862 12.3173 2.73935L13.4947 1.56201C13.6197 1.43703 13.7892 1.36682 13.966 1.36682C14.1428 1.36682 14.313 1.43703 14.438 1.56201Z" />
+                                        </svg>
+                                        Blip Edit
+                                    </div>
+                                </div>
+                                <div class="settingItemBox settingImgBox">
+                                    {{Locales['JobLogo']}};
+                                    <div class="settingItemInputBox">
+                                        <input type="text" class="settingItemInput" v-if="bossMenuData.jobSettings"
+                                            :placeholder="bossMenuData.jobSettings.jobLogo"
+                                            v-model="vModelData.jobLogoInput" />
+                                        <div class="settingsTickBox">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25vw" height="1.25vw"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M21 6.99997L9 19L3.5 13.5L4.91 12.09L9 16.17L19.59 5.58997L21 6.99997Z"
+                                                    fill="#B9CCFF" fill-opacity="0.54" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settingItemBox settingImgBox">
+                                    {{Locales['JobBanner']}};
+                                    <div class="settingItemInputBox">
+                                        <input type="text" class="settingItemInput"
+                                            :placeholder="bossMenuData.jobSettings.jobBanner"
+                                            v-model="vModelData.jobBannerInput" />
+                                        <div class="settingsTickBox">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25vw" height="1.25vw"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M21 6.99997L9 19L3.5 13.5L4.91 12.09L9 16.17L19.59 5.58997L21 6.99997Z"
+                                                    fill="#B9CCFF" fill-opacity="0.54" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="saveButton" @click="saveSettings">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                <path
+                                    d="M17.5 5.83333V15.8333C17.5 16.2917 17.3369 16.6842 17.0108 17.0108C16.6847 17.3375 16.2922 17.5006 15.8333 17.5H4.16667C3.70833 17.5 3.31611 17.3369 2.99 17.0108C2.66389 16.6847 2.50056 16.2922 2.5 15.8333V4.16667C2.5 3.70833 2.66333 3.31611 2.99 2.99C3.31667 2.66389 3.70889 2.50056 4.16667 2.5H14.1667L17.5 5.83333ZM10 15C10.6944 15 11.2847 14.7569 11.7708 14.2708C12.2569 13.7847 12.5 13.1944 12.5 12.5C12.5 11.8056 12.2569 11.2153 11.7708 10.7292C11.2847 10.2431 10.6944 10 10 10C9.30556 10 8.71528 10.2431 8.22917 10.7292C7.74306 11.2153 7.5 11.8056 7.5 12.5C7.5 13.1944 7.74306 13.7847 8.22917 14.2708C8.71528 14.7569 9.30556 15 10 15ZM5 8.33333H12.5V5H5V8.33333Z" />
+                            </svg>
+                            {{Locales['Save']}}
+                        </div>
+                    </div>
+                </div>
+                <div class="bg"></div>
+                <img src="./img/generalBg.png" alt="" class="generalBg" />
+            </div>
+            <div class="creatorMenu" v-if="creatorMenuShow">
+                <div class="creatorMenuLeftSide">
+                    <div class="categorySide">
+                        <div class="titleBox">
+                            <img src="./img/title.png" alt="" class="titleImg" />
+                        </div>
+                        <div class="menuLine" style="width: 1.9792vw"></div>
+                    </div>
+                </div>
+                <div class="rightSide">
+                    <div class="topSide">
+                        <div class="menuTitle">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none">
+                                <path
+                                    d="M15.1667 10.5V3.5H24.5V10.5H15.1667ZM3.5 15.1667V3.5H12.8333V15.1667H3.5ZM15.1667 24.5V12.8333H24.5V24.5H15.1667ZM3.5 24.5V17.5H12.8333V24.5H3.5Z" />
+                            </svg>
+                            {{Locales['CreatorPage']}}
+                        </div>
+                        <div class="menuButtonTopList">
+                            <div class="menuButton" @click="closeNUICreator">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" fill="none">
+                                    <path
+                                        d="M6.31109 18.0061L4.99394 16.6889L10.2625 11.4203L4.99394 6.15174L6.31109 4.83459L11.5797 10.1032L16.8483 4.83459L18.1654 6.15174L12.8968 11.4203L18.1654 16.6889L16.8483 18.0061L11.5797 12.7375L6.31109 18.0061Z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomSide settingsPage">
+                        <div class="reviewSide" :style="{ backgroundImage: `url(${getBannerCreator()})` }">
+                            <div class="reviewTitleBox">
+                                <img :src="getLogoCreator()" alt="" class="reviewLogo" />
+                                <h2 class="reviewTitle">{{ creatorData.jobTitle }}</h2>
+                            </div>
+                            <h2 class="reviewDescription">{{ creatorData.jobDescription }}</h2>
+                            <div class="bannerEffect"></div>
+                        </div>
+                        <div class="settingsSide">
+                            <div class="settingItemList">
+                                <div class="settingItemBox">
+                                    {{Locales['JobName']}};
+                                    <div class="settingItemInputBox">
+                                        <input type="text" class="settingItemInput" v-model="creatorData.jobName"
+                                            :placeholder="Locales['JobNameHolder']" />
+                                        <div class="settingsTickBox">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25vw" height="1.25vw"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M21 6.99997L9 19L3.5 13.5L4.91 12.09L9 16.17L19.59 5.58997L21 6.99997Z"
+                                                    fill="#B9CCFF" fill-opacity="0.54" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settingItemBox">
+                                    {{Locales['JobTitle']}};
+                                    <div class="settingItemInputBox">
+                                        <input type="text" class="settingItemInput" v-model="creatorData.jobTitle"
+                                            :placeholder="Locales['JobTitleHolder']" />
+                                        <div class="settingsTickBox">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25vw" height="1.25vw"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M21 6.99997L9 19L3.5 13.5L4.91 12.09L9 16.17L19.59 5.58997L21 6.99997Z"
+                                                    fill="#B9CCFF" fill-opacity="0.54" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settingItemBox">
+                                    {{Locales['BossMenuCordinate']}};
+                                    <div class="settingItemInputBox">
+                                        <input type="text" class="settingItemInput"
+                                            :placeholder="Locales['BossMenuCordinateHolder']"
+                                            v-model="creatorData.bossMenuCoord" />
+                                        <div class="coordBtn" @click="getCoord('bossMenu')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                                                <mask id="mask0_1061_22" style="mask-type: luminance"
+                                                    maskUnits="userSpaceOnUse" x="0" y="1" width="16" height="15">
+                                                    <path
+                                                        d="M8.00065 4L12.6673 6.66667V12L8.00065 14.6667L3.33398 12V6.66667L8.00065 4Z"
+                                                        fill="white" stroke="white" stroke-width="1.33333"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.00098 2V4" stroke="white" stroke-width="1.33333"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.33398 6.66663L8.00065 9.33329L12.6673 6.66663"
+                                                        stroke="black" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M12.6673 12L14.6673 13M1.33398 13L3.33398 12"
+                                                        stroke="white" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.00098 9.33337V14.6667" stroke="black"
+                                                        stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M10.334 5.33337L12.6673 6.66671V9.33337M5.66732 5.33337L3.33398 6.66671V9.33337M5.66732 13.3334L8.00065 14.6667L10.334 13.3334"
+                                                        stroke="white" stroke-width="1.33333" stroke-linejoin="round" />
+                                                </mask>
+                                                <g mask="url(#mask0_1061_22)">
+                                                    <path d="M0 0H16V16H0V0Z" fill="#B9CCFF" />
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settingItemBox">
+                                    {{Locales['StashCordinate']}};
+                                    <div class="settingItemInputBox">
+                                        <input type="text" class="settingItemInput"
+                                            :placeholder="Locales['StashCordinateHolder']"
+                                            v-model="creatorData.stashCoord" />
+                                        <div class="coordBtn" @click="getCoord('stash')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                                                <mask id="mask0_1061_22" style="mask-type: luminance"
+                                                    maskUnits="userSpaceOnUse" x="0" y="1" width="16" height="15">
+                                                    <path
+                                                        d="M8.00065 4L12.6673 6.66667V12L8.00065 14.6667L3.33398 12V6.66667L8.00065 4Z"
+                                                        fill="white" stroke="white" stroke-width="1.33333"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.00098 2V4" stroke="white" stroke-width="1.33333"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M3.33398 6.66663L8.00065 9.33329L12.6673 6.66663"
+                                                        stroke="black" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M12.6673 12L14.6673 13M1.33398 13L3.33398 12"
+                                                        stroke="white" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M8.00098 9.33337V14.6667" stroke="black"
+                                                        stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M10.334 5.33337L12.6673 6.66671V9.33337M5.66732 5.33337L3.33398 6.66671V9.33337M5.66732 13.3334L8.00065 14.6667L10.334 13.3334"
+                                                        stroke="white" stroke-width="1.33333" stroke-linejoin="round" />
+                                                </mask>
+                                                <g mask="url(#mask0_1061_22)">
+                                                    <path d="M0 0H16V16H0V0Z" fill="#B9CCFF" />
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="settingItemBox">
+                                {{Locales['JobDescription']}};
+                                <div class="settingItemInputBoxArea">
+                                    <textarea class="settingItemInputArea" name="" id=""
+                                        :placeholder="Locales['JobDescriptionHolder']"
+                                        v-model="creatorData.jobDescription"></textarea>
+                                </div>
+                            </div>
+                            <div class="settingItemList">
+                                <div class="settingItemBox settingImgBox">
+                                    {{Locales['JobLogo']}};
+                                    <div class="settingItemInputBox">
+                                        <input type="text" class="settingItemInput"
+                                            :placeholder="Locales['JobLogoURLHolder']" v-model="creatorData.jobLogo" />
+                                        <div class="settingsTickBox">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25vw" height="1.25vw"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M21 6.99997L9 19L3.5 13.5L4.91 12.09L9 16.17L19.59 5.58997L21 6.99997Z"
+                                                    fill="#B9CCFF" fill-opacity="0.54" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settingItemBox settingImgBox">
+                                    {{Locales['JobBanner']}};
+                                    <div class="settingItemInputBox">
+                                        <input type="text" class="settingItemInput"
+                                            :placeholder="Locales['JobBannerURLHolder']"
+                                            v-model="creatorData.jobBanner" />
+                                        <div class="settingsTickBox">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1.25vw" height="1.25vw"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M21 6.99997L9 19L3.5 13.5L4.91 12.09L9 16.17L19.59 5.58997L21 6.99997Z"
+                                                    fill="#B9CCFF" fill-opacity="0.54" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="creatorButtonList">
+                            <div class="gangButtonList">
+                                <div class="gangButton" @click="creatorData.isGang = true"
+                                    :class="{ 'selectedGangButton': creatorData.isGang }">Gang</div>
+                                <div class="gangButton" @click="creatorData.isGang = false"
+                                    :class="{ 'selectedGangButton': !creatorData.isGang }">Job</div>
+                            </div>
+                            <div class="settingItemBox settingBlipBox">
+                                {{Locales['blipsText']}}
+                            </div>
+                            <div class="saveButton" @click="saveCreatorData">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                    <path
+                                        d="M17.5 5.83333V15.8333C17.5 16.2917 17.3369 16.6842 17.0108 17.0108C16.6847 17.3375 16.2922 17.5006 15.8333 17.5H4.16667C3.70833 17.5 3.31611 17.3369 2.99 17.0108C2.66389 16.6847 2.50056 16.2922 2.5 15.8333V4.16667C2.5 3.70833 2.66333 3.31611 2.99 2.99C3.31667 2.66389 3.70889 2.50056 4.16667 2.5H14.1667L17.5 5.83333ZM10 15C10.6944 15 11.2847 14.7569 11.7708 14.2708C12.2569 13.7847 12.5 13.1944 12.5 12.5C12.5 11.8056 12.2569 11.2153 11.7708 10.7292C11.2847 10.2431 10.6944 10 10 10C9.30556 10 8.71528 10.2431 8.22917 10.7292C7.74306 11.2153 7.5 11.8056 7.5 12.5C7.5 13.1944 7.74306 13.7847 8.22917 14.2708C8.71528 14.7569 9.30556 15 10 15ZM5 8.33333H12.5V5H5V8.33333Z" />
+                                </svg>
+                                {{Locales['Save']}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg"></div>
+                <img src="./img/generalBg.png" alt="" class="generalBg" />
+            </div>
+        </transition-group>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+
+    <script src="./js/app.js" type="module"></script>
+</body>
+
+</html>

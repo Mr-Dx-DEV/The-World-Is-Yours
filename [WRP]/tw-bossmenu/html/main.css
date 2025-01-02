@@ -1,0 +1,3398 @@
+@font-face {
+    font-family: TT Lakes NeueMedium;
+    src: url(./font/TTLakesNeue-Medium.ttf);
+    font-style: normal;
+}
+
+@font-face {
+    font-family: TT Lakes NeueBold;
+    src: url(./font/TTLakesNeue-Bold.ttf);
+    font-style: normal;
+}
+
+@font-face {
+    font-family: GilroyMedium;
+    src: url(./font/Gilroy-Medium_0.ttf);
+    font-style: normal;
+}
+
+@font-face {
+    font-family: GilroySBold;
+    src: url(./font/Gilroy-SemiBold_0.ttf);
+    font-style: normal;
+}
+
+@font-face {
+    font-family: GilroyRegular;
+    src: url(./font/Gilroy-Medium_0.ttf);
+    font-style: normal;
+}
+
+@font-face {
+    font-family: GilroyBold;
+    src: url(./font/Gilroy-Bold_0.ttf);
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+    /* background-image: url(./img/deletebg.png); */
+    /* background-size: cover; */
+}
+
+#app {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.General {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60.2604vw;
+    height: 37.0833vw;
+    border-radius: 0.9375vw;
+    outline: 0.625vw solid rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+}
+
+.leftSide {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    width: 12.3958vw;
+    height: 100%;
+    border-radius: 0.9375vw 0px 0px 0.9375vw;
+    background: rgba(26, 35, 45, 0.17);
+}
+
+.profileSide {
+    padding: 1.25vw 0vw;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 0.7292vw;
+    border-radius: 0.9375vw 0px 0px 0.9375vw;
+    background: rgba(26, 35, 45, 0.17);
+}
+
+.profileTextBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2083vw;
+}
+
+.profileText {
+    color: rgba(255, 255, 255, 0.8);
+    font-family: GilroySBold;
+    font-size: 0.8333vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 16.64px */
+}
+
+.profileSubText {
+    color: rgba(255, 255, 255, 0.37);
+    font-family: GilroyMedium;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 14.56px */
+}
+
+.profileImg {
+    width: 1.9792vw;
+    height: 1.9792vw;
+    border-radius: 50%;
+}
+
+.categorySide {
+    padding-left: 1.5625vw;
+    padding-top: 1.5625vw;
+    display: flex;
+    flex: 1;
+    width: 100%;
+    flex-direction: column;
+    gap: 1.5625vw;
+}
+
+.titleBox {
+    display: flex;
+    align-items: center;
+    gap: 0.9375vw;
+}
+
+.titleTextBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3646vw;
+}
+
+.titleText {
+    color: #a4b5e2;
+    font-family: TT Lakes NeueBold;
+    font-size: 1.0417vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 90%; /* 18px */
+}
+
+.titleSubText {
+    color: #fff;
+    font-family: TT Lakes NeueMedium;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 90%; /* 12.6px */
+}
+
+.titleImg {
+    width: 1.8229vw;
+    height: 1.8229vw;
+    object-fit: contain;
+    object-position: center;
+}
+
+.menuLine {
+    height: 0.0521vw;
+    width: 9.1667vw;
+    border-radius: 0.3646vw;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.categoryBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9375vw;
+    width: 100%;
+    padding-right: 1.5625vw;
+    color: #fff;
+    font-family: GilroyMedium;
+    font-size: 0.8854vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%; /* 15.3px */
+}
+
+.categoryList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4583vw;
+}
+
+.category {
+    width: 100%;
+    gap: 0.5729vw;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.category svg {
+    transition: all 0.3s ease;
+}
+
+.category .categoryText {
+    transition: all 0.3s ease;
+}
+
+.category:hover svg {
+    fill: white;
+    fill-opacity: 1;
+}
+
+.category:hover .categoryText {
+    color: white;
+    opacity: 1;
+}
+
+@keyframes categoryHover {
+    from {
+        fill-opacity: 0.27;
+        opacity: 0.27;
+    }
+    to {
+        fill-opacity: 1;
+        opacity: 1;
+    }
+}
+
+.category svg {
+    fill: white;
+    fill-opacity: 0.27;
+    width: 1.1458vw;
+    height: 1.1458vw;
+}
+
+.categoryText {
+    color: rgba(255, 255, 255, 0.27);
+    font-family: GilroyMedium;
+    font-size: 0.8854vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%; /* 15.3px */
+}
+
+.selectCategory {
+    height: 1.875vw;
+    padding: 0vw 0.5729vw;
+    width: 100%;
+    border-radius: 0.2083vw;
+    background: linear-gradient(94deg, #b9ccff -43.24%, #6f7b99 108.57%);
+}
+
+.selectCategory .categoryText {
+    color: #0e1015 !important;
+}
+
+.selectCategory svg {
+    fill: #0e1015 !important;
+    fill-opacity: 1;
+}
+
+.rightSide {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1.5625vw;
+    gap: 0.7292vw;
+    overflow: hidden;
+}
+.topSide {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.menuTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.4688vw;
+    color: #fff;
+    font-family: GilroySBold;
+    font-size: 0.9375vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 18.72px */
+}
+
+.menuTitle svg {
+    width: 1.4583vw;
+    height: 1.4583vw;
+    fill: white;
+}
+
+.menuButtonTopList {
+    display: flex;
+    gap: 0.4167vw;
+}
+
+.menuButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.875vw;
+    height: 1.875vw;
+    border-radius: 0.2476vw;
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+
+.menuButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+.menuButton:hover svg {
+    fill-opacity: 0.6;
+}
+
+.menuButton::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(45deg);
+    transition: transform 1s;
+    transform: translate(-100%, -100%);
+}
+
+.menuButton:hover::before {
+    transform: translate(100%, 100%);
+}
+
+.menuButton svg {
+    width: 1.1458vw;
+    height: 1.1458vw;
+    fill: white;
+    fill-opacity: 0.33;
+    transition: fill-opacity 0.3s ease;
+}
+
+.bottomSide {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    animation: pageAnim 0.5s ease-in-out;
+}
+
+.dashboardPage {
+    position: relative;
+    flex-direction: column;
+    gap: 1.25vw;
+}
+
+.dashbaord {
+    display: flex;
+    padding: 1.0417vw;
+    position: relative;
+    width: 100%;
+    height: 17.6563vw;
+    border-radius: 0.5208vw;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.bannerEffect {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(180deg, rgba(11, 14, 19, 0) 57.22%, rgba(11, 14, 19, 0.72) 100%);
+}
+
+.profileDetailList {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3646vw;
+    width: 14.6354vw;
+}
+
+.profileDetail {
+    display: flex;
+    padding: 0.5208vw;
+    width: fit-content;
+    border-radius: 0.2604vw;
+    background: rgba(76, 92, 105, 0.21);
+    backdrop-filter: blur(0.375vw);
+}
+
+.profileName {
+    align-items: center;
+    gap: 0.4688vw;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: GilroyMedium;
+    font-size: 0.7813vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 15.6px */
+}
+
+.profileDetailImg {
+    width: 1.25vw;
+    height: 1.25vw;
+    border-radius: 50%;
+}
+
+.details,
+.detailsBank {
+    gap: 0.3646vw;
+    flex-direction: column;
+}
+
+.detailsText {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: GilroyMedium;
+    font-size: 0.6771vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 13.52px */
+}
+
+.detailsSubText {
+    color: #fff;
+    font-family: GilroySBold;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 14.56px */
+}
+
+.detailsBank .detailsSubText {
+    color: #6dff83;
+}
+
+.dashboardRightSide {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1.0417vw;
+}
+
+.dashboardCrewDetail {
+    width: 100%;
+    display: flex;
+    gap: 1.4583vw;
+    flex: 1;
+}
+
+.crewDetailLine {
+    width: 0.0521vw;
+    height: 100%;
+    border-radius: 0.7292vw;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.crewNameSide {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5208vw;
+    flex: 1;
+}
+
+.crewName {
+    width: 100%;
+    color: #fff;
+    font-family: GilroySBold;
+    font-size: 1.5625vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 31.2px */
+}
+
+.crewDescription {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.43);
+    font-family: GilroyRegular;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 134%; /* 18.76px */
+}
+
+.dashboardButtonList {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    gap: 0.625vw;
+}
+
+.dashboardButton {
+    height: 3.125vw;
+    padding: 0.5729vw;
+    display: flex;
+    align-items: center;
+    gap: 0.5729vw;
+    border-radius: 0.2604vw;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(0.375vw);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.dashboardButton::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 3.125vw;
+    height: 3.125vw;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.dashboardButton:hover::after {
+    transform: translate(-50%, -50%) scale(8);
+}
+
+.dashboardButton .buttonArrow {
+    fill: white;
+    fill-opacity: 0.3;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dashboardButton:hover .buttonArrow {
+    fill-opacity: 0.8;
+    transform: translateX(0.2vw);
+}
+
+.dashboardButtonIcon {
+    width: 1.9792vw;
+    height: 1.9792vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.2083vw;
+    background: rgba(255, 255, 255, 0.12);
+    position: relative;
+    z-index: 1;
+}
+
+.dashboardButtonText {
+    color: #fff;
+    font-family: GilroySBold;
+    font-size: 0.8333vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 16.64px */
+    position: relative;
+    z-index: 1;
+}
+
+.dashboardSettingsButton {
+    position: relative;
+    padding-right: 2vw !important;
+}
+
+.buttonArrow {
+    position: absolute;
+    right: 0.625vw;
+    z-index: 1;
+}
+
+.dashboardLeaveButton {
+    background: rgba(229, 76, 76, 0.03) !important;
+}
+
+.dashboardLeaveButton .dashboardButtonIcon {
+    background: rgba(229, 76, 76, 0.12) !important;
+}
+
+.dashboardBottomSide {
+    padding-left: 16.9792vw;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 0.7292vw;
+}
+
+.dashboardInfoBox {
+    position: relative;
+    overflow: hidden;
+    padding: 0.8333vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 8.75vw;
+    height: 6.5625vw;
+    border-radius: 0.2604vw;
+    background: radial-gradient(154.4% 201.27% at 30.95% -94.05%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dashboardInfoBox:hover .infoArrow {
+    transform: translateX(0.3125vw);
+    fill-opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.dashboardInfoBox .infoArrow {
+    transition: all 0.3s ease;
+    fill-opacity: 0.13;
+}
+
+.dashboardInfoBox::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.dashboardInfoBox:hover::before {
+    width: 20vw;
+    height: 20vw;
+}
+
+.dashboardInfoTitleBox {
+    z-index: 3;
+    display: flex;
+    gap: 0.4167vw;
+    color: #fff;
+    font-family: GilroySBold;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 14.56px */
+}
+
+.dashboardInfoTitleIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5625vw;
+    height: 1.5625vw;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+}
+
+.dashboardInfoTitleIcon svg {
+    fill-opacity: 0.41;
+    fill: white;
+}
+
+.dashbaordInfoTextSay {
+    z-index: 3;
+    color: #b9ccff;
+    font-family: GilroyBold;
+    font-size: 1.875vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%; /* 32.4px */
+}
+
+.infoArrow {
+    z-index: 3;
+    right: 0.8333vw;
+    bottom: 0.8333vw;
+    position: absolute;
+}
+
+.dashbaordInfoBg {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.outfitBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4063vw;
+    height: 1.4063vw;
+    border-radius: 0.1563vw;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.dashboardInviteSide {
+    padding: 0.8333vw;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    height: 5.1042vw;
+    border-radius: 0.2604vw;
+    background: radial-gradient(34.05% 181.64% at -5.35% 45.92%, rgba(185, 204, 255, 0.2) 0%, rgba(185, 204, 255, 0) 100%), radial-gradient(72.54% 228.58% at 52.06% 255.61%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.02);
+}
+
+.dashboardInviteLeftBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4167vw;
+}
+
+.dashboardInviteInfoText {
+    width: 14.4271vw;
+    color: rgba(255, 255, 255, 0.24);
+    font-family: GilroyRegular;
+    font-size: 0.625vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 122%; /* 14.64px */
+}
+
+.dashboardInviteRightBox {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.dashboardInviteInputBox {
+    position: relative;
+    width: 9.8438vw;
+    height: 1.5625vw;
+}
+
+.dashboardInviteInput {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    border-radius: 0.1563vw;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.774);
+    font-family: GilroyMedium;
+    font-size: 0.625vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 122%; /* 14.64px */
+    transition: background 0.3s ease;
+}
+
+.dashboardInviteInput:focus {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.dashboardInviteButton {
+    border-radius: 0.1563vw;
+    width: 9.8438vw;
+    height: 1.3542vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(94deg, #b9ccff -43.24%, #6f7b99 108.57%);
+    gap: 0.3646vw;
+    color: #0e1015;
+    font-family: GilroyMedium;
+    font-size: 0.5729vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 11.44px */
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.dashboardInviteButton::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    transition: transform 1s;
+    transform: translate(-100%, -100%);
+}
+
+.dashboardInviteButton:hover::before {
+    transform: translate(100%, 100%);
+}
+
+.generalBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.bg {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(246deg, rgba(15, 18, 26, 0.95) -21.29%, rgba(9, 11, 16, 0.95) 66.03%);
+}
+
+.miniBankSide {
+    padding: 1.0417vw;
+    gap: 1.0417vw;
+    display: flex;
+    flex-direction: column;
+    left: 0.4688vw;
+    bottom: 0;
+    position: absolute;
+    z-index: 5;
+    width: 15.2604vw;
+    height: 17.9688vw;
+    border-radius: 0.4688vw;
+    background: linear-gradient(180deg, rgba(185, 204, 255, 0.01) 0%, rgba(185, 204, 255, 0.16) 100%);
+    backdrop-filter: blur(0.5885vw);
+}
+
+.miniBankTopSide {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.miniBankTitleBox {
+    display: flex;
+    align-items: center;
+    gap: 0.5208vw;
+    color: #fff;
+    font-family: GilroySBold;
+    font-size: 0.8333vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 16.64px */
+}
+
+.miniBankTitleIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.875vw;
+    height: 1.875vw;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.miniBankResize {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5625vw;
+    height: 1.5625vw;
+    border-radius: 0.2063vw;
+    background: rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.miniBankResize:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.miniBankResize svg {
+    fill: white;
+    fill-opacity: 0.33;
+}
+
+.miniBankBalanceBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2083vw;
+}
+
+.miniBankBalanceText {
+    color: rgba(255, 255, 255, 0.44);
+    font-family: GilroyMedium;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 14.56px */
+}
+
+.miniBankBalanceSubText {
+    color: #6dff83;
+    font-family: GilroySBold;
+    font-size: 1.5625vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 31.2px */
+}
+
+.miniBankButtonSide {
+    width: 100%;
+    gap: 0.3646vw;
+    display: flex;
+}
+
+.miniBankButton {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 1.9792vw;
+    justify-content: center;
+    border-radius: 0.2604vw;
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.54);
+    text-align: center;
+    font-family: GilroyMedium;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 14.56px */
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.miniBankButton::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.miniBankButton:hover::before {
+    width: 20vw;
+    height: 20vw;
+}
+
+.miniBankHistoryList {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    gap: 0.3125vw;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.miniBankHistoryItem {
+    position: relative;
+    padding-left: 0.3646vw;
+    padding-right: 0.4688vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 2.0313vw;
+    border-radius: 0.2083vw;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.depositHistory .miniBankHistoryLeftBox .miniBankHistoryTitleIcon {
+    background: rgba(109, 255, 131, 0.04);
+    color: #6dff83;
+}
+
+.withdrawHistory .miniBankHistoryLeftBox .miniBankHistoryTitleIcon {
+    background: rgba(255, 109, 109, 0.04);
+
+    color: #ff6d6d;
+}
+
+.miniBankHistoryLeftBox {
+    width: 12vw;
+    display: flex;
+    align-items: center;
+    gap: 0.3646vw;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: GilroyMedium;
+    font-size: 0.6434vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 12.847px */
+}
+
+.miniBankHistoryTitleIcon {
+    width: 1.3021vw;
+    height: 1.3021vw;
+    border-radius: 0.1042vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: GilroySBold;
+    font-size: 0.6434vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 12.847px */
+}
+
+.miniBankHistoryPrice {
+    width: fit-content;
+    height: 1.0938vw;
+    padding: 0vw 0.3125vw;
+    border-radius: 0.1563vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: GilroySBold;
+    font-size: 0.6434vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 12.847px */
+}
+
+.depositHistory .miniBankHistoryPrice {
+    background: rgba(109, 255, 131, 0.07);
+    color: #6dff83;
+}
+
+.withdrawHistory .miniBankHistoryPrice {
+    background: rgba(255, 109, 109, 0.07);
+    color: #ff6d6d;
+}
+
+.employeePage,
+.rankPage {
+    flex-direction: column;
+    gap: 0.9375vw;
+}
+
+.inviteSide {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.0417vw;
+    position: relative;
+    width: 100%;
+    height: 6.4063vw;
+    border-radius: 0.5208vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.inviteBg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(11, 14, 19, 0.45);
+}
+
+.inviteLeftSide {
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7813vw;
+    justify-content: space-between;
+}
+
+.inviteSideInfoText {
+    color: rgba(255, 255, 255, 0.45);
+    font-family: GilroyRegular;
+    width: 14.4271vw;
+    font-size: 0.625vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 122%; /* 14.64px */
+}
+
+.InviteRightSide {
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.InviteInputBox {
+    position: relative;
+    width: 11.875vw;
+    height: 1.8849vw;
+}
+
+.InviteInput {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    border-radius: 0.1563vw;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.774);
+    font-family: GilroyMedium;
+    font-size: 0.754vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 122%; /* 14.64px */
+    transition: background 0.3s ease;
+    backdrop-filter: blur(0.5vw);
+}
+
+.InviteInput:focus {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.InviteButton {
+    border-radius: 0.1563vw;
+    width: 11.875vw;
+    height: 1.6336vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(94deg, #b9ccff -43.24%, #6f7b99 108.57%);
+    gap: 0.3646vw;
+    color: #0e1015;
+    font-family: GilroyMedium;
+    font-size: 0.6911vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 11.44px */
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.InviteButton::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    transition: transform 1s;
+    transform: translate(-100%, -100%);
+}
+
+.InviteButton:hover::before {
+    transform: translate(100%, 100%);
+}
+
+.playerSide {
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625vw;
+}
+
+.playerTopSide {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.sideMenuTitle {
+    gap: 0.4688vw;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-family: GilroyMedium;
+    font-size: 0.754vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 122%; /* 17.661px */
+}
+
+.searchInputBox {
+    display: flex;
+    align-items: center;
+    width: 10.4688vw;
+    height: 1.3542vw;
+    position: relative;
+}
+
+.searchInput {
+    padding-left: 1.4583vw;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: 0.2604vw;
+    background: radial-gradient(357.74% 527.74% at 79.6% -280.77%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.795);
+    font-family: GilroyMedium;
+    font-size: 0.6vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 10.4px */
+    transition: background 0.3s ease;
+}
+
+.searchInput:focus {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.searchInputBox svg {
+    position: absolute;
+    left: 0.3vw;
+}
+
+.playerList {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    align-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 0.5729vw;
+}
+
+.playerBox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 14.5313vw;
+    height: fit-content;
+    border-radius: 0.2604vw;
+    background: radial-gradient(149.28% 201.56% at 50% -95.24%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.01);
+}
+
+.playerOnlineStatus {
+    position: absolute;
+    top: 0.5729vw;
+    right: 0.5729vw;
+    width: 0.3125vw;
+    height: 0.3125vw;
+    border-radius: 0.8333vw;
+    background: #6dff83;
+    box-shadow: 0px 0px 0.8281vw 0px #6dff83;
+}
+
+.playerOfflineStatus {
+    position: absolute;
+    top: 0.5729vw;
+    right: 0.5729vw;
+    width: 0.3125vw;
+    height: 0.3125vw;
+    border-radius: 0.8333vw;
+    background: #ff6d6d;
+    box-shadow: 0px 0px 0.8281vw 0px #ff6d6d;
+}
+
+.playerBoxBottomSide {
+    width: 100%;
+    display: flex;
+}
+
+.editButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 1.7188vw;
+    gap: 0.2604vw;
+    border-radius: 0px 0px 0px 0.2604vw;
+    background: rgba(185, 204, 255, 0.06);
+    color: rgba(185, 204, 255, 0.46);
+    font-family: GilroyMedium;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 14.56px */
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.editButton:hover {
+    background: rgba(185, 204, 255, 0.1);
+}
+
+.editButton::before {
+    content: "";
+    position: absolute;
+    left: -2vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.5vw;
+    height: 0.5vw;
+    background: rgba(185, 204, 255, 0.2);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.editButton:hover::before {
+    width: 20vw;
+    height: 20vw;
+    left: -0.5vw;
+}
+
+.editButton svg {
+    width: 0.8333vw;
+    height: 0.8333vw;
+    fill: rgba(185, 204, 255, 0.46);
+}
+
+.kickButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7188vw;
+    height: 1.7188vw;
+    border-radius: 0px 0px 0.2604vw 0px;
+    background: rgba(255, 81, 81, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.kickButton:hover {
+    background: rgba(255, 81, 81, 0.3);
+}
+
+.kickButton svg {
+    width: 1.0417vw;
+    height: 1.0417vw;
+    fill: rgba(255, 81, 81, 0.46);
+    transition: fill 0.3s ease;
+}
+
+.kickButton:hover svg {
+    fill: rgba(255, 81, 81, 0.7);
+}
+
+.playerBoxTopSide {
+    gap: 0.9375vw;
+    flex: 1;
+    padding: 1.0417vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.PlayerProfileSide {
+    width: 100%;
+    justify-content: left;
+    display: flex;
+    align-items: center;
+    gap: 0.7292vw;
+}
+
+.profileTextBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2083vw;
+}
+
+.profileText {
+    color: rgba(255, 255, 255, 0.8);
+    font-family: GilroySBold;
+    font-size: 0.8333vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 16.64px */
+}
+
+.profileSubText {
+    color: rgba(255, 255, 255, 0.37);
+    font-family: GilroyMedium;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 14.56px */
+}
+
+.profileImg {
+    width: 1.9792vw;
+    height: 1.9792vw;
+    border-radius: 50%;
+}
+
+.playerInfoSide {
+    display: flex;
+    width: 100%;
+    gap: 0.5208vw;
+}
+
+.playerInfo,
+.playerInfo2 {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5729vw;
+    display: flex;
+    min-width: 5.6771vw;
+    width: fit-content;
+    height: 2.9167vw;
+    border-radius: 0.2604vw;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.playerInfoText {
+    color: rgba(255, 255, 255, 0.53);
+    font-family: GilroyRegular;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 104%; /* 14.56px */
+}
+
+.playerInfoSubText {
+    color: #fff;
+    font-family: GilroySBold;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 14.56px */
+}
+
+.createRankButton {
+    border-radius: 0.1563vw;
+    width: 11.875vw;
+    height: 1.6336vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(94deg, #bcffb9 -43.24%, #6f9971 108.57%);
+
+    gap: 0.3646vw;
+    color: #0e1015;
+    font-family: GilroyMedium;
+    font-size: 0.6911vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 11.44px */
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.createRankButton::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    transition: transform 1s;
+    transform: translate(-100%, -100%);
+}
+
+.createRankButton:hover::before {
+    transform: translate(100%, 100%);
+}
+
+.rankNameBox {
+    display: flex;
+    align-items: center;
+    gap: 0.6771vw;
+}
+
+.rankNameIcon {
+    width: 2.2396vw;
+    height: 2.2396vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.rankNameTextBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2917vw;
+}
+
+.rankNameText {
+    color: #fff;
+    font-family: GilroySBold;
+    font-size: 0.8709vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 17.391px */
+}
+
+.rankNameSubText {
+    color: rgba(255, 255, 255, 0.48);
+    font-family: GilroyRegular;
+    font-size: 0.7465vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 104%; /* 14.907px */
+}
+
+.playerInfo2 {
+    flex: 1;
+    height: 3.125vw !important;
+}
+
+.rankPlayerInfoSubText {
+    color: #b9ccff;
+    font-family: GilroyBold;
+    font-size: 1.0417vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%; /* 18px */
+}
+
+.bankPage {
+    position: relative;
+    flex-direction: column;
+}
+
+.outfitPage {
+    position: relative;
+    flex-direction: column;
+    gap: 0.9375vw;
+}
+
+.bankSide {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 1.5104vw;
+    padding-bottom: 5.4688vw !important;
+    height: 17.6563vw;
+    width: 100%;
+    border-radius: 0.5208vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.bankLeftSide {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bankBalanceTextBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3802vw;
+}
+
+.bankBalanceText {
+    color: rgba(255, 255, 255, 0.44);
+    font-family: GilroyMedium;
+    font-size: 1.2396vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 24.752px */
+}
+
+.bankBalanceSubText {
+    color: #6dff83;
+    font-family: GilroySBold;
+    font-size: 2.6563vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 53.04px */
+}
+
+.bankRightSide {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4688vw;
+}
+
+.bankButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0vw 0.9375vw;
+    width: 11.8229vw;
+    gap: 0.7292vw;
+    height: 4.8438vw;
+    border-radius: 0.2604vw;
+    backdrop-filter: blur(0.5104vw);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.bankButton::before {
+    content: "";
+    position: absolute;
+    left: -10vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0vw;
+    height: 0vw;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+.depositButton::before {
+    background: rgba(109, 255, 131, 0.1);
+}
+
+.withdrawButton::before {
+    background: rgba(255, 109, 109, 0.1);
+}
+
+.bankButton:hover::before {
+    width: 25vw;
+    height: 25vw;
+}
+
+.depositButton {
+    background: radial-gradient(56.39% 137.63% at 0% 49.46%, rgba(109, 255, 131, 0.2) 0%, rgba(109, 255, 131, 0) 100%), rgba(76, 92, 105, 0.04);
+}
+
+.withdrawButton {
+    background: radial-gradient(147.85% 60.57% at 0% 49.46%, rgba(255, 109, 109, 0.2) 0%, rgba(255, 109, 109, 0) 100%), rgba(76, 92, 105, 0.04);
+}
+
+.bankButtonIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.9688vw;
+    height: 2.9688vw;
+    border-radius: 0.2604vw;
+    background: rgba(76, 92, 105, 0.21);
+}
+
+.bankButtonIcon svg {
+    width: 1.5625vw;
+    height: 1.5625vw;
+}
+
+.depositButton .bankButtonIcon svg {
+    fill: #6dff83;
+}
+
+.withdrawButton .bankButtonIcon svg {
+    fill: #ff6d6d;
+    transform: rotate(180deg);
+}
+
+.bankButtonTextBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2604vw;
+}
+
+.withdrawButton .bankButtonText {
+    color: #ff6d6d;
+}
+
+.depositButton .bankButtonText {
+    color: #6dff83;
+}
+
+.bankButtonTextDeposit {
+    font-family: TT Lakes NeueBold;
+    font-size: 0.9375vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 104%; /* 18.72px */
+    color: #6dff83;
+}
+
+.bankButtonText {
+    font-family: TT Lakes NeueBold;
+    font-size: 0.9375vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 104%; /* 18.72px */
+}
+
+.bankButtonTextWithdraw {
+    font-family: TT Lakes NeueBold;
+    font-size: 0.9375vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 104%; /* 18.72px */
+    color: #ff6d6d;
+}
+
+.bankButtonSubText {
+    color: rgba(255, 255, 255, 0.45);
+    font-family: TT Lakes NeueMedium;
+    font-size: 0.625vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 104%; /* 12.48px */
+}
+
+.historySide {
+    gap: 0.8333vw;
+    left: 0.4688vw;
+    position: absolute;
+    z-index: 4;
+    width: 43.8021vw;
+    height: 17.9688vw;
+    bottom: 0;
+    border-radius: 0.4688vw;
+    background: linear-gradient(180deg, rgba(185, 204, 255, 0.01) 0%, rgba(185, 204, 255, 0.16) 100%);
+    backdrop-filter: blur(0.5885vw);
+    padding: 1.0417vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.historyList {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    gap: 0.3125vw;
+}
+
+.historyPlayerName {
+    color: rgba(255, 255, 255, 0.35);
+    font-family: GilroyMedium;
+    font-size: 0.7432vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%; /* 12.843px */
+}
+
+.settingsPage {
+    align-items: flex-end;
+    position: relative;
+    gap: 1.1458vw;
+    flex-direction: column;
+}
+
+.reviewSide {
+    padding: 1.3542vw;
+    gap: 0.4688vw;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 11.0417vw;
+    border-radius: 0.5208vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.reviewTitleBox {
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.7813vw;
+}
+
+.reviewLogo {
+    width: 1.6667vw;
+    height: 1.6667vw;
+    object-fit: contain;
+    object-position: center;
+}
+
+.reviewTitle {
+    color: #fff;
+    font-family: GilroySBold;
+    font-size: 1.5625vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 31.2px */
+}
+
+.reviewDescription {
+    z-index: 3;
+    color: rgba(255, 255, 255, 0.43);
+    font-family: GilroyRegular;
+    width: 26.3021vw;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 134%; /* 18.76px */
+}
+
+.settingsSide {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.5729vw;
+}
+
+.settingItemBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5729vw;
+    color: #fff;
+    font-family: GilroyMedium;
+    font-size: 0.7542vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 134%; /* 19.403px */
+}
+
+.settingImgBox {
+    flex: 2;
+}
+
+.settingBlipBox {
+    flex: 1;
+}
+
+.settingItemInputBox {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    height: 2.2917vw;
+}
+
+.settingItemInput {
+    padding-left: 0.8vw;
+    padding-right: 2vw;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: 0.2604vw;
+    background: radial-gradient(357.74% 527.74% at 79.6% -280.77%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.784);
+    font-family: GilroyMedium;
+    font-size: 0.8vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 134%; /* 19.403px */
+    transition: all 0.3s ease;
+}
+
+.settingItemInput:focus {
+    background: radial-gradient(357.74% 527.74% at 79.6% -280.77%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.04);
+}
+
+.settingItemInputBox .settingsTickBox {
+    position: absolute;
+    right: 0.55vw;
+}
+
+.settingItemInputArea {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border-radius: 0.2604vw;
+    background: radial-gradient(357.74% 527.74% at 79.6% -280.77%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.812);
+    font-family: GilroyMedium;
+    font-size: 0.7542vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 134%; /* 19.403px */
+    padding: 0.6771vw;
+    transition: all 0.3s ease;
+}
+.settingItemInputArea:focus {
+    background: radial-gradient(357.74% 527.74% at 79.6% -280.77%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.04);
+}
+
+.settingItemInputBoxArea {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    height: 5.4688vw;
+}
+
+.settingItemList {
+    width: 100%;
+    display: flex;
+    gap: 0.7813vw;
+}
+
+.saveButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14.3229vw;
+    height: 2.1875vw;
+    border-radius: 0.2604vw;
+    background: rgba(127, 255, 140, 0.08);
+    gap: 0.3125vw;
+    color: rgba(127, 255, 140, 0.49);
+    font-family: GilroyMedium;
+    font-size: 0.7432vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%; /* 12.843px */
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.saveButton:hover {
+    background: rgba(127, 255, 140, 0.15);
+    color: rgba(127, 255, 140, 0.8);
+}
+
+.saveButton:active {
+    transform: scale(0.98);
+}
+
+.saveButton::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(127, 255, 140, 0.1), transparent);
+    transform: translateX(-100%);
+}
+
+.saveButton:hover::after {
+    animation: shimmer 1s ease-in-out;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.saveButton svg {
+    width: 1.0417vw;
+    height: 1.0417vw;
+    fill: #7fff8c;
+    fill-opacity: 0.49;
+    transition: fill-opacity 0.2s ease;
+}
+
+.saveButton:hover svg {
+    fill-opacity: 0.8;
+}
+
+.popupSide {
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.9375vw;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.popupBox {
+    position: absolute;
+    border-radius: 0.4688vw;
+    background: #1a1e23;
+}
+.playerEdit {
+    padding: 1.25vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1458vw;
+    width: 21.9792vw;
+    height: 20vw;
+}
+
+.popupProfileText {
+    font-size: 0.9583vw !important;
+}
+
+.popupProfileSubText {
+    font-size: 0.8385vw !important;
+}
+
+.popupProfileImg {
+    width: 2.3958vw;
+    height: 2.3958vw;
+}
+
+.playerRankEditListBox {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    color: #fff;
+    gap: 0.625vw;
+    overflow: hidden;
+}
+
+.menusubtitle {
+    font-family: GilroyMedium;
+    font-size: 0.8333vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 16.64px */
+}
+
+.playerRankEditList {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5208vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    .checkbox-wrapper-13 input[type="checkbox"] {
+        --active: #b9ccff;
+        --active-inner: #1f1f1f;
+        --focus: 0.1042vw rgb(185, 204, 255, 0.3);
+        --border: ##ffffff17;
+        --border-hover: #b9ccff;
+        --background: #ffffff17;
+        --disabled: #ffffff17;
+        --disabled-inner: #ffffff17;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        height: 1.0938vw;
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        margin: 0;
+        cursor: pointer;
+        border: 0.0521vw solid var(--bc, var(--border));
+        background: var(--b, var(--background));
+
+        transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:after {
+        content: "";
+        display: block;
+        left: 0;
+        top: 0;
+        position: absolute;
+        transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:checked {
+        --b: var(--active);
+        --bc: var(--active);
+        --d-o: 0.3s;
+        --d-t: 0.6s;
+        --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:disabled {
+        --b: var(--disabled);
+        cursor: not-allowed;
+        opacity: 0.9;
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:disabled:checked {
+        --b: var(--disabled-inner);
+        --bc: var(--border);
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:disabled + label {
+        cursor: not-allowed;
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:hover:not(:checked):not(:disabled) {
+        --bc: var(--border-hover);
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:focus {
+        box-shadow: 0 0 0 var(--focus);
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:not(.switch) {
+        width: 1.0938vw;
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:not(.switch):after {
+        opacity: var(--o, 0);
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:not(.switch):checked {
+        --o: 1;
+    }
+    .checkbox-wrapper-13 input[type="checkbox"] + label {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    .checkbox-wrapper-13 input[type="checkbox"]:not(.switch) {
+        border-radius: 50%;
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:not(.switch):after {
+        width: 0.2604vw;
+        height: 0.4688vw;
+        border: 0.1042vw solid var(--active-inner);
+        border-top: 0;
+        border-left: 0;
+        left: 0.3646vw;
+        top: 0.2083vw;
+        transform: rotate(var(--r, 20deg));
+    }
+    .checkbox-wrapper-13 input[type="checkbox"]:not(.switch):checked {
+        --r: 43deg;
+    }
+}
+
+.checkbox-wrapper-13 * {
+    box-sizing: inherit;
+}
+.checkbox-wrapper-13 *:before,
+.checkbox-wrapper-13 *:after {
+    box-sizing: inherit;
+}
+
+.playerRankItem {
+    padding: 0vw 0.5208vw;
+    display: flex;
+    align-items: center;
+    width: 9.4792vw;
+    height: 1.7188vw;
+    border-radius: 0.2604vw;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.checkbox-wrapper-13 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkbox-wrapper-13 label {
+    color: #fff;
+    font-family: GilroyMedium;
+    font-size: 0.75vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 14.56px */
+}
+
+.popupSaveButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.1875vw;
+    border-radius: 0.2604vw;
+    background: rgba(127, 255, 140, 0.08);
+    gap: 0.3125vw;
+    color: rgba(127, 255, 140, 0.49);
+    font-family: GilroyMedium;
+    font-size: 0.8vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%; /* 12.843px */
+    transition: 0.3s;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.popupSaveButton svg {
+    width: 1.0417vw;
+    height: 1.0417vw;
+    fill: #7fff8c;
+    fill-opacity: 0.49;
+    transition: 0.3s;
+}
+
+.popupSaveButton:hover {
+    background: rgba(127, 255, 140, 0.15);
+    color: rgba(127, 255, 140, 0.8);
+}
+
+.popupSaveButton:active {
+    transform: scale(0.98);
+}
+
+.popupSaveButton::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(127, 255, 140, 0.1), transparent);
+    transform: translateX(-100%);
+}
+
+.popupSaveButton:hover::after {
+    animation: shimmer 1s ease-in-out;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.exitBox {
+    z-index: 1;
+    top: 1.25vw;
+    right: 1.25vw;
+    position: absolute;
+}
+
+.rankEdit {
+    gap: 0.8333vw;
+    padding: 1.25vw;
+    display: flex;
+    flex-direction: column;
+    width: 24.9479vw;
+    height: 24.0625vw;
+}
+
+.rankEditTopSide {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.rankEditPlayerBox {
+    padding: 0.5208vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 0.2604vw;
+    width: 5.2604vw;
+    height: 3.125vw;
+    background: rgba(255, 255, 255, 0.03);
+    color: #fff;
+    font-family: GilroyMedium;
+    font-size: 0.6771vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 13.52px */
+}
+
+.rankEditPlayerSay {
+    color: #b9ccff;
+    font-family: GilroyBold;
+    font-size: 1.0417vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%; /* 18px */
+}
+
+.rankEditListBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5729vw;
+    color: #fff;
+    font-family: GilroyMedium;
+    font-size: 0.8333vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 16.64px */
+    flex: 1;
+    overflow: hidden;
+}
+
+.rankEditList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6vw;
+    align-content: flex-start;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    flex: 1;
+}
+
+.rankEditBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5208vw;
+    width: 5.1563vw;
+    height: 3.3333vw;
+    border-radius: 0.2604vw;
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.66);
+    font-family: GilroySBold;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 14.56px */
+}
+
+.checkbox-wrapper-7 .tgl {
+    display: none;
+}
+.checkbox-wrapper-7 .tgl,
+.checkbox-wrapper-7 .tgl:after,
+.checkbox-wrapper-7 .tgl:before,
+.checkbox-wrapper-7 .tgl *,
+.checkbox-wrapper-7 .tgl *:after,
+.checkbox-wrapper-7 .tgl *:before,
+.checkbox-wrapper-7 .tgl + .tgl-btn {
+    box-sizing: border-box;
+}
+.checkbox-wrapper-7 .tgl::-moz-selection,
+.checkbox-wrapper-7 .tgl:after::-moz-selection,
+.checkbox-wrapper-7 .tgl:before::-moz-selection,
+.checkbox-wrapper-7 .tgl *::-moz-selection,
+.checkbox-wrapper-7 .tgl *:after::-moz-selection,
+.checkbox-wrapper-7 .tgl *:before::-moz-selection,
+.checkbox-wrapper-7 .tgl + .tgl-btn::-moz-selection,
+.checkbox-wrapper-7 .tgl::selection,
+.checkbox-wrapper-7 .tgl:after::selection,
+.checkbox-wrapper-7 .tgl:before::selection,
+.checkbox-wrapper-7 .tgl *::selection,
+.checkbox-wrapper-7 .tgl *:after::selection,
+.checkbox-wrapper-7 .tgl *:before::selection,
+.checkbox-wrapper-7 .tgl + .tgl-btn::selection {
+    background: none;
+}
+.checkbox-wrapper-7 .tgl + .tgl-btn {
+    outline: 0;
+    display: block;
+    width: 2.6042vw;
+    height: 1.0417vw;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.checkbox-wrapper-7 .tgl + .tgl-btn:after,
+.checkbox-wrapper-7 .tgl + .tgl-btn:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+}
+.checkbox-wrapper-7 .tgl + .tgl-btn:after {
+    left: 0;
+}
+.checkbox-wrapper-7 .tgl + .tgl-btn:before {
+    display: none;
+}
+.checkbox-wrapper-7 .tgl:checked + .tgl-btn:after {
+    left: 67%;
+}
+
+.checkbox-wrapper-7 .tgl-ios + .tgl-btn {
+    border: 0.0521vw solid rgba(255, 89, 89, 0.13);
+    background: radial-gradient(357.74% 527.74% at 79.6% -280.77%, rgba(255, 89, 89, 0.1) 0%, rgba(255, 89, 89, 0) 100%), rgba(255, 89, 89, 0.04);
+
+    border-radius: 0.2604vw;
+    padding: 0.1042vw;
+    transition: all 0.4s ease;
+}
+.checkbox-wrapper-7 .tgl-ios + .tgl-btn:after {
+    border-radius: 0.2083vw;
+    width: 0.7292vw;
+    background: linear-gradient(94deg, #ffb9b9 -43.24%, #996f6f 108.57%);
+    transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+    box-shadow: 0 0 0 0.0521vw rgba(0, 0, 0, 0.1), 0 0.2083vw 0 rgba(0, 0, 0, 0.08);
+}
+.checkbox-wrapper-7 .tgl-ios + .tgl-btn:hover:after {
+    will-change: padding;
+}
+.checkbox-wrapper-7 .tgl-ios + .tgl-btn:active {
+    box-shadow: inset 0 0 0 2em #e8eae9;
+}
+.checkbox-wrapper-7 .tgl-ios + .tgl-btn:active:after {
+    padding-right: 0.1em;
+}
+.checkbox-wrapper-7 .tgl-ios:checked + .tgl-btn {
+    border: 0.0521vw solid rgba(185, 204, 255, 0.13);
+    background: radial-gradient(357.74% 527.74% at 79.6% -280.77%, rgba(185, 204, 255, 0.1) 0%, rgba(185, 204, 255, 0) 100%), rgba(185, 204, 255, 0.04);
+}
+.checkbox-wrapper-7 .tgl-ios:checked + .tgl-btn:active {
+    box-shadow: none;
+}
+.checkbox-wrapper-7 .tgl-ios:checked + .tgl-btn:active:after {
+    margin-left: -0.1em;
+}
+
+.checkbox-wrapper-7 .tgl-ios:checked + .tgl-btn:after {
+    background: linear-gradient(94deg, #b9ccff -43.24%, #6f7b99 108.57%);
+}
+
+.rankEditInputSide {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5729vw;
+    color: #fff;
+    font-family: GilroyMedium;
+    font-size: 0.8333vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 16.64px */
+}
+
+.rankEditInputList {
+    display: flex;
+    width: 100%;
+    gap: 0.6771vw;
+}
+
+.rankEditInputBox {
+    padding: 0.5208vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1.5;
+    height: 3.125vw;
+    border-radius: 0.2604vw;
+    background: rgba(255, 255, 255, 0.03);
+    color: #fff;
+    font-family: GilroyMedium;
+    font-size: 0.6771vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 13.52px */
+}
+
+.rankEditInput {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #b9ccff;
+    font-family: GilroyBold;
+    font-size: 0.9375vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%; /* 16.2px */
+}
+
+.rankSalaryEdit .rankEditInput {
+    color: #6dff83;
+}
+
+.rankSalaryEdit {
+    flex: 1;
+}
+
+.bankPopup {
+    display: flex;
+    flex-direction: column;
+    width: 17.6563vw;
+    height: 11.3021vw;
+    justify-content: space-between;
+    padding: 1.25vw;
+}
+
+.popupBankTitle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.7292vw;
+    border-radius: 0.2604vw;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.bankInputList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5208vw;
+    width: 100%;
+}
+
+.bankInputBox {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 2.2396vw;
+}
+
+.bankInput {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    border-radius: 0.2604vw;
+    background: radial-gradient(357.74% 527.74% at 79.6% -280.77%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.763);
+    font-family: GilroyMedium;
+    font-size: 0.8333vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 16.64px */
+}
+
+.bankInputButton {
+    display: flex;
+    width: 100%;
+    height: 2.1875vw;
+    border-radius: 0.2604vw;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: GilroyMedium;
+    font-size: 0.7432vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%; /* 12.843px */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.depositpopup .bankInputList .bankInputButton {
+    background: rgba(127, 255, 140, 0.08);
+    color: rgba(127, 255, 140, 0.49);
+}
+
+.depositpopup .bankInputList .bankInputButton:hover {
+    background: rgba(127, 255, 140, 0.2);
+    color: rgba(127, 255, 140, 0.8);
+}
+
+.withdrawpopup .bankInputList .bankInputButton {
+    background: rgba(255, 89, 89, 0.08);
+    color: rgba(255, 89, 89, 0.49);
+}
+
+.withdrawpopup .bankInputList .bankInputButton:hover {
+    background: rgba(255, 89, 89, 0.2);
+    color: rgba(255, 89, 89, 0.8);
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.select-box {
+    width: 100%;
+    height: 2vw;
+    padding: 0vw 0.5vw;
+    background-color: #ffffff0e;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    color: #ffffffb4;
+    font-family: GilroySBold;
+    font-size: 0.8vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 16.64px */
+}
+
+.select-box::after {
+    content: "▼";
+    float: right;
+}
+
+.options {
+    background: rgba(31, 36, 41, 1);
+    color: #ffffffb4;
+    font-family: GilroySBold;
+    font-size: 0.8vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 16.64px */
+    border-radius: 5px;
+    margin-top: 5px;
+    position: absolute;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.option {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.option:hover {
+    background-color: #505050;
+}
+
+.rankSaveSide {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.modalSide {
+    padding: 1.7188vw;
+    width: 23.3854vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.0417vw;
+}
+
+.modalTextBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8333vw;
+    align-items: center;
+}
+
+.modalText {
+    color: #fff;
+    font-family: GilroySBold;
+    font-size: 1.3542vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 27.04px */
+}
+
+.modalSubText {
+    color: rgba(255, 255, 255, 0.44);
+    text-align: center;
+    font-family: GilroyMedium;
+    font-size: 0.9375vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 25.2px */
+}
+
+.modalButtonList {
+    width: 100%;
+    display: flex;
+    gap: 0.7813vw;
+}
+
+.modalButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 2.1875vw;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.49);
+    text-align: center;
+    font-family: GilroyMedium;
+    font-size: 0.76vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%; /* 12.843px */
+    transition: 0.2s ease-in-out;
+}
+
+.modalButton:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 1);
+}
+
+.modalAcceptButton {
+    background: rgba(127, 255, 127, 0.08);
+    color: rgba(127, 255, 127, 0.49);
+}
+
+.modalAcceptButton:hover {
+    background: rgba(127, 255, 127, 0.2) !important;
+    color: rgba(127, 255, 127, 1) !important;
+}
+
+.modalDeleteButton {
+    background: rgba(255, 127, 127, 0.08);
+    color: rgba(255, 127, 127, 0.49);
+}
+
+.modalDeleteButton:hover {
+    background: rgba(255, 127, 127, 0.2) !important;
+    color: rgba(255, 127, 127, 1) !important;
+}
+
+.editIconButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 1.7188vw;
+    background: rgba(185, 204, 255, 0.06);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.editIconButton:hover {
+    background: rgba(185, 204, 255, 0.3);
+}
+
+.wearButton {
+    flex: 3;
+    background: rgba(185, 255, 214, 0.06);
+    color: rgba(185, 255, 214, 0.46);
+    transition: 0.2s ease-in-out;
+}
+
+.wearButton::before {
+    background: rgba(185, 255, 214, 0.1);
+}
+
+.wearButton:hover {
+    color: rgba(185, 255, 214, 1);
+}
+
+.openMenuButton {
+    flex: 3;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.46);
+    transition: 0.2s ease-in-out;
+}
+
+.openMenuButton::before {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.openMenuButton:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.outfitEdit {
+    padding: 1.25vw;
+    display: flex;
+    flex-direction: column;
+    width: 24.9479vw;
+    height: 26.3vw;
+    gap: 1.2vw;
+}
+
+.outfitListBox {
+    overflow: hidden;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5208vw;
+    color: #fff;
+    font-family: GilroyMedium;
+    font-size: 0.8333vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 16.64px */
+}
+
+.outfitList {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5729vw;
+    align-content: flex-start;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.outfitInBox {
+    justify-content: space-between;
+    padding-left: 0.625vw;
+    padding-right: 0.4167vw;
+    display: flex;
+    align-items: center;
+    width: 10.9375vw;
+    min-height: 2.1354vw;
+    border-radius: 0.3125vw;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.outfitInName {
+    color: rgba(255, 255, 255, 0.42);
+    font-family: GilroyMedium;
+    font-size: 0.7813vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 15.6px */
+}
+
+.outfitInputList {
+    display: flex;
+    gap: 0.1563vw;
+    align-items: center;
+    color: #fff;
+    text-align: right;
+    font-family: GilroySBold;
+    font-size: 0.8333vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 16.64px */
+}
+
+.outfitInput {
+    width: 2.0313vw;
+    height: 1.3021vw;
+    border-radius: 0.2604vw;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    outline: none;
+    text-align: center;
+    color: #fff;
+    font-family: GilroyMedium;
+    font-size: 0.8vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 16.64px */
+}
+
+.outfitPopupButtonList {
+    width: 100%;
+    display: flex;
+    gap: 0.3646vw;
+}
+
+.deleteButton {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 2.1875vw;
+    width: 100%;
+    border-radius: 0.2604vw;
+    background: rgba(255, 127, 127, 0.08);
+    color: rgba(255, 127, 127, 0.5);
+    font-family: Gilroy;
+    font-size: 0.7432vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%; /* 12.843px */
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+    transition: all 0.2s ease;
+}
+
+.deleteButton:hover {
+    cursor: pointer;
+    background: rgba(255, 127, 127, 0.15);
+    color: rgba(255, 127, 127, 0.8);
+}
+
+.deleteButton:active {
+    transform: scale(0.98);
+}
+
+.deleteButton::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 127, 127, 0.1), transparent);
+    transform: translateX(-100%);
+}
+
+.deleteButton:hover::after {
+    animation: shimmer 1s ease-in-out;
+}
+
+.waitingOverlay {
+    flex-direction: column;
+    gap: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0px 18px 18px 0px;
+    background: rgba(11, 13, 17, 0.72);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
+}
+
+.fa-3x {
+    color: white;
+    z-index: 10;
+    font-size: 2.5em !important;
+    animation: spin 2s infinite linear;
+}
+
+.waitingText {
+    color: #ffffff8b;
+    font-family: GilroyMedium;
+    font-size: 0.8vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.outfitGenderBox {
+    padding-left: 0.6771vw;
+    padding-right: 0.3646vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 2.1354vw;
+    border-radius: 0.3125vw;
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.42);
+    font-family: GilroyMedium;
+    font-size: 0.7813vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 15.6px */
+}
+
+.genderButtonList {
+    display: flex;
+    align-items: center;
+    gap: 0.2604vw;
+}
+
+.genderButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.9583vw;
+    height: 1.4063vw;
+    border-radius: 0.2604vw;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.32);
+    text-align: center;
+    font-family: GilroyMedium;
+    font-size: 0.65vw;
+
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 12.48px */
+    transition: 0.2s ease-in-out;
+}
+
+.genderButton:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 1);
+}
+
+.notifyList {
+    position: absolute;
+    left: 2.6042vw;
+    top: 2.6042vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7813vw;
+}
+
+.notifyBox {
+    gap: 0.8333vw;
+    padding: 0.8333vw 0.9896vw;
+    display: flex;
+    align-items: center;
+    width: 13.5417vw;
+    height: fit-content;
+    min-height: 3.6458vw;
+    flex-shrink: 0;
+    border-radius: 0.4167vw;
+    background: linear-gradient(246deg, rgba(15, 18, 26, 0.95) -21.29%, rgba(9, 11, 16, 0.95) 66.03%);
+}
+
+.notifyTextBox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2083vw;
+}
+
+.notifyText {
+    color: #b9ccff;
+    font-family: Gilroy;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 90%; /* 12.6px */
+}
+
+.notifySubText {
+    color: rgba(255, 255, 255, 0.59);
+    font-family: Gilroy;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 105%; /* 12.6px */
+}
+
+.creatorMenuLeftSide {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    width: 4.7917vw;
+    height: 100%;
+    border-radius: 0.9375vw 0px 0px 0.9375vw;
+    background: rgba(26, 35, 45, 0.17);
+}
+
+.creatorMenu {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 52.6563vw;
+    height: 37.0833vw;
+    border-radius: 0.9375vw;
+    outline: 0.625vw solid rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+}
+
+.coordBtn {
+    position: absolute;
+    right: 0.5208vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.3542vw;
+    height: 1.3542vw;
+    border-radius: 0.2083vw;
+    background: rgba(255, 255, 255, 0.12);
+    transition: 0.2s ease-in-out;
+}
+
+.coordBtn svg {
+    width: 0.8vw;
+    height: 0.8vw;
+}
+
+.coordBtn:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes pageAnim {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes popupSide {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes popupSideClose {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes popupSideInOpen {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popupSideInClose {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+.popup-enter-active,
+.popup-leave-active {
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Açılma animasyonu */
+.popup-enter-active {
+    animation: popupSide 0.5s ease forwards;
+}
+.popup-leave-active {
+    animation: popupSideClose 0.5s ease forwards;
+}
+
+/* Açılma animasyonu */
+.popupBoxs-enter-active {
+    animation: popupSideInOpen 0.5s ease forwards;
+}
+.popupBoxs-leave-active {
+    animation: popupSideInClose 0.5s ease forwards;
+}
+
+@keyframes openMenu {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes closeMenu {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 100%);
+    }
+}
+
+.generalBox-enter-active {
+    animation: openMenu 0.5s ease forwards;
+}
+.generalBox-leave-active {
+    animation: closeMenu 0.5s ease forwards;
+}
+
+@keyframes openNotify {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes closeNotify {
+    0% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+}
+
+.notifyBox-enter-active {
+    animation: openNotify 0.5s ease forwards;
+}
+.notifyBox-leave-active {
+    animation: closeNotify 0.5s ease forwards;
+}
+
+.creatorButtonList {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5208vw;
+}
+
+.gangButtonList {
+    display: flex;
+    align-items: center;
+    gap: 0.2604vw;
+}
+
+.gangButton {
+    padding: 0vw 0.7813vw;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.1875vw;
+    color: #ffffff64;
+    font-family: GilroyMedium;
+    font-size: 0.7292vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 90%; /* 14.56px */
+    border-radius: 0.2604vw;
+    background: rgba(255, 255, 255, 0.03);
+    transition: 0.2s ease-in-out;
+}
+
+.gangButton:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.selectedGangButton {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.blipEdit {
+    padding: 1.25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 23.2813vw;
+    height: 21.25vw;
+}
+
+.blipBoxTitle {
+    color: #fff;
+    font-family: GilroySBold;
+    font-size: 0.9375vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 104%; /* 18.72px */
+}
+
+.blipMenuSide {
+    width: 100%;
+    display: flex;
+    gap: 0.4167vw;
+}
+
+.blipMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3125vw;
+    color: rgba(255, 255, 255, 0.64);
+    font-family: GilroyMedium;
+    font-size: 0.7432vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%; /* 12.843px */
+}
+
+.blipMenuReview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5.625vw;
+    height: 5.625vw;
+    border-radius: 0.2813vw;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.blipList {
+    flex: 1;
+}
+
+.blipListBox {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    flex: 1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    gap: 0.39vw;
+    max-height: 5.625vw;
+}
+
+.blipListItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.1563vw;
+    width: 1.7708vw;
+    height: 2.6042vw;
+    border-radius: 0.1393vw;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.54);
+    text-align: center;
+    font-family: GilroySBold;
+    font-size: 0.6966vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 90%; /* 12.037px */
+    transition: 0.2s ease-in-out;
+}
+
+.blipListItem:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.selectBlip {
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.blipImg {
+    width: 1.0938vw;
+    height: 1.0938vw;
+    object-fit: cover;
+    object-position: center;
+}
+
+.blipReviewImg {
+    width: 60%;
+    height: 60%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.blipSizeInputBox {
+    width: 9.6354vw;
+    height: 1.6667vw;
+    position: relative;
+}
+.blipSizeInput {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.2604vw;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.763);
+    font-family: GilroyMedium;
+    text-align: center;
+    font-size: 0.7432vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%; /* 12.843px */
+}
+
+.blipOpenPopupButton {
+    gap: 0.3vw;
+    height: 2.2917vw;
+    width: 100%;
+    border-radius: 0.2604vw;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease-in-out;
+    color: white;
+    text-align: center;
+    font-family: GilroyMedium;
+    font-size: 0.85vw;
+
+    font-style: normal;
+    font-weight: 500;
+    line-height: 104%; /* 12.48px */
+}
+
+.blipOpenPopupButton svg {
+    width: 1.0417vw;
+    height: 1.0417vw;
+    fill: white;
+}
+
+.blipOpenPopupButton:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.blipRightSide {
+    display: flex;
+    flex-direction: column;
+    gap: 1.0417vw;
+}
+
+.blipColorList:hover > :not(:hover) {
+    opacity: 0.5;
+}
+
+.selectBlipColor {
+    opacity: 0.5;
+}
+
