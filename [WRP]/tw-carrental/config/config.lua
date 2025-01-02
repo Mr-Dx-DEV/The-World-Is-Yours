@@ -141,7 +141,7 @@ Config.Locations            = {
         ['radius'] = 1.5,
         ['targetIcon'] = 'fas fa-shopping-basket',
         ['targetLabel'] = 'Rent Vehicle',
-        ["vehicleCategory"] = Config.Cars.two,
+        ["vehicleCategory"] = Config.Cars.one,
         ['showblip'] = true,
         ['blipname'] = 'Rent Vehicle',
         ['blipsprite'] = 38,
@@ -153,7 +153,7 @@ Config.Locations            = {
         ['testdrivecoords'] = vector4(1734.24, 3327.422, 41.305, 108.076),
         ['coords'] = vector4(1734.24, 3327.422, 41.305, 108.076),
         ['carspawn'] = {
-            vector4(1734.24, 3327.422, 41.305, 108.076),
+            vector4(1739.875, 3317.415, 40.844, 104.775),
             
         },
         ['ped'] = 's_m_m_highsec_02',
@@ -161,7 +161,7 @@ Config.Locations            = {
         ['radius'] = 1.5,
         ['targetIcon'] = 'fas fa-shopping-basket',
         ['targetLabel'] = 'Rent Vehicle',
-        ["vehicleCategory"] = Config.Cars.two,
+        ["vehicleCategory"] = Config.Cars.one,
         ['showblip'] = true,
         ['blipname'] = 'Rent Vehicle',
         ['blipsprite'] = 38,
