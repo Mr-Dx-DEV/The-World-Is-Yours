@@ -198,7 +198,13 @@ return {
 		--	{ name = 'diving_gear', price = 1000, grade = 0 },
 			{ name = 'police_stormram', price = 2000, grade = 0 },
 			{ name = 'parachute', price = 10000, grade = 0 },
-			{ name = 'scuba_gear', price = 10000, grade = 0 }
+			{ name = 'scuba_gear', price = 10000, grade = 0 },
+
+			{ name = 'water_bottle', price = 100, grade = 0 },
+			{ name = 'tosti', price = 90, grade = 0 }
+
+
+
 			
 		},
 		
