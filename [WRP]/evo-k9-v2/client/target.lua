@@ -24,7 +24,20 @@ function setupK9TargetZone(location, coords, heading)
                 event = 'evo-k9:client:PurchaseDog',
                 icon = 'fas fa-paw',
                 label = 'Call Dog',
-                job = { ['police'] = 0 }, -- Restrict to police jobs
+                job = {
+                         ['police'] = 0,
+    ['lspd'] = 0,
+    ['bcso'] = 0,
+    ['sahp'] = 0,
+    ['salsa'] = 0,
+    ['lsso'] = 0,
+    ['safw'] = 0,
+    ['sadoc'] = 0,
+    ['usms'] = 0,
+    ['fbi'] = 0,
+    ['dhs'] = 0,
+    ['ss'] = 0
+               }, -- Restrict to police jobs
             },
         },
         distance = 2.0
