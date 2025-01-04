@@ -123,19 +123,48 @@ end
 
 
 -- Search Train
+-- function evok9useweedtrain(source)
+--     local src = source
+-- 	local Player = QBCore.Functions.GetPlayer(src)
+-- 	if Player.PlayerData.job.name == "police" then
+--         if Config.Removeitem.k9weed then
+--             QBCore.Functions.GetPlayer(src).Functions.RemoveItem("k9weed", 1)
+--         end
+--         TriggerClientEvent('evo-k9:client:plantweed',source)
+--     else
+--         CustomNotifyClient(src,  "For Police Officer Only", "error")
+--     end
+-- end
 function evok9useweedtrain(source)
     local src = source
-	local Player = QBCore.Functions.GetPlayer(src)
-	if Player.PlayerData.job.name == "police" then
+    local Player = QBCore.Functions.GetPlayer(src)
+    
+    -- Define a table with all allowed job names
+    local allowedJobs = {
+        ["lspd"] = true,
+        ["bcso"] = true,
+        ["sahp"] = true,
+        ["salsa"] = true,
+        ["lsso"] = true,
+        ["safw"] = true,
+        ["sadoc"] = true,
+        ["usms"] = true,
+        ["fbi"] = true,
+        ["dhs"] = true,
+        ["ss"] = true,
+        ["police"] = true
+    }
+
+    -- Check if the player's job is in the allowed jobs
+    if allowedJobs[Player.PlayerData.job.name] then
         if Config.Removeitem.k9weed then
             QBCore.Functions.GetPlayer(src).Functions.RemoveItem("k9weed", 1)
         end
-        TriggerClientEvent('evo-k9:client:plantweed',source)
+        TriggerClientEvent('evo-k9:client:plantweed', source)
     else
-        CustomNotifyClient(src,  "For Police Officer Only", "error")
+        CustomNotifyClient(src, "For Police Officer Only", "error")
     end
 end
-
 -- Glow Stick
 function evok9useglowstick(source)
     local src = source
