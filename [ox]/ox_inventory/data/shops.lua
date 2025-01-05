@@ -200,8 +200,15 @@ return {
 			{ name = 'parachute', price = 10000, grade = 0 },
 			{ name = 'scuba_gear', price = 10000, grade = 0 },
 
-			{ name = 'water_bottle', price = 100, grade = 0 },
-			{ name = 'tosti', price = 90, grade = 0 }
+			{ name = 'weaponrepairkit', price = 10000, grade = 0 },
+
+			{ name = 'k9food', price = 10, grade = 0 },
+			{ name = 'k9drink', price = 10, grade = 0 },
+			{ name = 'k9revivekit', price = 10, grade = 0 },
+			{ name = 'k9glowstick', price = 10, grade = 0 },
+			{ name = 'k9cage', price = 10, grade = 0 },
+			{ name = 'k9cage2', price = 10, grade = 0 },
+			{ name = 'k9weed', price = 10, grade = 0 }
 
 
 
