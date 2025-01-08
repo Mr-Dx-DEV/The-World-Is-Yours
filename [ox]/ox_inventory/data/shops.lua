@@ -482,7 +482,7 @@ return {
 		}
 	},
  ]]
-	VendingMachineDrinks = {
+	--[[ VendingMachineDrinks = {
 		name = 'Vending Machine',
 		inventory = {
 			{ name = 'water_bottle', price = 10 },
@@ -491,7 +491,7 @@ return {
 		model = {
 			`prop_vend_soda_02`, `prop_vend_fridge01`, `prop_vend_water_01`, `prop_vend_soda_01`
 		}
-	},
+	}, ]]
 --[[ 
 	DigitalDen = {
 		name = 'Digital Den',
