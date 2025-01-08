@@ -4,7 +4,7 @@ lua54 'yes'
 
 author 'KuzQuality | Kuzkay'
 description 'Smash n grab by KuzQuality'
-version '1.2.4'
+version '1.3.0'
 
 --
 -- Server
@@ -13,6 +13,7 @@ version '1.2.4'
 server_scripts {
     'config.lua',
     'locale.lua',
+    'server/editable/editable.lua',
     'server/server.lua',
     'server/editable/esx.lua',
     'server/editable/qb.lua',
