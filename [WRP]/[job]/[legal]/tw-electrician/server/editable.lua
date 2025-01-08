@@ -107,25 +107,47 @@ function sendDiscordLogHistory(data)
         { ["Content-Type"] = "application/json" })
 end
 
-AddEventHandler('playerDropped', function(reason)
-    local src = source
-    local owneridentifier = GetIdentifier(src)
-    local lobby = coopData[owneridentifier]
-    if not lobby then return end
-    if lobby.roomSetting.startJob then
+function GetLobbyByPlayerSource(src)
+    for owner, lobby in pairs(coopData) do
         for _, player in ipairs(lobby.players) do
             if player.source == src then
+                return owner, lobby
+            end
+        end
+    end
+    return nil, nil
+end
+
+AddEventHandler('playerDropped', function(reason)
+    local src = source
+    local owneridentifier, lobby = GetLobbyByPlayerSource(src)
+    if not lobby then return end
+
+    for i, player in ipairs(lobby.players) do
+        if player.source == src then
+            if player.playerIdentifier == owneridentifier then
+                local vehiclesToDelete = {}
                 for k, v in pairs(lobby.roomSetting.Vehicle) do
-                    local vehicle = v
+                    table.insert(vehiclesToDelete, v)
+                end
+
+                for key, value in pairs(lobby.roomSetting.VehicleNetId) do
+                    table.insert(vehiclesToDelete, value)
+                end
+
+
+                for _, vehicle in ipairs(vehiclesToDelete) do
                     if DoesEntityExist(vehicle) then
                         DeleteEntity(vehicle)
                     end
                 end
 
-                for k, v in pairs(lobby.roomSetting.VehicleNetId) do
-                    local vehicle = v
-                    if DoesEntityExist(vehicle) then
-                        DeleteEntity(vehicle)
+                for _, vehicle in ipairs(vehiclesToDelete) do
+                    for iii, v in ipairs(lobby.roomSetting.Vehicle) do
+                        if v == vehicle then
+                            table.remove(lobby.roomSetting.Vehicle, iii)
+                            break
+                        end
                     end
                 end
 
@@ -141,29 +163,26 @@ AddEventHandler('playerDropped', function(reason)
                     end
                 end
 
-
                 if next(Lifts) then
-                    for index, value in pairs(Lifts) do
-                        if value.owneridentifier == owneridentifier then
-                            Lifts[index] = nil
-                            lobby.roomSetting.Lifts[index] = nil
-                            UpdateLift(index)
+                    for indexx, valuee in pairs(Lifts) do
+                        if valuee.owneridentifier == owneridentifier then
+                            Lifts[indexx] = nil
+                            lobby.roomSetting.Lifts[indexx] = nil
+                            UpdateLift(indexx)
                             SetTimeout(500, function()
-                                TriggerClientEvent("tworst-electrician:removeLift", -1, index)
+                                TriggerClientEvent("tworst-electrician:removeLift", -1, indexx)
                             end)
                         end
                     end
                 end
 
-                for k, v in pairs(lobby.roomSetting.Lifts) do
-                    Lifts[k] = nil
-                    lobby.roomSetting.Lifts[k] = nil
-                    UpdateLift(k)
-                    TriggerClientEvent("tworst-electrician:removeLift", -1, k)
+                for kkk, vvv in pairs(lobby.roomSetting.Lifts) do
+                    Lifts[kkk] = nil
+                    lobby.roomSetting.Lifts[kkk] = nil
+                    UpdateLift(kkk)
+                    TriggerClientEvent("tworst-electrician:removeLift", -1, kkk)
                 end
 
-                coopData[owneridentifier] = nil
-                JoobTask[owneridentifier] = nil
 
                 for _, remainingPlayer in ipairs(lobby.players) do
                     if remainingPlayer.source ~= src then
@@ -171,12 +190,23 @@ AddEventHandler('playerDropped', function(reason)
                         TriggerClientEvent('tw-electrician:client:sendNotification', remainingPlayer.source,
                             Config.NotificationText['playerleftlobby'].text,
                             Config.NotificationText['playerleftlobby'].type)
-                    else
-                        TriggerClientEvent('tworst-electrician:client:resetjob', remainingPlayer.source)
                     end
                 end
-                break
+                coopData[owneridentifier] = nil
+                JoobTask[owneridentifier] = nil
+            else
+                table.remove(lobby.players, i)
+
+                for _, remainingPlayer in ipairs(lobby.players) do
+                    TriggerClientEvent('tworst-electrician:client:RefreshLobby', remainingPlayer.source,
+                        coopData[owneridentifier])
+                    TriggerClientEvent('tw-electrician:client:sendNotification', remainingPlayer.source,
+                        Config.NotificationText['playerleftlobby'].text,
+                        Config.NotificationText['playerleftlobby'].type)
+                end
             end
+
+            break
         end
     end
 end)

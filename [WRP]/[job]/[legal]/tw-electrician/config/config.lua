@@ -595,11 +595,9 @@ Config.trafficLightModels    = {
 }
 
 Config.Vehiclekey            = true
-Config.VehicleSystem         =
-"qbx-vehiclekeys" -- cd_garage / qs-vehiclekeys / wasabi-carlock / qb-vehiclekeys / qbx-vehiclekeys
+Config.VehicleSystem         = "qb-vehiclekeys" -- cd_garage / qs-vehiclekeys / wasabi-carlock / qb-vehiclekeys / qbx-vehiclekeys / ak47_qb_vehiclekeys
 Config.Removekeys            = true
-Config.RemoveVehicleSystem   =
-"qb-vehiclekeys"                                               -- cd_garage / qs-vehiclekeys / wasabi-carlock / qb-vehiclekeys
+Config.RemoveVehicleSystem   = "qb-vehiclekeys"  -- cd_garage / qs-vehiclekeys / wasabi-carlock / qb-vehiclekeys / qbx-vehiclekeys / ak47_qb_vehiclekeys
 
 Config.GiveVehicleKey        = function(plate, model, vehicle) -- you can change vehiclekeys export if you use another vehicle key system
     if Config.Vehiclekey then
@@ -614,6 +612,8 @@ Config.GiveVehicleKey        = function(plate, model, vehicle) -- you can change
             TriggerServerEvent('qb-vehiclekeys:server:AcquireVehicleKeys', plate)
         elseif Config.VehicleSystem == 'qbx-vehiclekeys' then
             TriggerServerEvent('qb-vehiclekeys:server:AcquireVehicleKeys', plate)
+        elseif Config.VehicleSystem == 'ak47_qb_vehiclekeys' then
+            exports['ak47_qb_vehiclekeys']:GiveKey(plate, false)
         end
     end
 end
@@ -629,18 +629,22 @@ Config.RemoveVehiclekey      = function(plate, model, vehicle)
             exports.wasabi_carlock:RemoveKey(plate)
         elseif Config.RemoveVehicleSystem == 'qb-vehiclekeys' then
             TriggerServerEvent('qb-vehiclekeys:client:RemoveKeys', plate)
+        elseif Config.RemoveVehicleSystem == 'qbx-vehiclekeys' then
+            TriggerServerEvent('qb-vehiclekeys:client:RemoveKeys', plate)
+        elseif Config.RemoveVehicleSystem == 'ak47_qb_vehiclekeys' then
+            exports['ak47_qb_vehiclekeys']:RemoveKey(plate, false)
         end
     end
 end
 
-Config.FuelSystem            = "ox_fuel"                     -- LegacyFuel / x-fuel
+Config.FuelSystem            = "rcore_fuel"                     -- LegacyFuel / x-fuel
 
 Config.SetVehicleFuel        = function(vehicle, fuel_level) -- you can change LegacyFuel export if you use another fuel system
     if Config.FuelSystem == 'LegacyFuel' then
         return exports["LegacyFuel"]:SetFuel(vehicle, fuel_level)
     elseif Config.FuelSystem == 'x-fuel' then
         return exports["x-fuel"]:SetFuel(vehicle, fuel_level)
-    elseif Config.FuelSystem == 'ox_fuel' then
+    elseif Config.FuelSystem == 'rcore_fuel' then
         return SetVehicleFuelLevel(vehicle, 100.0)
     else
         return SetVehicleFuelLevel(vehicle, fuel_level + 0.0)
@@ -708,6 +712,10 @@ Config.NotificationText      = {
     },
     ['jobcooldown'] = {
         text = "You can't start a new job right now. You have to wait %s minutes.",
+        type = "errorNotify"
+    },
+    ['cantDeliver'] = {
+        text = "You can't deliver the vehicle right now. You did not raise the Ladder or Lift",
         type = "errorNotify"
     }
 }

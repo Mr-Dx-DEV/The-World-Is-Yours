@@ -466,7 +466,6 @@ const app = Vue.createApp({
             const index = this.playerListData.findIndex(x => x.playerIdentifier == identifier);
             const owner = this.playerListData.findIndex(x => x.playerOwner);
             if (this.playerListData[index].playerIdentifier === this.playerListData[owner].playerIdentifier) {
-                // console.log("Kendi karakterinizi kovamazsınız.");
                 clicksound("errorclick.mp3");
                 return;
             }
@@ -505,7 +504,6 @@ const app = Vue.createApp({
                 const regionIndex = this.regionData.findIndex(x => x.regionKey == regionData.regionKey);
                 if (regionIndex == -1) return;
                 if (this.regionData[regionIndex].regionMinimumLevel > this.playerData.playerLevel) {
-                    // console.log("Seviyeniz bu bölgeye giriş yapmak için yetersiz.");
                     clicksound("errorclick.mp3");
                     return;
                 }

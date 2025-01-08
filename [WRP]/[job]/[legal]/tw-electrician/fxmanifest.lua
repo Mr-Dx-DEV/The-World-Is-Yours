@@ -1,6 +1,6 @@
 fx_version 'cerulean'
 game 'gta5'
-version '1.2'
+version '1.4'
 author 'tworst-script'
 shared_scripts {
 	'config/*.lua',
@@ -31,7 +31,7 @@ escrow_ignore {
 	'config/*.lua',
 	'client/editable.lua',
 	'client/utility.lua',
-	--'client/main.lua',
+	--	'client/main.lua',
 	'server/editable.lua',
 	'server/utility.lua',
 	--'server/server.lua',
