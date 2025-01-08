@@ -14,11 +14,11 @@ Config.dealerships.pdm = { -- Dealership ID, NEEDS TO BE THE SAME AS THE JOB!!!
     buySpawn = vec4(-69.76, -1104.64, 26.2, 69.0), -- Vehicle buy spawn coords
     blip = { enabled = true, coords = vec3(-51.05, -1086.9, 27.6), sprite = 523, color = 3, scale = 0.5, display = 4 }, -- Dealership map blip
     catalogues = { -- The catalogues to the players see the vehicle and emplooyes change the vehicle on showrrom
-        { coords = vec3(-36.86, -1093.65, 26.3), radius = 0.4 },
-        { coords = vec3(-49.66, -1084.05, 26.3), radius = 0.4 },
-        { coords = vec3(-47.44, -1091.66, 26.3), radius = 0.4 },
-        { coords = vec3(-54.2, -1097.1, 26.3), radius = 0.4 },
-        { coords = vec3(-42.51, -1101.42, 26.3), radius = 0.4 },
+        { coords = vec3(-40.22, -1094.59, 27.3), radius = 0.4 },
+        { coords = vec3(-38.9, -1100.2, 27.27), radius = 0.4 },
+        { coords = vec3(-46.88, -1095.28, 27.27), radius = 0.4 },
+        { coords = vec3(-51.55, -1095.02, 27.33), radius = 0.4 },
+        { coords = vec3(-51.04, -1086.95, 27.27), radius = 0.4 },
     },
     categories = { -- The categories that will show on the catalogue and dashboard (need to add the shop with the job name to the vehicles.lua too on the shops field otherwise it'll not show the vehicles!!)
         { label = 'Compacts', id = 'compacts' },

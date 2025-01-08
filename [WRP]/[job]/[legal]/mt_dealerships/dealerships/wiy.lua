@@ -14,7 +14,7 @@ Config.dealerships.wiy = { -- Dealership ID, NEEDS TO BE THE SAME AS THE JOB!!!
     buySpawn = vec4(-68.36, 82.67, 71.52, 65.74), -- Vehicle buy spawn coords
     blip = { enabled = true, coords = vec3(-64.04, 73.81, 71.62), sprite = 523, color = 3, scale = 0.5, display = 4 }, -- Dealership map blip
     catalogues = { -- The catalogues to the players see the vehicle and emplooyes change the vehicle on showrrom
-        { coords = vec3(-75.48, 74.18, 71.63, 121.42), radius = 0.4 },
+        { coords = vec3(-75.48, 74.18, 71.63), radius = 0.4 },
       --  { coords = vec3(-49.66, -1084.05, 26.3), radius = 0.4 },
       --  { coords = vec3(-47.44, -1091.66, 26.3), radius = 0.4 },
      --   { coords = vec3(-54.2, -1097.1, 26.3), radius = 0.4 },
