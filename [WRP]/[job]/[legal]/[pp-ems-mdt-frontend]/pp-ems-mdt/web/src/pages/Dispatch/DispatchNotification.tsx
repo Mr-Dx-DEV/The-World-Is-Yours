@@ -2,7 +2,7 @@ import React, { useEffect, useState, forwardRef, useContext } from 'react'
 import { ThemeContext } from '../../providers/ThemeProvider'
 import { Avatar, Button, Tooltip } from 'antd'
 import { LuTimer } from 'react-icons/lu'
-import formatRelativeTime from '../../utils'
+import { formatTimeUntil } from '../../utils'
 import { IoLocationOutline } from 'react-icons/io5'
 import { MdKeyboardDoubleArrowRight } from 'react-icons/md'
 import { AiOutlineUser } from 'react-icons/ai'
@@ -22,6 +22,10 @@ interface DispatchNotificationProps {
     isExiting?: boolean
     onExitComplete?: () => void
     onCancelSelect?: () => void
+    onTop?: boolean
+    quickRespond?: boolean
+    quickRespondKeybind?: string
+    setNotifications?: React.Dispatch<React.SetStateAction<DispatchNotifications[]>>
 }
 
 const availableColors = ['blue', 'pink', 'orange', 'green', 'cyan', 'purple', 'black', 'red']
@@ -37,9 +41,11 @@ const DispatchNotification = forwardRef<HTMLDivElement, DispatchNotificationProp
             onClick,
             selected,
             provider = false,
-            isExiting = false,
-            onExitComplete,
             onCancelSelect,
+            onTop,
+            quickRespond,
+            quickRespondKeybind,
+            setNotifications,
         },
         ref,
     ) => {
@@ -67,21 +73,6 @@ const DispatchNotification = forwardRef<HTMLDivElement, DispatchNotificationProp
                 }
             }
         }, [provider, notif.id])
-
-        useEffect(() => {
-            if (isExiting) {
-                setAnimationClass('notification-exit')
-                const exitTimeout = setTimeout(() => {
-                    if (onExitComplete) {
-                        onExitComplete()
-                    }
-                }, 500)
-
-                return () => {
-                    clearTimeout(exitTimeout)
-                }
-            }
-        }, [isExiting, onExitComplete, notif.id])
 
         useEffect(() => {
             const interval = setInterval(() => {
@@ -112,14 +103,20 @@ const DispatchNotification = forwardRef<HTMLDivElement, DispatchNotificationProp
             }
         }, [notif.coords])
 
-        const handleStopRespond = () => {
+        useEffect(() => {
+            setNotif(notification)
+        }, [notification])
+
+        const handleStopRespond = (notification?: boolean) => {
             fetchNui('dispatchStopRespond', { id: notif.id })
                 .then((response: any) => {
                     if (response.success && response.respond) {
-                        showNotification(
-                            response.message || t('dispatch.notification.stoprespond.success'),
-                            'success',
-                        )
+                        if (notification !== false) {
+                            showNotification(
+                                response.message || t('dispatch.notification.stoprespond.success'),
+                                'success',
+                            )
+                        }
 
                         setNotif((prevNotif) => ({
                             ...prevNotif,
@@ -139,32 +136,52 @@ const DispatchNotification = forwardRef<HTMLDivElement, DispatchNotificationProp
                 })
         }
 
-        const handleRespond = () => {
+        const handleRespond = (notification?: boolean) => {
             fetchNui('dispatchRespond', { id: notif.id })
                 .then((response: any) => {
                     if (response.success && response.respond) {
-                        showNotification(
-                            response.message || t('dispatch.notification.success'),
-                            'success',
-                        )
+                        if (notification !== false) {
+                            showNotification(
+                                response.message || t('dispatch.notification.success'),
+                                'success',
+                            )
+                        }
+
+                        if (
+                            response.removedResponses &&
+                            response.removedResponses.length > 0 &&
+                            typeof setNotifications === 'function'
+                        ) {
+                            setNotifications((prevNotifications: DispatchNotifications[]) =>
+                                prevNotifications.map((notif: DispatchNotifications) =>
+                                    response.removedResponses.some(
+                                        (removed: any) => removed.id === notif.id,
+                                    )
+                                        ? {
+                                              ...notif,
+                                              responds:
+                                                  response.removedResponses.find(
+                                                      (removed: any) => removed.id === notif.id,
+                                                  )?.responds || [],
+                                              meResponding: false,
+                                          }
+                                        : notif,
+                                ),
+                            )
+                        }
+
                         setNotif((prevNotif) => ({
                             ...prevNotif,
                             responds: [...(prevNotif.responds || []), ...response.respond],
                             meResponding: true,
                         }))
                     } else {
-                        showNotification(
-                            response.message || 'Nie udało się zareagować na zgłoszenie.',
-                            'error',
-                        )
+                        showNotification(response.message || 'Failed to respond.', 'error')
                     }
                 })
                 .catch((error) => {
                     console.error('Respond error:', error)
-                    showNotification(
-                        'Nie udało się zareagować na zgłoszenie. Spróbuj ponownie później',
-                        'error',
-                    )
+                    showNotification('Failed to respond. Please try again later.', 'error')
                 })
         }
 
@@ -172,6 +189,17 @@ const DispatchNotification = forwardRef<HTMLDivElement, DispatchNotificationProp
             onCancelSelect && onCancelSelect()
         }
 
+        useEffect(() => {
+            if (quickRespond === true) {
+                if (notif.meResponding !== true) {
+                    handleRespond(false)
+                }
+            } else if (quickRespond === false) {
+                if (notif.meResponding) {
+                    handleStopRespond(false)
+                }
+            }
+        }, [quickRespond, notif.meResponding])
         return (
             <div
                 ref={ref}
@@ -180,15 +208,13 @@ const DispatchNotification = forwardRef<HTMLDivElement, DispatchNotificationProp
                     userSelect: 'none',
                     cursor: 'pointer',
                 }}
-                className={`dispatch-notification-card ${
-                    selected ? 'selected' : ''
-                } ${animationClass} ${notif.flash ? 'flash' : ''} ${
-                    notif.meResponding ? 'responding' : ''
-                }`}
+                className={`dispatch-notification-card ${selected ? 'selected' : ''} ${
+                    notif.flash ? 'flash' : ''
+                } ${quickRespond !== true && notif.meResponding ? 'responding' : ''}`}
                 onClick={onClick}
             >
                 <div className="notification-title">
-                    <span className={`notification-tag red`}>#{notif.id}</span>
+                    <span className={`notification-tag blue`}>#{notif.id}</span>
                     {notif.code?.code && (
                         <span
                             className={`notification-tag ${
@@ -215,7 +241,7 @@ const DispatchNotification = forwardRef<HTMLDivElement, DispatchNotificationProp
                                 className="notification-content-data"
                                 style={{ width: 'fit-content' }}
                             >
-                                {`${formatRelativeTime(notif.timestamp)} ago`}
+                                {formatTimeUntil(new Date(notif.timestamp * 1000))}
                             </p>
                         </div>
                     </Tooltip>
@@ -274,14 +300,14 @@ const DispatchNotification = forwardRef<HTMLDivElement, DispatchNotificationProp
                                 style={{ display: 'flex', marginLeft: '5px', alignItems: 'center' }}
                             >
                                 <Avatar.Group>
-                                    {notif.responds.map((doctor, idx) => (
-                                        <Tooltip title={doctor.label} key={idx}>
+                                    {notif.responds.map((officer, idx) => (
+                                        <Tooltip title={officer.label} key={idx}>
                                             <Avatar
                                                 style={{
                                                     backgroundColor: theme.token.colorPrimary,
                                                 }}
                                             >
-                                                {doctor.label?.charAt(0)}
+                                                {officer.label?.charAt(0)}
                                             </Avatar>
                                         </Tooltip>
                                     ))}
@@ -294,7 +320,7 @@ const DispatchNotification = forwardRef<HTMLDivElement, DispatchNotificationProp
                         <>
                             {!notif.meResponding ? (
                                 <div className="buttons">
-                                    <Button onClick={handleRespond} type="primary">
+                                    <Button onClick={() => handleRespond()} type="primary">
                                         {t('dispatch.notification.respond.label')}
                                     </Button>
                                     <Button onClick={handleCancel} type="default">
@@ -303,7 +329,7 @@ const DispatchNotification = forwardRef<HTMLDivElement, DispatchNotificationProp
                                 </div>
                             ) : (
                                 <div className="buttons">
-                                    <Button onClick={handleStopRespond} type="primary">
+                                    <Button onClick={() => handleStopRespond()} type="primary">
                                         {t('dispatch.notification.stoprespond.button')}
                                     </Button>
                                     <Button onClick={handleCancel} type="default">
@@ -314,6 +340,33 @@ const DispatchNotification = forwardRef<HTMLDivElement, DispatchNotificationProp
                         </>
                     )}
                 </div>
+                {onTop && quickRespond ? (
+                    <p className="keybind_info">
+                        {t('dispatch.notification.quickRespond.stop_respond')
+                            .split('{key}')
+                            .map((part, index, array) => (
+                                <React.Fragment key={index}>
+                                    {part}
+                                    {index < array.length - 1 && (
+                                        <span className="key">{quickRespondKeybind}</span>
+                                    )}
+                                </React.Fragment>
+                            ))}
+                    </p>
+                ) : onTop && !quickRespond ? (
+                    <p className="keybind_info">
+                        {t('dispatch.notification.quickRespond.respond')
+                            .split('{key}')
+                            .map((part, index, array) => (
+                                <React.Fragment key={index}>
+                                    {part}
+                                    {index < array.length - 1 && (
+                                        <span className="key">{quickRespondKeybind}</span>
+                                    )}
+                                </React.Fragment>
+                            ))}
+                    </p>
+                ) : null}
             </div>
         )
     },

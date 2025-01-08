@@ -23,6 +23,17 @@ return {
         { name = 'Chest', x1 = 101, y1 = 109, x2 = 101 + 113, y2 = 109 + 204 },
     },
 
+    formLimits = {
+        ['cases'] = {
+            title = { min = 5, max = 40},
+            description = { min = 20, max = 300}
+        },
+        ['notes'] = {
+            title = { min = 5, max = 40},
+            description = { min = 20, max = 300}
+        },
+    },
+
     playerPositionRefreshRate = 1000, -- time in milliseconds which indicates how often the player's position on the map should be updated
 
     patrols = {

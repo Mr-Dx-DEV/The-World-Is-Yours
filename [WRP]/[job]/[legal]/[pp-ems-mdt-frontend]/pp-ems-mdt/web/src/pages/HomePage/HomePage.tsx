@@ -1,27 +1,25 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
-import { Row, Col, Card, Avatar, Tooltip, Input, Button } from 'antd'
-import { NotificationOutlined } from '@ant-design/icons'
-import { IoLocationOutline, IoCarOutline, IoSend, IoDocumentOutline } from 'react-icons/io5'
-import { AiOutlineUser } from 'react-icons/ai'
-import { MdKeyboardDoubleArrowRight, MdOutlineSearch } from 'react-icons/md'
-import { FaBriefcase, FaFileAlt, FaRegStickyNote } from 'react-icons/fa'
-import { GiPistolGun, GiPoliceOfficerHead } from 'react-icons/gi'
-import './HomePage.scss'
-import { fetchNui } from '../../utils/fetchNui'
-import { DispatchNotifications, FpProps, SearchProps } from '../../types'
+import { Avatar, Button, Card, Col, Input, Row } from 'antd'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { CiStar } from 'react-icons/ci'
+import { FaRegStickyNote } from 'react-icons/fa'
+import { FaRegUser } from 'react-icons/fa6'
+import { GiPistolGun, GiPoliceOfficerHead } from 'react-icons/gi'
 import { HiOutlineBadgeCheck } from 'react-icons/hi'
-import { SiStatuspal } from 'react-icons/si'
-import { PageProvider } from '../../providers/PageProvider'
-import DispatchNotification from '../Dispatch/DispatchNotification'
-import { ThemeContext } from '../../providers/ThemeProvider'
-import NoResult from '../../components/NoResult'
-import { FaPhotoFilm, FaRegUser } from 'react-icons/fa6'
+import { IoDocumentOutline, IoSend } from 'react-icons/io5'
 import { LiaCarSideSolid } from 'react-icons/lia'
-import { navigateWithAnimation } from '../../utils/misc'
-import { t } from '../../hooks/useLocale'
+import { MdKeyboardDoubleArrowRight, MdOutlineSearch } from 'react-icons/md'
+import { SiStatuspal } from 'react-icons/si'
+import NoResult from '../../components/NoResult'
 import { useConfig } from '../../hooks/useConfig'
+import { t } from '../../hooks/useLocale'
+import { PageProvider } from '../../providers/PageProvider'
+import { ThemeContext } from '../../providers/ThemeProvider'
+import { DispatchNotifications, FpProps, SearchProps } from '../../types'
+import { fetchNui } from '../../utils/fetchNui'
+import { navigateWithAnimation } from '../../utils/misc'
 import { hasPermission } from '../../utils/permissions'
+import DispatchNotification from '../Dispatch/DispatchNotification'
+import './HomePage.scss'
 
 const defaultimage = 'https://i.imgur.com/dqoG8Qb.png'
 const fps: FpProps[] = [
@@ -55,7 +53,7 @@ const HomePage = () => {
     const { theme } = useContext(ThemeContext)
     const [searchTerm, setSearchTerm] = useState<string>('')
     const [quickSearchResults, setQuickSearchResults] = useState<SearchProps[]>([])
-    const [dispatchNotifs, setDispatchNotifs] = useState<Record<string, DispatchNotifications>>({})
+    const [dispatchNotifs, setDispatchNotifs] = useState<DispatchNotifications[]>([])
     const [doctors, setDoctors] = useState<FpProps[]>([])
     const [messages, setMessages] = useState<messageProps[]>()
     const [messageText, setMessageText] = useState('')
@@ -461,21 +459,20 @@ const HomePage = () => {
                                 <p className="subtitle">{t('homepage.dispatch.description')}</p>
                             </div>
                             <div className="notification-container">
-                                {dispatchNotifs && Object.values(dispatchNotifs).length > 0 ? (
+                            {dispatchNotifs && dispatchNotifs.length > 0 ? (
                                     <>
-                                        {Object.values(dispatchNotifs)
+                                        {dispatchNotifs
                                             .sort((a, b) => b.id - a.id)
-                                            .map((notification, index) => (
+                                            .map((notification) => (
                                                 <DispatchNotification
                                                     key={notification.id}
                                                     notification={notification}
                                                     onClick={() =>
                                                         setSelectedDispatchNotif(notification)
                                                     }
+                                                    setNotifications={setDispatchNotifs}
                                                     selected={
                                                         selectedDispatchNotif === notification
-                                                            ? true
-                                                            : false
                                                     }
                                                 />
                                             ))}

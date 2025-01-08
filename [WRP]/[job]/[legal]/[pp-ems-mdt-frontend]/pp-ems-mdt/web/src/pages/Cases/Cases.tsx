@@ -1,45 +1,33 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { PageProvider } from '../../providers/PageProvider'
-import { Dayjs } from 'dayjs'
 import {
+    Button,
+    Dropdown,
     Form,
     Input,
-    Button,
     List,
+    Menu,
     Modal,
     Select,
-    Divider,
-    Empty,
     Slider,
-    Row,
-    Col,
-    DatePicker,
-    Radio,
-    Badge,
-    Menu,
-    Dropdown,
-    Tooltip,
     Tag,
+    Tooltip,
 } from 'antd'
-import { useLocation } from 'react-router-dom'
-import './Cases.scss'
-import { ThemeContext } from '../../providers/ThemeProvider'
-import { fetchNui } from '../../utils/fetchNui'
-import { getBodyPartByCoordinates, showNotification } from '../../utils/misc'
-import moment from 'moment'
 import 'moment/locale/pl'
-import { FaBriefcaseMedical, FaMinus, FaPlus } from 'react-icons/fa6'
-import { formatDate } from '../../utils'
-const { TextArea } = Input
-const { Option } = Select
-import { GrDocumentTime, GrDocumentVerified, GrDocument } from 'react-icons/gr'
-import { TbPrison } from 'react-icons/tb'
-import { Case } from '../../types'
-import { navigateWithAnimation } from '../../utils/misc'
-import { t } from '../../hooks/useLocale'
-import { hasPermission } from '../../utils/permissions'
+import React, { useContext, useEffect, useState } from 'react'
+import { FaBriefcaseMedical, FaPlus } from 'react-icons/fa6'
+import { useLocation } from 'react-router-dom'
 import NoResult from '../../components/NoResult'
 import { useConfig } from '../../hooks/useConfig'
+import { t } from '../../hooks/useLocale'
+import { PageProvider } from '../../providers/PageProvider'
+import { ThemeContext } from '../../providers/ThemeProvider'
+import { Case } from '../../types'
+import { formatDate } from '../../utils'
+import { fetchNui } from '../../utils/fetchNui'
+import { getBodyPartByCoordinates, navigateWithAnimation, showNotification } from '../../utils/misc'
+import { hasPermission } from '../../utils/permissions'
+import './Cases.scss'
+const { TextArea } = Input
+const { Option } = Select
 
 type OptionType = {
     value: string
@@ -52,12 +40,7 @@ const Cases = () => {
     const [injuriesModalVisible, setInjurieModalVisible] = useState(false)
     const [injuryOptions, setInjuryOptions] = useState<
         { name: string; price: number; onlyForRegion?: string }[]
-    >([
-        { name: 'Oparzenie', price: 1000, onlyForRegion: 'Głowa' },
-        { name: 'Złamanie', price: 1500, onlyForRegion: 'Lewe ramie' },
-        { name: 'Krwawienie', price: 500, onlyForRegion: 'Klatka piersiowa' },
-        { name: 'Zawroty głowy', price: 700, onlyForRegion: 'Głowa' },
-    ])
+    >([])
     const config = useConfig()
     const [totalFine, setTotalFine] = useState<number>(0)
     const [finePercentage, setFinePercentage] = useState<number>(100)
@@ -113,6 +96,7 @@ const Cases = () => {
             const citizens = params.get('citizens')
                 ? JSON.parse(params.get('citizens') || '[]')
                 : storedValues?.citizens || []
+            const description = storedValues?.description || ''
             const doctors = params.get('doctors')?.split(',') || storedValues?.doctors || []
             const injuries = params.get('injuries')
                 ? JSON.parse(params.get('injuries') || '[]')
@@ -120,6 +104,7 @@ const Cases = () => {
 
             form.setFieldsValue({
                 title,
+                description,
                 citizens,
                 doctors,
                 injuries,
@@ -338,6 +323,7 @@ const Cases = () => {
 
     const [isDropdownVisible, setIsDropdownVisible] = useState(false)
 
+    const formLimits = config?.formLimits['cases'] || null
     return (
         <PageProvider
             loading={isPageLoading}
@@ -412,7 +398,21 @@ const Cases = () => {
                         <Form.Item
                             name="title"
                             label={t('cases.form.title')}
-                            rules={[{ required: true, message: t('cases.form.errors.title') }]}
+                            rules={[
+                                { required: true, message: t('cases.form.errors.title') },
+                                formLimits?.title?.min && {
+                                    min: formLimits.title.min,
+                                    message: t('global.form.min_error', {
+                                        number: formLimits.title.min,
+                                    }),
+                                },
+                                formLimits?.title?.max && {
+                                    max: formLimits.title.max,
+                                    message: t('global.form.max_error', {
+                                        number: formLimits.title.max,
+                                    }),
+                                },
+                            ]}
                         >
                             <Input />
                         </Form.Item>
@@ -421,6 +421,18 @@ const Cases = () => {
                             label={t('cases.form.description')}
                             rules={[
                                 { required: true, message: t('cases.form.errors.description') },
+                                formLimits?.description?.min && {
+                                    min: formLimits.description.min,
+                                    message: t('global.form.min_error', {
+                                        number: formLimits.description.min,
+                                    }),
+                                },
+                                formLimits?.description?.max && {
+                                    max: formLimits.description.max,
+                                    message: t('global.form.max_error', {
+                                        number: formLimits.description.max,
+                                    }),
+                                },
                             ]}
                         >
                             <TextArea rows={4} style={{ resize: 'none' }} />

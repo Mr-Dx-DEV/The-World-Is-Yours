@@ -1,7 +1,7 @@
 fx_version "cerulean"
 description "EMS MDT script by PixelPrecision"
 author "PixelPrecision"
-version '1.1.0'
+version '1.2.2'
 lua54 'yes'
 game "gta5"
 
@@ -39,6 +39,7 @@ dependencies {
 
 escrow_ignore {
     'config/*.lua',
-    'locales/*.lua'
+    'locales/*.lua',
+    'server/editable/*.lua'
 }
 dependency '/assetpacks'

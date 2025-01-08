@@ -309,3 +309,68 @@ body, html, #root {
         }
     }
 }
+
+.leaflet-control-layers {
+    background-color: var(---components-Layout-headerBg) !important;
+    box-shadow: none !important;
+    border: 1px solid var(---token-colorPrimaryBorder) !important;
+    .leaflet-control-layers-base {
+        label {
+            span {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+            color: rgba(255, 255, 255, 0.5) !important;
+            &:has(input[type='radio']:checked) {
+                color: white !important;
+            }
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+        }
+        input[type='radio'] {
+            margin: 0 !important;
+            appearance: none;
+            margin-top: 5px;
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid var(--token-colorPrimary);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: none !important;
+            background: transparent;
+            cursor: pointer;
+
+            &:checked {
+                background-color: var(--token-colorPrimary);
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 0.6rem;
+                    height: 0.6rem;
+                    border-radius: 50%;
+                    background-color: var(---token-colorPrimary);
+                }
+            }
+
+            &:not(:checked)::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 0.6rem;
+                height: 0.6rem;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+        }
+    }
+}

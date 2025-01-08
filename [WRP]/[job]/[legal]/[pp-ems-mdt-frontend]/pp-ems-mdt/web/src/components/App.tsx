@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom'
-import { Layout, Menu, Typography } from 'antd'
+import { Layout, Menu } from 'antd'
+import Sider from 'antd/es/layout/Sider'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { FaBriefcase, FaCogs } from 'react-icons/fa'
+import { FaPersonWalking } from 'react-icons/fa6'
 import { IoIosHome, IoMdExit } from 'react-icons/io'
+import { IoDocumentText } from 'react-icons/io5'
 import { MdAnnouncement, MdOutlineEventNote } from 'react-icons/md'
 import { PiUsersFourFill } from 'react-icons/pi'
-import { AnimatePresence, motion } from 'framer-motion'
-import { IoDocumentText } from 'react-icons/io5'
-import { FaBriefcase, FaCogs } from 'react-icons/fa'
-import HomePage from '../pages/HomePage/HomePage'
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { fetchTranslations, t } from '../hooks/useLocale'
+import Announcement from '../pages/Announcement/Announcement'
 import Announcements from '../pages/Announcements/Announcements'
-import Citizens from '../pages/Citizens/Citizens'
-import './App.scss'
-import Citizen from '../pages/Citizen/Citizen'
-import Dispatch from '../pages/Dispatch/Dispatch'
+import Case from '../pages/Case/Case'
 import Cases from '../pages/Cases/Cases'
+import Citizen from '../pages/Citizen/Citizen'
+import Citizens from '../pages/Citizens/Citizens'
+import Dispatch from '../pages/Dispatch/Dispatch'
+import HomePage from '../pages/HomePage/HomePage'
+import Note from '../pages/Note/Note'
 import Notes from '../pages/Notes/Notes'
+import Patrols from '../pages/Patrols/Patrols'
 import Settings from '../pages/Settings/Settings'
+import { useNotification } from '../providers/NotificationProvider'
 import { fetchNui } from '../utils/fetchNui'
 import { isEnvBrowser } from '../utils/misc'
-import Case from '../pages/Case/Case'
-import Sider from 'antd/es/layout/Sider'
-import Patrols from '../pages/Patrols/Patrols'
-import { FaPersonWalking } from 'react-icons/fa6'
-import Note from '../pages/Note/Note'
-import Announcement from '../pages/Announcement/Announcement'
 import { fetchPermissions, hasPermission } from '../utils/permissions'
-import { useNotification } from '../providers/NotificationProvider'
-import { fetchTranslations, t } from '../hooks/useLocale'
+import './App.scss'
 
 const pages = [
     {
@@ -188,9 +188,9 @@ const App = () => {
     }
 
     useEffect(() => {
-        const handleMessage = (event: MessageEvent) => {
+        const handleMessage = async (event: MessageEvent) => {
             if (event.data.action === 'open') {
-                fetchPermissions()
+                await fetchPermissions()
 
                 setIsVisible(true)
                 if (event.data.navigate) {
@@ -217,7 +217,6 @@ const App = () => {
             window.removeEventListener('message', handleMessage)
         }
     }, [navigate])
-
 
     return (
         <AnimatePresence>

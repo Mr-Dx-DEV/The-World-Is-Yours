@@ -6,6 +6,7 @@
     gap: 5px;
 
     .left {
+        overflow: auto;
         padding: 5px;
         width: 100%;
         display: flex;
@@ -13,20 +14,6 @@
         flex: 0.25;
         img {
             height: 50%;
-        }
-        .record-list {
-            &.warrant {
-                background-color: #ab1d1d3d;
-            }
-            &.incident {
-                background-color: #d46b083d;
-            }
-            &.expired_warrant {
-                background-color: #47454b3d;
-            }
-            &.used_warrant {
-                background-color: #000000b4;
-            }
         }
         .ant-list-item-meta {
             text-align: left;

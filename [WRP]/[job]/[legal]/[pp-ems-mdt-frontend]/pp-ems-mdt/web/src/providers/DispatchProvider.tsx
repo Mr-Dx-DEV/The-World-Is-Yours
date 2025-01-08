@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { DispatchNotifications } from '../types'
 import DispatchNotification from '../pages/Dispatch/DispatchNotification'
-import { isEnvBrowser } from '../utils/misc'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useNuiEvent } from '../hooks/useNuiEvent'
 
 interface DispatchContextProps {
     addDispatchNotification: (notification: DispatchNotifications) => void
@@ -13,19 +14,23 @@ interface DispatchContextProps {
 const DispatchContext = createContext<DispatchContextProps | undefined>(undefined)
 
 const saveVolumeToLocalStorage = (volume: number) => {
-    localStorage.setItem('EMSdispatchVolume', volume.toString())
+    localStorage.setItem('dispatchVolume', volume.toString())
 }
 
 const getVolumeFromLocalStorage = (): number => {
-    const volume = localStorage.getItem('EMSdispatchVolume')
+    const volume = localStorage.getItem('dispatchVolume')
     return volume ? parseFloat(volume) : 1
 }
 
 export const DispatchProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [dispatchNotifications, setDispatchNotifications] = useState<DispatchNotifications[]>([])
-    const [exitingNotifications, setExitingNotifications] = useState<number[]>([])
     const [volume, setVolumeState] = useState<number>(getVolumeFromLocalStorage())
-
+    const [quickRespondNotificationId, setQuickRespondNotificationId] = useState<number | null>(
+        null,
+    )
+    const [quickRespondKeybind, setQuickRespondKeybind] = useState<string>(
+        localStorage.getItem('quickRespondKeybind') || 'G',
+    )
     const setVolume = (volume: number) => {
         setVolumeState(volume)
         saveVolumeToLocalStorage(volume)
@@ -36,15 +41,14 @@ export const DispatchProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
         setTimeout(() => {
             removeDispatchNotification(notification.id)
-        }, notification.duration || 8000)
+        }, 8000)
     }
 
     const removeDispatchNotification = (id: number) => {
-        setExitingNotifications((prev) => [...prev, id])
-        setTimeout(() => {
-            setDispatchNotifications((prev) => prev.filter((n) => n.id !== id))
-            setExitingNotifications((prev) => prev.filter((exitingId) => exitingId !== id))
-        }, 500)
+        setDispatchNotifications((prev) => prev.filter((n) => n.id !== id))
+        if (quickRespondNotificationId === id) {
+            setQuickRespondNotificationId(null)
+        }
     }
 
     const playSound = (sound: string) => {
@@ -54,6 +58,19 @@ export const DispatchProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             console.error('Failed to play sound:', error)
         })
     }
+
+    useNuiEvent('dispatch:quickRespond', (key: string) => {
+        if (dispatchNotifications.length > 0) {
+            const topNotificationId = dispatchNotifications[0].id
+            if (quickRespondNotificationId === topNotificationId) {
+                setQuickRespondNotificationId(null)
+            } else {
+                setQuickRespondNotificationId(topNotificationId)
+            }
+            setQuickRespondKeybind(key)
+            localStorage.setItem('quickRespondKeybind', key)
+        }
+    })
 
     useEffect(() => {
         const handleEvent = (event: any) => {
@@ -79,7 +96,7 @@ export const DispatchProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                 style={{
                     position: 'fixed',
                     top: 0,
-                    right: 0,
+                    right: 10,
                     margin: '5px',
                     zIndex: 1000,
                     display: 'flex',
@@ -88,19 +105,32 @@ export const DispatchProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                     gap: '5px',
                 }}
             >
-                {dispatchNotifications
-                    .sort((a, b) => b.id - a.id)
-                    .map((notification) => (
-                        <DispatchNotification
-                            key={notification.id}
-                            notification={notification}
-                            onClick={() => {}}
-                            selected={false}
-                            provider
-                            isExiting={exitingNotifications.includes(notification.id)}
-                            onExitComplete={() => removeDispatchNotification(notification.id)}
-                        />
-                    ))}
+                <AnimatePresence>
+                    {dispatchNotifications
+                        .sort((a, b) => b.id - a.id)
+                        .map((notification, index) => (
+                            <motion.div
+                                key={notification.id}
+                                initial={{ opacity: 0, x: 150 }}
+                                animate={{ opacity: 1, x: -20 }}
+                                exit={{ opacity: 0, y: -50 }}
+                                transition={{ type: 'spring', stiffness: 50 }}
+                            >
+                                <DispatchNotification
+                                    notification={notification}
+                                    onClick={() => {}}
+                                    selected={false}
+                                    provider
+                                    onTop={index === 0}
+                                    quickRespond={notification.id === quickRespondNotificationId}
+                                    quickRespondKeybind={quickRespondKeybind}
+                                    onExitComplete={() =>
+                                        removeDispatchNotification(notification.id)
+                                    }
+                                />
+                            </motion.div>
+                        ))}
+                </AnimatePresence>
             </div>
         </DispatchContext.Provider>
     )

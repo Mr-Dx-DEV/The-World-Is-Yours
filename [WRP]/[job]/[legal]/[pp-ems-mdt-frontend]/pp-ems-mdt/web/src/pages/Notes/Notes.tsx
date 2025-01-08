@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { PageProvider } from '../../providers/PageProvider'
-import { Form, Input, Button, List, Select, Row, Col } from 'antd'
+import { Button, Form, Input, List, Select } from 'antd'
+import { useContext, useEffect, useState } from 'react'
+import { RiStickyNoteLine } from 'react-icons/ri'
 import { useLocation } from 'react-router-dom'
-import './Notes.scss'
+import NoResult from '../../components/NoResult'
+import { useConfig } from '../../hooks/useConfig'
+import { t } from '../../hooks/useLocale'
+import { PageProvider } from '../../providers/PageProvider'
 import { ThemeContext } from '../../providers/ThemeProvider'
+import { formatDate } from '../../utils'
 import { fetchNui } from '../../utils/fetchNui'
 import { navigateWithAnimation, showNotification } from '../../utils/misc'
-import { formatDate } from '../../utils'
-import { RiStickyNoteLine } from 'react-icons/ri'
-import { t } from '../../hooks/useLocale'
-import { useNotification } from '../../providers/NotificationProvider'
 import { hasPermission } from '../../utils/permissions'
-import NoResult from '../../components/NoResult'
+import './Notes.scss'
 
 const { TextArea } = Input
 const { Option } = Select
@@ -35,7 +35,7 @@ const Notes = () => {
     const [searchTerm, setSearchTerm] = useState('')
     const haveListPerms = hasPermission('notes.listview')
     const haveCreatePerms = hasPermission('notes.create')
-
+    const config = useConfig()
     useEffect(() => {
         const params = new URLSearchParams(location.search)
         const title = params.get('title') || ''
@@ -113,6 +113,8 @@ const Notes = () => {
         }
     }
 
+    const formLimits = config?.formLimits['notes'] || null
+
     return (
         <PageProvider
             loading={isPageLoading}
@@ -176,6 +178,18 @@ const Notes = () => {
                                 label={t('notes.form.title.label')}
                                 rules={[
                                     { required: true, message: t('notes.form.title.required') },
+                                    formLimits?.title?.min && {
+                                        min: formLimits.title.min,
+                                        message: t('global.form.min_error', {
+                                            number: formLimits.title.min,
+                                        }),
+                                    },
+                                    formLimits?.title?.max && {
+                                        max: formLimits.title.max,
+                                        message: t('global.form.max_error', {
+                                            number: formLimits.title.max,
+                                        }),
+                                    },
                                 ]}
                             >
                                 <Input />
@@ -187,6 +201,18 @@ const Notes = () => {
                                     {
                                         required: true,
                                         message: t('notes.form.description.required'),
+                                    },
+                                    formLimits?.description?.min && {
+                                        min: formLimits.description.min,
+                                        message: t('global.form.min_error', {
+                                            number: formLimits.description.min,
+                                        }),
+                                    },
+                                    formLimits?.description?.max && {
+                                        max: formLimits.description.max,
+                                        message: t('global.form.max_error', {
+                                            number: formLimits.description.max,
+                                        }),
                                     },
                                 ]}
                             >
@@ -235,29 +261,29 @@ const Notes = () => {
                                 </Select>
                             </Form.Item>
                             <Form.Item
-                                        name="cases"
-                                        label={t('notes.form.cases.label')}
-                                        rules={[
-                                            {
-                                                required: false,
-                                                message: t('notes.form.cases.required'),
-                                            },
-                                        ]}
-                                    >
-                                        <Select
-                                            mode="multiple"
-                                            placeholder={t('notes.form.cases.placeholder')}
-                                            onSearch={(value) => handleSearch('Cases', value)}
-                                            filterOption={false}
-                                            showSearch
-                                        >
-                                            {cases.map((caseItem) => (
-                                                <Option key={caseItem.value} value={caseItem.value}>
-                                                    {caseItem.label}
-                                                </Option>
-                                            ))}
-                                        </Select>
-                                    </Form.Item>
+                                name="cases"
+                                label={t('notes.form.cases.label')}
+                                rules={[
+                                    {
+                                        required: false,
+                                        message: t('notes.form.cases.required'),
+                                    },
+                                ]}
+                            >
+                                <Select
+                                    mode="multiple"
+                                    placeholder={t('notes.form.cases.placeholder')}
+                                    onSearch={(value) => handleSearch('Cases', value)}
+                                    filterOption={false}
+                                    showSearch
+                                >
+                                    {cases.map((caseItem) => (
+                                        <Option key={caseItem.value} value={caseItem.value}>
+                                            {caseItem.label}
+                                        </Option>
+                                    ))}
+                                </Select>
+                            </Form.Item>
                         </div>
                         <Form.Item style={{ marginTop: 'auto' }}>
                             <Button

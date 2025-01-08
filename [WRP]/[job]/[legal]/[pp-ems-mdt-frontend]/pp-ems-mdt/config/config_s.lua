@@ -13,7 +13,16 @@ elseif GetResourceState('your_custom_framework') ~= 'missing' then -- fill it wh
 end
 
 return {
-    debug = false,
+    debug = false, --[[
+        Set this to 'true' only when you need to troubleshoot issues within the resource.
+        Enabling debug mode activates extra logging to help identify and resolve problems.
+        This setting should always remain 'false' in production environments to avoid performance impacts.
+
+        When debug mode is enabled, the following commands are also available for testing:
+        - /emsdutystart - for entering duty
+        - /emsdutystop  - for leaving duty
+        - /emstestdispatch - to send a test dispatch report
+    ]]
     locales = 'en', -- EN | PL
 
     imageUpload = {

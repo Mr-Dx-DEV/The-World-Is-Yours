@@ -1,20 +1,19 @@
+import { Button, Divider, Form, Input, Select, Tooltip } from 'antd'
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { PageProvider } from '../../providers/PageProvider'
-import { Form, Input, Button, Divider, Select, Tooltip } from 'antd'
-import './Case.scss'
-import { ThemeContext } from '../../providers/ThemeProvider'
-import { MdKeyboardDoubleArrowRight } from 'react-icons/md'
-const { TextArea } = Input
-import { IoBag } from 'react-icons/io5'
 import { FaUserAlt } from 'react-icons/fa'
-import { MdEdit } from 'react-icons/md'
-import { navigateWithAnimation } from '../../utils/misc'
-import { fetchNui } from '../../utils/fetchNui'
-import { formatDate } from '../../utils'
 import { FaUserDoctor } from 'react-icons/fa6'
+import { IoBag } from 'react-icons/io5'
+import { MdEdit, MdKeyboardDoubleArrowRight } from 'react-icons/md'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { t } from '../../hooks/useLocale'
+import { PageProvider } from '../../providers/PageProvider'
+import { ThemeContext } from '../../providers/ThemeProvider'
+import { formatDate } from '../../utils'
+import { fetchNui } from '../../utils/fetchNui'
+import { navigateWithAnimation } from '../../utils/misc'
 import { hasPermission } from '../../utils/permissions'
+import './Case.scss'
+const { TextArea } = Input
 
 type Option = {
     value: string
@@ -24,12 +23,12 @@ type Option = {
 }
 
 type Injury = {
-    price: number;
-    type: string;
-    x: number;
-    y: number;
-    id: number;
-    bodyPart?: string;
+    price: number
+    type: string
+    x: number
+    y: number
+    id: number
+    bodyPart?: string
 }
 
 type CaseData = {

@@ -29,4 +29,5 @@ return {
         end
     end,
 
+    cameraTextUI = '[BACKSPACE] - Cancel   \n[ENTER] - Confirm',
 }
