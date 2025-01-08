@@ -37,9 +37,27 @@ Config = {
 			FOV = 20.0, -- Camera Field of View
 			house = "evok9_doghouse-p-a" -- Object name
 		},
-		['sheriffDept'] = {
-			Coords = vector3(637.37, -6.01, 82.79), -- vector4(637.37, -6.01, 82.79, 252.31)
-			Heading = 72.32,
+		['bcsosheriffDept'] = {
+			Coords = vector3(1837.787, 3696.508, 33.977), -- vector4(1837.787, 3696.508, 33.977, 300.906)
+			Heading = 30.32,
+			cameraDistance = -8.0,
+			cameraHeight = 0.7,
+			dogSpawnDistance = 0.9,
+			FOV = 14.0,
+			house = "evo_dog-house" -- Object name
+		},
+		['SALivestockAgency'] = {
+			Coords = vector3(1638.491, 4848.579, 42.011), -- vector4(1638.491, 4848.579, 42.011, 193.986)
+			Heading = 5.32,
+			cameraDistance = -8.0, -- Distance from the dog to the camera
+			cameraHeight = 1.0, -- Height of the camera relative to the dog
+			dogSpawnDistance = 2.0, -- Distance in front of the house to spawn the dog 0.0 is inside 
+			FOV = 20.0, -- Camera Field of View
+			house = "evok9_doghouse-p-a" -- Object name
+		},
+		['lssosheriffDept'] = {
+			Coords = vector3(367.522, -1615.377, 29.28), -- vector4(367.522, -1615.377, 29.28, 46.235)
+			Heading = 240.00,
 			cameraDistance = -8.0,
 			cameraHeight = 0.7,
 			dogSpawnDistance = 0.9,
