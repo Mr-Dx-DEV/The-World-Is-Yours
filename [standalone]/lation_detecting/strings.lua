@@ -5,13 +5,12 @@ Strings.Notify = {
     stopped = 'You stopped metal detecting',
     alreadyDigging = 'You are already digging',
     nothingToDig = 'There is nothing to dig for here',
-    menuError = 'There was an error trying to open the menu',
+    noShovel = 'You do not have a shovel',
     nothingToSell = 'You don\'t have anything on you worth anything',
     levelUp = 'You just leveled up in metal detecting!',
     noMoney = 'You do not have enough money',
     noLevel = 'You do not have the required level for this metal detector',
     inVehicle = 'You can\'t do that',
-    cantUse = 'You are not experienced enough to use this metal detector',
     cantDetect = 'You cannot metal detect in this area',
     notAuthorized = 'You are not authorized to do this'
 }

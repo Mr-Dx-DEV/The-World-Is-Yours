@@ -232,6 +232,36 @@ function HasItem(item, amount)
     end
 end
 
+-- Disables access to open/view inventory
+function DisableInventory()
+    if Inventory == 'ox_inventory' then
+        LocalPlayer.state.invBusy = true
+    elseif Inventory == 'qb-inventory' then
+        LocalPlayer.state.inv_busy = true
+    elseif Inventory == 'qs-inventory' then
+        exports[Inventory]:setInventoryDisabled(true)
+    elseif Inventory == 'core_inventory' then
+        exports[Inventory]:lockInventory()
+    else
+        -- Add custom inventory here
+    end
+end
+
+-- Enables access to open/view inventory
+function EnableInventory()
+    if Inventory == 'ox_inventory' then
+        LocalPlayer.state.invBusy = false
+    elseif Inventory == 'qb-inventory' then
+        LocalPlayer.state.inv_busy = false
+    elseif Inventory == 'qs-inventory' then
+        exports[Inventory]:setInventoryDisabled(false)
+    elseif Inventory == 'core_inventory' then
+        exports[Inventory]:unlockInventory()
+    else
+        -- Add custom inventory here
+    end
+end
+
 -- Initialize defaults
 InitializeFramework()
 InitializeInventory()

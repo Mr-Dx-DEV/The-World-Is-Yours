@@ -48,57 +48,25 @@ end
 -- Empty function that's triggered when a player begins detecting
 -- Can be used for things like disabling inventory, etc
 function StartedDetecting()
-    if Inventory == 'ox_inventory' then
-        LocalPlayer.state.invBusy = true
-    elseif Inventory == 'qb-inventory' then
-        LocalPlayer.state.inv_busy = true
-    elseif Inventory == 'qs-inventory' then
-        exports['qs-inventory']:setInventoryDisabled(true)
-    else
-        -- Add your inventory here if necessary
-    end
+    -- DisableInventory()
 end
 
 -- Empty function that's triggered when a player stops detecting
 -- Can be used for things like re-enabling inventory, etc
 function StoppedDetecting()
-    if Inventory == 'ox_inventory' then
-        LocalPlayer.state.invBusy = false
-    elseif Inventory == 'qb-inventory' then
-        LocalPlayer.state.inv_busy = false
-    elseif Inventory == 'qs-inventory' then
-        exports['qs-inventory']:setInventoryDisabled(false)
-    else
-        -- Add your inventory here if necessary
-    end
+    -- EnableInventory()
 end
 
 -- Empty function that's triggered when a player begins digging
 -- Can be used for things like disabling inventory, etc
 function StartedDigging()
-    if Inventory == 'ox_inventory' then
-        LocalPlayer.state.invBusy = true
-    elseif Inventory == 'qb-inventory' then
-        LocalPlayer.state.inv_busy = true
-    elseif Inventory == 'qs-inventory' then
-        exports['qs-inventory']:setInventoryDisabled(true)
-    else
-        -- Add your inventory here if necessary
-    end
+    -- DisableInventory()
 end
 
 -- Empty function that's triggered when a player stops digging
 -- Can be used for things like re-enabling inventory, etc
 function StoppedDigging()
-    if Inventory == 'ox_inventory' then
-        LocalPlayer.state.invBusy = false
-    elseif Inventory == 'qb-inventory' then
-        LocalPlayer.state.inv_busy = false
-    elseif Inventory == 'qs-inventory' then
-        exports['qs-inventory']:setInventoryDisabled(false)
-    else
-        -- Add your inventory here if necessary
-    end
+    -- EnableInventory()
 end
 
 -- Add target to entity
