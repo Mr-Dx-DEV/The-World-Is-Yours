@@ -141,35 +141,20 @@ Config.StatusNotifications = {
 
 -- Default HUD colors. NOTE: colors must be specified as 8 character hex code (first 6 letters = color, 2 last letters = opacity)
 Config.DefaultColors = {
-   --[[  ['light'] = {
-        ["--color-primary"] = "#679bffff",
-        ["--color-secondary"] = "#ffffffff",
-        ["--color-text-primary"] = "#ffffffff",
-        ["--color-text-secondary"] = "#ffffffb0",
-        ["--color-transparent"] = "#c2c2c24c",
-    },
-    ['dark'] = {
-        ["--color-primary"] = "#679bffff",
-        ["--color-secondary"] = "#ffffffff",
-        ["--color-text-primary"] = "#ffffffff",
-        ["--color-text-secondary"] = "#ffffffb0",
-        ["--color-transparent"] = "#0000004c",
-    } ]]
     ['light'] = {
-        ["--color-primary"] = "#ff0000ff",  
+        ["--color-primary"] = "#679bffff",
         ["--color-secondary"] = "#ffffffff",
         ["--color-text-primary"] = "#ffffffff",
         ["--color-text-secondary"] = "#ffffffb0",
         ["--color-transparent"] = "#c2c2c24c",
     },
     ['dark'] = {
-        ["--color-primary"] = "#ff0000ff",  
+        ["--color-primary"] = "#679bffff",
         ["--color-secondary"] = "#ffffffff",
         ["--color-text-primary"] = "#ffffffff",
         ["--color-text-secondary"] = "#ffffffb0",
         ["--color-transparent"] = "#0000004c",
     }
-    
 }
 
 -- Here you can disable some settings, or disable the whole command with keybind

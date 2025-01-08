@@ -490,6 +490,22 @@ function LoadEsx()
     end)
 end
 
+-- GetCurrentGear(
+--     vehicle: number
+-- )
+function GetCurrentGear(vehicle)
+    -- Here you can your custom export for getting current vehicle gear
+    return GetVehicleCurrentGear(vehicle)
+end
+
+-- GetMaxGear(
+--     vehicle: number
+-- )
+function GetMaxGear(vehicle)
+    -- Here you can your custom export for getting max (highest) vehicle gear
+    return GetVehicleHighGear(vehicle)
+end
+
 -- UpdateBeltsState(
 --     state: boolean
 -- )
@@ -643,6 +659,22 @@ end
 exports("HideRadar", function(state)
     HiddenByExport = state
 end)
+
+-- Enable cinematic mode
+function EnableCinematic()
+    ComponentsVariables["CinematicMode"] = true
+end
+
+exports("EnableCinematic", EnableCinematic)
+RegisterNetEvent("17mov_Hud:EnableCinematic", EnableCinematic)
+
+-- Disable cinematic mode
+function DisableCinematic()
+    ComponentsVariables["CinematicMode"] = false
+end
+
+exports("DisableCinematic", DisableCinematic)
+RegisterNetEvent("17mov_Hud:DisableCinematic", DisableCinematic)
 
 -- OpenSettings()
 exports("OpenSettings", OpenSettings)
