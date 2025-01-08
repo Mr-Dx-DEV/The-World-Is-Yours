@@ -1,8 +1,8 @@
 ---@param account string
 ---@param amount integer
 addAccountMoney = function(account, amount)
-    if Config.banking == 'snipe-banking' then
-        exports['snipe-banking']:addAccountMoney(account, amount)
+    if Config.banking == 'Renewed-Banking' then
+        exports['Renewed-Banking']:addAccountMoney(account, amount)
     elseif Config.banking == 'esx_addonaccount' then
         TriggerEvent('esx_addonaccount:getSharedAccount', 'society_'..account, function(account)
             account.addMoney(amount)
@@ -15,8 +15,8 @@ end
 ---@param account string
 ---@param amount integer
 removeAccountMoney = function(account, amount)
-    if Config.banking == 'snipe-banking' then
-        exports['snipe-banking']:removeAccountMoney(account, amount)
+    if Config.banking == 'Renewed-Banking' then
+        exports['Renewed-Banking']:removeAccountMoney(account, amount)
     elseif Config.banking == 'esx_addonaccount' then
         TriggerEvent('esx_addonaccount:getSharedAccount', 'society_'..account, function(account)
             account.removeMoney(amount)
@@ -30,8 +30,8 @@ end
 ---@return number
 getAccountMoney = function(account)
     local value = 0
-    if Config.banking == 'snipe-banking' then
-        value = exports['snipe-banking']:getAccountMoney(account)
+    if Config.banking == 'Renewed-Banking' then
+        value = exports['Renewed-Banking']:getAccountMoney(account)
     elseif Config.banking == 'esx_addonaccount' then
         TriggerEvent('esx_addonaccount:getSharedAccount', 'society_'..account, function(account)
             value = account.money
