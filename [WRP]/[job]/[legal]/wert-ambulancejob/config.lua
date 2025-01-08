@@ -8,7 +8,7 @@ Config.ReviveClientEvent = 'hospital:client:Revive'
 
 Config.Locale = "en"
 
-Config.OxInventory = false
+Config.OxInventory = true
 
 --Mr desk
 Config.MrCoord = vector4(-447.2, -291.19, 34.81, 111.64)
