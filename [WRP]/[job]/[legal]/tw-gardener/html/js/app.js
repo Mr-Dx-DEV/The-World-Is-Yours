@@ -36,6 +36,7 @@ const app = Vue.createApp({
             4: false
         },
         finishjobData: false,
+        serverSinglePlayer: false,
         inviteModal: "",
         playerData: {
             name: "Samet Kırıcı",
@@ -321,30 +322,34 @@ const app = Vue.createApp({
                 case "SERVER_MONEY_TYPE":
                     this.serverMoneyType = event.data.payload;
                     break;
-                case "SERVER_MISSIONS":
-                    this.missionData = event.data.payload;
-                    if (!this.missionData || !Array.isArray(this.missionData)) return;
-
-                    for (let i = 0; i < this.missionData.length; i++) {
-                        const entry = this.missionData[i];
-                        if (!entry.jobTask || !Array.isArray(entry.jobTask)) continue;
-
-                        for (let j = 0; j < entry.jobTask.length; j++) {
-                            const task = entry.jobTask[j];
-
-                            let lowerAreaLength = entry.lowerArea ? Math.floor(entry.lowerArea.length / 2) : 0;
-                            let pruningAreaLength = entry.pruningArea ? Math.floor(entry.pruningArea.length / 2) : 0;
-
-                            if (task.name === "grass") {
-                                task.singleAmount = lowerAreaLength;
-                                task.amount = entry.lowerArea.length;
-                            } else if (task.name === "puring") {
-                                task.singleAmount = pruningAreaLength;
-                                task.amount = entry.pruningArea.length;
+                case "SERVER_SINGLEPLAYER":
+                    this.serverSinglePlayer = event.data.payload;
+                    break;
+                    case "SERVER_MISSIONS":
+                        this.missionData = event.data.payload;
+                        if (!this.missionData || !Array.isArray(this.missionData)) return;
+                    
+                        for (const entry of this.missionData) {
+                            if (!entry.jobTask || !Array.isArray(entry.jobTask)) continue;
+                    
+                            let lowerAreaLength = entry.lowerArea ? Math.floor(entry.lowerArea.length / (this.serverSinglePlayer ? 2 : 1)) : 0;
+                            let pruningAreaLength = entry.pruningArea ? Math.floor(entry.pruningArea.length / (this.serverSinglePlayer ? 2 : 1)) : 0;
+                    
+                            for (const task of entry.jobTask) {
+                                switch (task.name) {
+                                    case "grass":
+                                        task.singleAmount = lowerAreaLength;
+                                        task.amount = entry.lowerArea?.length || 0;
+                                        break;
+                                    case "puring":
+                                        task.singleAmount = pruningAreaLength;
+                                        task.amount = entry.pruningArea?.length || 0;
+                                        break;
+                                }
                             }
                         }
-                    }
-                    break;
+                        break;
+                    
                 case "LOAD_LOBBY":
                     this.playerList = event.data.payload;
                     break;

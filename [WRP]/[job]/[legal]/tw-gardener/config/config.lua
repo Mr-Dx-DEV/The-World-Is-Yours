@@ -10,8 +10,12 @@ Config.InteractionHandler    = 'ox-target' --  qb-target, drawtext,ox-target
 Config.ExampleProfilePicture = "https://r2.fivemanage.com/biv23I9cFWICSObhZsr4C/LogoNEW.png"
 Config.BucketSystem          = false
 Config.ChangeClothesSystem   = true               -- true / false
-Config.ClothingScript        = "qb-clothing"      -- fivem-appearance / illenium-appearance  / esx_skin / qb-clothing
+Config.ClothingScript        = "illenium-appearance"      -- fivem-appearance / illenium-appearance  / esx_skin / qb-clothing
 Config.JobResetCommand       = "jobresetgardener" -- Job Reset Command
+Config.SinglePlayerEasyMode  = true               -- true / false -- if true, the job will be easier for single player
+Config.Inventory             =
+"ox_inventory"                                    -- qb_inventory / esx_inventory / ox_inventory / qs_inventory / need Config.missioncompletedItems
+
 Config.Gardener              = {
     ['coords'] = {
         ['intreactionCoords'] = vector3(-661.64, -900.71, 24.61),
@@ -28,7 +32,13 @@ Config.Gardener              = {
         blipColor = 2,
         blipScale = 0.55
     },
-
+    ['missioncompletedItems'] = {
+        giveItemPlayer = false, -- true / false
+        itemList = {
+            { item = "sandwich", count = math.random(1, 4) },
+            { item = "sandwich", count = 1 },
+        },
+    },
     ['marker'] = {
         ['type'] = 1,
         ['size'] = vector3(1.5, 1.5, 1.5),
@@ -42,7 +52,7 @@ Config.Gardener              = {
         ['grasscutt'] = "GRASS CUTT",
         ['grasscuttmarker'] = "Press ~g~[E]~s~ to cut the grass",
     },
-    ['gardenerjobTruck'] = 'Bison',
+    ['gardenerjobTruck'] = 'sadler',
     ['gardenerjobTrailler'] = 'trailersmall',
     ['gardenerjobLower'] = 'mower',
     ['GardenerSpawnCoords'] = {
@@ -68,8 +78,8 @@ Config.Gardener              = {
             },
             image = "https://r2.fivemanage.com/biv23I9cFWICSObhZsr4C/Mask_group1.png",
             awards = {
-                money = 3000,
-                xp = 1000,
+                money = 10000,
+                xp = 3000,
                 onlinejobextra = 2 -- how many percent of the money will increase when a player enters onlinejob
             },
             lowerModel = {
@@ -646,26 +656,9 @@ Config.Vehiclekey            = true
 Config.VehicleSystem         = "qb-vehiclekeys" -- cd_garage / qs-vehiclekeys / wasabi-carlock / qb-vehiclekeys
 Config.Removekeys            = true
 Config.RemoveVehicleSystem   =
-"qb-vehiclekeys" -- cd_garage / qs-vehiclekeys / wasabi-carlock / qb-vehiclekeys
+"qb-vehiclekeys"                                               -- cd_garage / qs-vehiclekeys / wasabi-carlock / qb-vehiclekeys
 
-
-Config.GiveVehicleKey   = function(plate, model, vehicle) -- you can change vehiclekeys export if you use another vehicle key system
-    if Config.Vehiclekey then
-        if Config.VehicleSystem == 'cd_garage' then
-            TriggerEvent('cd_garage:AddKeys', exports['cd_garage']:GetPlate(vehicle))
-        elseif Config.VehicleSystem == 'qs-vehiclekeys' then
-            model = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
-            exports['qs-vehiclekeys']:GiveKeys(plate, model, true)
-        elseif Config.VehicleSystem == 'wx_carlock' then
-            local playerId = GetPlayerServerId(PlayerId())
-            exports["wx_carlock"]:shareKey(playerId, plate)
-        elseif Config.VehicleSystem == 'qb-vehiclekeys' then
-            TriggerServerEvent('qb-vehiclekeys:server:AcquireVehicleKeys', plate)
-        end
-    end
-end
-
-Config.GiveVehicleKey   = function(plate, model, vehicle) -- you can change vehiclekeys export if you use another vehicle key system
+Config.GiveVehicleKey        = function(plate, model, vehicle) -- you can change vehiclekeys export if you use another vehicle key system
     if Config.Vehiclekey then
         if Config.VehicleSystem == 'cd_garage' then
             TriggerEvent('cd_garage:AddKeys', exports['cd_garage']:GetPlate(vehicle))
@@ -674,13 +667,15 @@ Config.GiveVehicleKey   = function(plate, model, vehicle) -- you can change vehi
             exports['qs-vehiclekeys']:GiveKeys(plate, model, true)
         elseif Config.VehicleSystem == 'wasabi-carlock' then
             exports.wasabi_carlock:GiveKey(plate)
+            local playerId = GetPlayerServerId(PlayerId())
+            exports["wx_carlock"]:shareKey(playerId, plate)
         elseif Config.VehicleSystem == 'qb-vehiclekeys' then
             TriggerServerEvent('qb-vehiclekeys:server:AcquireVehicleKeys', plate)
         end
     end
 end
 
-Config.RemoveVehiclekey = function(plate, model, vehicle)
+Config.RemoveVehiclekey      = function(plate, model, vehicle)
     if Config.Removekeys then
         if Config.RemoveVehicleSystem == 'cd_garage' then
             TriggerServerEvent('cd_garage:RemovePersistentVehicles', exports['cd_garage']:GetPlate(vehicle))
@@ -695,19 +690,26 @@ Config.RemoveVehiclekey = function(plate, model, vehicle)
     end
 end
 
-Config.FuelSystem       = "LegacyFuel"                  -- LegacyFuel / ox-fuel
+Config.FuelSystem            = "rcore_fuel "                  -- LegacyFuel / ox-fuel / cdn-fuel
 
-Config.SetVehicleFuel   = function(vehicle, fuel_level) -- you can change LegacyFuel export if you use another fuel system
+Config.SetVehicleFuel        = function(vehicle, fuel_level) -- you can change LegacyFuel export if you use another fuel system
     if Config.FuelSystem == 'LegacyFuel' then
         return exports["LegacyFuel"]:SetFuel(vehicle, fuel_level)
     elseif Config.FuelSystem == 'ox-fuel' then
         return SetVehicleFuelLevel(vehicle, fuel_level + 0.0)
+    elseif Config.FuelSystem == 'rcore_fuel ' then
+        return exports['rcore_fuel ']:SetFuel(vehicle, fuel_level)
     else
         return SetVehicleFuelLevel(vehicle, fuel_level + 0.0)
     end
 end
 
-Config.NotificationText = {
+Config.AttachFunction        = function(vehicle, truck)
+    AttachEntityToEntity(vehicle, truck, 0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0,
+        false, false, true, false, 2, true)
+end
+
+Config.NotificationText      = {
     ['beforewait'] = {
         text = "Please wait before sending another request.",
         type = "error"
@@ -772,9 +774,13 @@ Config.NotificationText = {
         text = "You cannot start a mission because the vehicle is a vehicle in the Spawn Zone",
         type = "error"
     },
+    ['getoutvehicle'] = {
+        text = "Get out of the vehicle",
+        type = "error"
+    }
 }
 
-Config.Notification     = function(message, type, isServer, src)
+Config.Notification          = function(message, type, isServer, src)
     if isServer then
         if Config.Framework == "esx" then
             TriggerClientEvent("esx:showNotification", src, message)

@@ -108,6 +108,7 @@ function GetName(source)
 end
 
 function AddMoney(source, type, value)
+    local type = 'cash'
     local Player = GetPlayer(source)
     if Player then
         if Config.Framework == 'esx' or Config.Framework == 'oldesx' then
@@ -149,3 +150,20 @@ function GetPlayerMoney(source, value)
     end
 end
 
+function addItem(src, item, amount, slot, info)
+    local amount = tonumber(amount) or 1
+    local Player = GetPlayer(src)
+    if Player then
+        if Config.Inventory == "qb_inventory" then
+            Player.Functions.AddItem(item, amount, slot, info)
+        elseif Config.Inventory == "esx_inventory" then
+            Player.addInventoryItem(item, amount)
+        elseif Config.Inventory == "ox_inventory" then
+            exports.ox_inventory:AddItem(src, item, amount)
+        elseif Config.Inventory == "codem-inventory" then
+            exports["codem-inventory"]:AddItem(src, item, amount, slot, info)
+        elseif Config.Inventory == "qs_inventory" then
+            exports['qs-inventory']:AddItem(src, item, amount)
+        end
+    end
+end
