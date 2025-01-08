@@ -4,18 +4,19 @@ end
 
 RegisterNUICallback("Home", function(data, cb)
     local action = data.action
+    debugprint("loaf_housing - Home:" .. (action or ""))
 
     if action == "getHomes" then
         local ownedHouses = exports.loaf_housing:GetOwnedHouses()
-
         local toSend = {}
+
         for _, v in pairs(ownedHouses) do
             if v then
                 toSend[#toSend+1] = {
                     label = v.label .. " (" .. v.uniqueId .. ")",
                     id = v.id,
                     uniqueId = v.uniqueId,
-                    locked = lib.TriggerCallbackSync("loaf_housing:get_locked", v.id, v.uniqueId),
+                    locked = AwaitCallback("home:getLocked", v.id, v.uniqueId),
                     keyholders = v.keyHolders
                 }
             end
@@ -31,9 +32,9 @@ RegisterNUICallback("Home", function(data, cb)
             end)
         end
     elseif action == "toggleLocked" then
-        lib.TriggerCallback("phone:home:toggleLocked", function(locked)
-            cb(locked)
-        end, data.id, data.uniqueId)
+        local locked = AwaitCallback("home:toggleLocked", data.id, data.uniqueId)
+
+        cb(locked)
     elseif action == "setWaypoint" then
         exports.loaf_housing:MarkProperty(data.id)
         cb(true)

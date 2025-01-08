@@ -2,7 +2,7 @@
 local lastRefresh = 0
 local refreshInterval = 60 -- refresh at most once every 60 seconds
 
-lib.RegisterCallback("phone:services:getOnline", function(_, cb)
+RegisterLegacyCallback("services:getOnline", function(_, cb)
     if (lastRefresh + refreshInterval) < os.time() and RefreshCompanies then
         RefreshCompanies()
         lastRefresh = os.time()
@@ -18,7 +18,7 @@ for i = 1, #Config.Companies.Services do
 end
 
 -- Messages
-local function getChannel(company, phoneNumber)
+local function GetChannel(company, phoneNumber)
     local channel = MySQL.scalar.await("SELECT id FROM phone_services_channels WHERE company = ? AND phone_number = ?", { company, phoneNumber })
 
     if channel then
@@ -30,7 +30,7 @@ end
 
 ---@param job string
 BaseCallback("services:getChannelId", function (source, phoneNumber, job)
-    return getChannel(job, phoneNumber)
+    return GetChannel(job, phoneNumber)
 end)
 
 ---@param channelId string
@@ -45,13 +45,13 @@ BaseCallback("services:sendMessage", function(source, phoneNumber, channelId, co
 
     if anonymous then
         phoneNumber = L("BACKEND.SERVICES.ANONYMOUS")
-        channelId = getChannel(company, phoneNumber)
+        channelId = GetChannel(company, phoneNumber)
     end
 
     debugprint("phone:services:sendMessage, company:", company, " message:", message)
 
     if not channelId then
-        channelId = getChannel(company, phoneNumber)
+        channelId = GetChannel(company, phoneNumber)
     end
 
     local contacter = MySQL.scalar.await("SELECT phone_number FROM phone_services_channels WHERE id = ?", { channelId })
@@ -128,7 +128,7 @@ end)
 ---@param page? number
 BaseCallback("services:getRecentMessages", function(source, phoneNumber, page)
     return MySQL.query.await([[
-        SELECT id, phone_number, company, company, last_message, `timestamp`
+        SELECT id, phone_number, company, last_message, `timestamp`
         FROM phone_services_channels
         WHERE phone_number = ? OR company = ?
         ORDER BY `timestamp` DESC
@@ -167,13 +167,13 @@ end, false)
 
 ---@param company string
 ---@return { firstname: string, lastname: string, grade: string, number?: string, online: boolean }[] employees
-BaseCallback("services:getEmployees", function(source,eNumber, company)
+BaseCallback("services:getEmployees", function(source, phoneNumber, company)
     if not Config.Companies.SeeEmployees or Config.Companies.SeeEmployees == "none" or not allowedCompanies[company] or not GetAllEmployees then
-        return {}
+        return false
     end
 
     if Config.Companies.SeeEmployees == "employees" and GetJob(source) ~= company then
-        return {}
+        return false
     end
 
     ---@type { firstname: string, lastname: string, grade: string, number?: string, online: boolean }[]

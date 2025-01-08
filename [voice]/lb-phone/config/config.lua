@@ -9,12 +9,13 @@ Config.DatabaseChecker.AutoFix = true
 Config.Framework = "auto"
 --[[
     Supported frameworks:
-        * auto: auto-detect framework (ONLY WORKS WITH THE ONES LISTED BELOW)
-        * esx: es_extended, https://github.com/esx-framework/esx-legacy
-        * qb: qb-core, https://github.com/qbcore-framework/qb-core
-        * ox: ox_core, https://github.com/overextended/ox_core
+        * auto: auto-detect framework
+        * esx: es_extended - https://github.com/esx-framework/esx-legacy
+        * qb: qb-core - https://github.com/qbcore-framework/qb-core
+        * qbox: qbx_core - https://github.com/Qbox-project/qbx_core
+        * ox: ox_core - https://github.com/overextended/ox_core
         * vrp2: vrp 2.0 (ONLY THE OFFICIAL vRP 2.0, NOT CUSTOM VERSIONS)
-        * standalone: no framework, note that framework specific apps will not work unless you implement the functions
+        * standalone: no framework. note that framework specific apps will not work unless you implement the functions
 ]]
 Config.CustomFramework = false -- if set to true and you use standalone, you will be able to use framework specific apps
 Config.QBMailEvent = true -- if you want this script to listen for qb email events, enable this.
@@ -43,6 +44,8 @@ Config.ServerSideSpawn = false -- should entities be spawned on the server? (pho
 Config.PhoneModel = `lb_phone_prop` -- the prop of the phone, if you want to use a custom phone model, you can change this here
 Config.PhoneRotation = vector3(0.0, 0.0, 180.0) -- the rotation of the phone when attached to a player
 Config.PhoneOffset = vector3(0.0, -0.005, 0.0) -- the offset of the phone when attached to a player
+
+Config.DisableOpenNUI = true -- disable the phone from opening if another script has NUI focus?
 
 Config.DynamicIsland = true -- if enabled, the phone will have a Iphone 14 Pro inspired Dynamic Island.
 Config.SetupScreen = true -- if enabled, the phone will have a setup screen when the player first uses the phone.
@@ -233,7 +236,7 @@ Config.Locations = { -- Locations that'll appear in the maps app.
     },
 }
 
-Config.Locales = { -- languages that the player can choose from when setting up a phone [Check the docs to see which languages the phone supports]
+Config.Locales = { -- If your desired language isn't here, you may contribute at https://github.com/lbphone/lb-phone-locales
     {
         locale = "en",
         name = "English"
@@ -309,6 +312,10 @@ Config.Locales = { -- languages that the player can choose from when setting up 
     {
         locale = "ua",
         name = "Українська"
+    },
+    {
+        locale = "ba",
+        name = "Bosanski"
     }
 }
 
@@ -338,6 +345,7 @@ Config.Battery.DischargeWhenInactive = true -- Should the phone remove battery w
 
 Config.CurrencyFormat = "$%s" -- ($100) Choose the formatting of the currency. %s will be replaced with the amount.
 Config.MaxTransferAmount = 1000000 -- The maximum amount of money that can be transferred at once via wallet / messages.
+Config.TransferOffline = false -- Allow players to transfer money to offline players via the wallet app?
 
 Config.TransferLimits = {}
 Config.TransferLimits.Daily = false -- The maximum amount of money that can be transferred in a day. Set to false for unlimited.
@@ -345,6 +353,7 @@ Config.TransferLimits.Weekly = false -- The maximum amount of money that can be 
 
 Config.EnableMessagePay = true -- Allow players to pay other players via messages?
 Config.EnableVoiceMessages = true -- Allow players to send voice messages?
+Config.EnableGIFs = true
 
 Config.CityName = "The World is Yours" -- The name that's being used in the weather app etc.
 Config.RealTime = true -- if true, the time will use real life time depending on where the user lives, if false, the time will be the ingame time.
@@ -514,7 +523,7 @@ Config.TrendyTTS = {
 -- }
 
 Config.Crypto = {}
-Config.Crypto.Enabled = true
+Config.Crypto.Enabled = false
 Config.Crypto.Coins = {"bitcoin","ethereum","tether","binancecoin","usd-coin","ripple","binance-usd","cardano","dogecoin","solana","shiba-inu","polkadot","litecoin","bitcoin-cash"}
 Config.Crypto.Currency = "usd" -- currency to use for crypto prices. https://api.coingecko.com/api/v3/simple/supported_vs_currencies
 Config.Crypto.Refresh = 5 * 60 * 1000 -- how often should the crypto prices be refreshed (client cache)? (Default 5 minutes)
@@ -563,6 +572,21 @@ Config.KeyBinds = {
         Bind = "RIGHT",
         Description = "Change mode"
     },
+    RollLeft = {
+        Command = "cameraRollLeft",
+        Bind = "Z",
+        Description = "Roll camera to the left"
+    },
+    RollRight = {
+        Command = "cameraRollRight",
+        Bind = "C",
+        Description = "Roll camera to the right"
+    },
+    FreezeCamera = {
+        Command = "cameraFreeze",
+        Bind = "X",
+        Description = "Freeze camera"
+    },
 
     AnswerCall = {
         Command = "answerCall",
@@ -585,6 +609,7 @@ Config.KeepInput = true -- keep input when nui is focused (meaning you can walk 
 --[[ PHOTO / VIDEO OPTIONS ]] --
 Config.Camera = {}
 Config.Camera.Enabled = true -- use a custom camera that allows you to walk around while taking photos?
+Config.Camera.Roll = true -- allow rolling the camera to the left & right?
 Config.Camera.AllowRunning = true
 Config.Camera.MaxFOV = 60.0 -- higher = zoomed out
 Config.Camera.MinFOV = 10.0 -- lower = zoomed in
@@ -599,6 +624,17 @@ Config.Camera.Vehicle.MaxLookUp = 50.0
 Config.Camera.Vehicle.MaxLookDown = -30.0
 Config.Camera.Vehicle.MaxLeftRight = 120.0
 Config.Camera.Vehicle.MinLeftRight = -120.0
+
+Config.Camera.Selfie = {}
+Config.Camera.Selfie.Offset = vector3(0.05, 0.55, 0.6)
+Config.Camera.Selfie.Rotation = vector3(10.0, 0.0, -180.0)
+Config.Camera.Selfie.MaxFov = 90.0
+Config.Camera.Selfie.MinFov = 50.0
+
+Config.Camera.Freeze = {}
+Config.Camera.Freeze.Enabled = false -- allow players to freeze the camera when taking photos? (this will make it so they can take photos in 3rd person)
+Config.Camera.Freeze.MaxDistance = 10.0 -- max distance the camera can be from the player when frozen
+Config.Camera.Freeze.MaxTime = 60 -- max time the camera can be frozen for (in seconds)
 
 -- Set your api keys in lb-phone/server/apiKeys.lua
 Config.UploadMethod = {}
