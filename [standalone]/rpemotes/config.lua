@@ -82,7 +82,7 @@ Config = {
     -- Preview Ped Options
     PreviewPed = true, -- Shows a preview of the emote on the player's ped next to the emote menu. Note that resmon will increase when this when emotes are being previewed.
 
-    CheckForUpdates = true
+    CheckForUpdates = false
 }
 
 Config.KeybindKeys = {
