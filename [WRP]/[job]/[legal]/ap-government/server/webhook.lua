@@ -6,6 +6,11 @@ local CompanyGrantGivenWebhook = "https://discord.com/api/webhooks/1007775161472
 local AppointmentRequestWebhook = "https://discord.com/api/webhooks/1007775161472253982/fao_Py3whihwBBLFTVRwkoQz0alA7bkCT66t0izdwKCMxo1qSLKA2v6qhwXcJPh0OS8s"
 local AppointmentApproveWebhook = "https://discord.com/api/webhooks/1007775161472253982/fao_Py3whihwBBLFTVRwkoQz0alA7bkCT66t0izdwKCMxo1qSLKA2v6qhwXcJPh0OS8s"
 local MayorTaxChangeWebhook = "https://discord.com/api/webhooks/1007775161472253982/fao_Py3whihwBBLFTVRwkoQz0alA7bkCT66t0izdwKCMxo1qSLKA2v6qhwXcJPh0OS8s"
+local TerminateVotingWebhook = "https://discord.com/api/webhooks/1007775161472253982/fao_Py3whihwBBLFTVRwkoQz0alA7bkCT66t0izdwKCMxo1qSLKA2v6qhwXcJPh0OS8s"
+local NewLawWebhook = "https://discord.com/api/webhooks/1007775161472253982/fao_Py3whihwBBLFTVRwkoQz0alA7bkCT66t0izdwKCMxo1qSLKA2v6qhwXcJPh0OS8s"
+local LawAgainstWebhook = "https://discord.com/api/webhooks/1007775161472253982/fao_Py3whihwBBLFTVRwkoQz0alA7bkCT66t0izdwKCMxo1qSLKA2v6qhwXcJPh0OS8s"
+local LawPassedWebhook = "https://discord.com/api/webhooks/1007775161472253982/fao_Py3whihwBBLFTVRwkoQz0alA7bkCT66t0izdwKCMxo1qSLKA2v6qhwXcJPh0OS8s"
+local LawRemovedWebhook = "https://discord.com/api/webhooks/1007775161472253982/fao_Py3whihwBBLFTVRwkoQz0alA7bkCT66t0izdwKCMxo1qSLKA2v6qhwXcJPh0OS8s"
 
 webhookMsg = {
     ['CandidateWinner'] = {
@@ -39,6 +44,26 @@ webhookMsg = {
     ['MayorTaxChange'] = {
       ['title'] = "Company Tax Change",
       ['message'] = "**Company Name:** ```%s``` \n\n **Old Tax Amount:** ```%s%s``` \n\n **New Tax Amount:** ```%s%s``` \n\n **Owners Name:** ```%s``` \n\n **Mayor's Name:** ```%s```"
+    },
+    ['TerminateVoting'] = {
+      ['title'] = "%s",
+      ['message'] = "```The government have terminated the voting.```"
+    },
+    ['NewLaw'] = {
+      ['title'] = "%s",
+      ['message'] = "**Name Of Law:** ```%s``` \n\n **Law Description:** ```%s``` \n\n **Date Made:** ```%s```"
+    },
+    ['LawAgainst'] = {
+      ['title'] = "%s Law",
+      ['message'] = "```%s law has been deleted from the db, as it didn't have enough votes for a pass```"
+    },
+    ['LawPassed'] = {
+      ['title'] = "%s Passed",
+      ['message'] = "**Name Of Law:** ```%s``` \n\n **Law Description:** ```%s``` \n\n **Votes:** ```%s/%s```"
+    },
+    ['LawRemoved'] = {
+      ['title'] = "%s Removed",
+      ['message'] = "**Player:** ```%s``` \n\n **Message:** ```%s has been removed from the passed laws, this has now been permanently deleted from the database.```"
     }
 }
 
@@ -66,7 +91,17 @@ sendLogsDiscord = function(title, message, webhook)
     elseif webhook == "AppointmentApproveWebhook" then
       Discord_url = AppointmentApproveWebhook
     elseif webhook == "MayorTaxChangeWebhook" then
-      Discord_url = MayorTaxChangeWebhook   
+      Discord_url = MayorTaxChangeWebhook
+    elseif webhook == "TerminateVotingWebhook" then
+      Discord_url = TerminateVotingWebhook
+    elseif webhook == "NewLawWebhook" then
+      Discord_url = NewLawWebhook
+    elseif webhook == "LawAgainstWebhook" then
+      Discord_url = LawAgainstWebhook   
+    elseif webhook == "LawPassedWebhook" then
+      Discord_url = LawPassedWebhook
+    elseif webhook == "LawRemovedWebhook" then
+      Discord_url = LawRemovedWebhook         
     end
     PerformHttpRequest(Discord_url, function(err, text, headers) end, 'POST', json.encode({username = title, embeds = embed}), { ['Content-Type'] = 'application/json' })
 end

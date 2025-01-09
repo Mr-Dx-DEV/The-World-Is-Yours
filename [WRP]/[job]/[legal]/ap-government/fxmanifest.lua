@@ -2,7 +2,7 @@ fx_version 'adamant'
 games { 'gta5' }
 
 mod 'QB AP GOVERNMENT'
-version '1.1'
+version '1.3'
 
 lua54 'yes'
 
