@@ -159,7 +159,7 @@ Config.GrantWeaponLicenses = {
 }
 
 Config.CCTVCameras = { -- CCTV Cameras
-    enabled = true,     -- Enable CCTV Cameras?
+    enabled = false,     -- Enable CCTV Cameras?
     jobLock = false, -- Job lock? or access to all police jobs by using false
     saveToDatabase = true, -- Save CCTV data to database? (If false, data will be stored in server memory/reset on server restarts)
 
