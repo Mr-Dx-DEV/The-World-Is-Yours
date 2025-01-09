@@ -1,12 +1,12 @@
 Config                       = {}
 
-Config.Framework             = 'qb'           -- esx, oldesx, qb, oldqb, qbox
-Config.CurrencyUnit          = '$'            -- '€' -- '₺'  '$'
-Config.SQL                   = "oxmysql"      -- oxmysql / mysql-async / ghmattimysql
-Config.Inventory             = "ox_inventory" -- qb_inventory / esx_inventory / ox_inventory / qs_inventory / codem-inventory
-Config.ServerName            = "The World Is Yours"       -- Server Name MAX 10
-Config.MoneyType             = "$"            -- Money Type
-Config.QBCoreJobVaultSql     = 'bank_account' -- bank_account, management_funds
+Config.Framework             = 'qb'               -- esx, oldesx, qb, oldqb, qbox
+Config.CurrencyUnit          = '$'                -- '€' -- '₺'  '$'
+Config.SQL                   = "oxmysql"          -- oxmysql / mysql-async / ghmattimysql
+Config.Inventory             = "ox_inventory"     -- qb_inventory / esx_inventory / ox_inventory / qs_inventory / codem-inventory
+Config.ServerName            = "The World IS Yours"           -- Server Name MAX 10
+Config.MoneyType             = "$"                -- Money Type
+Config.QBCoreJobVaultSql     = 'management_funds' -- bank_account, management_funds
 Config.ExampleProfilePicture = "https://r2.fivemanage.com/biv23I9cFWICSObhZsr4C/LogoNEW.png"
 Config.DefaultLogo           =
 'https://cdn.discordapp.com/attachments/1304168293292179496/1310362844616720395/title.png?ex=6746ec3f&is=67459abf&hm=c01d60843127e100f94b6e21c502090a12e91ce05c71e1956298cbd2961c4d45&'
@@ -21,6 +21,7 @@ Config.Admins                = {
     "mod",
     "moderator",
 }
+Config.ExportManagementFunds = true -- true / false -- if you use qb-management, you can use this option to export the funds to the qb-management system
 
 Config.DefaultPermissions    = {
     bankshow = { label = "Show Bank Access", value = false, id = 1 },

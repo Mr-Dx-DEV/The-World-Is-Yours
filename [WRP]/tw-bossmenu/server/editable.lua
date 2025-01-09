@@ -57,6 +57,20 @@ function GetDiscordAvatar(user)
     return imgURL
 end
 
+function SetMoney(account, amount)
+    if BossMenu[account] and BossMenu[account].jobSettings.jobMoney then
+        BossMenu[account].jobSettings.jobMoney = amount
+        for k, v in pairs(BossMenu[account]['employees']) do
+            if v.id then
+                local GetIdentifier = IsPlayerInGame(v.id)
+                if GetIdentifier then
+                    TriggerClientEvent('tworst:bossmenu:updateMoneyData', v.id, BossMenu[account].jobSettings.jobMoney)
+                end
+            end
+        end
+    end
+end
+
 RegisterServerEvent('tworst:bossmenu:reloadData', function()
     local result = ExecuteSql('SELECT * FROM tw_bossmenu')
     if next(result) ~= nil then
@@ -189,13 +203,23 @@ RegisterServerEvent('tworst:bossmenu:reloadData', function()
                         end
                         return
                     end
-                    local bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { job.name })
-                    if next(bossmoney) == nil then
+                    local bossmoney
+                    if Config.ExportManagementFunds then
+                        bossmoney = exports['qb-management']:GetAccount(job.name)
+                    else
+                        bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { job.name })
+                    end
+
+                    if not bossmoney then
                         ExecuteSql(
                             'INSERT INTO management_funds (job_name, amount, type) VALUES (?, ?, ?)',
                             { job.name, 0, 'boss' })
                     end
-                    BossMenu[job.name].jobSettings.jobMoney = bossmoney[1] and bossmoney[1].amount or 0
+                    if Config.ExportManagementFunds then
+                        BossMenu[job.name].jobSettings.jobMoney = bossmoney or 0
+                    else
+                        BossMenu[job.name].jobSettings.jobMoney = bossmoney[1] and bossmoney[1].amount or 0
+                    end
                 else
                     BossMenu[job.name].jobSettings.jobMoney = 0
                 end
@@ -269,13 +293,22 @@ RegisterServerEvent('tworst:bossmenu:reloadData', function()
                         end
                         return
                     end
-                    local bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { gang.name })
-                    if next(bossmoney) == nil then
+                    local bossmoney
+                    if Config.ExportManagementFunds then
+                        bossmoney = exports['qb-management']:GetGangAccount(gang.name)
+                    else
+                        bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { gang.name })
+                    end
+                    if not bossmoney then
                         ExecuteSql(
                             'INSERT INTO management_funds (job_name, amount, type) VALUES (?, ?, ?)',
                             { gang.name, 0, 'boss' })
                     end
-                    BossMenu[gang.name].jobSettings.jobMoney = bossmoney[1] and bossmoney[1].amount or 0
+                    if Config.ExportManagementFunds then
+                        BossMenu[gang.name].jobSettings.jobMoney = bossmoney or 0
+                    else
+                        BossMenu[gang.name].jobSettings.jobMoney = bossmoney[1] and bossmoney[1].amount or 0
+                    end
                 else
                     BossMenu[gang.name].jobSettings.jobMoney = 0
                 end
@@ -451,6 +484,60 @@ end)
 
 
 Citizen.CreateThread(function()
+    while Core == nil do
+        Citizen.Wait(0)
+    end
+
+
+    RegisterCallback('tworst:bossmenu:getBossMoney', function(source, cb)
+        local src = source
+        local identifier = GetIdentifier(src)
+        local job = getGangorgetJob(identifier)
+        local isGang = BossMenu[job.name] and BossMenu[job.name].jobSettings and BossMenu[job.name].jobSettings.isGang or
+            false
+        if not job then
+            TriggerClientEvent('tworst:bossmenu:addNotification', src, Config.Notification['datanotfound'])
+            return
+        end
+        if Config.QBCoreJobVaultSql == 'management_funds' then
+            if Config.ExportManagementFunds then
+                if isGang then
+                    local bossmoney = exports['qb-management']:GetGangAccount(job.name)
+                    cb(bossmoney)
+                else
+                    local bossmoney = exports['qb-management']:GetAccount(job.name)
+                    cb(bossmoney)
+                end
+            else
+                local bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { job.name })
+                cb(bossmoney[1].amount)
+            end
+        elseif Config.QBCoreJobVaultSql == 'bank_account' then
+            local result = ExecuteSql(string.format("SHOW TABLES LIKE '%s'", 'bank_accounts'))
+            if result[1] == nil then
+                for i = 0, 10 do
+                    print('^1 BANK ACCOUNTS SQL TABLE NOT FOUND, CHECK Config.QBCoreJobVaultSql ^0')
+                end
+                return
+            end
+            local bossmoney = ExecuteSql('SELECT * FROM bank_accounts WHERE account_name = ?', { job.name })
+
+            if next(bossmoney) == nil then
+                ExecuteSql(
+                    'INSERT INTO bank_accounts (account_name, account_balance, account_type) VALUES (?, ?, ?)',
+                    { job.name, 0, 'job' })
+            end
+
+            print(bossmoney[1].account_balance)
+            BossMenu[job.name].jobSettings.jobMoney = bossmoney[1] and bossmoney[1].account_balance or 0
+            cb(BossMenu[job.name].jobSettings.jobMoney)
+        else
+            cb(0)
+        end
+    end)
+end)
+
+Citizen.CreateThread(function()
     while not Core do
         Wait(0)
     end
@@ -586,13 +673,22 @@ Citizen.CreateThread(function()
                         end
                         return
                     end
-                    local bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { job.name })
-                    if next(bossmoney) == nil then
+                    local bossmoney
+                    if Config.ExportManagementFunds then
+                        bossmoney = exports['qb-management']:GetAccount(job.name)
+                    else
+                        bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { job.name })
+                    end
+                    if not bossmoney then
                         ExecuteSql(
                             'INSERT INTO management_funds (job_name, amount, type) VALUES (?, ?, ?)',
                             { job.name, 0, 'boss' })
                     end
-                    BossMenu[job.name].jobSettings.jobMoney = bossmoney[1] and bossmoney[1].amount or 0
+                    if Config.ExportManagementFunds then
+                        BossMenu[job.name].jobSettings.jobMoney = bossmoney or 0
+                    else
+                        BossMenu[job.name].jobSettings.jobMoney = bossmoney[1] and bossmoney[1].amount or 0
+                    end
                 else
                     BossMenu[job.name].jobSettings.jobMoney = 0
                 end
@@ -666,13 +762,22 @@ Citizen.CreateThread(function()
                         end
                         return
                     end
-                    local bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { gang.name })
-                    if next(bossmoney) == nil then
+                    local bossmoney
+                    if Config.ExportManagementFunds then
+                        bossmoney = exports['qb-management']:GetGangAccount(gang.name)
+                    else
+                        bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { gang.name })
+                    end
+                    if not bossmoney then
                         ExecuteSql(
                             'INSERT INTO management_funds (job_name, amount, type) VALUES (?, ?, ?)',
                             { gang.name, 0, 'boss' })
                     end
-                    BossMenu[gang.name].jobSettings.jobMoney = bossmoney[1] and bossmoney[1].amount or 0
+                    if Config.ExportManagementFunds then
+                        BossMenu[gang.name].jobSettings.jobMoney = bossmoney or 0
+                    else
+                        BossMenu[gang.name].jobSettings.jobMoney = bossmoney[1] and bossmoney[1].amount or 0
+                    end
                 else
                     BossMenu[gang.name].jobSettings.jobMoney = 0
                 end
@@ -935,16 +1040,32 @@ RegisterServerEvent('tworst:bossmenu:depositMoney', function(data)
                         print('^1 MANAGEMENT FUNDS SQL TABLE NOT FOUND ^0')
                         return
                     end
-
-                    local bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { job.name })
-                    if next(bossmoney) == nil then
-                        print('^1 ' .. job.name .. ' MANAGEMENT_FUNDS  ACCOUNTS SQL TABLE NOT FOUND ^0')
-                        return
+                    local bossmoney
+                    if Config.ExportManagementFunds then
+                        bossmoney = exports['qb-management']:GetAccount(job.name)
+                        if not bossmoney then
+                            print('^1 ' .. job.name .. ' MANAGEMENT_FUNDS  ACCOUNTS SQL TABLE NOT FOUND ^0')
+                            return
+                        end
+                    else
+                        bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { job.name })
+                        if next(bossmoney) == nil then
+                            print('^1 ' .. job.name .. ' MANAGEMENT_FUNDS  ACCOUNTS SQL TABLE NOT FOUND ^0')
+                            return
+                        end
                     end
-                    if bossmoney and bossmoney[1] then
-                        local newmoney = bossmoney[1].amount + amount
-                        ExecuteSql('UPDATE management_funds SET amount = ? WHERE job_name = ?',
-                            { newmoney, job.name })
+
+                    if bossmoney then
+                        local newmoney
+                        if Config.ExportManagementFunds then
+                            exports['qb-management']:AddMoney(job.name, amount)
+                            newmoney = exports['qb-management']:GetAccount(job.name)
+                        else
+                            newmoney = bossmoney[1].amount + amount
+                            ExecuteSql('UPDATE management_funds SET amount = ? WHERE job_name = ?',
+                                { newmoney, job.name })
+                        end
+
                         BossMenu[job.name].jobSettings.jobMoney = newmoney
                         RemoveMoney(src, 'bank', amount)
                         local newData = {
@@ -1112,16 +1233,32 @@ RegisterServerEvent('tworst:bossmenu:withdrawMoney', function(data)
                         print('^1 MANAGEMENT FUNDS SQL TABLE NOT FOUND ^0')
                         return
                     end
-                    local bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { job.name })
-                    if bossmoney and bossmoney[1] then
-                        if tonumber(bossmoney[1].amount) < amount then
-                            TriggerClientEvent('tworst:bossmenu:addNotification', src,
-                                Config.Notification['youdonothaveenoughmoney'])
-                            return
+                    local bossmoney
+                    if Config.ExportManagementFunds then
+                        bossmoney = exports['qb-management']:GetAccount(job.name)
+                    else
+                        bossmoney = ExecuteSql('SELECT * FROM management_funds WHERE job_name = ?', { job.name })
+                    end
+                    if bossmoney then
+                        local newmoney
+                        if Config.ExportManagementFunds then
+                            if tonumber(bossmoney) < amount then
+                                TriggerClientEvent('tworst:bossmenu:addNotification', src,
+                                    Config.Notification['youdonothaveenoughmoney'])
+                                return
+                            end
+                            exports['qb-management']:RemoveMoney(job.name, amount)
+                            newmoney = exports['qb-management']:GetAccount(job.name)
+                        else
+                            if tonumber(bossmoney[1].amount) < amount then
+                                TriggerClientEvent('tworst:bossmenu:addNotification', src,
+                                    Config.Notification['youdonothaveenoughmoney'])
+                                return
+                            end
+                            newmoney = bossmoney[1].amount - amount
+                            ExecuteSql('UPDATE management_funds SET amount = ? WHERE job_name = ?',
+                                { newmoney, job.name })
                         end
-                        local newmoney = bossmoney[1].amount - amount
-                        ExecuteSql('UPDATE management_funds SET amount = ? WHERE job_name = ?',
-                            { newmoney, job.name })
                         BossMenu[job.name].jobSettings.jobMoney = newmoney
                         AddMoney(src, 'bank', amount)
                         local newData = {

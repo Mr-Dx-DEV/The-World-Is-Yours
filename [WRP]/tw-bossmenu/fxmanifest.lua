@@ -1,6 +1,6 @@
 fx_version 'cerulean'
 game 'gta5'
-version '1.01'
+version '1.02'
 author 'tworst-script'
 shared_scripts {
 	'config/*.lua',
@@ -35,5 +35,10 @@ escrow_ignore {
 }
 
 lua54 'yes'
+
+
+server_exports {
+	'SetMoney',
+}
 
 dependency '/assetpacks'

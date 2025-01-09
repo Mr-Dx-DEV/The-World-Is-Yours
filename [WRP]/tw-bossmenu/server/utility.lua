@@ -603,10 +603,6 @@ function UpdatePlayerRank(jobName, identifier, data)
 end
 
 function UpdateBossMenuHistory(jobname, playerName, action, amount)
-    print('jobname', jobname)
-    print('playerName', playerName)
-    print('action', action)
-    print('amount', amount)
     local lasttime = os.date("%d/%m | %H:%M")
 
     local newData = {
