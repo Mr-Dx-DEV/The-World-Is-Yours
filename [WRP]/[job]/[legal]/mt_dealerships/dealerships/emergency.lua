@@ -21,10 +21,10 @@ Config.dealerships.emergency = { -- Dealership ID, NEEDS TO BE THE SAME AS THE J
     comissions = { buyPercentage = 50, sellComission = 10 }, -- The dealership commissions
     blip = { enabled = true, coords = vec3(-38.8, -1671.42, 29.48), sprite = 523, color = 3, scale = 0.5, display = 4 }, -- Dealership map blip
     dashboards = { -- Dealership dashboards to import vehicles and see transactions
-        { coords = vec3(-20.0, -1650.0, 29.0), radius = 0.5, includeBossMenu = true },
+        { coords = vec3(-39.02, -1671.2, 30.29), radius = 0.5, includeBossMenu = true },
     },
     catalogues = { -- The catalogues to the players to see and employees to change vehicles on showroom
-        { coords = vec3(-20.59, -1644.26, 29.48), radius = 0.4, vehicleCoords = vec4(-21.0, -1645.0, 29.0, 180.0), vehicle = 'ambulance', vehicleColor = 111 },
+        { coords = vec3(-21.0, -1645.0, 29.0), radius = 0.4, vehicleCoords = vec4(-21.0, -1645.0, 29.0, 180.0), vehicle = 'ambulance', vehicleColor = 111 },
         { coords = vec3(-25.0, -1647.0, 29.48), radius = 0.4, vehicleCoords = vec4(-26.0, -1648.0, 29.0, 90.0), vehicle = 'firetruk', vehicleColor = 3 },
     },
     categories = { -- The categories that will show on the catalogue and dashboard
