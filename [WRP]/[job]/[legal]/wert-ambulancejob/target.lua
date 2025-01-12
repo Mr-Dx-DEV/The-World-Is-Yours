@@ -476,7 +476,7 @@ local function LoadTargetInfosTable()
             },
         distance = 1.5
     })
-    exports["qb-target"]:AddTargetModel(`prop_coffee_mac_02`, {
+    --[[ exports["qb-target"]:AddTargetModel(`prop_coffee_mac_02`, {
         options = {
             {
                 type = "client",
@@ -499,7 +499,7 @@ local function LoadTargetInfosTable()
             },
         },
         distance = 1.5
-    })
+    }) ]]
     exports['qb-target']:AddBoxZone('EMSBloodPackaged', EmsBloodPackageInfos.Coord, EmsBloodPackageInfos.Lenght, EmsBloodPackageInfos.Width, {
         name = 'EMSBloodPackaged',
         heading = EmsBloodPackageInfos.Heading,
