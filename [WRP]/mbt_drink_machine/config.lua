@@ -4,13 +4,13 @@ MBT.Debug = false -- Debugging toggle if something's wrong
 MBT.Framework = "QB" -- ESX/QB/Standalone
 MBT.ESXLegacy = true -- Set true if you're using ESX Legacy version
 
-MBT.Props = {`prop_vend_soda_02` --[[,`ANOTHER-PROP`]] } -- Put the props you wanna interact it here
+MBT.Props = {`prop_vend_soda_02`, `prop_vend_coffe_01`, `prop_watercooler`, `prop_vend_snak_01`, `prop_coffee_mac_02`, --[[,`ANOTHER-PROP`]] } -- Put the props you wanna interact it here
 
 MBT.Drinks = { -- Adjust the price and items you wanna give, don't touch the name between []
-    ["coke"]   = { ["Price"] = 5,     ["Item"] = "cola" },
+    ["cocacola"]   = { ["Price"] = 5,     ["Item"] = "cocacola" },
     ["sprite"] = { ["Price"] = 5.9,   ["Item"] = "sprite" },
-    ["fanta"]  = { ["Price"] = 5.99,  ["Item"] = "fanta" },
-    ["water"]  = { ["Price"] = 5,     ["Item"] = "water" }
+    ["cup_coffee"]  = { ["Price"] = 5.99,  ["Item"] = "cup_coffee" },
+    ["water_bottle"]  = { ["Price"] = 5,     ["Item"] = "water_bottle" }
 }
 
 MBT.Language = { 
@@ -47,23 +47,42 @@ end
 
 MBT.UseTarget = true -- Use a target script or markers
 
-if MBT.UseTarget then
+-- if MBT.UseTarget then
     
+--     AddEventHandler("mbt_drink_machine:setupTarget", function ()
+--         -- Setup your target script here!
+--         -- Event to call: mbt_drink_machine:openMalidrink
+        
+--         --[[
+--             exports["qtarget"]:AddTargetModel(MBT.Props, {
+--             options = {
+--                 {
+--                     icon = "",
+--                     label = "Use",
+--                     event = 'mbt_drink_machine:openMalidrink',			
+--                 },
+--             },
+--             distance = 2.5
+--         })]]
+--     end)
+-- end
+if MBT.UseTarget then
+
     AddEventHandler("mbt_drink_machine:setupTarget", function ()
         -- Setup your target script here!
         -- Event to call: mbt_drink_machine:openMalidrink
-        
-        --[[
-            exports["qtarget"]:AddTargetModel(MBT.Props, {
-            options = {
-                {
-                    icon = "",
-                    label = "Use",
-                    event = 'mbt_drink_machine:openMalidrink',			
-                },
-            },
-            distance = 2.5
-        })]]
+
+        exports.ox_target:addModel(MBT.Props, { -- Replace MBT.Props with the actual props array if available
+            {
+                name = 'mbt_drink_machine',
+                icon = '', -- Add an appropriate icon if needed
+                label = 'Use',
+                onSelect = function(data)
+                    TriggerEvent('mbt_drink_machine:openMalidrink')
+                end,
+                distance = 2.5,
+            }
+        })
     end)
 end
 
