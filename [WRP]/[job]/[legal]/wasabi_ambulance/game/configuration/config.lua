@@ -786,8 +786,8 @@ Config.Locations = {
     },
     Paleto = {
         RespawnPoint = { -- When player dies and bleeds out; they will revive at nearest hospital; Define the coords of this hospital here.
-            coords = vec3(-263.62, 6313.7, 33.46),
-            heading = 136.73,
+            coords = vec3(-251.76, 6310.79, 32.01),
+            heading = 217.03,
             -- Even if you have useCheckInInstead to true, you must still define these coords for finding closest hospital
             -- If you want to use check-in instead of respawning at this location(Otherwise will just spawn at the coords above)
             useCheckInInstead = true
@@ -878,12 +878,12 @@ Config.Locations = {
                 maxZ = 33.55 + 0.9
             },
             DisableHospitalBeds = false,                                                     -- Disable hospital beds for check-in at this location?(Player will spend Duration checking in before respawning in RespawnNoBedLocation when set to true)
-            RespawnNoBedLocation = { coords = vec3(-263.62, 6313.7, 33.46), heading = 136.73 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
+            RespawnNoBedLocation = { coords = vec3(-251.76, 6310.79, 32.01), heading = 217.03 }, -- Coords and heading of where to spawn player if DisableHospitalBeds is set to true or beds are full
             HospitalBeds = {
                 --              { coords = vec3(332.62, -587.17, 42.84+0.3), heading = 160.0 },
-                { coords = vec3(-263.62, 6313.7, 33.46 + 0.1), heading = 136.73 },
-               -- { coords = vec3(-260.23, 6319.43, 32.41 + 0.1), heading = 220 },
-               -- { coords = vec3(-265.94, 6319.68, 32.41), heading = 40 },
+                { coords = vec3(-251.76, 6310.79, 32.01 + 0.1), heading = 217.03 },
+                { coords = vec3(-247.93, 6314.34, 32.01 + 0.1), heading = 223.2 },
+                { coords = vec3(-244.69, 6317.94, 32.01 + 0.1 ), heading = 217.37 },
               --  { coords = vec3(-267.86, 6317.68, 32.43), heading = 40 },
 
             }
