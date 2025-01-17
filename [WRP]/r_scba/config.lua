@@ -30,6 +30,8 @@ Config = {
 
     CommandEnabled = true, -- Activate or not the command to use the SCBA script other than an EUP (You can adjust the SCBA usage from the Command - 'scba', - Command to use the SCBA without the cup.
     Command = 'scba', -- Command to use the SCBA without the eup.
+
+    DisableThread = false, -- Do not activate (If you activate, no further interaction with the script will be possible, so you will have to develop your own system with our events)
     
     DisablePutMask = false, -- Disable or not the key to link or untie the SCBA (often used to link a script to lock other than a key) (used with the SetSCBA() export)
 
@@ -63,8 +65,8 @@ Config = {
     UntieComponent = 15, -- Component when you remove the SCBA.
 
     RechargeVehicle = { -- List of vehicles to recharge your SCBA.
-        `firetruk`,
-        `blista`,
+        'firetruk',
+        'blista',
     },
     RechargeCoords = {
         vector3(1194.29, -1487.11, 34.69),
@@ -73,8 +75,8 @@ Config = {
     RechargeRadius = 3.0, -- Distance from the coordinates below to recharge your SCBA other than on a vehicle.
 
     TakeCar = { -- Gives the player the possibility to take his SCBA in vehicles
-        `firetruk`,
-        `blista`,
+        'firetruk',
+        'blista',
     },
     DriverTake = false, -- Allows the driver to retrieve the SCBA from the vehicle list above
 
@@ -115,9 +117,14 @@ Config = {
 }
 
 Config.FireDamage = {
+    -- NOTE: You cannot activate both compatibilities at the same time.
     SmartFires = { -- Make compatible or not the Smart Fires script of London Studios, if yes, the basic fire will not be detected anymore.
         enabled = false,
         resourceName = 'SmartFires' -- Resource name
+    },
+    zFire = { -- Make compatible or not the zFire script, if yes, the basic fire will not be detected anymore.
+        enabled = false,
+        resourceName = 'z_fire' -- Resource name
     },
 
     CoughInInterior = true, -- Cough when you are near a fire and you don't have SCBA on you interior.

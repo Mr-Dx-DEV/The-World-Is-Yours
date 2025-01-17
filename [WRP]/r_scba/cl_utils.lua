@@ -7,20 +7,10 @@
 
 -- [[ Compatibility init ]]
 
-local ESX = nil
-
 if Config.ESX.enabled then
     ESX = exports["es_extended"]:getSharedObject()
 elseif Config.QB.enabled then
-    QBdata = {}
-
-    RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-        QBdata = exports['qb-core']:GetCoreObject().Functions.GetPlayerData()
-    end)
-
-    RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
-        QBdata.job = JobInfo
-    end)
+    QBCore = exports['qb-core']:GetCoreObject()
 end
 
 -- [[ Functions ]]
@@ -37,6 +27,8 @@ function verifyJobPlayer()
             end
         end
     elseif Config.QB.enabled then
+        local QBdata = QBCore.Functions.GetPlayerData()
+
         for i = 1, #Config.QB.jobs do
             if QBdata.job and QBdata.job.name == Config.QB.jobs[i] then
                 return true
