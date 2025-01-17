@@ -98,9 +98,9 @@ Config.Tax = {
 		enable = true,
 		TaxTypes = {
 	        ["Income"] = {enable = true, mayorControl = true, label = 'Income', icon = 'fa-money-check-dollar', percentageCap = 0.80, percentage = 0.15, AddCityHallFunds = true},		
-	        ["Housing"] = {enable = true, mayorControl = true, label = 'Housing', icon = 'fa-house', percentageCap = 0.15, percentage = 0.15, AddCityHallFunds = true},
-			["Vehicle"] = {enable = true, mayorControl = true, label = 'Vehicle', icon = 'fa-car', percentageCap = 0.15, percentage = 0.15, AddCityHallFunds = true},
-			["Building"] = {enable = true, mayorControl = true, label = 'Building', icon = 'fa-car', percentageCap = 0.15, percentage = 0.15, AddCityHallFunds = true},
+	        ["Housing"] = {enable = true, mayorControl = true, label = 'Housing', icon = 'fa-house', percentageCap = 0.80, percentage = 0.15, AddCityHallFunds = true},
+			["Vehicle"] = {enable = true, mayorControl = true, label = 'Vehicle', icon = 'fa-car', percentageCap = 0.80, percentage = 0.15, AddCityHallFunds = true},
+			["Building"] = {enable = true, mayorControl = true, label = 'Building', icon = 'fa-car', percentageCap = 0.80, percentage = 0.15, AddCityHallFunds = true},
 			["Item"] = {enable = true, mayorControl = true, label = 'Item', icon = 'fa-cart-shopping', percentageCap = 0.80, percentage = 0.15, AddCityHallFunds = true},
 		}
 	}
