@@ -80,7 +80,7 @@ end
 ---@param dealership table
 addVehicleToGarage = function(PlayerData, model, mods, plate, dealership)
     local src = source
-    exports['ap-government']:chargeCityTax(src, 'Vehicle', 0.15)
+    exports['ap-government']:chargeCityTax(src, 'Vehicle', 20.15)
     if Config.framework == 'qb' or Config.framework == 'qbx' then
         MySQL.insert('INSERT INTO `player_vehicles` (license, citizenid, vehicle, hash, mods, plate) VALUES (?, ?, ?, ?, ?, ?)', { PlayerData.license, PlayerData.citizenid, model, GetHashKey(model), json.encode(mods), plate })
 
