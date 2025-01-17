@@ -12,15 +12,7 @@ local ESX = nil
 if Config.ESX then
     ESX = exports["es_extended"]:getSharedObject()
 elseif Config.QB then
-    QBdata = {}
-
-    RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-        QBdata = exports['qb-core']:GetCoreObject().Functions.GetPlayerData()
-    end)
-
-    RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
-        QBdata.job = JobInfo
-    end)
+    QBCore = exports['qb-core']:GetCoreObject()
 end
 
 -- [[ Functions ]]
@@ -38,27 +30,10 @@ function verifyJobPlayer(model)
                 end
             end
         elseif Config.QB then
+            local QBdata = QBCore.Functions.GetPlayerData()
+            
             for i = 1, #Config.Helicopter[model].manageJobs do
                 if QBdata.job and QBdata.job.name == Config.Helicopter[model].manageJobs[i] then
-                    return true
-                end
-            end
-        else
-            return true
-        end
-    else
-        if Config.ESX then
-            local ESXdata = ESX.GetPlayerData()
-            for i = 1, #Config.PoolJobs do
-                if ESXdata.job ~= nil then
-                    if ESXdata.job.name == Config.PoolJobs[i] then
-                        return true
-                    end
-                end
-            end
-        elseif Config.QB then
-            for i = 1, #Config.PoolJobs do
-                if QBdata.job and QBdata.job.name == Config.PoolJobs[i] then
                     return true
                 end
             end
@@ -78,9 +53,11 @@ RegisterCommand('setupbucket', function(src, args, rawCommand)
     if veh == 0 then return end
     if Config.Helicopter[entityModel] == nil then debug("Helicopter not found") return end
 
-    local vehNet = NetworkGetNetworkIdFromEntity(veh)
+    if not verifyJobPlayer(entityModel) then return end
+    
+    local netId = NetworkGetNetworkIdFromEntity(veh)
 
-    if bucket[net] ~= nil then debug("Helicopter found but already init") return end
+    if bucket[netId] ~= nil then debug("Helicopter found but already init") return end
 
     debug("Helicopter found")
 
@@ -92,13 +69,25 @@ RegisterCommand('setupbucket', function(src, args, rawCommand)
 
     debug("Loaded model")
 
-    TriggerServerEvent('r_hbucket:server:createBucket', vehNet)
+    TriggerServerEvent('r_hbucket:server:createBucket', netId)
 end, false)
 
 function Hint(message)
     AddTextEntry('r_hbucket', message)
     BeginTextCommandDisplayHelp('r_hbucket')
     EndTextCommandDisplayHelp(0, 0, 0, -1)
+end
+
+function DrawHud()
+    if Config.Helicopter[entityModel] == nil then return end
+    
+    ClearPrints()
+    SetTextEntry_2("STRING")
+    text = Config.Languages[Config.Language]['quantity']
+    text = text:gsub("{s}", floor(bucket[netId].quantity))
+    text = text:gsub("{m}", Config.Helicopter[entityModel].capacity)
+    AddTextComponentString(text)
+    DrawSubtitleTimed(10, 1)
 end
 
 function debug(text)

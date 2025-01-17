@@ -1,0 +1,44 @@
+#container {
+  display: none;
+}
+
+.level-container {
+  position: absolute;
+  display: inline-block;
+  top: 30%;
+}
+
+.left {
+  left: 5vh;
+}
+
+.right {
+  right: 5vh;
+}
+
+.level {
+  position: relative;
+  width: 10vh;
+  height: 40vh;
+  border-radius: 2vh;
+  border-top-left-radius: 0.4vh;
+  border-top-right-radius: 0.4vh;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 0 0 0.2vh #fff, 0 1vh 1.5vh rgba(0, 0, 0, 1);
+  opacity: 85%;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to top, #2171b4, #87ceeb);
+  transition: height 1s ease-out;
+}
+
+.level-full {
+  background-color: #2171b4;
+  transition: background-color 0.5s ease-in-out;
+}

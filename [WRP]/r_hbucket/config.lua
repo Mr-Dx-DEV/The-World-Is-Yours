@@ -15,7 +15,6 @@ Config = {
     Debug = false, -- Allows to display messages in the client console when the player takes different actions
 
     ESX = false, -- ESX compatibility (you can modify this function on cl_utils.lua)
-
     QB = true, -- QB compatibility (you can modify this function on cl_utils.lua)
 
     Helicopter = {
@@ -54,6 +53,11 @@ Config = {
         }
     },
 
+    HUD = {
+        Text = true, -- Displays or not the text as shown in the image https://i.imgur.com/VtVWFW7.png
+        NUI = true -- Displays or not the nui as shown in the image https://i.imgur.com/Jw8fqBA.png
+    },
+
     Fires = {
         SmartFires = { -- https://store.londonstudios.net/
             enabled = true,
@@ -64,6 +68,12 @@ Config = {
         ToxicFire = { -- https://tox-scripts.tebex.io/package/4838366
             enabled = false,
             name = 'firescript', -- Name of the resource
+            detectionRadius = 20.0, -- Distance of fire detection in x and y
+            healthSpeed = 2.0 -- A fire appears with 100 life, this parameter allows you to manage the speed of decrease.
+        },
+        zFire = { -- https://store.zeadevelopment.com/
+            enabled = false,
+            name = 'z_fire', -- Name of the resource
             detectionRadius = 20.0, -- Distance of fire detection in x and y
             healthSpeed = 2.0 -- A fire appears with 100 life, this parameter allows you to manage the speed of decrease.
         }
@@ -78,9 +88,7 @@ Config = {
             dict = "core",
             name = "ent_amb_smoke_gaswork"
         }
-    },
-
-    DrawSubtitle = true -- Displays the message at the bottom of the screen when you can use the bambi bucket
+    }
 }
 
 -- https://docs.fivem.net/docs/game-references/controls/

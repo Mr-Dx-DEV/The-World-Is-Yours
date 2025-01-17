@@ -24,6 +24,7 @@ server_scripts {
 }
 
 client_scripts {
+	'client/init.lua',
 	'cl_utils.lua',
 	
 	'client/client.lua',
