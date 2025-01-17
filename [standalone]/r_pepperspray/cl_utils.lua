@@ -1,7 +1,7 @@
 /*--------------------------------------
   % Made with ❤️ for: Rytrak Store
   % Author: Rytrak https://rytrak.fr
-  % Script documentation: https://docs.rytrak.fr/scripts/firefighter-scba-system
+  % Script documentation: https://docs.rytrak.fr/scripts/advanced-pepper-spray
   % Full support on discord: https://discord.gg/k22buEjnpZ
 --------------------------------------*/
 

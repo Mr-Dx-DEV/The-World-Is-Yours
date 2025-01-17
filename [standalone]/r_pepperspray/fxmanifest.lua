@@ -17,16 +17,18 @@ files {
 escrow_ignore {
 	'config.lua',
     'cl_exports.lua',
-	'cl_utils.lua'
+	'cl_utils.lua',
+    'sv_utils.lua'
 }
 
+shared_script 'config.lua'
+
 server_script {
-	'config.lua',
+    'sv_utils.lua',
     'server.lua'
 }
 
 client_scripts {
-	'config.lua',
 	'cl_utils.lua',
 	'client.lua',
     'cl_exports.lua'

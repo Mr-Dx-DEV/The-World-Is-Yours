@@ -1,4 +1,9 @@
-
+/*--------------------------------------
+  % Made with ❤️ for: Rytrak Store
+  % Author: Rytrak https://rytrak.fr
+  % Script documentation: https://docs.rytrak.fr/scripts/advanced-pepper-spray
+  % Full support on discord: https://discord.gg/k22buEjnpZ
+--------------------------------------*/
 
 -- [[ Configuration ]]
 
@@ -9,30 +14,45 @@ Config = {
 
     Debug = false, -- Allows to display messages in the client console when the player takes different actions
 
+    /*---------------------------------------------------------------------------------
+                                          IMPORTANT
+    If you are using ESX or QBCore, please set the UseFramework variable to true below, then follow 
+    the video tutorial in our documentation to make the script compatible.
+    This variable is used to remove the command to give the weapon and thus use it from your inventory.
+
+    For ESX: https://docs.rytrak.fr/framework-compatibility/add-a-custom-weapon-on-esx
+    For QBCore: https://docs.rytrak.fr/framework-compatibility/add-a-custom-weapon-on-qbcore
+                                          IMPORTANT
+    ---------------------------------------------------------------------------------*/
     UseFramework = false,
 
-    AcePermission = { -- Use of the ace permission system (you can modify this function on cl_utils.lua)
-        enabled = false,
-        permission = 'pepperspray'
+    RemoveWhenIsEmpty = { -- Removes pepperspray or antidote item from inventory when empty
+        enabled = false, -- To activate the option, one of the following frameworks must be activated
+
+        framework = { -- You can add your framework from the sv_utils.lua file
+            ESX = false,
+            QBCore = true,
+            OXInventory = false
+        }
     },
 
     RechargeCoords = { -- Coordinated to recharge the pepper spray and decontamination spray
-        vector3(608.24, -6.69, 76.66), --lspd vwpd
-        vector3(1549.65, 833.74, 77.66), --sahp
-        vector3(-449.14, 6013.34, 37.0), --bcso paleto
-        vector3(-819.25, -721.71, 23.18), --usms
-        vector3(377.67, 796.08, 190.49), --safw station 2
-        vector3(-231.01, 6333.8, 32.37), --jbail bonds office
-        vector3(1825.5, 3677.55, 34.19), --bcso sandy
-        vector3(487.29, -997.7, 30.69), --dhsmrpd
-        vector3(364.99, -1606.98, 29.29), --lssodavis
-        vector3(-1071.99, -812.43, 15.64), --lspd vpd
-        vector3(837.3, -1287.73, 28.24), --ss popular st
-        vector3(-1237.06, -2807.61, 14.3), --dhs airport
-        vector3(154.0, -754.45, 45.75), --fbi
-        vector3(1840.7, 2575.99, 46.01), --sadoc prison
-        vector3(1696.62, 4879.0, 42.3), --safw HQ grapeseed 
-        vector3(-1299.62, -557.64, 30.57), --ss gov office
+    vector3(608.24, -6.69, 76.66), --lspd vwpd
+    vector3(1549.65, 833.74, 77.66), --sahp
+    vector3(-449.14, 6013.34, 37.0), --bcso paleto
+    vector3(-819.25, -721.71, 23.18), --usms
+    vector3(377.67, 796.08, 190.49), --safw station 2
+    vector3(-231.01, 6333.8, 32.37), --jbail bonds office
+    vector3(1825.5, 3677.55, 34.19), --bcso sandy
+    vector3(487.29, -997.7, 30.69), --dhsmrpd
+    vector3(364.99, -1606.98, 29.29), --lssodavis
+    vector3(-1071.99, -812.43, 15.64), --lspd vpd
+    vector3(837.3, -1287.73, 28.24), --ss popular st
+    vector3(-1237.06, -2807.61, 14.3), --dhs airport
+    vector3(154.0, -754.45, 45.75), --fbi
+    vector3(1840.7, 2575.99, 46.01), --sadoc prison
+    vector3(1696.62, 4879.0, 42.3), --safw HQ grapeseed 
+    vector3(-1299.62, -557.64, 30.57), --ss gov office
         vector3(-323.72, -1465.74, 30.55),
         vector3(-313.63, -1461.49, 30.54),
         vector3(1765.655, 2581.284, 46.001),
@@ -50,26 +70,6 @@ Config = {
         vector3(1641.991, 4848.938, 42.613),
 
         vector3(-597.331, -103.057, 33.677),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     },
     RechargeRadius = 3.0, -- Distance to recharge
 
@@ -89,7 +89,7 @@ Config = {
     PepperSpray = { -- Here you can configure a new spray as many times as you want (see the documentation for more information)
     -- You can add as many pepper sprays as you want in this table!
         ['pepperspray'] = {
-            weapon = `WEAPON_PEPPERSPRAY`, -- Model of the weapon for the spray
+            weapon = 'WEAPON_PEPPERSPRAY', -- Model of the weapon for the spray
             requiredJob = { -- Job required to recover this gas (this configuration is enabled when you activate ESX or QB above)
             'police', 
             'lspd',
@@ -102,8 +102,7 @@ Config = {
             'dhs',
             'usms',
             'ss',
-            'salsa',
-                
+            'salsa'
             },
 
             sprayQuantity = 500, -- Quantity of spray
@@ -162,22 +161,21 @@ Config = {
 
     Decontamination = {
         command = 'antidote', -- Command to recover the decontamination spray (you can modify the command from cl_utils.lua)
-        weapon = `WEAPON_ANTIDOTE`, -- Decontamination spray weapon
+        weapon = 'WEAPON_ANTIDOTE', -- Decontamination spray weapon
         requiredJob = { -- Job required to recover this gas (this configuration is enabled when you activate ESX or QB above)
-            'police', 
-            'lspd',
-            'bcso',
-            'lsso',
-            'safw',
-            'sahp',
-            'sadoc',
-            'fbi',
-            'dhs',
-            'usms',
-            'ss',
-            'salsa'
-                
-            },
+        'police', 
+        'lspd',
+        'bcso',
+        'lsso',
+        'safw',
+        'sahp',
+        'sadoc',
+        'fbi',
+        'dhs',
+        'usms',
+        'ss',
+        'salsa'
+        },
 
         decontaminationQuantity = 100, -- Quantity of decontamination spray
         decontaminationDescent = 10, -- Time in milliseconds to lower the recovery rate (The higher the number, the longer the time)
