@@ -129,7 +129,7 @@ Config.Voting = {
 		enable = true,
 		poll = "Mayor Election",
 		givenJob = {name = "mayor", label = "Mayor", grade = 0},
-		applicationJobCheck = {enable = false, job = "government", notify = "You need to be in the government in order to be considered as a candidate!"}
+		applicationJobCheck = {enable = false, job = "cityhall", notify = "You need to be in the government in order to be considered as a candidate!"}
 	},
 	[2] = {
 		enable = true,
