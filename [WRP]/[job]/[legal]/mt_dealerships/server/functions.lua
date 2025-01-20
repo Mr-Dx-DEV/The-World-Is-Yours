@@ -1,9 +1,7 @@
 ---@param account string
 ---@param amount integer
 addAccountMoney = function(account, amount)
-    if Config.banking == 'snipe-banking' then
-        exports['snipe-banking']:AddMoney(account, amount)
-    elseif Config.banking == 'Renewed-Banking' then
+    if Config.banking == 'Renewed-Banking' then
         exports['Renewed-Banking']:addAccountMoney(account, amount)
     elseif Config.banking == 'esx_addonaccount' then
         TriggerEvent('esx_addonaccount:getSharedAccount', 'society_'..account, function(account)
@@ -17,9 +15,7 @@ end
 ---@param account string
 ---@param amount integer
 removeAccountMoney = function(account, amount)
-    if Config.banking == 'snipe-banking' then
-        exports['snipe-banking']:RemoveMoney(account, amount)
-    elseif Config.banking == 'Renewed-Banking' then
+    if Config.banking == 'Renewed-Banking' then
         exports['Renewed-Banking']:removeAccountMoney(account, amount)
     elseif Config.banking == 'esx_addonaccount' then
         TriggerEvent('esx_addonaccount:getSharedAccount', 'society_'..account, function(account)
@@ -34,9 +30,7 @@ end
 ---@return number
 getAccountMoney = function(account)
     local value = 0
-    if Config.banking == 'snipe-banking' then
-        value = exports['snipe-banking']:GetMoney(account)
-    elseif Config.banking == 'Renewed-Banking' then
+    if Config.banking == 'Renewed-Banking' then
         value = exports['Renewed-Banking']:getAccountMoney(account)
     elseif Config.banking == 'esx_addonaccount' then
         TriggerEvent('esx_addonaccount:getSharedAccount', 'society_'..account, function(account)
@@ -80,7 +74,6 @@ end
 ---@param dealership table
 addVehicleToGarage = function(PlayerData, model, mods, plate, dealership)
     local src = source
-    exports['ap-government']:chargeCityTax(src, 'Vehicle', 20.15)
     if Config.framework == 'qb' or Config.framework == 'qbx' then
         MySQL.insert('INSERT INTO `player_vehicles` (license, citizenid, vehicle, hash, mods, plate) VALUES (?, ?, ?, ?, ?, ?)', { PlayerData.license, PlayerData.citizenid, model, GetHashKey(model), json.encode(mods), plate })
 
@@ -108,7 +101,7 @@ addVehicleToGarage = function(PlayerData, model, mods, plate, dealership)
             local metadata = { description = 'Name: '..PlayerData.charinfo.firstname .. " " .. PlayerData.charinfo.lastname..'   \nPlate: '..plate..'   \nModel: '..model }
             exports.ox_inventory:AddItem(src, 'car_registration', 1, metadata)
             
-            MySQL.insert('INSERT INTO m_insurance_registration (plate, model, registration, identifier) VALUES (?, ?, ?, ?)', {plate, model, 1, PlayerData.license})
+            MySQL.insert('INSERT INTO m_insurance_registration (plate, model, registration, identifier) VALUES (?, ?, ?, ?)', {plate, vehicle, 1, PlayerData.license})
         end
     end
 end

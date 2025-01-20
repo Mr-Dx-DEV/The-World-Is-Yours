@@ -6,7 +6,7 @@ Config.SQL                   = "oxmysql"          -- oxmysql / mysql-async / ghm
 Config.Inventory             = "ox_inventory"     -- qb_inventory / esx_inventory / ox_inventory / qs_inventory / codem-inventory
 Config.ServerName            = "The World IS Yours"           -- Server Name MAX 10
 Config.MoneyType             = "$"                -- Money Type
-Config.QBCoreJobVaultSql     = 'management_funds' -- bank_account, management_funds
+Config.QBCoreJobVaultSql     = 'bank_account' -- bank_account, management_funds
 Config.ExampleProfilePicture = "https://r2.fivemanage.com/biv23I9cFWICSObhZsr4C/LogoNEW.png"
 Config.DefaultLogo           =
 'https://cdn.discordapp.com/attachments/1304168293292179496/1310362844616720395/title.png?ex=6746ec3f&is=67459abf&hm=c01d60843127e100f94b6e21c502090a12e91ce05c71e1956298cbd2961c4d45&'

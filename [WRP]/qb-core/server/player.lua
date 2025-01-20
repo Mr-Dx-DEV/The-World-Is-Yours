@@ -563,16 +563,17 @@ local playertables = { -- Add tables as needed
 }
 
 function QBCore.Player.DeleteCharacter(source, citizenid)
+    exports["snipe-banking"]:DeleteCharacter(citizenid) --added
     local license = QBCore.Functions.GetIdentifier(source, 'license')
     local result = MySQL.scalar.await('SELECT license FROM players where citizenid = ?', { citizenid })
     if license == result then
-        local query = 'DELETE FROM %s WHERE citizenid = ?'
+        local query = "DELETE FROM %s WHERE citizenid = ?"
         local tableCount = #playertables
         local queries = table.create(tableCount, 0)
 
         for i = 1, tableCount do
             local v = playertables[i]
-            queries[i] = { query = query:format(v.table), values = { citizenid } }
+            queries[i] = {query = query:format(v.table), values = { citizenid }}
         end
 
         MySQL.transaction(queries, function(result2)
@@ -581,10 +582,11 @@ function QBCore.Player.DeleteCharacter(source, citizenid)
             end
         end)
     else
-        DropPlayer(source, Lang:t('info.exploit_dropped'))
+        DropPlayer(source, Lang:t("info.exploit_dropped"))
         TriggerEvent('qb-log:server:CreateLog', 'anticheat', 'Anti-Cheat', 'white', GetPlayerName(source) .. ' Has Been Dropped For Character Deletion Exploit', true)
     end
 end
+
 
 function QBCore.Player.ForceDeleteCharacter(citizenid)
     local result = MySQL.scalar.await('SELECT license FROM players where citizenid = ?', { citizenid })
