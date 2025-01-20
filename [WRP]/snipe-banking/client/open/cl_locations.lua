@@ -154,18 +154,21 @@ elseif Config.Options == "target" then
                 }
             })
         else
-
-            exports['qb-target']:AddTargetEntity(entity, { 
-            options = { 
-                { 
-                    type = "client", 
-                    icon = 'fas fa-building-columns',
-                    label = Locales["target_label_open_bank"],
-                    action = function(entity)
-                        DoProgress(true)
-                    end,
-                }
-            },
+            local TargetName = "qb-target"
+            if Config.Framework == "esx" then
+                TargetName = "qtarget"
+            end
+            exports[TargetName]:AddTargetEntity(entity, { 
+                options = { 
+                    { 
+                        type = "client", 
+                        icon = 'fas fa-building-columns',
+                        label = Locales["target_label_open_bank"],
+                        action = function(entity)
+                            DoProgress(true)
+                        end,
+                    }
+                },
                 distance = 2.5, 
             })
         end
@@ -213,7 +216,11 @@ elseif Config.Options == "target" then
         for k, v in pairs(Config.ATMModels) do
             table.insert(atmmodels, k)
         end
-        exports["qb-target"]:AddTargetModel(atmmodels, {
+        local TargetName = "qb-target"
+        if Config.Framework == "esx" then
+            TargetName = "qtarget"
+        end
+        exports[TargetName]:AddTargetModel(atmmodels, {
             options = {
                 {
                     type = "client",
@@ -228,7 +235,11 @@ elseif Config.Options == "target" then
         })
     
         for k, v in pairs(ATMLocations) do
-            exports['qb-target']:AddBoxZone("snipe_bank_atm_" .. k, v, 1, 1, {
+            local TargetName = "qb-target"
+            if Config.Framework == "esx" then
+                TargetName = "qtarget"
+            end
+            exports[TargetName]:AddBoxZone("snipe_bank_atm_" .. k, v, 1, 1, {
                 name = "snipe_bank_atm_" .. k,
                 debugPoly = false,
                 heading = -20,
