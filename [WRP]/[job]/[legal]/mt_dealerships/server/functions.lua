@@ -1,28 +1,30 @@
+-- Adjusted functions for new exports provided
+
 ---@param account string
 ---@param amount integer
 addAccountMoney = function(account, amount)
-    if Config.banking == 'Renewed-Banking' then
-        exports['Renewed-Banking']:addAccountMoney(account, amount)
+    if Config.banking == 'snipe-banking' then
+        exports['snipe-banking']:AddMoneyToAccount(account, amount)
     elseif Config.banking == 'esx_addonaccount' then
         TriggerEvent('esx_addonaccount:getSharedAccount', 'society_'..account, function(account)
             account.addMoney(amount)
         end)
     else
-        exports[Config.banking]:AddMoney(account, amount)
+        exports[Config.banking]:AddMoneyToAccount(account, amount)
     end
 end
 
 ---@param account string
 ---@param amount integer
 removeAccountMoney = function(account, amount)
-    if Config.banking == 'Renewed-Banking' then
-        exports['Renewed-Banking']:removeAccountMoney(account, amount)
+    if Config.banking == 'snipe-banking' then
+        exports['snipe-banking']:RemoveMoneyFromAccount(account, amount)
     elseif Config.banking == 'esx_addonaccount' then
         TriggerEvent('esx_addonaccount:getSharedAccount', 'society_'..account, function(account)
             account.removeMoney(amount)
         end)
     else
-        exports[Config.banking]:RemoveMoney(account, amount)
+        exports[Config.banking]:RemoveMoneyFromAccount(account, amount)
     end
 end
 
@@ -30,19 +32,20 @@ end
 ---@return number
 getAccountMoney = function(account)
     local value = 0
-    if Config.banking == 'Renewed-Banking' then
-        value = exports['Renewed-Banking']:getAccountMoney(account)
+    if Config.banking == 'snipe-banking' then
+        value = exports['snipe-banking']:GetAccountBalance(account)
     elseif Config.banking == 'esx_addonaccount' then
         TriggerEvent('esx_addonaccount:getSharedAccount', 'society_'..account, function(account)
             value = account.money
         end)
     elseif Config.banking == 'qb-management' then
-        value = exports[Config.banking]:GetMoney(account)
+        value = exports[Config.banking]:GetAccountBalance(account)
     else
         value = exports[Config.banking]:GetAccountBalance(account)
     end
     return value
 end
+
 
 ---@param webhook string
 ---@param title string
