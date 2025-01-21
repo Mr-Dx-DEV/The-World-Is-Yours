@@ -4,7 +4,7 @@ Config.dealerships.emergency = { -- Dealership ID, NEEDS TO BE THE SAME AS THE J
     enabled = true, -- true or false to enable or disable the dealership
     label = 'Emergency DealerShip', -- Dealership label
     logo = 'https://i.ibb.co/nkBN3bs/logo.png', -- Dealership logo that'll show on UI
-    job = 'emergencydealership', -- Dealership job or false to not player owned dealerships, NEEDS TO BE THE SAME AS THE ID!!!
+    job = 'emergency', -- Dealership job or false to not player owned dealerships, NEEDS TO BE THE SAME AS THE ID!!!
     lockCatalogueJob = false, -- can be false for everyone to open the catalogue or a job if you want to lock it to some job
     currency = 'bank', -- bank, cash or money to ESX (Also to QBCore you can choose other currency like crypto and etc)
     useStock = true, -- When using job = false this will be ignored
@@ -28,7 +28,7 @@ Config.dealerships.emergency = { -- Dealership ID, NEEDS TO BE THE SAME AS THE J
         { coords = vec3(-25.0, -1647.0, 29.48), radius = 0.4, vehicleCoords = vec4(-26.0, -1648.0, 29.0, 90.0), vehicle = 'bbdurango', vehicleColor = 3 },
     },
     categories = { -- The categories that will show on the catalogue and dashboard
-        { label = 'Emergency', id = 'emergency' },
+        { label = 'Emergency', id = 'Emergency' },
        -- { label = 'Medical', id = 'medical' },
        -- { label = 'Fire Trucks', id = 'firetrucks' },
     },

@@ -1,7 +1,7 @@
 QBShared = QBShared or {}
 QBShared.ForceJobDefaultDutyAtLogin = true
 QBShared.Jobs = {
-    ["emergencydealership"] = {
+    ["emergency"] = {
         label = "Emergency Vehicle Dealer",
         defaultDuty = true,
         offDutyPay = false,
@@ -230,7 +230,7 @@ QBShared.Jobs = {
             },
         }
     },
-    ["truckdealership"] = {
+    ["truck"] = {
         label = "Truck Vehicle Dealer",
         defaultDuty = true,
         offDutyPay = false,
@@ -581,7 +581,7 @@ QBShared.Jobs = {
             },
         }
     },
-    ["boatdealership"] = {
+    ["boats"] = {
         label = "Boat Vehicle Dealer",
         defaultDuty = true,
         offDutyPay = false,
@@ -670,7 +670,7 @@ QBShared.Jobs = {
             },
         }
     },
-    ["airdealership"] = {
+    ["air"] = {
         label = "Air Vehicle Dealer",
         defaultDuty = true,
         offDutyPay = false,
@@ -1157,7 +1157,7 @@ QBShared.Jobs = {
             },
         }
     },
-    ["wiydealership"] = {
+    ["wiy"] = {
         label = "WIY Vehicle Dealer",
         defaultDuty = true,
         offDutyPay = false,

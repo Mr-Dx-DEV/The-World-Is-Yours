@@ -4,7 +4,7 @@ Config.dealerships.wiy = { -- Dealership ID, NEEDS TO BE THE SAME AS THE JOB!!!
     enabled = true, -- true or false to enable or disable the dealership
     label = 'WIY DealerShip', -- Dealership label
     logo = 'https://i.ibb.co/nkBN3bs/logo.png', -- Dealership logo that'll show on UI
-    job = 'wiydealership', -- Dealership job or false to not player owned dealerships, NEEDS TO BE THE SAME AS THE ID!!!
+    job = 'wiy', -- Dealership job or false to not player owned dealerships, NEEDS TO BE THE SAME AS THE ID!!!
     lockCatalogueJob = false, -- can be false for everyone to open the catalogue or a job if you want to lock it to some job
     currency = 'bank', -- bank, cash or money to ESX (Also to QBCore you can choose other currency like crypto and etc)
     useStock = true, -- When using job = false this will be ignored
