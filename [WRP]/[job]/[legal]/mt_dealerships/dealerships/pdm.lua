@@ -35,6 +35,8 @@ Config.dealerships.pdm = { -- Dealership ID, NEEDS TO BE THE SAME AS THE JOB!!!
        -- { label = 'Utility', id = 'utility' },
         { label = 'Vans', id = 'vans' },
         { label = 'Cycles', id = 'cycles' },
+        { label = 'customs pdm', id = 'customspdm' },
+        
        -- { label = 'Service', id = 'service' },
       --  { label = 'Commercial', id = 'commercial' },
      --   { label = 'Open Wheel', id = 'openwheel' },
