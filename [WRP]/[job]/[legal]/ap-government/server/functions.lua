@@ -1,3 +1,4 @@
+
 GetAccountData = function(business)
   if Config.JobManagementScriptName == "qb-banking" then
     if exports["qb-banking"]:GetAccount(business) then
@@ -16,20 +17,20 @@ RemoveAccountMoney = function(business, amount)
   return exports[Config.JobManagementScriptName]:RemoveMoney(business, amount)
 end
 
-BankingTransaction = function(identifier, amount, tax)
+--[[ BankingTransaction = function(identifier, amount, tax)
   if Config.Banking.okokbanking then
-    -- okokBanking transaction event
     TriggerEvent('okokBanking:AddNewTransaction', "Government", "", getName(identifier), identifier, amount, tax.." Tax")
-  elseif Config.Banking.snipebanking then
-    -- snipe-banking transaction logic
-    exports["snipe-banking"]:AddTransaction({
-      sender = "Government", -- The sender's name (can be customized)
-      receiver = getName(identifier), -- The receiver's name
-      account = identifier, -- The account to which the transaction applies
-      amount = amount, -- Transaction amount
-      description = tax .. " Tax" -- Description of the transaction
-    })
   elseif Config.Banking.other then
-    -- Add other banking logic here if needed
+    -- Add event/export here.
+  end
+end ]]
+BankingTransaction = function(identifier, amount, tax)
+  if Config.Banking.other == "snipe-banking" then
+    local totalAmount = amount - tax
+    exports["snipe-banking"]:CreatePersonalTransactions(identifier, totalAmount, "Transaction with Tax", "withdraw", nil, false)
+    if tax > 0 then
+      exports["snipe-banking"]:AddMoneyToAccount("Government", tax)
+    end
   end
 end
+
