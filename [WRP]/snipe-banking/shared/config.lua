@@ -31,7 +31,7 @@ Config.Options = "target" -- target || drawtext || 3dtext (if draw text, it will
 
 Config.Interact = true -- if you want to use the interact (https://github.com/darktrovx/interact) Only works with the Config.Options is "target"
 
-Config.BankConfig = "gabz" -- gabz || default (If you use some other banks, make sure to create a file in locations folder and put the file name here!!)
+Config.BankConfig = "default" -- gabz || default (If you use some other banks, make sure to create a file in locations folder and put the file name here!!)
 
 -- if true, only one person can access one atm model at one time. If false, multiple people can access the same atm model at the same time.
 Config.OnlyOnePersonToAccessOneATMAtOneTime = false
