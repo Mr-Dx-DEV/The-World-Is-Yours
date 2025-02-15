@@ -8,7 +8,7 @@ Selector.IdentifierDatabaseColumns = { "identifier", "owner" } -- Being using on
 
 -- Here you can configure custom number of characters per specified player (based on identifier)
 Selector.PlayerMaxCharacters = {
-    ["license:f90cd271ae404268c3728c7b32d31095b7092b5b"] = 5,
+    ["license:3588634a5bf8693cc225a6515fbd20936019a06e"] = 5,
     ["license:17c08e084f072db994a114b63ea05a8373230d0f"] = 5,
     ["license:53d63cef03bd84bee2778d19ae409b18c859187a"] = 5,
 
