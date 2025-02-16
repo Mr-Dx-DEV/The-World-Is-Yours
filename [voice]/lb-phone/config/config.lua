@@ -1,6 +1,25 @@
 Config = {}
 Config.Debug = false -- Set to true to enable debug mode
 
+Config.Logs = {}
+Config.Logs.Enabled = false
+Config.Logs.Service = "discord" -- fivemanage, discord or ox_lib. if discord, set your webhook in server/apiKeys.lua
+Config.Logs.Actions = {
+    Calls = true,
+    Messages = true,
+    InstaPic = true,
+    Birdy = true,
+    YellowPages = true,
+    Marketplace = true,
+    Mail = true,
+    Wallet = true,
+    DarkChat = true,
+    Services = true,
+    Crypto = true,
+    Trendy = true,
+    Uploads = true
+}
+
 Config.DatabaseChecker = {}
 Config.DatabaseChecker.Enabled = true -- if true, the phone will check the database for any issues and fix them if possible
 Config.DatabaseChecker.AutoFix = true
@@ -22,6 +41,7 @@ Config.QBMailEvent = true -- if you want this script to listen for qb email even
 Config.QBOldJobMethod = false -- use the old method to check job in qb-core? this is slower, and only needed if you use an outdated version of qb-core.
 
 Config.Item = {}
+-- If you want to set up multiple items & frame colours, see https://docs.lbscripts.com/phone/configuration/#multiple-items--colored-phones
 Config.Item.Require = true -- require a phone item to use the phone
 Config.Item.Name = "phone" -- name of the phone item
 
@@ -50,8 +70,8 @@ Config.DisableOpenNUI = true -- disable the phone from opening if another script
 Config.DynamicIsland = true -- if enabled, the phone will have a Iphone 14 Pro inspired Dynamic Island.
 Config.SetupScreen = true -- if enabled, the phone will have a setup screen when the player first uses the phone.
 
-Config.AutoDeleteNotifications = false -- notifications that are more than X hours old, will be deleted. set to false to disable. if set to true, it will delete 1 week old notifications.
-Config.MaxNotifications = 100 -- the maximum amount of notifications a player can have. if they have more than this, the oldest notifications will be deleted. set to false to disable
+Config.AutoDeleteNotifications = true -- notifications that are more than X hours old, will be deleted. set to false to disable. if set to true, it will delete 1 week old notifications.
+Config.MaxNotifications = 50 -- the maximum amount of notifications a player can have. if they have more than this, the oldest notifications will be deleted. set to false to disable
 Config.DisabledNotifications = { -- an array of apps that should not send notifications, note that you should use the app identifier, found in config.json
     -- "DarkChat",
 }
@@ -316,6 +336,10 @@ Config.Locales = { -- If your desired language isn't here, you may contribute at
     {
         locale = "ba",
         name = "Bosanski"
+    },
+    {
+        locale = "zh-cn",
+        name = "简体中文 (Chinese Simplified)"
     }
 }
 
@@ -370,7 +394,7 @@ Config.EndLiveClose = false -- should InstaPic live end when you close the phone
 
 Config.AllowExternal = { -- allow people to upload external images? (note: this means they can upload nsfw / gore etc)
     Gallery = true, -- allow importing external links to the gallery?
-    Birdy = true, -- set to true to enable external images on that specific app, set to false to disable it.
+    Birdy = true, -- set to true to enable external images on that specific app, set to true to disable it.
     InstaPic = true,
     Spark = true,
     Trendy = true,
@@ -452,7 +476,8 @@ Config.BirdyTrending = {}
 Config.BirdyTrending.Enabled = true -- show trending hashtags?
 Config.BirdyTrending.Reset = 7 * 24 -- How often should trending hashtags be reset on birdy? (in hours)
 
-Config.BirdyNotifications = true -- should everyone get a notification when someone posts?
+Config.BirdyNotifications = true -- should everyone get a notification when someone posts? (if set to false, only followers will get a notification)
+Config.InstaPicLiveNotifications = true -- should everyone get a notification when someone goes live on InstaPic? (if set to false, only followers will get a notification)
 
 Config.PromoteBirdy = {}
 Config.PromoteBirdy.Enabled = true -- should you be able to promote post?

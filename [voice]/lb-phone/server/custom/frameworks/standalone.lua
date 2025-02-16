@@ -12,15 +12,9 @@ function GetIdentifier(source)
     end
 end
 
----Check if a player has a phone with a specific number
----@param source any
----@param number string
----@return boolean
-function HasPhoneItem(source, number)
-    if not Config.Item.Require then
-        return true
-    end
-
+---@param source number
+---@param itemName string
+function HasItem(source, itemName)
     if GetResourceState("ox_inventory") == "started" then
         return (exports.ox_inventory:Search(source, "count", Config.Item.Name) or 0) > 0
     end

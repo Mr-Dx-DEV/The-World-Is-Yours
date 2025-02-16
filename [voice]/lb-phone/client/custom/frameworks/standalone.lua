@@ -8,17 +8,11 @@ end
 
 loaded = true
 
-function HasPhoneItem(number)
-    if not Config.Item.Require then
-        return true
-    end
-
-    if Config.Item.Unique then
-        return HasPhoneNumber(number)
-    end
-
-    if GetResourceState("ox_inventory") == "started" and Config.Item.Inventory == "ox_inventory" then
-        return (exports.ox_inventory:Search("count", Config.Item.Name) or 0) > 0
+---@param itemName string
+---@return boolean
+function HasItem(itemName)
+    if GetResourceState("ox_inventory") == "started" then
+        return (exports.ox_inventory:Search("count", itemName) or 0) > 0
     end
 
     return true

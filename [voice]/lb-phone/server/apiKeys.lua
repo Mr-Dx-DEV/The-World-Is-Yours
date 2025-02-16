@@ -20,6 +20,7 @@ LOGS = {
     Uploads = "https://discordapp.com/api/webhooks/1299672445678260234/5KFVMP5ukajxKV0tADtFrTBaNF2V8QHIl-rChPI8VSzTQRY8xqnOTrdrEUcljRoDSczC" -- all camera uploads will go here
 }
 
+DISCORD_TOKEN = nil -- you can set a discord bot token here to get the players discord avatar for logs
 -- Set your API keys for uploading media here.
 -- Please note that the API key needs to match the correct upload method defined in Config.UploadMethod.
 -- The default upload method is Fivemanage
