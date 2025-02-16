@@ -18,13 +18,23 @@ end
 function Framework.Server.PayIntoSocietyFund(jobName, money)
   local usingNewQBBanking = GetResourceState("qb-banking") == "started" and tonumber(string.sub(GetResourceMetadata("qb-banking", "version", 0), 1, 3)) >= 2
 
-  if Config.Framework == "QBCore" or Config.Framework == "Qbox" then
+  if (Config.Banking == "auto" and GetResourceState("Renewed-Banking") == "started") or Config.Banking == "Renewed-Banking" then
+    exports['Renewed-Banking']:addAccountMoney(jobName, money)
+  elseif (Config.Banking == "auto" and GetResourceState("okokBanking") == "started") or Config.Banking == "okokBanking" then
+    exports['okokBanking']:AddMoney(jobName, money)
+  elseif (Config.Banking == "auto" and GetResourceState("fd_banking") == "started") or Config.banking == "fd_banking" then
+    exports.fd_banking:AddMoney(jobName, money)
+  elseif (Config.Banking == "auto" and (Config.Framework == "QBCore" or Config.Framework == "Qbox")) then
     if usingNewQBBanking then
       exports["qb-banking"]:AddMoney(jobName, money)
     else
       exports["qb-management"]:AddMoney(jobName, money)
     end
-  elseif Config.Framework == "ESX" then
+  elseif Config.Banking == "qb-banking" then
+    exports["qb-banking"]:AddMoney(jobName, money)
+  elseif Config.Banking == "qb-management" then
+    exports["qb-management"]:AddMoney(jobName, money)
+  elseif (Config.Banking == "auto" and Config.Framework == "ESX") or Config.Banking == "esx_addonaccount" then
     TriggerEvent("esx_society:getSociety", jobName, function(society)
       TriggerEvent("esx_addonaccount:getSharedAccount", society.account, function(account)
         account.addMoney(money)
@@ -92,7 +102,17 @@ end
 ---@param src integer
 ---@return {name:string,label:string,grade:number} | false
 function Framework.Server.GetPlayerGang(src)
-  if Config.Framework == "QBCore" or Config.Framework == "Qbox" then
+  if (Config.Gangs == "auto" and GetResourceState("rcore_gangs") == "started") or Config.Gangs == "rcore_gangs"  then
+    local gang = exports.rcore_gangs:GetPlayerGang(src)
+    if not gang then return {} end
+
+    return {
+      name = gang.name,
+      label = gang.name,
+      grade = 0 -- rcore_gangs' grade system are only strings
+    }
+  elseif (Config.Gangs == "auto" and GetResourceState("qb-gangs") == "started") or Config.Gangs == "qb-gangs" or Config.Framework == "QBCore" or Config.Framework == "Qbox" then
+
     local player = Framework.Server.GetPlayer(src)
     if not player then return false end
 
@@ -214,10 +234,15 @@ end
 
 ---@return table | false gangs
 function Framework.Server.GetGangs()
-  if Config.Framework == "QBCore" then
-    return QBCore.Shared.Gangs
-  elseif Config.Framework == "Qbox" then
-    return exports.qbx_core:GetGangs()
+  if (Config.Gangs == "auto" and GetResourceState("rcore_gangs") == "started") or Config.Gangs == "rcore_gangs" then
+    local gangs = MySQL.query.await("SELECT name FROM gangs")
+    return gangs or {}
+  elseif (Config.Gangs == "auto" and GetResourceState("qb-gangs") == "started") or Config.Gangs == "qb-gangs" then 
+    if Config.Framework == "QBCore" then
+      return QBCore.Shared.Gangs
+    elseif Config.Framework == "Qbox" then
+      return exports.qbx_core:GetGangs()
+    end
   elseif Config.Framework == "ESX" then
     error("ESX does not natively support gangs.");
   end

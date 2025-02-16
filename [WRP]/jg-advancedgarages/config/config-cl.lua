@@ -27,6 +27,26 @@ RegisterNetEvent("jg-advancedgarages:client:TransferVehicle:config", function(pl
   -- Code placed in here will be fired when a vehicle is transferred to another player via a public garage
 end)
 
+---@param vehicle integer Vehicle entity
+---@param plate string
+---@param garageId string
+---@param vehicleDbData table Vehicle row from the database
+---@param props table Vehicle properties
+---@param fuel integer Fuel level
+---@param body integer Body health
+---@param engine integer Engine health
+---@param damageModel table Damage model
+RegisterNetEvent('jg-advancedgarages:client:insert-vehicle-verification', function(vehicle, plate, garageId, vehicleDbData, props, fuel, body, engine, damageModel, cb)
+  cb(true)
+end)
+
+---@param plate string
+---@param vehicleDbData table Vehicle row from the database
+---@param garageId string
+lib.callback.register("jg-advancedgarages:client:takeout-vehicle-verification", function(plate, vehicleDbData, garageId)
+  return true
+end)
+
 -- Check whether a vehicle can be transferred between players, return false to prevent
 ---@param fromPlayerSrc integer
 ---@param toPlayerSrc integer
@@ -37,10 +57,11 @@ lib.callback.register("jg-advancedgarages:client:transfer-vehicle-verification",
 end)
 
 -- Check whether a vehicle can be transferred between garages, return false to prevent
----@param fromGarageId integer
----@param toGarageId integer
+---@param currentGarageId string
+---@param fromGarageId string
+---@param toGarageId string
 ---@param plate string
 ---@return boolean allowTransfer
-lib.callback.register("jg-advancedgarages:client:transfer-garage-verification", function(fromGarageId, toGarageId, plate)
+lib.callback.register("jg-advancedgarages:client:transfer-garage-verification", function(currentGarageId, fromGarageId, toGarageId, plate)
   return true
 end)

@@ -238,7 +238,16 @@ end
 
 ---@return {name: string, grade: number} | false gang
 function Framework.Client.GetPlayerGang()
-  if Config.Framework == "QBCore" or Config.Framework == "Qbox" then
+  if (Config.Gangs == "auto" and GetResourceState("rcore_gangs") == "started") or Config.Gangs == "rcore_gangs" then
+    local gang = exports.rcore_gangs:GetPlayerGang()
+    if not gang then return {} end
+
+    return {
+      name = gang.name,
+      label = gang.name,
+      grade = 0 -- rcore_gangs' grade system are only strings
+    }
+  elseif (Config.Gangs == "auto" and GetResourceState("qb-gangs") == "started") or Config.Gangs == "qb-gangs" or Config.Framework == "QBCore" or Config.Framework == "Qbox" then
     local player = Framework.Client.GetPlayerData()
     if not player or not player.gang then return {} end
 
@@ -288,8 +297,10 @@ function Framework.Client.VehicleGetFuel(vehicle)
     local level, type = exports["ti_fuel"]:getFuel(vehicle)
     TriggerServerEvent("jg-advancedgarages:server:save-ti-fuel-type", Framework.Client.GetPlate(vehicle), type)
     return level
-  elseif Config.FuelSystem == "ox_fuel" then
+  elseif Config.FuelSystem == "ox_fuel" or Config.FuelSystem == "Renewed-Fuel" then
     return GetVehicleFuelLevel(vehicle)
+  elseif Config.FuelSystem == "rcore_fuel" then
+    return exports.rcore_fuel:GetVehicleFuelPercentage(vehicle)
   else
     return 65 -- or set up custom fuel system here...
   end
@@ -300,13 +311,15 @@ end
 function Framework.Client.VehicleSetFuel(vehicle, fuel)
   if not DoesEntityExist(vehicle) then return false end
 
-  if (Config.FuelSystem == "LegacyFuel" or Config.FuelSystem == "ps-fuel" or Config.FuelSystem == "lj-fuel" or Config.FuelSystem == "cdn-fuel" or Config.FuelSystem == "hyon_gas_station" or Config.FuelSystem == "okokGasStation" or Config.FuelSystem == "nd_fuel" or Config.FuelSystem == "myFuel") then
+  if (Config.FuelSystem == "LegacyFuel" or Config.FuelSystem == "ps-fuel" or Config.FuelSystem == "lj-fuel" or Config.FuelSystem == "cdn-fuel" or Config.FuelSystem == "hyon_gas_station" or Config.FuelSystem == "okokGasStation" or Config.FuelSystem == "nd_fuel" or Config.FuelSystem == "myFuel" or Config.FuelSystem == "Renewed-Fuel") then
     exports[Config.FuelSystem]:SetFuel(vehicle, fuel)
   elseif Config.FuelSystem == "ti_fuel" then
     local fuelType = lib.callback.await("jg-advancedgarages:server:get-ti-fuel-type", false, Framework.Client.GetPlate(vehicle))
     exports["ti_fuel"]:setFuel(vehicle, fuel, fuelType or nil)
   elseif Config.FuelSystem == "ox_fuel" then
     Entity(vehicle).state.fuel = fuel
+  elseif Config.FuelSystem == "rcore_fuel" then
+    exports.rcore_fuel:SetVehicleFuel(vehicle, fuel)
   else
     -- Setup custom fuel system here
   end
@@ -314,7 +327,8 @@ end
 
 ---@param plate string
 ---@param vehicleEntity integer
-function Framework.Client.VehicleGiveKeys(plate, vehicleEntity)
+---@param origin "personal" | "job" | "gang"
+function Framework.Client.VehicleGiveKeys(plate, vehicleEntity, origin)
   if not DoesEntityExist(vehicleEntity) then return false end
   if not plate or plate == "" then
     print("^1[ERROR] No plate provided to VehicleGiveKeys function^0")
@@ -330,7 +344,7 @@ function Framework.Client.VehicleGiveKeys(plate, vehicleEntity)
   elseif Config.VehicleKeys == "mk_vehiclekeys" then
     exports["mk_vehiclekeys"]:AddKey(vehicleEntity)
   elseif Config.VehicleKeys == "qs-vehiclekeys" then
-    local model = GetEntityArchetypeName(vehicleEntity)
+    local model = GetDisplayNameFromVehicleModel(GetEntityModel(vehicleEntity))
     exports["qs-vehiclekeys"]:GiveKeys(plate, model)
   elseif Config.VehicleKeys == "wasabi_carlock" then
     exports.wasabi_carlock:GiveKey(plate)
@@ -339,11 +353,18 @@ function Framework.Client.VehicleGiveKeys(plate, vehicleEntity)
   elseif Config.VehicleKeys == "okokGarage" then
     TriggerServerEvent("okokGarage:GiveKeys", plate)
   elseif Config.VehicleKeys == "t1ger_keys" then
-    TriggerServerEvent("t1ger_keys:updateOwnedKeys", plate, true)
+    if origin == "job" then
+      local vehicleName = GetDisplayNameFromVehicleModel(GetEntityModel(vehicleEntity))
+      exports['t1ger_keys']:GiveJobKeys(plate, vehicleName, true)
+    else
+      TriggerServerEvent("t1ger_keys:updateOwnedKeys", plate, true)
+    end
   elseif Config.VehicleKeys == "MrNewbVehicleKeys" then
     exports.MrNewbVehicleKeys:GiveKeys(vehicleEntity)
   elseif Config.VehicleKeys == "Renewed" then
     exports["Renewed-Vehiclekeys"]:addKey(plate)
+  elseif Config.VehicleKeys == "tgiann-hotwire" then
+    exports["tgiann-hotwire"]:CheckKeyInIgnitionWhenSpawn(vehicleEntity, plate)
   else
     -- Setup custom key system here...
   end
@@ -351,7 +372,8 @@ end
 
 ---@param plate string
 ---@param vehicleEntity integer
-function Framework.Client.VehicleRemoveKeys(plate, vehicleEntity)
+---@param origin "personal" | "job" | "gang"
+function Framework.Client.VehicleRemoveKeys(plate, vehicleEntity, origin)
   if not DoesEntityExist(vehicleEntity) then return false end
   if not plate or plate == "" then
     print("^1[ERROR] No plate provided to VehicleRemoveKeys function^0")
