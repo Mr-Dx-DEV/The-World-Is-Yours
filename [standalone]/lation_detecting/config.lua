@@ -43,6 +43,8 @@ Config.Detecting = {
     -- For the specific metal detecting model they used. If false it will
     -- Allow them to use any metal detector, ignoring their level
     verify_level = true,
+    -- Do you want to allow the player to run while metal detecting?
+    running = false,
     -- By default the script only allows detecting on certain soil type(s)
     -- You can add or remove more soil types as you wish below in soil_types
     -- To get the soil type, enable the debug option in Config.Setup and go
@@ -510,6 +512,8 @@ Config.Shovel = {
     addToShop = 'sellShop',
     -- How much the shovel costs if purchasable from a shop above
     price = 250,
+    -- Do you want to require a shovel to dig when metal detecting?
+    required = true,
 }
 
 ----------------------------------------------

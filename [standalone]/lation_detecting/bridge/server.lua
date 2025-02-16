@@ -29,8 +29,6 @@ local function InitializeInventory()
         Inventory = 'qs-inventory'
     elseif GetResourceState('ps-inventory') == 'started' then
         Inventory = 'ps-inventory'
-    elseif GetResourceState('lj-inventory') == 'started' then
-        Inventory = 'lj-inventory'
     elseif GetResourceState('origen_inventory') == 'started' then
         Inventory = 'origen_inventory'
     elseif GetResourceState('codem-inventory') == 'started' then
@@ -67,7 +65,7 @@ function GetIdentifier(source)
     elseif Framework == 'qb' or Framework == 'qbx' then
         return player.PlayerData.citizenid
     elseif Framework == 'ox' then
-        return player.charId
+        return player.stateId
     else
         -- Add custom framework here
     end
@@ -123,20 +121,21 @@ function GetItemCount(source, item)
     return 0
 end
 
--- Return result if player has a specific job
+-- Return player job
 --- @param source number Player ID
 function GetPlayerJob(source)
     local player = GetPlayer(source)
-    if not player then return end
+    if not player then return 'unemployed' end
     if Framework == 'esx' then
-        return player.job.name
+        return player.getJob().name
     elseif Framework == 'qb' or Framework == 'qbx' then
         return player.PlayerData.job.name
     elseif Framework == 'ox' then
-        -- TODO
+        return player.getGroupByType('job')
     else
         -- Add custom framework here
     end
+    return 'unemployed'
 end
 
 -- Adds an item to players inventory

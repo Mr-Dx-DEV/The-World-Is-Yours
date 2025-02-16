@@ -105,8 +105,6 @@ local function InitializeInventory()
         Inventory = 'qs-inventory'
     elseif GetResourceState('ps-inventory') == 'started' then
         Inventory = 'ps-inventory'
-    elseif GetResourceState('lj-inventory') == 'started' then
-        Inventory = 'lj-inventory'
     elseif GetResourceState('origen_inventory') == 'started' then
         Inventory = 'origen_inventory'
     elseif GetResourceState('codem-inventory') == 'started' then
@@ -142,7 +140,7 @@ function GetPlayerJob()
     elseif Framework == 'qbx' then
         return player.job.name
     elseif Framework == 'ox' then
-        -- TODO
+        return player.getGroupByType('job')
     else
         -- Add custom framework here
     end
@@ -151,8 +149,20 @@ end
 -- Returns players current inventory data
 --- @return any
 function GetPlayerInventory()
-    if Inventory and Inventory == 'ox_inventory' then
-        return exports.ox_inventory:GetPlayerItems()
+    if Inventory then
+        if Inventory == 'ox_inventory' then
+            return exports[Inventory]:GetPlayerItems()
+        elseif Inventory == 'qb-inventory' then
+            return GetPlayerData().items
+        elseif Inventory == 'qs-inventory' then
+            return exports[Inventory]:getUserInventory()
+        elseif Inventory == 'ps-inventory' then
+            return GetPlayerData().items
+        elseif Inventory == 'origen_inventory' then
+            return exports[Inventory]:GetInventory()
+        elseif Inventory == 'codem-inventory' then
+            return exports[Inventory]:GetClientPlayerInventory()
+        end
     else
         if Framework == 'esx' then
             return GetPlayerData().inventory
@@ -173,7 +183,7 @@ function GetItemData(item)
     if Inventory then
         if Inventory == 'ox_inventory' then
             return exports.ox_inventory:Items(item)
-        elseif Inventory == 'qb-inventory' or Inventory == 'ps-inventory' or Inventory == 'lj-inventory' then
+        elseif Inventory == 'qb-inventory' or Inventory == 'ps-inventory' then
             return QBCore.Shared.Items[item]
         elseif Inventory == 'qs-inventory' then
             local items = exports['qs-inventory']:GetItemList()
@@ -240,8 +250,6 @@ function DisableInventory()
         LocalPlayer.state.inv_busy = true
     elseif Inventory == 'qs-inventory' then
         exports[Inventory]:setInventoryDisabled(true)
-    elseif Inventory == 'core_inventory' then
-        exports[Inventory]:lockInventory()
     else
         -- Add custom inventory here
     end
@@ -255,8 +263,6 @@ function EnableInventory()
         LocalPlayer.state.inv_busy = false
     elseif Inventory == 'qs-inventory' then
         exports[Inventory]:setInventoryDisabled(false)
-    elseif Inventory == 'core_inventory' then
-        exports[Inventory]:unlockInventory()
     else
         -- Add custom inventory here
     end
