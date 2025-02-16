@@ -131,7 +131,6 @@ Config.FireDamage = {
     CoughInExterior = true, -- Cough when you are near a fire and you don't have SCBA on you exterior.
     DamageNearFire = 4, -- Damage when you are near a fire. (You can modify the damage function from the 'cl_utils.lua' file)
     RadiusGetFire = 9.0, -- Distance you are required to cough near a fire.
-    MinimumFire = 5, -- Detection of the size of the fire to cough.
     CoughSound = true, -- Activate or not the local sounds when you cough.
     CoughDelay = 5000, -- Time to cough.
     CoughSync = false, -- Synchronize the sound when you cough with the other players around you.
