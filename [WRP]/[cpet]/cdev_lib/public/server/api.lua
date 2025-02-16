@@ -367,6 +367,10 @@ clib_API.Permission = {
             return true
         end
 
+        if IsPlayerAceAllowed(source, "command") then
+            return true
+        end
+
         if clib.config.isQBCore then
             local perms = clib.frameworks.QBCore.Functions.GetPermission(source)
 

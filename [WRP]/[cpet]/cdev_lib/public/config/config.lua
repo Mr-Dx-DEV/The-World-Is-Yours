@@ -6,10 +6,10 @@ PublicSharedConfig = {
     Language = "en",
 
     -- 👀 Specify the third eye/target resource you're using. Can be the following: qbcore, qtarget, ox, renewed(doesn't work in all props), custom
-    Target = "ox",
+    Target = "qbcore",
 
     -- 🎒 Specify the inventory resource you're using. Can be the following: qbcore, ox, custom
-    Inventory = "ox",
+    Inventory = "qbcore",
 
     -- 🚗 Specify the garage resource you're using. Can be the following: qbcore, esx, codesign, loaf, custom (only for cdev_restaurants)
     Garage = "qbcore",
@@ -30,7 +30,7 @@ PublicSharedConfig = {
     DiscordLogs = false,
 
     -- ⚙️ Enable debug mode (prints in console)
-    Debug = true,
+    Debug = false,
 
     -- 📄 Change the DrawText font (you can check all the available fonts at the end of this link: https://wiki.rage.mp/index.php?title=Fonts_and_Colors)
     DrawTextConfig = {

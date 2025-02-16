@@ -4,7 +4,7 @@ lua54 "yes"
 
 author "CDev Development Team"
 description "CDev core library for resource development"
-version "2.5.7"
+version "2.5.8"
 
 client_scripts {
     -- Public scripts

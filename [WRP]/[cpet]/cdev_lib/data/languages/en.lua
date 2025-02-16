@@ -7,4 +7,5 @@ clib_Localizer.append("en", {
     cancel_button = "Cancel",
     sign_currency = "$",
     input_value = "Input Value Here",
+    search = "Search...",
 })
