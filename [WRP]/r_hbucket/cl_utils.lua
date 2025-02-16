@@ -7,8 +7,6 @@
 
 -- [[ Compatibility init ]]
 
-local ESX = nil
-
 if Config.ESX then
     ESX = exports["es_extended"]:getSharedObject()
 elseif Config.QB then
