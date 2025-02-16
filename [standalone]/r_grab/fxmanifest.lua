@@ -5,17 +5,21 @@ author 'rytrak.fr'
 
 escrow_ignore {
 	'config.lua',
-	'cl_utils.lua'
+	'client/cl_utils.lua',
+	'client/ox_target.lua',
+	'client/qb_target.lua'
 }
 
 server_scripts {
     'config.lua',
-    'server.lua'
+    'server/server.lua'
 }
 
 client_scripts {
 	'config.lua',
-	'client.lua',
-	'cl_utils.lua'
+	'client/client.lua',
+	'client/cl_utils.lua',
+	'client/ox_target.lua',
+	'client/qb_target.lua'
 }
 dependency '/assetpacks'

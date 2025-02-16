@@ -2,34 +2,29 @@
   % Made with ❤️ for: Rytrak Store
   % Author: Rytrak https://rytrak.fr
   % Script documentation: https://docs.rytrak.fr/scripts/advanced-police-grab-ped
-  % Full support on discord: https://discord.gg/k22buEjnpZ
+  % Support on discord: https://discord.gg/k22buEjnpZ
 --------------------------------------*/
 
--- [[ Configuration ]]
+-- [[ Configuration File ]]
 
 Config = {
-    Language = 'en', -- Language library used for the script, see the last lines to modify the text of the language. (Config.Languages)
+    -- General Settings
+    Language = 'en', -- Script language ('en' for English, 'fr' for French). See Config.Languages to edit texts.
+    UseOutdatedVersion = false, -- Set to true to suppress console alerts for using older versions.
 
-    UseOutdatedVersion = false, -- Enable this parameter to suppress alert messages in the console if you wish to use an older version of the script.
-
-    CommandEnabled = true, -- Activate or not the system to take it via the command.
-    GrabCommand = 'grab', -- Command to take the person by the arm (modifiable from cl_utils.lua)
-    PutCarCommand = 'putcar', -- Command to put the person into the vehicle. (modifiable from cl_utils.lua)
-    ExitCarCommand = 'exitcar', -- Command to get the player out of a vehicle. (modifiable from cl_utils.lua)
-
-    ESX = { -- ESX compatibility (you can modify this function on cl_utils.lua)
-        enabled = false, -- Activate or not the ESX system
-        jobs = { -- Job for which the grab ped can be used
-            'police',
-            'fbi',
+    -- Framework System Configuration
+    Framework = {
+        -- ESX Compatibility
+        ESX = {
+            enabled = false, -- Enable ESX compatibility.
+            jobs = {'police', 'fbi'}, -- Allowed jobs to use the grab ped feature.
+            exceptionJobs = false -- If true, the listed jobs cannot be grabbed.
         },
-        exceptionJobs = false -- Do not take people with the above jobs (Config.ESX.jobs)
-    },
-        
-    QB = { -- QB compatibility (you can modify this function on cl_utils.lua)
-        enabled = true, -- Activate or not the QB system
-        jobs = { -- Job for which the grab ped can be used
-            'police',
+
+        -- QB Compatibility
+        QB = {
+            enabled = true, -- Enable QB compatibility.
+            jobs = {'police',
 'fbi',
 'ambulance',
 'lspd',
@@ -41,52 +36,77 @@ Config = {
 'usms',
 'dhs',
 'ss',
-'salsa'
-
-        }
+'salsa'} -- Allowed jobs to use the grab ped feature.
+        },
     },
 
-    Hint = true, -- Display the notifications at the top left of the screen to manage the dragged player (Drop the player, put in a vehicle, get out of the vehicle) when CommandEnabled = true
+    CommandSystem = {
+        Enabled = true, -- Enable/disable the command-based interaction system. (WARNING! If you are using a system in the Target System, disable the command system)
+        
+        Grab = 'grab', -- Command to grab a person (modifiable in cl_utils.lua).
+        PutPlayer = 'putplayer', -- Command to put a person into a vehicle (modifiable in cl_utils.lua).
+        RemovePlayer = 'removeplayer', -- Command to remove a person from a vehicle (modifiable in cl_utils.lua).
+    },
 
-    DisableSprint = true, -- Disable the sprint (recommended: leave it true)
+    -- Target System Configuration
+    TargetSystem = {
+        -- Enables the use of a 3D interaction system (Only one can be enabled at a time).
+        -- (If you are using the target system set Config.CommandSystem.Enabled = false)
+        
+        UseOXTarget = true, -- Enable ox_target support (See client/ox_target.lua).
+        UseQBTarget = false, -- Enable qb-target support (See client/qb_target.lua).
 
-    CollisionRange = 0.8, -- Collision distance (0.0 to disable the dragged player's collision)
+        CustomTarget = false -- Set to true if using a custom target system. Follow the structure of client/ox_target.lua or client/qb_target.lua.
+    },
 
-    AttachPosition = vector3(0.20, 0.45, 0.0), -- Positioning of the player facing the police officer
+    -- Player Movement Settings
+    DisableSprint = true, -- Disable sprinting while carrying a player (recommended: true).
+    CollisionRange = 0.5, -- Collision distance between players (0.0 to disable collisions).
+    GrabbingRadius = 1.0, -- Distance to grab a player (recommended: 1.0).
+    AttachPosition = vector3(0.20, 0.45, 0.0), -- Position of the grabbed player relative to the grabber.
 
+    -- Animations
     Animations = {
         policeAnimation = {
-            enabled = true, -- Activate or not the animation of the policeman when he takes a person by the arm.
+            enabled = true, -- Enable animation for the grabber (e.g., police).
             animDict = 'amb@world_human_drinking@coffee@male@base',
             anim = 'base'
         },
         citizenAnimation = {
-            enabled = false, -- Activate or not the animation of the citizen when he is taken by the arm.
+            enabled = false, -- Enable animation for the grabbed person.
             animDict = 'amb@world_human_drinking@coffee@male@base',
             anim = 'base'
         }
     }
 }
 
--- https://docs.fivem.net/docs/game-references/controls/
+-- [[ Key Bindings - Refer to https://docs.fivem.net/docs/game-references/controls/ ]]
 Config.Keys = {
-    GrabAndDropKey = 289, -- If CommandEnabled is equal to false you must put a key to take the person.
-    GrabAndDropKeyString = '~INPUT_REPLAY_START_STOP_RECORDING_SECONDARY~', -- Name of the button.
+    GrabAndDropKey = 289, -- Key to grab/release a person (used when Config.CommandSystem.Enabled = false).
+    GrabAndDropKeyString = '~INPUT_REPLAY_START_STOP_RECORDING_SECONDARY~', -- Display name for the grab/release key.
 
-    TaskEnterKey = 305, -- Button to put the person inside the vehicle
-    TaskEnterKeyString = '~INPUT_REPLAY_STARTPOINT~' -- Name of the button to put the person inside the vehicle
+    TaskEnterKey = 305, -- Key to place a person into a vehicle.
+    TaskEnterKeyString = '~INPUT_REPLAY_STARTPOINT~' -- Display name for the key to place a person into a vehicle.
 }
 
--- Libraries of languages.
+-- [[ Language Libraries - Edit texts for different languages here ]]
 Config.Languages = {
     ['en'] = {
         ['taskenter'] = 'Put the person in the vehicle '..Config.Keys.TaskEnterKeyString,
         ['exitped'] = 'Taking the person out the vehicle '..Config.Keys.TaskEnterKeyString,
-        ['releaseperson'] = 'Release the person press '..Config.Keys.GrabAndDropKeyString
+        ['releaseperson'] = 'Release the person press '..Config.Keys.GrabAndDropKeyString,
+
+        ['dragplayer'] = 'Drag the player',
+        ['putplayerinvehicle'] = 'Put the player in the vehicle',
+        ['removeplayerfromvehicle'] = 'Remove the player from the vehicle'
     },
     ['fr'] = {
         ['taskenter'] = 'Faire monter la personne '..Config.Keys.TaskEnterKeyString,
         ['exitped'] = 'Faire descendre la personne '..Config.Keys.TaskEnterKeyString,
-        ['releaseperson'] = 'Lacher la personne '..Config.Keys.GrabAndDropKeyString
+        ['releaseperson'] = 'Lâcher la personne '..Config.Keys.GrabAndDropKeyString,
+
+        ['dragplayer'] = 'Traîner le joueur',
+        ['putplayerinvehicle'] = 'Mettre le joueur dans le véhicule',
+        ['removeplayerfromvehicle'] = 'Sortir le joueur du véhicule'
     }
 }
