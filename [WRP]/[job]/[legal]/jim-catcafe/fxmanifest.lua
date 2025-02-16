@@ -2,7 +2,7 @@ shared_scripts { '@FiniAC/fini_events.lua' }
 
 name "Jim-CatCafe"
 author "Jimathy"
-version "1.8.6hotfix"
+version "2.8.6hotfix"
 description "CatCafe Script By Jimathy - Props by idRP - ZenKat"
 fx_version "cerulean"
 game "gta5"
