@@ -8,7 +8,7 @@ name "lusty94_heroin"
 
 description 'Heroin Processing Script For QB Core'
 
-version '2.0.1'
+version '3.0.1'
 
 lua54 'yes'
 
