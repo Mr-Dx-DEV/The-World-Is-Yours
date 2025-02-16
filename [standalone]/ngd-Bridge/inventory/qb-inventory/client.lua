@@ -9,6 +9,9 @@ Bridge.Debug('Inventory', Bridge.InventoryName, Version)
 if not Bridge.InventoryEvent then
     if Bridge.InventoryName == 'ps-inventory' and resource.isMinimalVersion(Bridge.InventoryName, '1.0.5') then
         Bridge.InventoryEvent = 'ps-inventory'
+    elseif Bridge.InventoryName == 'qb-inventory' and resource.isMinimalVersion(Bridge.InventoryName, '2.0.0') then
+        Bridge.InventoryEvent = 'qb-inventory'
+        QBInventory = exports[Bridge.InventoryName]
     else
         Bridge.InventoryEvent = 'inventory'
     end
@@ -39,38 +42,46 @@ end)
 
 Framework.OpenStash = function(name)
     name = name:gsub("%-", "_")
-    Framework.TriggerCallback(Bridge.Resource .. ':bridge:GetStash', function(stash)
-        if not stash then return end
-        local isAllowed = false
-        if stash.groups and Framework.HasJob(stash.groups, Framework.Player) then isAllowed = true end
-        if stash.groups and Framework.HasGang(stash.groups, Framework.Player) then isAllowed = true end
-        if stash.groups and not isAllowed then return end
-        if stash.owner and type(stash.owner) == 'string' and Framework.Player.Identifier ~= stash.owner then return end
-        if stash.owner and type(stash.owner) == 'boolean' then name = name .. Framework.Player.Identifier end
-        TriggerServerEvent(Bridge.InventoryEvent .. ':server:OpenInventory', 'stash', name, { maxweight = stash.weight, slots = stash.slots })
-        TriggerEvent(Bridge.InventoryEvent .. ':client:SetCurrentStash', name)
-    end, name)
+    if QBInventory then
+        TriggerServerEvent(Bridge.Resource .. ':bridge:OpenStash', name)
+    else
+        Framework.TriggerCallback(Bridge.Resource .. ':bridge:GetStash', function(stash)
+            if not stash then return end
+            local isAllowed = false
+            if stash.groups and Framework.HasJob(stash.groups, Framework.Player) then isAllowed = true end
+            if stash.groups and Framework.HasGang(stash.groups, Framework.Player) then isAllowed = true end
+            if stash.groups and not isAllowed then return end
+            if stash.owner and type(stash.owner) == 'string' and Framework.Player.Identifier ~= stash.owner then return end
+            if stash.owner and type(stash.owner) == 'boolean' then name = name .. Framework.Player.Identifier end
+            TriggerServerEvent(Bridge.InventoryEvent .. ':server:OpenInventory', 'stash', name, { maxweight = stash.weight, slots = stash.slots })
+            TriggerEvent(Bridge.InventoryEvent .. ':client:SetCurrentStash', name)
+        end, name)
+    end
 end
 
 Framework.OpenShop = function(name)
-    Framework.TriggerCallback(Bridge.Resource .. ':bridge:OpenShop', function(shopdata)
-        if table.type(shopdata) ~= 'empty' then
-            local Shop = {}
-            Shop.label = shopdata.name
-            Shop.items = {}
-            for i = 1, #shopdata.items do
-                Shop.items[i] = {
-                    name = shopdata.items[i].name,
-                    price = shopdata.items[i].price,
-                    amount = shopdata.items[i].count or 1,
-                    info = shopdata.items[i].metadata or {},
-                    type = Framework.Items[shopdata.items[i].name].type,
-                    slot = i
-                }
+    if QBInventory then
+        TriggerServerEvent(Bridge.Resource .. ':bridge:OpenShop', name)
+    else
+        Framework.TriggerCallback(Bridge.Resource .. ':bridge:OpenShop', function(shopdata)
+            if table.type(shopdata) ~= 'empty' then
+                local Shop = {}
+                Shop.label = shopdata.name
+                Shop.items = {}
+                for i = 1, #shopdata.items do
+                    Shop.items[i] = {
+                        name = shopdata.items[i].name,
+                        price = shopdata.items[i].price,
+                        amount = shopdata.items[i].count or 1,
+                        info = shopdata.items[i].metadata or {},
+                        type = Framework.Items[shopdata.items[i].name].type,
+                        slot = i
+                    }
+                end
+                TriggerServerEvent(Bridge.InventoryEvent .. ':server:OpenInventory', 'shop', shopdata.name, Shop)
             end
-            TriggerServerEvent(Bridge.InventoryEvent .. ':server:OpenInventory', 'shop', shopdata.name, Shop)
-        end
-    end, name)
+        end, name)
+    end
 end
 
 Framework.CloseInventory = function()

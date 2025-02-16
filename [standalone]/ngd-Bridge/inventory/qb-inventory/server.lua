@@ -9,6 +9,9 @@ Bridge.Debug('Inventory', Bridge.InventoryName, Version)
 if not Bridge.InventoryEvent then
     if Bridge.InventoryName == 'ps-inventory' and resource.isMinimalVersion(Bridge.InventoryName, '1.0.5') then
         Bridge.InventoryEvent = 'ps-inventory'
+    elseif Bridge.InventoryName == 'qb-inventory' and resource.isMinimalVersion(Bridge.InventoryName, '2.0.0') then
+        Bridge.InventoryEvent = 'qb-inventory'
+        QBInventory = exports[Bridge.InventoryName]
     else
         Bridge.InventoryEvent = 'inventory'
     end
@@ -41,15 +44,15 @@ end)
 local function GetStashItems(inventory)
     inventory = inventory:gsub("%-", "_")
     local items = {}
-	local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', {inventory})
-	if not result then return items end
+    local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', { inventory })
+    if not result then return items end
 
-	local stashItems = json.decode(result)
-	if not stashItems then return items end
+    local stashItems = json.decode(result)
+    if not stashItems then return items end
 
-	for _, item in pairs(stashItems) do
-		local itemInfo = Framework.Items[item.name:lower()]
-		if itemInfo then
+    for _, item in pairs(stashItems) do
+        local itemInfo = Framework.Items[item.name:lower()]
+        if itemInfo then
             items[item.slot] = {
                 name = itemInfo.name,
                 count = tonumber(item.amount),
@@ -63,9 +66,9 @@ local function GetStashItems(inventory)
                 type = itemInfo.type,
                 slot = item.slot,
             }
-		end
-	end
-	return items
+        end
+    end
+    return items
 end
 
 ---Add Item To Stash
@@ -79,54 +82,59 @@ local function AddStashItem(inventory, item, count, metadata, slot)
     inventory = inventory:gsub("%-", "_")
     count = tonumber(count) or 1
     local stash = {}
-    local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', {inventory})
+    local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', { inventory })
     if result then stash = json.decode(result) end
-	local itemInfo = QBCore.Shared.Items[item:lower()]
+    local itemInfo = QBCore.Shared.Items[item:lower()]
     metadata = metadata or {}
     metadata.created = metadata.created or os.time()
     metadata.quality = metadata.quality or 100
     if itemInfo['type'] == 'weapon' then
-        metadata.serie = metadata.serie or tostring(Framework.RandomInteger(2) .. Framework.RandomString(3) .. Framework.RandomInteger(1) .. Framework.RandomString(2) .. Framework.RandomInteger(3) .. Framework.RandomString(4))
+        metadata.serie = metadata.serie or
+            tostring(Framework.RandomInteger(2) ..
+                Framework.RandomString(3) ..
+                Framework.RandomInteger(1) ..
+                Framework.RandomString(2) .. Framework.RandomInteger(3) .. Framework.RandomString(4))
     end
-	if not itemInfo.unique then
+    if not itemInfo.unique then
         if type(slot) == "number" and stash[slot] and stash[slot].name == item and table.matches(metadata, stash[slot].info) then
             stash[slot].amount = stash[slot].amount + count
         else
             slot = #stash + 1
             stash[slot] = {
                 name = itemInfo["name"],
-				amount = count,
-				info = metadata or {},
-				label = itemInfo["label"],
-				description = itemInfo["description"] or "",
-				weight = itemInfo["weight"],
-				type = itemInfo["type"],
-				unique = itemInfo["unique"],
-				useable = itemInfo["useable"],
-				image = itemInfo["image"],
-				slot = slot,
+                amount = count,
+                info = metadata or {},
+                label = itemInfo["label"],
+                description = itemInfo["description"] or "",
+                weight = itemInfo["weight"],
+                type = itemInfo["type"],
+                unique = itemInfo["unique"],
+                useable = itemInfo["useable"],
+                image = itemInfo["image"],
+                slot = slot,
             }
         end
-	else
+    else
         slot = #stash + 1
         stash[slot] = {
             name = itemInfo["name"],
-			amount = count,
-			info = metadata or {},
-			label = itemInfo["label"],
-			description = itemInfo["description"] or "",
-			weight = itemInfo["weight"],
-			type = itemInfo["type"],
-			unique = itemInfo["unique"],
-			useable = itemInfo["useable"],
-			image = itemInfo["image"],
-			slot = slot,
+            amount = count,
+            info = metadata or {},
+            label = itemInfo["label"],
+            description = itemInfo["description"] or "",
+            weight = itemInfo["weight"],
+            type = itemInfo["type"],
+            unique = itemInfo["unique"],
+            useable = itemInfo["useable"],
+            image = itemInfo["image"],
+            slot = slot,
         }
     end
-    Database.insert('INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
-		['stash'] = inventory,
-		['items'] = json.encode(stash)
-	})
+    Database.insert(
+        'INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
+            ['stash'] = inventory,
+            ['items'] = json.encode(stash)
+        })
     return true
 end
 
@@ -140,27 +148,28 @@ end
 local function RemoveStashItem(inventory, item, count, metadata, slot)
     inventory = inventory:gsub("%-", "_")
     local stash = {}
-    local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', {inventory})
+    local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', { inventory })
     if result then stash = json.decode(result) else return false end
     count = tonumber(count) or 1
-	if type(slot) == "number" and stash[slot] and stash[slot].name == item then
+    if type(slot) == "number" and stash[slot] and stash[slot].name == item then
         if metadata and not table.matches(metadata, stash[slot].info) then return false end
         if stash[slot].amount > count then
             stash[slot].amount = stash[slot].amount - count
         else
             stash[slot] = nil
         end
-        Database.insert('INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
-            ['stash'] = inventory,
-            ['items'] = json.encode(stash)
-        })
+        Database.insert(
+            'INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
+                ['stash'] = inventory,
+                ['items'] = json.encode(stash)
+            })
         return true
-	else
+    else
         local removed = count
         local newstash = stash
         for _, v in pairs(stash) do
             if v.name == item then
-                if metadata and table.matches(metadata, v.info) then 
+                if metadata and table.matches(metadata, v.info) then
                     if removed >= v.amount then
                         newstash[v.slot] = nil
                         removed = removed - v.amount
@@ -178,31 +187,37 @@ local function RemoveStashItem(inventory, item, count, metadata, slot)
                     end
                 end
             end
-            
+
             if removed == 0 then
                 break
             end
         end
 
         if removed == 0 then
-            Database.insert('INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
-                ['stash'] = inventory,
-                ['items'] = json.encode(newstash)
-            })
+            Database.insert(
+                'INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
+                    ['stash'] = inventory,
+                    ['items'] = json.encode(newstash)
+                })
             return true
         else
             return false
         end
-	end
+    end
 end
 
 Framework.AddItem = function(inventory, item, count, metadata, slot)
     if type(inventory) == "string" then
-        return AddStashItem(inventory, item, count, metadata, slot)
+        if QBInventory then
+            return QBInventory:AddItem(inventory, item, count, slot, metadata)
+        else
+            return AddStashItem(inventory, item, count, metadata, slot)
+        end
     elseif type(inventory) == "number" then
         local Player = QBCore.Functions.GetPlayer(inventory)
         if Player.Functions.AddItem(item, count, slot, metadata) then
-            TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', inventory, QBCore.Shared.Items[item], 'add', count)
+            TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', inventory, QBCore.Shared.Items[item], 'add',
+                count)
             return true
         end
         return false
@@ -212,14 +227,81 @@ end
 
 Framework.RemoveItem = function(inventory, item, count, metadata, slot)
     if type(inventory) == "string" then
-        return RemoveStashItem(inventory, item, count, metadata, slot)
+        if QBInventory then
+            local inventoryData = QBInventory:GetInventory(inventory)
+            if not inventoryData then return false end
+            if slot then
+                if metadata then
+                    if table.matches(metadata, Framework.GetItemMetadata(inventory, slot)) then
+                        if QBInventory:RemoveItem(inventory, item, count, slot) then
+                            if type(inventory) == "number" then
+                                TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', inventory, QBCore.Shared.Items[item], "remove", count)
+                            end
+                            return true
+                        else
+                            return false
+                        end
+                    end
+                    return false
+                else
+                    if QBInventory:RemoveItem(inventory, item, count, slot) then
+                        TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', inventory, QBCore.Shared.Items[item], "remove", count)
+                        return true
+                    else
+                        return false
+                    end
+                end
+            else
+                local removed = count
+                local removedItems = {}
+                for _, v in pairs(inventoryData.items) do
+                    if metadata and table.matches(metadata, Framework.GetItemMetadata(inventory, v.slot)) then
+                        if removed >= v.amount and QBInventory:RemoveItem(inventory, item, v.amount, v.slot) then
+                            removedItems[#removedItems + 1] = v
+                            removed = removed - v.amount
+                        elseif QBInventory:RemoveItem(inventory, item, removed, v.slot) then
+                            removedItems[#removedItems + 1] = v
+                            removed = removed - removed
+                        end
+                    elseif not metadata then
+                        if removed >= v.amount and QBInventory:RemoveItem(inventory, item, v.amount, v.slot) then
+                            removedItems[#removedItems + 1] = v
+                            removed = removed - v.amount
+                        elseif QBInventory:RemoveItem(inventory, item, removed, v.slot) then
+                            removedItems[#removedItems + 1] = v
+                            removed = removed - removed
+                        end
+                    end
+                    if removed == 0 then
+                        break
+                    end
+                end
+
+                if removed == 0 then
+                    if type(inventory) == "number" then
+                        TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', inventory,
+                            QBCore.Shared.Items[item],
+                            "remove", count)
+                    end
+                    return true
+                else
+                    for _, v in pairs(removedItems) do
+                        Framework.AddItem(inventory, item, v.amount, v.slot, v.info)
+                    end
+                    return false
+                end
+            end
+        else
+            return RemoveStashItem(inventory, item, count, metadata, slot)
+        end
     elseif type(inventory) == "number" then
         local Player = QBCore.Functions.GetPlayer(inventory)
         if slot then
             if metadata then
                 if table.matches(metadata, Framework.GetItemMetadata(inventory, slot)) then
                     if Player.Functions.RemoveItem(item, count, slot) then
-                        TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', inventory, QBCore.Shared.Items[item], "remove", count)
+                        TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', inventory,
+                            QBCore.Shared.Items[item], "remove", count)
                         return true
                     else
                         return false
@@ -228,7 +310,8 @@ Framework.RemoveItem = function(inventory, item, count, metadata, slot)
                 return false
             else
                 if Player.Functions.GetItemBySlot(slot) and Player.Functions.RemoveItem(item, count, slot) then
-                    TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', inventory, QBCore.Shared.Items[item], "remove", count)
+                    TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', inventory, QBCore.Shared.Items[item],
+                        "remove", count)
                     return true
                 else
                     return false
@@ -241,18 +324,18 @@ Framework.RemoveItem = function(inventory, item, count, metadata, slot)
             for _, v in pairs(items) do
                 if metadata and table.matches(metadata, Framework.GetItemMetadata(inventory, v.slot)) then
                     if removed >= v.amount and Player.Functions.RemoveItem(item, v.amount, v.slot) then
-                        removedItems[#removedItems+1] = v
+                        removedItems[#removedItems + 1] = v
                         removed = removed - v.amount
                     elseif Player.Functions.RemoveItem(item, removed, v.slot) then
-                        removedItems[#removedItems+1] = v
+                        removedItems[#removedItems + 1] = v
                         removed = removed - removed
                     end
                 elseif not metadata then
                     if removed >= v.amount and Player.Functions.RemoveItem(item, v.amount, v.slot) then
-                        removedItems[#removedItems+1] = v
+                        removedItems[#removedItems + 1] = v
                         removed = removed - v.amount
                     elseif Player.Functions.RemoveItem(item, removed, v.slot) then
-                        removedItems[#removedItems+1] = v
+                        removedItems[#removedItems + 1] = v
                         removed = removed - removed
                     end
                 end
@@ -262,7 +345,8 @@ Framework.RemoveItem = function(inventory, item, count, metadata, slot)
             end
 
             if removed == 0 then
-                TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', inventory, QBCore.Shared.Items[item], "remove", count)
+                TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', inventory, QBCore.Shared.Items[item],
+                    "remove", count)
                 return true
             else
                 for _, v in pairs(removedItems) do
@@ -280,18 +364,29 @@ Framework.GetItem = function(inventory, item, metadata, strict)
     local items = {}
     ---@cast items table<number, Item>
     if type(inventory) == "string" then
-        for k, v in pairs(GetStashItems(inventory)) do
-            if v.name ~= item then goto skipLoop end
-            if metadata and (strict and not table.matches(v.metadata, metadata) or not table.contains(v.metadata, metadata)) then goto skipLoop end
-            items[#items + 1] = v
-            ::skipLoop::
+        if QBInventory then
+            local inventoryData = QBInventory:GetInventory(inventory)
+            if not inventoryData then return items end
+            for k, v in pairs(inventoryData.items) do
+                if v.name ~= item then goto skipLoop end
+                if metadata and (strict and not table.matches(v.info, metadata) or not table.contains(v.info, metadata)) then goto skipLoop end
+                items[#items + 1] = v
+                ::skipLoop::
+            end
+        else
+            for k, v in pairs(GetStashItems(inventory)) do
+                if v.name ~= item then goto skipLoop end
+                if metadata and (strict and not table.matches(v.metadata, metadata) or not table.contains(v.metadata, metadata)) then goto skipLoop end
+                items[#items + 1] = v
+                ::skipLoop::
+            end
         end
     elseif type(inventory) == "number" then
         local Player = QBCore.Functions.GetPlayer(inventory)
-        for k, v in pairs(Player.PlayerData.items) do 
+        for k, v in pairs(Player.PlayerData.items) do
             if v.name ~= item then goto skipLoop end
             if metadata and (strict and not table.matches(v.info, metadata) or not table.contains(v.info, metadata)) then goto skipLoop end
-            items[#items+1] = {
+            items[#items + 1] = {
                 name = v.name,
                 count = tonumber(v.amount),
                 label = v.label,
@@ -313,13 +408,26 @@ end
 Framework.GetItemCount = function(inventory, item, metadata, strict)
     local count = 0
     if type(inventory) == "string" then
-        for k, v in pairs(GetStashItems(inventory)) do
-            if v.name ~= item then goto skipLoop end
-            if metadata and (strict and not table.matches(v.metadata, metadata) or not table.contains(v.metadata, metadata)) then
-                goto skipLoop
+        if QBInventory then
+            local inventoryData = QBInventory:GetInventory(inventory)
+            if not inventoryData then return count end
+            for k, v in pairs(inventoryData.items) do
+                if v.name ~= item then goto skipLoop end
+                if metadata and (strict and not table.matches(v.info, metadata) or not table.contains(v.info, metadata)) then
+                    goto skipLoop
+                end
+                count = count + tonumber(v.amount)
+                ::skipLoop::
             end
-            count = count + tonumber(v.count)
-            ::skipLoop::
+        else
+            for k, v in pairs(GetStashItems(inventory)) do
+                if v.name ~= item then goto skipLoop end
+                if metadata and (strict and not table.matches(v.metadata, metadata) or not table.contains(v.metadata, metadata)) then
+                    goto skipLoop
+                end
+                count = count + tonumber(v.count)
+                ::skipLoop::
+            end
         end
     elseif type(inventory) == "number" then
         local Player = QBCore.Functions.GetPlayer(inventory)
@@ -341,7 +449,7 @@ Framework.HasItem = function(inventory, items, count, metadata, strict)
     if type(items) == "string" then
         local counted = 0
         for _, v in pairs(Framework.GetItem(inventory, items, metadata, strict)) do
-            counted+=v.count
+            counted += v.count
         end
         return counted >= (count or 1)
     elseif type(items) == "table" then
@@ -349,7 +457,7 @@ Framework.HasItem = function(inventory, items, count, metadata, strict)
             for item, amount in pairs(items) do
                 local counted = 0
                 for _, v in pairs(Framework.GetItem(inventory, item, metadata, strict)) do
-                    counted+=v.count
+                    counted += v.count
                 end
                 if counted < amount then return false end
             end
@@ -359,7 +467,7 @@ Framework.HasItem = function(inventory, items, count, metadata, strict)
             for i = 1, #items do
                 local item = items[i]
                 for _, v in pairs(Framework.GetItem(inventory, item, metadata, strict)) do
-                    counted+=v.count
+                    counted += v.count
                 end
                 if counted < (count or 1) then return false end
             end
@@ -371,15 +479,26 @@ end
 Framework.GetItemMetadata = function(inventory, slot)
     if type(inventory) == "string" then
         inventory = inventory:gsub("%-", "_")
-        local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', {inventory})
-        if not result then return nil end
-        local stash = json.decode(result)
-        for k, item in pairs(stash) do
-            if item.slot == slot then
-                return item.info
+        if QBInventory then
+            local inventoryData = QBInventory:GetInventory(inventory)
+            if not inventoryData then return {} end
+            for k, v in pairs(inventoryData.items) do
+                if v.slot == slot then
+                    return v.info
+                end
             end
+            return {}
+        else
+            local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', { inventory })
+            if not result then return nil end
+            local stash = json.decode(result)
+            for k, item in pairs(stash) do
+                if item.slot == slot then
+                    return item.info
+                end
+            end
+            return {}
         end
-        return {}
     elseif type(inventory) == "number" then
         local Player = QBCore.Functions.GetPlayer(inventory)
         return Player.Functions.GetItemBySlot(slot)?.info
@@ -390,20 +509,32 @@ end
 Framework.SetItemMetadata = function(inventory, slot, metadata)
     if type(inventory) == "string" then
         inventory = inventory:gsub("%-", "_")
-        local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', {inventory})
-        if not result then return end
-        local stash = json.decode(result)
-        for k, item in pairs(stash) do
-            if item.slot == slot then
-                stash[k].info = metadata
-                break
+        if QBInventory then
+            local inventoryData = QBInventory:GetInventory(inventory)
+            for k, v in pairs(inventoryData.items) do
+                if v.slot == slot then
+                    inventoryData.items[k].info = metadata
+                    break
+                end
             end
+            QBInventory:SetInventory(inventory, inventoryData.items)
+        else
+            local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', { inventory })
+            if not result then return end
+            local stash = json.decode(result)
+            for k, item in pairs(stash) do
+                if item.slot == slot then
+                    stash[k].info = metadata
+                    break
+                end
+            end
+            if not next(stash) then return end
+            Database.insert(
+                'INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
+                    ['stash'] = inventory,
+                    ['items'] = json.encode(stash)
+                })
         end
-        if not next(stash) then return end
-        Database.insert('INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
-            ['stash'] = inventory,
-            ['items'] = json.encode(stash)
-        })
     elseif type(inventory) == "number" then
         local Player = QBCore.Functions.GetPlayer(inventory)
         if Player.PlayerData.items[slot] then
@@ -416,7 +547,26 @@ end
 Framework.GetInventory = function(inventory)
     local items = {}
     if type(inventory) == "string" then
-        items = GetStashItems(inventory)
+        if QBInventory then
+            local inventoryData = QBInventory:GetInventory(inventory)
+            for k, v in pairs(inventoryData.items) do
+                items[k] = {
+                    name = v.name,
+                    count = tonumber(v.amount),
+                    label = v.label,
+                    description = v.description,
+                    metadata = v.info,
+                    stack = not v.unique and true,
+                    weight = v.weight or 0,
+                    close = v.shouldClose == nil and true or v.shouldClose,
+                    image = v.image,
+                    type = v.type,
+                    slot = v.slot,
+                }
+            end
+        else
+            items = GetStashItems(inventory)
+        end
     elseif type(inventory) == "number" then
         local Player = QBCore.Functions.GetPlayer(inventory)
         for k, v in pairs(Player.PlayerData.items) do
@@ -442,35 +592,59 @@ Framework.ClearInventory = function(inventory, keep)
     if type(inventory) == "string" then
         inventory = inventory:gsub("%-", "_")
         local stash = {}
-        if keep then
-            local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', { inventory })
-            if not result then return end
-            
-            local stashItems = json.decode(result)
-            if not next(stashItems) then return end
-
-            local keepType = type(keep)
-            if keepType == "string" then
-                for k, v in pairs(stashItems) do
-                    if v.name == keep then
-                        stash[k] = v
-                    end
-                end
-            elseif keepType == "table" and table.type(keep) == "array" then
-                for k, v in pairs(stashItems) do
-                    for i = 1, #keep do
-                        if v.name == keep[i] then
+        if QBInventory then
+            local inventoryData = QBInventory:GetInventory(inventory)
+            if keep then
+                local keepType = type(keep)
+                if keepType == "string" then
+                    for k, v in pairs(inventoryData.items) do
+                        if v.name == keep then
                             stash[k] = v
+                        end
+                    end
+                elseif keepType == "table" and table.type(keep) == "array" then
+                    for k, v in pairs(inventoryData.items) do
+                        for i = 1, #keep do
+                            if v.name == keep[i] then
+                                stash[k] = v
+                            end
                         end
                     end
                 end
             end
-        end
+            QBInventory:SetInventory(inventory, stash)
+        else
+            if keep then
+                local result = Database.scalar('SELECT items FROM stashitems WHERE stash = ?', { inventory })
+                if not result then return end
 
-        Database.insert('INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
-            ['stash'] = inventory,
-            ['items'] = json.encode(stash)
-        })
+                local stashItems = json.decode(result)
+                if not next(stashItems) then return end
+
+                local keepType = type(keep)
+                if keepType == "string" then
+                    for k, v in pairs(stashItems) do
+                        if v.name == keep then
+                            stash[k] = v
+                        end
+                    end
+                elseif keepType == "table" and table.type(keep) == "array" then
+                    for k, v in pairs(stashItems) do
+                        for i = 1, #keep do
+                            if v.name == keep[i] then
+                                stash[k] = v
+                            end
+                        end
+                    end
+                end
+            end
+
+            Database.insert(
+                'INSERT INTO stashitems (stash, items) VALUES (:stash, :items) ON DUPLICATE KEY UPDATE items = :items', {
+                    ['stash'] = inventory,
+                    ['items'] = json.encode(stash)
+                })
+        end
     elseif type(inventory) == "number" then
         local Player = QBCore.Functions.GetPlayer(inventory)
         Player.Functions.ClearInventory(keep)
@@ -481,9 +655,30 @@ local stashes = {}
 Framework.RegisterStash = function(name, slots, weight, owner, groups)
     name = name:gsub("%-", "_")
     if not stashes[name] then
-        stashes[name] = { slots = slots, weight = weight, owner = owner, groups = groups }
+        if QBInventory then
+            QBInventory:CreateInventory(name, { maxweight = weight, slots = slots })
+            stashes[name] = { slots = slots, weight = weight, owner = owner, groups = groups }
+        else
+            stashes[name] = { slots = slots, weight = weight, owner = owner, groups = groups }
+        end
     end
 end
+
+RegisterNetEvent(Bridge.Resource .. ':bridge:OpenStash', function(name)
+    local src = source
+    name = name:gsub("%-", "_")
+    local stash = stashes[name]
+    if not stash then return end
+    local Player = Framework.GetPlayer(src)
+    if not Player then return end
+    local isAllowed = false
+    if stash.groups and Framework.HasJob(stash.groups, Player) then isAllowed = true end
+    if stash.groups and Framework.HasGang(stash.groups, Player) then isAllowed = true end
+    if stash.groups and not isAllowed then return end
+    if stash.owner and type(stash.owner) == 'string' and Player.Identifier ~= stash.owner then return end
+    if stash.owner and type(stash.owner) == 'boolean' then name = name .. Player.Identifier end
+    QBInventory:OpenInventory(src, name, { maxweight = stash.weight, slots = stash.slots })
+end)
 
 Framework.CreateCallback(Bridge.Resource .. ':bridge:GetStash', function(source, cb, name)
     name = name:gsub("%-", "_")
@@ -493,8 +688,39 @@ end)
 local shops = {}
 Framework.RegisterShop = function(name, data)
     if shops[name] then return end
+    if QBInventory then
+        local items = {}
+        for i = 1, #data.items do
+            items[i] = {
+                name = data.items[i].name,
+                price = data.items[i].price,
+                amount = data.items[i].count or 1,
+                info = data.items[i].metadata or {},
+                slot = i
+            }
+        end
+
+        QBInventory:CreateShop({
+            name = name,
+            label = name,
+            slots = #items,
+            items = items
+        })
+    end
     shops[name] = data
 end
+
+RegisterNetEvent(Bridge.Resource .. ':bridge:OpenShop', function(name)
+    local src = source
+    if not shops[name] then return end
+    local isAllowed = false
+    local Player = Framework.GetPlayer(src)
+    if not Player then return end
+    if shops[name].groups and Framework.HasJob(shops[name].groups, Player) then isAllowed = true end
+    if shops[name].groups and Framework.HasGang(shops[name].groups, Player) then isAllowed = true end
+    if type(shops[name].groups) == "table" and (shops[name].groups and not isAllowed) then return end
+    QBInventory:OpenShop(src, name)
+end)
 
 Framework.CreateCallback(Bridge.Resource .. ':bridge:OpenShop', function(source, cb, name)
     if not shops[name] then cb({}) end
@@ -522,7 +748,7 @@ Framework.ReturnInventory = function(source)
     for _, item in pairs(Player.PlayerData.metadata['jailitems']) do
         if item ~= nil then
             Player.Functions.AddItem(item.name, item.amount, false, item.info)
-            TriggerClientEvent(Bridge.InventoryEvent .. 'inventory:client:ItemBox', src, QBCore.Shared.Items[item.name], 'add', item.amount)
+            TriggerClientEvent(Bridge.InventoryEvent .. ':client:ItemBox', src, QBCore.Shared.Items[item.name], 'add', item.amount)
         end
     end
     Wait(2000)

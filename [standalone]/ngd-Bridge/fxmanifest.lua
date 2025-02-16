@@ -5,7 +5,7 @@ game 'gta5'
 
 name 'ngd-Bridge'
 author 'reFlow'
-version '0.3.8'
+version '0.3.8A'
 description 'reFlow Bridge - reflow-store.com'
 github 'https://github.com/delucecc/versions'
 

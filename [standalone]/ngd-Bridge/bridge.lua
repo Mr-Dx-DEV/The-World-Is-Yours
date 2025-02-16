@@ -194,6 +194,13 @@ if not Bridge.Inventory and Bridge.Framework == 'qb' and (GetResourceState('qb-i
     Bridge.Inventory = 'qb-inventory'
 end
 
+-- ❕ AK47_INVENTORY ❕
+if not Bridge.Inventory and GetResourceState('ak47_inventory') ~= 'missing' then
+    if not Bridge.InventoryName then Bridge.InventoryName = 'ak47_inventory' end
+    Bridge.InventoryImagePath = ('%s/html/images/'):format(Bridge.InventoryName)
+    Bridge.Inventory = 'ak47_inventory'
+end
+
 -- ❕ OX_INVENTORY ❕
 if not Bridge.Inventory and GetResourceState('ox_inventory') ~= 'missing' then
     if not Bridge.InventoryName then Bridge.InventoryName = 'ox_inventory' end
@@ -340,6 +347,11 @@ module('shared/version')
 -- ❕ LOAD CACHE ❕
 if not Bridge.Disabled['cache'] then
     module(('cache/%s'):format(Bridge.Context))
+end
+
+-- ❕ LOAD POINTS ❕
+if not Bridge.Disabled['points'] then
+    module(('points/%s'):format(Bridge.Context))
 end
 
 -- ❕ LOAD DATABASE ❕

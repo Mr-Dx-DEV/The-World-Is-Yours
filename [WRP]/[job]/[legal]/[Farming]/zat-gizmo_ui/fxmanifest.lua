@@ -1,4 +1,3 @@
-shared_script '@finianticheat/shared_fg-obfuscated.lua'
 fx_version 'cerulean'
 
 games {"gta5", "rdr3"}

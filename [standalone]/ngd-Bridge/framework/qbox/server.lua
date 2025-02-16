@@ -191,35 +191,18 @@ end
 
 Framework.SocietyGetMoney = function(name, type)
     if type ~= 'job' and type ~= 'gang' then error('Society Type Must Be Job Or Gang', 0) return 0 end
-    if type == "job" then
-        return exports['qbx_management']:GetAccount(name)
-    elseif type == "gang" then
-        return exports['qbx_management']:GetGangAccount(name)
-    end
-    return 0
+    return exports['Renewed-Banking']:getAccountMoney(name)
 end
 
 Framework.SocietyAddMoney = function(name, type, amount)
     if type ~= 'job' and type ~= 'gang' then error('Society Type Must Be Job Or Gang', 0) return false end
     if amount < 0 or amount == 0 then return false end
-    if type == "job" then
-        exports['qbx_management']:AddMoney(name, amount)
-        return true
-    elseif type == "gang" then
-        exports['qbx_management']:AddGangMoney(name, amount)
-        return true
-    end
-    return false
+    return exports['Renewed-Banking']:addAccountMoney(name, amount)
 end
 
 Framework.SocietyRemoveMoney = function(name, type, amount)
     if type ~= 'job' and type ~= 'gang' then error('Society Type Must Be Job Or Gang', 0) return false end
-    if type == "job" then
-        return exports['qbx_management']:RemoveMoney(name, amount)
-    elseif type == "gang" then
-        return exports['qbx_management']:RemoveGangMoney(name, amount)
-    end
-    return false
+    return exports['Renewed-Banking']:removeAccountMoney(name, amount)
 end
 
 Framework.Notify = function(source, message, type, length)
@@ -245,9 +228,7 @@ Framework.HasPermission = function(source, permission)
 end
 
 Framework.CreateCallback(('%s:SpawnVehicle'):format(Bridge.Resource), function(source, cb, model, coords, warp)
-    local netId = SpawnVehicle(source, model, coords, warp)
-    if not netId or netId == 0 then cb(0) end
-    local veh = NetworkGetEntityFromNetworkId(netId)
-    if not veh or veh == 0 then cb(0) end
+    local model = type(model) == "string" and joaat(model) or model
+    local netId = qbx.spawnVehicle({ model = model, spawnSource = coords, warp = warp and GetPlayerPed(source) or nil })
     cb(netId)
 end)

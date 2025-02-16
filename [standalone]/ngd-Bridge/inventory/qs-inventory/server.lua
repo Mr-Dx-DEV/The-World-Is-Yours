@@ -363,9 +363,9 @@ Framework.ClearInventory = function(inventory, keep)
     if type(inventory) == "string" then
         local stash = {}
         inventory = inventory:gsub("%-", "_")
+        local stashItems = qs_inventory:GetStashItems('Stash_' .. inventory)
+        if not next(stashItems) then return end
         if keep then
-            local stashItems = qs_inventory:GetStashItems('Stash_' .. inventory)
-            if not next(stashItems) then return end
             
             local keepType = type(keep)
             if keepType == "string" then
