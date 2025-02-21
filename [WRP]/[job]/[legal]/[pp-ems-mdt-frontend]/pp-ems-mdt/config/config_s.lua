@@ -1,4 +1,4 @@
-local Framework = nil
+local Framework = 'QBCore'
 
 if GetResourceState('es_extended') ~= 'missing' then
     Framework = 'ESX'
@@ -13,7 +13,7 @@ elseif GetResourceState('your_custom_framework') ~= 'missing' then -- fill it wh
 end
 
 return {
-    debug = false, --[[
+    debug = true, --[[
         Set this to 'true' only when you need to troubleshoot issues within the resource.
         Enabling debug mode activates extra logging to help identify and resolve problems.
         This setting should always remain 'false' in production environments to avoid performance impacts.
