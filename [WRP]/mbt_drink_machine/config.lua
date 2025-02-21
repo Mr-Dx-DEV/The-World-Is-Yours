@@ -3,14 +3,13 @@ MBT.Debug = false -- Debugging toggle if something's wrong
 
 MBT.Framework = "QB" -- ESX/QB/Standalone
 MBT.ESXLegacy = true -- Set true if you're using ESX Legacy version
-
 MBT.Props = {`prop_vend_soda_02`, `prop_vend_coffe_01`, `prop_watercooler`, `prop_vend_snak_01`, `prop_coffee_mac_02`, --[[,`ANOTHER-PROP`]] } -- Put the props you wanna interact it here
 
 MBT.Drinks = { -- Adjust the price and items you wanna give, don't touch the name between []
-    ["cocacola"]   = { ["Price"] = 5,     ["Item"] = "cocacola" },
+    ["coke"]   = { ["Price"] = 5,     ["Item"] = "casino_coke" },
     ["sprite"] = { ["Price"] = 5.9,   ["Item"] = "sprite" },
-    ["cup_coffee"]  = { ["Price"] = 5.99,  ["Item"] = "cup_coffee" },
-    ["water_bottle"]  = { ["Price"] = 5,     ["Item"] = "water_bottle" }
+    ["fanta"]  = { ["Price"] = 5.99,  ["Item"] = "fanta" },
+    ["water"]  = { ["Price"] = 5,     ["Item"] = "water_bottle" }
 }
 
 MBT.Language = { 
@@ -85,6 +84,7 @@ if MBT.UseTarget then
         })
     end)
 end
+
 
 MBT.Functions = { -- Preset framework binded functions, tested and working on ESX Legacy
     ["ESX"] = {
