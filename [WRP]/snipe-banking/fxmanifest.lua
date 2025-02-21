@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 description 'Banking Script'
-version '1.3.0'
+version '1.3.2'
 author 'Snipe'
 
 lua54 'yes'
