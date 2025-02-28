@@ -1159,18 +1159,18 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'camera.png',
 			},
-			
-			['laptop'] = {
-				['name'] = "Laptop",
-				['price_to_customer'] = 15000,
+			]]
+			['transponder'] = {
+				['name'] = "ransponder",
+				['price_to_customer'] = 10000,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 315,
 				['price_to_owner'] = 300,
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
-				['img'] = 'laptop.png',
-			}, ]]
+				['img'] = 'transponder.png',
+			}, 
 			['boombox'] = {
 				['name'] = "Boombox",
 				['price_to_customer'] = 5000,
@@ -1182,8 +1182,8 @@ Config.market_categories = {
 				['amount_to_delivery'] = 2,
 				['img'] = 'boombox.png',
 			},
-			['contracts_tablet'] = {
-				['name'] = "Tablet",
+			['laptop'] = {
+				['name'] = "Laptop",
 				['price_to_customer'] = 80000,
 				['price_to_customer_min'] = 75000,
 				['price_to_customer_max'] = 90000,
@@ -1191,7 +1191,7 @@ Config.market_categories = {
 				['price_to_owner'] = 300,
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
-				['img'] = 'contracts_tablet.png',
+				['img'] = 'laptop.png',
 			},
 			
 			
