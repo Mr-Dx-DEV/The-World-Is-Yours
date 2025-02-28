@@ -10058,7 +10058,7 @@ description = 'Can store personal data'
 	},
 
 	["casino_coke"] = {
-		label = "Casino Kofola",
+		label = "Coke",
 		weight = 0,
 		stack = false,
 		close = false,
