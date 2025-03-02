@@ -1530,7 +1530,7 @@ description = 'Can store personal data'
 	}
 },
 ["cokesodiumcarbonate"] = {
-	label = "Coke Sodium Carbonate",
+	label = "Sodium Carbonate",
 	weight = 100,
 	stack = true,
 	close = true,
@@ -1594,7 +1594,7 @@ description = 'Can store personal data'
 	}
 },
 ["cokedimethylformamide"] = {
-	label = "Coke Dimethylformamide",
+	label = "Dimethylformamide",
 	weight = 200,
 	stack = true,
 	close = true,
@@ -1636,7 +1636,7 @@ description = 'Can store personal data'
 	}
 },
 ["cokeacetone"] = {
-	label = "Coke Acetone",
+	label = "Acetone",
 	weight = 200,
 	stack = true,
 	close = true,
