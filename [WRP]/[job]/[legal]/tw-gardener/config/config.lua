@@ -13,8 +13,7 @@ Config.ChangeClothesSystem   = true               -- true / false
 Config.ClothingScript        = "illenium-appearance"      -- fivem-appearance / illenium-appearance  / esx_skin / qb-clothing
 Config.JobResetCommand       = "jobresetgardener" -- Job Reset Command
 Config.SinglePlayerEasyMode  = true               -- true / false -- if true, the job will be easier for single player
-Config.Inventory             =
-"ox_inventory"                                    -- qb_inventory / esx_inventory / ox_inventory / qs_inventory / need Config.missioncompletedItems
+Config.Inventory             = "ox_inventory"                             -- qb_inventory / esx_inventory / ox_inventory / qs_inventory / need Config.missioncompletedItems
 
 Config.Gardener              = {
     ['coords'] = {
@@ -654,7 +653,7 @@ Config.JobClothes            = {
 
 Config.Vehiclekey            = true
 Config.VehicleSystem         = "qb-vehiclekeys" -- cd_garage / qs-vehiclekeys / wasabi-carlock / qb-vehiclekeys
-Config.Removekeys            = true
+Config.Removekeys            = false
 Config.RemoveVehicleSystem   =
 "qb-vehiclekeys"                                               -- cd_garage / qs-vehiclekeys / wasabi-carlock / qb-vehiclekeys
 
@@ -690,7 +689,7 @@ Config.RemoveVehiclekey      = function(plate, model, vehicle)
     end
 end
 
-Config.FuelSystem            = "rcore_fuel "                  -- LegacyFuel / ox-fuel / cdn-fuel
+Config.FuelSystem            = "rcore_fuel"                  -- LegacyFuel / ox-fuel / cdn-fuel
 
 Config.SetVehicleFuel        = function(vehicle, fuel_level) -- you can change LegacyFuel export if you use another fuel system
     if Config.FuelSystem == 'LegacyFuel' then
