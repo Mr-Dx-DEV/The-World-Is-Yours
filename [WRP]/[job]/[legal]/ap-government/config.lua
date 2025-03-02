@@ -28,7 +28,7 @@ Config = {
 	  }, 
 	  Job = true -- Set this too true for the CityHall(Government Staff) to control the voting.
 	},
-	JobManagementScriptName = "qb-banking", -- If your management script has compatibility with qb-management then change to the resource name.
+	JobManagementScriptName = "qb-management", -- If your management script has compatibility with qb-management then change to the resource name.
 	VotingLaws = true, -- Set this to true if you want to use the law voting system.
 	Phone = {GKSPhone = false, QBPhone = false, QuasarPhone = false, QSPRO = false, HighPhone = false, LBPhone = true, Custom = false}, -- Set to the phone you use to true, if you do not have one of these phones then set Custom to true and edit the function in webhooks.lua.
 	Interactions = {qbTarget = false, oxTarget = true, qTarget = false, drawText = false}, -- Set the target system to true that you use.
