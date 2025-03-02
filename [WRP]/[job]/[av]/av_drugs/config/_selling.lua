@@ -12,7 +12,7 @@ Config.SellingCooldown = math.random(30000,45000) -- Time in miliseconds before 
 --     [18] = true, -- Emergency
 --     [19] = true, -- Military
 -- }
-Config.VehicleClasses = {
+Config.BlacklistedClasses = {
     [0] = true, -- = "Compacts",
     [1] = true, -- = "Sedans",
     [2] = true, -- = "SUVs",

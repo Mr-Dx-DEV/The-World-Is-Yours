@@ -20,90 +20,90 @@ local isSelling = {} -- used to prevent any lua menu usage
 Config = Config or {}
 
 Config.Sells = {
-    ['fentanyl_baggy'] = { -- item name, drug used for sell
-        drug = "fentanyl", -- drug linked to this item
-        label = "Fentanyl", -- used for Target
-        icon = "fa-solid fa-flask", -- Used for target
-        minCops = 0, -- Min cops online to sell this specific drug
-        zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
-            ['ALL'] = true,
-        },
-        basePrice = 25, -- base price per bag, price get higher based on drug purity
-        maxPrice = 100, -- max price per bag, even when price get higher based on purity it won't be higher than this
-        maxBags = 5, -- max bags the NPC will buy from player
-    },
-    ['ketamine_baggy'] = { -- item name, drug used for sell
-        drug = "ketamine", -- drug linked to this item
-        label = "Ketamine", -- used for Target
-        icon = "fa-solid fa-flask", -- Used for target
-        minCops = 0, -- Min cops online to sell this specific drug
-        zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
-            ['ALL'] = true,
-        },
-        basePrice = 25, -- base price per bag, price get higher based on drug purity
-        maxPrice = 100, -- max price per bag, even when price get higher based on purity it won't be higher than this
-        maxBags = 5, -- max bags the NPC will buy from player
-    },
-    ['heroin_baggy'] = { -- item name, drug used for sell
-        drug = "heroin", -- drug linked to this item
-        label = "Heroin", -- used for Target
-        icon = "fa-solid fa-flask", -- Used for target
-        minCops = 0, -- Min cops online to sell this specific drug
-        zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
-            ['ALL'] = true,
-        },
-        basePrice = 25, -- base price per bag, price get higher based on drug purity
-        maxPrice = 100, -- max price per bag, even when price get higher based on purity it won't be higher than this
-        maxBags = 5, -- max bags the NPC will buy from player
-    },
-    ['coke_baggy'] = { -- item name, drug used for sell
-        drug = "coke", -- drug linked to this item
-        label = "Coke", -- used for Target
-        icon = "fa-solid fa-flask", -- Used for target
-        minCops = 0, -- Min cops online to sell this specific drug
-        zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
-            ['ALL'] = true,
-        },
-        basePrice = 50, -- base price per bag, price get higher based on drug purity
-        maxPrice = 300, -- max price per bag, even when price get higher based on purity it won't be higher than this
-        maxBags = 5, -- max bags the NPC will buy from player
-    },
-    ['meth_baggy'] = { -- item name, drug used for sell
-        drug = "meth", -- drug linked to this item
-        label = "Meth", -- used for Target
-        icon = "fa-solid fa-flask", -- Used for target
-        minCops = 0, -- Min cops online to sell this specific drug
-        zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
-            ['ROCKF'] = true,
-            ['WVINE'] = true,
-            ['DTVINE'] = true,
-            ['HAWICK'] = true,
-            ['MIRR'] = true,
-            ['RICHM'] = true,
-            ['GOLF'] = true,
-        },
-        basePrice = 40, -- base price per bag, price get higher based on drug purity
-        maxPrice = 250, -- max price per bag, even when price get higher based on purity it won't be higher than this
-        maxBags = 5, -- max bags the NPC will buy from player
-    },
-    ['lsd_baggy'] = { -- item name, drug used for sell
-        drug = "lsd", -- drug linked to this item
-        label = "LSD", -- used for Target
-        icon = "fa-solid fa-flask", -- Used for target
-        minCops = 0, -- Min cops online to sell this specific drug
-        zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
-            ['ROCKF'] = true,
-            ['WVINE'] = true,
-            ['DTVINE'] = true,
-            ['HAWICK'] = true,
-            ['MIRR'] = true,
-            ['RICHM'] = true,
-            ['GOLF'] = true,
-        },
-        basePrice = 35, -- base price per bag, price get higher based on drug purity
-        maxPrice = 230, -- max price per bag, even when price get higher based on purity it won't be higher than this
-        maxBags = 5, -- max bags the NPC will buy from player
-    },
+    -- ['fentanyl_baggy'] = { -- item name, drug used for sell
+    --     drug = "fentanyl", -- drug linked to this item
+    --     label = "Fentanyl", -- used for Target
+    --     icon = "fa-solid fa-flask", -- Used for target
+    --     minCops = 0, -- Min cops online to sell this specific drug
+    --     zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
+    --         ['ALL'] = true,
+    --     },
+    --     basePrice = 25, -- base price per bag, price get higher based on drug purity
+    --     maxPrice = 100, -- max price per bag, even when price get higher based on purity it won't be higher than this
+    --     maxBags = 5, -- max bags the NPC will buy from player
+    -- },
+    -- ['ketamine_baggy'] = { -- item name, drug used for sell
+    --     drug = "ketamine", -- drug linked to this item
+    --     label = "Ketamine", -- used for Target
+    --     icon = "fa-solid fa-flask", -- Used for target
+    --     minCops = 0, -- Min cops online to sell this specific drug
+    --     zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
+    --         ['ALL'] = true,
+    --     },
+    --     basePrice = 25, -- base price per bag, price get higher based on drug purity
+    --     maxPrice = 100, -- max price per bag, even when price get higher based on purity it won't be higher than this
+    --     maxBags = 5, -- max bags the NPC will buy from player
+    -- },
+    -- ['heroin_baggy'] = { -- item name, drug used for sell
+    --     drug = "heroin", -- drug linked to this item
+    --     label = "Heroin", -- used for Target
+    --     icon = "fa-solid fa-flask", -- Used for target
+    --     minCops = 0, -- Min cops online to sell this specific drug
+    --     zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
+    --         ['ALL'] = true,
+    --     },
+    --     basePrice = 25, -- base price per bag, price get higher based on drug purity
+    --     maxPrice = 100, -- max price per bag, even when price get higher based on purity it won't be higher than this
+    --     maxBags = 5, -- max bags the NPC will buy from player
+    -- },
+    -- ['coke_baggy'] = { -- item name, drug used for sell
+    --     drug = "coke", -- drug linked to this item
+    --     label = "Coke", -- used for Target
+    --     icon = "fa-solid fa-flask", -- Used for target
+    --     minCops = 0, -- Min cops online to sell this specific drug
+    --     zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
+    --         ['ALL'] = true,
+    --     },
+    --     basePrice = 50, -- base price per bag, price get higher based on drug purity
+    --     maxPrice = 300, -- max price per bag, even when price get higher based on purity it won't be higher than this
+    --     maxBags = 5, -- max bags the NPC will buy from player
+    -- },
+    -- ['meth_baggy'] = { -- item name, drug used for sell
+    --     drug = "meth", -- drug linked to this item
+    --     label = "Meth", -- used for Target
+    --     icon = "fa-solid fa-flask", -- Used for target
+    --     minCops = 0, -- Min cops online to sell this specific drug
+    --     zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
+    --         ['ROCKF'] = true,
+    --         ['WVINE'] = true,
+    --         ['DTVINE'] = true,
+    --         ['HAWICK'] = true,
+    --         ['MIRR'] = true,
+    --         ['RICHM'] = true,
+    --         ['GOLF'] = true,
+    --     },
+    --     basePrice = 40, -- base price per bag, price get higher based on drug purity
+    --     maxPrice = 250, -- max price per bag, even when price get higher based on purity it won't be higher than this
+    --     maxBags = 5, -- max bags the NPC will buy from player
+    -- },
+    -- ['lsd_baggy'] = { -- item name, drug used for sell
+    --     drug = "lsd", -- drug linked to this item
+    --     label = "LSD", -- used for Target
+    --     icon = "fa-solid fa-flask", -- Used for target
+    --     minCops = 0, -- Min cops online to sell this specific drug
+    --     zones = { -- Zones where player can sell this type of drug, use 'ALL' to allow to sell anywhere
+    --         ['ROCKF'] = true,
+    --         ['WVINE'] = true,
+    --         ['DTVINE'] = true,
+    --         ['HAWICK'] = true,
+    --         ['MIRR'] = true,
+    --         ['RICHM'] = true,
+    --         ['GOLF'] = true,
+    --     },
+    --     basePrice = 35, -- base price per bag, price get higher based on drug purity
+    --     maxPrice = 230, -- max price per bag, even when price get higher based on purity it won't be higher than this
+    --     maxBags = 5, -- max bags the NPC will buy from player
+    -- },
 }
 
 lib.callback.register('av_drugs:sell', function(source, drug, zone)
