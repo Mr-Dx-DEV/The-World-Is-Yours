@@ -134,41 +134,62 @@ Config = {
     MinimumDrugSalePolice = 0,
 
     DrugsPrice = {
-
-        
-        ['coke_baggy'] = {
-            min = 125,
-            max = 125,
-        },
-        ['cokebaggy'] = {
-            min = 125,
-            max = 125,
-        },
-        ['weed_bag'] = {
-            min = 100,
-            max = 110,
-        },
-       ['kq_meth_low'] = {
-            min = 25,
-            max = 25,
-        },
-        ['kq_meth_mid'] = {
-            min = 50,
-            max = 50,
-        },
-        ['kq_meth_high'] = {
-            min = 100,
-            max = 100,
-        },
-        ['zatpackedweed'] = {
-            min = 200,
-            max = 200,
-        },
-        ['moon_moonshine'] = {
-            min = 80,
-            max = 80,
-        },
-
+    --     ['coke_baggy'] = {
+    --         min = 125,
+    --         max = 125,
+    --     },
+    --     ['cokebaggy'] = {
+    --         min = 125,
+    --         max = 125,
+    --     },
+    --     ['weed_bag'] = {
+    --         min = 100,
+    --         max = 110,
+    --     },
+    --    ['kq_meth_low'] = {
+    --         min = 25,
+    --         max = 25,
+    --     },
+    --     ['kq_meth_mid'] = {
+    --         min = 50,
+    --         max = 50,
+    --     },
+    --     ['kq_meth_high'] = {
+    --         min = 100,
+    --         max = 100,
+    --     },
+    --     ['zatpackedweed'] = {
+    --         min = 200,
+    --         max = 200,
+    --     },
+    --     ['moon_moonshine'] = {
+    --         min = 80,
+    --         max = 80,
+    --     },
+    ['fentanyl_baggy'] = {
+        min = 25,
+        max = 100,
+    },
+    ['ketamine_baggy'] = {
+        min = 25,
+        max = 100,
+    },
+    ['heroin_baggy'] = {
+        min = 25,
+        max = 100,
+    },
+    ['coke_baggy'] = {
+        min = 50,
+        max = 300,
+    },
+    ['meth_baggy'] = {
+        min = 40,
+        max = 250,
+    },
+    ['lsd_baggy'] = {
+        min = 35,
+        max = 230,
+    },
         
     },
 
