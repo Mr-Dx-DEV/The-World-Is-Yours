@@ -22,6 +22,11 @@ Config.require = {
     ['WEAPON_BMGLOCK'] = { requireditem = 'money', requireditemamount = 1200, repairtime = 8000},
     ['WEAPON_FAMILIASGLOCK'] = { requireditem = 'money', requireditemamount = 1200, repairtime = 8000},
 
+    ['weapon_combatpistol'] = { requireditem = 'money', requireditemamount = 1200, repairtime = 8000},
+    ['weapon_carbinerifle'] = { requireditem = 'money', requireditemamount = 1200, repairtime = 8000},
+    ['weapon_pumpshotgun'] = { requireditem = 'money', requireditemamount = 1200, repairtime = 8000},
+    ['weapon_heavysniper_mk2'] = { requireditem = 'money', requireditemamount = 1200, repairtime = 8000},
+
     ['WEAPON_BLOODSARP'] = { requireditem = 'money', requireditemamount = 1500, repairtime = 10000},
     ['WEAPON_CRIPSARP'] = { requireditem = 'money', requireditemamount = 1500, repairtime = 10000},
     ['WEAPON_CARTELARP'] = { requireditem = 'money', requireditemamount = 1500, repairtime = 10000},
