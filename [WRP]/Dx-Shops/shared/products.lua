@@ -62,7 +62,7 @@ Products = {
         { name = "processingtable", price = 15000, amount = 250 },
         { name = "cokeprocessingtable", price = 15000, amount = 250 },
         { name = "emptybaggies", price = 15000, amount = 250 },
-
+        { name = "trowel", price = 50, amount = 1200 },
 
         { name = "joint", price = 500, amount = 1200 },
     },
