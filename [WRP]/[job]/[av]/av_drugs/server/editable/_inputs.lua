@@ -242,6 +242,44 @@ Config.Inputs = {
             },
         }
     },
+    ['crack'] = {
+        title = "Cocaine Refinement",
+        description = "Master the delicate balance of chemicals and processes to maximize quality.",
+        inputs = {
+            {
+                key = "sulfuric_acid",
+                label = "Sulfuric Acid",
+                description = "Use sulfuric acid to create a paste by breaking down the alkaloids in the coca leaves.",
+                min = -8,
+                max = 2,
+                color = "yellow.2",
+            },
+            {
+                key = "kerosene",
+                label = "Kerosene",
+                description = "Add kerosene to separate the cocaine alkaloids from the rest of the leaf matter.",
+                min = -10,
+                max = 0,
+                color = "blue.2",
+            },
+            {
+                key = "sodium_bicarbonate",
+                label = "Sodium Bicarbonate",
+                description = "Neutralize acids and solidify the cocaine paste.",
+                min = -5,
+                max = 5,
+                color = "gray.2",
+            },
+            {
+                key = "temperature_control",
+                label = "Temperature Control",
+                description = "Maintain precise heat levels to ensure proper extraction and crystallization.",
+                min = -7,
+                max = 3,
+                color = "orange.2",
+            },
+        }
+    },
     ['lsd'] = {
         title = "LSD Synthesis",
         description = "Synthesize LSD by carefully managing the precursor chemicals and reaction conditions.",

@@ -45,7 +45,7 @@ Config.Tables = { -- items used to place tables for cooking
         ingredients = { -- needed ingredients for cooking (['itemName'] = amount needed)
             ['water'] = 4, -- needs 4x water
             ['burger'] = 4, -- needs 4x burger
-            
+
         },
         products = { -- finished product, make sure it fits the stash weight and slots
             {name = "fentanyl_batch", min = 1, max = 2}, -- it will give item moonshine a min of 3 and max 5
@@ -59,12 +59,12 @@ Config.Tables = { -- items used to place tables for cooking
             offset = {x = 0.0, y = 0.0, z = 0.5},
         }
     }, ]]
-    ['coke_table'] = { -- item name and key index that needs to match with config/tables.lua > Config.Tables
-        drug = "coke", -- Drug linked to this table, should exist in server/editable/_drugs.lua too
+    ['coke_table'] = {             -- item name and key index that needs to match with config/tables.lua > Config.Tables
+        drug = "coke",             -- Drug linked to this table, should exist in server/editable/_drugs.lua too
         model = `v_ret_ml_tableb`, -- model to spawn
-        slots = 6, -- stash slots
-        weight = 100000, -- stash weight
-        ingredients = { -- needed ingredients for cooking (['itemName'] = amount needed)
+        slots = 6,                 -- stash slots
+        weight = 100000,           -- stash weight
+        ingredients = {            -- needed ingredients for cooking (['itemName'] = amount needed)
             -- ['gasoline'] = 1, -- needs 4x water
             -- ['cocaleaf'] = 1, -- needs 4x burger
             -- ['hydrochloricacid'] = 1,
@@ -85,25 +85,52 @@ Config.Tables = { -- items used to place tables for cooking
 
 
         },
-        products = { -- finished product, make sure it fits the stash weight and slots
-            {name = "coke_baggy", min = 3, max = 5}, -- it will give item coke_baggy a min of 3 and max 5
+        products = {                                 -- finished product, make sure it fits the stash weight and slots
+            { name = "coke_baggy", min = 3, max = 5 }, -- it will give item coke_baggy a min of 3 and max 5
         },
-        cookingXP = {min = 3, max = 5}, -- XP received for every successful cook / every 100XP is 1 level
-        cookingTime = 3, -- in minutes, time for completing a cook
-        cooldownTime = 5, -- in minutes, after every cook the table enters in cooldown
-        particles = { -- particles used for object when is cooking, smoke by default or false (particles = false)
+        cookingXP = { min = 3, max = 5 },            -- XP received for every successful cook / every 100XP is 1 level
+        cookingTime = 3,                             -- in minutes, time for completing a cook
+        cooldownTime = 5,                            -- in minutes, after every cook the table enters in cooldown
+        particles = {                                -- particles used for object when is cooking, smoke by default or false (particles = false)
             dict = "core",
             asset = "ent_amb_smoke_scrap",
-            offset = {x = 0.0, y = 0.0, z = 0.5},
+            offset = { x = 0.0, y = 0.0, z = 0.5 },
         }
     },
-    ['heroin_table'] = { -- item name and key index that needs to match with config/tables.lua > Config.Tables
-        drug = "heroin", -- Drug linked to this table, should exist in server/editable/_drugs.lua too
-        model = `v_ret_ml_tablea`, -- model to spawn
-        slots = 9, -- stash slots
-        weight = 50000, -- stash weight
-        ingredients = { -- needed ingredients for cooking (['itemName'] = amount needed)
-            ['opiumsap'] = 1, -- needs 4x water
+    ['crack_table'] = {        -- item name and key index that needs to match with config/tables.lua > Config.Tables
+        drug = "crack",        -- Drug linked to this table, should exist in server/editable/_drugs.lua too
+        model = `v_ret_ml_tableb`, -- model to spawn
+        slots = 5,             -- stash slots
+        weight = 100000,       -- stash weight
+        ingredients = {        -- needed ingredients for cooking (['itemName'] = amount needed)
+
+            ['coke_baggy'] = 3,
+            ['water_bottle'] = 1,
+            ['sodiumcarbonate'] = 1,
+            ['scales'] = 1,
+            ['emptybaggies'] = 1,
+
+
+        },
+        products = {                              -- finished product, make sure it fits the stash weight and slots
+            { name = "crack_baggy", min = 3, max = 5 }, -- it will give item coke_baggy a min of 3 and max 5
+        },
+        cookingXP = { min = 3, max = 5 },         -- XP received for every successful cook / every 100XP is 1 level
+        cookingTime = 3,                          -- in minutes, time for completing a cook
+        cooldownTime = 5,                         -- in minutes, after every cook the table enters in cooldown
+        particles = {                             -- particles used for object when is cooking, smoke by default or false (particles = false)
+            dict = "crack",
+            asset = "ent_amb_smoke_scrap",
+            offset = { x = 0.0, y = 0.0, z = 0.5 },
+        }
+    },
+    ['heroin_table'] = {              -- item name and key index that needs to match with config/tables.lua > Config.Tables
+        drug = "heroin",              -- Drug linked to this table, should exist in server/editable/_drugs.lua too
+        model = `v_ret_ml_tablea`,    -- model to spawn
+        slots = 9,                    -- stash slots
+        weight = 50000,               -- stash weight
+        ingredients = {               -- needed ingredients for cooking (['itemName'] = amount needed)
+            ['opiumsap'] = 1,         -- needs 4x water
             ['hydrochloricacid'] = 1, -- needs 4x burger
             ['ether'] = 1,
             ['limepowder'] = 1,
@@ -112,43 +139,43 @@ Config.Tables = { -- items used to place tables for cooking
             ['noscapine'] = 1,
             ['papaverine'] = 1,
             ['acetone'] = 1,
-            
+
         },
-        products = { -- finished product, make sure it fits the stash weight and slots
-            {name = "heroin_base", min = 1, max = 2}, -- it will give item moonshine a min of 3 and max 5
+        products = {                                  -- finished product, make sure it fits the stash weight and slots
+            { name = "heroin_base", min = 1, max = 2 }, -- it will give item moonshine a min of 3 and max 5
         },
-        cookingXP = {min = 3, max = 5}, -- XP received for every successful cook / every 100XP is 1 level
-        cookingTime = 3, -- in minutes, time for completing a cook
-        cooldownTime = 6, -- in minutes, after every cook the table enters in cooldown
-        particles = { -- particles used for object when is cooking, smoke by default or false (particles = false)
+        cookingXP = { min = 3, max = 5 },             -- XP received for every successful cook / every 100XP is 1 level
+        cookingTime = 3,                              -- in minutes, time for completing a cook
+        cooldownTime = 6,                             -- in minutes, after every cook the table enters in cooldown
+        particles = {                                 -- particles used for object when is cooking, smoke by default or false (particles = false)
             dict = "core",
             asset = "ent_amb_smoke_scrap",
-            offset = {x = 0.0, y = 0.0, z = 0.5},
+            offset = { x = 0.0, y = 0.0, z = 0.5 },
         }
     },
-    ['ketamine_table'] = { -- item name and key index that needs to match with config/tables.lua > Config.Tables
-        drug = "ketamine", -- Drug linked to this table, should exist in server/editable/_drugs.lua too
-        model = `v_ret_ml_tablec`, -- model to spawn
-        slots = 5, -- stash slots
-        weight = 5000, -- stash weight
-        ingredients = { -- needed ingredients for cooking (['itemName'] = amount needed)
-            ['deathcap_mushroom'] = 2, -- needs 4x water
+    ['ketamine_table'] = {               -- item name and key index that needs to match with config/tables.lua > Config.Tables
+        drug = "ketamine",               -- Drug linked to this table, should exist in server/editable/_drugs.lua too
+        model = `v_ret_ml_tablec`,       -- model to spawn
+        slots = 5,                       -- stash slots
+        weight = 5000,                   -- stash weight
+        ingredients = {                  -- needed ingredients for cooking (['itemName'] = amount needed)
+            ['deathcap_mushroom'] = 2,   -- needs 4x water
             ['libertycap_mushroom'] = 2, -- needs 4x burger
             ['dimethylformamide'] = 1,
             ['acetone'] = 1,
             ['dryingrack'] = 1,
-            
+
         },
-        products = { -- finished product, make sure it fits the stash weight and slots
-            {name = "libertycap_mushroom", min = 1, max = 2}, -- it will give item moonshine a min of 3 and max 5
+        products = {                                          -- finished product, make sure it fits the stash weight and slots
+            { name = "libertycap_mushroom", min = 1, max = 2 }, -- it will give item moonshine a min of 3 and max 5
         },
-        cookingXP = {min = 3, max = 5}, -- XP received for every successful cook / every 100XP is 1 level
-        cookingTime = 30, -- in minutes, time for completing a cook
-        cooldownTime = 60, -- in minutes, after every cook the table enters in cooldown
-        particles = { -- particles used for object when is cooking, smoke by default or false (particles = false)
+        cookingXP = { min = 3, max = 5 },                     -- XP received for every successful cook / every 100XP is 1 level
+        cookingTime = 30,                                     -- in minutes, time for completing a cook
+        cooldownTime = 60,                                    -- in minutes, after every cook the table enters in cooldown
+        particles = {                                         -- particles used for object when is cooking, smoke by default or false (particles = false)
             dict = "core",
             asset = "ent_amb_smoke_scrap",
-            offset = {x = 0.0, y = 0.0, z = 0.5},
+            offset = { x = 0.0, y = 0.0, z = 0.5 },
         }
     },
 }

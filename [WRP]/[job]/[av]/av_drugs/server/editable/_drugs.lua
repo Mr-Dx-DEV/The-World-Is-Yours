@@ -31,6 +31,11 @@ Config.Drugs = {
         label = "Coke", -- used for UI
         color = "#ced4da", -- used for UI
     },
+    ['crack'] = { -- key index, drug name, same as name field 
+        name = "crack", -- drug name, same as key index
+        label = "crack", -- used for UI
+        color = "#ced4da", -- used for UI
+    },
     ['lsd'] = { -- key index, drug name, same as name field 
         name = "lsd", -- drug name, same as key index
         label = "LSD", -- used for UI
