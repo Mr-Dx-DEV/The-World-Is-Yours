@@ -56,12 +56,14 @@ Products = {
         { name = "acetone", price = 15000, amount = 250 },
         { name = "dimethylformamide", price = 15000, amount = 250 },
 
-        { name = "scales", price = 15000, amount = 250 },
-        { name = "heroinprocessingtable", price = 15000, amount = 250 },
-        { name = "ketprocessingtable", price = 15000, amount = 250 },
-        { name = "processingtable", price = 15000, amount = 250 },
-        { name = "cokeprocessingtable", price = 15000, amount = 250 },
-        { name = "emptybaggies", price = 15000, amount = 250 },
+        { name = "scales", price = 100, amount = 250 },
+
+        { name = "heroin_table", price = 50000, amount = 250 },
+        { name = "ketamine_table", price = 50000, amount = 250 },
+       -- { name = "processingtable", price = 15000, amount = 250 },
+
+        { name = "coke_table", price = 50000, amount = 250 },
+        { name = "emptybaggies", price = 50, amount = 250 },
         { name = "trowel", price = 50, amount = 1200 },
 
         { name = "joint", price = 500, amount = 1200 },
