@@ -21,7 +21,7 @@ Config.dealerships.wiy = { -- Dealership ID, NEEDS TO BE THE SAME AS THE JOB!!!
     comissions = { buyPercentage = 50, sellComission = 10 }, -- The dealership commissions
     blip = { enabled = true, coords = vec3(-64.04, 73.81, 71.62), sprite = 523, color = 3, scale = 0.5, display = 4 }, -- Dealership map blip
     dashboards = { -- Dealership dashboards to import vehicles and see transactions
-        { coords = vec3(-64.04, 73.81, 71.62), radius = 0.5, includeBossMenu = true },
+        { coords = vec3(-71.165, 76.86, 71.615), radius = 0.5, includeBossMenu = true },
     },
     catalogues = { -- The catalogues to the players to see and employees to change vehicles on showroom
         { coords = vec3(-76.48, 75.18, 71.63), radius = 0.4, vehicleCoords = vec4(-76.48, 75.18, 71.63, 250.0), vehicle = 'adder', vehicleColor = 111 },
