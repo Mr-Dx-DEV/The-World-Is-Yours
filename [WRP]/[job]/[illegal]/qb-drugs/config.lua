@@ -182,6 +182,11 @@ Config = {
         min = 50,
         max = 300,
     },
+    
+    ['crack_baggy'] = {
+        min = 25,
+        max = 200,
+    },
     ['meth_baggy'] = {
         min = 40,
         max = 250,
