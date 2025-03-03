@@ -122,7 +122,7 @@ lib.callback.register('av_drugs:sell', function(source, drug, zone)
             if v['name'] == drug then
                 count = v['count'] or v['amount']
                 slot = v['slot']
-                metadata = v['metadata']
+                metadata = v['metadata'] or v['info']
                 break
             end
         end

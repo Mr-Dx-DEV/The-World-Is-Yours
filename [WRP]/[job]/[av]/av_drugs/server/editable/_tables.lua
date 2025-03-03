@@ -61,28 +61,36 @@ Config.Tables = { -- items used to place tables for cooking
     }, ]]
     ['coke_table'] = { -- item name and key index that needs to match with config/tables.lua > Config.Tables
         drug = "coke", -- Drug linked to this table, should exist in server/editable/_drugs.lua too
-        model = `v_ret_ml_tablea`, -- model to spawn
-        slots = 10, -- stash slots
-        weight = 50000, -- stash weight
+        model = `v_ret_ml_tableb`, -- model to spawn
+        slots = 6, -- stash slots
+        weight = 100000, -- stash weight
         ingredients = { -- needed ingredients for cooking (['itemName'] = amount needed)
-            ['gasoline'] = 1, -- needs 4x water
-            ['cocaleaf'] = 1, -- needs 4x burger
-            ['hydrochloricacid'] = 1,
+            -- ['gasoline'] = 1, -- needs 4x water
+            -- ['cocaleaf'] = 1, -- needs 4x burger
+            -- ['hydrochloricacid'] = 1,
+            -- ['cement'] = 1,
+            -- ['emptybaggies'] = 1,
+            -- ['sodiumcarbonate'] = 1,
+            -- ['water_bottle'] = 1,
+            -- ['scales'] = 1,
+            -- ['acetone'] = 1,
+            -- ['dimethylformamide'] = 1,
+
+            ['cocaleaf'] = 3,
             ['cement'] = 1,
-            ['emptybaggies'] = 1,
-            ['sodiumcarbonate'] = 1,
-            ['water_bottle'] = 1,
+            ['gasoline'] = 1,
+            ['hydrochloricacid'] = 1,
             ['scales'] = 1,
-            ['acetone'] = 1,
-            ['dimethylformamide'] = 1,
-            
+            ['emptybaggies'] = 1,
+
+
         },
         products = { -- finished product, make sure it fits the stash weight and slots
-            {name = "coke_baggy", min = 1, max = 2}, -- it will give item moonshine a min of 3 and max 5
+            {name = "coke_baggy", min = 3, max = 5}, -- it will give item coke_baggy a min of 3 and max 5
         },
         cookingXP = {min = 3, max = 5}, -- XP received for every successful cook / every 100XP is 1 level
         cookingTime = 3, -- in minutes, time for completing a cook
-        cooldownTime = 6, -- in minutes, after every cook the table enters in cooldown
+        cooldownTime = 5, -- in minutes, after every cook the table enters in cooldown
         particles = { -- particles used for object when is cooking, smoke by default or false (particles = false)
             dict = "core",
             asset = "ent_amb_smoke_scrap",

@@ -27,7 +27,8 @@ CreateThread(function()
                 label = Lang['sell']..' '..v['label'],
                 extraInfo = v,
                 bones = "boot",
-                items = k,
+                items = k, -- ox_target
+                item = k, -- qb-target
                 canInteract = function(entity)
                     local allowed = canSell(k,v,entity)
                     dbug("allowed to sell?", allowed)

@@ -1,8 +1,14 @@
 function canSetLab()
+    local status = true
     dbug('canSetLab()')
     -- Add your own check here to allow or block the player from placing the lab entrance
+    -- Set status = true or status = false based on your own check
+    -- if you are gonna return false make sure to trigger a notification to the player, let him know why he can't place the lab
     
-    return true
+    if not status then
+        TriggerEvent("av_laptop:notification", Lang['app_title'], "You can't install the lab here", "error")
+    end
+    return status
 end
 
 RegisterNetEvent('av_drugs:cook', function(data) -- Triggered after pressing E
@@ -43,11 +49,13 @@ RegisterNetEvent('av_drugs:cook', function(data) -- Triggered after pressing E
                 local duration = animData['duration']
                 if not duration and animData['dict'] and animData['anim'] then
                     duration = GetAnimDuration(animData['dict'], animData['anim'])
-                    if duration then
+                    if duration and duration ~= 0 then
                         duration *= 1000
+                    else
+                        duration = false
                     end
                 end
-                duration = duration or 30000
+                duration = duration or 60000
                 dbug("duration", duration)
                 local animation = progressBar(animData['dict'] or false, animData['anim'] or false, duration)
                 if animation then

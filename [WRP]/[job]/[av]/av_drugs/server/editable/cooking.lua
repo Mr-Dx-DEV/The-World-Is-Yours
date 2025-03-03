@@ -62,7 +62,7 @@ function processTable(identifier, info) -- triggered when cooking time is comple
     else
         print("^3[WARNING] No products found for table "..info['name'])
     end
-    local minutes = Config.Tables[item] and Config.Tables[item]['cooldownTime'] or 60
+    local minutes = Config.Tables[info['item']] and Config.Tables[info['item']]['cooldownTime'] or 60
     dbug('Add table to cooldown '..minutes..' minutes')
     addToCooldown(identifier,minutes)
 end
