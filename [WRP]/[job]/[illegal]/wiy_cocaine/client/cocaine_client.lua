@@ -311,7 +311,7 @@ RegisterNetEvent('lusty94_cocaine:client:GetCement', function()
 			local remainingTime = math.ceil((lastCementUsage + cooldownTimeCement))
 			ShowCooldownNotification(remainingTime)
 		else
-			local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+			--local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
 			if success then
 				busy = true
 				LockInventory(true)
@@ -360,7 +360,7 @@ RegisterNetEvent('lusty94_cocaine:client:GetGasoline', function()
 					local remainingTime = math.ceil((lastGasolineUsage + cooldownTimeGasoline))
 					ShowCooldownNotification(remainingTime)
 				else
-					local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+				--	local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
 					if success then
 						busy = true
 						LockInventory(true)
@@ -413,7 +413,7 @@ RegisterNetEvent('lusty94_cocaine:client:GetHydrochloricAcid', function()
 					local remainingTime = math.ceil((lastHydrochloricAcidUsage + cooldownTimeHydrochloricAcid))
 					ShowCooldownNotification(remainingTime)
 				else
-					local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+				--	local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
 					if success then
 						busy = true
 						LockInventory(true)
@@ -468,7 +468,7 @@ RegisterNetEvent("lusty94_cocaine:client:ProcessPureCocaine", function()
             if busy then
                 SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
             else
-                local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+                -- local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
                 if success then
                     busy = true
                     LockInventory(true)
@@ -516,7 +516,7 @@ RegisterNetEvent('lusty94_cocaine:client:ProcessPureCrack', function()
             if busy then
                 SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
             else
-                local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+              --  local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
                 if success then
                     busy = true
                     LockInventory(true)
@@ -560,7 +560,7 @@ RegisterNetEvent('lusty94_cocaine:client:ProcessCokeBaggy', function()
             if busy then
                 SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
             else
-                local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+             --   local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
                 if success then
                     busy = true
                     LockInventory(true)
@@ -604,7 +604,7 @@ RegisterNetEvent('lusty94_cocaine:client:ProcessCrackBaggy', function()
             if busy then
                 SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
             else
-                local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+             --   local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
                 if success then
                     busy = true
                     LockInventory(true)
@@ -649,7 +649,7 @@ RegisterNetEvent('lusty94_cocaine:client:CreateOverDoseCure', function()
             if busy then
                 SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
             else
-                local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+              --  local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
                 if success then
                     busy = true
                     LockInventory(true)
