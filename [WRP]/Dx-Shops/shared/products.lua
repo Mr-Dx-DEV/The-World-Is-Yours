@@ -61,7 +61,7 @@ Products = {
         { name = "heroin_table", price = 50000, amount = 250 },
         { name = "ketamine_table", price = 50000, amount = 250 },
        -- { name = "processingtable", price = 15000, amount = 250 },
-
+        { name = "crack_table", price = 50000, amount = 250 },
         { name = "coke_table", price = 50000, amount = 250 },
         { name = "emptybaggies", price = 50, amount = 250 },
         { name = "trowel", price = 50, amount = 1200 },
