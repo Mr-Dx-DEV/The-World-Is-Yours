@@ -248,6 +248,13 @@ description = 'Can store personal data'
 	close = true,
 	description = ''
 	},
+	['crack_table'] = {
+		label = 'Crack Table',
+		weight = 8000,
+		stack = false,
+		close = true,
+		description = ''
+		},
 	['coke_table'] = {
 		label = 'Coke Table',
 		weight = 8000,
@@ -1539,60 +1546,7 @@ description = 'Can store personal data'
 		image = "sodiumcarbonate.png",
 	}
 },
-["scales"] = {
-	label = "Scales",
-	weight = 200,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "scales.png",
-	}
-},
 
-["iodine"] = {
-	label = "Iodine",
-	weight = 200,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "iodine.png",
-	}
-},
-
-["plasticjerrycan"] = {
-	label = "Empty Plastic Jerry Can",
-	weight = 100,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "plasticjerrycan.png",
-	}
-},
-
-["crack_baggy"] = {
-	label = "Bag of Crack",
-	weight = 100,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "crack_baggy.png",
-	}
-},
-
-["dimethylformamide"] = {
-	label = "Dimethylformamide",
-	weight = 200,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "dimethylformamide.png",
-	}
-},
 ["cokedimethylformamide"] = {
 	label = "Dimethylformamide",
 	weight = 200,
@@ -1603,38 +1557,7 @@ description = 'Can store personal data'
 		image = "dimethylformamide.png",
 	}
 },
-["pure_cocaine"] = {
-	label = "Pure Cocaine",
-	weight = 100,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "pure_cocaine.png",
-	}
-},
 
-["emptybaggies"] = {
-	label = "Empty Baggies",
-	weight = 200,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "emptybaggies.png",
-	}
-},
-
-["acetone"] = {
-	label = "Acetone",
-	weight = 200,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "acetone.png",
-	}
-},
 ["cokeacetone"] = {
 	label = "Acetone",
 	weight = 200,
@@ -6561,36 +6484,36 @@ description = 'Can store personal data'
 },
 
 -- Drugs
-['cokebaggy'] = {
-    label = '1g Bag of Coke',
-    weight = 10,
-    stack = true,
-    close = true,
-    description = 'A gram of the finest nose candy!',
-    client = {
-        image = 'cocaine_baggy.png'
-    }
-},
-['coke_1oz'] = {
-    label = 'Ounce of Cocaine',
-    weight = 280,
-    stack = true,
-    close = true,
-    description = 'A ounce of the finest nose candy!',
-    client = {
-        image = 'coke_1oz.png'
-    }
-},
-['crack_1oz'] = {
-    label = 'Ounce of Crack',
-    weight = 500,
-    stack = true,
-    close = true,
-    description = 'For all the thirsty out there',
-    client = {
-        image = 'crack_1oz.png'
-    }
-},
+-- ['cokebaggy'] = {
+--     label = '1g Bag of Coke',
+--     weight = 10,
+--     stack = true,
+--     close = true,
+--     description = 'A gram of the finest nose candy!',
+--     client = {
+--         image = 'cocaine_baggy.png'
+--     }
+-- },
+-- ['coke_1oz'] = {
+--     label = 'Ounce of Cocaine',
+--     weight = 280,
+--     stack = true,
+--     close = true,
+--     description = 'A ounce of the finest nose candy!',
+--     client = {
+--         image = 'coke_1oz.png'
+--     }
+-- },
+-- ['crack_1oz'] = {
+--     label = 'Ounce of Crack',
+--     weight = 500,
+--     stack = true,
+--     close = true,
+--     description = 'For all the thirsty out there',
+--     client = {
+--         image = 'crack_1oz.png'
+--     }
+-- },
 
 
 --<!>-- KETAMINE --<!>--
@@ -35162,7 +35085,7 @@ description = 'Can store personal data'
 
 	["scales"] = {
 		label = "Scales",
-		weight = 200,
+		weight = 5,
 		stack = true,
 		close = true,
 		description = "",
@@ -35228,7 +35151,7 @@ description = 'Can store personal data'
 
 	["emptybaggies"] = {
 		label = "Empty Baggies",
-		weight = 200,
+		weight = 1,
 		stack = true,
 		close = true,
 		description = "",
@@ -35237,102 +35160,5 @@ description = 'Can store personal data'
 		}
 	},
 
-	["acetone"] = {
-		label = "Acetone",
-		weight = 200,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "acetone.png",
-		}
-	},
-
-	["cement"] = {
-		label = "Cement",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "cement.png",
-		}
-	},
-
-	["gasoline"] = {
-		label = "Gasoline",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "gasoline.png",
-		}
-	},
-
-	["cocaleaf"] = {
-		label = "Coca Leaf",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "cocaleaf.png",
-		}
-	},
-
-	["cokeoverdosecure"] = {
-		label = "Coke Overdose Cure",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "overdosecure.png",
-		}
-	},
-
-	["hydrochloricacid"] = {
-		label = "Hydrochloric Acid",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "hydrochloricacid.png",
-		}
-	},
-
-	["trowel"] = {
-		label = "Trowel",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "trowel.png",
-		}
-	},
-
-	["pure_crack"] = {
-		label = "Pure Crack",
-		weight = 100,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "pure_crack.png",
-		}
-	},
-
-	["lighter"] = {
-		label = "Lighter",
-		weight = 0,
-		stack = true,
-		close = true,
-		description = "",
-		client = {
-			image = "lighter.png",
-		}
-	},
+	
 }
