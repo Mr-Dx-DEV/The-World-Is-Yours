@@ -1,22 +1,10 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-local spawnedCokeLeaves = {}
-local busy, cokeTablePlaced  = false, false
-local isCementOnCooldown, isGasolineOnCooldown, isHydrochloricAcidOnCooldown = false, false, false
-local lastCementUsage, lastGasolineUsage, lastHydrochloricAcidUsage = 0, 0, 0
-local cokeTableProp = nil
+local spawnedCocaLeaves, spawnedCokeBlips, spawnedCokeTable = {}, {}, {}
+local busy, hasSearched  = false, false
 local NotifyType = Config.CoreSettings.Notify.Type
 local TargetType = Config.CoreSettings.Target.Type
 local InvType = Config.CoreSettings.Inventory.Type
-local PoliceType = Config.CoreSettings.Police.Type
-local EvidenceEvent = Config.CoreSettings.EventNames.Evidence
-local CementModel = Config.CoreSettings.Props.Cement.Name
-local GasolineModel = Config.CoreSettings.Props.Gasoline.Name
-local HydrochloricAcidModel = Config.CoreSettings.Props.HydrochloricAcid.Name
-local cooldownTimeCement = Config.CoreSettings.CoolDownTimers.Cement 
-local cooldownTimeGasoline = Config.CoreSettings.CoolDownTimers.Gasoline 
-local cooldownTimeHydrochloricAcid = Config.CoreSettings.CoolDownTimers.HydrochloricAcid 
-local StressAmount = Config.DrugSettings.Effects.StressReduced
-local ArmourAmount = Config.DrugSettings.Effects.ArmourGained
+
 
 
 
@@ -33,8 +21,6 @@ local function SendNotify(msg,type,time,title)
         exports['okokNotify']:Alert(title, msg, time, type, true)
     elseif NotifyType == 'mythic' then
         exports['mythic_notify']:DoHudText(type, msg)
-    elseif NotifyType == 'boii' then
-        exports['boii_ui']:notify(title, msg, type, time)
     elseif NotifyType == 'ox' then
         lib.notify({ title = title, description = msg, type = type, duration = time})
     elseif NotifyType == 'custom' then
@@ -44,7 +30,7 @@ end
 
 
 
---blip for  cocaine leaves
+--general blips
 CreateThread(function()
 	for k, v in pairs(Config.Blips) do
         if v.useblip then
@@ -62,22 +48,49 @@ CreateThread(function()
 end)
 
 
---supplies ped and blip
+--supplies ped
 CreateThread(function()
     for k, v in pairs(Config.Peds) do
         if v.useped then
-            lib.requestModel(v.model, 10000)
-            CokeSuppliesPed = CreatePed(0, v.model, v.coords.x, v.coords.y, v.coords.z-1, v.coords.w, false, false)
-            FreezeEntityPosition(CokeSuppliesPed, true)
-            SetEntityInvincible(CokeSuppliesPed, true)
-            SetBlockingOfNonTemporaryEvents(CokeSuppliesPed, true)
+            lib.requestModel(v.model, 20000)
+            cocainePed = CreatePed(0, v.model, v.coords.x, v.coords.y, v.coords.z-1, v.coords.w, false, false)
+            FreezeEntityPosition(cocainePed, true)
+            SetEntityInvincible(cocainePed, true)
+            SetBlockingOfNonTemporaryEvents(cocainePed, true)
 			if v.playanim then
-            	TaskStartScenarioInPlace(CokeSuppliesPed, v.scenario, 0, v.playanim)
+            	TaskStartScenarioInPlace(cocainePed, v.scenario, 0, v.playanim)
 			end
 			if TargetType == 'qb' then
-				exports['qb-target']:AddTargetEntity(CokeSuppliesPed, { options = { { type = "client", event = "lusty94_cocaine:client:openSuppliesShop", icon = v.targeticon, label = v.targetlabel, }, }, distance = v.targetdistance })
+				exports['qb-target']:AddTargetEntity(cocainePed, { options = { 
+					{ 
+						type = "client", 
+						action = function()
+							if not busy then
+								cokeSupplyShop()
+							else
+								SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+							end
+						end,
+						icon = v.targeticon, 
+						label = v.targetlabel, 
+					}, 
+				}, distance = v.targetdistance })
 			elseif TargetType == 'ox' then
-				exports.ox_target:addLocalEntity(CokeSuppliesPed, { { name = 'CokeSuppliesPed', icon = v.targeticon, label = v.targetlabel, event = 'lusty94_cocaine:client:openSuppliesShop', distance = v.targetdistance} })
+				exports.ox_target:addLocalEntity(cocainePed, { 
+					{ 
+						name = 'cocainePed', 
+						icon = v.targeticon, 
+						label = v.targetlabel, 
+						onSelect = function()
+							if not busy then
+								cokeSupplyShop()
+							else
+								SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+							end
+						end,
+						distance = v.targetdistance,
+					},
+				})
 			end
 			if v.useblip then
 				v.blip = AddBlipForCoord(v.coords.x, v.coords.y, v.coords.z)
@@ -95,202 +108,115 @@ CreateThread(function()
 end)
 
 
-
---Cement prop
-CreateThread(function()
-	if TargetType == 'qb' then
-		exports['qb-target']:AddTargetModel(CementModel, { options = { { event = 'lusty94_cocaine:client:GetCement', type = 'client', icon = Config.CoreSettings.Props.Cement.TargetIcon, label = Config.CoreSettings.Props.Cement.TargetLabel, }, }, distance = Config.CoreSettings.Props.Cement.TargetDistance, })
-	elseif TargetType == 'ox' then
-		exports.ox_target:addModel(CementModel, ({ name = 'cement', label = Config.CoreSettings.Props.Cement.TargetLabel, icon = Config.CoreSettings.Props.Cement.TargetIcon, event = 'lusty94_cocaine:client:GetCement', distance = Config.CoreSettings.Props.Cement.TargetDistance, }))
-	end
-end)
-
---Gasoline prop
-CreateThread(function()
-	if TargetType == 'qb' then
-		exports['qb-target']:AddTargetModel(GasolineModel, { options = { { item = Config.CoreSettings.Props.Gasoline.RequiredItem, event = 'lusty94_cocaine:client:GetGasoline', type = 'client', icon = Config.CoreSettings.Props.Gasoline.TargetIcon, label = Config.CoreSettings.Props.Gasoline.TargetLabel, }, }, distance = Config.CoreSettings.Props.Gasoline.TargetDistance, })
-	elseif TargetType == 'ox' then
-		exports.ox_target:addModel(GasolineModel, ({ items = Config.CoreSettings.Props.Gasoline.RequiredItem, name = 'Gasoline', label = Config.CoreSettings.Props.Gasoline.TargetLabel, icon = Config.CoreSettings.Props.Gasoline.TargetIcon, event = 'lusty94_cocaine:client:GetGasoline', distance = Config.CoreSettings.Props.Gasoline.TargetDistance, }))
-	end
-end)
-
---Hydrochloric Acid prop
-CreateThread(function()
-	if TargetType == 'qb' then
-		exports['qb-target']:AddTargetModel(HydrochloricAcidModel, { item = Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, options = { { event = 'lusty94_cocaine:client:GetHydrochloricAcid', type = 'client', icon = Config.CoreSettings.Props.HydrochloricAcid.TargetIcon, label = Config.CoreSettings.Props.HydrochloricAcid.TargetLabel, }, }, distance = Config.CoreSettings.Props.HydrochloricAcid.TargetDistance, })
-	elseif TargetType == 'ox' then
-		exports.ox_target:addModel(HydrochloricAcidModel, ({ items = Config.CoreSettings.Props.HydrochloricAcid.RequiredItem, name = 'HydrochloricAcid', label = Config.CoreSettings.Props.HydrochloricAcid.TargetLabel, icon = Config.CoreSettings.Props.HydrochloricAcid.TargetIcon, event = 'lusty94_cocaine:client:GetHydrochloricAcid', distance = Config.CoreSettings.Props.HydrochloricAcid.TargetDistance, }))
-	end
-end)
-
-
-
-
-----------------------------< COCA LEAVES >----------------------------------
-
-
---respawns leaves every 30 mins
-CreateThread(function()
-    while true do
-        Wait(Config.CoreSettings.CoolDownTimers.RespawnLeaves) -- waits 30 minutes DONT TOUCH THIS EDIT THE TIMER CONFIG SIDE
-        for _, plant in pairs(spawnedCokeLeaves) do SetEntityAsMissionEntity(plant, false, true) DeleteObject(plant) SetEntityAsNoLongerNeeded(plant) end
-        spawnedCokeLeaves = {}
-        Wait(2500) -- wait 2.5 seconds before spawning new leaves
-        spawnCokeLeaves() -- spawns new leaves
-    end
-end)
-
---new method to spawn multiple leaves anywhere via config location
-function spawnCokeLeaves()
-	for k,v in pairs(Config.Plants) do
-		local CokeModel = Config.CoreSettings.Props.CocaLeaves.Name
-		lib.requestModel(CokeModel, 10000)
-		cokePlants = CreateObject(CokeModel, v.coords.x, v.coords.y, v.coords.z-1, false, true, false) -- if plants floating or too low edit the -1 value on the Z axis
-		PlaceObjectOnGroundProperly(cokePlants)
-		FreezeEntityPosition(cokePlants, true)
-		spawnedCokeLeaves[#spawnedCokeLeaves+1] = cokePlants
+local CementModel = Config.CoreSettings.Props.Cement.Name
+local GasolineModel = Config.CoreSettings.Props.Gasoline.Name
+local HydrochloricAcidModel = Config.CoreSettings.Props.HydrochloricAcid.Name
+	--props
+if Config.CoreSettings.DrugScripts.Enabled then
+	print('^5--<^3!^5>-- ^7| Lusty94_Cocaine |^5 ^5--<^3!^5>--^7 Config.CoreSettings.DrugScripts is enabled - TARGET MODELS FOR CEMENT, GASOLINE AND HYDROCHLORIC ACID HAVE BEEN REMOVED TO PREVENT CLASHES WITH OTHER SCRIPTS - MAKE SURE ITEM NAMES MATCH THROUGHOUT PROCESSING OPTIONS ^5--<^3!^5>--^7')
+else
+	CreateThread(function()
 		if TargetType == 'qb' then
-			exports['qb-target']:AddTargetEntity(cokePlants, { options = { { item = v.item,type = "client", event = "lusty94_cocaine:client:PickCocaLeaves", icon = v.icon, label = v.label, }, }, distance = v.distance })
+			exports['qb-target']:AddTargetModel(CementModel, { options = { 
+				{ 
+					type = 'client', 
+					action = function()
+						if not busy then
+							GetCokeCement()
+						else
+							SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+						end
+					end,
+					icon = Config.CoreSettings.Props.Cement.Icon, 
+					label = Config.CoreSettings.Props.Cement.Label, 
+				}, 
+			}, distance = Config.CoreSettings.Props.Cement.Distance, })
+			exports['qb-target']:AddTargetModel(GasolineModel, { options = { 
+				{ 
+					type = 'client', 
+					action = function()
+						if not busy then
+							GetCokeGasoline()
+						else
+							SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+						end
+					end,
+					item = Config.CoreSettings.Props.Gasoline.Item, 
+					icon = Config.CoreSettings.Props.Gasoline.Icon, 
+					label = Config.CoreSettings.Props.Gasoline.Label, 
+				}, }, distance = Config.CoreSettings.Props.Gasoline.Distance, })
+				exports['qb-target']:AddTargetModel(HydrochloricAcidModel, { options = { 
+					{ 
+						type = 'client', 
+						action = function()
+							if not busy then
+								GetCokeHydro()
+							else
+								SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+							end
+						end, 
+						item = Config.CoreSettings.Props.HydrochloricAcid.Item,
+						icon = Config.CoreSettings.Props.HydrochloricAcid.Icon, 
+						label = Config.CoreSettings.Props.HydrochloricAcid.Label, 
+					}, }, distance = Config.CoreSettings.Props.HydrochloricAcid.Distance, })
 		elseif TargetType == 'ox' then
-			exports.ox_target:addLocalEntity(cokePlants, ({ name = 'cokePlants', items = v.item, label = v.label, icon = v.icon, event = 'lusty94_cocaine:client:PickCocaLeaves', distance = v.distance, }))
+			exports.ox_target:addModel(CementModel, (
+				{ 
+					name = 'cement', 
+					onSelect = function()
+						if not busy then
+							GetCokeCement()
+						else
+							SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+						end
+					end,
+					icon = Config.CoreSettings.Props.Cement.Icon, 
+					label = Config.CoreSettings.Props.Cement.Label, 
+					distance = Config.CoreSettings.Props.Cement.Distance, 
+				}
+			))
+			exports.ox_target:addModel(GasolineModel, (
+				{ 
+					name = 'Gasoline', 
+					onSelect = function()
+						if not busy then
+							GetCokeGasoline()
+						else
+							SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+						end
+					end,
+					items = Config.CoreSettings.Props.Gasoline.Item, 
+					icon = Config.CoreSettings.Props.Gasoline.Icon, 
+					label = Config.CoreSettings.Props.Gasoline.Label, 
+					distance = Config.CoreSettings.Props.Gasoline.Distance, 
+				}
+			))
+			exports.ox_target:addModel(HydrochloricAcidModel, (
+				{ 
+					name = 'HydrochloricAcid', 
+					onSelect = function()
+						if not busy then
+							GetCokeHydro()
+						else
+							SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+						end
+					end, 
+					items = Config.CoreSettings.Props.HydrochloricAcid.Item, 
+					icon = Config.CoreSettings.Props.HydrochloricAcid.Icon, 
+					label = Config.CoreSettings.Props.HydrochloricAcid.Label, 
+					distance = Config.CoreSettings.Props.HydrochloricAcid.Distance,
+				}
+			))
 		end
-	end
+	end)
 end
 
 
--- pick coca leaves
-RegisterNetEvent("lusty94_cocaine:client:PickCocaLeaves", function()
-	local playerPed = PlayerPedId()
-	local coords = GetEntityCoords(playerPed)
-	local nearbyObject, nearbyID    
-	for i=1, #spawnedCokeLeaves, 1 do
-		if #(coords - GetEntityCoords(spawnedCokeLeaves[i])) < 3 then
-			nearbyObject, nearbyID = spawnedCokeLeaves[i], i
-		end
-	end   
-	if nearbyObject and IsPedOnFoot(playerPed) then
-		if busy then
-			SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-		else
-				busy = true
-				LockInventory(true)
-				if lib.progressCircle({ 
-					duration = Config.CoreSettings.ProgressBar.PickCocaLeaves, 
-					label = Config.Language.ProgressBar.PickCocaLeaves, 
-					position = 'bottom', 
-					useWhileDead = false, 
-					canCancel = true, 
-					disable = { car = true, move = true, },  
-					anim = { dict = Config.Animations.PickCocaLeaves.AnimDict, clip = Config.Animations.PickCocaLeaves.Anim, flag = Config.Animations.PickCocaLeaves.Flags,}, 
-					prop = { model = Config.Animations.PickCocaLeaves.Prop, bone = Config.Animations.PickCocaLeaves.Bone, pos = Config.Animations.PickCocaLeaves.Pos, rot = Config.Animations.PickCocaLeaves.Rot, }, 
-				}) then
-					local chance = Config.CoreSettings.Chances.GetLeaves
-					if chance >= math.random(1,100) then
-						TriggerServerEvent('lusty94_cocaine:server:PickCocaLeaves')
-					else
-						SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
-					end
-					SetEntityAsMissionEntity(nearbyObject, false, true)
-					DeleteObject(nearbyObject)
-					spawnedCokeLeaves[nearbyID] = nil
-					busy = false
-					LockInventory(false)
-				else 
-					busy = false
-					LockInventory(false)
-					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
-				end
-		end 
-	end
-end)
 
-
----------------------------------< PROCESSING TABLE >--------------------------------
-
---place processing table
-RegisterNetEvent('lusty94_cocaine:client:openProcessingTable', function()
-    local playerPed = PlayerPedId()
-    local coords    = GetEntityCoords(playerPed)
-    local forward   = GetEntityForwardVector(playerPed)
-    local x, y, z   = table.unpack(coords + forward)
-    local tableModel = Config.CoreSettings.Props.ProcessingTable.Name
-	if busy then
-        SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-    else
-		if cokeTablePlaced then
-            SendNotify(Config.Language.Notifications.PropErrorName, 'error', 2000)
-			return
-		end
-		busy = true
-        LockInventory(true)
-		if lib.progressCircle({ 
-			duration = Config.CoreSettings.ProgressBar.PlaceProcessingTable, 
-			label = Config.Language.ProgressBar.PlaceTableName, 
-			position = 'bottom', 
-			useWhileDead = false, 
-			canCancel = true, 
-			disable = { car = true, move = true, }, 
-			anim = { dict = Config.Animations.PlaceProcessingTable.AnimDict, clip = Config.Animations.PlaceProcessingTable.Anim, flag = Config.Animations.PlaceProcessingTable.Flags, }, 
-		}) then
-            lib.requestModel(tableModel, 10000)
-            cokeTableProp = CreateObject(tableModel, x, y, z, true, false, true)
-            PlaceObjectOnGroundProperly(cokeTableProp)
-            SetEntityAsMissionEntity(cokeTableProp, false, false)
-            FreezeEntityPosition(cokeTableProp, true)
-            if TargetType == 'qb' then
-                exports['qb-target']:AddTargetEntity(cokeTableProp, {  
-					options = { 
-						{ event = 'lusty94_cocaine:client:openMainMenu', 			type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconOpen, 	label =  Config.CoreSettings.Props.ProcessingTable.TargetLabelOpen, }, 
-						{ event = 'lusty94_cocaine:client:DeleteProcessingTable', 	type = 'client', icon = Config.CoreSettings.Props.ProcessingTable.TargetIconRemove, label = Config.CoreSettings.Props.ProcessingTable.TargetLabelRemove, },
-					}, distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance 
-				})
-            elseif TargetType == 'ox' then
-                exports.ox_target:addLocalEntity(cokeTableProp, { 
-					{ name = 'cokeTableProp', 	icon = Config.CoreSettings.Props.ProcessingTable.TargetIconOpen, 	label =  Config.CoreSettings.Props.ProcessingTable.TargetLabelOpen, 	event = 'lusty94_cocaine:client:openMainMenu', 			distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance}, 
-					{ name = 'cokeTableProp', 	icon = Config.CoreSettings.Props.ProcessingTable.TargetIconRemove, 	label = Config.CoreSettings.Props.ProcessingTable.TargetLabelRemove, 	event = 'lusty94_cocaine:client:DeleteProcessingTable', distance = Config.CoreSettings.Props.ProcessingTable.TargetDistance}  
-				})
-            end
-            cokeTablePlaced = true
-            busy = false
-            LockInventory(false)
-        else
-            busy = false
-            SendNotify(Config.Language.Notifications.CancelledName, 'error', 3000)
-        end
-	end
-end)
-
---delete processing table prop
-local function delete_prop(model)
-    if DoesEntityExist(model) then
-        DeleteEntity(model)
-    end
-end
-
-
--- delete processing table
-RegisterNetEvent('lusty94_cocaine:client:DeleteProcessingTable', function()
-    if cokeTableProp then
-		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(cokeTableProp, 'cokeTableProp') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(cokeTableProp, 'cokeTableProp') end
-        delete_prop(cokeTableProp)
-        cokeTableProp = nil
-        cokeTablePlaced = false
-    end
-end)
-
-
-
--- Function to display a notification with the remaining cooldown time
-function ShowCooldownNotification(remainingTime)
-    local notificationMessage = Config.Language.Notifications.SearchTimerName .. remainingTime / 1000 .. " seconds before doing that."
-	SendNotify(notificationMessage, 'error', 3000)
-end
-
-
-------------------------------< PROP EVENTS >---------------------------------
 --chance to call police
-function PoliceCallChance()
+function cokePoliceChance()
 	local chance = Config.CoreSettings.Chances.CallPolice
+	local PoliceType = Config.CoreSettings.Police.Type
 	if chance >= math.random(1,100) then
 		if PoliceType == 'qb' then
 			TriggerServerEvent('police:server:policeAlert', 'Suspicious Activity')
@@ -302,157 +228,359 @@ function PoliceCallChance()
 	end
 end
 
---get Cement
-RegisterNetEvent('lusty94_cocaine:client:GetCement', function()
-	if busy then
-        SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-    else
-		if isCementOnCooldown then
-			local remainingTime = math.ceil((lastCementUsage + cooldownTimeCement))
-			ShowCooldownNotification(remainingTime)
+
+--cement cooldown
+function CokeCementCooldown()
+    local timer =  Config.CoreSettings.CoolDownTimers.Cement
+    if hasSearched then
+        return
+    end
+    hasSearched = true
+    SetTimeout(timer, function()
+        hasSearched = false
+    end)
+end
+
+--gasoline cooldown
+function CokeGasolineCooldown()
+    local timer =  Config.CoreSettings.CoolDownTimers.Gasoline
+    if hasSearched then
+        return
+    end
+    hasSearched = true
+    SetTimeout(timer, function()
+        hasSearched = false
+    end)
+end
+
+--hydro cooldown
+function CokeHydroCooldown()
+    local timer =  Config.CoreSettings.CoolDownTimers.HydrochloricAcid
+    if hasSearched then
+        return
+    end
+    hasSearched = true
+    SetTimeout(timer, function()
+        hasSearched = false
+    end)
+end
+
+
+----------------------------< COCA LEAVES >----------------------------------
+
+
+--respawns leaves every 30 mins
+CreateThread(function()
+    while true do
+        Wait(Config.CoreSettings.CoolDownTimers.RespawnLeaves) -- waits 30 minutes DONT TOUCH THIS EDIT THE TIMER CONFIG SIDE
+        for _, plant in pairs(spawnedCocaLeaves) do SetEntityAsMissionEntity(plant, false, true) DeleteObject(plant) SetEntityAsNoLongerNeeded(plant) end
+        spawnedCocaLeaves = {}
+        Wait(2500) -- wait 2.5 seconds before spawning new leaves
+        spawnCocaLeaf() -- spawns new leaves
+    end
+end)
+
+--spawn coca leaves
+function spawnCocaLeaf()
+	for k,v in pairs(Config.Plants) do
+		local CokeModel = Config.CoreSettings.Props.CocaLeaves.Name
+		lib.requestModel(CokeModel, 10000)
+		cocaLeaves = CreateObject(CokeModel, v.coords.x, v.coords.y, v.coords.z-1, false, true, false) -- if plants floating or too low edit the -1 value on the Z axis
+		PlaceObjectOnGroundProperly(cocaLeaves)
+		FreezeEntityPosition(cocaLeaves, true)
+		spawnedCocaLeaves[#spawnedCocaLeaves+1] = cocaLeaves
+		if TargetType == 'qb' then
+			exports['qb-target']:AddTargetEntity(cocaLeaves, { options = { 
+				{ 
+					type = "client", 
+					item = v.item,
+					action = function()
+						if not busy then
+							collectCocaLeaf()
+						else
+							SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+						end
+					end,
+					icon = v.icon, 
+					label = v.label, 
+				}, 
+			}, distance = v.distance })
+		elseif TargetType == 'ox' then
+			exports.ox_target:addLocalEntity(cocaLeaves, (
+				{ 
+					name = 'cocaLeaves', 
+					items = v.item, 
+					label = v.label, 
+					icon = v.icon, 
+					onSelect = function()
+						if not busy then
+							collectCocaLeaf()
+						else
+							SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+						end
+					end,
+					distance = v.distance, 
+				}
+			))
+		end
+		-- local blip = AddBlipForCoord(v.coords.x, v.coords.y, v.coords.z)
+        -- SetBlipSprite(blip, 501)
+        -- SetBlipDisplay(blip, 4)
+        -- SetBlipScale(blip, 0.8)
+        -- SetBlipColour(blip, 2)
+        -- SetBlipAsShortRange(blip, true)
+        -- BeginTextCommandSetBlipName("STRING")
+        -- AddTextComponentString("Coca Leaf")
+        -- EndTextCommandSetBlipName(blip)
+        -- spawnedCokeBlips[cocaLeaves] = blip
+	end
+end
+
+--collect coca leaf
+function collectCocaLeaf()
+	local playerPed = PlayerPedId()
+	local coords = GetEntityCoords(playerPed)
+	local itemLabel = ItemLabel('cocaleaf')
+	local nearbyObject, nearbyID    
+	for i=1, #spawnedCocaLeaves, 1 do
+		if #(coords - GetEntityCoords(spawnedCocaLeaves[i])) < 3 then
+			nearbyObject, nearbyID = spawnedCocaLeaves[i], i
+		end
+	end   
+	if nearbyObject and IsPedOnFoot(playerPed) then
+		if busy then
+			SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
 		else
+			--if you want to add the skillcheck minigame then uncomment the relevant lines below
 			--local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-			if success then
+			--if success then
 				busy = true
 				LockInventory(true)
 				if lib.progressCircle({ 
-					duration = Config.CoreSettings.ProgressBar.GetCement, 
-					label = Config.Language.ProgressBar.GetCement, 
+					duration = Config.CoreSettings.Timers.PickCocaLeaves, 
+					label = 'Picking '..itemLabel, 
 					position = 'bottom', 
 					useWhileDead = false, 
 					canCancel = true, 
-					disable = { car = true, move = true, },  
-					anim = { dict = Config.Animations.GetCement.AnimDict, clip = Config.Animations.GetCement.Anim, flag = Config.Animations.GetCement.Flags,}, 
-					prop = { model = Config.Animations.GetCement.Prop, bone = Config.Animations.GetCement.Bone, pos = Config.Animations.GetCement.Pos, rot = Config.Animations.GetCement.Rot, }, 
+					disable = { car = true, move = true, combat = true, },  
+					anim = { 
+						dict = Config.Animations.PickCocaLeaves.AnimDict, 
+						clip = Config.Animations.PickCocaLeaves.Anim, 
+						flag = Config.Animations.PickCocaLeaves.Flags,
+					}, 
+					prop = { 
+						model = Config.Animations.PickCocaLeaves.Prop, 
+						bone = Config.Animations.PickCocaLeaves.Bone, 
+						pos = Config.Animations.PickCocaLeaves.Pos, 
+						rot = Config.Animations.PickCocaLeaves.Rot, 
+					}, 
 				}) then
+					if Config.CoreSettings.Chances.GetLeaves >= math.random(1,100) then
+						TriggerServerEvent('lusty94_cocaine:server:PickCocaLeaves')
+					else
+						SendNotify(Config.Language.Notifications.NothingFound, 'error', 2000)
+					end
+					if spawnedCokeBlips[nearbyObject] then
+						RemoveBlip(spawnedCokeBlips[nearbyObject])
+						spawnedCokeBlips[nearbyObject] = nil
+					end
+					SetEntityAsMissionEntity(nearbyObject, false, true)
+					DeleteObject(nearbyObject)
+					spawnedCocaLeaves[nearbyID] = nil
 					busy = false
 					LockInventory(false)
-					local chance = Config.CoreSettings.Chances.GetCement
-					if chance >= math.random(1,100) then
-						TriggerServerEvent('lusty94_cocaine:server:GetCement')
-					else
-						SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
-						PoliceCallChance()
-					end
-					isCementOnCooldown = true
-					SetTimeout(cooldownTimeCement, function() isCementOnCooldown = false end)
 				else 
 					busy = false
 					LockInventory(false)
-					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+					SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
 				end
-			else
-				SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-			end
+			--else
+				--SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
+			--end
+		end 
+	end
+end
+
+
+
+--get Cement
+function GetCokeCement()
+	local itemLabel = ItemLabel('cement')
+	if busy then
+        SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+    else
+		if hasSearched then
+			SendNotify(Config.Language.Notifications.Cooldown, 'error', 2000)
+			return
+		else
+			--if you want to add the skillcheck minigame then uncomment the relevant lines below
+			--local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+			--if success then
+				busy = true
+				LockInventory(true)
+				if lib.progressCircle({ 
+					duration = Config.CoreSettings.Timers.GetCement, 
+					label = 'Collecting '..itemLabel, 
+					position = 'bottom', 
+					useWhileDead = false, 
+					canCancel = true, 
+					disable = { car = true, move = true, combat = true, },  
+					anim = { 
+						dict = Config.Animations.GetCement.AnimDict, 
+						clip = Config.Animations.GetCement.Anim, 
+						flag = Config.Animations.GetCement.Flags,
+					}, 
+					prop = { 
+						model = Config.Animations.GetCement.Prop, 
+						bone = Config.Animations.GetCement.Bone, 
+						pos = Config.Animations.GetCement.Pos, 
+						rot = Config.Animations.GetCement.Rot, 
+					}, 
+				}) then
+					CokeCementCooldown()
+					if Config.CoreSettings.Chances.GetCement >= math.random(1,100) then
+						TriggerServerEvent('lusty94_cocaine:server:GetCement')
+					else
+						SendNotify(Config.Language.Notifications.NothingFound, 'error', 2000)
+						cokePoliceChance()
+					end
+					busy = false
+					LockInventory(false)
+				else 
+					busy = false
+					LockInventory(false)
+					SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
+				end
+			--else
+				--SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
+			--end
 		end
 	end
-end)
+end
 
 
 --get Gasoline
-RegisterNetEvent('lusty94_cocaine:client:GetGasoline', function()
+function GetCokeGasoline()
+	local itemLabel = ItemLabel('gasoline')
 	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:GasCan', function(HasItems)  
 		if HasItems then
 			if busy then
-				SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+				SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+				return
 			else
-				if isGasolineOnCooldown then
-					local remainingTime = math.ceil((lastGasolineUsage + cooldownTimeGasoline))
-					ShowCooldownNotification(remainingTime)
+				if hasSearched then
+					SendNotify(Config.Language.Notifications.Cooldown, 'error', 2000)
 				else
-				--	local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-					if success then
+					--if you want to add the skillcheck minigame then uncomment the relevant lines below
+					--local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+					--if success then
 						busy = true
 						LockInventory(true)
 						if lib.progressCircle({ 
-							duration = Config.CoreSettings.ProgressBar.GetGasoline, 
-							label = Config.Language.ProgressBar.GetGasoline, 
+							duration = Config.CoreSettings.Timers.GetGasoline, 
+							label = 'Collecting '..itemLabel, 
 							position = 'bottom', 
 							useWhileDead = false, 
 							canCancel = true, 
-							disable = { car = true, move = true, },  
-							anim = { dict = Config.Animations.GetGasoline.AnimDict, clip = Config.Animations.GetGasoline.Anim, flag = Config.Animations.GetGasoline.Flags,}, 
-							prop = { model = Config.Animations.GetGasoline.Prop, bone = Config.Animations.GetGasoline.Bone, pos = Config.Animations.GetGasoline.Pos, rot = Config.Animations.GetGasoline.Rot, }, 
+							disable = { car = true, move = true, combat = true, },  
+							anim = { 
+								dict = Config.Animations.GetGasoline.AnimDict, 
+								clip = Config.Animations.GetGasoline.Anim, 
+								flag = Config.Animations.GetGasoline.Flags,
+							}, 
+							prop = { 
+								model = Config.Animations.GetGasoline.Prop, 
+								bone = Config.Animations.GetGasoline.Bone, 
+								pos = Config.Animations.GetGasoline.Pos, 
+								rot = Config.Animations.GetGasoline.Rot, 
+							}, 
 						}) then
-							busy = false
-							LockInventory(false)	
-							local chance = Config.CoreSettings.Chances.GetGas
-							if chance >= math.random(1,100) then
+							CokeGasolineCooldown()
+							if Config.CoreSettings.Chances.GetGas >= math.random(1,100) then
 								TriggerServerEvent('lusty94_cocaine:server:GetGasoline')
 							else
-								SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
-								PoliceCallChance()
+								SendNotify(Config.Language.Notifications.NothingFound, 'error', 2000)
+								cokePoliceChance()
 							end
-							isGasolineOnCooldown = true
-							SetTimeout(cooldownTimeGasoline, function() isGasolineOnCooldown = false end)
+							busy = false
+							LockInventory(false)	
 						else 
 							busy = false
 							LockInventory(false)	
-							SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+							SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
 						end
-					else
-						SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-					end
+					--else
+						--SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
+					--end
 				end
 			end
 		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
+			SendNotify(Config.Language.Notifications.NoItems, 'error', 2000)
 		end
 	end)
-end)
+end
 
 
 --get HydrochloricAcid
-RegisterNetEvent('lusty94_cocaine:client:GetHydrochloricAcid', function()
+function GetCokeHydro()
+	local itemLabel = ItemLabel('hydrochloricacid')
 	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:HydroCan', function(HasItems)  
 		if HasItems then
 			if busy then
-				SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
+				SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
 			else
-				if isHydrochloricAcidOnCooldown then
-					local remainingTime = math.ceil((lastHydrochloricAcidUsage + cooldownTimeHydrochloricAcid))
-					ShowCooldownNotification(remainingTime)
+				if hasSearched then
+					SendNotify(Config.Language.Notifications.Cooldown, 'error', 2000)
+					return
 				else
-				--	local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-					if success then
+					--if you want to add the skillcheck minigame then uncomment the relevant lines below
+					--local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
+					--if success then
 						busy = true
 						LockInventory(true)
 						if lib.progressCircle({ 
-							duration = Config.CoreSettings.ProgressBar.GetHydrochloricAcid, 
-							label = Config.Language.ProgressBar.GetHydrochloricAcid, 
+							duration = Config.CoreSettings.Timers.GetHydrochloricAcid, 
+							label = 'Collecting '..itemLabel, 
 							position = 'bottom', 
 							useWhileDead = false, 
 							canCancel = true, 
-							disable = { car = true, move = tre, },  
-							anim = { dict = Config.Animations.GetHydrochloricAcid.AnimDict, clip = Config.Animations.GetHydrochloricAcid.Anim, flag = Config.Animations.GetHydrochloricAcid.Flags,}, 
-							prop = { model = Config.Animations.GetHydrochloricAcid.Prop, bone = Config.Animations.GetHydrochloricAcid.Bone, pos = Config.Animations.GetHydrochloricAcid.Pos, rot = Config.Animations.GetHydrochloricAcid.Rot, }, 
+							disable = { car = true, move = true, combat = true, },  
+							anim = { 
+								dict = Config.Animations.GetHydrochloricAcid.AnimDict, 
+								clip = Config.Animations.GetHydrochloricAcid.Anim, 
+								flag = Config.Animations.GetHydrochloricAcid.Flags,
+							}, 
+							prop = { 
+								model = Config.Animations.GetHydrochloricAcid.Prop, 
+								bone = Config.Animations.GetHydrochloricAcid.Bone, 
+								pos = Config.Animations.GetHydrochloricAcid.Pos, 
+								rot = Config.Animations.GetHydrochloricAcid.Rot, 
+							}, 
 						}) then
-							busy = false
-							LockInventory(false)	
-							isHydrochloricAcidOnCooldown = true
-							SetTimeout(cooldownTimeHydrochloricAcid, function() isHydrochloricAcidOnCooldown = false end)
-							local chance = Config.CoreSettings.Chances.GetHydro
-							if chance >= math.random(1,100) then
+							CokeHydroCooldown()
+							if Config.CoreSettings.Chances.GetHydro >= math.random(1,100) then
 								TriggerServerEvent('lusty94_cocaine:server:GetHydrochloricAcid')
 							else
-								SendNotify(Config.Language.Notifications.NothingFoundName, 'error', 2000)
-								PoliceCallChance()
+								SendNotify(Config.Language.Notifications.NothingFound, 'error', 2000)
+								cokePoliceChance()
 							end
+							busy = false
+							LockInventory(false)	
 						else 
 							busy = false
 							LockInventory(false)	
-							SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
+							SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
 						end
-					else
-						SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-					end
+					--else
+						--SendNotify(Config.Language.Notifications.Failed, 'error', 2000)
+					--end
 				end
 			end
 		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
+			SendNotify(Config.Language.Notifications.NoItems, 'error', 2000)
 		end
 	end)
-end)
+end
 
 
 
@@ -460,253 +588,173 @@ end)
 ------------------------< PROCESSING >------------------------
 
 
+--spawn processing table
+function spawnCokeTable()
+	local table = Config.CoreSettings.Props.ProcessingTable.Name
+	local coords = Config.CoreSettings.Props.ProcessingTable.Locations[math.random(#Config.CoreSettings.Props.ProcessingTable.Locations)]
+	local icon = Config.CoreSettings.Props.ProcessingTable.Icon
+	local label = Config.CoreSettings.Props.ProcessingTable.Label
+	local distance = Config.CoreSettings.Props.ProcessingTable.Distance
+	lib.requestModel(table, 20000)
+	cokeTable = CreateObject(table, coords.x, coords.y, coords.z-1, false, true, false) -- if table is floating or too low edit the -1 value on the Z axis
+	PlaceObjectOnGroundProperly(cokeTable)
+	FreezeEntityPosition(cokeTable, true)
+	SetEntityHeading(cokeTable, coords.w)
+	spawnedCokeTable[#spawnedCokeTable+1] = cokeTable
+	if TargetType == 'qb' then
+		exports['qb-target']:AddTargetEntity(cokeTable, { options = { 
+			{ 
+				type = "client", 
+				action = function()
+					if not busy then
+						openCokeMenu()
+					else
+						SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+					end
+				end,
+				icon = icon, 
+				label = label, 
+			}, 
+		}, distance = distance })
+	elseif TargetType == 'ox' then
+		exports.ox_target:addLocalEntity(cokeTable, (
+			{ 
+				name = 'cokeTable',
+				label = label, 
+				icon = icon, 
+				onSelect = function()
+					if not busy then
+						openCokeMenu()
+					else
+						SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+					end
+				end,
+				distance = distance, 
+			}
+		))
+	end
+	local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
+	SetBlipSprite(blip, 126)
+	SetBlipDisplay(blip, 4)
+	SetBlipScale(blip, 0.8)
+	SetBlipColour(blip, 4)
+	SetBlipAsShortRange(blip, true)
+	BeginTextCommandSetBlipName("STRING")
+	AddTextComponentString("Coke Table")
+	EndTextCommandSetBlipName(blip)
+end
 
---process pure cocaine
-RegisterNetEvent("lusty94_cocaine:client:ProcessPureCocaine", function()
-    QBCore.Functions.TriggerCallback('lusty94_cocaine:get:ProcessPureCocaine', function(HasItems)  
-        if HasItems then
-            if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-            else
-                -- local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-                if success then
-                    busy = true
-                    LockInventory(true)
-                    if lib.progressCircle({ 
-						duration = Config.CoreSettings.ProgressBar.ProcessCocaine, 
-						label = Config.Language.ProgressBar.ProcessCocaine, 
-						position = 'bottom', 
-						useWhileDead = false, 
-						canCancel = true, 
-						disable = { car = true, move = true, }, 
-						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
-					}) then
-						local chance = Config.CoreSettings.Chances.ProcessSuccess
-						if chance >= math.random(1,100) then
-                        	TriggerServerEvent('lusty94_cocaine:server:ProcessPureCocaine')
-						else
-							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-						end
-						busy = false
-						LockInventory(false)
-                    else 
-                        busy = false
-                        LockInventory(false)
+--menu to process cocaine items
+function openCokeMenu()
+	local options = {}
+    for k, v in pairs(Config.Processing) do
+        local label = ItemLabel(k)
+        table.insert(options, {
+            title = "Process: " .. label,
+            description = "Required Items: \n \n" .. GetRecipeDetails(v),
+            event = "lusty94_cocaine:client:CheckMaxProcessable",
+			icon = ItemImage(k),
+			image = ItemImage(k),
+			args = { item = k }
+        })
+    end
+    lib.registerContext({
+        id = 'cocaine_processing_menu',
+        title = 'Cocaine Processing',
+        options = options
+    })
 
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
-                    end
-                else
-                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-                end
-            end
-		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
-        end
-    end)
+    lib.showContext('cocaine_processing_menu')
+end
+
+
+--calculate max processable
+RegisterNetEvent("lusty94_cocaine:client:CheckMaxProcessable", function(data)
+    local item = data.item
+    TriggerServerEvent("lusty94_cocaine:server:GetMaxProcessable", item)
 end)
 
 
-
-
-
--- process PureCrack
-RegisterNetEvent('lusty94_cocaine:client:ProcessPureCrack', function()
-	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:ProcessPureCrack', function(HasItems)  
-        if HasItems then
-            if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-            else
-              --  local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-                if success then
-                    busy = true
-                    LockInventory(true)
-                    if lib.progressCircle({ 
-						duration = Config.CoreSettings.ProgressBar.ProcessCrack, 
-						label = Config.Language.ProgressBar.ProcessCrack, 
-						position = 'bottom', 
-						useWhileDead = false, 
-						canCancel = true, 
-						disable = { car = true, move = true, }, 
-						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
-					}) then
-						local chance = Config.CoreSettings.Chances.ProcessSuccess
-						if chance >= math.random(1,100) then
-                        	TriggerServerEvent('lusty94_cocaine:server:ProcessPureCrack')
-						else
-							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-						end
-						busy = false
-						LockInventory(false)
-                    else 
-                        busy = false
-                        LockInventory(false)
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
-                    end
-                else
-                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-                end
-            end
-		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
-        end
-	end)
+--processing menu
+RegisterNetEvent("lusty94_cocaine:client:ShowProcessingInput", function(item, maxProcessable)
+    if maxProcessable == 0 then
+        SendNotify(Config.Language.Notifications.NoItems, 'error', 2000)
+        return
+    end
+    local input = lib.inputDialog("Select Quantity", {
+        {
+            type = 'slider',
+            label = "Amount to Process",
+            min = 1,
+            max = maxProcessable,
+            default = 1
+        }
+    })
+    if not input then return end
+    local quantity = input[1]
+    TriggerEvent("lusty94_cocaine:client:ProcessItem", { item = item, quantity = quantity })
 end)
 
 
--- process CokeBaggy
-RegisterNetEvent('lusty94_cocaine:client:ProcessCokeBaggy', function()
-	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:CokeBaggyItems', function(HasItems)  
-        if HasItems then
-            if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-            else
-             --   local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-                if success then
-                    busy = true
-                    LockInventory(true)
-                    if lib.progressCircle({ 
-						duration = Config.CoreSettings.ProgressBar.ProcessCokeBaggy, 
-						label = Config.Language.ProgressBar.ProcessCokeBaggy, 
-						position = 'bottom', 
-						useWhileDead = false, 
-						canCancel = true, 
-						disable = { car = true, move = true, }, 
-						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
-					}) then
-						local chance = Config.CoreSettings.Chances.ProcessSuccess
-						if chance >= math.random(1,100) then
-                        	TriggerServerEvent('lusty94_cocaine:server:ProcessCokeBaggy')
-						else
-							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-						end
-						busy = false
-						LockInventory(false)
-                    else 
-                        busy = false
-                        LockInventory(false)
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
-                    end
-                else
-                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-                end
-            end
-		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
-        end
-	end)
+--process items
+RegisterNetEvent("lusty94_cocaine:client:ProcessItem", function(data)
+    if busy then
+        SendNotify(Config.Language.Notifications.Busy, 'error', 2000)
+        return
+    end
+    busy = true
+    LockInventory(true)
+    local itemLabel = ItemLabel(data.item)
+    if lib.progressCircle({
+        duration = Config.CoreSettings.Timers.ProcessItems * data.quantity,
+        label = 'Processing ' .. data.quantity .. ' x ' .. itemLabel,
+        position = 'bottom',
+        useWhileDead = false,
+        canCancel = true,
+        disable = { car = true, move = true, combat = true, },
+        anim = {
+            dict = Config.Animations.UseProcessingTable.AnimDict,
+            clip = Config.Animations.UseProcessingTable.Anim,
+            flag = Config.Animations.UseProcessingTable.Flags,
+        },
+    }) then
+        TriggerServerEvent('lusty94_cocaine:server:ProcessItem', data.item, data.quantity)
+		busy = false
+		LockInventory(false)
+    else
+        SendNotify(Config.Language.Notifications.Cancelled, 'error', 2000)
+    end
+    busy = false
+    LockInventory(false)
 end)
 
+--get recipe details
+function GetRecipeDetails(recipe)
+    local details = {}
+    for _, v in ipairs(recipe.required) do
+        table.insert(details, ItemLabel(v.item) .. " x" .. v.amount)
+    end
+    return table.concat(details, " \n")
+end
 
--- process CrackBaggy
-RegisterNetEvent('lusty94_cocaine:client:ProcessCrackBaggy', function()
-	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:CrackBaggyItems', function(HasItems)  
-		if HasItems then
-            if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-            else
-             --   local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-                if success then
-                    busy = true
-                    LockInventory(true)
-                    if lib.progressCircle({ 
-						duration = Config.CoreSettings.ProgressBar.ProcessCrackBaggy, 
-						label = Config.Language.ProgressBar.ProcessCrackBaggy, 
-						position = 'bottom', 
-						useWhileDead = false, 
-						canCancel = true, 
-						disable = { car = true, move = true, }, 
-						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
-					}) then
-						local chance = Config.CoreSettings.Chances.ProcessSuccess
-						if chance >= math.random(1,100) then
-                        	TriggerServerEvent('lusty94_cocaine:server:ProcessCrackBaggy')
-						else
-							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-						end
-						busy = false
-						LockInventory(false)
-                    else 
-                        busy = false
-                        LockInventory(false)
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
-                    end
-                else
-                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-                end
-            end
-		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
-        end
-	end)
-end)
-
-
-
--- process overdose cure
-RegisterNetEvent('lusty94_cocaine:client:CreateOverDoseCure', function()
-	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:OverDoseCureItems', function(HasItems)  
-        if HasItems then
-            if busy then
-                SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-            else
-              --  local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy', 'easy'}, {'e'})
-                if success then
-                    busy = true
-                    LockInventory(true)
-                    if lib.progressCircle({ 
-						duration = Config.CoreSettings.ProgressBar.CreateOverDoseCure, 
-						label = Config.Language.ProgressBar.CreateOverDoseCure, 
-						position = 'bottom', 
-						useWhileDead = false, 
-						canCancel = true, 
-						disable = { car = true, move = true, }, 
-						anim = { dict = Config.Animations.UseProcessingTable.AnimDict, clip = Config.Animations.UseProcessingTable.Anim, flag = Config.Animations.UseProcessingTable.Flags,}, 
-					}) then
-						local chance = Config.CoreSettings.Chances.ProcessSuccess
-						if chance >= math.random(1,100) then
-                        	TriggerServerEvent('lusty94_cocaine:server:CreateOverDoseCure')
-						else
-							SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-						end
-						busy = false
-						LockInventory(false)
-                    else 
-                        busy = false
-                        LockInventory(false)
-                        SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
-                    end
-                else
-                    SendNotify(Config.Language.Notifications.FailedName, 'error', 2000)
-                end
-            end
-		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
-        end
-	end)
-end)
 
 
 
 
 ----------------------< TAKE DRUGS >----------------------------
 
-local effectstimer = Config.DrugSettings.Effects.EffectsTimer
+local effectstimer = 20000 -- timer in MS for effects duration
+local EvidenceEvent = Config.CoreSettings.EventNames.Evidence
 
--- Function to take cocaine
-local function TakeCocaine()
+--take cocaine
+function TakeCocaine()
 	local playerPed = PlayerPedId()	
 	Wait(2000)
     TriggerEvent(EvidenceEvent, 'widepupils', 300)
     SetRunSprintMultiplierForPlayer(playerPed, 1.49)
 	Wait(1000)
 	SetTimecycleModifier('spectator1')
-	Wait(5000)
-	if Config.DrugSettings.Effects.GiveArmour then
-		AddArmourToPed(playerPed, ArmourAmount)
-	end
-	if Config.DrugSettings.Effects.ReduceStress then
-		TriggerServerEvent(Config.CoreSettings.EventNames.Stress, StressAmount)
-	end      
+	Wait(5000)    
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.00)
 	Wait(2000)
@@ -727,14 +775,10 @@ local function TakeCocaine()
     ClearTimecycleModifier()
     SetPedMotionBlur(playerPed, false)
 	StopGameplayCamShaking(playerPed, true)
-	if Config.DrugSettings.Effects.OverDose then
-		SendNotify(Config.Language.Notifications.OverDoseWarningName, 'error', 2000)
-		TriggerServerEvent('lusty94_cocaine:server:OverDose')
-	end 
 end
 
---function to take crack
-local function TakeCrack()
+--take crack
+function TakeCrack()
 	local playerPed = PlayerPedId()	
 	Wait(2000)
     TriggerEvent(EvidenceEvent, 'widepupils', 300)
@@ -742,12 +786,6 @@ local function TakeCrack()
 	Wait(1000)
 	SetTimecycleModifier('spectator1')
 	Wait(5000)
-	if Config.DrugSettings.Effects.GiveArmour then
-		AddArmourToPed(playerPed, ArmourAmount)
-	end
-	if Config.DrugSettings.Effects.ReduceStress then
-		TriggerServerEvent(Config.CoreSettings.EventNames.Stress, StressAmount)
-	end
 	SetFlash(0, 0, 500, 7000, 500)
 	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.00)
 	Wait(2000)
@@ -773,184 +811,99 @@ local function TakeCrack()
     StopGameplayCamShaking(playerPed, true)
     SetPedIsDrunk(playerPed, false)
     SetPedMotionBlur(playerPed, false)
-	if Config.DrugSettings.Effects.OverDose then
-		SendNotify(Config.Language.Notifications.OverDoseWarningName, 'error', 2000)
-		TriggerServerEvent('lusty94_cocaine:server:OverDose')
-	end 
 end
 
+--function to use items
+function UseCokeItems(itemName)
+    local playerPed = PlayerPedId()
+    local item = Config.Drugs[itemName]
+    TriggerServerEvent('lusty94_cocaine:server:UseItem', itemName)
+    Wait(2000) -- wait timer just to stop the rats that try spam items or remove them from inventory before declaring busy as false and unlocking inventory again
+    busy = false
+    LockInventory(false)
+    if item.armour > 0 then
+        SetPedArmour(playerPed, GetPedArmour(playerPed) + item.armour)
+    end
+    if item.stress > 0 then
+        TriggerServerEvent('hud:server:RelieveStress', item.stress)
+    end
+	if item.effect == 'crack' then
+    	TakeCrack()
+	elseif item.effect == 'coke' then
+		TakeCocaine()
+	end
+end
 
--- Take Cocaine
-RegisterNetEvent('lusty94_cocaine:client:TakeCokeBaggy', function()
-	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:TakeCokeBaggy', function(HasItems)  
-        if HasItems then
-			if busy then
-				SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-			else
-				busy = true
-				LockInventory(true)
-				if lib.progressCircle({ 
-					duration = Config.CoreSettings.ProgressBar.TakeCocaine, 
-					label = Config.Language.ProgressBar.TakeCocaine, 
-					position = 'bottom', 
-					useWhileDead = false, 
-					canCancel = true, 
-					disable = { car = true, move = false, },  
-					anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,}, 
-				}) then
-					TriggerServerEvent('lusty94_cocaine:server:TakeCokeBaggy')
-					busy = false
-					LockInventory(false)
-					if Config.DrugSettings.Effects.Enabled then
-						TakeCocaine()
-					end
-				else 
-					busy = false
-					LockInventory(false)
-					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
-				end
-			end
-		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
-		end
-	end)
-end)
-
--- Take Crack
-RegisterNetEvent('lusty94_cocaine:client:TakeCrackBaggy', function()
-	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:TakeCrackBaggy', function(HasItems)  
-        if HasItems then
-			if busy then
-				SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-			else
-				busy = true
-				LockInventory(true)
-				if lib.progressCircle({ 
-					duration = Config.CoreSettings.ProgressBar.TakeCrack, 
-					label = Config.Language.ProgressBar.TakeCrack, 
-					position = 'bottom', 
-					useWhileDead = false, 
-					canCancel = true, disable = { car = true, move = false, },  
-					anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,}, 
-				}) then
-					TriggerServerEvent('lusty94_cocaine:server:TakeCrackBaggy')
-					busy = false
-					LockInventory(false)
-					if Config.DrugSettings.Effects.Enabled then
-						TakeCrack()
-					end
-				else 
-					busy = false
-					LockInventory(false)
-					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
-				end
-			end
-		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
-		end
-	end)
+--use consumable items
+RegisterNetEvent('lusty94_cocaine:client:UseItem', function(itemName)
+    local item = Config.Drugs[itemName]    
+    if not item then return end
+    if busy then
+        SendNotify(Config.Language.Notifications.Busy, 'error', 2500)
+		return
+    else
+        QBCore.Functions.TriggerCallback('lusty94_cocaine:server:hasItem', function(hasItem)
+            if hasItem then
+                busy = true
+                LockInventory(true)
+                if lib.progressCircle({
+                    duration = item.duration,
+                    label = item.label,
+                    position = 'bottom',
+                    canCancel = item.cancel,
+                    disable = {
+                        move = not item.canmove,
+                        car = true,
+                        combat = true,
+                    },
+                    anim = {
+                        dict = item.dict,
+                        clip = item.anim,
+                        flag = item.flag,
+                    },
+                    prop = {
+                    
+                        model = item.prop,
+                        bone = item.bone,
+                        pos = item.pos,
+                        rot = item.rot,
+                        
+                    },
+                }) 
+                then
+                    UseCokeItems(itemName)
+                else
+                    busy = false
+                    LockInventory(false)
+                    SendNotify(Config.Language.Notifications.Cancelled, 'error', 2500)
+                end
+            end
+        end, itemName) -- Pass the itemName to the callback
+    end
 end)
 
 
-
-
-
-
-
----------------------< OVERDOSE & CURE >--------------------
-
--- overdose effect
-RegisterNetEvent('lusty94_cocaine:client:OverDose', function()
-	local playerPed = PlayerPedId()
-	SetFlash(0, 0, 500, 7000, 500)
-	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.10)
-	DoScreenFadeOut(2000)
-	Wait(2000)
-	SetEntityHealth(playerPed, GetEntityHealth(playerPed) - Config.DrugSettings.Effects.HealthRemoved)
-	Wait(2000)
-	DoScreenFadeIn(2000)
-	SendNotify(Config.Language.Notifications.OverDosedName, 'error', 2000)
-	SetFlash(0, 0, 500, 7000, 500)
-	ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 1.10)
-	SetFlash(0, 0, 500, 7000, 500)
-	StopGameplayCamShaking(playerPed, true)
-end)
-
--- Take overdose cure
-RegisterNetEvent('lusty94_cocaine:client:TakeOverDoseCure', function()
-	QBCore.Functions.TriggerCallback('lusty94_cocaine:get:TakeOverDoseCure', function(HasItems)  
-        if HasItems then
-			if busy then
-				SendNotify(Config.Language.Notifications.BusyName, 'error', 2000)
-			else
-				busy = true
-				LockInventory(true)
-				if lib.progressCircle({ 
-					duration = Config.CoreSettings.ProgressBar.TakeOverDoseCure, 
-					label = Config.Language.ProgressBar.TakeOverDoseCure, 
-					position = 'bottom', 
-					useWhileDead = false, 
-					canCancel = true, 
-					disable = { car = true, move = false, },  
-					anim = { dict = Config.Animations.TakeDrugs.AnimDict, clip = Config.Animations.TakeDrugs.Anim, flag = Config.Animations.TakeDrugs.Flags,}, 
-				}) then
-					TriggerServerEvent('lusty94_cocaine:server:CureOverDose')
-					busy = false
-					LockInventory(false)
-				else 
-					busy = false
-					LockInventory(false)
-					SendNotify(Config.Language.Notifications.CancelledName, 'error', 2000)
-				end
-			end
-		else
-			SendNotify(Config.Language.Notifications.NoItemsName, 'error', 2000)
-		end
-	end)
-end)
-
-
-
-----------------< SUPPLIES SHOP >--------------------
-
--- cocaine supplies shop
-AddEventHandler("lusty94_cocaine:client:openSuppliesShop", function()
+--supply shop
+function cokeSupplyShop()
 	if InvType == 'qb'then
 		TriggerServerEvent('lusty94_cocaine:server:SuppliesShop')
 	elseif InvType == 'ox' then
 		exports.ox_inventory:openInventory('shop',{ type = 'CocaineSupplyShop' })
 	end
-end)
+end
 
 
--- function to lock inventory to prevent exploits
-function LockInventory(toggle) -- big up to jim for how to do this
+
+--lock inventory to prevent exploits
+function LockInventory(toggle)
 	if toggle then
-        LocalPlayer.state:set("inv_busy", true, true) -- used by qb, ps and ox
-        --this is the old method below
-        --[[         
-        if InvType == 'qb' then
-            this is for the old method if using old qb and ox
-            TriggerEvent('inventory:client:busy:status', true) TriggerEvent('canUseInventoryAndHotbar:toggle', false)
-        elseif InvType == 'ox' then
-            LocalPlayer.state:set("inv_busy", true, true)
-        end         
-        ]]
+        LocalPlayer.state:set("inv_busy", true, true)
     else 
-        LocalPlayer.state:set("inv_busy", false, true) -- used by qb, ps and ox
-        --this is the old method below
-        --[[        
-        if InvType == 'qb' then
-            this is for the old method if using old qb and ox
-         TriggerEvent('inventory:client:busy:status', false) TriggerEvent('canUseInventoryAndHotbar:toggle', true)
-        elseif InvType == 'ox' then
-            LocalPlayer.state:set("inv_busy", false, true)
-        end        
-        ]]
+        LocalPlayer.state:set("inv_busy", false, true)
     end
 end
 
---function to display item images for ox_lib menu
+--display item images for ox_lib menu
 function ItemImage(img)
 	if InvType == 'ox' then
 		return "nui://ox_inventory/web/images/".. img.. '.png'
@@ -959,35 +912,44 @@ function ItemImage(img)
 	end
 end
 
+--get the label of an item
+function ItemLabel(label)
+	if InvType == 'ox' then
+		local Items = exports['ox_inventory']:Items()
+		return Items[label]['label']
+    elseif InvType == 'qb' then
+		return QBCore.Shared.Items[label]['label']
+	end
+end
+
 --dont touch
 AddEventHandler('onResourceStart', function(resourceName)
     if (GetCurrentResourceName() == resourceName) then
-		spawnCokeLeaves()
+		spawnCocaLeaf()
+		spawnCokeTable()
     end
 end)
 
 --spawn leaves on player load
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    for _, v in pairs(spawnedCokeLeaves) do SetEntityAsMissionEntity(v, false, true) DeleteObject(v) SetEntityAsNoLongerNeeded(v) end
-    spawnedCokeLeaves = {}
+    for _, v in pairs(spawnedCocaLeaves) do SetEntityAsMissionEntity(v, false, true) DeleteObject(v) SetEntityAsNoLongerNeeded(v) end
+    spawnedCocaLeaves = {}
 	Wait(1000)
-    spawnCokeLeaves()
+    spawnCocaLeaf()
 end)
 
 --dont touch
 AddEventHandler('onResourceStop', function(resource)
 	if resource == GetCurrentResourceName() then
-        delete_prop(cokeTableProp)
 		busy = false
-        cokeTableProp = nil
-        cokeTablePlaced = false
 		LockInventory(false)
-		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(cokePlants, 'cokePlants') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(cokePlants, 'cokePlants') end
-		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(CokeSuppliesPed, 'CokeSuppliesPed') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(CokeSuppliesPed, 'CokeSuppliesPed') end
-		for _, v in pairs(spawnedCokeLeaves) do SetEntityAsMissionEntity(v, false, true) DeleteObject(v) end
-		spawnedCokeLeaves = {}
-		print('^5--<^3!^5>-- ^7| Lusty94 |^5 ^5--<^3!^5>--^7 Cocaine V2.0.1 Stopped Successfully ^5--<^3!^5>--^7')
+		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(cocaLeaves, 'cocaLeaves') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(cocaLeaves, 'cocaLeaves') end
+		if TargetType == 'qb' then exports['qb-target']:RemoveTargetEntity(cocainePed, 'cocainePed') elseif TargetType == 'ox' then exports.ox_target:removeLocalEntity(cocainePed, 'cocainePed') end
+		for _, v in pairs(spawnedCocaLeaves) do SetEntityAsMissionEntity(v, false, true) DeleteObject(v) end
+		spawnedCocaLeaves = {}
+		for _, v in pairs(spawnedCokeTable) do SetEntityAsMissionEntity(v, false, true) DeleteObject(v) end
+		spawnedCokeTable = {}
+		StopAllScreenEffects()
+		print('^5--<^3!^5>-- ^7| Lusty94 |^5 ^5--<^3!^5>--^7 Cocaine V2.1.0 Stopped Successfully ^5--<^3!^5>--^7')
 	end
 end)
-
-

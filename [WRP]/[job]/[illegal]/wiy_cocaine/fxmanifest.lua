@@ -8,13 +8,12 @@ name "lusty94_cocaine"
 
 description 'Cocaine & Crack Processing Script For QB Core'
 
-version '3.1.7'
+version '2.1.0'
 
 lua54 'yes'
 
 client_script {
     'client/cocaine_client.lua',
-    'shared/menus.lua',
 }
 
 
