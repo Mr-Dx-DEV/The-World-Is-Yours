@@ -159,6 +159,22 @@ Config.Companies.Services = {
         }
     },
     {
+        job = "kittys",
+        name = "Kittys Motor Work",
+        icon = "https://r2.fivemanage.com/w4aVvxe5Gx1fmKRNTBqw3/image/images.jpg",
+        canCall = true, -- if true, players can call the company
+        canMessage = true, -- if true, players can message the company
+        bossRanks = {"Manager", "Owner"}, -- ranks that can manage the company
+        location = {
+            name = "Kittys Motor Work",
+            coords = {
+                x = -249.339,
+                y = -1152.002
+            }
+        }
+    },
+    
+    {
         job = "taxi",
         name = "Taxi",
         icon = "https://cdn-icons-png.flaticon.com/128/433/433449.png",
