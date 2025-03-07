@@ -35161,4 +35161,37 @@ description = 'Can store personal data'
 	},
 
 	
+
+	["crack_1oz"] = {
+		label = "Ounce of Crack",
+		weight = 500,
+		stack = true,
+		close = true,
+		description = "For all the thirsty out there",
+		client = {
+			image = "crack_1oz.png",
+		}
+	},
+
+	["cokebaggy"] = {
+		label = "1g Bag of Coke",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "A gram of the finest nose candy!",
+		client = {
+			image = "cocaine_baggy.png",
+		}
+	},
+
+	["coke_1oz"] = {
+		label = "Ounce of Cocaine",
+		weight = 280,
+		stack = true,
+		close = true,
+		description = "A ounce of the finest nose candy!",
+		client = {
+			image = "coke_1oz.png",
+		}
+	},
 }
