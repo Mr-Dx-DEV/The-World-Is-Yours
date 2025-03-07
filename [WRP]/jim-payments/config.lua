@@ -98,7 +98,7 @@ Config = {
 		['ottos'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.10, },
 		['lscustoms'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.10, },
 		['bennys'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.10, },
-
+		['kittys'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.10, },
 		-- Gangs | Example of a gang being supported
 		['lostmc'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, gang = true, },
 	},
