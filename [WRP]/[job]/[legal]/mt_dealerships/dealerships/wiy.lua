@@ -24,7 +24,7 @@ Config.dealerships.wiy = { -- Dealership ID, NEEDS TO BE THE SAME AS THE JOB!!!
         { coords = vec3(-71.165, 76.86, 71.615), radius = 0.5, includeBossMenu = true },
     },
     catalogues = { -- The catalogues to the players to see and employees to change vehicles on showroom
-        { coords = vec3(-76.48, 75.18, 71.63), radius = 0.4, vehicleCoords = vec4(-76.48, 75.18, 71.63, 250.0), vehicle = 'adder', vehicleColor = 111 },
+        { coords = vec3(-64.195, 73.816, 71.615), radius = 0.6, vehicleCoords = vec4(-76.48, 75.18, 71.63, 250.0), vehicle = 'adder', vehicleColor = 111 },
     },
     categories = { -- The categories that will show on the catalogue and dashboard
         { label = 'One of One', id = 'oneofone' },
