@@ -11,7 +11,7 @@ Config.Classes = {
         ['ContractTime'] = 2, -- (in hours) Time to start a contract before it expires
         ["Hacks"] = false,
         ["NextClass"] = "C",
-        ["Guards"] = {min = 1, max = 2},
+        ["Guards"] = {min = 0, max = 0},
         ["Weapons"] = {"WEAPON_BAT", "WEAPON_KNUCKLE"}
     },
     ["C"] = {
