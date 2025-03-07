@@ -76,21 +76,21 @@ Config.Tables = { -- items used to place tables for cooking
             -- ['acetone'] = 1,
             -- ['dimethylformamide'] = 1,
 
-            ['cocaleaf'] = 3,
+            ['cocaleaf'] = 15,
             ['cement'] = 1,
             ['gasoline'] = 1,
             ['hydrochloricacid'] = 1,
             ['scales'] = 1,
-            ['emptybaggies'] = 1,
+            ['emptybaggies'] = 15,
 
 
         },
         products = {                                 -- finished product, make sure it fits the stash weight and slots
-            { name = "coke_baggy", min = 3, max = 5 }, -- it will give item coke_baggy a min of 3 and max 5
+            { name = "coke_baggy", min = 20, max = 20 }, -- it will give item coke_baggy a min of 3 and max 5
         },
-        cookingXP = { min = 3, max = 5 },            -- XP received for every successful cook / every 100XP is 1 level
-        cookingTime = 3,                             -- in minutes, time for completing a cook
-        cooldownTime = 5,                            -- in minutes, after every cook the table enters in cooldown
+        cookingXP = { min = 1, max = 5 },            -- XP received for every successful cook / every 100XP is 1 level
+        cookingTime = 1,                             -- in minutes, time for completing a cook
+        cooldownTime = 0,                            -- in minutes, after every cook the table enters in cooldown
         particles = {                                -- particles used for object when is cooking, smoke by default or false (particles = false)
             dict = "core",
             asset = "ent_amb_smoke_scrap",
@@ -104,7 +104,7 @@ Config.Tables = { -- items used to place tables for cooking
         weight = 100000,       -- stash weight
         ingredients = {        -- needed ingredients for cooking (['itemName'] = amount needed)
 
-            ['coke_baggy'] = 3,
+            ['coke_baggy'] = 1,
             ['water_bottle'] = 1,
             ['sodiumcarbonate'] = 1,
             ['scales'] = 1,
@@ -113,11 +113,11 @@ Config.Tables = { -- items used to place tables for cooking
 
         },
         products = {                              -- finished product, make sure it fits the stash weight and slots
-            { name = "crack_baggy", min = 3, max = 5 }, -- it will give item coke_baggy a min of 3 and max 5
+            { name = "crack_baggy", min = 6, max = 8 }, -- it will give item coke_baggy a min of 3 and max 5
         },
         cookingXP = { min = 3, max = 5 },         -- XP received for every successful cook / every 100XP is 1 level
         cookingTime = 3,                          -- in minutes, time for completing a cook
-        cooldownTime = 5,                         -- in minutes, after every cook the table enters in cooldown
+        cooldownTime = 1,                         -- in minutes, after every cook the table enters in cooldown
         particles = {                             -- particles used for object when is cooking, smoke by default or false (particles = false)
             dict = "crack",
             asset = "ent_amb_smoke_scrap",
