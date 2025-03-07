@@ -77,7 +77,7 @@ Config.Gardener              = {
             },
             image = "https://r2.fivemanage.com/biv23I9cFWICSObhZsr4C/Mask_group1.png",
             awards = {
-                money = 10000,
+                money = 5000,
                 xp = 3000,
                 onlinejobextra = 2 -- how many percent of the money will increase when a player enters onlinejob
             },
