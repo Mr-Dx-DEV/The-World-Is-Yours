@@ -50,7 +50,7 @@ Config.SaveVehiclePropsOnInsert = true
 -- Having significant issues? I beg you to just set it back to false before opening a ticket with us
 -- HIGHLY recommended that you set Config.DoNotSpawnInsideVehicle = false if you decide to enable this
 -- Want to read my rant about server spawned vehicles? https://docs.jgscripts.com/advanced-garages/misc/why-are-you-not-using-createvehicleserversetter-by-default
-Config.SpawnVehiclesWithServerSetter = false
+Config.SpawnVehiclesWithServerSetter = true
 
 -- Vehicle Transfers
 Config.GarageVehicleTransferCost = 2500 -- Cost to transfer between garages
