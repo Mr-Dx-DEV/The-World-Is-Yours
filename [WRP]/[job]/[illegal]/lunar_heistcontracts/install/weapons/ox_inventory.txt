@@ -1,4 +1,0 @@
-['WEAPON_DIGISCANNER'] = {
-    label = 'Signal booster',
-    weight = 1200,
-},

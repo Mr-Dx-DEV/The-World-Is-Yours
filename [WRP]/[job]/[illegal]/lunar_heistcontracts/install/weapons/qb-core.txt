@@ -1,1 +1,0 @@
-[`weapon_digiscanner`]                  = { name = 'weapon_digiscanner', label = 'Signal Booster', weapontype = 'Miscellaneous', ammotype = nil, damagereason = '' },

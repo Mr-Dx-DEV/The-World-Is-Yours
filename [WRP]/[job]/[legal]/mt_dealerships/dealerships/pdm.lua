@@ -19,6 +19,8 @@ Config.dealerships.pdm = { -- Dealership ID, NEEDS TO BE THE SAME AS THE JOB!!!
         { coords = vec3(-46.88, -1095.28, 27.27), radius = 0.4 },
         { coords = vec3(-51.55, -1095.02, 27.33), radius = 0.4 },
         { coords = vec3(-51.04, -1086.95, 27.27), radius = 0.4 },
+        { coords = vec3(975.773, 40.235, 72.152), radius = 0.1, vehicleCoords = vec4(975.773, 40.235, 72.152, 140.851), vehicle = 'hellcatf9', vehicleColor = 111 },
+     -- { vehicleCoords = vec4(975.773, 40.235, 72.152, 140.851), vehicle = '', vehicleColor = 1 },
     },
     categories = { -- The categories that will show on the catalogue and dashboard (need to add the shop with the job name to the vehicles.lua too on the shops field otherwise it'll not show the vehicles!!)
         { label = 'Compacts', id = 'compacts' },

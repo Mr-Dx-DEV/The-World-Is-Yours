@@ -187,6 +187,20 @@ Config.GarageLocations = { -- IMPORTANT - Every garage name must be unique
     hideMarkers = true,
     markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
   },
+  ["Casino"] = {
+    coords = vector3(877.71, -24.66, 78.76),
+    spawn = vector4(877.71, -24.66, 78.76, 61.44),
+    distance = 15,
+    type = "car",
+    hideBlip = false,
+    blip = {
+      id = 357,
+      color = 0,
+      scale = 0.5
+    },
+    hideMarkers = true,
+    markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  },
   ["Sandy North"] = {
     coords = vector3(1878.44, 3760.1, 32.94),
     spawn = vector4(1880.14, 3757.73, 32.93, 215.54),

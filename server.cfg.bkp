@@ -3,13 +3,13 @@ endpoint_add_tcp "0.0.0.0:30120"
 endpoint_add_udp "0.0.0.0:30120"
 
 set steam_webApiKey "598BC69C0F36C236B7042EB9FC643B79"
-sets tags "default, deployer, qbcore, qb-core, The World Is Yours, theworldisyour, worldisyour, The World, World Is Yours"
+sets tags "The World Is Yours, theworldisyour, worldisyour, TheWorld, WorldIsYours"
 
 ## You MAY edit the following:
 sv_licenseKey "cfxk_lhatWQ9tXEFPMQWjyOTP_gzVQX"
-sv_hostname "^1The ^1World ^3Is ^3Yours"
-sets sv_projectName "^1The ^1World ^3Is ^3Yours"
-sets sv_projectDesc "An advanced FiveM RP framework including jobs, gangs, housing & more!"
+sv_hostname "^8The ^8World ^3Is ^3Yours │ ^4Hiring ^4PD ^4& ^4EMS │ ^8Streamer ^8& ^8E ^8Girl ^8Frendly │ ^5Player ^5Owned ^5 Businesses │ ^7Tons ^7Of ^7Jobs │ ^2Custom ^2Drugs "
+sets sv_projectName "The World Is Yours"
+sets sv_projectDesc "Unique 17+Roleplay Semi-Realistic"
 sets locale "en-US"
 load_server_icon mylogo.png
 
@@ -17,8 +17,9 @@ set mysql_connection_string "mysql://root@localhost/worldisyours?charset=utf8mb4
 
 #####  Core
 sv_maxclients 75
-set sv_enforceGameBuild 2699
+set sv_enforceGameBuild 3258
 #sv_pureLevel 1
+#sv_master1 1
 
 set PedPopulationBudget 3         # Controls density of AI pedestrians, set between 1-3 for larger servers
 set VehiclePopulationBudget 3     # Controls density of vehicles, similar range for larger environments
@@ -34,7 +35,7 @@ set sv_maxEntityCreationTime 5000
 set sv_increaseResourceCacheLimits true
 #set sv_poolSizesIncrease 512
 # Some performance tweaks for larger servers
-set sv_scriptHookAllowed 1
+set sv_scriptHookAllowed 0
 
 # Pool and cache settings
 set TxdStoreSize 204800
@@ -153,6 +154,9 @@ ensure [WRP]
 ensure [job]
 
 
+ensure ngd-Bridge
+ensure [ngd]  
+
 
 
 
@@ -206,10 +210,10 @@ add_ace resource.ox_lib command.remove_principal allow
 ## Permissions ##
 add_ace group.admin command allow # allow all commands
 add_principal identifier.fivem:5751927 group.admin #SBDemon
-add_principal identifier.license:a045ed84bc7b147ab67442c4be4c70a4bb7d0ad5 group.admin ## Mr_Dx Dev
-add_principal identifier.license:a045ed84bc7b147ab67442c4be4c70a4bb7d0ad5 qbcore.god ## Mr_Dx Dev
-add_principal identifier.license:f90cd271ae404268c3728c7b32d31095b7092b5b group.admin ## SB-Demon
-add_principal identifier.license:f90cd271ae404268c3728c7b32d31095b7092b5b qbcore.god ## SB-Demon
+add_principal identifier.discord:811436286006657025 group.admin ## Mr_Dx Dev
+add_principal identifier.discord:811436286006657025 qbcore.god ## Mr_Dx Dev
+add_principal identifier.license:3588634a5bf8693cc225a6515fbd20936019a06e group.admin ## SB-Demon
+add_principal identifier.license:3588634a5bf8693cc225a6515fbd20936019a06e qbcore.god ## SB-Demon
 add_principal identifier.license:53d63cef03bd84bee2778d19ae409b18c859187a group.admin ## Demon Angle
 
 

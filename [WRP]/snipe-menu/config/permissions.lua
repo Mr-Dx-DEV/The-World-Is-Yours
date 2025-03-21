@@ -30,7 +30,7 @@ Config.Permissions = {
     ["license:3588634a5bf8693cc225a6515fbd20936019a06e"] = "god", -- SB-Demon
     ["license2:17c08e084f072db994a114b63ea05a8373230d0f"] = "god", -- DocJay
     ["license:53d63cef03bd84bee2778d19ae409b18c859187a"] = "god", -- Sof
-    ["license:a045ed84bc7b147ab67442c4be4c70a4bb7d0ad5"] = "god", -- Dx
+    ["discord:811436286006657025"] = "god", -- Dx
 
 
 

@@ -2415,7 +2415,7 @@ Config.market_categories = {
 		['items'] = {
 			['pistol_ammo'] = {
 				['name'] = "Pistol Ammo",
-				['price_to_customer'] = 250,
+				['price_to_customer'] = 25,
 				['price_to_customer_min'] = 125,
 				['price_to_customer_max'] = 500,
 				['price_to_export'] = 200,
@@ -2427,7 +2427,7 @@ Config.market_categories = {
 			},
 			['rifle_ammo'] = {
 				['name'] = "Rifle Ammo",
-				['price_to_customer'] = 350,
+				['price_to_customer'] = 50,
 				['price_to_customer_min'] = 175,
 				['price_to_customer_max'] = 700,
 				['price_to_export'] = 300,
@@ -2439,7 +2439,7 @@ Config.market_categories = {
 			},
 			['smg_ammo'] = {
 				['name'] = "SMG Ammo",
-				['price_to_customer'] = 300,
+				['price_to_customer'] = 50,
 				['price_to_customer_min'] = 150,
 				['price_to_customer_max'] = 600,
 				['price_to_export'] = 250,
@@ -2451,7 +2451,7 @@ Config.market_categories = {
 			},
 			['shotgun_ammo'] = {
 				['name'] = "Shotgun Ammo",
-				['price_to_customer'] = 300,
+				['price_to_customer'] = 75,
 				['price_to_customer_min'] = 150,
 				['price_to_customer_max'] = 600,
 				['price_to_export'] = 250,

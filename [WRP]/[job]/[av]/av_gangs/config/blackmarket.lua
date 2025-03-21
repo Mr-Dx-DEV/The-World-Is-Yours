@@ -3,7 +3,7 @@ Config.MoneyAccount = 'bank' -- account used to buy labs and upgrades, if u want
 Config.MaxProperties = {
     ['offices'] = 2, -- Max offices a gang can own
     ['warehouse'] = 3, -- Max warehouse a gang can own
-    ['labs'] = 1, -- Max labs a gang can own
+    ['labs'] = 5, -- Max labs a gang can own
 }
 Config.MustBeInZone = true -- true = players can only setup the property entrance inside their own territory or false = create it anywhere
 -- how close a property can be from another one / don't use lower than 5 to prevent overlaping zones 

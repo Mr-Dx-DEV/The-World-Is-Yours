@@ -79,7 +79,7 @@ Config = {
     IT_LOCAL_RACE_COOLDOWN = 0, -- how long until they can play another local game, in seconds, (def: 60 * 10)
     IT_MAIN_EVENT_COOLDOWN = 0, -- how long until they can play another main event game, in seconds, (def: 60 * 10)
     -- Win chance of horses are based on their odds, however, if you want to make the game more unlucky, lower the win chance:
-    IT_LOCAL_RACE_WIN_CHANCE = 50, -- win chance (from 0 to 100), def: 100, 100 means that it's not *unlucky* at all
+    IT_LOCAL_RACE_WIN_CHANCE = 100, -- win chance (from 0 to 100), def: 100, 100 means that it's not *unlucky* at all
     IT_MAIN_EVENT_RACE_WIN_CHANCE = 50, -- win chance (from 0 to 100), def: 100, 100 means that it's not *unlucky* at all
 
     -- Roulette
