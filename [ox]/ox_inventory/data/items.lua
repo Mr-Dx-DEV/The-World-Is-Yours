@@ -1,4 +1,87 @@
 return {
+	["coke"] = {
+        label = "Cocaine",
+        weight = 500,
+        stack = true,
+        close = true,
+    },
+
+    ["cement"] = {
+        label = "Cement",
+        weight = 100,
+        stack = true,
+        close = true,
+        consume = 0,
+        server = {
+            export = 'kq_cocaine.UseCement',
+        },
+    },
+
+    ["hydrochloric_acid"] = {
+        label = "Hydrochloric acid",
+        weight = 100,
+        stack = true,
+        close = true,
+    },
+
+    ["coca_blend"] = {
+        label = "Coca blend",
+        weight = 200,
+        stack = true,
+        close = true,
+    },
+
+    ["coca_leaf"] = {
+        label = "Coca leaf",
+        weight = 100,
+        stack = true,
+        close = true,
+        consume = 0,
+        server = {
+            export = 'kq_cocaine.UseLeaf',
+        },
+    },
+
+    ["coca_paste"] = {
+        label = "Coca paste",
+        weight = 100,
+        stack = true,
+        close = true,
+    },
+
+    ["gasoline"] = {
+        label = "Gasoline",
+        weight = 100,
+        stack = true,
+        close = true,
+    },
+
+
+
+	["kq_tow_rope"] = {
+		label = "Towing rope",
+		weight = 2.0,
+		stack = true,
+		close = true,
+		description = "Rope used for towing vehicles",
+		client = {
+			image = "kq_tow_rope.png",
+		}
+	},
+	
+	["kq_winch"] = {
+		label = "Car winch",
+		weight = 4.0,
+		stack = true,
+		close = true,
+		description = "Car winch made to winch heavy vehicles",
+		client = {
+			image = "kq_winch.png",
+		}
+	},
+
+	
+
 
 	["k9glowstick"] = {
 		label = "Dog Glow Stick",
@@ -1566,27 +1649,6 @@ description = 'Can store personal data'
 	description = "",
 	client = {
 		image = "acetone.png",
-	}
-},
-["cement"] = {
-	label = "Cement",
-	weight = 100,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "cement.png",
-	}
-},
-
-["gasoline"] = {
-	label = "Gasoline",
-	weight = 100,
-	stack = true,
-	close = true,
-	description = "",
-	client = {
-		image = "gasoline.png",
 	}
 },
 
