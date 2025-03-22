@@ -2046,7 +2046,7 @@ Config.market_categories = {
 				['price_to_owner'] = 125,
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
-				['img'] = 'adjustable_spanner.png',
+				['img'] = 'spanner.png',
 			},
 			['drill'] = {
 				['name'] = "Drill",
@@ -2102,6 +2102,28 @@ Config.market_categories = {
 				['amount_to_owner'] = 2,
 				['amount_to_delivery'] = 2,
 				['img'] = 'screwdriver.png',
+			},
+			['kq_tow_rope'] = {
+				['name'] = "Towing Rope",
+				['price_to_customer'] = 50,
+				['price_to_customer_min'] = 45,
+				['price_to_customer_max'] = 80,
+				['price_to_export'] = 40,
+				['price_to_owner'] = 38,
+				['amount_to_owner'] = 2,
+				['amount_to_delivery'] = 2,
+				['img'] = 'kq_tow_rope.png',
+			},
+			['kq_winch'] = {
+				['name'] = "Car Winch",
+				['price_to_customer'] = 50,
+				['price_to_customer_min'] = 45,
+				['price_to_customer_max'] = 90,
+				['price_to_export'] = 42,
+				['price_to_owner'] = 40,
+				['amount_to_owner'] = 1,
+				['amount_to_delivery'] = 1,
+				['img'] = 'kq_winch.png',
 			},
 			
 			
