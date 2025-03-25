@@ -111,11 +111,11 @@ function WSB.target.removeTarget(id)
 end
 
 function WSB.target.disable(bool)
-    return exports['qb-target']:AllowTargeting(bool)
+    return exports['qb-target']:AllowTargeting(not bool)
 end
 
 function WSB.disableTarget(bool)
-    return exports['qb-target']:AllowTargeting(bool)
+    return exports['qb-target']:AllowTargeting(not bool)
 end
 
 local function resourceStopped(resource)

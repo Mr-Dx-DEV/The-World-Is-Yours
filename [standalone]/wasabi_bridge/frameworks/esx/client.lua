@@ -24,9 +24,21 @@ AddEventHandler('esx:onPlayerSpawn', function(noAnim)
     isDead = nil
 end)
 
-AddEventHandler('esx:onPlayerDeath', function(data)
-    TriggerEvent('wasabi_bridge:onPlayerDeath', data)
-    isDead = true
+AddEventHandler('gameEventTriggered', function(event, data)
+    if event ~= 'CEventNetworkEntityDamage' then return end
+    local playerPed = PlayerPedId()
+    local victim, victimDied = data[1], data[4]
+    if not IsPedAPlayer(victim) then return end
+    local player = PlayerId()
+    if victimDied and NetworkGetPlayerIndexFromPed(victim) == player and (IsPedDeadOrDying(victim, true) or IsPedFatallyInjured(victim)) then
+        local deathCause = GetPedCauseOfDeath(playerPed)
+        local data = {
+            deathCause = deathCause,
+            victimCoords = GetEntityCoords(victim)
+        }
+        TriggerEvent('wasabi_bridge:onPlayerDeath', data)
+        isDead = true
+    end
 end)
 
 RegisterNetEvent('esx:onPlayerLogout', function()

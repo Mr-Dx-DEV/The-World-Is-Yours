@@ -154,6 +154,22 @@ function WSB.registerUsableItem(item, cb)
     ESX.RegisterUsableItem(item, cb)
 end
 
+function WSB.getPlayerInventory(source)
+    local player = WSB.getPlayer(source)
+    if not player then return end
+    local inventory = player.getInventory()
+    local cleanedItems, count = {}, 0
+    for _, item in pairs(inventory) do
+        if item then
+            count = count + 1
+            cleanedItems[count] = item
+            cleanedItems[count].amount = cleanedItems[count].count or cleanedItems[count].amount
+            cleanedItems[count].count = cleanedItems[count].count or cleanedItems[count].amount
+        end
+    end
+    return cleanedItems or {}
+end
+
 function WSB.hasItem(source, _item)
     local player = WSB.getPlayer(source)
     if not player then return end
@@ -166,7 +182,7 @@ function WSB.addItem(source, item, count, slot, metadata)
     if not player then return end
     if metadata and not WSB.inventory then
         print(
-        '^0[^3WARNING^0] wasabi_bridge has had an item passed with metadata but did not detect your inventory! Issues may occur!')
+            '^0[^3WARNING^0] wasabi_bridge has had an item passed with metadata but did not detect your inventory! Issues may occur!')
     end
     return player.addInventoryItem(item, count, metadata, slot)
 end

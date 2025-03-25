@@ -188,6 +188,22 @@ function WSB.registerUsableItem(item, cb)
     end
 end
 
+function WSB.getPlayerInventory(source)
+    local player = WSB.getPlayer(source)
+    if not player then return end
+    local cleanedItems, count = {}, 0
+    for _, item in pairs(player.PlayerData.items) do
+        if item then
+            count = count + 1
+            cleanedItems[count] = item
+            cleanedItems[count].amount = cleanedItems[count].count or cleanedItems[count].amount
+            cleanedItems[count].count = cleanedItems[count].count or cleanedItems[count].amount
+        end
+    end
+    return cleanedItems or {}
+
+end
+
 function WSB.hasItem(source, _item)
     if qboxFound or oxFound then
         return exports.ox_inventory:GetItem(source, _item, nil, true) or 0
