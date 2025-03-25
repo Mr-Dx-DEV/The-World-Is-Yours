@@ -1,0 +1,13 @@
+fiv3devs_afterlife/
+├── fxmanifest.lua
+├── client.lua
+├── config.lua
+├── language.lua
+├── server.lua
+└── ui/
+    ├── index.html
+    ├── script.js
+    ├── style.css
+    ├── tablet1d.png
+	├── tablet2d.png
+    └── tablet3d.png

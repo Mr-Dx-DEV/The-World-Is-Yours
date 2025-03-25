@@ -1,0 +1,19 @@
+Thank you for purchasing our "After Life Services" MLO + script.
+
+Here's a few things you might want to know in order to customize the map and script. 
+
+The script should auto-detect your client's language, if your language is one of the included ones. If not, simply open file "language.lua" and you can:
+
+- change this "Config.ForceLanguage = nil" into this "Config.ForceLanguage = 'custom'"
+- from line 162 downwards, you can add your own translations to each text 
+- now the language is forced to every player, regardless of their client's language 
+
+You can also manually force a language even if it's included in the automatic translations system. Just replace "nil", like above, with 'en', 'it', 'es', 'de' or 'fr'.
+
+If you want to change between ox_target and qb-target, simply open file "config.lua" and change "Config.Target = 'ox_target'" into "Config.Target = 'qb-target'" and vice versa.
+
+If you want to enable job restrictions, replace "Config.Job = false" with "Config.Job = 'afterlife'". The name of the job should be 'afterlife' (only works with ESX and QBCore).
+
+To spawn the custom Romero, add spawn name 'afteromero' to your vehicles list. 
+
+If you need any additional help, feel free to join our Discord @ discord.gg/fiv3devs
