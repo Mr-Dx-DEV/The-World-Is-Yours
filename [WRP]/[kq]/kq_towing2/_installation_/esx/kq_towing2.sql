@@ -1,2 +1,0 @@
-INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES ('kq_tow_rope', 'Towing rope', 2, 0, 1);
-INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES ('kq_winch', 'Car winch', 4, 0, 1);
