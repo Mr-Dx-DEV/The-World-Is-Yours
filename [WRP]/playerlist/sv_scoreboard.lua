@@ -14,19 +14,17 @@ SS = 'steam:staffhex'..'steam:staffhex1' --thats for staff
 
 RegisterServerEvent('st-scoreboard:AddPlayer')
 AddEventHandler("st-scoreboard:AddPlayer", function()
-    --print("add player server" )
-    local identifiers, steamIdentifier = GetPlayerIdentifiers(source)
-    for _, v in pairs(identifiers) do
-        if string.find(v, "steam") then
-            steamIdentifier = v
+    local identifiers = GetPlayerIdentifiers(source)
+    local discordId = "Not Linked"
+    for _, id in pairs(identifiers) do
+        if string.find(id, "discord:") then
+            discordId = string.gsub(id, "discord:", "")
             break
         end
     end
 
-    local stid = HexIdToSteamId(steamIdentifier)
     local ply = GetPlayerName(source)
-    local scomid = steamIdentifier:gsub("steam:", "")
-    local data = { src = source, steamid = stid, comid = scomid, name = ply }
+    local data = { src = source, discord = discordId, name = ply }
 
     TriggerClientEvent("st-scoreboard:AddPlayer", -1, data )
     ST.Scoreboard.AddAllPlayers()
@@ -38,34 +36,21 @@ AddEventHandler("st-scoreboard:GiveMePlayers", function()
 end)
 
 function ST.Scoreboard.AddAllPlayers(self)
-    local xPlayers   = QBCore.Functions.GetPlayers()
+    local xPlayers = QBCore.Functions.GetPlayers()
 
-    for i=1, #xPlayers, 1 do
-        local identifiers, steamIdentifier = GetPlayerIdentifiers(xPlayers[i])
-        for _, v in pairs(identifiers) do
-            if string.find(v, "steam") then
-                steamIdentifier = v
+    for _, id in pairs(xPlayers) do
+        local identifiers = GetPlayerIdentifiers(id)
+        local discordId = "Not Linked"
+        for _, identifier in pairs(identifiers) do
+            if string.find(identifier, "discord:") then
+                discordId = string.gsub(identifier, "discord:", "")
                 break
             end
         end
 
-        ----ADMINS---
-        if string.find(ADMIN,steamIdentifier)then
-            stid = "~r~".. string.upper(steamIdentifier)
-        ----Tier 1---
-        elseif string.find(T1,steamIdentifier)then
-            stid = "~y~".. string.upper(steamIdentifier)
-       elseif string.find(SS,steamIdentifier)then
-            stid = "~p~".. string.upper(steamIdentifier)
-        ---Normal--
-        else
-            stid =  string.upper(steamIdentifier)
-        end
-        
-        local ply = GetPlayerName(xPlayers[i])
-        local scomid = steamIdentifier:gsub("steam:", "")
-        local ping = GetPlayerPing(xPlayers[i]); 
-        local data = { src = xPlayers[i], steamid = stid, comid = scomid, name = ply, pong = ping }
+        local ply = GetPlayerName(id)
+        local ping = GetPlayerPing(id)
+        local data = { src = id, discord = discordId, name = ply, pong = ping }
         TriggerClientEvent("st-scoreboard:AddAllPlayers", source, data)
     end
 end
@@ -75,24 +60,23 @@ function ST.Scoreboard.AddPlayerS(self, data)
 end
 
 AddEventHandler("playerDropped", function()
-	local identifiers, steamIdentifier = GetPlayerIdentifiers(source)
+    local identifiers = GetPlayerIdentifiers(source)
+    local discordId = "Not Linked"
     for _, v in pairs(identifiers) do
-        if string.find(v, "steam") then
-            steamIdentifier = v
+        if string.find(v, "discord:") then
+            discordId = string.gsub(v, "discord:", "")
             break
         end
     end
 
-    local stid = HexIdToSteamId(steamIdentifier)
     local ply = GetPlayerName(source)
-    local scomid = steamIdentifier:gsub("steam:", "")
-    local plyid = source
-    local data = { src = source, steamid = stid, comid = scomid, name = ply }
-
-    TriggerClientEvent("st-scoreboard:RemovePlayer", -1, data )
+    local data = { src = source, discord = discordId, name = ply }
+    TriggerClientEvent("st-scoreboard:RemovePlayer", -1, data)
+    
     Wait(600000)
-    TriggerClientEvent("st-scoreboard:RemoveRecent", -1, plyid)
+    TriggerClientEvent("st-scoreboard:RemoveRecent", -1, source)
 end)
+
 
 function HexIdToSteamId(hexId)
     local cid = math.floor(tonumber(string.sub(hexId, 7), 16))
