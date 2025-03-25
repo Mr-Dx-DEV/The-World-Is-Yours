@@ -33,7 +33,7 @@ Config.UIColor = '#0390fc'     -- Can be 'red', 'blue', or a hex '#FF0000'
 Config.JailUIColor = '#0390fc' -- Can be 'red', 'blue', or a hex '#FF0000'
 
 Config.jobMenu = 'F6'          -- Default job menu key
-Config.useTarget = true        -- Enable target for police functions (Supports ox_target / qb-target)
+Config.useTarget = false        -- Enable target for police functions (Supports ox_target / qb-target)
 Config.MobileMenu = {          -- THIS WILL USE A REGULAR MENU RATHER THAN A CONTEXT STYLE MENU!
     enabled = false,           -- Use a mobile menu rather than context? (Use arrow keys to navigate menu rather than mouse)
     position =
