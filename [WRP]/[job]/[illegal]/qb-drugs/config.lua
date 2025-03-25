@@ -180,9 +180,8 @@ Config = {
     },
     ['coke_baggy'] = {
         min = 50,
-        max = 300,
+        max = 150,
     },
-    
     ['crack_baggy'] = {
         min = 25,
         max = 200,
@@ -195,9 +194,13 @@ Config = {
         min = 35,
         max = 230,
     },
+    ['coke'] = {
+        min = 1500,
+        max = 2000,
+    },
         
     },
-
+    
     -- Delivery Config
     UseMarkedBills = false,     -- true for marked bills, false for cash
     DeliveryRepGain = 1,        -- amount of rep gained per delivery
