@@ -1,54 +1,53 @@
-## You CAN edit the following:
 endpoint_add_tcp "0.0.0.0:30120"
 endpoint_add_udp "0.0.0.0:30120"
-sv_maxclients 75
-set steam_webApiKey "none"    # 598BC69C0F36C236B7042EB9FC643B79
-sets tags "default, deployer, qbox"
 
-## You MAY edit the following:
+
+
+#set mysql_connection_string "mysql://root:vLife4latest@localhost:3306/vlife"
+set mysql_connection_string "mysql://root@localhost/worldisyours?charset=utf8mb4"
+
+set mysql_slow_query_warning 150
+
+set sv_debugqueue true # prints debug messages to console
+set sv_displayqueue true # shows queue count in the server name '[count] server name'
+set steam_webApiKey "none"
 sv_licenseKey "cfxk_i3K7tQALBtd176Q8nuPV_2LLgx4"
-
 sv_hostname "The World Is Yours RP | 17+ | Semi-Realistic"
 sets sv_projectName "The World Is Yours"
 sets sv_projectDesc "Unique 17+ Roleplay Semi-Realistic"
-sets locale "en-US"
+sets tags "roleplay, rp, theworldisyours, semi-realistic, usa, bd, uk, pakistan, 17plus, immersive, unique, citylife, seriousrp, qbox, qbcore, customscripts, newserver, nopixelinspired, community, economy, lawrp, crimelife"
+
+## You MAY edit the following:
+
+
+
+# Maximum number of players
+
+
 load_server_icon myLogo.png
+#####  Core
 set sv_enforceGameBuild 3258
-set mysql_connection_string "mysql://root@localhost/worldisyours?charset=utf8mb4"
+#sv_pureLevel 1
 
-## Make the server public
-#sv_master1 ""
-#sv_lan 0
-
-
-# Voice config
-setr voice_useNativeAudio true
-setr voice_useSendingRangeOnly true
-setr voice_enableUi 0
-setr voice_defaultCycle "GRAVE"
-setr voice_defaultRadioVolume 60
-setr voice_defaultCallVolume 80
-setr voice_enableRadioAnim 1
-
-setr voice_defaultVolume 0.5
-setr voice_syncData 1
-setr voice_enableSubmix 1
-
+###  Player & OneSync Settings
+sv_maxclients 75
+onesync_enabled 1
 
 set PedPopulationBudget 3         # Controls density of AI pedestrians, set between 1-3 for larger servers
 set VehiclePopulationBudget 3     # Controls density of vehicles, similar range for larger environments
 set streamingMaxMemory 2048      # Controls maximum memory for streaming assets
 set assetStorageLimit 2048       # Additional limit for stored assets
+set streamingMaxMemory 2048      # Controls maximum memory for streaming assets
+set assetStorageLimit 2048       # Additional limit for stored assets
 set sv_timeout 300000            # Timeout in milliseconds before dropping a player (5 minutes)
 set TxdStoreSize 204800
-set sv_maxPlayerChannels 1024
 # Reduce entity creation timeouts
 set sv_maxEntityCreationTime 5000
 # Ensure larger pool sizes for resources (this is automatic)
 set sv_increaseResourceCacheLimits true
 #set sv_poolSizesIncrease 512
 # Some performance tweaks for larger servers
-set sv_scriptHookAllowed 0
+set sv_scriptHookAllowed 1
 
 # Pool and cache settings
 set TxdStoreSize 204800
@@ -63,11 +62,24 @@ set PortalInstPoolSize 225
 set ScaleformStoreSize 200
 set StaticBoundsPoolSize 5000
 
+# Recommended additions
+set PedPopulationBudget 3
+set VehiclePopulationBudget 3
+set streamingMaxMemory 2048
+set assetStorageLimit 2048
+set sv_maxPlayerChannels 1024
+set sv_timeout 300000
+
 increase_pool_size "TxdStore" 26000
 
+
+setr weather_disablecd true
+
+
+sets locale "en-US" # TIME 20-4 RESTART NEEDS TO BE ACTIVE
+## Server infos:
 sets banner_detail "https://i.ibb.co/jfZDCzQ/standard.gif"
 sets banner_connecting "https://i.ibb.co/jfZDCzQ/standard.gif"
-
 #sets Framework "Dx-Core"
 sets 👑OWNER👑 "SBDemon, DocJay & DemonsAngel"
 sets 🟢DEVELOPER🟢 "Mr_Dx"
@@ -76,38 +88,39 @@ sets ✅Whitelist✅ "Discord"
 sets 🔊Discord🔊 "https://discord.gg/TdKUp5bCG2"
 
 
-# Qbox locale config
-setr qb_locale "en"
-setr qbx:enablebridge "true" # Enables / Disable QBCore bridge for qbx_core
-set qbx:enablequeue "true" # Enables / disables qbx_core's built-in queue system
-set qbx:bucketlockdownmode "inactive" # Sets the lockdown mode as inactive read here: https://docs.fivem.net/natives/?_0xA0F2201F
-set qbx:discordlink "discord.gg/qbox" # Sets the servers discord link
-set qbx:max_jobs_per_player 1 # Sets the number of jobs per player
-set qbx:max_gangs_per_player 1 # Sets the number of gangs per player
-set qbx:setjob_replaces "true" # When true, the SetJob function deletes the previous primary job of the player before setting the new one
-set qbx:setgang_replaces "true" # When true, the SetGang function deletes the previous primary gang of the player before setting the new one
-set qbx:cleanplayergroups "true" # When true, on server startup, the database will be checked for any groups/grades players have that are not in config files and removes them from the database if so.
-#set qbx:disable_default_jobs false
 
-# illenium-appearance locale config
-setr illenium-appearance:locale "en"
+# Voice config
+setr voice_useNativeAudio true
+setr voice_useSendingRangeOnly true
+setr voice_defaultCycle "GRAVE"
+setr voice_defaultVolume 0.5
+setr voice_enableRadioAnim 1
+setr voice_syncData 1
+
+# QBCore locale config
+setr qb_locale "en"
+
+# ox locale config
+setr ox:locale "en"
+
 
 setr nolag:primaryColor pink
 setr nolag:primaryShade 8
 
+
 # QBCore UseTarget
 setr UseTarget true
-
+setr illenium-appearance:locale "en"
 
 # Ox Inventory
 setr inventory:framework "qb"
 setr inventory:target true
-setr inventory:police ["lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police", "salsa"]
-setr inventory:imagepath "nui://ox_inventory/web/images/"
+setr inventory:police ["lspd", "bcso", "sahp", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"]
+setr inventory:imagepath "nui://ox_inventory/web/images"
 setr inventory:autoreload false
 setr inventory:keys ["TAB", "F2", "Z"]
 setr inventory:screenblur true
-setr inventory:slots 64
+setr inventory:slots 54
 setr inventory:weight 180000
 setr inventory:aimedfiring false
 setr inventory:weaponanims true
@@ -121,17 +134,22 @@ set inventory:randomprices false
 set inventory:randomloot false
 set inventory:evidencegrade 2
 set ox:logger "discord"
+set inventory:loglevel 1
+setr inventory:trimplate true
+set inventory:accounts ["money"]
 set inventory:webhook "https://discord.com/api/webhooks/1274690545536733244/BGDFAXW--F_QMmf0s-5EfBpP32ry9JJO0"
 set glovebox:webhook "https://discord.com/api/webhooks/1274690617590681632/"
-set trunk:webhook "https://discord.com/api/webhooks/1274690704303722570/pAjvVvyi8Jr-pMmsFWCSWGmioMEbL1AdcK5q5W-"
+set trunk:webhook "https://discord.com/api/webhooks/1274690704303722570/pAjvVvyi8Jr--vEUsaGE_X3lccUTIQW_UmMJr7Z30J"
 set stash:webhook "https://discord.com/api/webhooks/1274690792539033635/-OUrU321C0NaKkhR0I"
 set drop:webhook "https://discord.com/api/webhooks/1274690878673518602/xJuXn9s--_6tWKufin3RuRSsvuaIsOnTbo"
 set trade:webhook "https://discord.com/api/webhooks/1274690960147746826/MAgWRsh5-"
-set robbing:webhook "https://discord.com/api/webhooks/1274691031987912745/Y7JfZF-"
+set robbing:webhook "https://discord.com/api/webhooks/1274691031987912745/Y7JfZF"
 set weapon:webhook "https://discord.com/api/webhooks/1274691097221926962/-U-US1qrz1X"
-set newitems:webhook "https://discord.com/api/webhooks/1274691184438022144/k5stDzvZY650cvC3V6CKHdoICcRs--4nm4WZtQ5cw1BcaoNrQDnefY1yrzvbG"
+set newitems:webhook "https://discord.com/api/webhooks/1274691184438022144/k5stDzvZY650cvC3V6CKHdoICcRs--"
+
 
 setr game_enableDynamicDoorCreation "true"
+
 
 setr weather_disablecd false
 
@@ -168,22 +186,18 @@ setr bl:textui 'ox'
 exec ox.cfg
 
 # loadscreen config
-setr loadscreen:externalShutdown true
+setr loadscreen:externalShutdown false
 set loadscreen:primaryColor "#f1e542"
 set loadscreen:shadowColor "#1a18077f"
 
-set qbx:max_jobs_per_player 5
 
 # These resources will start by default.
 ensure mapmanager
-ensure chat
 ensure spawnmanager
 ensure sessionmanager
 stop basic-gamemode
 ensure hardcap
 ensure baseevents
-
-# Qbox & Extra stuff
 
 # QBCore & Extra stuff
 ensure oxmysql 
@@ -207,10 +221,46 @@ ensure [WRP]
 ensure [job]
 
 
+
+
 setr profile_fpsFieldOfView 38.0
 setr profile_CameraHeight 1  
 setr profile_fpsAutoLevel 1
 setr profile_fpsHeadBob 1
+
+setr ox:primaryColor violet
+setr ox:primaryShade 9
+setr ox:userLocales 1
+
+add_ace resource.ox_lib command.add_ace allow
+add_ace resource.ox_lib command.remove_ace allow
+add_ace resource.ox_lib command.add_principal allow
+add_ace resource.ox_lib command.remove_principal allow
+
+add_ace resource.JD_logsV3 command.add_principal allow
+add_ace resource.JD_logsV3 command.remove_principal allow
+add_ace resource.JD_logsV3 command.add_ace allow
+add_ace resource.JD_logsV3 command.remove_ace allow
+
+add_ace resource.rcore_prison command.add_ace allow
+add_ace resource.rcore_prison command.remove_ace allow
+add_ace resource.rcore_prison command.add_principal allow
+add_ace resource.rcore_prison command.remove_principal allow
+
+## Permissions ##
+add_ace qbcore.god command allow # Allow all commands
+add_ace group.admin command allow # allow all commands
+
+
+# Resources
+add_ace resource.qb-core command allow # Allow qb-core to execute commands
+
+# Inheritance
+add_principal qbcore.god group.admin # Allow gods access to the main admin group used to get all default permissions
+add_principal qbcore.god qbcore.admin # Allow gods access to admin commands
+add_principal qbcore.admin qbcore.mod # Allow admins access to mod commands
+
+
 
 
 
