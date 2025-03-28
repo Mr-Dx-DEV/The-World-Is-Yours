@@ -53,6 +53,17 @@ Config.Cityhalls = {
                 cost = 850,
                 metadata = "huntinglicense"
             },
+
+            ["airplane"] = {
+                label = "airplane License",
+                cost = 350,
+            --    metadata = "airplanelicense"
+            },
+            ["helicopter"] = {
+                label = "helicopter License",
+                cost = 350,
+             --   metadata = "fishinglicense"
+            },
         }
     },
 }

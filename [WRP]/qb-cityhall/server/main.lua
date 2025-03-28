@@ -92,6 +92,23 @@ RegisterNetEvent('qb-cityhall:server:requestId', function(item, hall)
         info.gender = Player.PlayerData.charinfo.gender
         info.nationality = Player.PlayerData.charinfo.nationality
         info.type = "Hunting License"
+
+    elseif item == "airplane" then
+        info.citizenid = Player.PlayerData.citizenid
+        info.firstname = Player.PlayerData.charinfo.firstname
+        info.lastname = Player.PlayerData.charinfo.lastname
+        info.birthdate = Player.PlayerData.charinfo.birthdate
+        info.gender = Player.PlayerData.charinfo.gender
+        info.nationality = Player.PlayerData.charinfo.nationality
+        info.type = "airplane License"
+    elseif item == "helicopter" then
+        info.citizenid = Player.PlayerData.citizenid
+        info.firstname = Player.PlayerData.charinfo.firstname
+        info.lastname = Player.PlayerData.charinfo.lastname
+        info.birthdate = Player.PlayerData.charinfo.birthdate
+        info.gender = Player.PlayerData.charinfo.gender
+        info.nationality = Player.PlayerData.charinfo.nationality
+        info.type = "helicopter License"
     elseif item == "fishinglicense" then
         info.citizenid = Player.PlayerData.citizenid
         info.firstname = Player.PlayerData.charinfo.firstname

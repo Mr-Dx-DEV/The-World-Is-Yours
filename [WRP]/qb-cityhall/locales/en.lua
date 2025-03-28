@@ -14,6 +14,8 @@ local Translations = {
         weaponlicense = 'Firearms License',
         fishinglicense = 'Deep Sea Fishing License',
         huntinglicense = 'Hunting License',
+        airplane = 'airplane License',
+        helicopter = 'helicopter License',
         waterslicense = 'Waters License',
         new_job = 'Congratulations with your new job! (%{job})',
     },
