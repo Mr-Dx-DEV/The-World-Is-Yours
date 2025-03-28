@@ -69,7 +69,7 @@ Config.basic = {
     },
     firepit = {
         -- Duration of the processing process in seconds
-        duration = 300,
+        duration = 120,
         
         -- Duration of time for which the owner (player adding the last item) will have the exclusive permissions of picking up the final item
         -- (During this period other players will not be able to take the final item) (Time in seconds)
@@ -722,7 +722,7 @@ Config.itemCollection = {
             {
                 coords = vec3(720.53, -970.37, 29.39),
                 rotation = vec3(0, 0, 40),
-                blip = true,
+                blip = false,
             },
         },
     },
@@ -765,22 +765,22 @@ Config.itemCollection = {
             {
                 coords = vec3(1694.35, 4920.79, 41.23),
                 rotation = vec3(0, 0, 329),
-                blip = true,
+                blip = false,
             },
             {
                 coords = vec3(273.68, -1262.5, 28.29),
                 rotation = vec3(0, 0, 270),
-                blip = true,
+                blip = false,
             },
             {
                 coords = vec3(-534.37, -1219.77, 17.45),
                 rotation = vec3(0, 0, 154),
-                blip = true,
+                blip = false,
             },
             {
                 coords = vec3(-2073.88, -333.81, 12.31),
                 rotation = vec3(0, 0, 355),
-                blip = true,
+                blip = false,
             },
         },
     },
@@ -823,7 +823,7 @@ Config.itemCollection = {
             {
                 coords = vec3(261.19, 2874.64, 42.61),
                 rotation = vec3(0, 0, 125),
-                blip = true,
+                blip = false,
             },
         },
     },
