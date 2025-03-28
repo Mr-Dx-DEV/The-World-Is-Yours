@@ -670,6 +670,17 @@ QBShared.Jobs = {
             },
         }
     },
+    ["afterlife"] = {
+        label = "afterlife",
+        defaultDuty = true,
+        offDutyPay = false,
+        grades = {
+            ["0"] = {
+                name = "afterlife",
+                payment = 50,
+            },
+        }
+    },
     ["air"] = {
         label = "Air Vehicle Dealer",
         defaultDuty = true,
