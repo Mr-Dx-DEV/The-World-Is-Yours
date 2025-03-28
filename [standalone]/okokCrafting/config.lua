@@ -80,7 +80,7 @@ Config.Crafting = {
 	{
 		coordinates = vector3(-809.4, 190.3, 72.5), -- coordinates of the table
 		radius = 1, -- radius of the table
-		showMapBlip = true,
+		showMapBlip = false,
 		marker = {type = 20, r = 31, g = 94, b = 255, a = 155, bobUpAndDown = 0, faceCamera = 0, rotate = 1, textureDict = 0, textureName = 0, drawOnEnts = 0},
 		showBlipRadius = 50,
 		blip = {blipId = 89, blipColor = 3, blipScale = 0.9, blipText = 'Crafting'}, -- to get blips and colors check this: https://wiki.gtanet.work/index.php?title=Blips
@@ -101,7 +101,7 @@ Config.Crafting = {
 		},
 	},
 	{
-		coordinates = vector3(-817.0, 182.8, 72.3),
+		coordinates = vector3(166.971, 2229.202, 90.776),
 		radius = 1,
 		showMapBlip = true,
 		marker = {type = 20, r = 31, g = 94, b = 255, a = 155, bobUpAndDown = 0, faceCamera = 0, rotate = 1, textureDict = 0, textureName = 0, drawOnEnts = 0},
