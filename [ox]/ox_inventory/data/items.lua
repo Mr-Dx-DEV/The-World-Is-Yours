@@ -1,4 +1,30 @@
 return {
+
+	['airplane'] = {
+		label = 'Airplane License',
+		weight = 0,
+		stack = false,
+		close = true,
+		description = 'License',
+		client = {
+			image = 'weapon_license.png'
+		}
+	},
+	
+	['helicopter'] = {
+		label = 'Helicopter License',
+		weight = 0,
+		stack = false,
+		close = true,
+		description = 'License',
+		client = {
+			image = 'weapon_license.png'
+		}
+	},
+
+	
+
+	
 	["coke"] = {
         label = "Cocaine",
         weight = 500,
