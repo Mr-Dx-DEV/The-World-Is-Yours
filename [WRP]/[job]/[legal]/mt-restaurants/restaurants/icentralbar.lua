@@ -12,7 +12,7 @@ Config.restaurants.icentralbar = {
     maxIngredients = 6,
     maxRecipes = 10,
     maxRecipePrice = 1000,
-    blip = { enabled = true, coords = vec3(248.13, -791.3, 30.52), sprite = 89, color = 11, scale = 0.5, display = 4 },
+    blip = { enabled = false, coords = vec3(248.13, -791.3, 30.52), sprite = 89, color = 11, scale = 0.5, display = 4 },
     zone = {
         points = {
             vec3(237.5, -799.0, 30.0),

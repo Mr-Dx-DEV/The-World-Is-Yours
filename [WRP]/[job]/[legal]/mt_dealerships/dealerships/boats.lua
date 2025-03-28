@@ -4,7 +4,7 @@ Config.dealerships.boats = { -- Dealership ID, NEEDS TO BE THE SAME AS THE JOB!!
     enabled = true, -- true or false to enable or disable the dealership
     label = 'Boats DealerShip', -- Dealership label
     logo = 'https://i.ibb.co/nkBN3bs/logo.png', -- Dealership logo that'll show on UI
-    job = 'boats', -- Dealership job or false to not player owned dealerships, NEEDS TO BE THE SAME AS THE ID!!!
+    job = false, -- Dealership job or false to not player owned dealerships, NEEDS TO BE THE SAME AS THE ID!!!
     lockCatalogueJob = false, -- can be false for everyone to open the catalogue or a job if you want to lock it to some job
     currency = 'bank', -- bank, cash or money to ESX (Also to QBCore you can choose other currency like crypto and etc)
     useStock = true, -- When using job = false this will be ignored
@@ -21,11 +21,14 @@ Config.dealerships.boats = { -- Dealership ID, NEEDS TO BE THE SAME AS THE JOB!!
     comissions = { buyPercentage = 50, sellComission = 10 }, -- The dealership commissions
     blip = { enabled = true, coords = vec3(-714.42, -1340.01, -0.18), sprite = 410, color = 3, scale = 0.6, display = 4 }, -- Dealership map blip
     dashboards = { -- Dealership dashboards to import vehicles and see transactions
-        { coords = vec3(-718.0, -1342.0, 0.0), radius = 0.5, includeBossMenu = true },
+        { coords = vec3(-718.38, -1327.83, 1.49), radius = 0.5, includeBossMenu = true },
     },
     catalogues = { -- The catalogues to the players to see and employees to change vehicles on showroom
-        { coords = vec3(-714.42, -1340.01, -0.18), radius = 0.4, vehicleCoords = vec4(-716.0, -1342.0, -0.18, 140.0), vehicle = 'speeder', vehicleColor = 111 },
-        { coords = vec3(-718.0, -1345.0, -0.18), radius = 0.4, vehicleCoords = vec4(-719.0, -1346.5, -0.18, 150.0), vehicle = 'dinghy', vehicleColor = 0 },
+        --   { coords = vec3(-724.583, -1334.244, 1.596), radius = 0.4, vehicleCoords = vec4(-716.0, -1342.0, -0.18, 140.0), vehicle = 'speeder', vehicleColor = 111 },
+        --    { coords = vec3(-718.0, -1345.0, -0.18), radius = 0.4, vehicleCoords = vec4(-719.0, -1346.5, -0.18, 150.0), vehicle = 'dinghy', vehicleColor = 0 },
+        { coords = vec3(-723.83, -1324.16, 1.09), radius = 0.4, vehicleCoords = vec4(-723.46, -1326.24, 1.2, 241.42), vehicle = 'frogger', vehicleColor = 0 },
+
+
     },
     categories = { -- The categories that will show on the catalogue and dashboard
         { label = 'Boats', id = 'boats' },

@@ -5,7 +5,7 @@ Config.restaurants = Config.restaurants or {}
 -- For more info check: https://mt-scripts-documentations.gitbook.io/mt-script-documentation/
 
 Config.restaurants.centrelperk = {
-    enabled = true,
+    enabled = false,
     label = 'Centrel Perk',
     job = 'centrelperk',
     ingredients = Config.ingredients.globalIngredients,
