@@ -44,7 +44,7 @@ MBT.Notification = function (source, text, text2) -- Put your custom notificatio
     end
 end
 
-MBT.UseTarget = true -- Use a target script or markers
+MBT.UseTarget = false -- Use a target script or markers
 
 -- if MBT.UseTarget then
     
