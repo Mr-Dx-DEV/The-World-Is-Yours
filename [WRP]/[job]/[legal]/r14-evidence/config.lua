@@ -65,7 +65,7 @@ Config.Inventory = {
         Open = 'invOpen',
     },
     CustomMetadata = { -- do not mess with unless you are running a custom inventory or have modified qb/ox inventory to use a custom field
-        Enabled = true, -- enable use of custom metadata field if not using 'info' for any script or 'metadata' for ox_inventory
+        Enabled = false, -- enable use of custom metadata field if not using 'info' for any script or 'metadata' for ox_inventory
         Field = 'info' -- the field used for metadata by a script
     }
 }
