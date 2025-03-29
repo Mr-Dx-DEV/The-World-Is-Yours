@@ -26,7 +26,7 @@ Config.Menu = {
 
 Config.FrameworkUsed = 'qb' --'qb' or 'esx'
 Config.EnableBlip = true
-Config.targetSystem = 'ox_target' -- 'qb-target' or 'ox_target'. Set to false to use drawText(higher resmon)
+Config.targetSystem = 'qb-target' -- 'qb-target' or 'ox_target'. Set to false to use drawText(higher resmon)
 Config.targetModel = 'a_m_m_farmer_01'
 
 

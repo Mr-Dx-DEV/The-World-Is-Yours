@@ -22,7 +22,7 @@ Config = {
 		Callback = "ox",    -- Supports "qb"    (qb-core)
 							-- "ox"             (ox_ib)
 
-		Target = "ox",      -- Supports "qb"    (qb-target)
+		Target = "qb",      -- Supports "qb"    (qb-target)
 							-- "ox"             (ox_target)
 
 		MenuExport = "qb-menu", -- If using "qb", what is your menu called, usually "qb-menu", "qbx-menu", "jixel-menu" etc

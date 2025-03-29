@@ -68,7 +68,7 @@ Link.input = {
         --- 'interact' -- Interact system by darktrovx
         ---
         --- You may also try entering the name of other targeting systems, as they often use very similar exports.
-        system = 'ox_target'
+        system = 'qb-target'
     },
 
     -- Only applicable when target is disabled

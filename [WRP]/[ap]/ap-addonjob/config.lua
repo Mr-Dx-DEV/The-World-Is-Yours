@@ -1,10 +1,10 @@
 Config = {
 	FrameworkExport = "qb-core", -- Set this too your core name, only change this if you have a custom version of QBCore. 
 	DiscordWebhook = {ApplicationSubmission = true, JobInterview = true, JobOfferGiven = true, AppointmentRequest = true, AppointmentApprove = true, ReceptionStaff = true}, -- Set the webhooks you want to use to true.
-	Phone = {GKSPhone = false, QBPhone = false, QuasarPhone = true, QSPRO = false, HighPhone = false, LBPhone = false, Custom = false}, -- Set to the phone you use to true, if you do not have one of these phones then set Custom to true and edit the function in webhooks.lua.
-	Interactions = {qbTarget = false, qTarget = true}, -- Set the target system to true that you use.
-	Context = {QB = true, OX = false},
-	Dialog = {QB = true, OX = false},
+	Phone = {GKSPhone = false, QBPhone = false, QuasarPhone = false, QSPRO = false, HighPhone = false, LBPhone = true, Custom = false}, -- Set to the phone you use to true, if you do not have one of these phones then set Custom to true and edit the function in webhooks.lua.
+	Interactions = {qbTarget = true, qTarget = false}, -- Set the target system to true that you use.
+	Context = {QB = false, OX = true},
+	Dialog = {QB = false, OX = true},
 	ExportNames = {menu = "qb-menu", input = "qb-input"},
 	DefaultJobLogo = "https://cdn.discordapp.com/attachments/633974153388490753/1108496766992666704/logo.png"
 }

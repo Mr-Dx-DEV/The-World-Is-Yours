@@ -60,9 +60,9 @@ Config.GymExerciseDistance = 1.5 -- distance for exercise
 
 Config.GymShowerDistance = 1.5 -- distance for shower
 
-Config.Target = false -- enable this if you want use target
+Config.Target = true -- enable this if you want use target
 
-Config.Targettype = "oxtarget" -- types - qtarget, qbtarget, oxtarget
+Config.Targettype = "qbtarget" -- types - qtarget, qbtarget, oxtarget
 
 Config.TargetSystemsNames = {qtarget = "qtarget", qbtarget = "qb-target", oxtarget = "ox_target"}
 

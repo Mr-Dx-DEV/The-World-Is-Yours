@@ -20,9 +20,9 @@ Config.TvForItem = true -- this will enable tv open via item
 
 Config.TvForCommand = false -- this will enable tv open via command
 
-Config.Target = false -- enable this if you want use target
+Config.Target = true -- enable this if you want use target
 
-Config.Targettype = "oxtarget" -- types - qtarget, qbtarget, oxtarget
+Config.Targettype = "qbtarget" -- types - qtarget, qbtarget, oxtarget
 
 Config.TargetSystemsNames = {qtarget = "qtarget", qbtarget = "qb-target", oxtarget = "ox_target"}
 

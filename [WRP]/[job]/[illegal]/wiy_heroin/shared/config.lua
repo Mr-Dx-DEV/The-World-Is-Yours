@@ -35,7 +35,7 @@ Config.CoreSettings = {
         --use 'ox' for -x_lib notify
     },    
     Target = {
-        Type = 'ox', -- target script name support for qb-target and ox_target        
+        Type = 'qb', -- target script name support for qb-target and ox_target        
         --use 'qb' for qb-target
         --use 'ox' for ox_target 
     },

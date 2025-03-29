@@ -22,7 +22,7 @@ Config.language = 'en'
 -- Framework and Resource settings
 Config.framework = 'qb'           -- [qb / esx]
 Config.inventory = 'ox_inventory' -- [qb-inventory /  qb-inventory-legacy / ps-inventory / ox_inventory]
-Config.target = 'ox_target'       -- [qb-target / ox_target]
+Config.target = 'qb-target'       -- [qb-target / ox_target]
 Config.menu = 'ox_lib'          -- [built-in / qb-menu / keep-menu / ox_lib]
 Config.input = 'ox_lib'         -- [built-in / qb-input /keep-input / ox_lib]
 Config.progressbar = 'qb'         -- [qb / ox_lib]
@@ -38,7 +38,7 @@ Config.resource_names = {
     -- It should be es_extended instead!
     framework = 'qb-core',
     inventory = 'ox_inventory',
-    target = 'ox_target',
+    target = 'qb-target',
     menu = '', -- leave it empty when using built-in
     input = '' -- leave it empty when using built-in
 }

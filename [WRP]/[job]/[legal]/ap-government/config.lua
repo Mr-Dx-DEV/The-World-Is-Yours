@@ -31,7 +31,7 @@ Config = {
 	JobManagementScriptName = "qb-management", -- If your management script has compatibility with qb-management then change to the resource name.
 	VotingLaws = true, -- Set this to true if you want to use the law voting system.
 	Phone = {GKSPhone = false, QBPhone = false, QuasarPhone = false, QSPRO = false, HighPhone = false, LBPhone = true, Custom = false}, -- Set to the phone you use to true, if you do not have one of these phones then set Custom to true and edit the function in webhooks.lua.
-	Interactions = {qbTarget = false, oxTarget = true, qTarget = false, drawText = false}, -- Set the target system to true that you use.
+	Interactions = {qbTarget = true, oxTarget = false, qTarget = false, drawText = false}, -- Set the target system to true that you use.
 	Banking = {
 	  okokbanking = false, -- Set this to true if you own okokbanking and you want the tax to show as a transaction.
 	  other = true -- Set to true if you own a differnt banking script and want to add an export, to edit this open functions.lua and edit the banking function.

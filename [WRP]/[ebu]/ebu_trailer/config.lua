@@ -13,7 +13,7 @@ Config.UseExternalTrailerConnect = true    -- Set to True if you want to use ebu
 --========Interaction Type========--
 --======[[see utils.lua to modify]]======--
 Config.UseTarget = true             -- If True, Markers & Prompts will be disabled except for in vehicle
-Config.Target = 'ox_target'
+Config.Target = 'qb-target'
 
 
 --========Markers & Prompts=======--

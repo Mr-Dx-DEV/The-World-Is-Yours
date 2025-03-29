@@ -71,8 +71,8 @@ Config.Inventory = {
 }
 
 Config.Target = {
-    Ox = true, -- use this for ox_target
-    QB = false, -- use this for qb-target
+    Ox = false, -- use this for ox_target
+    QB = true, -- use this for qb-target
     Custom = false, -- set this to a string which matches your targeting resource name
 }
 

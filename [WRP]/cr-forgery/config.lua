@@ -8,7 +8,7 @@ Config.Framework = {
     Framework = "QBCore", -- "QBCore" | "ESX" is not stable yet
     Interaction = {
         UseTarget = true, -- Leave true if you are using qb-target. Set to false to disable targetting and enable oxlib points + DrawText for all interactions
-        Target = "oxtarget", -- "qb-target" | "oxtarget"
+        Target = "qb-target", -- "qb-target" | "oxtarget"
         Key = "G" -- Key to press when interacting with things if not using targets (Default : G | See Config.KeyList to know which string to change this value to.)
     },
     Menu = 'qb', -- qb/nh/ox

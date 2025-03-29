@@ -1,5 +1,5 @@
 Config = {}
-Config.targetSystem = 'ox_target' -- 'qb-target' or 'ox_target'. Set to false to use prompts(higher resmon)
+Config.targetSystem = 'qb-target' -- 'qb-target' or 'ox_target'. Set to false to use prompts(higher resmon)
 Config.commandToGetOffHorse = 'getoffhorse' --Set to false to use prompts(higher resmon)
 
 Config.optimizationTest = false

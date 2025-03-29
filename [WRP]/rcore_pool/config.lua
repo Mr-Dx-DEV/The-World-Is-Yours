@@ -14,7 +14,7 @@ Config = {
     },
 
     -- qtarget
-	UseQTarget = false,
+	UseQTarget = true,
 
 	-- BT-Target
 	UseBTTarget = false,
@@ -23,7 +23,7 @@ Config = {
 	UseQBTarget = false,
 
 	-- OX-Target
-	UseOXTarget = true,
+	UseOXTarget = false,
 
     --[[
         Uses esx/qbcore notifications. Set to false for native GTA notifications

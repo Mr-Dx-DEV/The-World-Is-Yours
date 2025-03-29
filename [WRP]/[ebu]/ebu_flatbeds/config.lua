@@ -37,7 +37,7 @@ Config.NotiBlockedMessage           = "Unloading zone blocked"
 Config.NotiFBBlockedMessage         = "Flatbed blocked or occupied"
 
 --========Target System========--
-Config.UseTarget                    = false          --Enable Target system. Set up in utils.lua. Supports qb-target by default
+Config.UseTarget                    = true          --Enable Target system. Set up in utils.lua. Supports qb-target by default
 
 --If the below are disabled, it is recommened to set Config.ShowMarkers and Config.ShowHelp to false
 Config.DisableExtKeyControls        = false          --Disable key controls for bed control. Attach/Detach from inside vehicle separate

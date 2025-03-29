@@ -69,7 +69,7 @@ Config.ReduceStress = false
 -- 'qb-target' = qb-target by BerkieBb and its many other contributors. (https://github.com/BerkieBb/qb-target)
 -- 'qtarget'   = qTarget by Linden (thelindat), Noms (OfficialNoms) and its many other contributors. (https://github.com/overextended/qtarget)
 -- 'ox_target' = ox_target by Linden (thelindat) and its many other contributors. (https://github.com/overextended/ox_target)
-Config.Target = 'ox_target'
+Config.Target = 'qb-target'
 
 -- Use the coords of where the 3rd eye intersects with the object to find the closest seat. If set to false the coords of the player ped will be used instead.
 Config.UseTargetingCoords = true

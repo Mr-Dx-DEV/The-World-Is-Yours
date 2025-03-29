@@ -2,7 +2,7 @@ Config = {}
 
 Config.Core = "qb-core" -- Your qb-core folder name
 Config.TargetName = "qb-target" -- If you use ox, ignore this
-Config.Target = "ox" -- "qb" or "ox"
+Config.Target = "qb" -- "qb" or "ox"
 Config.Inventory = "ox" -- "qb" or "ox"
 Config.MenuName = "qb-menu" -- If you use ox, ignore this
 Config.Menu = "ox" -- "qb" or "ox"

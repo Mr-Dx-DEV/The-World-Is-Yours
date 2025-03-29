@@ -8,7 +8,7 @@ Config.Debug = false
 -- Target system, available options are: 'ox_target', 'qb-target', 'qtarget', 'custom' & 'none'
 -- 'custom' needs to be added to client/functions.lua
 -- If 'none' then TextUI is used instead of targeting
-Config.Target = 'ox_target'
+Config.Target = 'qb-target'
 
 -- If Config.Target is set to 'none' thus using TextUI
 -- This is the interaction key(s) that will be used (otherwise can be ignored)

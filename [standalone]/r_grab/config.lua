@@ -53,8 +53,8 @@ Config = {
         -- Enables the use of a 3D interaction system (Only one can be enabled at a time).
         -- (If you are using the target system set Config.CommandSystem.Enabled = false)
         
-        UseOXTarget = true, -- Enable ox_target support (See client/ox_target.lua).
-        UseQBTarget = false, -- Enable qb-target support (See client/qb_target.lua).
+        UseOXTarget = false, -- Enable ox_target support (See client/ox_target.lua).
+        UseQBTarget = true, -- Enable qb-target support (See client/qb_target.lua).
 
         CustomTarget = false -- Set to true if using a custom target system. Follow the structure of client/ox_target.lua or client/qb_target.lua.
     },

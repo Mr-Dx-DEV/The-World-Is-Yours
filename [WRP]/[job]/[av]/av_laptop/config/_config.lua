@@ -5,7 +5,7 @@
 Config = {}
 Config.Debug = true
 Config.DebugCommand = "debug"          -- Used to enable debug mode in the specified resource (only available for av_laptop resources)
-Config.Target = "ox_target"            -- Your target script "ox_target", "qb-target", "qtarget"
+Config.Target = "qb-target"            -- Your target script "ox_target", "qb-target", "qtarget"
 Config.AdminLevel = "admin"            -- Min admin level needed to use debug command
 Config.LaptopItem = "laptop"           -- The item used to open laptop
 Config.HackingDeviceITem = 'decrypter' -- Item used to hack laptops.

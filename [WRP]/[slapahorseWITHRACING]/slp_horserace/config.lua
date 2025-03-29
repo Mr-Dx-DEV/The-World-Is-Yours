@@ -8,7 +8,7 @@ Config.settings = {
     }
 }
 
-Config.targetSystem = 'ox_target' -- 'qb-target' or 'ox_target'. Set to false to use drawText(higher resmon)
+Config.targetSystem = 'qb-target' -- 'qb-target' or 'ox_target'. Set to false to use drawText(higher resmon)
 
 Config.horseRaceManage = {coords = vector3(1084.86, 89.46, 82.89), heading = 43.5227, model = "a_m_m_farmer_01"}
 Config.horseRaceRegister = {coords = vector3(1104.02, 162.15, 82.02), heading = 54.4970, model = "a_m_m_farmer_01"}

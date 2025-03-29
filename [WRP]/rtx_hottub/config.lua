@@ -34,7 +34,7 @@ Config.HotTubRemoveDuration = 10 -- in seconds
 
 Config.DisableNozzlesSound = false -- it will disable sound but also particle!
 
-Config.Target = false -- enable this if you want use target and 3d texts
+Config.Target = true -- enable this if you want use target and 3d texts
 
 Config.Targettype = "qbtarget" -- types - qtarget, qbtarget
 
