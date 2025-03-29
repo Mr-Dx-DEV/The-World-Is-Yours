@@ -100,36 +100,83 @@ local function DrawTarget()
 	end)
 end
 
+-- local function RaycastCamera(flag, playerCoords)
+-- 	if not playerPed then playerPed = PlayerPedId() end
+-- 	if not playerCoords then playerCoords = GetEntityCoords(playerPed) end
+
+-- 	local rayPos, rayDir = ScreenPositionToCameraRay()
+-- 	local destination = rayPos + 16 * rayDir
+-- 	local rayHandle = StartShapeTestLosProbe(rayPos.x, rayPos.y, rayPos.z, destination.x, destination.y, destination.z,
+-- 		flag or -1, playerPed, 4)
+
+-- 	while true do
+-- 		local result, _, endCoords, _, entityHit = GetShapeTestResult(rayHandle)
+
+-- 		if result ~= 1 then
+-- 			local distance = playerCoords and #(playerCoords - endCoords)
+
+-- 			if flag == 30 and entityHit then
+-- 				entityHit = HasEntityClearLosToEntity(entityHit, playerPed, 7) and entityHit
+-- 			end
+
+-- 			local entityType = entityHit and GetEntityType(entityHit)
+
+-- 			if entityType == 0 and pcall(GetEntityModel, entityHit) then
+-- 				entityType = 3
+-- 			end
+
+-- 			return endCoords, distance, entityHit, entityType or 0
+-- 		end
+
+-- 		Wait(0)
+-- 	end
+-- end
+
 local function RaycastCamera(flag, playerCoords)
-	if not playerPed then playerPed = PlayerPedId() end
-	if not playerCoords then playerCoords = GetEntityCoords(playerPed) end
+    if not playerPed then playerPed = PlayerPedId() end
+    if not playerCoords then playerCoords = GetEntityCoords(playerPed) end
 
-	local rayPos, rayDir = ScreenPositionToCameraRay()
-	local destination = rayPos + 16 * rayDir
-	local rayHandle = StartShapeTestLosProbe(rayPos.x, rayPos.y, rayPos.z, destination.x, destination.y, destination.z,
-		flag or -1, playerPed, 4)
+    local rayPos, rayDir = ScreenPositionToCameraRay()
+    local destination = rayPos + 16 * rayDir
 
-	while true do
-		local result, _, endCoords, _, entityHit = GetShapeTestResult(rayHandle)
+    -- Validate the flag to ensure no crash
+    local validFlag = flag or 511  -- Using 511 as a safe fallback flag
 
-		if result ~= 1 then
-			local distance = playerCoords and #(playerCoords - endCoords)
+    -- Start the shape test with error handling
+    local status, rayHandle = pcall(StartShapeTestLosProbe, rayPos.x, rayPos.y, rayPos.z,
+        destination.x, destination.y, destination.z, validFlag, playerPed, 4)
 
-			if flag == 30 and entityHit then
-				entityHit = HasEntityClearLosToEntity(entityHit, playerPed, 7) and entityHit
-			end
+    if not status or not rayHandle then
+        print("Error: Failed to start shape test with flag", validFlag)
+        return nil
+    end
 
-			local entityType = entityHit and GetEntityType(entityHit)
+    -- Perform raycasting
+    while true do
+        local result, hit, endCoords, surfaceNormal, entityHit = GetShapeTestResult(rayHandle)
 
-			if entityType == 0 and pcall(GetEntityModel, entityHit) then
-				entityType = 3
-			end
+        if result ~= 1 then
+            local distance = #(playerCoords - endCoords)
 
-			return endCoords, distance, entityHit, entityType or 0
-		end
+            if validFlag == 30 and entityHit and DoesEntityExist(entityHit) then
+                entityHit = HasEntityClearLosToEntity(entityHit, playerPed, 7) and entityHit or nil
+            end
 
-		Wait(0)
-	end
+            local entityType = entityHit and DoesEntityExist(entityHit) and GetEntityType(entityHit) or 0
+
+            -- Ensure valid entityType using pcall
+            if entityType == 0 and entityHit and DoesEntityExist(entityHit) then
+                local modelStatus, model = pcall(GetEntityModel, entityHit)
+                if modelStatus then
+                    entityType = 3 -- Assume entity is an object if GetEntityModel succeeded
+                end
+            end
+
+            return endCoords, distance, entityHit, entityType
+        end
+
+        Wait(0)
+    end
 end
 
 exports('RaycastCamera', RaycastCamera)
