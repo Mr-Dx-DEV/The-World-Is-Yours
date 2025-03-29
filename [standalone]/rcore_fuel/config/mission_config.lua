@@ -1,3 +1,6 @@
+-- setting this to true will result in guide showing always to every player doing the mission
+Config.AlwaysShowGuideMission = false
+
 -- type of fuel types that wont require missions for example EV doesn't make sense to pump it into barrel :D
 Config.SkipMissionForFuelType = {
     FuelType.EV,
@@ -367,7 +370,7 @@ Config.BlipOnMapAfterPickingUpTruck = vector3(-237.42, -2677.34, 6)
 -- this is for hose connection from phantom tanker
 Config.MissionFuelPipe = {
     model = "prop_roofpipe_01",
-    pos = vector3(-227.75, -2673.52, 4.9),
+    pos = vector3(-238.8, -2674.0, 4.9),
     heading = 270.0,
     renderDistance = 50.0,
 }
@@ -376,7 +379,7 @@ Config.MissionFuelPipe = {
 Config.FuelingTankerTime = 1000 * 60 * 2
 
 -- I don't recommend changing it
-Config.TipTruckHash = GetHashKey("TipTruck")
+Config.TipTruckHash = GetHashKey("tiptruck")
 
 -- do not fill
 Config.SpawnTipTruckSpawnPositions = {}

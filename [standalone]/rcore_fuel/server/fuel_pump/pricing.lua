@@ -1,9 +1,13 @@
 local randomized = false
 
+function Random(min, max)
+    return min + math.random() * (max - min)
+end
+
 function RandomizeCompanyPriceFuel(skipEvent)
     randomized = true
     for k, v in pairs(Config.CompanyGasPrices) do
-        v.current = math.random(v.min, v.max)
+        v.current = Random(v.min, v.max)
     end
 
     if not skipEvent then
@@ -44,9 +48,9 @@ RegisterNetEvent("rcore_fuel:payForFuel", function(type)
 
         if shopData.EnableSociety then
             if Config.EnableTax then
-                GiveMoneyToSociety(cost * (1.0 - Config.TaxPercentage), shopData.Job)
+                GiveMoneyToSociety(cost * (1.0 - Config.TaxPercentage), shopData.SocietyName or shopData.Job)
             else
-                GiveMoneyToSociety(cost, shopData.Job)
+                GiveMoneyToSociety(cost, shopData.SocietyName or shopData.Job)
             end
         end
 

@@ -35,7 +35,7 @@ var App = new Vue({
 
     computed: {
         animatedMoney: function() {
-            return this.newFuelCost.toFixed(0);
+            return this.newFuelCost.toFixed(1);
         },
 
         animatedLiters: function(){
@@ -146,6 +146,7 @@ $(function(){
 			if(App.fuelAmount >= 99.5){
 				App.fuelAmount = 100;
 			}
+
             App.CurrentMoneyCounted = item.cost;
             App.litersTanked = item.litersTanked ?? 0;
 		}

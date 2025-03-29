@@ -1,4 +1,14 @@
 CreateThread(function()
+    if not Config.MaximumOwnedCompanyPerPlayer then
+        Config.MaximumOwnedCompanyPerPlayer = 99999
+    end
+
+    -- not gonna bother coding the check for -1 everywhere lmao
+    if Config.MaximumOwnedCompanyPerPlayer == -1 then
+        Config.MaximumOwnedCompanyPerPlayer = 99999
+    end
+
+
     for identifier, shopData in pairs(Config.ShopList) do
         for index, pumpData in pairs(shopData.pumpPosition) do
             pumpData.source = {}

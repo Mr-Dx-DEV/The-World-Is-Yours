@@ -1,22 +1,26 @@
 TargetType = {
---    NO_TARGET = 0,
---   Q_TARGET = 1,
---    BT_TARGET = 2,
---    QB_TARGET = 3,
-    OX_TARGET = 4
+    NO_TARGET = 0,
+    Q_TARGET = 1,
+    BT_TARGET = 2,
+    QB_TARGET = 3,
+    OX_TARGET = 4,
+    SLEEPLESS = 5,
+    IS_INTERACTION = 6,
 }
 
 Inventory = {
     AUTOMATIC = 0,
     OX = 1,
---    QS = 2,
---    MF = 3,
---    PS = 4,
---    LJ = 5,
---    CORE = 6,
+    QS = 2,
+    MF = 3,
+    PS = 4,
+    LJ = 5,
+    CORE = 6,
+    CODEM = 7,
+    TGIANN = 8,
+    ORIGEN = 9,
 
-
---    ESX = 100,
+    ESX = 100,
     QB = 101,
 }
 
@@ -33,19 +37,22 @@ MeasurementTypes = {
 
 InventoryResourceNames = {
     [Inventory.OX] = "ox_inventory",
- --   [Inventory.QS] = "qs-inventory",
- --   [Inventory.MF] = "mf-inventory",
-  --  [Inventory.PS] = "ps-inventory",
-  --  [Inventory.LJ] = "lj-inventory",
- --   [Inventory.CORE] = "core_inventory",
+    [Inventory.QS] = "qs-inventory",
+    [Inventory.MF] = "mf-inventory",
+    [Inventory.PS] = "ps-inventory",
+    [Inventory.LJ] = "lj-inventory",
+    [Inventory.CORE] = "core_inventory",
+    [Inventory.CODEM] = "codem-inventory",
+    [Inventory.TGIANN] = "tgiann-inventory",
+    [Inventory.ORIGEN] = "origen_inventory",
 }
 
 TargetTypeResourceName = {
-  --  [TargetType.NO_TARGET] = "none",
- --   [TargetType.Q_TARGET] = "qtarget",
-  --  [TargetType.BT_TARGET] = "bt-target",
-   -- [TargetType.QB_TARGET] = "qb-target",
-    [TargetType.OX_TARGET] = "qb-target"
+    [TargetType.NO_TARGET] = "none",
+    [TargetType.Q_TARGET] = "qtarget",
+    [TargetType.BT_TARGET] = "bt-target",
+    [TargetType.QB_TARGET] = "qb-target",
+    [TargetType.OX_TARGET] = "ox_target"
 }
 
 Framework = {
@@ -115,7 +122,8 @@ SkinChangerType = {
     QB_CLOTHING = 3,
     FIVEM_APPEARANCE = 4,
     ILLENIUM_APPEARANCE = 5,
-    NONE = 6,
+    RCORE_CLOTHING = 6,
+    NONE = 7,
 }
 
 skinchangerResource = {
@@ -124,4 +132,21 @@ skinchangerResource = {
     ["qb-clothing"] = SkinChangerType.QB_CLOTHING,
     ["fivem-appearance"] = SkinChangerType.FIVEM_APPEARANCE,
     ["illenium-appearance"] = SkinChangerType.ILLENIUM_APPEARANCE,
+}
+
+Society = {
+    AUTOMATIC = 1,
+    QB_BANKING = 2,
+    QB_MANAGEMENT = 3,
+    QB_BOSSMENU = 4,
+    ESX_ADDON_ACCOUNT = 5,
+    NFS_BILLING = 6,
+}
+
+SocietyResourceName = {
+    [Society.QB_BANKING] = "qb-banking",
+    [Society.QB_MANAGEMENT] = "qb-management",
+    [Society.QB_BOSSMENU] = "qb-bossmenu",
+    [Society.ESX_ADDON_ACCOUNT] = "esx_addonaccount",
+    [Society.NFS_BILLING] = "nfs-billing",
 }

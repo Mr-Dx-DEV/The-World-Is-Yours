@@ -1,50 +1,3 @@
--- ****** This defines the cost per liter that your company must pay when refueling! ******
--- Set the minimum and maximum price per liter that your company will be charged for fuel.
--- The price will be randomly adjusted within this range every hour to simulate inflation and deflation,
--- giving a dynamic feel to fuel pricing.
--- You can find all possible FuelType values in const.lua
-Config.CompanyGasPrices = {
-    [FuelType.NATURAL] = {
-        min = 20.0,
-        max = 50.0,
-    },
-    [FuelType.DIESEL] = {
-        min = 20.0,
-        max = 50.0,
-    },
-    [FuelType.EV] = {
-        min = 10.0,
-        max = 30.0,
-    },
-    [FuelType.LPG] = {
-        min = 10.0,
-        max = 30.0,
-    },
-    [FuelType.CNG] = {
-        min = 10.0,
-        max = 30.0,
-    },
-    [FuelType.MILK] = {
-        min = 100.0,
-        max = 999.0,
-    },
-}
-
--- If you want to set a maximum price limit for different types of fuel when the gas station owner is updating prices,
--- you can configure that here. This ensures that the price for each fuel type cannot exceed the specified value.
-Config.LockedFuelPrice = {
-    --[FuelType.NATURAL] = 0,
-    --[FuelType.DIESEL] = 0,
-    --[FuelType.EV] = 0,
-    --[FuelType.LPG] = 0,
-    --[FuelType.CNG] = 0,
-    --[FuelType.MILK] = 0,
-    --[FuelType.AVIATION] = 0,
-}
-
--- after midnight should we refuel all society owned by someone?
-Config.AutomaticRestock = true
-
 -- since it is automatic and not by system it is best to apply more fees so players are doing these tasks by them self
 -- they will pay 10% more than they would by them self if they did the mission
 Config.AutomaticRestockTax = 0.1
@@ -58,8 +11,382 @@ Config.TaxPercentage = 0.2 -- 0.2 = 20%
 -- society where the tax goes
 Config.TaxSociety = "society_goverment"
 
+-- Disable passive income for all stores?
+-- true = passive income will be disabled.
+Config.DisablePassiveIncome = false
+
+-- the minimum price of gas staton allowed to put by player?
+Config.MinimumPriceOfGasStation = 100000
+
+-- the maximum owned companies player can own?
+-- ( -1 will be unlimited )
+Config.MaximumOwnedCompanyPerPlayer = 2
+
 -- you can view all AlignTypes/FuelType in const.lua
 Config.ShopList = {
+    ["fuel_pump26"] = {
+        -- blip on minimap/full map position
+        enableBlip = true,
+        blipScale = 0.5,
+        blipPosition = vec3(-319.300171, -1471.467041, 29.548527),
+        blipSprite = 361,
+        blipName = "Fuel pump",
+
+        -- boss marker for the owner of the company
+        companyMenuMarkerPos = vec3(-340.871002, -1477.680786, 30.754101),
+
+        -- boss menu marker style
+        companyMenuMarkerStyle = {
+            size = vector3(1.0, 1.0, 1.0),
+            rotate = true,
+            faceCamera = false,
+            color = { r = 255, g = 255, b = 255, a = 100 },
+            type = 31,
+        },
+
+        -- marker where player can buy the company
+        buyCompanyMarker = vec3(-340.962036, -1475.725830, 30.752728),
+
+        -- buy marker style
+        buyCompanyMarkerStyle = {
+            size = vector3(1.0, 1.0, 1.0),
+            rotate = true,
+            faceCamera = false,
+            color = { r = 0, g = 255, b = 0, a = 100 },
+            type = 29,
+        },
+
+        -- Enable/Disable buying of the station?
+        EnableBuyingCompany = true,
+
+        -- when player buy the company where should the camera be rendered at
+        buyCompanyCameraPosition = {
+            pos = vec3(-284.885284, -1506.109985, 38.193485),
+            rot = vec3(-8.705058, 0.062590, 59.408875),
+        },
+
+        -- Society info
+        EnableSociety = false,
+        SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
+
+        Job = "jobName",
+        Data = { type = "private", },
+
+        -- works only for ESX this option
+        ESX_BossOption = {
+            withdraw = true,
+            deposit = true,
+            wash = false,
+            employees = true,
+            grades = true,
+        },
+
+        -- fuel pump position where player can fuel his car
+        pumpPosition = {
+            [1] = {
+                fuelType = -1,
+                align = AlignTypes.RIGHT,
+                pos = vec3(-329.819550, -1471.639648, 29.729012),
+                hash = 1694452750,
+                fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, }
+            },
+            [2] = {
+                fuelType = -1,
+                align = AlignTypes.RIGHT,
+                pos = vec3(-322.333221, -1467.317627, 29.720665),
+                hash = 1694452750,
+                fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, }
+            },
+            [3] = {
+                fuelType = -1,
+                align = AlignTypes.RIGHT,
+                pos = vec3(-314.921967, -1463.038574, 29.726250),
+                hash = 1694452750,
+                fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, }
+            },
+            [4] = {
+                fuelType = -1,
+                align = AlignTypes.LEFT,
+                pos = vec3(-309.851532, -1471.798340, 29.723412),
+                hash = 1694452750,
+                fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, }
+            },
+            [5] = {
+                fuelType = -1,
+                align = AlignTypes.LEFT,
+                pos = vec3(-317.262848, -1476.091797, 29.725029),
+                hash = 1694452750,
+                fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, }
+            },
+            [6] = {
+                fuelType = -1,
+                align = AlignTypes.LEFT,
+                pos = vec3(-324.749115, -1480.414062, 29.728859),
+                hash = 1694452750,
+                fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, }
+            }
+        },
+
+        -- spawn info of the mission vehicle
+        tipTruckSpawnPosition = {
+            -- position of the spawn
+            pos = vec3(-343.648621, -1494.918335, 30.383053),
+
+            -- heading of the vehicle
+            heading = 269.60629272461,
+        },
+
+        -- Tanker scaleform + blip mission
+        tankerScaleform = {
+            -- Mission blip on minimap where player have to drive after picking up phantom
+            missionBlipPosition = vec3(-349.847534, -1494.527100, 30.390125),
+
+            -- position of the scaleform
+            pos = vec3(-359.436890, -1497.527710, 30.384823),
+
+            -- rotation of the scaleform
+            heading = 179.99998474121,
+
+            -- This is actually TV object hidden so we can display the nice 3D UI
+            model = 1340914825,
+        },
+
+        -- this is the tap where player will attach the nozzle from phantom
+        tankerTapPosition = {
+            -- position of the tap
+            pos = vec3(-360.253876, -1497.462158, 28.877869),
+
+            -- heading of the tap
+            heading = 96.0,
+
+            -- render distance of the tap
+            renderDistance = 100.0,
+        },
+
+        -- current capacity the tanker has
+        -- do not change
+        capacity = {
+            [FuelType.NATURAL] = 10000,
+            [FuelType.DIESEL] = 10000
+        },
+
+        -- default prices of the fuel per liter
+        -- for example if you set here 50$ then one liter of fuel will cost 50$
+        gasPrices = {
+            [FuelType.NATURAL] = 50,
+            [FuelType.DIESEL] = 50
+        },
+
+        -- maximum capacity the tanker can have
+        maxCapacity = {
+            [FuelType.NATURAL] = 10000,
+            [FuelType.DIESEL] = 10000
+        },
+
+        -- Hourly income is how much money the gas station will make every hour so there is passive income. So location far away from town where no player is have at least a chance to make something
+        -- by setting value to "0" there wont be any passive income.
+        hourlyIncome = 1000,
+
+        -- do not change
+        -- you will have to change this value in game not in config this is just placeholder for default value
+        price = 520000,
+
+        -- do not change
+        open = true,
+
+        -- do not change, will also not work unless society is enabled
+        fuel_only_employee = false,
+
+        -- do not change
+        for_sale = true,
+
+        -- do not change
+        -- keep also default value "none"
+        owner_identifier = "none",
+
+        -- spawner object for this specific fuel station
+        objectSpawner = {
+            [1] = {
+                pos = vec3(-358.013306, -1498.923584, 29.158165),
+                renderDistance = 100.0,
+                heading = 0.0,
+                model = 'prop_storagetank_03b'
+            },
+            [2] = {
+                pos = vec3(-351.855530, -1498.892944, 29.303244),
+                renderDistance = 100.0,
+                heading = 0.0,
+                model = 'prop_storagetank_03b'
+            }
+        },
+    },
+    ["fuel_pump25_airplanes"] = {
+        -- blip on minimap/full map position
+        enableBlip = true,
+        blipScale = 0.5,
+        blipPosition = vec3(-729.204529, -1451.262085, 4.000523),
+        blipSprite = 307,
+        blipName = "Airplanes Fuel pump",
+
+        -- boss marker for the owner of the company
+        companyMenuMarkerPos = vec3(-740.462097, -1504.257202, 5.000523),
+
+        -- boss menu marker style
+        companyMenuMarkerStyle = {
+            size = vector3(1.0, 1.0, 1.0),
+            rotate = true,
+            faceCamera = false,
+            color = { r = 255, g = 255, b = 255, a = 100 },
+            type = 31,
+        },
+
+        -- marker where player can buy the company
+        buyCompanyMarker = vec3(-743.149292, -1505.165649, 5.000523),
+
+        -- buy marker style
+        buyCompanyMarkerStyle = {
+            size = vector3(1.0, 1.0, 1.0),
+            rotate = true,
+            faceCamera = false,
+            color = { r = 0, g = 255, b = 0, a = 100 },
+            type = 29,
+        },
+
+        -- Enable/Disable buying of the station?
+        EnableBuyingCompany = true,
+
+        -- when player buy the company where should the camera be rendered at
+        buyCompanyCameraPosition = {
+            pos = vec3(-728.474792, -1392.591064, 20.741760),
+            rot = vec3(-20.158653, 0.053697, 175.750870),
+        },
+
+        -- Society info
+        EnableSociety = false,
+        SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
+        Job = "jobName",
+        Data = { type = "private", },
+
+        -- works only for ESX this option
+        ESX_BossOption = {
+            withdraw = true,
+            deposit = true,
+            wash = false,
+            employees = true,
+            grades = true,
+        },
+
+        -- fuel pump position where player can fuel his car
+        pumpPosition = {
+            [1] = {
+                fuelTypeList = { FuelType.AVIATION, },
+                hash = 1499213999,
+                align = AlignTypes.MIDDLE,
+                fuelType = -1,
+                pos = vec3(-764.885864, -1434.485962, 4.035404)
+            },
+            [2] = {
+                fuelTypeList = { FuelType.AVIATION, },
+                hash = 1499213999,
+                align = AlignTypes.MIDDLE,
+                fuelType = -1,
+                pos = vec3(-705.283325, -1464.977905, 4.024448)
+            }
+        },
+
+        -- spawn info of the mission vehicle
+        tipTruckSpawnPosition = {
+            -- position of the spawn
+            pos = vec3(-704.691223, -1472.570312, 4.630657),
+
+            -- heading of the vehicle
+            heading = 319.00302124023,
+        },
+
+        -- Tanker scaleform + blip mission
+        tankerScaleform = {
+            -- Mission blip on minimap where player have to drive after picking up phantom
+            missionBlipPosition = vec3(-705.861877, -1477.226074, 5.000523),
+
+            -- position of the scaleform
+            pos = vec3(-704.250488, -1481.275024, 5.400265),
+
+            -- rotation of the scaleform
+            heading = 233.0,
+
+            -- This is actually TV object hidden so we can display the nice 3D UI
+            model = 1340914825,
+        },
+
+        -- this is the tap where player will attach the nozzle from phantom
+        tankerTapPosition = {
+            -- position of the tap
+            pos = vec3(-704.696716, -1481.422852, 3.720523),
+
+            -- heading of the tap
+            heading = 139.0,
+
+            -- render distance of the tap
+            renderDistance = 100.0,
+        },
+
+        -- current capacity the tanker has
+        -- do not change
+        capacity = {
+            [FuelType.AVIATION] = 30000
+        },
+
+        -- default prices of the fuel per liter
+        -- for example if you set here 50$ then one liter of fuel will cost 50$
+        gasPrices = {
+            [FuelType.AVIATION] = 500
+        },
+
+        -- maximum capacity the tanker can have
+        maxCapacity = {
+            [FuelType.AVIATION] = 30000
+        },
+
+        -- Hourly income is how much money the gas station will make every hour so there is passive income. So location far away from town where no player is have at least a chance to make something
+        -- by setting value to "0" there wont be any passive income.
+        hourlyIncome = 1000,
+
+        -- do not change
+        -- you will have to change this value in game not in config this is just placeholder for default value
+        price = 520000,
+
+        -- do not change
+        open = true,
+
+        -- do not change, will also not work unless society is enabled
+        fuel_only_employee = false,
+
+        -- do not change
+        for_sale = true,
+
+        -- do not change
+        -- keep also default value "none"
+        owner_identifier = "none",
+
+        -- spawner object for this specific fuel station
+        objectSpawner = {
+            [1] = {
+                heading = 53.0,
+                model = 'prop_storagetank_03b',
+                renderDistance = 100.0,
+                pos = vec3(-702.252747, -1480.926147, 4.150266)
+            },
+            [2] = {
+                heading = 53.0,
+                model = 'prop_storagetank_03b',
+                renderDistance = 100.0,
+                pos = vec3(-698.550598, -1475.938477, 4.150265)
+            }
+        },
+    },
+
     ["fuel_pump24"] = {
         -- blip on minimap/full map position
         enableBlip = true,
@@ -104,6 +431,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -191,7 +519,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -272,6 +600,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -394,7 +723,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -475,6 +804,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -576,7 +906,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -657,6 +987,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -758,7 +1089,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -839,6 +1170,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -940,7 +1272,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -1021,6 +1353,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -1122,7 +1455,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -1203,6 +1536,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -1283,7 +1617,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -1364,6 +1698,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -1465,7 +1800,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -1540,6 +1875,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -1613,7 +1949,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -1694,6 +2030,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -1767,7 +2104,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -1848,6 +2185,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -1921,7 +2259,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -2002,6 +2340,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -2075,7 +2414,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -2124,7 +2463,7 @@ Config.ShopList = {
         enableBlip = true,
         blipScale = 0.5,
         blipPosition = vec3(-1234.913086, -2281.494385, 12.944557),
-        blipSprite = 361,
+        blipSprite = 307,
         blipName = "Airplanes Fuel pump",
 
         -- boss marker for the owner of the company
@@ -2150,6 +2489,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -2233,17 +2573,17 @@ Config.ShopList = {
         -- current capacity the tanker has
         -- do not change
         capacity = {
-            [FuelType.AVIATION] = 10000
+            [FuelType.AVIATION] = 30000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 500$
         gasPrices = {
             [FuelType.AVIATION] = 500
         },
 
         -- maximum capacity the tanker can have
         maxCapacity = {
-            [FuelType.AVIATION] = 10000
+            [FuelType.AVIATION] = 30000
         },
 
         -- Hourly income represents the amount of money the gas station will generate every hour, providing passive income. Therefore, even in a location far away from town where there are no players, there is still a chance to make some profit.
@@ -2302,7 +2642,7 @@ Config.ShopList = {
         blipScale = 0.5,
         blipPosition = vec3(1208.704590, -1402.596191, 34.224159),
         blipSprite = 361,
-        blipName = "Ele Fuel pump",
+        blipName = "EV Charger",
 
         -- boss marker for the owner of the company
         companyMenuMarkerPos = vec3(1215.050415, -1389.761841, 35.374107),
@@ -2327,6 +2667,8 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
+
         Job = "jobName",
         Data = { type = "private", },
 
@@ -2413,7 +2755,7 @@ Config.ShopList = {
             [FuelType.EV] = 10000,
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.EV] = 50,
         },
@@ -2486,6 +2828,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -2573,7 +2916,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -2648,6 +2991,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -2735,7 +3079,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -2816,6 +3160,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -2903,7 +3248,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -2978,6 +3323,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -3079,7 +3425,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -3160,6 +3506,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -3261,7 +3608,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -3342,6 +3689,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -3457,7 +3805,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -3538,6 +3886,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -3660,7 +4009,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -3741,6 +4090,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -3821,7 +4171,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -3902,6 +4252,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -4003,7 +4354,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -4084,6 +4435,7 @@ Config.ShopList = {
         -- Society info
         EnableSociety = false,
         SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
         Job = "jobName",
         Data = { type = "private", },
 
@@ -4164,7 +4516,7 @@ Config.ShopList = {
             [FuelType.DIESEL] = 10000
         },
 
-        -- default prices of the fuel per liter so 1 liter of fuel will cost 5$
+        -- default prices of the fuel per liter so 1 liter of fuel will cost 50$
         gasPrices = {
             [FuelType.NATURAL] = 50,
             [FuelType.DIESEL] = 50
@@ -4213,6 +4565,63 @@ Config.ShopList = {
             }
         },
     },
+}
+
+-- PLEASE READ CAREFULLY!
+-- PLEASE READ CAREFULLY!
+-- PLEASE READ CAREFULLY!
+-- PLEASE READ CAREFULLY!
+-- PLEASE READ CAREFULLY!
+-- PLEASE READ CAREFULLY!
+-- PLEASE READ CAREFULLY!
+-- PLEASE READ CAREFULLY!
+-- ****** This defines the cost per liter that your company must pay when refueling! ******
+-- ****** This is NOT how much player pay for fuel when he is refueling his vehicle ******
+-- Set the minimum and maximum price per liter that your company will be charged for fuel.
+-- The price will be randomly adjusted within this range every hour to simulate inflation and deflation,
+-- giving a dynamic feel to fuel pricing.
+-- You can find all possible FuelType values in const.lua
+Config.CompanyGasPrices = {
+    [FuelType.NATURAL] = {
+        min = 20.0,
+        max = 50.0,
+    },
+    [FuelType.DIESEL] = {
+        min = 20.0,
+        max = 50.0,
+    },
+    [FuelType.EV] = {
+        min = 10.0,
+        max = 30.0,
+    },
+    [FuelType.LPG] = {
+        min = 10.0,
+        max = 30.0,
+    },
+    [FuelType.CNG] = {
+        min = 10.0,
+        max = 30.0,
+    },
+    [FuelType.MILK] = {
+        min = 100.0,
+        max = 999.0,
+    },
+    [FuelType.AVIATION] = {
+        min = 450.0,
+        max = 750.0,
+    },
+}
+
+-- If you want to set a maximum price limit for different types of fuel when the gas station owner is updating prices,
+-- you can configure that here. This ensures that the price for each fuel type cannot exceed the specified value.
+Config.LockedFuelPrice = {
+    --[FuelType.NATURAL] = 0,
+    --[FuelType.DIESEL] = 0,
+    --[FuelType.EV] = 0,
+    --[FuelType.LPG] = 0,
+    --[FuelType.CNG] = 0,
+    --[FuelType.MILK] = 0,
+    --[FuelType.AVIATION] = 0,
 }
 
 -- updating hash models, some maps that are changing the models them self.

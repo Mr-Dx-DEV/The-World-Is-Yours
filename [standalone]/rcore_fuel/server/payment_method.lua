@@ -61,7 +61,7 @@ function PayWithType(moneyType, source, money, society, shopIdentifier)
 
         if shopModal.IsSocietyEnabled() then
             if GetMoneyFromSociety(society) >= money then
-                RemoveMoneyToSociety(money, society)
+                RemoveMoneyFromSociety(money, society)
                 return true
             end
         else
@@ -122,33 +122,29 @@ function GivePlayerMoney(moneyType, money, id)
     end
 end
 
-function GiveOfflinePlayerMoney(moneyType, identifier, money)
-    local sqlSelect = "SELECT accounts FROM `users` WHERE identifier = @identifier"
+function SetOfflinePlayerMoney(moneyType, identifier, money)
     local sqlUpdate = "UPDATE `users` SET accounts = @accounts  WHERE identifier = @identifier"
 
     if Config.Framework.Active == Framework.QBCORE then
-        sqlSelect = "SELECT money AS accounts FROM `players` WHERE citizenid = @identifier"
         sqlUpdate = "UPDATE `players` SET money = @accounts  WHERE citizenid = @identifier"
     end
-
-    local accountsJson = MySQL.Sync.fetchScalar(sqlSelect, { ["@identifier"] = identifier })
-    local accounts = json.decode(accountsJson)
+    local playerMoney, accounts = GetOfflinePlayerMoney(moneyType, identifier)
 
     if moneyType == "bank" then
         if Config.Framework.Active == Framework.QBCORE then
-            accounts.bank = accounts.bank + money
+            accounts.bank = money
         end
         if Config.Framework.Active == Framework.ESX then
-            accounts.bank = accounts.bank + money
+            accounts.bank = money
         end
     end
 
     if moneyType == "cash" then
         if Config.Framework.Active == Framework.QBCORE then
-            accounts.cash = accounts.cash + money
+            accounts.cash = money
         end
         if Config.Framework.Active == Framework.ESX then
-            accounts.money = accounts.money + money
+            accounts.money = money
         end
     end
 
@@ -156,4 +152,45 @@ function GiveOfflinePlayerMoney(moneyType, identifier, money)
         ["@accounts"] = json.encode(accounts),
         ["@identifier"] = identifier,
     })
+end
+
+function GetOfflinePlayerMoney(moneyType, identifier)
+    local sqlSelect = "SELECT accounts FROM `users` WHERE identifier = @identifier"
+
+    if Config.Framework.Active == Framework.QBCORE then
+        sqlSelect = "SELECT money AS accounts FROM `players` WHERE citizenid = @identifier"
+    end
+
+    local accountsJson = MySQL.Sync.fetchScalar(sqlSelect, { ["@identifier"] = identifier })
+    local accounts = json.decode(accountsJson)
+
+    if moneyType == "bank" then
+        if Config.Framework.Active == Framework.QBCORE then
+            return accounts.bank, accounts
+        end
+        if Config.Framework.Active == Framework.ESX then
+            return accounts.bank, accounts
+        end
+    end
+
+    if moneyType == "cash" then
+        if Config.Framework.Active == Framework.QBCORE then
+            return accounts.cash, accounts
+        end
+        if Config.Framework.Active == Framework.ESX then
+            return accounts.money, accounts
+        end
+    end
+
+    return 0, accounts
+end
+
+function GiveOfflinePlayerMoney(moneyType, identifier, money)
+    local playerMoney = GetOfflinePlayerMoney(moneyType, identifier)
+    SetOfflinePlayerMoney(moneyType, identifier, playerMoney + money)
+end
+
+function TakeOfflinePlayerMoney(moneyType, identifier, money)
+    local playerMoney = GetOfflinePlayerMoney(moneyType, identifier)
+    SetOfflinePlayerMoney(moneyType, identifier, playerMoney - money)
 end

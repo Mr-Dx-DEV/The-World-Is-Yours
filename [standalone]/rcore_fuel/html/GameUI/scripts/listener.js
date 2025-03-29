@@ -1,3 +1,11 @@
+var App = new Vue({
+	el: '#app',
+	data:
+	{
+	   translation: [],
+ 	},
+});
+
 function Close(){
     $("#textboard").modal("hide");
     $("#tutorial_gas_tube").modal("hide");
@@ -39,8 +47,14 @@ function selectPayment(type){
 }
 
 $(function(){
+    $.post('https://rcore_fuel/init_main');
+
 	window.addEventListener('message', function(event) {
         var item = event.data;
+
+        if(item.type === "locales_main"){
+			 App.translation = item.locales
+        }
 
         if(item.type === "shopSettings"){
 			 $("#shopSettings").modal("show");

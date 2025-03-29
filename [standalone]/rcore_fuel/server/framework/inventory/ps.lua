@@ -11,7 +11,7 @@ if Config.InventorySystem == Inventory.PS then
 
     function CanPlayerCarryItem(source, itemName, count)
         local player = SharedObject.Functions.GetPlayer(source)
-        local item = player.Functions.GetItemByName(itemName) or {}
+        local item = SharedObject.Shared.Items[itemName:lower()] or {}
 
         local ItemInfo = {
             name = itemName,
@@ -44,4 +44,25 @@ if Config.InventorySystem == Inventory.PS then
     SharedObject.RegisterUsableItem = function(itemName, callBack)
         SharedObject.Functions.CreateUseableItem(itemName, callBack)
     end
+
+    -- only if qs-inventory is active
+    PlayerActiveSlots = {}
+
+    RegisterNetEvent("ps-inventory:server:UseItemSlot", function(activeSlot)
+        -- I am not sure if the activeSlot argument can be something else beside number just like it is
+        -- with qb-inventory so  i will leave it here
+        if type(activeSlot) ~= "number" then
+            return
+        end
+
+        PlayerActiveSlots[source] = activeSlot
+    end)
+
+    RegisterNetEvent("rcore_fuel:setActiveSlotId", function(slotId)
+        PlayerActiveSlots[source] = slotId
+    end)
+
+    AddEventHandler("playerDropped", function()
+        PlayerActiveSlots[source] = nil
+    end)
 end

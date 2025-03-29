@@ -6,7 +6,8 @@ RegisterNetEvent("rcore_fuel:OwnerSelectedForRefuel", function(id, name, company
     local modal = GetCompanyModal(companyIdentifier)
     if modal.DoesExists() then
         local moneyCost = Config.CompanyGasPrices[fuelType].current * fuelToTank
-        local society = (Config.ShopList[companyIdentifier].Job or "none")
+        local compData = Config.ShopList[companyIdentifier]
+        local society = ((compData.SocietyName or compData.Job) or "none")
         if modal.IsSourceOwner(source) then
             if not CanPlayerPayWithMoneyType(moneyType, source, moneyCost, society, companyIdentifier) then
                 TriggerClientEvent("rcore_fuel:showHelpNotification", source, _U("lacking_funds", CommaValue(moneyCost)), false, false, 10000)
@@ -34,12 +35,17 @@ function RefundCompanyMoney(source)
     if data then
         local modal = GetCompanyModal(data.companyIdentifier)
         if modal.DoesExists() then
-            local society = (Config.ShopList[data.companyIdentifier].Job or "none")
+            local compData = Config.ShopList[data.companyIdentifier]
+            local society = ((compData.SocietyName or compData.Job) or "none")
 
             if modal.IsSocietyEnabled() then
                 GiveMoneyToSociety(data.moneyCost, society)
             else
                 modal.AddCompanyStockMoney(data.moneyCost)
+            end
+
+            if data.fuelCompleted then
+                modal.RemoveAmountForFuelCapacity(data.fuelType, data.fuelToTank)
             end
 
             TriggerClientEvent("rcore_fuel:ShowNotification", data.initSource, _U("money_refunded", CommaValue(RoundDecimalPlace(data.moneyCost, 2))))
@@ -132,7 +138,8 @@ RegisterNetEvent("rcore_fuel:BuyFuelStock", function(shopIdentifier, fuelType, l
 
     if company.DoesExists() then
         local moneyCost = Config.CompanyGasPrices[fuelType].current * liters
-        local society = (Config.ShopList[shopIdentifier].Job or "none")
+        local compData = Config.ShopList[shopIdentifier]
+        local society = ((compData.SocietyName or compData.Job) or "none")
         if not PayWithType(cashType, source, moneyCost, society, shopIdentifier) then
             TriggerClientEvent("rcore_fuel:showHelpNotification", source, _U("lacking_funds", CommaValue(moneyCost)), false, false, 10000)
             return
@@ -151,6 +158,7 @@ RegisterNetEvent("rcore_fuel:finishTheMission", function()
         local company = GetCompanyModal(data.companyIdentifier)
 
         if company.DoesExists() then
+            PlayerCurrentlyInMission[source].fuelCompleted = true
             company.AddAmountForFuelCapacity(data.fuelType, data.fuelToTank)
             company.Save()
             UpdateConfigForClient(-1, data.companyIdentifier)

@@ -1,5 +1,4 @@
--- everyday midnight
-AddHourEvent(0, function()
+function RestockAllFuelStations()
     for k, v in pairs(Config.ShopList) do
         local modal = GetCompanyModal(k)
         if modal.IsBuyingCompanyEnabled() and modal.IsOwned() then
@@ -22,7 +21,7 @@ AddHourEvent(0, function()
                 if societyMoney > 0 then
                     moneyToPay = moneyToPay + (moneyToPay * Config.AutomaticRestockTax)
                     if modal.IsSocietyEnabled() then
-                        RemoveMoneyToSociety(moneyToPay, v.Job)
+                        RemoveMoneyFromSociety(moneyToPay, v.SocietyName or v.Job)
                     end
                     modal.RemoveCompanyStockMoney(moneyToPay)
                 else
@@ -41,7 +40,7 @@ AddHourEvent(0, function()
                     end
 
                     societyMoney = societyMoney * -1
-                    GiveMoneyToSociety(societyMoney + 1, v.Job)
+                    GiveMoneyToSociety(societyMoney + 1, v.SocietyName or v.Job)
                     modal.SetCompanyStockMoney(1)
                 end
 
@@ -56,4 +55,18 @@ AddHourEvent(0, function()
     end
 
     UpdateConfigForClient(-1)
+end
+
+RegisterCommand("forcerestockfuel", function(source)
+    if source == 0 then
+        RestockAllFuelStations()
+    else
+        print("This command works only in server console, it wont work in game!")
+        TriggerClientEvent("rcore_fuel:showHelpNotification", source, "This command works only in server console, it wont work in game!", false, false, 10000)
+    end
+end)
+
+-- everyday midnight
+AddHourEvent(0, function()
+    RestockAllFuelStations()
 end)

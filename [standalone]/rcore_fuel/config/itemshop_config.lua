@@ -47,6 +47,11 @@ Config.ItemShopItems = {
     [1] = {
         label = "Vehicle manual",
         item = "vehicle_manual",
-        price = 50,
+        price = 1000,
+    },
+    [2] = {
+        label = "Fuel pumper",
+        item = "fuel_pump",
+        price = 10000,
     },
 }

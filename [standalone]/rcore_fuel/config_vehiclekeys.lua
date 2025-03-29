@@ -5,6 +5,11 @@
 --- @param vehicleModelName string
 --- @param vehiclePlate string ( non trimmed )
 Config.GiveVehicleKeys = function(vehicleEntity, vehicleHash, vehicleModelName, vehiclePlate)
+    if IsResourceOnServer("tgiann-hotwire") then
+        exports["tgiann-hotwire"]:GiveKeyPlate(Trim(vehiclePlate), true)
+        return
+    end
+
     if IsResourceOnServer("qb-vehiclekeys") then
         TriggerEvent("qb-vehiclekeys:client:AddKeys", Trim(vehiclePlate))
         return
@@ -41,6 +46,11 @@ end
 --- @param vehicleModelName string
 --- @param vehiclePlate string ( non trimmed )
 Config.RemoveVehicleKeys = function(vehicleEntity, vehicleHash, vehicleModelName, vehiclePlate)
+    if IsResourceOnServer("tgiann-hotwire") then
+        -- I couldnt find anything for removing key
+        return
+    end
+
     if IsResourceOnServer("qb-vehiclekeys") then
         TriggerEvent("qb-vehiclekeys:client:RemoveKeys", Trim(vehiclePlate))
         return

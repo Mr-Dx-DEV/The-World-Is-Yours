@@ -32,6 +32,19 @@ MySQL.ready(function()
             local shopData = json.decode(data.data)
             shopData.owner_identifier = data.owner_identifier
             company.Load(shopData)
+            if not company.IsBuyingCompanyEnabled() then
+                local fuelPriceDifferences = false
+                local fuelList = company.GetAllFuelTypes()
+                for k, fuelType in pairs(fuelList) do
+                    if shopData[tostring(fuelType)] ~= v.gasPrices[fuelType] then
+                        fuelPriceDifferences = true
+                    end
+                end
+
+                if fuelPriceDifferences then
+                    company.Save("force")
+                end
+            end
         else
             company.Save(true)
         end

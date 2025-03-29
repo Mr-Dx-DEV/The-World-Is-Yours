@@ -13,7 +13,7 @@ if Config.InventorySystem == Inventory.QB then
 
     function CanPlayerCarryItem(source, itemName, count)
         local player = SharedObject.Functions.GetPlayer(source)
-        local item = player.Functions.GetItemByName(itemName) or {}
+        local item = SharedObject.Shared.Items[itemName:lower()] or {}
 
         local ItemInfo = {
             name = itemName,
@@ -60,6 +60,10 @@ if Config.InventorySystem == Inventory.QB then
         PlayerActiveSlots[source] = item.slot
 
         TriggerClientEvent("rcore_fuel:setPlayerActiveSlotNumber", source, item.slot)
+    end)
+
+    RegisterNetEvent("rcore_fuel:setActiveSlotId", function(slotId)
+        PlayerActiveSlots[source] = slotId
     end)
 
     -- so we support old version of inventory

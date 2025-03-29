@@ -30,18 +30,7 @@ if Config.InventorySystem == Inventory.CORE then
     end
 
     function CanPlayerCarryItem(source, itemName, count)
-        if Config.Framework.Active == Framework.ESX then
-            local player = SharedObject.GetPlayerFromId(source)
-
-            return player.canCarryItem(itemName, count)
-        end
-
-        if Config.Framework.Active == Framework.QBCORE then
-            local player = SharedObject.Functions.GetPlayer(source)
-
-            return exports[resourceName]:canCarry(player.PlayerData.citizenid, itemName, count)
-        end
-        return true
+        return exports[resourceName]:canCarry(source, itemName, count)
     end
 
     function GetItemCount(source, itemName)

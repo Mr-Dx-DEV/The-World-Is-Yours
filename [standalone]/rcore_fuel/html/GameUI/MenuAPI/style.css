@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Calligraffitti:normal');
+@import url('https://fonts.cdnfonts.com/css/signpainter');
 
 .container_menu {
     min-width: 23.7vw;
@@ -24,7 +24,7 @@
 .description{
     color: white;
     text-align: center;
-    font-family: Montserrat, Calibri, Arial;
+    font-family: Montserrat;
 
     position: absolute;
     min-width: 23.7vw;
@@ -103,7 +103,7 @@
 }
 
 .title p {
-    font-family: 'Calligraffitti', sans-serif;
+    font-family: 'SignPainter', sans-serif;
     color: black;
     font-size: 3vw;
     position: relative;

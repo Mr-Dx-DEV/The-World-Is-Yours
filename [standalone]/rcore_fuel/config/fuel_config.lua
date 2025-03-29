@@ -1,6 +1,9 @@
 -- debug
 Config.FuelDebug = false
 
+-- How long the fuel nozzle can get before breaking completely?
+Config.RopeDistanceBeforeBreak = 10
+
 -- fuel units label
 Config.FuelTypeUnitsMeasurementsUnits = {
     [MeasurementUnits.METRIC] = {
@@ -105,7 +108,7 @@ Config.DisableEngineAfterCertainFuelLevel = {
     [FuelType.LPG] = -99,
     [FuelType.CNG] = -99,
     [FuelType.MILK] = -99,
-    [FuelType.AVIATION ] = -99,
+    [FuelType.AVIATION] = -99,
 }
 
 -- in one minute player will be able to tank 60 liters to his tank
@@ -191,6 +194,45 @@ Config.VehicleClassAverageFuelTankSize = {
     [22] = 55.0, -- Open Wheel
 }
 
+-- custom list with custom values for each car you want
+Config.CustomFuelCapacity = {
+    {
+        model = "phantom3",
+        maxFuel = 300,
+    },
+}
+
+-- tank size per fuel type
+Config.AverageFuelTankSizePerFuelType = {
+    --[[
+    [FuelType.EV] = {
+        [0] = 55.0, -- Compacts
+        [1] = 65.0, -- Sedans
+        [2] = 70.0, -- SUVs
+        [3] = 60.0, -- Coupes
+        [4] = 70.0, -- Muscle
+        [5] = 75.0, -- Sports Classics
+        [6] = 75.0, -- Sports
+        [7] = 85.0, -- Super
+        [8] = 15.0, -- Motorcycles
+        [9] = 85.0, -- Off-road
+        [10] = 150.0, -- Industrial
+        [11] = 110.0, -- Utility
+        [12] = 75.0, -- Vans
+        [13] = 0.0, -- Cycles
+        [14] = 150.0, -- Boats
+        [15] = 400.0, -- Helicopters
+        [16] = 800.0, -- Planes
+        [17] = 85.0, -- Service
+        [18] = 85.0, -- Emergency
+        [19] = 150.0, -- Military
+        [20] = 150.0, -- Commercial
+        [21] = 150.0, -- Trains
+        [22] = 55.0, -- Open Wheel
+    },
+    --]]
+}
+
 -- custom offset for fueling vehicle ( note: this will replace all existing offsets in "fueling_offset.json" )
 Config.CustomOffsetForFuelingVehicle = {
     --[[
@@ -204,13 +246,6 @@ Config.CustomOffsetForFuelingVehicle = {
     --]]
 }
 
--- custom list with custom values for each car you want
-Config.CustomFuelCapacity = {
-    {
-        model = "phantom3",
-        maxFuel = 300,
-    },
-}
 
 -- this will get selected based on model hash of the vehicle. It will be randomized per model hash but it will persists on the model unless the types get
 -- shuffled/added new one

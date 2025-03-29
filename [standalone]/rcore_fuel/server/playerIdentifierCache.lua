@@ -8,6 +8,14 @@ function GetPlayerSourceByIdentifier(id)
     return onlinePlayersIdentifiers[id]
 end
 
+function GetPlayerIdentifierBySource(source)
+    for identifier, playerCachedSource in pairs(onlinePlayersIdentifiers) do
+        if playerCachedSource == source then
+            return identifier
+        end
+    end
+end
+
 ---------------------
 ---------------------
 
@@ -43,6 +51,7 @@ end)
 CreateThread(function()
     Wait(100)
     for key, val in pairs(GetPlayers()) do
+        val = tonumber(val)
         AddPlayerIdentifierToCache(val)
     end
 end)
@@ -68,5 +77,6 @@ AddEventHandler(Config.Events.ESX.playerLogout, function(player)
 end)
 
 AddEventHandler("playerDropped", function()
+    Wait(1000)
     RemovePlayerIdentifierFromCache(source)
 end)

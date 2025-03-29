@@ -53,7 +53,7 @@ Locales["en"] = {
     ["bought_property_title_no_money"] = "You don't have enough money",
 
     ["your_company_blip"] = "Your company",
-    ["for_sale_company_blip"] = "Fuel station",
+    ["for_sale_company_blip"] = "Fuel station for sale",
 
     -- fuel pump notif
     ["vehicle_is_full"] = "This vehicle you're trying to refuel is full!",
@@ -143,6 +143,8 @@ Locales["en"] = {
 
     ["boss_action"] = "Boss actions",
     ["boss_menu"] = "Open boss menu",
+
+    ["wrong_price"] = "The price of the company can be between only ~g~$%s ~w~and ~g~$%s!",
     -- fuel mission
 
     -- keep it mind there is a hard limit on how many chars the default GTA notification can display. I already had to shorten this to fit.
@@ -208,6 +210,7 @@ Locales["en"] = {
     ["go_store_phantom"] = "Awesome! Now just store this truck and you're finished!",
 
     ["fuel_bought_company"] = "You bought the fuel.",
+    ["maximum_owned_companies"] = "You can own only up to ~r~[%s]~w~ fuel companies at same time!",
     -- other
     ["interact_key"] = "Press ~INPUT_PICKUP~ to interact",
 
@@ -224,6 +227,16 @@ Locales["en"] = {
     -- type fuel for check
     ["manual_guide"] = "Look at the vehicle you want to check the fuel type of, then press ~INPUT_ATTACK~",
     ["manual_reading"] = "Reading the manual...",
+
+
+    -- UI translation ( The editor is not planned to added in locales )
+
+    ["close_button"] = "Close",
+    ["truck_hose_title"] = "How to Plug the Truck Hose to the Tap",
+
+    ["truck_hose_part_1"] = "1. Go to the back of your truck on the right side, click \"E\" to pick up the truck hose.",
+    ["truck_hose_part_2"] = "2. Plug it into the tap that is connected to the fuel tank.",
+    ["truck_hose_part_3"] = "Wait until the progress reaches 100%%, and then simply reverse the steps.",
 
     -- fuel label names
     [FuelType.NATURAL] = "Gasoline",

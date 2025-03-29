@@ -24,11 +24,17 @@ Config.Framework = {
     DisableDetection = false,
 }
 
+-- enable statebags for ox_fuel
+Config.EnableStateBagsForOxFuel = false
+
 -- general debug
 Config.Debug = false
 
 -- debug when error happens in F8
 Config.ErrorDebug = false
+
+-- is the game crashing when you pick the nozzle? Enable this, this will disable the ropes.
+Config.DisableRopes = false
 
 -- are you using notification that cannot work with ~keys~?
 -- then please switch this to true and all keys will appear like this in notifications: [E] instead of ~INPUT_PICKUP~
@@ -47,6 +53,7 @@ Config.ForceNormalKeyLabels = false
 --SkinChangerType.QB_CLOTHING               = qb_clothing support
 --SkinChangerType.FIVEM_APPEARANCE          = Fivem appearance support
 --SkinChangerType.ILLENIUM_APPEARANCE       = Illenium appearance support
+--SkinChangerType.RCORE_CLOTHING            = rcore clothing support
 --SkinChangerType.NONE                      = None will be used and punch card will be activated.
 Config.SkinChangerType = SkinChangerType.AUTOMATIC
 
@@ -56,6 +63,8 @@ Config.SkinChangerType = SkinChangerType.AUTOMATIC
 -- 2 = BT Target
 -- 3 = QB Target
 -- 4 = OX Target
+-- 5 = sleepless
+-- 6 = is interaction
 Config.TargetZoneType = 0
 
 -- key for ALT? ( for target resources )
@@ -74,7 +83,29 @@ Config.KeyForTargetSystem = 19
 -- Inventory.PS        = ps_inventory
 -- Inventory.LJ        = lj_inventory
 -- Inventory.CORE      = core_inventory
-Config.InventorySystem = Inventory.OX
+-- Inventory.CODEM     = codem-inventory
+-- Inventory.TGIANN    = tgiann-inventory
+-- Inventory.ORIGEN    = origen_inventory
+Config.InventorySystem = Inventory.AUTOMATIC
+
+-- which kind of society are you using?
+-- [[[[[[[       WARNING       ]]]]]]]
+-- THIS configuration is automatic, you dont need to configure this at all. Change unless you really have to.
+-- [[[[[[[       WARNING       ]]]]]]]
+-- Society systems
+-- Society.AUTOMATIC            = automatic detection
+-- Society.QB_BANKING           = qb-banking
+-- Society.QB_BOSSMENU          = qb-bossmenu
+-- Society.QB_MANAGEMENT        = qb-management
+-- Society.ESX_ADDON_ACCOUNT    = esx_addonaccount
+-- Society.NFS_BILLING          = nfs-billing
+Config.SocietySystem = Society.AUTOMATIC
+
+-- name of the cash item.
+Config.CashItem = "money"
+
+-- force usage of item use for cash
+Config.IsCashBasedOnItem = false
 
 -- Measurement system
 -- metric    = MeasurementUnits.METRIC
@@ -137,12 +168,6 @@ Config.PermissionGroup = {
     }
 }
 
--- using ox_inventory?
-Config.ox_inv = true
-
--- name of the cash item.
-Config.CashItem = "money"
-
 -- framework events
 Config.Events = {
     QBCore = {
@@ -172,6 +197,19 @@ Config.SpawnNPCList = {
 }
 
 Config.ReplaceObjects = {
+    ------
+    {
+        pos = vector3(-705.37, -1464.93, 5.42),
+        radius = 2.0,
+        originalModelHash = -469694731,
+        newModelHash = GetHashKey("prop_gas_pump_old2_rc"),
+    },
+    {
+        pos = vector3(-765.04, -1434.4, 5.42),
+        radius = 2.0,
+        originalModelHash = -469694731,
+        newModelHash = GetHashKey("prop_gas_pump_old2_rc"),
+    },
     ------
     {
         pos = vector3(48.52, 2779.06, 58.04),
@@ -307,174 +345,22 @@ Config.ScaleformEditor = false
 -- do not touch
 -- you can view all AlignTypes in const.lua
 Config.resolution = {
-    [1537112021] = {
-        ['ScreenSize'] = vec3(0.039500, 0.020500, 0.000000),
-        ['CameraOffSet'] = {
-            ['y'] = -3.0,
-            ['z'] = 0.35,
-            ['rotationOffset'] = vec3(0.000000, 0.000000, 0.000000),
-            ['x'] = 0.0
-        },
+    -- objects that are non related to the fuel
+    [GetHashKey("prop_tv_flat_02")] = {
         ['distance'] = 5,
-        ['ScreenOffSet'] = {
-            [AlignTypes.LEFT] = vec3(-1.522000, 0.000000, 0.847000),
-            [AlignTypes.RIGHT] = vec3(0.522000, 0.000000, 0.847000),
-        }
-    },
 
-    [-462817101] = {
-        ['ScreenOffSet'] = {
-            [AlignTypes.MIDDLE] = vec3(-0.393465, 0.000000, 2.406550),
-        },
-        ['distanceToOpen'] = 1.5,
-        ['Job'] = nil,
-        ['ItemToOpen'] = nil,
-        ['CameraOffSet'] = {
-            ['z'] = 0.35,
-            ['rotationOffset'] = vec3(0.000000, 0.000000, 0.000000),
-            ['x'] = 0.0,
-            ['y'] = -3.0
-        },
-        ['ScreenSize'] = vec3(0.003520, 0.000960, 0.000000),
-        ['distance'] = 5
-    },
-
-    [1499213999] = {
-        ['ScreenSize'] = vec3(0.010495, 0.003080, 0.000000),
-        ['CameraOffSet'] = {
-            ['y'] = -3.0,
-            ['z'] = 0.35,
-            ['rotationOffset'] = vec3(0.000000, 0.000000, 0.000000),
-            ['x'] = 0.0
-        },
-        ['distance'] = 5,
-        ['ScreenOffSet'] = {
-            [AlignTypes.MIDDLE] = vec3(-0.47, 0.0, 2.3),
-        }
-    },
-
-    [-164877493] = {
-        ['ScreenSize'] = vec3(0.010495, 0.003080, 0.000000),
-        ['CameraOffSet'] = {
-            ['y'] = -3.0,
-            ['z'] = 0.35,
-            ['rotationOffset'] = vec3(0.000000, 0.000000, 0.000000),
-            ['x'] = 0.0
-        },
-        ['distance'] = 5,
-        ['ScreenOffSet'] = {
-            [AlignTypes.MIDDLE] = vec3(-0.47, 0.0, 2.3),
-        }
-    },
-
-    [1933174915] = {
-        ['ScreenSize'] = vec3(0.018495, 0.006080, 0.000000),
-        ['CameraOffSet'] = {
-            ['y'] = -3.0,
-            ['z'] = 0.35,
-            ['rotationOffset'] = vec3(0.000000, 0.000000, 0.000000),
-            ['x'] = 0.0
-        },
-        ['distance'] = 5,
-        ['ScreenOffSet'] = {
-            [AlignTypes.LEFT] = vec3(-1.852440, -0.037835, 2.052300),
-            [AlignTypes.RIGHT] = vec3(0.7, -0.037835, 2.052300),
-            [AlignTypes.MIDDLE] = vec3(-0.55, 0.0, 3.2),
-        }
-    },
-
-    [1767019582] = {
-        ['ScreenSize'] = vec3(0.018495, 0.006080, 0.000000),
-        ['CameraOffSet'] = {
-            ['y'] = -3.0,
-            ['z'] = 0.35,
-            ['rotationOffset'] = vec3(0.000000, 0.000000, 0.000000),
-            ['x'] = 0.0
-        },
-        ['distance'] = 5,
-        ['ScreenOffSet'] = {
-            [AlignTypes.LEFT] = vec3(-1.852440, -0.037835, 2.052300),
-            [AlignTypes.RIGHT] = vec3(0.7, -0.037835, 2.052300),
-            [AlignTypes.MIDDLE] = vec3(-0.55, 0.0, 3.2),
-        }
-    },
-
-    [1339433404] = {
-        ['ScreenSize'] = vec3(0.018495, 0.006080, 0.000000),
-        ['CameraOffSet'] = {
-            ['y'] = -3.0,
-            ['z'] = 0.35,
-            ['rotationOffset'] = vec3(0.000000, 0.000000, 0.000000),
-            ['x'] = 0.0
-        },
-        ['distance'] = 5,
-        ['ScreenOffSet'] = {
-            [AlignTypes.LEFT] = vec3(-1.852440, -0.037835, 2.052300),
-            [AlignTypes.RIGHT] = vec3(0.7, -0.037835, 2.052300),
-            [AlignTypes.MIDDLE] = vec3(-0.55, 0.0, 3.2),
-        }
-    },
-
-    [-2007231801] = {
-        ['ScreenSize'] = vec3(0.018495, 0.006080, 0.000000),
-        ['CameraOffSet'] = {
-            ['y'] = -3.0,
-            ['z'] = 0.35,
-            ['rotationOffset'] = vec3(0.000000, 0.000000, 0.000000),
-            ['x'] = 0.0
-        },
-        ['distance'] = 5,
-        ['ScreenOffSet'] = {
-            [AlignTypes.LEFT] = vec3(-1.852440, -0.037835, 2.052300),
-            [AlignTypes.RIGHT] = vec3(0.7, -0.037835, 2.052300),
-            [AlignTypes.MIDDLE] = vec3(-0.55, 0.0, 3.2),
-        }
-    },
-
-    [1694452750] = {
-        ['ScreenSize'] = vec3(0.018495, 0.006080, 0.000000),
-        ['CameraOffSet'] = {
-            ['y'] = -3.0,
-            ['z'] = 0.35,
-            ['rotationOffset'] = vec3(0.000000, 0.000000, 0.000000),
-            ['x'] = 0.0
-        },
-        ['distance'] = 5,
-        ['ScreenOffSet'] = {
-            [AlignTypes.LEFT] = vec3(-1.852440, -0.037835, 2.052300),
-            [AlignTypes.RIGHT] = vec3(0.7, -0.037835, 2.052300),
-            [AlignTypes.MIDDLE] = vec3(-0.55, 0.0, 3.2),
-        }
-    },
-
-    [1340914825] = {
         ['ScreenSize'] = vec3(-0.002965, -0.009885, 0.000000),
-        ['distance'] = 5,
         ['CameraOffSet'] = {
             ['rotationOffset'] = vec3(0.000000, 0.000000, 0.000000),
             ['x'] = 0.0,
             ['y'] = -3.0,
             ['z'] = 0.35
         },
+
         ['ScreenOffSet'] = vec3(-0.6, -0.01, 0.5),
     },
-
-    [486135101] = {
-        ['ScreenSize'] = vec3(0.018495, 0.006080, 0.000000),
-        ['CameraOffSet'] = {
-            ['y'] = -3.0,
-            ['z'] = 0.35,
-            ['rotationOffset'] = vec3(0.000000, 0.000000, 0.000000),
-            ['x'] = 0.0
-        },
-        ['distance'] = 5,
-        ['ScreenOffSet'] = {
-            [AlignTypes.LEFT] = vec3(-1.852440, -0.037835, 2.052300),
-            [AlignTypes.RIGHT] = vec3(0.7, -0.037835, 2.052300),
-            [AlignTypes.MIDDLE] = vec3(-0.55, 0.0, 3.2),
-        }
-    },
 }
+
 -- the lower the better but the lower the more heavier it will become to NUI
 Config.RefreshTime = 300
 
@@ -485,3 +371,9 @@ Config.WorkAroundForQBCoreLoadedEvent = false
 -- rcore_fuel/client/payment.lua for UI
 -- rcore_fuel/server/fuel_pump/pricing.lua ( event: rcore_fuel:payForFuel )
 Config.DisablePaymentModal = false
+
+-- will enable statebags only ( experimental )
+Config.EnableStateBagsOnly = false
+
+-- will enable keybinds for inventory active key ( experimental )
+Config.EnableInventoryKeyBinds = false

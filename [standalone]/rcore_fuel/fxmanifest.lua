@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 games { 'gta5' }
 
-version "1.0.20"
+version "1.0.33"
 
 lua54 'yes'
 
@@ -75,6 +75,7 @@ server_scripts {
 
     "server/*.lua",
     "server/society/*.lua",
+    "server/society/drivers/*.lua",
     "server/company/*.lua",
     "server/fuel_pump/*.lua",
     "server/mission/*.lua",
@@ -140,6 +141,7 @@ escrow_ignore {
 
     "server/*.lua",
     "server/society/*.lua",
+    "server/society/drivers/*.lua",
     "server/company/*.lua",
     "server/fuel_pump/pricing.lua",
     "server/mission/*.lua",

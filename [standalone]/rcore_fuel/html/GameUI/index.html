@@ -7,269 +7,280 @@
     <meta charset="UTF-8">
     <script src="../scripts/vue.min.js" type="text/javascript"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src='../scripts/jquery.min.js'></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="../scripts/bootstrap.min.js"></script>
     <script src="../scripts/bootstrap-notify.min.js"></script>
     <script src="./scripts/player.js" type="text/javascript"></script>
     <script src="./scripts/script.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../jquery-ui.js"></script>
 </head>
 <body id="body" style="background: transparent !important;">
-<div class="blackBars">
-    <div class="top"></div>
-    <div class="bottom"></div>
-</div>
-<div class="modal fade" id="shopSettings" tabindex="-1" aria-labelledby="tutorial_reset" aria-hidden="true"
-     data-keyboard="false" data-backdrop="static">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-info" style="color:white;">
-                <h5 class="modal-title">Shop settings</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="Close()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div style="max-height: 49vw; overflow: overlay;">
-                <div class="modal-body">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Shop identifier</span>
-                        </div>
-                        <input class="form-control shopIdentifier" type="text" value="Must be unique string key!">
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <div style="margin: 0px 0.34vw;">Enable blip</div>
-                                <input type="checkbox" class="enableBlip" style="width: unset !important;" checked>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Blip sprite</span>
-                        </div>
-                        <input class="form-control blipSprite" type="number" value="361" min="0" max="2147483647">
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Blip name</span>
-                        </div>
-                        <input class="form-control blipLabel" type="text" value="Fuel pump">
-                    </div>
-
-                    <br>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <div style="margin: 0px 0.34vw;">Enable society</div>
-                                <input type="checkbox" class="societyEnabled" style="width: unset !important;">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Society name</span>
-                        </div>
-                        <input class="form-control societyName" type="text" value="My awesome society name">
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Job name</span>
-                        </div>
-                        <input class="form-control jobName" type="text" value="jobName">
-                    </div>
-
-                    <br>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <div style="margin: 0px 0.34vw;">Employees only</div>
-                                <input type="checkbox" class="employeesOnly" style="width: unset !important;">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Tanker max capacity</span>
-                        </div>
-                        <input class="form-control maxTanker" type="number" value="10000" min="0" max="2147483647">
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Shop cost</span>
-                        </div>
-                        <input class="form-control shopCost" type="number" value="520000" min="0" max="2147483647">
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button style="width: 100%;" type="button" class="btn btn-secondary" data-dismiss="modal"
-                            onclick="InsertShopData()">Create
+<div id="app">
+    <div class="blackBars">
+        <div class="top"></div>
+        <div class="bottom"></div>
+    </div>
+    <div class="modal fade" id="shopSettings" tabindex="-1" aria-labelledby="tutorial_reset" aria-hidden="true"
+         data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info" style="color:white;">
+                    <h5 class="modal-title">Shop settings</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="Close()">
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="dispenserSettings" tabindex="-1" aria-labelledby="tutorial_reset" aria-hidden="true"
-     data-keyboard="false" data-backdrop="static">
-    <div class="modal-dialog modal-small">
-        <div class="modal-content">
-            <div class="modal-header bg-info" style="color:white;">
-                <h5 class="modal-title">Dispenser settings</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="Close()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div style="max-height: 49vw; overflow: overlay;">
-                <div class="modal-body">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Fuel price</span>
+                <div style="max-height: 49vw; overflow: overlay;">
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Shop identifier</span>
+                            </div>
+                            <input class="form-control shopIdentifier" type="text" value="Must be unique string key!">
                         </div>
-                        <input class="form-control priceFuel" type="number" min="1" max="2147483647">
-                    </div>
 
-                    <br>
-                    <div class="form-group">
-                        <label for="fuelType">Position of the scaleform</label>
-                        <select class="form-control" id="scaleformPos">
-                            <option value="L">Left</option>
-                            <option value="R">Right</option>
-                            <option value="M">Middle</option>
-                        </select>
-                    </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <div style="margin: 0px 0.34vw;">Enable blip</div>
+                                    <input type="checkbox" class="enableBlip" style="width: unset !important;" checked>
+                                </div>
+                            </div>
+                        </div>
 
-                    <br>
-                    <div class="form-group">
-                        <label for="fuelType">What type of fuel this dispenser is</label>
-                        <select class="form-control" id="fuelType" multiple></select>
-                    </div>
-                </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Blip sprite</span>
+                            </div>
+                            <input class="form-control blipSprite" type="number" value="361" min="0" max="2147483647">
+                        </div>
 
-                <div class="modal-footer">
-                    <button style="width: 100%;" type="button" class="btn btn-secondary" data-dismiss="modal"
-                            onclick="InsertDispenserData()">Create
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Blip name</span>
+                            </div>
+                            <input class="form-control blipLabel" type="text" value="Fuel pump">
+                        </div>
 
-<div class="modal fade" id="tutorial_gas_tube" tabindex="-1" aria-labelledby="tutorial_reset" aria-hidden="true"
-     data-keyboard="false" data-backdrop="static">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-info" style="color:white;">
-                <h5 class="modal-title">How to Plug the Truck Hose to the Tap</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="Close()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div style="max-height: 49vw; overflow: overlay;">
-                <div class="modal-body" style="text-align: center;">
-                    <div style="width: 100%;height: -webkit-fill-available;">
-                        <p>1. Go to the back of your truck on the right side, click "E" to pick up the truck hose.</p>
-                        <img src="./img/phantom.jpg" style="float: unset;max-width: 40vw;width: 100%;">
-                    </div>
-                    <div style="width: 100%;height: -webkit-fill-available;">
-                        <p>2. Plug it into the tap that is connected to the fuel tank.</p>
-                        <img src="./img/tap.jpg" style="float: unset;width: auto;max-width: 40vw;">
-                    </div>
-
-                    <div style="width: 100%;height: -webkit-fill-available;">
                         <br>
-                        <p>Wait until the progress reaches 100%, and then simply reverse the steps.</p>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <div style="margin: 0px 0.34vw;">Enable society</div>
+                                    <input type="checkbox" class="societyEnabled" style="width: unset !important;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Society name</span>
+                            </div>
+                            <input class="form-control societyName" type="text" value="My awesome society name">
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Job name</span>
+                            </div>
+                            <input class="form-control jobName" type="text" value="jobName">
+                        </div>
+
+                        <br>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <div style="margin: 0px 0.34vw;">Employees only</div>
+                                    <input type="checkbox" class="employeesOnly" style="width: unset !important;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Tanker max capacity</span>
+                            </div>
+                            <input class="form-control maxTanker" type="number" value="10000" min="0" max="2147483647">
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Shop cost</span>
+                            </div>
+                            <input class="form-control shopCost" type="number" value="520000" min="0" max="2147483647">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button style="width: 100%;" type="button" class="btn btn-secondary" data-dismiss="modal"
+                                onclick="InsertShopData()">Create
+                        </button>
                     </div>
                 </div>
 
-                <div class="modal-footer">
-                    <button style="width: 100%;" type="button" class="btn btn-secondary" data-dismiss="modal"
-                            onclick="Close()">Close
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="dispenserSettings" tabindex="-1" aria-labelledby="tutorial_reset" aria-hidden="true"
+         data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-small">
+            <div class="modal-content">
+                <div class="modal-header bg-info" style="color:white;">
+                    <h5 class="modal-title">Dispenser settings</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="Close()">
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="subtitles">
-    <div class="text-container">
-    </div>
-</div>
-
-<div class="modal fade" id="paymentType" tabindex="-1" style="color: #ECF0F1;">
-    <div class="modal-dialog">
-        <div class="modal-content" style="background-color: #2C3E50; border-color: #34495E;">
-            <div class="modal-header" style="border-bottom-color: #34495E;">
-                <h5 class="modal-title" style="color: #ECF0F1;">Choose your payment</h5>
-            </div>
-            <div class="modal-body">
-                <div class="row m-5 justify-content-center">
-                    <div class="col-6 text-center" id="cash" style="display:none">
-                        <a onclick="selectPayment('cash')">
-                            <div class="payment-container h-100 d-flex flex-column align-items-center justify-content-center">
-                                <h5 class="payment-text" style="color: #ECF0F1;">Cash</h5>
-                                <svg width="48" height="80" viewBox="0 0 48 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24 3.3335V76.6668" stroke="#1ABC9C" stroke-width="6.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M40.6667 16.6665H15.6667C12.5725 16.6665 9.60501 17.8957 7.41709 20.0836C5.22916 22.2715 4 25.239 4 28.3332C4 31.4274 5.22916 34.3948 7.41709 36.5827C9.60501 38.7707 12.5725 39.9998 15.6667 39.9998H32.3333C35.4275 39.9998 38.395 41.229 40.5829 43.4169C42.7708 45.6048 44 48.5723 44 51.6665C44 54.7607 42.7708 57.7282 40.5829 59.9161C38.395 62.104 35.4275 63.3332 32.3333 63.3332H4" stroke="#1ABC9C" stroke-width="6.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                <div style="max-height: 49vw; overflow: overlay;">
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Fuel price</span>
                             </div>
-                        </a>
+                            <input class="form-control priceFuel" type="number" min="1" max="2147483647">
+                        </div>
+
+                        <br>
+                        <div class="form-group">
+                            <label for="fuelType">Position of the scaleform</label>
+                            <select class="form-control" id="scaleformPos">
+                                <option value="L">Left</option>
+                                <option value="R">Right</option>
+                                <option value="M">Middle</option>
+                            </select>
+                        </div>
+
+                        <br>
+                        <div class="form-group">
+                            <label for="fuelType">What type of fuel this dispenser is</label>
+                            <select class="form-control" id="fuelType" multiple></select>
+                        </div>
                     </div>
-                    <div class="col-6 text-center" id="bank" style="display:none">
-                        <a onclick="selectPayment('bank')">
-                            <div class="payment-container h-100 d-flex flex-column align-items-center justify-content-center">
-                                <h5 class="payment-text" style="color: #ECF0F1;">Bank</h5>
-                                <svg width="80" height="80" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M70.0002 3.3335H10.0002C6.31826 3.3335 3.3335 6.31826 3.3335 10.0002V50.0002C3.3335 53.6821 6.31826 56.6668 10.0002 56.6668H70.0002C73.6821 56.6668 76.6668 53.6821 76.6668 50.0002V10.0002C76.6668 6.31826 73.6821 3.3335 70.0002 3.3335Z" stroke="#1ABC9C" stroke-width="6.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M3.3335 23.3335H76.6668" stroke="#1ABC9C" stroke-width="6.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </a>
+
+                    <div class="modal-footer">
+                        <button style="width: 100%;" type="button" class="btn btn-secondary" data-dismiss="modal"
+                                onclick="InsertDispenserData()">Create
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+    <div class="modal fade" id="tutorial_gas_tube" tabindex="-1" aria-labelledby="tutorial_reset" aria-hidden="true"
+         data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info" style="color:white;">
+                    <h5 class="modal-title"> {{translation["truck_hose_title"]}} </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="Close()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div style="max-height: 49vw; overflow: overlay;">
+                    <div class="modal-body" style="text-align: center;">
+                        <div style="width: 100%;height: -webkit-fill-available;">
+                            <p>{{translation["truck_hose_part_1"]}}</p>
+                            <img src="./img/phantom.jpg" style="float: unset;max-width: 40vw;width: 100%;">
+                        </div>
+                        <div style="width: 100%;height: -webkit-fill-available;">
+                            <p>{{translation["truck_hose_part_2"]}}</p>
+                            <img src="./img/tap.jpg" style="float: unset;width: auto;max-width: 40vw;">
+                        </div>
 
-<div class="modal fade" id="textboard" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false"
-     data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="textboard_header">Result</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="Close()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <textarea class="textarea" style="min-height: 28vw;min-width: 100%;color:black;"></textarea>
+                        <div style="width: 100%;height: -webkit-fill-available;">
+                            <br>
+                            <p>{{translation["truck_hose_part_3"]}}</p>
+                        </div>
                     </div>
-                </form>
+
+                    <div class="modal-footer">
+                        <button style="width: 100%;" type="button" class="btn btn-secondary" data-dismiss="modal"
+                                onclick="Close()">
+                            {{translation["close_button"]}}
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Close()">Close</button>
+        </div>
+    </div>
+
+
+    <div class="subtitles">
+        <div class="text-container">
+        </div>
+    </div>
+
+    <div class="modal fade" id="paymentType" tabindex="-1" style="color: #ECF0F1;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color: #2C3E50; border-color: #34495E;">
+                <div class="modal-header" style="border-bottom-color: #34495E;">
+                    <h5 class="modal-title" style="color: #ECF0F1;">{{translation["select_payment_method"]}}</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row m-5 justify-content-center">
+                        <div class="col-6 text-center" id="cash" style="display:none">
+                            <a onclick="selectPayment('cash')">
+                                <div class="payment-container h-100 d-flex flex-column align-items-center justify-content-center">
+                                    <h5 class="payment-text" style="color: #ECF0F1;">{{translation["cash"]}}</h5>
+                                    <svg width="48" height="80" viewBox="0 0 48 80" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M24 3.3335V76.6668" stroke="#1ABC9C" stroke-width="6.66667"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M40.6667 16.6665H15.6667C12.5725 16.6665 9.60501 17.8957 7.41709 20.0836C5.22916 22.2715 4 25.239 4 28.3332C4 31.4274 5.22916 34.3948 7.41709 36.5827C9.60501 38.7707 12.5725 39.9998 15.6667 39.9998H32.3333C35.4275 39.9998 38.395 41.229 40.5829 43.4169C42.7708 45.6048 44 48.5723 44 51.6665C44 54.7607 42.7708 57.7282 40.5829 59.9161C38.395 62.104 35.4275 63.3332 32.3333 63.3332H4"
+                                              stroke="#1ABC9C" stroke-width="6.66667" stroke-linecap="round"
+                                              stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 text-center" id="bank" style="display:none">
+                            <a onclick="selectPayment('bank')">
+                                <div class="payment-container h-100 d-flex flex-column align-items-center justify-content-center">
+                                    <h5 class="payment-text" style="color: #ECF0F1;">{{translation["bank"]}}</h5>
+                                    <svg width="80" height="80" viewBox="0 0 80 60" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M70.0002 3.3335H10.0002C6.31826 3.3335 3.3335 6.31826 3.3335 10.0002V50.0002C3.3335 53.6821 6.31826 56.6668 10.0002 56.6668H70.0002C73.6821 56.6668 76.6668 53.6821 76.6668 50.0002V10.0002C76.6668 6.31826 73.6821 3.3335 70.0002 3.3335Z"
+                                              stroke="#1ABC9C" stroke-width="6.66667" stroke-linecap="round"
+                                              stroke-linejoin="round"/>
+                                        <path d="M3.3335 23.3335H76.6668" stroke="#1ABC9C" stroke-width="6.66667"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="textboard" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false"
+         data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="textboard_header">Result</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="Close()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <textarea class="textarea" style="min-height: 28vw;min-width: 100%;color:black;"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Close()">Close
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -287,7 +298,8 @@
                      style="height: 36.1px;position: relative;top: 1px;">
                     <span class="input-group-text" id="basic-addon1" style="border-radius: 0;">{{AppInput.defaultTextInfront}}</span>
                 </div>
-                <input id="inputak" v-model="message" maxlength="10" type="number" class="form-control shadow-none" :placeholder="placeHolderText" aria-label="Username" aria-describedby="basic-addon1">
+                <input id="inputak" v-model="message" maxlength="10" type="number" class="form-control shadow-none"
+                       :placeholder="placeHolderText" aria-label="Username" aria-describedby="basic-addon1">
             </div>
         </form>
         <div class="button-container">
@@ -351,6 +363,7 @@
         </div>
     </div>
 </div>
+
 </body>
 <script src="./MenuAPI/listener.js" type="text/javascript"></script>
 <script src="./scripts/listener.js" type="text/javascript"></script>

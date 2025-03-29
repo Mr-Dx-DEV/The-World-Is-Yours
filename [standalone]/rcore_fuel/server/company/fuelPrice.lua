@@ -1,6 +1,12 @@
 RegisterNetEvent("rcore_fuel:setFuelPrice", function(identifier, price, fuelType)
+    local source = source
     local modal = GetCompanyModal(identifier)
     local playerPos = GetEntityCoords(GetPlayerPed(source))
+
+    if not (price >= 0 and price <= 2147483647) then
+        print("Player", source, "Is trying to exploit the fuel price by setting it to nosense value: ", price)
+        return
+    end
 
     if modal.DoesExists() then
         if modal.IsSourceOwner(source) then

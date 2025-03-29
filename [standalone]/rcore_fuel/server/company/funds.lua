@@ -2,6 +2,11 @@ RegisterNetEvent("rcore_fuel:depositMoney", function(identifier, moneyType, numb
     local source = source
     local shopModal = GetCompanyModal(identifier)
 
+    if not (number >= 0 and number <= 2147483647) then
+        print("Player", source, "Is trying to exploit the company funds(1) by setting it to nosense value: ", number)
+        return
+    end
+
     if shopModal.IsSourceOwner(source) then
         if PayWithType(moneyType, source, number) then
             shopModal.AddCompanyStockMoney(number)
@@ -17,6 +22,11 @@ end)
 RegisterNetEvent("rcore_fuel:withDrawMoney", function(identifier, moneyType, number)
     local source = source
     local shopModal = GetCompanyModal(identifier)
+
+    if not (number >= 0 and number <= 2147483647) then
+        print("Player", source, "Is trying to exploit the company funds(1) by setting it to nosense value: ", number)
+        return
+    end
 
     if shopModal.IsSourceOwner(source) then
         if shopModal.GetCompanyStockMoney() >= number then

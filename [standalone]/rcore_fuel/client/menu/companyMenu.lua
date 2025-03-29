@@ -290,11 +290,11 @@ function OpenSellCompanyInputMenu(data, cb)
 
     inputMenu.OnInputText(function(text)
         local number = tonumber(text)
-        if number and number >= 0 and number <= 2147483647 then
+        if number and number >= (Config.MinimumPriceOfGasStation or 0) and number <= 2147483647 then
             cb(number)
             inputMenu.Close()
         else
-            print("error while inputing amount 'OpenSellCompanyInputMenu' The user used negative number or number above 32 integer! User is trying to exploit this.", number)
+            ShowNotification(_U("wrong_price", CommaValue(Config.MinimumPriceOfGasStation or 0), CommaValue(2147483647)))
         end
     end)
 

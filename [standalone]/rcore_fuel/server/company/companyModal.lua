@@ -103,7 +103,7 @@ function GetCompanyModal(identifier)
     end
 
     self.IsTankerOutOfGas = function(fuelType)
-        return self.GetCurrentFuelCapacity(fuelType) <= 0
+        return self.GetCurrentFuelCapacity(fuelType) < 1
     end
 
     self.IsTankerAboveCapacity = function(fuelType, minimumFuel)
@@ -133,11 +133,11 @@ function GetCompanyModal(identifier)
 
     self.IsSourceOwner = function(source)
         local shopData = Config.ShopList[identifier]
-        if shopData.EnableSociety then
-            return IsPlayerBossGrade(source, shopData.Job)
-        end
-
         local playerIdentifier = SharedObject.GetPlayerFromId(source).identifier
+
+        if shopData.EnableSociety then
+            return IsPlayerBossGrade(source, shopData.Job) or playerIdentifier == (Config.ShopList[identifier].owner_identifier or "none")
+        end
         return playerIdentifier == (Config.ShopList[identifier].owner_identifier or "none")
     end
 
@@ -177,7 +177,14 @@ function GetCompanyModal(identifier)
 
     end
 
-    self.Save = function(insert)
+    self.Save = function(insert, forceSave)
+        if insert then
+            if type(insert) == "string" then
+                insert = nil
+                forceSave = true
+            end
+        end
+
         local shopData = Config.ShopList[identifier]
         local data = { }
 
