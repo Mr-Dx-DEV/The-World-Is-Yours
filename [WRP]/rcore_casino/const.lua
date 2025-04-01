@@ -1123,8 +1123,8 @@ BlackjackTableDatas[0] = {
     PlaceBetsTime = 40,
     MinimumBet = 10,
     MaximumBet = 5000,
-    DealerBlackjackPossibility = 25, -- 25% chance that dealer gets blackjack
-    Dealer21Possibility = 25 -- 25% chance that dealer gets 21
+    DealerBlackjackPossibility = 5, -- 25% chance that dealer gets blackjack
+    Dealer21Possibility = 10 -- 25% chance that dealer gets 21
 }
 
 BlackjackTableDatas[3] = {
@@ -1134,8 +1134,8 @@ BlackjackTableDatas[3] = {
     MinimumBet = 1000,
     MaximumBet = 50000,
     VIP = true,
-    DealerBlackjackPossibility = 25, -- 25% chance that dealer gets blackjack
-    Dealer21Possibility = 25 -- 25% chance that dealer gets 21
+    DealerBlackjackPossibility = 5, -- 25% chance that dealer gets blackjack
+    Dealer21Possibility = 10 -- 25% chance that dealer gets 21
 }
 
 BlackjackTableDatas[2] = {
@@ -1144,8 +1144,8 @@ BlackjackTableDatas[2] = {
     PlaceBetsTime = 15,
     MinimumBet = 2,
     MaximumBet = 200,
-    DealerBlackjackPossibility = 25, -- 25% chance that dealer gets blackjack
-    Dealer21Possibility = 25 -- 25% chance that dealer gets 21
+    DealerBlackjackPossibility = 55, -- 25% chance that dealer gets blackjack
+    Dealer21Possibility = 10 -- 25% chance that dealer gets 21
 }
 
 RouletteAnimationNumbers = {38, 19, 34, 15, 30, 11, 26, 7, 22, 3, 25, 6, 37, 18, 33, 14, 29, 10, 8, 27, 12, 31, 16, 35,
