@@ -117,10 +117,10 @@ Config.BusinessTax = {
 			max = 20000 -- Max the mayor can ajust business tax.
 		}
 	  },
-	  basicAmount = 2000, -- Basic amount that the business will pay in tax.
+	  basicAmount = 500, -- Basic amount that the business will pay in tax.
 	  AddCityHallFunds = true, -- Set to true if you want the tax that busniess pay to go into the cityhall fund.
-	  AutoStoreTime = {enable = true, timetaken = 10}, -- This will store the time that the server is up for, which means you can set the time until tax to as many minutes as you would like. 
-	  timetaken = 20 -- Time in mintues that the business tax will be taken, Use this if you want business to pay take while the server is live.
+	  AutoStoreTime = {enable = true, timetaken = 1040}, -- This will store the time that the server is up for, which means you can set the time until tax to as many minutes as you would like. 
+	  timetaken = 1040 -- Time in mintues that the business tax will be taken, Use this if you want business to pay take while the server is live.
 	}
 }
 
