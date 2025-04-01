@@ -71,13 +71,12 @@ function Process(action, start, tick, finish)
             wasCancelled = false
             isAnim = false
             isProp = false
-            isPropTwo = false
 
+            TriggerServerEvent("InteractSound_SV:PlayOnSource", "progressbar", 0.1)
             SendNUIMessage({
                 action = "progress",
                 duration = Action.duration,
-                label = Action.label,
-                canCancel = Action.canCancel
+                label = Action.label
             })
 
             CreateThread(function ()
@@ -89,9 +88,14 @@ function Process(action, start, tick, finish)
                     if tick ~= nil then
                         tick()
                     end
+                    if IsControlJustPressed(0, 186) and Action.canCancel then
+                        TriggerEvent("progressbar:client:cancel")
+                        TriggerServerEvent("InteractSound_SV:PlayOnSource", "progressbarcancel", 0.1)
+                    end
 
                     if IsEntityDead(ped) and not Action.useWhileDead then
                         TriggerEvent("progressbar:client:cancel")
+                        TriggerServerEvent("InteractSound_SV:PlayOnSource", "progressbarcancel", 0.1)
                     end
                 end
                 if finish ~= nil then
@@ -105,13 +109,6 @@ function Process(action, start, tick, finish)
         TriggerEvent("QBCore:Notify", "Cant do that action!", "error")
     end
 end
-
-
-RegisterCommand("+cancelProgress", function()
-    if isDoingAction and Action.canCancel then
-        TriggerEvent("progressbar:client:cancel")
-    end
-end, false)
 
 function ActionStart()
     runProgThread = true
@@ -241,16 +238,10 @@ function ActionCleanup()
         end
     end
 
-    if prop_net then
-        DetachEntity(NetToObj(prop_net), 1, 1)
-        DeleteEntity(NetToObj(prop_net))
-    end
-    if propTwo_net then
-        DetachEntity(NetToObj(propTwo_net), 1, 1)
-        DeleteEntity(NetToObj(propTwo_net))
-    end
-    ClearPedTasks(ped)
-
+    DetachEntity(NetToObj(prop_net), 1, 1)
+    DeleteEntity(NetToObj(prop_net))
+    DetachEntity(NetToObj(propTwo_net), 1, 1)
+    DeleteEntity(NetToObj(propTwo_net))
     prop_net = nil
     propTwo_net = nil
     runProgThread = false
@@ -272,12 +263,9 @@ function DisableActions(ped)
 
     if Action.controlDisables.disableMovement then
         DisableControlAction(0, 30, true) -- disable left/right
-        DisableControlAction(0, 36, true) -- Left CTRL
         DisableControlAction(0, 31, true) -- disable forward/back
         DisableControlAction(0, 36, true) -- INPUT_DUCK
         DisableControlAction(0, 21, true) -- disable sprint
-        DisableControlAction(0, 75, true)  -- Disable exit vehicle
-        DisableControlAction(27, 75, true) -- Disable exit vehicle 
     end
 
     if Action.controlDisables.disableCarMovement then
@@ -304,12 +292,6 @@ function DisableActions(ped)
         DisableControlAction(0, 257, true) -- disable melee
     end
 end
-
-function isDoingSomething()
-    return isDoingAction
-end
-
-exports("isDoingSomething", isDoingSomething)
 
 RegisterNetEvent('progressbar:client:progress', function(action, finish)
 	Process(action, nil, nil, finish)

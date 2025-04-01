@@ -1,22 +1,33 @@
 fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
-
-author "qbcore-framework"
-description 'Dependency for creating progressbars in QB-Core.'
+author 'Pappu'
+description 'QBCore progressbar And inspired by EchoRP'
 version '1.0.0'
 
-ui_page "html/index.html"
+ui_page('nui/index.html') 
 
-client_script "client/main.lua"
+client_scripts {
+    'client/main.lua',
+}
+
+server_scripts { 
+	'server/*.lua'
+}
+
+escrow_ignore {
+	'client/*.lua',
+}
 
 files {
-    'html/index.html',
-    'html/css/style.css',
-    'html/js/script.js',
-
-    'html/css/bootstrap.min.css',
-    'html/js/jquery.min.js',
+    'nui/index.html',
+    'nui/css/style.css',
+    'nui/js/script.js',
+    'nui/css/bootstrap.min.css',
+    'nui/js/jquery.min.js',
+    'nui/fonts/*.ttf',
+    'nui/images/gears-solid.svg',
+    'nui/images/x.png',
 }
 
 exports {
@@ -26,15 +37,3 @@ exports {
     'ProgressWithStartAndTick'
 }
 
-escrow_ignore {
-    'html/index.html',
-    'html/css/style.css',
-    'html/js/script.js',
-
-    'html/css/bootstrap.min.css',
-    'html/js/jquery.min.js',
-
-    'client/main.lua'
-}
-
-dependency '/assetpacks'
