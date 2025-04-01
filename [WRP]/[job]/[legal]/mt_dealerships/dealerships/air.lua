@@ -22,8 +22,8 @@ Config.dealerships.air = { -- Dealership ID, NEEDS TO BE THE SAME AS THE JOB!!!
         { coords = vec3(-1655.5, -3150.0, 14.0), radius = 0.5, includeBossMenu = true },
     },
     catalogues = { -- The catalogues to the players to see and employees to change vehicles on showroom
-        { coords = vec3(-1654.9, -3147.58, 13.99), radius = 0.4, vehicleCoords = vec4(-1656.0, -3148.5, 14.0, 320.0), vehicle = 'dodo', vehicleColor = 111 },
-        { coords = vec3(-1652.0, -3145.0, 13.99), radius = 0.4, vehicleCoords = vec4(-1653.5, -3146.5, 14.0, 310.0), vehicle = 'frogger', vehicleColor = 0 },
+        { coords = vec3(-1620.98, -3153.26, 14.08), radius = 0.4, vehicleCoords = vec4(-1656.0, -3148.5, 14.0, 320.0), vehicle = 'dodo', vehicleColor = 111 },
+      --  { coords = vec3(-1652.0, -3145.0, 13.99), radius = 0.4, vehicleCoords = vec4(-1653.5, -3146.5, 14.0, 310.0), vehicle = 'frogger', vehicleColor = 0 },
     },
     categories = { -- The categories that will show on the catalogue and dashboard
         { label = 'Planes', id = 'planes' },
