@@ -19,7 +19,7 @@ Config.dealerships.boats = { -- Dealership ID, NEEDS TO BE THE SAME AS THE JOB!!
     truckSpawn = vec4(-720.0, -1345.0, 0.0, 90.0), -- Importation truck spawn coords
     buySpawn = vec4(-714.42, -1340.01, -0.18, 139.38), -- Vehicle buy spawn coords
     comissions = { buyPercentage = 50, sellComission = 10 }, -- The dealership commissions
-    blip = { enabled = true, coords = vec3(-714.42, -1340.01, -0.18), sprite = 410, color = 3, scale = 0.6, display = 4 }, -- Dealership map blip
+    blip = { enabled = true, coords = vec3(-723.7, -1323.56, 1.6), sprite = 410, color = 3, scale = 0.6, display = 4 }, -- Dealership map blip
     dashboards = { -- Dealership dashboards to import vehicles and see transactions
         { coords = vec3(-718.38, -1327.83, 1.49), radius = 0.5, includeBossMenu = true },
     },
