@@ -28,7 +28,7 @@ Config.dealerships.emergency = { -- Dealership ID, NEEDS TO BE THE SAME AS THE J
         { coords = vec3(-25.0, -1647.0, 29.48), radius = 0.4, vehicleCoords = vec4(-26.0, -1648.0, 29.0, 90.0), vehicle = 'bbdurango', vehicleColor = 3 },
     },
     categories = { -- The categories that will show on the catalogue and dashboard
-        { label = 'Emergency', id = 'Emergency' },
+        { label = 'Emergency', id = 'emergency' },
        -- { label = 'Medical', id = 'medical' },
        -- { label = 'Fire Trucks', id = 'firetrucks' },
     },
