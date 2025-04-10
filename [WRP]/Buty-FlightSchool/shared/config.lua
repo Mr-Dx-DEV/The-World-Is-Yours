@@ -2,7 +2,7 @@ Framework = {
     FrameworkName = 'qb', -- esx or qb
     FileName = 'qb-core', -- es_extended / qb-core
     SQLWrapper = 'oxmysql', --  oxmysql / mysql-async / ghmattimysql
-    UseButyLicense = true, -- true / false -> https://butycall.tebex.io/package/5743295
+    UseButyLicense = false, -- true / false -> https://butycall.tebex.io/package/5743295
 }
 
 Prices = {
