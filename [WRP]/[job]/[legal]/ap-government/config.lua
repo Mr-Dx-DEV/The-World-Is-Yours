@@ -40,8 +40,8 @@ Config = {
 	  menu = "qb-menu",
 	  input = "qb-input"
 	},
-	Context = {QB = false, OX = true},
-	Dialog = {QB = false, OX = true},
+	Context = {QB = true, OX = false},
+	Dialog = {QB = true, OX = false},
 	CustomEdits = "" -- Leave this blank, this is for customers that have a custom version of the government script.
 }
 
