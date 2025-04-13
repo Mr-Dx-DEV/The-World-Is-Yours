@@ -11,7 +11,7 @@ CONFIG.Debug = false
 CONFIG.RCoreStatsIntegration = false
 
 CONFIG.Features = {
-    ['radio'] = true
+    ['radio'] = false
 }
 
 --- The key of each job should be the name of the job
@@ -20,7 +20,7 @@ CONFIG.JOBS = {
         Jobname = 'police',
         SharedBlips = { 'ambulance' },
         GlobalFrequency = 900,
-        Ispolice = true,
+        Ispolice = false,
         Ranks = {
             [0] = 'Recruit',
             [1] = 'Officer',
