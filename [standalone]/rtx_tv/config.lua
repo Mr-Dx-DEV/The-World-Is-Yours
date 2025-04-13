@@ -18,9 +18,9 @@ Config.Language = "English" -- text language from code, if you want translate in
 
 Config.TvForItem = true -- this will enable tv open via item
 
-Config.TvForCommand = false -- this will enable tv open via command
+Config.TvForCommand = true -- this will enable tv open via command
 
-Config.Target = true -- enable this if you want use target
+Config.Target = false -- enable this if you want use target
 
 Config.Targettype = "qbtarget" -- types - qtarget, qbtarget, oxtarget
 
@@ -311,6 +311,13 @@ Config.TelevisionObjects = {
 		rendertarget = true, -- enable render target 
 		rendertargetname = "tvscreen", -- render target name
 	},	
+	{
+		object = "prop_cs_tv_stand", --object name 
+		maxdistance = 15.0, --max distance for display screen
+		maxcontroldistance = 15.0, -- max distance for control tv (its cannot be higher than maxdistance)
+		rendertarget = true, -- enable render target 
+		rendertargetname = "tvscreen", -- render target name
+	},	
 	{ --  Armitage Games Club
 		scale = vector3(0.380, 0.158, 1.0), -- rendertarget scale
 		maxdistance = 100.0, --max distance for display screen--max distance for view screen
@@ -347,9 +354,9 @@ Config.TelevisionObjects = {
 
 Config.TelevisionObjectsLocations = { -- You need enable Config.TelevisionObjectPlacer for use this
 	{
-		objectname = "prop_tv_flat_01", -- object name
-		coords = vector3(244.47, -876.58, 30.49), -- object coords
-		rotation = vector3(0.0, 0.0, 0.0), -- object coords
+		objectname = "prop_tv_flat_02b", -- object name
+		coords = vector3(-575.386, -209.433, 35.18), -- object coords
+		rotation = vector3(0.0, 0.0, 120.0), -- object coords
 		handler = nil,
 	},
 }
@@ -525,6 +532,6 @@ Config.TelevisonVehiclesOffsets = {
 
 
 function Notify(text)
-	exports["rtx_notify"]:Notify("Television", text, 5000, "info") -- if you get error in this line its because you dont use our notify system buy it here https://rtx.tebex.io/package/5402098 or you can use some other notify system just replace this notify line with your notify system
+--	exports["rtx_notify"]:Notify("Television", text, 5000, "info") -- if you get error in this line its because you dont use our notify system buy it here https://rtx.tebex.io/package/5402098 or you can use some other notify system just replace this notify line with your notify system
 	--exports["mythic_notify"]:SendAlert("inform", text, 5000)
 end
