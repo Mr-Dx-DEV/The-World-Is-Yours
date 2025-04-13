@@ -782,6 +782,22 @@ local vehicles = { -- Vehicle list, credits to qb-core!
 { model = 'taholibk9',        name = 'Tahoe Library K9',             brand = 'Chevrolet',      price = 57000,   category = 'emergency',      shop = { 'emergency' } },
 { model = 'tarlib',           name = 'Taurus Library',               brand = 'Ford',           price = 30000,   category = 'emergency',      shop = { 'emergency' } },
 
+{ model = 'NF1',           name = '19 Charger',               brand = 'Dodge',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'NF2',           name = '10 Charger',               brand = 'Dodge',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'NF3',           name = '14 Charger',               brand = 'Dodge',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'NF4',           name = '18 Charger',               brand = 'Dodge',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'NF5',           name = '16 Explorer',               brand = 'Ford',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'NF6',           name = '2013 Caprice',               brand = 'Chevrolet',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'NF7',           name = '2020 Wrangler',               brand = 'Jeep',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'NF8',           name = '17 Colorado',               brand = 'Chevrolet',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'NF9',           name = '2020 Ram',               brand = 'Dodge',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'NF10',           name = '19 F-350',               brand = 'Ford',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'bcso1',           name = '18CHARGER',               brand = 'Dode',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'bcso2',           name = '16FPIU',               brand = 'Dode',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'bcso3',           name = '21F150',               brand = 'Dode',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'bcso4',           name = '16TAHOE',               brand = 'Dode',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'bcso5',           name = 'bcso 5',               brand = 'Dode',           price = 30000,   category = 'emergency',       shop = 'emergency' },
+
 
 
     
