@@ -12,9 +12,9 @@ set sv_debugqueue true # prints debug messages to console
 set sv_displayqueue true # shows queue count in the server name '[count] server name'
 set steam_webApiKey "none"
 sv_licenseKey "cfxk_i3K7tQALBtd176Q8nuPV_2LLgx4"
-sv_hostname "The World Is Yours RP | 17+ | Semi-Realistic"
+sv_hostname "^8The ^8World ^8Is ^8Yours ^8Serious ^8RP | ^817+, ^8Semi-Realistic | ^4Hiring ^4PD, ^4Fire, ^4EMS | ^3Custom ^3Gangs, ^3Drugs, ^3Cars, ^3& ^3Bussiness | ^1E-Girl ^1& ^1Streamer ^1Frendly | ^2 Tons ^2 Of ^2 Jobs"
 sets sv_projectName "The World Is Yours"
-sets sv_projectDesc "Unique 17+ Roleplay Semi-Realistic"
+sets sv_projectDesc "Unique Rp, 17+ Roleplay, Serious RP, Semi-Realistic"
 sets tags "roleplay, rp, theworldisyours, semi-realistic, usa, bd, uk, pakistan, 17plus, immersive, unique, citylife, seriousrp, qbox, qbcore, customscripts, newserver, nopixelinspired, community, economy, lawrp, crimelife"
 
 ## You MAY edit the following:
@@ -26,7 +26,7 @@ sets tags "roleplay, rp, theworldisyours, semi-realistic, usa, bd, uk, pakistan,
 
 load_server_icon myLogo.png
 #####  Core
-set sv_enforceGameBuild 3258
+set sv_enforceGameBuild 3095
 #sv_pureLevel 1
 
 ###  Player & OneSync Settings
@@ -167,7 +167,7 @@ setr bl:inventory 'ox'
 setr bl:context 'ox'
  
 # Target 'ox' | 'qb' | 'custom'
-setr bl:target 'ox'
+setr bl:target 'qb'
  
 # Progress 'ox' | 'qb' | 'custom'
 setr bl:progressbar 'ox'
@@ -203,7 +203,7 @@ ensure baseevents
 ensure oxmysql 
 ensure ox_lib
 ensure qb-core
-ensure ox_target
+ensure qb-target
 ensure ox_inventory
 ensure inventorycon
 ensure ox_compat
