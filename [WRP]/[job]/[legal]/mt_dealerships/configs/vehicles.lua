@@ -800,6 +800,83 @@ local vehicles = { -- Vehicle list, credits to qb-core!
 
 
 
+{ model = 'valor9rb',           name = 'Valor 9 RB',           brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'valorharley',        name = 'Valor Harley',         brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'valor5rb',           name = 'Valor 5 RB',           brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'valor6rb',           name = 'Valor 6 RB',           brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'valor3rb',           name = 'Valor 3 RB',           brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'valor1rb',           name = 'Valor 1 RB',           brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'valor15rb',          name = 'Valor 15 RB',          brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'valor13rb',          name = 'Valor 13 RB',          brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'valor10rb',          name = 'Valor 10 RB',          brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'valor12rb',          name = 'Valor 12 RB',          brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'speeddemonrb',       name = 'Speed Demon RB',       brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'policeboat',         name = 'Police Boat',          brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'Prisonvan2rb',       name = 'Prison Van 2 RB',      brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'eheli',              name = 'E Heli',               brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'gurkharb',           name = 'Gurkha RB',            brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = '17silvk9rb',         name = '17 Silv K9 RB',        brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'SHEL',               name = 'SHEL',                 brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'f550rbc',            name = 'F550 RBC',             brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'f450c',              name = 'F450 C',               brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'zm_rocket900',       name = 'Rocket 900',           brand = 'ZM',            price = 30000,   category = 'emergency',          shop = 'emergency' },
+{ model = 'zm_s500',            name = 'S500',                 brand = 'ZM',            price = 30000,   category = 'emergency',          shop = 'emergency' },
+{ model = 'unmarkedjl',         name = 'Unmarked JL',          brand = 'Generic',       price = 30000,   category = 'emergency',       shop = 'emergency' },
+{ model = 'trhawk',             name = 'TR Hawk',              brand = 'Generic',       price = 30000,   category = 'emergency',          shop = 'emergency' },
+    
+-- Emergency & Other Vehicles
+
+{ model = 'sw_subrb',                  name = 'sw subrb',               brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'sw_sprinter',               name = 'sw sprinter',            brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'sw_bearcat',                name = 'sw bearcat',             brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'RoyalCustom_R34Marked',     name = 'r34 marked',             brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'polsilverado19',            name = 'pol silverado19',        brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'rmodgt63police',            name = 'gt63 police',            brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'polmustang',                name = 'pol mustang',            brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'polkawasaki',               name = 'pol kawasaki',           brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'polheli',                   name = 'pol heli',               brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'polcoach',                  name = 'pol coach',              brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'polcross',                  name = 'pol cross',              brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'polboat2',                  name = 'pol boat2',              brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'polbmwm7',                  name = 'pol bmw m7',             brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'polbmwm3',                  name = 'pol bmw m3',             brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'polbike',                   name = 'pol bike',               brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'pd_escalader',              name = 'pd escalader',           brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'nm_z71',                    name = 'nm z71',                 brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'fibheli',                   name = 'fib heli',               brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+{ model = 'nm_ctsv',                   name = 'nm ctsv',                brand = 'Generic',    price = 30000, category = 'emergency',  shop = 'emergency' },
+
+-- Dealership or Civilian
+
+{ model = 'DL_RS7',                    name = 'dl rs7',                 brand = 'Generic',    price = 30000, category = 'emergency',      shop = 'emergency' },
+{ model = 'DL_rs6',                    name = 'dl rs6',                 brand = 'Generic',    price = 30000, category = 'emergency',      shop = 'emergency' },
+{ model = 'DL_a45',                    name = 'dl a45',                 brand = 'Generic',    price = 30000, category = 'emergency',      shop = 'emergency' },
+{ model = 'ACTRPavantum',              name = 'avantum',                brand = 'Generic',    price = 30000, category = 'emergency',      shop = 'emergency' },
+{ model = 'ACTRPavant',                name = 'avant',                  brand = 'Generic',    price = 30000, category = 'emergency',      shop = 'emergency' },
+{ model = '22m5sal',                   name = '22 m5 sal',              brand = 'Generic',    price = 30000, category = 'emergency',      shop = 'emergency' },
+
+-- EMS Vehicles
+
+{ model = 'RoyalG30Medic',             name = 'g30 medic',              brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'RoyalDodgeRAMems',          name = 'dodge ram ems',          brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'RoyalCustom_RSQ8_EMS',      name = 'rsq8 ems',               brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'emsbmwm7',                  name = 'bmw m7 ems',             brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'DC_RoyalCustom___RS7_EMS',  name = 'rs7 ems',                brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'BMW-x5_medic',              name = 'x5 medic',               brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'audirs6emsfire',            name = 'rs6 ems fire',           brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+
+-- Others
+
+{ model = 'aw139',                     name = 'aw139',                  brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'amrvan',                    name = 'amr van',                brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'Ambulance_Dodge_RAM',       name = 'dodge ram ambulance',    brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'ambulance1',                name = 'ambulance 1',            brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'wheelchair',                name = 'wheelchair',             brand = 'Generic',    price = 30000, category = 'emergency',      shop = 'emergency' },
+{ model = 'lpchopper2',                name = 'lp chopper 2',           brand = 'Generic',    price = 30000, category = 'emergency',   shop = 'emergency' },
+{ model = 'newsvan',                   name = 'news van',               brand = 'Generic',    price = 30000, category = 'emergency',      shop = 'emergency' },
+{ model = 'hexerz2',                   name = 'hexerz2',                brand = 'Generic',    price = 30000, category = 'emergency',    shop = 'emergency' },
+
+
     
     --- Military (19)
     { model = 'vetir',         name = 'Vetir',                         brand = 'Unknown',         price = 1000000,   category = 'military',       shop = { 'none' } },
