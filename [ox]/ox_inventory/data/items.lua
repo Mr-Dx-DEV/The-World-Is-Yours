@@ -4466,12 +4466,33 @@ description = 'Can store personal data'
 	},
 
 	
-	
 	['radio'] = {
 		label = 'Radio',
-		weight = 10,
-		stack = false,
-		allowArmed = true
+		weight = 1000,
+		allowArmed = true,
+		consume = 0,
+		client = {
+			event = 'mm_radio:client:use'
+		}
+	},
+	
+	['jammer'] = {
+		label = 'Radio Jammer',
+		weight = 10000,
+		allowArmed = true,
+		client = {
+			event = 'mm_radio:client:usejammer'
+		}
+	},
+	
+	['radiocell'] = {
+		label = 'AAA Cells',
+		weight = 1000,
+		stack = true,
+		allowArmed = true,
+		client = {
+			event = 'mm_radio:client:recharge'
+		}
 	},
 
 	['c4'] = {
