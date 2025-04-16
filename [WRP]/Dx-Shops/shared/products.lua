@@ -5,6 +5,8 @@ Products = {
     },
     ["blackmarket"] = {
         { name = "bobby_pin", price = 1250, amount = 50 },
+        { name = "jammer", price = 10000, amount = 50 },
+        { name = "radiocell", price = 5000, amount = 50 },
         
     },
     ["policeshop"] = {
