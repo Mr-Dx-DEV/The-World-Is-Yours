@@ -159,8 +159,8 @@ Config.GrantWeaponLicenses = {
 }
 
 Config.CCTVCameras = { -- CCTV Cameras
-    enabled = false,     -- Enable CCTV Cameras?
-    jobLock = false, -- Job lock? or access to all police jobs by using false
+    enabled = true,     -- Enable CCTV Cameras?
+    jobLock = true, -- Job lock? or access to all police jobs by using false
     saveToDatabase = true, -- Save CCTV data to database? (If false, data will be stored in server memory/reset on server restarts)
 
     jobs = {            -- Jobs & minimum ranks that can add/modify/delete CCTV Cameras
@@ -182,7 +182,7 @@ Config.CCTVCameras = { -- CCTV Cameras
     },
     destoryable = true, -- Can players destroy CCTV Cameras?
     blip = {
-        enabled = true,      -- Enable blips for CCTV Cameras?
+        enabled = false,      -- Enable blips for CCTV Cameras?
         label = 'CCTV Camera', -- Blip label
         sprite = 604,         -- Blip sprite
         color = 5,            -- Blip color
