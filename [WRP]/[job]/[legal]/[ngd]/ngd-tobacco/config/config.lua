@@ -271,25 +271,25 @@ Config.TobaccoSupplies = {
 
 --Items available in tobacco supply store
 Config.TobaccoSupplyStore = {
-  [1] = { name = "ngd_tobaccotrimmer", price = 0, count = 100, info = {}, type = "item", slot = 1 },
-  [2] = { name = "ngd_cigfilter", price = 0, count = 100, info = {}, type = "item", slot = 2 },
-  [3] = { name = "ngd_cigarrollingpaper", price = 0, count = 100, info = {}, type = "item", slot = 3 },
-  [4] = { name = "ngd_cigrollingpaper", price = 0, count = 100, info = {}, type = "item", slot = 4 },
-  [5] = { name = "ngd_premcigrollingpaper", price = 0, count = 100, info = {}, type = "item", slot = 5 },
-  [6] = { name = "ngd_cigarillopaper", price = 0, count = 100, info = {}, type = "item", slot = 6 },
-  [7] = { name = "ngd_cigarbinder", price = 0, count = 100, info = {}, type = "item", slot = 7 },
-  [8] = { name = "ngd_menthol", price = 0, count = 100, info = {}, type = "item", slot = 8 },
-  [9] = { name = "ngd_premiumcigarpaper", price = 0, count = 100, info = {}, type = "item", slot = 9 },
-  [10] = { name = "ngd_importcuban", price = 0, count = 100, info = {}, type = "item", slot = 10 },
-  [11] = { name = "ngd_pipe1", price = 0, count = 100, info = {}, type = "item", slot = 11 },
-  [12] = { name = "ngd_pipe2", price = 0, count = 100, info = {}, type = "item", slot = 12 },
-  [13] = { name = "ngd_pipe3", price = 0, count = 100, info = {}, type = "item", slot = 13 },
-  [14] = { name = "ngd_pipe4", price = 0, count = 100, info = {}, type = "item", slot = 14 },
-  [15] = { name = "ngd_pipe5", price = 0, count = 100, info = {}, type = "item", slot = 15 },
-  [16] = { name = "ngd_cherryoil", price = 0, count = 100, info = {}, type = "item", slot = 16 },
-  [17] = { name = "ngd_mapleoil", price = 0, count = 100, info = {}, type = "item", slot = 17 },
-  [18] = { name = "ngd_lemonoil", price = 0, count = 100, info = {}, type = "item", slot = 18 },
-  [19] = { name = "ngd_wintergreenoil", price = 0, count = 100, info = {}, type = "item", slot = 19 },
+  [1] = { name = "ngd_tobaccotrimmer", price = 10, count = 300, info = {}, type = "item", slot = 1 },
+  [2] = { name = "ngd_cigfilter", price = 10, count = 300, info = {}, type = "item", slot = 2 },
+  [3] = { name = "ngd_cigarrollingpaper", price = 10, count = 300, info = {}, type = "item", slot = 3 },
+  [4] = { name = "ngd_cigrollingpaper", price = 10, count = 300, info = {}, type = "item", slot = 4 },
+  [5] = { name = "ngd_premcigrollingpaper", price = 10, count = 300, info = {}, type = "item", slot = 5 },
+  [6] = { name = "ngd_cigarillopaper", price = 10, count = 300, info = {}, type = "item", slot = 6 },
+  [7] = { name = "ngd_cigarbinder", price = 10, count = 300, info = {}, type = "item", slot = 7 },
+  [8] = { name = "ngd_menthol", price = 10, count = 300, info = {}, type = "item", slot = 8 },
+  [9] = { name = "ngd_premiumcigarpaper", price = 10, count = 300, info = {}, type = "item", slot = 9 },
+  [10] = { name = "ngd_importcuban", price = 10, count = 300, info = {}, type = "item", slot = 10 },
+  [11] = { name = "ngd_pipe1", price = 10, count = 300, info = {}, type = "item", slot = 11 },
+  [12] = { name = "ngd_pipe2", price = 10, count = 300, info = {}, type = "item", slot = 12 },
+  [13] = { name = "ngd_pipe3", price = 10, count = 300, info = {}, type = "item", slot = 13 },
+  [14] = { name = "ngd_pipe4", price = 10, count = 300, info = {}, type = "item", slot = 14 },
+  [15] = { name = "ngd_pipe5", price = 10, count = 300, info = {}, type = "item", slot = 15 },
+  [16] = { name = "ngd_cherryoil", price = 10, count = 300, info = {}, type = "item", slot = 16 },
+  [17] = { name = "ngd_mapleoil", price = 10, count = 300, info = {}, type = "item", slot = 17 },
+  [18] = { name = "ngd_lemonoil", price = 10, count = 300, info = {}, type = "item", slot = 18 },
+  [19] = { name = "ngd_wintergreenoil", price = 10, count = 300, info = {}, type = "item", slot = 19 },
 }
 
 
@@ -312,7 +312,7 @@ Config.BoozeStore = {
 
 --Items available in the booze store
 Config.BoozeSupplyStore = {
-  [1] = { name = "ngd_tobaccowhisky", price = 0, count = 100, info = {}, type = "item", slot = 1 },
+  [1] = { name = "ngd_tobaccowhisky", price = 10, count = 300, info = {}, type = "item", slot = 1 },
 }
 
 -- ███████ ████████  █████  ███████ ██   ██     ██       ██████   ██████  █████  ████████ ██  ██████  ███    ██ ███████
