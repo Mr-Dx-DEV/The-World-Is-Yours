@@ -10,7 +10,7 @@ elseif Config.Framework.QB.enabled then
     QBCore = exports['qb-core']:GetCoreObject()
 end
 
--- [[ Utility Functions ]]
+-- [[ Functions ]]
 
 -- Function to verify if the player's job matches the allowed jobs in the script configuration
 function verifyPlayerJob()
@@ -41,7 +41,7 @@ end
 function showHint(message)
     AddTextEntry('r_grab', message)
     BeginTextCommandDisplayHelp('r_grab')
-    EndTextCommandDisplayHelp(0, false, true, -1)
+    EndTextCommandDisplayHelp(0, false, false, -1)
 end
 
 -- Function to disable certain player controls (e.g., while being dragged)
@@ -82,7 +82,7 @@ if not Config.CommandSystem.Enabled and not Config.TargetSystem.UseOXTarget and 
     RegisterKeyMapping(Config.CommandSystem.Grab, 'Grab Ped Key', 'keyboard', 'F2')
 end
 
--- [[ Event ]]
+-- [[ Events ]]
 
 -- Event to grab or release a player.
 -- @param targetId integer The server ID of the target player to grab.
@@ -97,29 +97,5 @@ end)
 
 -- Handles removing a grabbed player from a vehicle.
 RegisterNetEvent('r_grab:client:removePlayerFromVehicle', function()
-    removePlayerFromVehicle(true)
-end)
-
--- [[ Exports ]]
--- Follow our documentation for more information: https://docs.rytrak.fr/scripts/advanced-police-grab-ped/general-exports
-
--- Export to grab a player
-exports('GrabPlayer', function(playerId)
-    if not verifyPlayerJob() then return end
-
-    grabPlayer(playerId)
-end)
-
--- Export to put the grabbed player into a nearby vehicle
-exports('PutPlayerInVehicle', function()
-    if not verifyPlayerJob() then return end
-
-    putPlayerInVehicle(true)
-end)
-
--- Export to remove a player from a nearby vehicle
-exports('RemovePlayerFromVehicle', function()
-    if not verifyPlayerJob() then return end
-
     removePlayerFromVehicle(true)
 end)

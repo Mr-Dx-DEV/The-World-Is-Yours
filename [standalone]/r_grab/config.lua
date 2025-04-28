@@ -36,7 +36,7 @@ Config = {
 'usms',
 'dhs',
 'ss',
-'salsa'} -- Allowed jobs to use the grab ped feature.
+'salsa'}  -- Allowed jobs to use the grab ped feature.
         },
     },
 
@@ -82,7 +82,7 @@ Config = {
 
 -- [[ Key Bindings - Refer to https://docs.fivem.net/docs/game-references/controls/ ]]
 Config.Keys = {
-    GrabAndDropKey = 289, -- Key to grab/release a person (used when Config.CommandSystem.Enabled = false).
+    GrabAndDropKey = 289, -- Key to grab/release a person (used when Config.CommandSystem.Enabled = false) (You need to modify here and in the cl_utils.lua file line 82 where the RegisterKeyMapping function appears)
     GrabAndDropKeyString = '~INPUT_REPLAY_START_STOP_RECORDING_SECONDARY~', -- Display name for the grab/release key.
 
     TaskEnterKey = 305, -- Key to place a person into a vehicle.
