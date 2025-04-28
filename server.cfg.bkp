@@ -156,34 +156,10 @@ setr weather_disablecd false
 # Make fuel stations purchaseable by players
 setr fuel_buystations true
 
-
-# Frameworks 'ox' | 'qb' | 'esx' | 'qbx' | 'custom'
-setr bl:framework 'qbx' 
- 
-# Inventories 'ox' | 'qb' | 'esx' | 'ps' | 'custom' | 'none'
-setr bl:inventory 'ox'
- 
-# Context 'ox' | 'qb' | 'custom'
-setr bl:context 'ox'
- 
-# Target 'ox' | 'qb' | 'custom'
-setr bl:target 'qb'
- 
-# Progress 'ox' | 'qb' | 'custom'
-setr bl:progressbar 'ox'
- 
-# Radial 'ox' | 'qb' | 'custom'
-setr bl:radial 'ox'
- 
-# Notification 'ox' | 'qb' | 'esx' | 'custom'
-setr bl:notify 'ox'
- 
-# TextUI 'ox' | 'qb'
-setr bl:textui 'ox'
-
-
 # Ox resource settings
 exec ox.cfg
+exec bl_bridge.cfg
+
 
 # loadscreen config
 setr loadscreen:externalShutdown false
