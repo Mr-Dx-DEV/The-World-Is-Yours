@@ -74,31 +74,8 @@ function Weapon.Equip(item, data, noWeaponAnim)
 
 	local ammo = item.metadata.ammo or item.throwable and 1 or 0
 
-	--[[ SetCurrentPedWeapon(playerPed, data.hash, true)
-	SetPedCurrentWeaponVisible(playerPed, true, false, false, false) ]]
-	local weaponAddons = {
-		'WEAPON_MEGAPHONE',
-		'WEAPON_PEPPERSPRAY',
-		'WEAPON_ANTIDOTE',
-		'WEAPON_BOLAWRAP',
-		'WEAPON_SPREADER',
-		'WEAPON_CUTTER',
-		'WEAPON_GLASSMASTER'
-	}
-	
-	local function isWeaponAddons(hash)
-		for _,v in pairs(weaponAddons) do
-			if hash == GetHashKey(v) then
-				return true
-			end
-		end
-		return false
-	end
-	
-	if not isWeaponAddons(data.hash) then
-		SetCurrentPedWeapon(playerPed, data.hash, true)
-		SetPedCurrentWeaponVisible(playerPed, true, false, false, false)
-	end
+	SetCurrentPedWeapon(playerPed, data.hash, true)
+	SetPedCurrentWeaponVisible(playerPed, true, false, false, false)
 	SetWeaponsNoAutoswap(true)
 	SetPedAmmo(playerPed, data.hash, ammo)
 	SetTimeout(0, function() RefillAmmoInstantly(playerPed) end)

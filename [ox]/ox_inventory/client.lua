@@ -854,7 +854,7 @@ local function registerCommands()
 		end
 	})
 
-	for i = 1, 6 do
+	for i = 1, 5 do
 		lib.addKeybind({
 			name = ('hotkey%s'):format(i),
 			description = locale('use_hotbar', i),
@@ -1396,11 +1396,8 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			local weaponType = GetWeapontypeGroup(weaponHash)
 
 			if weaponType ~= 0 and weaponType ~= `GROUP_UNARMED` then
-				if not exports["pug-battleroyale"]:IsInBattleRoyale() and not exports["pug-paintball"]:IsInPaintball() then
-					Weapon.Disarm(currentWeapon, true)
-				end
+				Weapon.Disarm(currentWeapon, true)
 			end
-			
 		end
 	end, 200)
 
@@ -1438,18 +1435,13 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			end
 
 			if usingItem or invOpen or IsPedCuffed(playerPed) then
-				if not exports["pug-paintball"]:IsInPaintball() then
-					DisablePlayerFiring(playerId, true)
-				end
+				DisablePlayerFiring(playerId, true)
 			end
-			
-			if not exports["pug-battleroyale"]:IsInBattleRoyale() then
-				if not EnableWeaponWheel then
-					HudWeaponWheelIgnoreSelection()
-					DisableControlAction(0, 37, true)
-				end
+
+			if not EnableWeaponWheel then
+				HudWeaponWheelIgnoreSelection()
+				DisableControlAction(0, 37, true)
 			end
-			
 
 			if currentWeapon and currentWeapon.timer then
 				DisableControlAction(0, 80, true)
