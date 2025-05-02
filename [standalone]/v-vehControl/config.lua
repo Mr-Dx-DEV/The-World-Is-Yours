@@ -3,7 +3,7 @@ Config = {
     CommandName = "vehmenu",
     Keybind = {
         enabled = true,
-        key = "Y" -- The Key to opening the menu if enabled.
+        key = "END" -- The Key to opening the menu if enabled.
     },
     Translation = {
         ["tip_focus_mode"] = "Tip: Right click to enter focus mode.",
