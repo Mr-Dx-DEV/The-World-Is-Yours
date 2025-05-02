@@ -7040,13 +7040,11 @@ description = 'Can store personal data'
 
 	["tablet"] = {
 		label = "Tablet",
-		weight = 2000,
-		stack = true,
-		allowArmed = true,
-		close = true,
-		description = "Expensive tablet",
+		weight = 840,
+		stack = false,
+		consume = 0,
 		client = {
-			image = "tablet.png",
+			event = "tablet:toggleOpen"
 		}
 	},
 
