@@ -157,6 +157,7 @@ return {
 			{ name = 'WEAPON_PDBATON', price = 500, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 0 },
 			{ name = 'handcuffs', price = 100, metadata = { registered = true, serial = 'POL' }, grade = 0 },
 			{ name = 'electronic_cuffs', price = 1000, grade = 0 },
+			{ name = 'tablet', price = 100, grade = 0 },
 			{ name = 'armor', price = 1000, grade = 0 },
 			{ name = 'heavyarmor', price = 5000, grade = 0 },
 			{ name = 'defib', price = 10, grade = 0 },
