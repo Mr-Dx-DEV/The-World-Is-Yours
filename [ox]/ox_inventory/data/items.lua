@@ -514,7 +514,7 @@ description = 'Can store personal data'
 	},
 ----- an_badge
 	['badge'] = {
-		label = 'PD Badge',
+		label = 'LSPD Badge',
 		weight = 500,
 		stack = false,
 		allowArmed = true, -- Unique item
@@ -533,6 +533,28 @@ description = 'Can store personal data'
 		description = 'Deputy Badge',
 		client = {
 			image = 'sdbadge.png'
+		}
+	},
+	['salsabadge'] = {
+		label = 'salsa Badge',
+		weight = 500,
+		stack = false,
+		allowArmed = true, -- Unique item
+		close = true, -- Closes inventory on use
+		description = 'Deputy Badge',
+		client = {
+			image = 'sdbadge.png'
+		}
+	},
+	['emsbadge'] = {
+		label = 'EMS Badge',
+		weight = 500,
+		stack = false,
+		allowArmed = true, -- Unique item
+		close = true, -- Closes inventory on use
+		description = 'Deputy Badge',
+		client = {
+			image = 'badge.png'
 		}
 	},
 	

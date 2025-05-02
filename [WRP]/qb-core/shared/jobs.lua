@@ -1015,51 +1015,51 @@ QBShared.Jobs = {
         defaultDuty = true,
         offDutyPay = false,
         grades = {
-            ["2"] = {
-                name = "Senior Deputy",
-                payment = 600,
+            ["0"] = {
+                name = "Recruit",
+                payment = 350,
             },
             ["1"] = {
                 name = "Deputy",
                 payment = 500,
             },
-            ["4"] = {
-                name = "Sergeant",
-                payment = 800,
+            ["2"] = {
+                name = "Senior Deputy",
+                payment = 600,
             },
             ["3"] = {
                 name = "Corporal",
                 payment = 700,
             },
-            ["0"] = {
-                name = "Recruit",
-                payment = 350,
+            ["4"] = {
+                name = "Sergeant",
+                payment = 800,
             },
-            ["10"] = {
-                name = "Sheriff",
-                payment = 2500,
-                isboss = true,
+            ["5"] = {
+                name = "Lieutenant",
+                payment = 900,
+            },
+            ["6"] = {
+                name = "Captain",
+                payment = 1000,
+            },
+            ["7"] = {
+                name = "Major",
+                payment = 1500,
+            },
+            ["8"] = {
+                name = "Chief Deputy",
+                payment = 1800,
             },
             ["9"] = {
                 name = "Under Sheriff",
                 payment = 2000,
                 isboss = true,
             },
-            ["6"] = {
-                name = "Captain",
-                payment = 1000,
-            },
-            ["5"] = {
-                name = "Lieutenant",
-                payment = 900,
-            },
-            ["8"] = {
-                name = "Chief Deputy",
-                payment = 1800,
-            },
-            ["7"] = {
-                name = "Major",
-                payment = 1500,
+            ["10"] = {
+                name = "Sheriff",
+                payment = 2500,
+                isboss = true,
             },
         }
     },
