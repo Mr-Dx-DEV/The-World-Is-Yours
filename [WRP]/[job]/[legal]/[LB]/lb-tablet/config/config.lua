@@ -510,7 +510,7 @@ Config.Police.Callsign.Format = "A-000" --[[
         * a: lowercase letter a-z
         * ^: escape character
 ]]
-Config.Police.Callsign.RequireTemplate = false -- Require users to follow the format of the callsign template?
+Config.Police.Callsign.RequireTemplate = true -- Require users to follow the format of the callsign template?
 Config.Police.Callsign.AllowChange = true
 
 Config.Police.Jail = {}
