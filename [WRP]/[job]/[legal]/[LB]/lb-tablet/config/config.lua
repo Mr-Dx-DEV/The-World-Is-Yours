@@ -502,15 +502,15 @@ Config.Police = {}
 Config.Police.DutyBlips = true -- show blips for police officers on duty?
 
 Config.Police.Callsign = {}
-Config.Police.Callsign.AutoGenerate = true -- should a callsign be automatically generated when a police profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
-Config.Police.Callsign.Format = "11-1111" --[[
+Config.Police.Callsign.AutoGenerate = false -- should a callsign be automatically generated when a police profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
+Config.Police.Callsign.Format = "A-000" --[[
     Callsign format:
         * 1: number 0-9
         * A: uppercase letter A-Z
         * a: lowercase letter a-z
         * ^: escape character
 ]]
-Config.Police.Callsign.RequireTemplate = true -- Require users to follow the format of the callsign template?
+Config.Police.Callsign.RequireTemplate = false -- Require users to follow the format of the callsign template?
 Config.Police.Callsign.AllowChange = true
 
 Config.Police.Jail = {}
@@ -1749,8 +1749,8 @@ Config.Ambulance.ShowIdentifier = false -- show identifier (citizenid) in user's
 Config.Ambulance.ShowFingerprint = false -- show fingerprint in user's profile?
 
 Config.Ambulance.Callsign = {}
-Config.Ambulance.Callsign.AutoGenerate = true -- should a callsign be automatically generated when a Ambulance profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
-Config.Ambulance.Callsign.Format = "11-1111" --[[
+Config.Ambulance.Callsign.AutoGenerate = false -- should a callsign be automatically generated when a Ambulance profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
+Config.Ambulance.Callsign.Format = "11" --[[
     Callsign format:
         * 1: number 0-9
         * A: uppercase letter A-Z
