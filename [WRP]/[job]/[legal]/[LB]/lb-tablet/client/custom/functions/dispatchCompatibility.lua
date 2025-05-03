@@ -70,7 +70,7 @@ local psDispatches = {
     "Hunting",
     "VehicleShooting",
     "SpeedingVehicle",
-    "Fight",
+  ---  "Fight",
     "PrisonBreak",
     "StoreRobbery",
     "FleecaBankRobbery",
