@@ -360,7 +360,7 @@ Config.RadarPosts = {           -- Radar posts for speed detection
     },
 
     blip = {
-        enabled = true,      -- Enable blips for radar posts?
+        enabled = false,      -- Enable blips for radar posts?
         label = 'Radar Post', -- Blip label
         sprite = 184,         -- Blip sprite
         color = 27,            -- Blip color
