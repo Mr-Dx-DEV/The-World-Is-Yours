@@ -17,11 +17,11 @@ Config.GTAMenu = {
     menu = {
         ChangeColor = true, -- Set to true to change the color of the menu
         colors = {
-            TextUnselected = { r = 255, g = 165, b = 0, a = 200 }, -- unselected text and Selected Menu (Blip list, menu ecc)
-            TextSelected = { r = 255, g = 255, b = 255, a = 200 }, -- selected text (Blip list, menu ecc)
-            MenuUnselected = { r = 75, g = 0, b = 130, a = 150 }, -- unselected menu (Blip list, menu ecc)
-            MapBackground = { r = 255, g = 173, b = 0, a = 255 }, -- map background (255 - Transparent)
-            OtherLines = { r = 255, g = 173, b = 0, a = 200 } -- Color for other lines and menu selection bar
+            TextUnselected = { r = 255, g = 215, b = 0, a = 200 }, -- Gold for unselected text and selected menu
+            TextSelected = { r = 255, g = 0, b = 0, a = 200 }, -- Red for selected text
+            MenuUnselected = { r = 139, g = 0, b = 0, a = 150 }, -- Dark red for unselected menu
+            MapBackground = { r = 255, g = 215, b = 0, a = 255 }, -- Gold for map background
+            OtherLines = { r = 255, g = 0, b = 0, a = 200 } -- Red for lines and selection bar
         }
     }
 }
