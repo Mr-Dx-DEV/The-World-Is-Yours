@@ -24,6 +24,7 @@ Loc['ee'] = {
         ["no_permission"] = "Sul pole luba seda kasutada",
         ["already_searched"] = "Juba otsitakse..",
         ["glitch"] = "Hea katse..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

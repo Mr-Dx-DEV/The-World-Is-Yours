@@ -32,6 +32,7 @@ Loc['gr'] = {
         ["no_permission"] = "Δεν έχετε άδεια να το χρησιμοποιήσετε",
         ["already_searched"] = "Αναζητείται ήδη..",
         ["glitch"] = "Καλή προσπάθεια..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

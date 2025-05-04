@@ -24,6 +24,7 @@ Loc['cn'] = {
         ["no_permission"] = "你没有权限使用那个",
         ["already_searched"] = "已经在搜索..",
         ["glitch"] = "好尝试..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

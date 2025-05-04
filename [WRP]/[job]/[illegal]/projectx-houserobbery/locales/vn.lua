@@ -24,6 +24,7 @@ Loc['vn'] = {
         ["no_permission"] = "Bạn không có quyền sử dụng cái đó",
         ["already_searched"] = "Đang được tìm kiếm..",
         ["glitch"] = "Thử tốt..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

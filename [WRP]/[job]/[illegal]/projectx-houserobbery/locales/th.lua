@@ -24,6 +24,7 @@ Loc['th'] = {
         ["no_permission"] = "คุณไม่มีสิทธิ์ใช้งานนั้น",
         ["already_searched"] = "กำลังค้นหาอยู่..",
         ["glitch"] = "พยายามดี..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

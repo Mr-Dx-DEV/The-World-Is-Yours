@@ -24,6 +24,7 @@ Loc['he'] = {
         ["no_permission"] = "אין לך הרשאה להשתמש בזה",
         ["already_searched"] = "כבר נבדק..",
         ["glitch"] = "ניסיון יפה..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

@@ -23,7 +23,8 @@ Loc['ru'] = {
         ["skill"] = "Мне трудно взламывать это..",
         ["no_permission"] = "У вас нет разрешения на это",
         ["already_searched"] = "Уже ищется..",
-        ["glitch"] = "Хорошая попытка..",        
+        ["glitch"] = "Хорошая попытка..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

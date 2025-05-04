@@ -24,6 +24,7 @@ Loc['in'] = {
         ["no_permission"] = "आपके पास उसे इस्तेमाल करने की अनुमति नहीं है",
         ["already_searched"] = "पहले से ही खोजा जा रहा है..",
         ["glitch"] = "अच्छा प्रयास..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

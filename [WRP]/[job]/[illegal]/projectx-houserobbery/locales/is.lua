@@ -24,6 +24,7 @@ Loc['is'] = {
         ["no_permission"] = "Þú hefur ekki leyfi til að nota það",
         ["already_searched"] = "Er þegar verið að leita..",
         ["glitch"] = "Góð tilraun..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

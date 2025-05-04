@@ -24,6 +24,7 @@ Loc['bg'] = {
         ["no_permission"] = "Нямаш разрешение да използваш това",
         ["already_searched"] = "Вече се претърсва..",
         ["glitch"] = "Добър опит..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

@@ -24,6 +24,7 @@ Loc['en'] = {
         ["no_permission"] = "Դուք չունեք թույլատրություն օգտագործելուն",
         ["already_searched"] = "Արդեն որոնվում է...",
         ["glitch"] = "Քանի որ փորձել եք...",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

@@ -24,6 +24,7 @@ Loc['ge'] = {
         ["no_permission"] = "Du hast keine Erlaubnis, das zu benutzen",
         ["already_searched"] = "Wird bereits durchsucht..",
         ["glitch"] = "Guter Versuch..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

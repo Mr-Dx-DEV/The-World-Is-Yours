@@ -26,6 +26,7 @@ Loc["fr"] = {
         ["already_searched"] = "Déjà en cours de recherche..",
         ["carry"] = "Je ne pourrai pas tout porter..",
         ["glitch"] = "Belle tentative..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

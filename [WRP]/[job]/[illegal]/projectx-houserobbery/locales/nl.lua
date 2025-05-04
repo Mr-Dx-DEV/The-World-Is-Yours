@@ -24,6 +24,7 @@ Loc['nl'] = {
         ["no_permission"] = "Je hebt geen toestemming om dat te gebruiken",
         ["already_searched"] = "Wordt al doorzocht..",
         ["glitch"] = "Mooie poging..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

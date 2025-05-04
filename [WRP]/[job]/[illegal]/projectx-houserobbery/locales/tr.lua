@@ -24,6 +24,7 @@ Loc['tr'] = {
         ["no_permission"] = "Bunu kullanma iznin yok",
         ["already_searched"] = "Zaten aranıyor..",
         ["glitch"] = "Güzel deneme..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

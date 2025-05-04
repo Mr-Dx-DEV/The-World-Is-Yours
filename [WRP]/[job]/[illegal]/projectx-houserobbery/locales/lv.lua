@@ -24,6 +24,7 @@ Loc['lv'] = {
         ["no_permission"] = "Tev nav atļaujas izmantot to",
         ["already_searched"] = "Jau tiek meklēts..",
         ["glitch"] = "Labs mēģinājums..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

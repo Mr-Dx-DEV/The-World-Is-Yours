@@ -24,6 +24,7 @@ Loc['ro'] = {
         ["no_permission"] = "Nu ai permisiunea să folosești asta",
         ["already_searched"] = "Deja se caută..",
         ["glitch"] = "Încercare frumoasă..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

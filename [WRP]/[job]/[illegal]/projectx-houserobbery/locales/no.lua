@@ -24,6 +24,7 @@ Loc['no'] = {
         ["no_permission"] = "Du har ikke tillatelse til å bruke dette",
         ["already_searched"] = "Allerede søkt gjennom..",
         ["glitch"] = "Godt forsøk..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

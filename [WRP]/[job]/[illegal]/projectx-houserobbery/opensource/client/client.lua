@@ -17,13 +17,19 @@ if Config.Framework == "qb-core" or Config.Framework == "qbox" then
     function HasItem(item)
         if Config.Inventory == "ox" then
             return exports.ox_inventory:GetItemCount(item) > 0
+        elseif Config.Inventory == "origen" then
+            return exports.origen_inventory:HasItem(item)
+        elseif Config.Inventory == "qs" then
+            return exports['qs-inventory']:Search(item) > 0
+        elseif Config.Inventory == "tgiann" then
+            return exports["tgiann-inventory"]:HasItem(item, 1)
         else
             return QBCore.Functions.HasItem(item)
         end
     end
 
     function EnableWeather()
-        if Config.Weather == "cd" then
+        if Config.Weather == "cd" or Config.Weather == "renewed" then
             TriggerEvent('cd_easytime:PauseSync', false)
         elseif Config.Weather == "av" then
             TriggerEvent('av_weather:freeze', false)
@@ -33,7 +39,7 @@ if Config.Framework == "qb-core" or Config.Framework == "qbox" then
     end
 
     function DisableWeather()
-        if Config.Weather == "cd" or "renewed" then
+        if Config.Weather == "cd" or Config.Weather == "renewed" then
             TriggerEvent('cd_easytime:PauseSync', true)
         elseif Config.Weather == "av" then
             TriggerEvent('av_weather:freeze', true)
@@ -229,21 +235,23 @@ end
 
 function Dispatch()
     local coords = GetEntityCoords(PlayerPedId())
+    local PoliceJobs = {}
+    for k, v in pairs(Config.PoliceJobs) do table.insert(PoliceJobs, k) end
     if Config.Dispatch == "cd" then
         local data = exports['cd_dispatch']:GetPlayerInfo()
         TriggerServerEvent('cd_dispatch:AddNotification', {
-            job_table = {'police', }, 
+            job_table = {'police'},
             coords = data.coords,
             title = '10-15 - House Robbery',
-            message = 'A '..data.sex..' robbing a house at '..data.street, 
+            message = 'A '..data.sex..' robbing a store at '..data.street,
             flash = 0,
             unique_id = data.unique_id,
             sound = 1,
             blip = {
-                sprite = 431, 
-                scale = 1.2, 
+                sprite = 431,
+                scale = 1.2,
                 colour = 3,
-                flashes = false, 
+                flashes = false,
                 text = '911 - House Robbery',
                 time = 5,
                 radius = 0,
@@ -251,11 +259,11 @@ function Dispatch()
         })
     elseif Config.Dispatch == "origen" then
         TriggerServerEvent("SendAlert:police", {
-            coords = vector3(0, 0, 0),
+            coords = coords,
             title = 'House Robbery',
             type = 'GENERAL',
-            message = 'House is being robbed',
-            job = 'police',
+            message = 'A House is being robbed',
+            job = PoliceJobs,
         })
     elseif Config.Dispatch == "tk" then
         exports['tk_dispatch']:addCall({
@@ -270,45 +278,30 @@ function Dispatch()
                 sprite = 357,
                 scale = 1.0,
             },
-            jobs = {'police'}
+            jobs = PoliceJobs
         })
     elseif Config.Dispatch == "rcore" then
         local player_data = exports['rcore_dispatch']:GetPlayerData()
         local data = {
-            code = '10-35 House Robbery', 
+            code = '10-35 House Robbery',
             default_priority = 'medium',
             coords = player_data.coords,
-            job = {
-                "police",
-                "sheriff",
-                "fbi",
-                "lspd",
-                "bcso",
-                "sahp",
-                "lsso",
-                "salsa",
-                "safw",
-                "sadoc",
-                "usms",
-                "dhs",
-                "ss"
-            },
-            
+            job = PoliceJobs,
             text = 'House Robbery!',
             type = 'alert',
             blip_time = 5,
             blip = {
-                sprite = 42, 
+                sprite = 272,
                 colour = 3,
-                scale = 1.7,
-                text = 'House Robbery', 
+                scale = 0.7,
+                text = 'House Robbery',
                 flashes = false,
                 radius = 0,
             }
         }
         TriggerServerEvent('rcore_dispatch:server:sendAlert', data)
     elseif Config.Dispatch == "outlaw" then
-        local data = {displayCode = '211', description = 'Robbery', isImportant = 0, recipientList = {'police'}, length = '10000', infoM = 'fa-info-circle', info = 'House Robbery'}
+        local data = {displayCode = '211', description = 'Robbery', isImportant = 0, recipientList = PoliceJobs, length = '10000', infoM = 'fa-info-circle', info = 'House Robbery'}
         local dispatchData = {dispatchData = data, caller = 'Alarm', coords = coords}
         TriggerEvent('wf-alerts:svNotify', dispatchData)
     elseif Config.Dispatch == "codem" then
@@ -319,13 +312,79 @@ function Dispatch()
             code = '10-54',
         }
         exports['codem-dispatch']:CustomDispatch(Data)
+    elseif Config.Dispatch == "lb" then
+        TriggerServerEvent('Shop:lb-tablet:Dispatch', {
+            priority = 'high',
+            code = '10-31',
+            title = "House Robbery",
+            description = 'A House is being robbed',
+            location = {label = "House Robbery", coords = { x = coords.x, y = coords.y}},
+            time = 100,
+            image = 'https://www.alibirp.com/image/imgtransparant.png',
+            job = PoliceJobs,
+        })
+    elseif Config.Dispatch == "redutzu" then
+        TriggerServerEvent('redutzu-mdt:server:addDispatchToMDT', {code = '10-31', title = 'House Robbery', gender = 'Male', duration = 100000, coords = coords})
+    elseif Config.Dispatch == "l2s" then
+        local playerData = exports['l2s-dispatch']:GetPlayerData()
+        TriggerServerEvent('l2s-dispatch:server:AddNotification', {
+            departments = PoliceJobs,
+            title = 'House Robbery',
+            message = 'A House is being robbed',
+            coords = vec2(playerData.coords.x, playerData.coords.y),
+            priority = 1,
+            sound = 1,
+            street = playerData.street,
+            reply = playerData.source,
+            anonymous = false,
+            blip = {
+                sprite = 52,
+                colour = 1,
+                scale = 1.0,
+                text = '10-31 - House Robbery',
+            },
+            info = {
+                {icon = 'video', text = 'first'},
+                {icon = 'person', text = playerData.sex},
+            },
+        })
+    elseif Config.Dispatch == "sonoran" then
+        local Zone = GetLabelText(GetNameOfZone(coords.x, coords.y, coords.z))
+        local Street = GetStreetNameFromHashKey(GetStreetNameAtCoord(coords.x, coords.y, coords.z))
+        TriggerServerEvent('projectx-houserobbery-fm:server:Sonoran', Street, Zone)
     elseif Config.Dispatch == "qs" then
-        exports['qs-dispatch']:HouseRobbery()
+        local playerData = exports['qs-dispatch']:GetPlayerInfo()
+        TriggerServerEvent('qs-dispatch:server:CreateDispatchCall', {
+            job = PoliceJobs,
+            callLocation = playerData.coords,
+            callCode = { code = 'House Robbery', snippet = 'Robbery' },
+            message = "House Robbery",
+            flashes = false,
+            image = nil,
+            blip = {
+                sprite = 150,
+                scale = 1.5,
+                colour = 1,
+                flashes = true,
+                text = 'House Robbery',
+                time = (20 * 1000),     --20 secs
+            },
+        })
     elseif Config.Dispatch == "ps" then
-        exports['ps-dispatch']:HouseRobbery()
+        exports["ps-dispatch"]:CustomAlert({
+            coords = coords,
+            message = "House Robbery",
+            dispatchCode = "10-35",
+            description = "A House is being robbed",
+            radius = 0,
+            sprite = 150,
+            color = 1,
+            scale = 1.0,
+            length = 3,
+        })
     else
         if Config.Framework == "esx" then
-            TriggerServerEvent('projectx-houserobbery:server:PdNotify')
+            TriggerServerEvent('projectx-houserobbery-fm:server:PdNotify')
             -- (ESX) Add your disptach script here if it's none of the above and remove the line above this one
         else
             -- (Qbcore) Add your disptach script here if it's none of the above

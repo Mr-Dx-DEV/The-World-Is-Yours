@@ -1,28 +1,37 @@
 # Project X House Robbery
 
-House Robbery Script - Project X
-
 ## Links
 
 [Discord](https://discord.gg/bJNxYDAm5u)
-[Tebex](https://www.projectx.gg)
+[Store](https://www.projectx.gg)
 
 ## Dependencies
 
 [ox_lib](https://github.com/overextended/ox_lib)
 
-## Installation
-
-### Required Dependencies if you want to use the script as is
+## Required Dependencies if you want to use the script as is
 
 [Renewed qb-phone](https://github.com/Renewed-Scripts/qb-phone) (**Optional** For the pre-configured group system)
 [Skill-System](**Optional** You will have to search for one that looks best to you)
-[ps-dispatch](https://github.com/Project-Sloth/ps-dispatch) (For the pre-configured dispatch)
+
+[QBCore-QBOX]
+[ps-dispatch](https://github.com/Project-Sloth/ps-dispatch)
+
+[ESX]
+[linden_outlawalert](https://github.com/thelindat/linden_outlawalert)
 
 [Minigames](https://drive.google.com/file/d/1lOhbP99Yu0cIHBmz4-EbCB_mR4D0cNO5/view?usp=sharing) (Download and place in your standalone folder)
 
 -- ESX and QBOX Frameworks:
 [qb-interior](https://github.com/qbcore-framework/qb-interior) (Works with ESX, free resource by K4MBI for default shells, if you don't have it, you need to download it)
+
+### Installation
+
+- Step 1: Extract the script from the zip file and place it into your scripts folder.
+- Step 2: Add the minigames that are found in the zip file above into your standalone/dependencies folder (Make sure they are not in the same folder as the robbery script).
+- Step 3: Add the items from below and the images from the images folder to your inventory.
+- Step 4: Configure the config.lua file to work with your server by changing the Framework, Inventory, Dispatch, Target name.
+- Step 5: Make sure that the Framework, ox_lib, your Target, Dispatch, Inventory, and Minigames are started before the robbery script.
 
 ### Add this to server.cfg
 
@@ -33,15 +42,18 @@ House Robbery Script - Project X
   ensure projectx-houserobbery
 ```
 
+### Images done by Artwork Inventory
+
+[Discord](https://discord.gg/Z2awpnXKdw) -- Use code ProjectX for 10% off!
+
 #### qb inventory items
 
 ```lua
  ["x_artpiece"]     = {["name"] = "x_artpiece",       ["label"] = "Art",       ["weight"] = 25000,  ["type"] = "item",   ["image"] = "xartpiece.png",   ["unique"] = true,   ["useable"] = false,  ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Some fancy Art"},
- ["x_television"]     = {["name"] = "x_television",    ["label"] = "TV",       ["weight"] = 25000,  ["type"] = "item",   ["image"] = "xtelevision.png",  ["unique"] = true,   ["useable"] = false,  ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Flat Screen TV"},
- ["musicequipment"]      = {["name"] = "musicequipment",     ["label"] = "Music Equipment",    ["weight"] = 25000,  ["type"] = "item",   ["image"] = "musicequipment.png",   ["unique"] = true,   ["useable"] = false,  ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Music Equipment"},
+ ["x_musicequipment"]      = {["name"] = "x_musicequipment",     ["label"] = "Music Equipment",    ["weight"] = 25000,  ["type"] = "item",   ["image"] = "x_musicequipment.png",   ["unique"] = true,   ["useable"] = false,  ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Music Equipment"},
  ["pcequipment"]       = {["name"] = "pcequipment",      ["label"] = "Computer Equipment",   ["weight"] = 25000,  ["type"] = "item",   ["image"] = "xpcequipment.png",    ["unique"] = true,   ["useable"] = false,  ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Computer Equipment"},
- ["microwave"]        = {["name"] = "microwave",         ["label"] = "Microwave",     ["weight"] = 25000,  ["type"] = "item",   ["image"] = "xmicrowave.png",      ["unique"] = true,   ["useable"] = false,  ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Heats things up"},
- ["coffeemaker"]      = {["name"] = "coffeemaker",      ["label"] = "Coffee Machine",    ["weight"] = 25000,  ["type"] = "item",   ["image"] = "xcoffeemaker.png",  ["unique"] = true,   ["useable"] = false,  ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Makes a delicious expresso"},
+ ["x_microwave"]        = {["name"] = "microwave",         ["label"] = "Microwave",     ["weight"] = 25000,  ["type"] = "item",   ["image"] = "x_microwave.png",      ["unique"] = true,   ["useable"] = false,  ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Heats things up"},
+ ["x_coffeemaker"]      = {["name"] = "x_coffeemaker",      ["label"] = "Coffee Machine",    ["weight"] = 25000,  ["type"] = "item",   ["image"] = "xx_coffeemaker.png",  ["unique"] = true,   ["useable"] = false,  ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Makes a delicious expresso"},
  ["x_painting"]     = {["name"] = "x_painting",       ["label"] = "Painting",        ["weight"] = 25000,  ["type"] = "item",   ["image"] = "xpainting.png",      ["unique"] = true,   ["useable"] = false,  ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Just a work of art,"},
  ["x_painting2"]     = {["name"] = "x_painting2",     ["label"] = "Painting",        ["weight"] = 25000,  ["type"] = "item",   ["image"] = "xpainting2.png",      ["unique"] = true,   ["useable"] = false,  ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Just a work of art,"},
  ["x_guitar"]             = {["name"] = "x_guitar",           ["label"] = "Guitar",           ["weight"] = 25000,   ["type"] = "item",    ["image"] = "xguitar.png",         ["unique"] = true,    ["useable"] = false,   ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Music Equipment"},
@@ -51,14 +63,14 @@ House Robbery Script - Project X
 ### ox_Inventory items
 
 ```lua
- ["x_coffeemaker"] = {
+ ["x_x_coffeemaker"] = {
   label = "Coffee Maker",
   weight = 500,
   stack = true,
   close = false,
   description = "To make that perfect cup of Joe!",
   client = {
-    image = "x_coffeemaker.png"
+    image = "x_x_coffeemaker.png"
   }
  },
 
@@ -149,20 +161,9 @@ House Robbery Script - Project X
     image = "x_suitcase.png"
   }
  },
-
- ["x_television"] = {
-  label = "Television",
-  weight = 800,
-  stack = true,
-  close = false,
-  description = "A modern flatscreen TV",
-  client = {
-    image = "x_television.png"
-  }
- },
 ```
 
-### Renewed-Weaponscarry (Optional, **Not Required**) (QBCore Only)
+### Renewed-Weaponscarry (Optional, **Not Required**) (ox_inventory Only)
 
 [Renewed-Weaponscarry](https://github.com/Renewed-Scripts/Renewed-Weaponscarry)
 
@@ -186,7 +187,7 @@ House Robbery Script - Project X
         }
     },
 
-    coffeemaker = {
+    x_coffeemaker = {
         model = 'prop_coffee_mac_02',
         bone = 24817,
         pos = vec3(0.02, 0.43, 0.03),
@@ -216,7 +217,7 @@ House Robbery Script - Project X
         }
     },
 
-    musicequipment = {
+    x_musicequipment = {
         model = 'prop_speaker_06',
         bone = 24817,
         pos = vec3(-0.10, 0.43, 0.05),
@@ -251,21 +252,6 @@ House Robbery Script - Project X
         bone = 24817,
         pos = vec3(-0.10, 0.43, 0.05),
         rot = vec3(0.0, 90.0, 0.0),
-        dict = 'anim@heists@box_carry@',
-        anim = 'idle',
-        disableKeys = {
-            disableSprint = true,
-            disableJump = true,
-            disableAttack = true,
-            disableVehicle = true
-        }
-    },
-
-    x_television = {
-        model = 'sm_prop_smug_tv_flat_01',
-        bone = 24817,
-        pos = vec3(-0.20, 0.43, 0.0),
-        rot = vec3(0.0, -90.0, 180.0),
         dict = 'anim@heists@box_carry@',
         anim = 'idle',
         disableKeys = {

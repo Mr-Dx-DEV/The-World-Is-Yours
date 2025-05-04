@@ -24,6 +24,7 @@ Loc['ph'] = {
         ["no_permission"] = "Wala kang pahintulot na gamitin iyon",
         ["already_searched"] = "Kasalukuyang iniikot..",
         ["glitch"] = "Magandang subok..",
+        ["inventory_full"] = "Your inventory is full",
     },
     
     success = {

@@ -24,6 +24,7 @@ Loc['hu'] = {
         ["no_permission"] = "Nincs jogosultságod használni ezt",
         ["already_searched"] = "Már folyamatban van a keresés..",
         ["glitch"] = "Szép próbálkozás..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

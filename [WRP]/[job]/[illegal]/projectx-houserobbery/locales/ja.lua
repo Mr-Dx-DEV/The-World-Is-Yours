@@ -24,6 +24,7 @@ Loc["ja"] = {
         ["no_permission"] = "あなたには行う権限がない",
         ["already_searched"] = "既に探索されている",
         ["glitch"] = "不正行為",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

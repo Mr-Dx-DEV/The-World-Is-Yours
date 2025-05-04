@@ -24,6 +24,7 @@ Loc['id'] = {
         ["no_permission"] = "Kamu tidak memiliki izin untuk menggunakan itu",
         ["already_searched"] = "Sudah sedang dicari..",
         ["glitch"] = "Percobaan bagus..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

@@ -24,6 +24,7 @@ Loc['fa'] = {
         ["no_permission"] = "اجازه استفاده از این را نداری",
         ["already_searched"] = "در حال جستجو..",
         ["glitch"] = "تلاش خوبی بود..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

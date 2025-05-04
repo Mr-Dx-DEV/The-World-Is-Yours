@@ -12,8 +12,8 @@ Config = {
     Framework = 'qb-core', -- 'qb-core' 'qbox' 'esx' or 'custom'
     Core = {resource = "qb-core", name = "QBCore", abbrev = "qb"}, -- (QBCore Only) If you arent using qb-core no need to change anything here
     ESX = "new", -- (only for ESX users) "new" or "old" chosoe the version of ESX you are using
-    Inventory = "ox", -- "ox" or "qs" or "qb" or "esx" or "lj" or "ps", if you arent using any of these inventories, put it as "other" and you will need to edit the inventory export function, or open a ticket on discord.
-    Dispatch = "rcore", -- "ps" "cd" "qs" "origen" "tk" "codem" "rcore" or "outlaw", if you arent using any of these dispatch systems, put it as "other" and you will need to edit the dispatch export function, or open a ticket on discord.
+    Inventory = "ox", -- "ox" "qs" "qb" "codem" "tgiann" "esx" "lj" "ps", if you arent using any of these inventories, put it as "other" and you will need to edit the inventory export function, or open a ticket on discord.
+    Dispatch = "ps", -- "ps" "cd" "qs" "origen" "tk" "codem" "rcore" "l2s" "redutzu" "lb" "sonoran" or "outlaw", if you arent using any of these dispatch systems, put it as "other" and you will need to edit the dispatch export function, or open a ticket on discord.
     Notification = "qb", -- "ox" or "qb" or "esx"
     Progressbar = "ox", -- "ox" or "qb"
     Weather = "qb", -- "qb" or "cd" "renewed" or "av"
@@ -21,10 +21,10 @@ Config = {
     -- For lb phones you need to download this resource: https://github.com/solareon/slrn_groups/
     -- (Coming soon) Phone = "qb", -- "qb" "icy" "lb" (Open a ticket on discord if you have snippets of differnt phone groups)
 
-    Target = 'qb-target', -- Target name
+    Target = 'ox_target', -- Target name
     WorldInteract = false, -- Enable/Disable World Interactions (Only use this if you have the interact script, otherwise leave it as false)
 
-    TestingMode = false, -- Enable/Disable Testing Mode
+    TestingMode = false, -- Enable/Disable Testing Mode (No Minigames)
 
     DiscordLogStatus = false, -- Choose whether u want to turn on discord logs or not, you need to add a webhook below for it to work
     -- To add your webhook go to opensource -> server, line 1 and add your webhook there
@@ -35,6 +35,8 @@ Config = {
         ["Time"] = 15, -- (Minutes) How long the cooldown will be
     },
 
+    Drawtext = "OX", -- OLDQB for qb-drawtext, QB for new qbcore drawtext, OX for ox_lib
+    DrawTextZoneSize = vec3(1.5, 1.5, 2), -- Size of the drawtext zone
     Interaction = { -- 'true' for Target interactions, 'false' for drawtext interactions
         ["Button"] = 38, -- [E] by default, change depending on used target
 
@@ -47,11 +49,23 @@ Config = {
         ["Safe"] = true,
     },
 
-    Drawtext = "OX", -- OLDQB for qb-drawtext, QB for new qbcore drawtext, OX for ox_lib
-    DrawTextZoneSize = vec3(1.5, 1.5, 2), -- Size of the drawtext zone
+    PoliceJobs = {
+        ["lspd"] = true,
+        ["bcso"] = true,
+        ["sahp"] = true,
+        ["lsso"] = true,
+        ["safw"] = true,
+        ["sadoc"] = true,
+        ["usms"] = true,
+        ["fbi"] = true,
+        ["dhs"] = true,
+        ["ss"] = true,
+        ["police"] = true,
+        ["salsa"] = true
+    }, -- Jobs that can receive the dispatch
+    MinimumPolice = 0, -- Minimum police required to start the robbery
 
-    MinimumHouseRobberyPolice = 0, -- Minimum police required to initiate a house robbery
-    TimeFrame = {min = 20, max = 19}, -- Robbery time frame
+    TimeFrame = {min = 20, max = 6}, -- Robbery time frame
     AutomaticallyResetHouse = 15, -- (Minutes) How long until the house resets automatically after someone enters
 
     -- Durations
@@ -437,7 +451,7 @@ Config.IPL = {
                 ["text"] = "Steal Laptop",
             },
             [2] = {
-                ["itemname"] = "musicequipment",
+                ["itemname"] = "x_musicequipment",
                 ["PropName"] = "prop_speaker_06",
                 ["coords"] = vector4(-38.54, -571.69, 88.53, 340.5),
                 ["icon"] = 'fas fa-search',
@@ -523,7 +537,7 @@ Config.IPL = {
                 ["text"] = "Steal Phone",
             },
             [2] = {
-                ["itemname"] = "coffeemaker",
+                ["itemname"] = "x_coffeemaker",
                 ["PropName"] = "hei_heist_kit_coffeemachine_01",
                 ["coords"] = vector4(-1472.24, -538.2, 73.71, 123.07),
                 ["icon"] = 'fas fa-search',
@@ -602,7 +616,7 @@ Config.IPL = {
                 ["text"] = "Steal Phone",
             },
             [2] = {
-                ["itemname"] = "coffeemaker",
+                ["itemname"] = "x_coffeemaker",
                 ["PropName"] = "hei_heist_kit_coffeemachine_01",
                 ["coords"] = vector4(-1464.76, -536.16, 54.83, 35.58),
                 ["icon"] = 'fas fa-search',
@@ -769,7 +783,7 @@ Config.IPL = {
             [1] = {
                 ["itemname"] = "laptop",
                 ["PropName"] = "prop_laptop_01a",
-                ["coords"] = vector4(330.68, 423.57, 144.47, 277.78),
+                ["coords"] = vector4(330.68, 423.57, 145.47, 277.78),
                 ["icon"] = 'fas fa-search',
                 ["text"] = "Steal Laptop",
             },
@@ -789,7 +803,7 @@ Config.IPL = {
                 ["text"] = "Steal Chain",
             },
             [4] = {
-                ["itemname"] = "microwave",
+                ["itemname"] = "x_microwave",
                 ["PropName"] = "prop_microwave_1",
                 ["coords"] = vector4(339.4, 431.67, 149.36, 55.53),
                 ["pitch"] = 0.0,
@@ -985,7 +999,7 @@ Config.IPL = {
                 ["text"] = "Steal Suitcase",
             },
             [7] = {
-                ["itemname"] = "pcequipment",
+                ["itemname"] = "x_pcequipment",
                 ["PropName"] = "prop_dyn_pc_02",
                 ["coords"] = vector4(374.73, 434.53, 138.02, 346.0),
                 ["icon"] = 'fas fa-search',

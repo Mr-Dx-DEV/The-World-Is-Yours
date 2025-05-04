@@ -24,6 +24,7 @@ Loc['rs'] = {
         ["no_permission"] = "Nemaš dozvolu za to",
         ["already_searched"] = "Već se pretražuje..",
         ["glitch"] = "Lijep pokušaj..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

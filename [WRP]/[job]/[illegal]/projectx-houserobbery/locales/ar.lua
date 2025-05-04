@@ -24,6 +24,7 @@ Loc['ar'] = {
         ["no_permission"] = "ليس لديك إذن لاستخدام ذلك",
         ["already_searched"] = "تم بحثه",
         ["glitch"] = "محاولة جيدة",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

@@ -24,6 +24,7 @@ Loc['fi'] = {
         ["no_permission"] = "Sinulla ei ole lupaa käyttää tätä",
         ["already_searched"] = "Jo etsitään..",
         ["glitch"] = "Hyvä yritys..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

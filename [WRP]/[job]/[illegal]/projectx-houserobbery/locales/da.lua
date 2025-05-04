@@ -24,6 +24,7 @@ Loc['da'] = {
         ["no_permission"] = "Du har ikke tilladelse til at bruge det",
         ["already_searched"] = "Allerede blevet gennemsøgt..",
         ["glitch"] = "Godt forsøgt..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

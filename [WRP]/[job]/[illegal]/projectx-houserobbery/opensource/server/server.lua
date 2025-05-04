@@ -4,22 +4,6 @@ NPCCoords = nil
 if Config.Framework == "qb-core" or Config.Framework == "qbox" then
     local QBCore = exports[Config.Core.resource]:GetCoreObject()
 
-    function AddItem(source, item, amount)
-        if Config.Inventory == "ox" then
-            exports.ox_inventory:AddItem(source, item, amount)
-        else
-            QBCore.Functions.GetPlayer(source).Functions.AddItem(item, amount)
-        end
-    end
-
-    function RemoveItem(source, item, amount)
-        if Config.Inventory == "ox" then
-            return exports.ox_inventory:RemoveItem(source, item, amount)
-        else
-            return QBCore.Functions.GetPlayer(source).Functions.RemoveItem(item, amount)
-        end
-    end
-
     function ItemBox(source, item, addRemove, amount)
         if Config.Inventory ~= "ox" then
             TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[item], addRemove, amount)
@@ -35,36 +19,20 @@ if Config.Framework == "qb-core" or Config.Framework == "qbox" then
     end
 
     lib.callback.register("projectx-houserobbery:getOnlinePoliceCountQB", function(source)
-        local jobs = {
-            "police",
-            "statepolice",
-            "fib",
-            "sheriff",
-            "fbi",
-            "lspd",
-            "bcso",
-            "sahp",
-            "lsso",
-            "safw",
-            "sadoc",
-            "usms",
-            "dhs",
-            "ss"
-        }
-        
+        if Config.MinimumPolice == 0 then return true end
         local CurrentCops = 0
-        for k, v in pairs(jobs) do
-            local players = QBCore.Functions.GetPlayers()
-            for i = 1, #players do
-                local Player = QBCore.Functions.GetPlayer(players[i])
-                if Player ~= nil then
-                    if Player.PlayerData.job.name == v then
-                        CurrentCops = CurrentCops + 1
-                    end
-                end
+        if Config.Framework == "qbox" then
+            for k, _ in pairs(Config.PoliceJobs) do
+                local Count, Players = exports.qbx_core:GetDutyCountJob(k)
+                CurrentCops = CurrentCops + Count
+            end
+        else
+            for k, _ in pairs(Config.PoliceJobs) do
+                local Players, Count = QBCore.Functions.GetPlayersOnDuty(k)
+                CurrentCops = CurrentCops + Count
             end
         end
-        return CurrentCops >= Config.MinimumHouseRobberyPolice
+        return CurrentCops >= Config.MinimumPolice
     end)
 
     function DiscordLogItem(source, item, amount, location, gainedfrom, info)
@@ -87,22 +55,6 @@ elseif Config.Framework == "esx" then
     CreateThread(function()
         while ESX == nil do Wait(1000) end
     end)
-    
-    function AddItem(source, item, amount)
-        if Config.Inventory == "ox" then
-            exports.ox_inventory:AddItem(source, item, amount)
-        else
-            ESX.GetPlayerFromId(source).addInventoryItem(item, amount)
-        end
-    end
-
-    function RemoveItem(source, item, amount)
-        if Config.Inventory == "ox" then
-            exports.ox_inventory:RemoveItem(source, item, amount)
-        else
-            ESX.GetPlayerFromId(source).removeInventoryItem(item, amount)
-        end
-    end
 
     function ItemBox(source, item, addRemove, amount)
 
@@ -118,72 +70,57 @@ elseif Config.Framework == "esx" then
 
     lib.callback.register('projectx-houserobbery:server:hasitem', function(source, item)
         if Config.Inventory == "ox" then
-            local check = exports.ox_inventory:GetItemCount(source, item)
-            if check >= 1 then return true else return false end
+            return exports.ox_inventory:GetItemCount(source, item) >= 1
         elseif Config.Inventory == "qs" then
-            local check = exports['qs-inventory']:GetItemTotalAmount(source, item)
-            if check >= 1 then return true else return false end
+            return exports['qs-inventory']:GetItemTotalAmount(source, item) >= 1
+        elseif Config.Inventory == "codem" then
+            return exports['codem-inventory']:HasItem(source, item, 1)
+        elseif Config.Inventory == "origen" then
+            return exports.origen_inventory:HasItem(source, item, 1)
+        elseif Config.Inventory == "tgiann" then
+            return exports["tgiann-inventory"]:HasItem(source, item, 1)
         else
-            local check = ESX.GetPlayerFromId(source).hasItem(item)
-            if check.count >= 1 then return true else return false end
+            return ESX.GetPlayerFromId(source).hasItem(item).count >= 1
         end
     end)
 
     lib.callback.register("projectx-houserobbery:getOnlinePoliceCount", function()
-        if Config.ESX == "old" then 
+        if Config.ESX == "old" then
             local Players = ESX.GetPlayers()
             local policeOnline = 0
             for i = 1, #Players do
                 local xPlayer = ESX.GetPlayerFromId(Players[i])
-                if xPlayer["job"]["name"] == "police" then
+                if Config.PoliceJobs[xPlayer.job.name] then
                     policeOnline = policeOnline + 1
                 end
             end
-            return (policeOnline >= Config.MinimumHouseRobberyPolice)
+            return (policeOnline >= Config.MinimumPolice)
         else
             local policeOnline = 0
             local xPlayers = ESX.GetExtendedPlayers()
             for _, xPlayer in ipairs(xPlayers) do
-                if xPlayer.job.name == "police" then
+                if Config.PoliceJobs[xPlayer.job.name] then
                     policeOnline = policeOnline + 1
                 end
             end
-            local isEnoughPolice = (policeOnline >= Config.MinimumHouseRobberyPolice)
-            return isEnoughPolice
+            return (policeOnline >= Config.MinimumPolice)
         end
     end)
 
     RegisterServerEvent('projectx-houserobbery:server:PdNotify', function()
-        local xPlayer = ESX.GetPlayerFromId(source)
+        local Criminal = ESX.GetPlayerFromId(source)
         local Players = ESX.GetPlayers()
         for i = 1, #Players do
             local xPlayer = ESX.GetPlayerFromId(Players[i])
-            local policeJobs = {
-                police = true,
-                sheriff = true,
-                fbi = true,
-                lspd = true,
-                bcso = true,
-                sahp = true,
-                lsso = true,
-                salsa = true,
-                safw = true,
-                sadoc = true,
-                usms = true,
-                dhs = true,
-                ss = true
-            }
-            
-            if policeJobs[xPlayer["job"]["name"]] then
+            if Config.PoliceJobs[xPlayer.job.name] then
                 if Config.Notification == "ox" then
                     TriggerClientEvent('ox_lib:notify', xPlayer.source, {description = 'Someone is robbing a house, check your map for the location', type = 'info', duration = 5000, position = 'center-right'})
                 else
                     TriggerClientEvent('esx:showNotification', xPlayer.source, 'Someone is robbing a house, check your map for the location')
                 end
             end
-            
         end
-        local coords = xPlayer.getCoords(true)
+        local coords = Criminal.getCoords(true)
         TriggerClientEvent('projectx-houserobbery:client:PdNotify', coords)
     end)
 
@@ -208,34 +145,97 @@ else
 
 end
 
+function AddItem(source, item, amount, info)
+    if Config.Inventory == "ox" then
+        if info == nil then
+            exports.ox_inventory:AddItem(source, item, amount)
+        else
+            exports.ox_inventory:AddItem(source, item, amount, info)
+        end
+    elseif Config.Inventory == "qs" then
+        if info == nil then
+            exports['qs-inventory']:AddItem(source, item, amount, nil, info)
+        else
+            exports['qs-inventory']:AddItem(source, item, amount)
+        end
+    elseif Config.Inventory == "origen" then
+        if info == nil then
+            exports.origen_inventory:AddItem(source, item, amount)
+        else
+            exports.origen_inventory:AddItem(source, item, amount, nil, nil, info)
+        end
+    elseif Config.Inventory == "codem" then
+        if info == nil then
+            exports['codem-inventory']:AddItem(source, item, amount)
+        else
+            exports['codem-inventory']:AddItem(source, item, amount, nil, info)
+        end
+    elseif Config.Inventory == "tgiann" then
+        if info == nil then
+            exports["tgiann-inventory"]:AddItem(source, item, amount)
+        else
+            exports["tgiann-inventory"]:AddItem(source, item, amount, nil, info, false)
+        end
+    elseif Config.Framework == "esx" then
+        CreateThread(function() while ESX == nil do Wait(1000) end end)
+        ESX.GetPlayerFromId(source).addInventoryItem(item, amount)
+    elseif Config.Framework == "qb-core" or Config.Framework == "qbox" then
+        local QBCore = exports[Config.Core.resource]:GetCoreObject()
+        if info == nil then
+            QBCore.Functions.GetPlayer(source).Functions.AddItem(item, amount)
+        else
+            QBCore.Functions.GetPlayer(source).Functions.AddItem(item, amount, false, info)
+        end
+    else
+        -- Custom Framework
+    end
+end
+
+function RemoveItem(source, item, amount)
+    if Config.Inventory == "ox" then
+        exports.ox_inventory:RemoveItem(source, item, amount)
+    elseif Config.Inventory == "qs" then
+        exports['qs-inventory']:RemoveItem(source, item, amount)
+    elseif Config.Inventory == "origen" then
+        exports.origen_inventory:RemoveItem(source, item, amount)
+    elseif Config.Inventory == "codem" then
+        exports['codem-inventory']:RemoveItem(source, item, amount)
+    elseif Config.Inventory == "tgiann" then
+        exports["tgiann-inventory"]:RemoveItem(source, item, amount)
+    elseif Config.Framework == "esx" then
+        CreateThread(function() while ESX == nil do Wait(1000) end end)
+        ESX.GetPlayerFromId(source).removeInventoryItem(item, amount)
+    elseif Config.Framework == "qb-core" or Config.Framework == "qbox" then
+        local QBCore = exports[Config.Core.resource]:GetCoreObject()
+        QBCore.Functions.GetPlayer(source).Functions.RemoveItem(item, amount)
+    else
+        -- Custom Framework
+    end
+end
+
 ----- Group work functions -----
 function GroupgetGroupByMembers(source)
-    local group = exports[Config.Core.abbrev..'-phone']:GetGroupByMembers(source)
-    return group
+    return exports[Config.Core.abbrev..'-phone']:GetGroupByMembers(source)
 end
 
 function GroupgetGroupMembers(group)
     if not group then return end
-    local group = exports[Config.Core.abbrev..'-phone']:getGroupMembers(group)
-    return group
+    return exports[Config.Core.abbrev..'-phone']:getGroupMembers(group)
 end
 
 function GroupgetJobStatus(group)
     if not group then return end
-    local group = exports[Config.Core.abbrev..'-phone']:getJobStatus(group)
-    return group
+    return exports[Config.Core.abbrev..'-phone']:getJobStatus(group)
 end
 
 function GroupgetGroupSize(group)
     if not group then return end
-    local group = exports[Config.Core.abbrev..'-phone']:getGroupSize(group)
-    return group
+    return exports[Config.Core.abbrev..'-phone']:getGroupSize(group)
 end
 
 function GroupisGroupLeader(source, group)
     if not group then return end
-    local group = exports[Config.Core.abbrev..'-phone']:isGroupLeader(source, group)
-    return group
+    return exports[Config.Core.abbrev..'-phone']:isGroupLeader(source, group)
 end
 
 function GroupCreateBlipForGroupIPL(house, group)
@@ -297,5 +297,18 @@ function CheckExpLevel(source)
         return level
     end
 end
+
+RegisterNetEvent('projectx-houserobbery:server:Sonoran', function(street, zone)
+    exports["sonorancad"]:performApiRequest({{
+        ["serverId"] = GetConvar("sonoran_serverId", 1),
+        ["isEmergency"] = true,
+        ["caller"] = 'Security Camera',
+        ["location"] = street..", "..zone,
+        ["description"] = 'House Robbery in progress',
+        ["metaData"] = {
+            ["useCallLocation"] = true,
+        }
+    }}, "CALL_911")
+end)
 
 CreateThread(function() NPCCoords =  Config.NPC["Coords"][math.random(1, #Config.NPC["Coords"])] end)

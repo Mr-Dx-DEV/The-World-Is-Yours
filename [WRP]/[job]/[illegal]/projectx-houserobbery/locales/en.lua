@@ -24,6 +24,7 @@ Loc['en'] = {
         ["no_permission"] = "You don't have permission to use that",
         ["already_searched"] = "Already being searched..",
         ["glitch"] = "Nice try..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

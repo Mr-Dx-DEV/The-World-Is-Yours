@@ -24,6 +24,7 @@ Loc['cs'] = {
         ["no_permission"] = "Nemáte oprávnění k použití tohoto",
         ["already_searched"] = "Již se prohledává..",
         ["glitch"] = "Hezký pokus..",
+        ["inventory_full"] = "Your inventory is full",
     },
 
     success = {

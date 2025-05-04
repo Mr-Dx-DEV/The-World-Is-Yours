@@ -2,11 +2,11 @@ fx_version "cerulean"
 
 game "gta5"
 
-author 'Project X Development'
+author 'Project X'
 
-description 'House Robbery by Project X Development'
+description 'House Robbery by Project X'
 
-version '1.0.3'
+version '1.1.1'
 
 shared_scripts{
     '@ox_lib/init.lua',
@@ -21,7 +21,7 @@ client_scripts{
     'encrypted/client/client_shell.lua',
 }
 
-server_scripts{ 
+server_scripts{
     'opensource/server/server.lua',
     'encrypted/server/server_ipl.lua',
     'encrypted/server/server_shell.lua',
