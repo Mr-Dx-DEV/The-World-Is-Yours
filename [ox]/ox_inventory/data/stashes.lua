@@ -54,6 +54,24 @@ return {
 		groups = shared.police
 	},
 	{
+		coords = vec3(-3156.16, 1371.45, 20.87),
+		target = {
+			loc = vec3(-3156.16, 1371.45, 20.87),
+			length = 1.2,
+			width = 2.2,
+			heading = 135.57,
+			minZ = 19.368,
+			maxZ = 21.368,
+			label = 'Open personal locker'
+		},
+		name = 'stash_2',
+		label = 'Stash',
+		owner = true,
+		slots = 70,
+		weight = 70000,
+		groups = shared.police
+	},
+	{
 		coords = vec3(-1305.177, -566.638, 41.188),
 		target = {
 			loc = vec3(-1305.177, -566.638, 41.188),
@@ -90,14 +108,14 @@ return {
 		groups = shared.police
 	},
 	{
-		coords = vec3(1539.34, 811.397, 77.656),
+		coords = vec3(2812.69, 4730.75, 47.89),
 		target = {
-			loc = vec3(1539.34, 811.397, 77.656),
+			loc = vec3(2812.69, 4730.75, 47.89),
 			length = 1.2,
 			width = 2.2,
-			heading = 323.126,
-			minZ = 76.656,
-			maxZ = 78.656,
+			heading = 7.82,
+			minZ = 46.2,
+			maxZ = 48.02,
 			label = 'Open personal locker'
 		},
 		name = 'stash_5',
