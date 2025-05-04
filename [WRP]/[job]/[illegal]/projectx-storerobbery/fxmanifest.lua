@@ -2,11 +2,11 @@ fx_version "cerulean"
 
 game "gta5"
 
-author 'Project X Development'
+author 'Project X'
 
-description 'Store Robbery by Project X'
+description 'Project X Store Robbery'
 
-version '1.0.7'
+version '2.0.0'
 
 shared_scripts {
     '@ox_lib/init.lua',

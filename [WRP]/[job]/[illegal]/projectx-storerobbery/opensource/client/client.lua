@@ -18,6 +18,12 @@ if Config.Framework == "qb-core" or Config.Framework == "qbox" then
     function HasItem(item)
         if Config.Inventory == "ox" then
             return exports.ox_inventory:GetItemCount(item) > 0
+        elseif Config.Inventory == "origen" then
+            return exports.origen_inventory:HasItem(item)
+        elseif Config.Inventory == "qs" then
+            return exports['qs-inventory']:Search(item) > 0
+        elseif Config.Inventory == "tgiann" then
+            return exports["tgiann-inventory"]:HasItem(item, 1)
         else
             return QBCore.Functions.HasItem(item)
         end
@@ -44,7 +50,7 @@ if Config.Framework == "qb-core" or Config.Framework == "qbox" then
             }, {}, {}, {}, success, fail, icon)
         end
     end
-
+    
     RegisterNetEvent(Config.Core.name..':Client:OnPlayerUnload', function()
         TriggerEvent('projectx-storerobbery:client:Logout')
     end)
@@ -64,8 +70,8 @@ elseif Config.Framework == "esx" then
     function HasItem(item)
         local p = promise.new()
         if Config.Inventory == "ox" then return exports.ox_inventory:GetItemCount(item) > 0 end
-        lib.callback('projectx-storerobbery:server:hasitem', false, function(result)
-            p:resolve(result)
+        lib.callback('projectx-storerobbery:server:hasitem', false, function(name)
+            p:resolve(name)
         end, item)
         return Citizen.Await(p)
     end
@@ -159,6 +165,7 @@ function CircleZoneDestroy(name)
     if Config.WorldInteract then return exports.interact:RemoveInteraction(name) end
     if Config.Target == "ox_target" then exports.ox_target:removeZone(name) else exports[Config.Target]:RemoveZone(name) end
 end
+
 function drawTextUi(bool, text)
     if Config.Drawtext == "OX" then
         if bool then lib.showTextUI(text) else lib.hideTextUI() end
@@ -201,10 +208,12 @@ end
 
 function Dispatch()
     local coords = GetEntityCoords(PlayerPedId())
+    local PoliceJobs = {}
+    for k, v in pairs(Config.PoliceJobs) do table.insert(PoliceJobs, k) end
     if Config.Dispatch == "cd" then
         local data = exports['cd_dispatch']:GetPlayerInfo()
         TriggerServerEvent('cd_dispatch:AddNotification', {
-            job_table = {'police', },
+            job_table = {'police'},
             coords = data.coords,
             title = '10-15 - Store Robbery',
             message = 'A '..data.sex..' robbing a store at '..data.street,
@@ -216,18 +225,18 @@ function Dispatch()
                 scale = 1.2,
                 colour = 3,
                 flashes = false,
-                text = '911 - Store Robbery',
+                text = 'A Convenience store is being robbed!',
                 time = 5,
                 radius = 0,
             }
         })
     elseif Config.Dispatch == "origen" then
         TriggerServerEvent("SendAlert:police", {
-            coords = vector3(0, 0, 0),
+            coords = coords,
             title = 'Store Robbery',
             type = 'GENERAL',
-        message = 'A store is being robbed',
-            job = 'police',
+            message = 'A Convenience store is being robbed!',
+            job = PoliceJobs,
         })
     elseif Config.Dispatch == "tk" then
         exports['tk_dispatch']:addCall({
@@ -242,7 +251,7 @@ function Dispatch()
                 sprite = 357,
                 scale = 1.0,
             },
-            jobs = {'police'}
+            jobs = PoliceJobs
         })
     elseif Config.Dispatch == "rcore" then
         local player_data = exports['rcore_dispatch']:GetPlayerData()
@@ -250,44 +259,69 @@ function Dispatch()
             code = '10-35 Store Robbery', 
             default_priority = 'medium',
             coords = player_data.coords,
-            job = {
-                "police",
-                "sheriff",
-                "fbi",
-                "lspd",
-                "bcso",
-                "sahp",
-                "salsa",
-                "lsso",
-                "safw",
-                "sadoc",
-                "usms",
-                "dhs",
-                "ss"
-            },
-            
+            job = PoliceJobs,
             text = 'Store Robbery!',
             type = 'alert',
             blip_time = 5,
             blip = {
-                sprite = 42, 
+                sprite = 272, 
                 colour = 3,
-                scale = 1.5,
-                text = 'Store Robbery', 
+                scale = 0.7,
+                text = 'A Convenience store is being robbed!', 
                 flashes = false,
                 radius = 0,
             }
         }
         TriggerServerEvent('rcore_dispatch:server:sendAlert', data)
     elseif Config.Dispatch == "outlaw" then
-        local data = {displayCode = '211', description = 'Robbery', isImportant = 0, recipientList = {'police'}, length = '10000', infoM = 'fa-info-circle', info = 'Store Robbery'}
+        local data = {displayCode = '211', description = 'Robbery', isImportant = 0, recipientList = PoliceJobs, length = '10000', infoM = 'fa-info-circle', info = 'Store Robbery'}
         local dispatchData = {dispatchData = data, caller = 'Alarm', coords = coords}
         TriggerEvent('wf-alerts:svNotify', dispatchData)
+    elseif Config.Dispatch == "lb" then
+        TriggerServerEvent('Shop:lb-tablet:Dispatch', {
+            priority = 'high',
+            code = '10-31',
+            title = "Store Robbery",
+            description = 'A Convenience store is being robbed!',
+            location = {label = "Store Robbery", coords = { x = coords.x, y = coords.y}},
+            time = 100,
+            image = 'https://www.alibirp.com/image/imgtransparant.png',
+            job = PoliceJobs,
+        })
+    elseif Config.Dispatch == "redutzu" then
+        TriggerServerEvent('redutzu-mdt:server:addDispatchToMDT', {code = '10-31', title = 'Store Robbery', gender = 'Male', duration = 100000, coords = coords})
+    elseif Config.Dispatch == "l2s" then
+        local playerData = exports['l2s-dispatch']:GetPlayerData()
+        TriggerServerEvent('l2s-dispatch:server:AddNotification', {
+            departments = PoliceJobs,
+            title = 'Store Robbery',
+            message = 'A Convenience store is being robbed!',
+            coords = vec2(playerData.coords.x, playerData.coords.y),
+            priority = 1,
+            sound = 1,
+            street = playerData.street,
+            reply = playerData.source,
+            anonymous = false,
+            blip = {
+                sprite = 52,
+                colour = 1,
+                scale = 1.0,
+                text = '10-31 - Store Robbery',
+            },
+            info = {
+                {icon = 'video', text = 'first'},
+                {icon = 'person', text = playerData.sex},
+            },
+        })
+    elseif Config.Dispatch == "sonoran" then
+        local Zone = GetLabelText(GetNameOfZone(coords.x, coords.y, coords.z))
+        local Street = GetStreetNameFromHashKey(GetStreetNameAtCoord(coords.x, coords.y, coords.z))
+        TriggerServerEvent('projectx-storerobbery:server:Sonoran', Street, Zone)
     elseif Config.Dispatch == "codem" then
         local Data = {
             type = 'Robbery',
             header = 'Robbery in progress',
-            text = 'Store Robbery in progress',
+            text = 'A Convenience store is being robbed!',
             code = '10-54',
         }
         exports['codem-dispatch']:CustomDispatch(Data)
@@ -305,6 +339,7 @@ function Dispatch()
     end
 end
 
+
 ----- Client Side EXP Events (Only use this if Config.ServerSideEvents is false and your skill system has client sided functions)
 RegisterNetEvent("projectx-storerobbery:client:AddExperience", function(exp)
     -- add exp function here and insert exp as a parameter
@@ -320,64 +355,88 @@ end
 
 function FuseboxMinigame()
     local p = promise.new()
+    if not MinigameCheck("bl_ui") then p:resolve(false) return Citizen.Await(p) end
     local success = exports["bl_ui"]:NumberSlide(4, 50, 4)
-    -- TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) -- Add this line if you want to give exp for completing the minigame, 1 is the amount of exp
+    if Config.SkillSystem then
+        if success then TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) end
+    end
     p:resolve(success)
     return Citizen.Await(p)
 end
 
 function RegisterMinigame()
     local p = promise.new()
+    if not MinigameCheck("bl_ui") then p:resolve(false) return Citizen.Await(p) end
     local success = exports["bl_ui"]:CircleShake(1, 50, 4)
-    -- TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) -- Add this line if you want to give exp for completing the minigame, 1 is the amount of exp
+    if Config.SkillSystem then
+        if success then TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) end
+    end
     p:resolve(success)
     return Citizen.Await(p)
 end
 
 function ATMMinigame()
     local p = promise.new()
+    if not MinigameCheck("bl_ui") then p:resolve(false) return Citizen.Await(p) end
     local success = exports["bl_ui"]:Progress(4, 50)
-    -- TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) -- Add this line if you want to give exp for completing the minigame, 1 is the amount of exp
+    if Config.SkillSystem then
+        if success then TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) end
+    end
     p:resolve(success)
     return Citizen.Await(p)
 end
 
 function DoorMinigame()
     local p = promise.new()
+    if not MinigameCheck("bl_ui") then p:resolve(false) return Citizen.Await(p) end
     local success = exports["bl_ui"]:CircleProgress(3, 50)
-    -- TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) -- Add this line if you want to give exp for completing the minigame, 1 is the amount of exp
+    if Config.SkillSystem then
+        if success then TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) end
+    end
     p:resolve(success)
     return Citizen.Await(p)
 end
 
 function ServerMinigame()
     local p = promise.new()
-    local success = exports['SN-Hacking']:Mines(5, 5, 3, 1)
-    -- TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) -- Add this line if you want to give exp for completing the minigame, 1 is the amount of exp
+    if not MinigameCheck("bl_ui") then p:resolve(false) return Citizen.Await(p) end
+    local success = exports["bl_ui"]:PathFind(3,  { numberOfNodes = 10, duration = 5000, })
+    if Config.SkillSystem then
+        if success then TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) end
+    end
     p:resolve(success)
     return Citizen.Await(p)
 end
 
 function NpcMinigame()
     local p = promise.new()
+    if not MinigameCheck("bl_ui") then p:resolve(false) return Citizen.Await(p) end
     local success = exports["bl_ui"]:KeySpam(1, 50)
-    -- TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) -- Add this line if you want to give exp for completing the minigame, 1 is the amount of exp
+    if Config.SkillSystem then
+        if success then TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) end
+    end
     p:resolve(success)
     return Citizen.Await(p)
 end
 
 function Computer1Minigame()
     local p = promise.new()
+    if not MinigameCheck("SN-Hacking") then p:resolve(false) return Citizen.Await(p) end
     local success = exports['SN-Hacking']:MemoryCards('hard')
-    -- TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) -- Add this line if you want to give exp for completing the minigame, 1 is the amount of exp
+    if Config.SkillSystem then
+        if success then TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) end
+    end
     p:resolve(success)
     return Citizen.Await(p)
 end
 
 function Computer2Minigame()
     local p = promise.new()
-    local success = exports['SN-Hacking']:Thermite(7, 10, 10000, 2, 2, 3000)
-    -- TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) -- Add this line if you want to give exp for completing the minigame, 1 is the amount of exp
+    if not MinigameCheck("SN-Hacking") then p:resolve(false) return Citizen.Await(p) end
+    local success = exports['SN-Hacking']:Thermite(7, 5, 10000, 2, 2, 3000)
+    if Config.SkillSystem then
+        if success then TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) end
+    end
     p:resolve(success)
     return Citizen.Await(p)
 end
@@ -385,24 +444,33 @@ end
 function SafeMinigame()
     local gameData = {totalNumbers = 20, seconds = 20, timesToChangeNumbers = 4, amountOfGames = 1, incrementByAmount = 5}
     local p = promise:new()
+    if not MinigameCheck("pure-minigames") then p:resolve(false) return Citizen.Await(p) end
     local success = exports['pure-minigames']:numberCounter(gameData)
-    -- TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) -- Add this line if you want to give exp for completing the minigame, 1 is the amount of exp
+    if Config.SkillSystem then
+        if success then TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) end
+    end
     p:resolve(success)
     return Citizen.Await(p)
 end
 
 function GangSafeMinigame()
     local p = promise:new()
-    local result = exports["pd-safe"]:createSafe({math.random(0,99)})
-    -- TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) -- Add this line if you want to give exp for completing the minigame, 1 is the amount of exp
-    p:resolve(result)
+    if not MinigameCheck("pd-safe") then p:resolve(false) return Citizen.Await(p) end
+    local success = exports["pd-safe"]:createSafe({math.random(0,99)})
+    if Config.SkillSystem then
+        if success then TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) end
+    end
+    p:resolve(success)
     return Citizen.Await(p)
 end
 
 function ShelfMinigame()
     local p = promise.new()
+    if not MinigameCheck("bl_ui") then p:resolve(false) return Citizen.Await(p) end
     local success = exports["bl_ui"]:CircleProgress(1, 50)
-    -- TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) -- Add this line if you want to give exp for completing the minigame, 1 is the amount of exp
+    if Config.SkillSystem then
+        if success then TriggerServerEvent('projectx-storerobbery:server:AddExperience', 1) end
+    end
     p:resolve(success)
     return Citizen.Await(p)
 end
