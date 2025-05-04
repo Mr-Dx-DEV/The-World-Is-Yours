@@ -73,8 +73,8 @@ Config = {
 		timeOn = 3000,				-- Time for the progress bar to put on harness
 		timeOff = 2000,				-- Time for the progress bar to take off harness
 
-		minimumSpeed = 50,			-- Minimum speed for crash logic to be triggered
-		minimumSeatBeltSpeed = 100, -- Minimuim speed for ejecting with a seatbelt attached
+		minimumSpeed = 800,			-- Minimum speed for crash logic to be triggered
+		minimumSeatBeltSpeed = 1800, -- Minimuim speed for ejecting with a seatbelt attached
 		minimumDamage = 15.0, 		-- Minimum body damage for ejecting a player (default 15 = .15%)
 
 		crashKill = false,			-- Set to true if you want ejecting when crashing to kill/injure
