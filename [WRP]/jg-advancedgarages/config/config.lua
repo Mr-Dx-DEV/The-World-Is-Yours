@@ -746,8 +746,24 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 ["SAHP Heli"] = {
-  coords = vector3(1561.736, 844.153, 77.141),
-  spawn = vector4(1561.736, 844.153, 77.141, 109.323),
+  coords = vector3(2782.22, 4795.08, 46.7),
+  spawn = vector4(2782.22, 4795.08, 46.7, 276.68),
+  distance = 15,
+  job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
+  type = "air", 
+  hideBlip = true,
+  blip = {
+    id = 357,
+    color = 0,
+    scale = 0.5
+  },
+  hideMarkers = true,
+  markers = { id = 21, size = { x = 0.3, y = 0.3, z = 0.3 }, color = { r = 255, g = 255, b = 255, a = 120 }, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0 },
+  vehiclesType = "owned",
+},
+["SAHP HQ Heli"] = {
+  coords = vector3(-3114.53, 1471.45, 20.63),
+  spawn = vector4(-3114.53, 1471.44, 20.63, 190.19),
   distance = 15,
   job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "air", 
