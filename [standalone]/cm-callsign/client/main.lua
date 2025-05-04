@@ -1,0 +1,142 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
+RegisterCommand('setcallsign', function(source, args, rawCommand)
+    QBCore.Functions.GetPlayerData(function(PlayerData)
+        if PlayerData.job.type == "leo" then
+            local playerPed = PlayerPedId()
+            local vehicle
+
+            local callsign = PlayerData.metadata['callsign'] or 'NO CALLSIGN'
+
+            cs, _ = callsign:gsub("%D+", "")
+
+            if Config.UseQBTarget == true then
+                vehicle = QBCore.Functions.GetClosestVehicle()
+            else
+                vehicle = GetVehiclePedIsIn(playerPed, false)
+            end
+
+            if #cs == 3 then
+                local callsign1 = tonumber(string.sub(cs, 1, 1))
+                local callsign2 = tonumber(string.sub(cs, 2, 2))
+                local callsign3 = tonumber(string.sub(cs, 3, 3))
+
+                SetVehicleModKit(vehicle, 0)
+
+                if Config.ProjectSlothCars == true then
+                    SetVehicleMod(vehicle, 28, callsign1, false)
+                    SetVehicleMod(vehicle, 29, callsign2, false)
+                    SetVehicleMod(vehicle, 30, callsign3, false)
+                elseif Config.CarLabs == true then
+                    SetVehicleMod(vehicle, 42, callsign1, false)
+                    SetVehicleMod(vehicle, 44, callsign2, false)
+                    SetVehicleMod(vehicle, 45, callsign3, false)
+                end
+            else
+                QBCore.Functions.Notify('Your callsign must be 3 digits long!', 'error', 7000)
+            end
+        else
+            QBCore.Functions.Notify('You are not allowed to use this command!', 'error', 7000)
+        end
+    end)
+end)
+
+RegisterCommand('removecallsign', function(source, args, rawCommand)
+    QBCore.Functions.GetPlayerData(function(PlayerData)
+        if PlayerData.job.type == "leo" then
+            local playerPed = PlayerPedId()
+            local vehicle
+
+            if Config.UseQBTarget == true then
+                vehicle = QBCore.Functions.GetClosestVehicle()
+            else
+                vehicle = GetVehiclePedIsIn(playerPed, false)
+            end
+
+                SetVehicleModKit(vehicle, 0)
+
+                if Config.ProjectSlothCars == true then
+                    SetVehicleMod(vehicle, 28, -1, false)
+                    SetVehicleMod(vehicle, 29, -1, false)
+                    SetVehicleMod(vehicle, 30, -1, false)
+                elseif Config.CarLabs == true then
+                    SetVehicleMod(vehicle, 42, -1, false)
+                    SetVehicleMod(vehicle, 44, -1, false)
+                    SetVehicleMod(vehicle, 45, -1, false)
+                end
+
+        else
+            QBCore.Functions.Notify('You are not allowed to use this command!', 'error', 7000)
+        end
+    end)
+end)
+
+RegisterCommand('setcallsigncolor', function(source, args, rawCommand)
+    local PlayerData = QBCore.Functions.GetPlayerData()
+
+    if PlayerData.job.type == "leo" then
+        local playerPed = PlayerPedId()
+        local vehicle = GetVehiclePedIsIn(playerPed, false)
+
+        local color = tostring(args[1])
+
+        if color == "black" then
+            SetVehicleDashboardColour(vehicle, 0)
+        elseif color == "white" then
+            SetVehicleDashboardColour(vehicle, 111)
+        elseif color == "red" then
+            SetVehicleDashboardColour(vehicle, 27)
+        elseif color == "yellow" then
+            SetVehicleDashboardColour(vehicle, 88)
+        elseif color == "blue" then
+            SetVehicleDashboardColour(vehicle, 64)
+        elseif color == "pink" then
+            SetVehicleDashboardColour(vehicle, 136)
+        else
+            if Config.QBNotify == true then
+                QBCore.Functions.Notify('CM-Callsign: Invalid Color! Only black, white, red, yellow, pink, and blue are supported.', 'error', 7000)
+            else
+                TriggerEvent('chat:addMessage', {
+                    color = {255, 0, 0},
+                    multiline = true,
+                    args = {"CM-Callsign", "Invalid Color! Only black, white, red, yellow, pink, and blue are supported."}
+                })
+            end
+        end
+    else
+        if Config.QBNotify == true then
+            QBCore.Functions.Notify('You are not allowed to use this command!', 'error', 7000)
+        else
+            TriggerEvent('chat:addMessage', {
+                color = {255, 0, 0},
+                multiline = true,
+                args = {"System", "You are not allowed to use this command!"}
+            })
+        end
+    end
+end)
+
+local bones = {
+    'seat_dside_f'
+}
+
+exports['qb-target']:AddTargetBone(bones, { -- The bones can be a string or a table
+  options = { -- This is your options table, in this table all the options will be specified for the target to accept
+    { -- This is the first table with options, you can make as many options inside the options table as you want
+            type = "command",
+            event = "setcallsign",
+            icon = "fas fa-key",
+            label = "Set Callsign2",
+            job = {["sasp"] = 0, ["police"] = 0, ["bcso"] = 0,}
+    },
+    { -- This is the first table with options, you can make as many options inside the options table as you want
+            type = "command",
+            event = "removecallsign",
+            icon = "fas fa-key",
+            label = "Remove Callsign2",
+            job = {["sasp"] = 0, ["police"] = 0, ["bcso"] = 0,}
+    },
+
+  },
+  distance = 4, -- This is the distance for you to be at for the target to turn blue, this is in GTA units and has to be a float value
+})
