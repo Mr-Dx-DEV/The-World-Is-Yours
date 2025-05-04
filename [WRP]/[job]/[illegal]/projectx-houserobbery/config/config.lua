@@ -21,7 +21,7 @@ Config = {
     -- For lb phones you need to download this resource: https://github.com/solareon/slrn_groups/
     -- (Coming soon) Phone = "qb", -- "qb" "icy" "lb" (Open a ticket on discord if you have snippets of differnt phone groups)
 
-    Target = 'ox_target', -- Target name
+    Target = 'qb-target', -- Target name
     WorldInteract = false, -- Enable/Disable World Interactions (Only use this if you have the interact script, otherwise leave it as false)
 
     TestingMode = false, -- Enable/Disable Testing Mode (No Minigames)
