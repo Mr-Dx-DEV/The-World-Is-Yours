@@ -42,7 +42,7 @@ Config.Ranks = {
         [10] = "CoP.",
     },
     ["bcso"] = {
-        [0] = "Cdt.",
+        [0] = "Recruit.",
         [1] = "Dep.",
         [2] = "sd.",
         [3] = "cp.",
