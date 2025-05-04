@@ -36,15 +36,27 @@ return {
 		}
 	},
 	{
-		coords = vec3(1548.301, 827.155, 82.131),
+		coords = vec3(2801.72, 4748.83, 43.54),
 		target = {
 			name = 'target_zone_4',
-			loc = vec3(1548.301, 827.155, 82.131),
+			loc = vec3(2801.72, 4748.83, 43.54),
 			length = 1.4,
 			width = 3.2,
-			heading = 333.442,
-			minZ = 81.131,
-			maxZ = 83.131
+			heading = 102.877,
+			minZ = 42.22,
+			maxZ = 43.98
+		}
+	},
+	{
+		coords = vec3(-3149.4, 1391.06, 16.63),
+		target = {
+			name = 'target_zone_4',
+			loc = vec3(-3149.4, 1391.06, 16.63),
+			length = 1.4,
+			width = 3.2,
+			heading = 55.6,
+			minZ = 15.22,
+			maxZ = 17.20
 		}
 	},
 	{
