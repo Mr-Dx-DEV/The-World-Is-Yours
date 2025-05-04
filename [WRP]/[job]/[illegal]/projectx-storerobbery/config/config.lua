@@ -17,7 +17,7 @@ Config = {
     Notification = "qb", -- "ox" or "qb" or "esx"
     Progressbar = "qb", -- "ox" or "qb"
 
-    Target = 'ox_target', -- Target name, leave it as qb-target if you are using ox_target
+    Target = 'qb-target', -- Target name, leave it as qb-target if you are using ox_target
     WorldInteract = false, -- Enable/Disable World Interactions (Only use this if you have the interact script, otherwise leave it as false)
 
     TestingMode = false, -- Enable/Disable Testing Mode (No Minigames)
