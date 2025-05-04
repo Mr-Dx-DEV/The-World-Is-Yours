@@ -379,8 +379,8 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 ["SAHP"] = {
-  coords = vector3(1543.77, 793.604, 77.201),
-  spawn = vector4(1543.77, 793.604, 77.201, 60.48),
+  coords = vector3(2791.845, 4719.41, 46.486),
+  spawn = vector4(2791.845, 4719.41, 46.486, 1.519),
   distance = 15,
   job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
@@ -395,8 +395,8 @@ Config.JobGarageLocations = { -- IMPORTANT - Every garage name must be unique
   vehiclesType = "owned",
 },
 ["SAHP2"] = {
-  coords = vector3(-3053.099, 603.076, 7.29),
-  spawn = vector4(-3053.099, 603.076, 7.29, 297.715),
+  coords = vector3(-3157.525, 1416.307, 20.625),
+  spawn = vector4(-3157.525, 1416.307, 20.625, 225.718),
   distance = 15,
   job = {"lspd", "bcso", "sahp", "salsa", "lsso", "safw", "sadoc", "usms", "fbi", "dhs", "ss", "police"},
   type = "car",
