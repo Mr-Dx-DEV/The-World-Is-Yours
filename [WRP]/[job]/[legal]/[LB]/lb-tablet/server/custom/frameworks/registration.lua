@@ -183,7 +183,13 @@ end
 ---@type { type: string, label: string }[]
 local licenses = {
     { type = "driver", label = "Driver's License" },
+    
     { type = "weapon", label = "Weapon License" },
+    { type = "huntinglicense", label = "Hunting License" },
+    { type = "fishinglicense", label = "Fishing License" },
+    { type = "waterslicense", label = "Waters License" },
+    { type = "airplane", label = "Airplane License" },
+    { type = "helicopter", label = "Helicopter License" },
 }
 
 ---@param licenseType string
