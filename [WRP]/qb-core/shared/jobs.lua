@@ -637,14 +637,52 @@ QBShared.Jobs = {
             },
         }
     },
-    ["judge"] = {
-        label = "Honorary",
+    ['judge'] = {
+        label = 'Honorary',
+        defaultDuty = true,
+        offDutyPay = false,
+        grades = {
+            ['0'] = {
+                name = 'Judge',
+                payment = 100,
+            },
+        }
+    },
+    ["doj"] = {
+        label = "Department of Justice",
         defaultDuty = true,
         offDutyPay = false,
         grades = {
             ["0"] = {
-                name = "Judge",
-                payment = 2000,
+                name = "Bailiff",
+                payment = 500,
+            },
+            ['1'] = {
+                name = 'JC',
+                payment = 900,
+            },
+            ['2'] = {
+                name = 'ADA',
+                payment = 1500,
+            },
+            ['3'] = {
+                name = 'DA',
+                payment = 3000,
+            },
+            ['4'] = {
+                name = 'AssociatJudge',
+                payment = 3000,
+                isboss = true,
+            },
+            ['5'] = {
+                name = 'SeniorJudge',
+                payment = 3200,
+                isboss = true,
+            },
+            ['6'] = {
+                name = 'Judge',
+                payment = 3500,
+                isboss = true,
             },
         }
     },
