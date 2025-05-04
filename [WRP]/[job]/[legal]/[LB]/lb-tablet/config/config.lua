@@ -499,7 +499,7 @@ Config.Services.Companies = { -- the companies that are shown in the app
 --[[ POLICE APP OPTIONS ]] --
 Config.Police = {}
 
-Config.Police.DutyBlips = true -- show blips for police officers on duty?
+Config.Police.DutyBlips = false -- show blips for police officers on duty?
 
 Config.Police.Callsign = {}
 Config.Police.Callsign.AutoGenerate = false -- should a callsign be automatically generated when a police profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
@@ -510,7 +510,7 @@ Config.Police.Callsign.Format = "A-000" --[[
         * a: lowercase letter a-z
         * ^: escape character
 ]]
-Config.Police.Callsign.RequireTemplate = true -- Require users to follow the format of the callsign template?
+Config.Police.Callsign.RequireTemplate = false -- Require users to follow the format of the callsign template?
 Config.Police.Callsign.AllowChange = true
 
 Config.Police.Jail = {}
