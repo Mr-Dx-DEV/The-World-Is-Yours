@@ -975,10 +975,10 @@ description = 'Can store personal data'
 		close = false,
 		description = "?????????",
 		client = {
-		 image = "x_device.png",
+			image = "x_device.png",
 		}
-	   },
-		["x_circuittester"] = {
+	},
+	["x_circuittester"] = {
 		label = "X Circuit Tester",
 		weight = 125,
 		stack = false,
@@ -986,10 +986,10 @@ description = 'Can store personal data'
 		close = false,
 		description = "?????????",
 		client = {
-		 image = "x_circuittester.png",
+			image = "x_circuittester.png",
 		}
-	   },
-		["x_harddrive"] = {
+	},
+	["x_harddrive"] = {
 		label = "X Harddrive",
 		weight = 125,
 		stack = false,
@@ -997,10 +997,10 @@ description = 'Can store personal data'
 		close = false,
 		description = "?????????",
 		client = {
-		 image = "x_harddrive.png",
+			image = "x_harddrive.png",
 		}
-	   },
-		["storekey"] = {
+	},
+	["storekey"] = {
 		label = "Store Key",
 		weight = 125,
 		stack = false,
@@ -1008,11 +1008,108 @@ description = 'Can store personal data'
 		close = false,
 		description = "?????????",
 		client = {
-		 image = "storekey.png",
+			image = "storekey.png",
 		}
-	   },
-	
+	},
 	--- house rob
+	["x_x_coffeemaker"] = {
+		label = "Coffee Maker",
+		weight = 500,
+		stack = true,
+		close = false,
+		description = "To make that perfect cup of Joe!",
+		client = {
+			image = "x_x_coffeemaker.png"
+		}
+	},
+
+	["x_artpiece"] = {
+		label = "Art Piece",
+		weight = 500,
+		stack = true,
+		close = false,
+		description = "A unique piece of art!",
+		client = {
+			image = "x_artpiece.png"
+		}
+	},
+
+	["x_guitar"] = {
+		label = "Guitar",
+		weight = 300,
+		stack = true,
+		close = false,
+		description = "A guitar!",
+		client = {
+			image = "x_guitar.png"
+		}
+	},
+
+	["x_microwave"] = {
+		label = "Microwave",
+		weight = 800,
+		stack = true,
+		close = false,
+		description = "A microwave - for heating things up!",
+		client = {
+			image = "x_microwave.png"
+		}
+	},
+
+	["x_musicequipment"] = {
+		label = "Coffee Maker",
+		weight = 500,
+		stack = true,
+		close = false,
+		description = "The keys to success.. As some Dj's would say",
+		client = {
+			image = "x_musicequipment.png"
+		}
+	},
+
+	["x_painting"] = {
+		label = "Painting",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A modern work of art!",
+		client = {
+			image = "x_painting.png"
+		}
+	},
+
+	["x_painting2"] = {
+		label = "Painting",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A modern work of art!",
+		client = {
+			image = "x_painting2.png"
+		}
+	},
+
+	["x_pcequipment"] = {
+		label = "PC",
+		weight = 600,
+		stack = true,
+		close = false,
+		description = "A PC, for gaming?! Well of course it is!",
+		client = {
+			image = "x_pcequipment.png"
+		}
+	},
+
+	["x_suitcase"] = {
+		label = "Suit Case",
+		weight = 200,
+		stack = true,
+		close = false,
+		description = "A leather suitcase, what the hell is inside of this?",
+		client = {
+			image = "x_suitcase.png"
+		}
+	},
 	["x_coffeemaker"] = {
 		label = "Coffee Maker",
 		weight = 500,
@@ -1021,107 +1118,12 @@ description = 'Can store personal data'
 		close = false,
 		description = "To make that perfect cup of Joe!",
 		client = {
-		  image = "x_coffeemaker.png"
+			image = "x_coffeemaker.png"
 		}
-	   },
-	  
-	   ["x_artpiece"] = {
-		label = "Art Piece",
-		weight = 500,
-		stack = true,
-		allowArmed = true,
-		close = false,
-		description = "A unique piece of art!",
-		client = {
-		  image = "x_artpiece.png"
-		}
-	   },
-	  
-	   ["x_guitar"] = {
-		label = "Guitar",
-		weight = 300,
-		stack = true,
-		allowArmed = true,
-		close = false,
-		description = "A guitar!",
-		client = {
-		  image = "x_guitar.png"
-		}
-	   },
-	  
-	   ["x_microwave"] = {
-		label = "Microwave",
-		weight = 800,
-		stack = true,
-		allowArmed = true,
-		close = false,
-		description = "A microwave - for heating things up!",
-		client = {
-		  image = "x_microwave.png"
-		}
-	   },
-	  
-	   ["x_musicequipment"] = {
-		label = "Coffee Maker",
-		weight = 500,
-		stack = true,
-		allowArmed = true,
-		close = false,
-		description = "The keys to success.. As some Dj's would say",
-		client = {
-		  image = "x_musicequipment.png"
-		}
-	   },
-	  
-	   ["x_painting"] = {
-		label = "Painting",
-		weight = 200,
-		stack = true,
-		allowArmed = true,
-		close = false,
-		description = "A modern work of art!",
-		client = {
-		  image = "x_painting.png"
-		}
-	   },
-	  
-	   ["x_painting2"] = {
-		label = "Painting",
-		weight = 200,
-		stack = true,
-		allowArmed = true,
-		close = false,
-		description = "A modern work of art!",
-		client = {
-		  image = "x_painting2.png"
-		}
-	   },
-	  
-	   ["x_pcequipment"] = {
-		label = "PC",
-		weight = 600,
-		stack = true,
-		allowArmed = true,
-		close = false,
-		description = "A PC, for gaming?! Well of course it is!",
-		client = {
-		  image = "x_pcequipment.png"
-		}
-	   },
-	  
-	   ["x_suitcase"] = {
-		label = "Suit Case",
-		weight = 200,
-		stack = true,
-		allowArmed = true,
-		close = false,
-		description = "A leather suitcase, what the hell is inside of this?",
-		client = {
-		  image = "x_suitcase.png"
-		}
-	   },
-	  
-	   ["x_television"] = {
+	},
+
+
+	["x_television"] = {
 		label = "Television",
 		weight = 800,
 		stack = true,
@@ -1129,11 +1131,10 @@ description = 'Can store personal data'
 		close = false,
 		description = "A modern flatscreen TV",
 		client = {
-		  image = "x_television.png"
+			image = "x_television.png"
 		}
-	   },
---- meth
-
+	},
+	--- meth
 ["kq_meth_low"] = {
 	label = "Meth (Low grade)",
 	weight = 100,
