@@ -304,11 +304,15 @@ end
 local licenses = {
     {
         label = "Driver's License",
-        type = "driver"
+        type = "driver_license"
     },
     {
         label = "Weapon License",
-        type = "weapon"
+        type = "weaponlicense"
+    },
+    {
+        label = "Hunting License",
+        type = "huntinglicense"
     }
 }
 
