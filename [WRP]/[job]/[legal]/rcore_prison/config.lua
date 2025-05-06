@@ -276,7 +276,7 @@ Config = {
         ViewCone = 160,
         WallLodSyncDistance = 300,                        -- This is the distance for syncing walls
         AutoCatch = true,                                 -- This is used for auto catching the prisone are escaping
-        SolitaryTime = 5,                                 -- This is the time for solitary (default in min) - when prisoner is escaping and get caughh when AutoCatch enabled.
+        SolitaryTime = 20,                                 -- This is the time for solitary (default in min) - when prisoner is escaping and get caughh when AutoCatch enabled.
         DisableBugEscape = true,                          -- This is used for disabling bug escape system || Player are only allowed to escape through included Prison break system!
         WhenEscapeRemoveInmateStash = false,              -- This is used for removing inmates stash when they are escaping
         BugEscapeCycleTime = 1,                           -- This is the time for checking if prisoner is in area (default in minutes)
@@ -308,7 +308,7 @@ Config = {
     Solitary = {
         DistanceCheck = 10.0,      -- This is the distance for checking if player is in his solitary cell.
         GuardDistanceCheck = 10.0, -- This is the distance for checking if player is in the guard area.
-        Time = 3,                  -- This is the time for solitary (default in min) - when guard is attacked by prisoner
+        Time = 6,                  -- This is the time for solitary (default in min) - when guard is attacked by prisoner
     },
 
     Release = {
