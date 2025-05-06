@@ -17,8 +17,11 @@ function Radio:connectSound()
     PlaySoundFrontend(-1, 'Retune_High', 'MP_RADIO_SFX', true)
 end
 
-function Radio:closeEvent()
-    PlaySoundFrontend(-1, 'Off_High', 'MP_RADIO_SFX', true)
+-- function Radio:closeEvent()
+--     PlaySoundFrontend(-1, 'Off_High', 'MP_RADIO_SFX', true)
+-- end
+function closeEvent()
+    TriggerEvent("InteractSound_CL:PlayOnOne", "click", 0.6)
 end
 
 function Radio:SplitStr(inputstr, sep)
