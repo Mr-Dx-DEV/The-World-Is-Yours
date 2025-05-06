@@ -242,10 +242,33 @@ local function AllowNullJailedBy()
     MySQL.rawExecute.await("ALTER TABLE `lbtablet_police_jail` MODIFY COLUMN `jailed_by` VARCHAR(100) DEFAULT NULL")
 end
 
+local function AddFinedAndJailed()
+    if not tables.lbtablet_police_cases_criminals or tables.lbtablet_police_cases_criminals.fined then
+        return
+    end
+
+    MySQL.rawExecute.await("ALTER TABLE `lbtablet_police_cases_criminals` ADD COLUMN `fined` BOOLEAN NOT NULL DEFAULT FALSE")
+    MySQL.rawExecute.await("ALTER TABLE `lbtablet_police_cases_criminals` ADD COLUMN `jailed` BOOLEAN NOT NULL DEFAULT FALSE")
+
+    madeChanges = true
+end
+
+local function AddCharges()
+    if not tables.lbtablet_police_cases_charges or tables.lbtablet_police_cases_charges.charges then
+        return
+    end
+
+    MySQL.rawExecute.await("ALTER TABLE `lbtablet_police_cases_charges` ADD COLUMN `charges` TINYINT UNSIGNED NOT NULL DEFAULT 1")
+
+    madeChanges = true
+end
+
 if Config.DatabaseChecker.AutoFix then
     ValidateOffencesRewrite()
     CheckWeaponsTable()
     AllowNullJailedBy()
+    AddFinedAndJailed()
+    AddCharges()
 end
 
 if madeChanges then

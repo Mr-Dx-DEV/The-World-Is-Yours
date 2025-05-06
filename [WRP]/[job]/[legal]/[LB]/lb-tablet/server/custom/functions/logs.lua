@@ -7,11 +7,22 @@ local discordColors = {
 local avatars = {}
 
 local function GetAvatar(source)
+    if not Config.Logs.Avatar then
+        debugprint("GetAvatar: Config.Logs.Avatar is set to false, returning random avatar")
+
+        return "https://cdn.discordapp.com/embed/avatars/" .. math.random(0, 5) .. ".png"
+    end
+
     if avatars[source] then
+        debugprint("GetAvatar: using cached avatar for source", source)
+
         return avatars[source]
     end
 
+    ---@type string | nil
     local avatar
+    local fetchedAvatar = false
+    local timeout = GetGameTimer() + 10000
     local discord = GetPlayerIdentifierByType(source, "discord")
     local steam = GetPlayerIdentifierByType(source, "steam")
     local fivem = GetPlayerIdentifierByType(source, "fivem")
@@ -20,9 +31,9 @@ local function GetAvatar(source)
     steam = steam and steam:sub(7)
     fivem = fivem and fivem:sub(7)
 
-    local avatarPromise = promise.new()
-
     if discord and DISCORD_TOKEN then
+        debugprint("GetAvatar: fetching discord avatar for source", source)
+
         PerformHttpRequest("https://discord.com/api/v9/users/" .. discord, function(status, response)
             if status == 200 then
                 local data = json.decode(response)
@@ -32,17 +43,21 @@ local function GetAvatar(source)
                 end
             end
 
-            avatarPromise:resolve()
+            fetchedAvatar = true
         end, "GET", "", { ["Authorization"] = "Bot " .. DISCORD_TOKEN })
     elseif steam then
+        debugprint("GetAvatar: fetching steam avatar for source", source)
+
         PerformHttpRequest("https://steamcommunity.com/profiles/" .. tonumber(steam, 16), function(status, response)
             if status == 200 then
                 avatar = response:match('<meta name="twitter:image" content="(.-)"')
             end
 
-            avatarPromise:resolve()
+            fetchedAvatar = true
         end, "GET", "", {})
     elseif fivem then
+        debugprint("GetAvatar: fetching fivem avatar for source", source)
+
         PerformHttpRequest("https://policy-live.fivem.net/api/getUserInfo/" .. fivem, function(statusCode, response, headers)
             if statusCode == 200 then
                 local data = json.decode(response)
@@ -52,11 +67,24 @@ local function GetAvatar(source)
                 end
             end
 
-            avatarPromise:resolve()
+            fetchedAvatar = true
         end, "GET", "", {["Content-Type"] = "application/json"})
+    else
+        debugprint("GetAvatar: no discord, steam or fivem identifier found for source", source)
+
+        fetchedAvatar = true
     end
 
-    Citizen.Await(avatarPromise)
+    while not fetchedAvatar do
+        Wait(500)
+
+        if GetGameTimer() > timeout then
+            debugprint("GetAvatar: timed out when fetching avatar for source", source)
+            break
+        end
+    end
+
+    debugprint("GetAvatar: fetched avatar for source", source)
 
     avatars[source] = avatar
 
@@ -179,10 +207,14 @@ function Log(source, action, level, title, metadata, image)
 	end
 
 	if Config.Logs.Service == "ox_lib" then
-        if source then
-            ---@diagnostic disable-next-line: undefined-global
-            lib.Logger(source, level, title)
+        ---@diagnostic disable-next-line: undefined-global
+        if not lib or GetResourceState("ox_lib") ~= "started" then
+            infoprint("error", "Config.Logs.Service is set to 'ox_lib', but ox_lib is not started. To log using ox_lib, you need to install ox_lib from https://github.com/overextended/ox_lib/releases/latest.")
+            return
         end
+
+        ---@diagnostic disable-next-line: undefined-global
+        lib.logger(source or -1, level, title)
     elseif Config.Logs.Service == "fivemanage" then
         if GetResourceState("fmsdk") ~= "started" then
             infoprint("error", "Config.Logs.Service is set to 'fivemanage', but fmsdk is not started. To log using Fivemanage, you need to install fmsdk from https://github.com/fivemanage/sdk/releases/latest.")

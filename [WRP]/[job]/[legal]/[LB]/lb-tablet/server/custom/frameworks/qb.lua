@@ -38,13 +38,38 @@ MySQL.ready(function()
         FROM players u
 
         LEFT JOIN lbtablet_police_profiles p ON p.id = u.citizenid %s
+        {JOIN}
 
         WHERE
-            CONCAT(JSON_VALUE(u.charinfo, '$.firstname'), ' ', JSON_VALUE(u.charinfo, '$.lastname')) LIKE ?
+            (
+                CONCAT(JSON_VALUE(u.charinfo, '$.firstname'), ' ', JSON_VALUE(u.charinfo, '$.lastname')) LIKE ?
+                OR JSON_VALUE(u.charinfo, '$.birthdate') LIKE ?
+                OR u.citizenid LIKE ?
+                {PHONE_NUMBER}
+            )
             {WHERE_FILTER}
 
         LIMIT ?, ?
     ]]):format(playersCollate)
+
+    SetTimeout(1000, function()
+        local where = ""
+        local join = ""
+        local phoneConfig = GetPhoneConfig()
+
+        if Config.LBPhone then
+            if phoneConfig?.Item.Unique then
+                where = "OR phone.phone_number LIKE ?"
+                join = ("LEFT JOIN phone_last_phone phone ON u.citizenid %s = phone.id"):format(playersCollate)
+            else
+                where = "OR phone.phone_number LIKE ?"
+                join = ("LEFT JOIN phone_phones phone ON u.citizenid %s = phone.id"):format(playersCollate)
+            end
+        end
+
+        Queries.Users.Search = Queries.Users.Search:gsub("{PHONE_NUMBER}", where)
+        Queries.Users.Search = Queries.Users.Search:gsub("{JOIN}", join)
+    end)
 
     Queries.Users.BasicFetch = [[
         SELECT
@@ -79,6 +104,10 @@ MySQL.ready(function()
 
     Queries.Users.SearchFilter = {}
     Queries.Users.SearchFilter.Jobs = "AND JSON_VALUE(u.job, '$.name') IN (?)"
+    Queries.Users.SearchFilter.Gender = "AND JSON_EXTRACT(charinfo, '$.gender') = ?"
+    Queries.Users.SearchFilter.License = "AND JSON_UNQUOTE(JSON_EXTRACT(u.metadata, '$.licences.%s')) = 'true'"
+    Queries.Users.SearchFilter.Warrant = ("(SELECT 1 FROM lbtablet_police_warrants pw WHERE pw.linked_profile_id = u.citizenid %s AND pw.linked_profile_type = 'player' AND pw.warrant_status = 'active')"):format(playersCollate)
+    Queries.Users.SearchFilter.Tags = ("AND EXISTS (SELECT 1 FROM lbtablet_police_profile_tags ppt WHERE ppt.id = u.citizenid %s AND ppt.tag_id = ?)"):format(playersCollate)
 
     if Config.JailScript == "qb" then
         Queries.Users.SearchFilter.ExcludeJailed = ("AND NOT EXISTS (SELECT 1 FROM lbtablet_police_jail WHERE prisoner = u.citizenid %s AND jail_time > 0)"):format(playersCollate)
@@ -86,7 +115,11 @@ MySQL.ready(function()
 
     local fetchVehicle = ([[
         SELECT
-            v.plate, v.citizenid AS owner, v.mods, v.vehicle, p.avatar AS picture,
+            v.plate,
+            v.citizenid AS owner,
+            v.mods,
+            v.vehicle,
+            p.avatar AS picture,
             CONCAT(JSON_VALUE(u.charinfo, '$.firstname'), ' ', JSON_VALUE(u.charinfo, '$.lastname')) AS `name`
 
         FROM player_vehicles v
@@ -100,9 +133,16 @@ MySQL.ready(function()
     Queries.Vehicles.BasicFetch = "SELECT vehicle, mods FROM player_vehicles WHERE plate = ?"
     Queries.Vehicles.Fetch = fetchVehicle .. " WHERE v.plate = ?"
     Queries.Vehicles.Search = fetchVehicle .. [[
-        WHERE v.plate LIKE ?
+        WHERE
+            v.plate LIKE ?
+            {WHERE_FILTER}
+
         LIMIT ?, ?
     ]]
+
+    Queries.Vehicles.SearchFilter = {}
+    Queries.Vehicles.SearchFilter.Tags = ("AND EXISTS (SELECT 1 FROM lbtablet_police_profile_tags ppt WHERE ppt.id = v.plate %s AND ppt.tag_id = ?)"):format(vehiclesCollate)
+    Queries.Vehicles.SearchFilter.Warrant = ("(SELECT 1 FROM lbtablet_police_warrants pw WHERE pw.linked_profile_id = v.plate %s AND pw.linked_profile_type = 'vehicle' AND pw.warrant_status = 'active')"):format(vehiclesCollate)
 
     Queries.SelectName = "CONCAT(JSON_VALUE(u.charinfo, '$.firstname'), ' ', JSON_VALUE(u.charinfo, '$.lastname'))"
     Queries.SelectDob = "JSON_VALUE(u.charinfo, '$.birthdate')"
@@ -233,13 +273,38 @@ function RemoveMoney(source, amount)
     return true
 end
 
+---@param billerIdentifier string
+---@param billedIdentifier string
+---@param job "police" | "ambulance"
+---@param amount number
+---@param reason? string
+---@return boolean success
+function BillPlayer(billerIdentifier, billedIdentifier, job, amount, reason)
+    local target = QB.Functions.GetPlayerByCitizenId(billedIdentifier)
+
+    if not target then
+        return false
+    end
+
+    target.Functions.RemoveMoney("bank", amount, "paid-bills")
+
+    exports["qb-banking"]:AddMoney(job, amount)
+
+    return true
+end
+
 ---@param source number
 ---@return { name: string, label: string, grade: number, grade_label: string }
 function GetJob(source)
     local qPlayer = QB.Functions.GetPlayer(tonumber(source))
 
     if not qPlayer then
-        return { name = "", label = "", grade = 0, grade_label = "" }
+        return {
+            name = "unemployed",
+            label = "Unemployed",
+            grade = 0,
+            grade_label = "Unemployed"
+        }
     end
 
     local job = qPlayer.PlayerData.job
@@ -304,15 +369,11 @@ end
 local licenses = {
     {
         label = "Driver's License",
-        type = "driver_license"
+        type = "driver"
     },
     {
         label = "Weapon License",
-        type = "weaponlicense"
-    },
-    {
-        label = "Hunting License",
-        type = "huntinglicense"
+        type = "weapon"
     }
 }
 

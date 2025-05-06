@@ -18,13 +18,36 @@ Queries.Users.Search = [[
     FROM users u
 
     LEFT JOIN lbtablet_police_profiles p ON p.id = u.identifier
+    {JOIN}
 
     WHERE
-        CONCAT(u.firstname, ' ', u.lastname) LIKE ?
+        (
+            CONCAT(u.firstname, ' ', u.lastname) LIKE ?
+            {PHONE_NUMBER}
+        )
         {WHERE_FILTER}
 
     LIMIT ?, ?
 ]]
+
+SetTimeout(1000, function()
+    local where = ""
+    local join = ""
+    local phoneConfig = GetPhoneConfig()
+
+    if Config.LBPhone then
+        if phoneConfig?.Item.Unique then
+            where = "OR phone.phone_number LIKE ?"
+            join = "LEFT JOIN phone_last_phone phone ON u.identifier = phone.id"
+        else
+            where = "OR phone.phone_number LIKE ?"
+            join = "LEFT JOIN phone_phones phone ON u.identifier = phone.id"
+        end
+    end
+
+    Queries.Users.Search = Queries.Users.Search:gsub("{PHONE_NUMBER}", where)
+    Queries.Users.Search = Queries.Users.Search:gsub("{JOIN}", join)
+end)
 
 Queries.Users.BasicFetch = [[
     SELECT
@@ -62,10 +85,16 @@ Queries.Users.FetchProfile = [[
 Queries.Users.SearchFilter = {}
 Queries.Users.SearchFilter.Jobs = "AND u.job IN (?)"
 Queries.Users.SearchFilter.ExcludeJailed = "AND u.jail = 0"
+Queries.Users.SearchFilter.Warrant = "(SELECT 1 FROM lbtablet_police_warrants pw WHERE pw.linked_profile_id = u.identifier AND pw.linked_profile_type = 'player' AND pw.warrant_status = 'active')"
+Queries.Users.SearchFilter.Tags = "AND EXISTS (SELECT 1 FROM lbtablet_police_profile_tags ppt WHERE ppt.id = u.identifier AND ppt.tag_id = ?)"
 
 local fetchVehicle = [[
     SELECT
-        v.plate, v.owner, v.vehicle, p.avatar AS picture, CONCAT(u.firstname, ' ', u.lastname) AS `name`
+        v.plate,
+        v.owner,
+        v.vehicle,
+        .avatar AS picture,
+        CONCAT(u.firstname, ' ', u.lastname) AS `name`
 
     FROM owned_vehicles v
 
@@ -78,9 +107,16 @@ Queries.Vehicles.SelectModelByPlates = "SELECT plate, json_value(vehicle, '$.mod
 Queries.Vehicles.BasicFetch = "SELECT vehicle FROM owned_vehicles WHERE plate = ?"
 Queries.Vehicles.Fetch = fetchVehicle .. " WHERE v.plate = ?"
 Queries.Vehicles.Search = fetchVehicle .. [[
-    WHERE v.plate LIKE ?
+    WHERE
+        v.plate LIKE ?
+        {WHERE_FILTER}
+
     LIMIT ?, ?
 ]]
+
+Queries.Vehicles.SearchFilter = {}
+Queries.Vehicles.SearchFilter.Tags = "AND EXISTS (SELECT 1 FROM lbtablet_police_profile_tags ppt WHERE ppt.id = v.plate AND ppt.tag_id = ?)"
+Queries.Vehicles.SearchFilter.Warrant = "(SELECT 1 FROM lbtablet_police_warrants pw WHERE pw.linked_profile_id = v.plate AND pw.linked_profile_type = 'vehicle' AND pw.warrant_status = 'active')"
 
 Queries.SelectName = "CONCAT(u.firstname, ' ', u.lastname)"
 Queries.SelectDob = "u.dateofbirth"
@@ -138,6 +174,16 @@ end
 ---@param amount integer
 ---@return boolean
 function RemoveMoney(source, amount)
+    return true
+end
+
+---@param billerIdentifier string
+---@param billedIdentifier string
+---@param job "police" | "ambulance"
+---@param amount number
+---@param reason? string
+---@return boolean success
+function BillPlayer(billerIdentifier, billedIdentifier, job, amount, reason)
     return true
 end
 

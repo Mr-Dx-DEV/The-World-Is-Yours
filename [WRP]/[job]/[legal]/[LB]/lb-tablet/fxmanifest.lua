@@ -5,7 +5,7 @@ lua54 "yes"
 author "LB"
 description "Tablet script for FiveM, made by LB"
 website "https://store.lbscripts.com/"
-version "1.2.3"
+version "1.4.0"
 
 shared_scripts {
     "config/**.lua",

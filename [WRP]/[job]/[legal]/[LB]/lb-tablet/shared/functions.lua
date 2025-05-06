@@ -1,5 +1,17 @@
 local tabletVersion = GetResourceMetadata(GetCurrentResourceName(), "version", 0) or ""
 
+---@param t table
+---@param value any
+function table.contains(t, value)
+    for i = 1, #t do
+        if t[i] == value then
+            return true
+        end
+    end
+
+    return false
+end
+
 ---@param length? integer
 function GenerateString(length)
     length = length or 5
@@ -323,7 +335,6 @@ function GetStringMatchPattern(pattern)
         local c = pattern:sub(i, i)
 
         if c == '^' and i < #pattern then
-            -- Handle escape character - literally match next character
             i += 1
             local nextCharacter = pattern:sub(i, i)
 
@@ -333,16 +344,12 @@ function GetStringMatchPattern(pattern)
                 result[#result + 1] = nextCharacter
             end
         elseif c == '1' then
-            -- Match any digit
             result[#result + 1] = "%d"
         elseif c == 'A' then
-            -- Match any uppercase letter
             result[#result + 1] = "[A-Z]"
         elseif c == 'a' then
-            -- Match any lowercase letter
             result[#result + 1] = "[a-z]"
         elseif c == '.' then
-            -- Match any letter or number
             result[#result + 1] = "[%w]"
         elseif contains(magicCharacters, c) then
             result[#result + 1] = "%" .. c
@@ -354,6 +361,43 @@ function GetStringMatchPattern(pattern)
     end
 
     return "^" .. table.concat(result) .. "$"
+end
+
+if Config.Genders == "auto" then
+    if Config.Framework == "esx" then
+        Config.Genders = {
+            {
+                label = L("MISC.GENDERS.MALE"),
+                value = "m"
+            },
+            {
+                label = L("MISC.GENDERS.FEMALE"),
+                value = "f"
+            }
+        }
+    elseif Config.Framework == "qb" or Config.Framework == "qbox" then
+        Config.Genders = {
+            {
+                label = L("MISC.GENDERS.MALE"),
+                value = 0
+            },
+            {
+                label = L("MISC.GENDERS.FEMALE"),
+                value = 1
+            }
+        }
+    else
+        Config.Genders = {
+            {
+                label = L("MISC.GENDERS.MALE"),
+                value = 1
+            },
+            {
+                label = L("MISC.GENDERS.FEMALE"),
+                value = 0
+            }
+        }
+    end
 end
 
 local lbPhoneConfig

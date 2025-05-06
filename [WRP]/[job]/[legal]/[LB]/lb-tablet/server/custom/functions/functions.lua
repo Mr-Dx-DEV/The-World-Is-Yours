@@ -200,3 +200,11 @@ function GetPresignedUrl(source, uploadType)
 
     infoprint("warning", "GetPresignedUrl has not been set up. Set it up in lb-tablet/server/custom/functions/functions.lua, or change your upload method to Fivemanage.")
 end
+
+---@param mdtType "police" | "ambulance"
+---@param profileType "user" | "vehicle"
+---@param id any
+---@return { [string]: any }
+function GetCustomFields(mdtType, profileType, id)
+    return {}
+end

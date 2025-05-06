@@ -1,22 +1,27 @@
-if not Config.Debug then
-    return
+RegisterCommand("tabletdebug", function()
+    Config.Debug = not Config.Debug
+
+    SendReactMessage("toggleDebug", Config.Debug)
+    infoprint("info", "Debug " .. (Config.Debug and "enabled" or "disabled"))
+end, false)
+
+local function RegisterDebugCommand(command, fn)
+    if not Config.Debug then
+        return
+    end
+
+    RegisterCommand("tablet" .. command, fn, false)
 end
 
-local dispatchId = 0
-
-RegisterCommand("adddispatch", function()
-    dispatchId += 1
-
-    ---@type DispatchNotification
+RegisterDebugCommand("adddispatch", function()
+    ---@type NewDispatchOptions
     local data = {
         job = "police",
-        id = dispatchId,
         priority = "high",
         title = "Bank robbery",
         description = "The Pacific Standard Bank is being robbed",
         code = "10-31",
         image = "https://r2.fivemanage.com/image/FQ6AXQrF7WNZ.webp",
-        -- timestamp = os.time(),
         location = {
             label = "Pacific Standard Bank",
             coords = GenerateRandomCoords()
@@ -25,21 +30,21 @@ RegisterCommand("adddispatch", function()
     }
 
     TriggerServerEvent("lb-tablet:addDispatch", data)
-end, false)
+end)
 
-RegisterCommand("removedispatch", function(_, args)
+RegisterDebugCommand("removedispatch", function(_, args)
     local id = args[1]
 
     if id and tonumber(id) then
         TriggerEvent("tablet:police:removeDispatch", tonumber(id))
     end
-end, false)
+end)
 
-RegisterCommand("toggledispatch", function()
+RegisterDebugCommand("toggledispatch", function()
     local visible = exports["lb-tablet"]:IsDispatchVisible()
 
     exports["lb-tablet"]:ToggleDispatchVisible(not visible)
-end, false)
+end)
 
 function GenerateRandomCoords()
     local x = math.random(-4000, 4000)
@@ -48,7 +53,14 @@ function GenerateRandomCoords()
     return vector2(x, y)
 end
 
-RegisterCommand("popup", function()
+RegisterDebugCommand("notification", function()
+    exports["lb-tablet"]:SendNotification({
+        title = "Test",
+        content = "Test",
+    })
+end)
+
+RegisterDebugCommand("popup", function()
     exports["lb-tablet"]:SetPopUp({
         title = "title",
         description = "description",
@@ -80,9 +92,9 @@ RegisterCommand("popup", function()
             print("closed popup")
         end
     })
-end, false)
+end)
 
-RegisterCommand("contextmenu", function()
+RegisterDebugCommand("contextmenu", function()
     exports["lb-tablet"]:SetContextMenu({
         title = "test",
         buttons = {
@@ -103,9 +115,9 @@ RegisterCommand("contextmenu", function()
             print("closed context menu")
         end
     })
-end, false)
+end)
 
-RegisterCommand("gallery", function()
+RegisterDebugCommand("gallery", function()
     exports["lb-tablet"]:Gallery({
         includeVideos = true,
         includeImages = true,
@@ -118,9 +130,9 @@ RegisterCommand("gallery", function()
             print("closed gallery")
         end
     })
-end, false)
+end)
 
-RegisterCommand("colorpicker", function()
+RegisterDebugCommand("colorpicker", function()
     exports["lb-tablet"]:ColorPicker({
         defaultColor = "#ff0000",
         onSelect = function(color)
@@ -133,4 +145,4 @@ RegisterCommand("colorpicker", function()
             print("closed color picker")
         end
     })
-end, false)
+end)

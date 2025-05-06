@@ -346,6 +346,8 @@ CREATE TABLE IF NOT EXISTS `lbtablet_police_cases_criminals` (
     `id` VARCHAR(100) NOT NULL,
     `fine` INT UNSIGNED NOT NULL DEFAULT 0,
     `jail_time` INT UNSIGNED NOT NULL DEFAULT 0,
+    `fined` BOOLEAN NOT NULL DEFAULT FALSE,
+    `jailed` BOOLEAN NOT NULL DEFAULT FALSE,
 
     PRIMARY KEY (`case_id`, `id`),
     FOREIGN KEY (`case_id`) REFERENCES lbtablet_police_cases(`id`) ON UPDATE CASCADE ON DELETE CASCADE
@@ -355,6 +357,7 @@ CREATE TABLE IF NOT EXISTS `lbtablet_police_cases_charges` (
     `case_id` INT UNSIGNED NOT NULL,
     `criminal` VARCHAR(100) NOT NULL,
     `offence_id` INT UNSIGNED NOT NULL,
+    `charges` TINYINT UNSIGNED NOT NULL DEFAULT 1,
 
     PRIMARY KEY (`case_id`, `criminal`, `offence_id`),
     FOREIGN KEY (`case_id`, `criminal`) REFERENCES lbtablet_police_cases_criminals(`case_id`, `id`) ON UPDATE CASCADE ON DELETE CASCADE,

@@ -436,6 +436,9 @@
             "ADD": "Ajouter",
             "NEW": "Nouveau",
             "PROCEED": "Procéder",
+            "YES": "Oui",
+            "NO": "Non",
+            "ALL": "Tous",
 
             "SEARCH": "Chercher",
             "SEARCH_FOR": "Chercher {query} pour démarrer",
@@ -473,8 +476,10 @@
 
             "DISPATCH": {
                 "TITLE": "Dispatch",
-                "TOGGLE_OFFICERS": "Afficher Officiers",
-                "TOGGLE_ALARMS": "Afficher Alarmes",
+                "SHOW_OFFICERS": "Afficher Officiers",
+                "SHOW_EMPLOYEES": "Afficher Employés",
+                "SHOW_ALARMS": "Afficher Alarmes",
+                "OPTIONS": "Options",
                 "OFFICERS": "Officiers",
                 "ALARMS": "Alarmes",
 
@@ -485,6 +490,12 @@
                 "DISMISS": "Rejeter",
                 "VIEW_IN_TABLET": "Voir sur Tablette",
                 "SET_WAYPOINT": "Définir le point du GPS",
+                "LOS_SANTOS": "Los Santos",
+                "CAYO_PERICO": "Cayo Perico",
+                "OLD_NOTIFICATION": "{count} ancienne notification",
+                "OLD_NOTIFICATIONS": "{count} anciennes notifications",
+                "NEW_NOTIFICATION": "{count} nouvelle notification",
+                "NEW_NOTIFICATIONS": "{count} nouvelles notifications",
 
                 "PRIORITY": {
                     "HIGH": "Haut",
@@ -553,7 +564,11 @@
                 "CASES": "Dossier",
                 "NO_CASES": "Aucun dossier",
                 "WEAPONS": "Armes",
-                "NO_WEAPONS": "Aucunes arme"
+                "NO_WEAPONS": "Aucune arme",
+                "WARRANTS": "Mandats",
+                "NO_WARRANTS": "Aucun Mandat",
+                "ACTIVE_WARRANTS": "Mandat Actifs",
+                "INVOLVED": "Impliqué"
             },
 
             "VEHICLES": {
@@ -586,7 +601,10 @@
                 "WAYPOINT_SET": "Point placé",
                 "WAYPOINT_SET_DESCRIPTION": "Le point du GPS a été placé sur la position du véhicule",
                 "CASES": "Dossiers",
-                "NO_CASES": "Aucun Dossier"
+                "NO_CASES": "Aucun Dossier",
+                "WARRANTS": "Mandats",
+                "NO_WARRANTS": "Aucun Mandat",
+                "ACTIVE_WARRANTS": "Mandat Actifs"
             },
             "PROPERTIES": {
                 "TITLE": "Propriétés",
@@ -641,7 +659,11 @@
                 "UNREGISTERED": "Non enregistré",
                 "OWNER": "Propriétaire",
                 "SELECT_MODEL": "Sélectionner le modèle",
-                "SELECT_OWNER": "Sélectionner le Propriétaire"
+                "SELECT_OWNER": "Sélectionner le Propriétaire",
+                "DELETE_WEAPON": {
+                    "TITLE": "Supprimer l'arme",
+                    "DESCRIPTION": "Êtes-vous sur de vouloir supprimer cet arme?"
+                }
             },
 
             "REPORTS": {
@@ -758,6 +780,9 @@
                 "NO_VEHICLE_SELECTED": "Aucun véhicule selectionné",
                 "SELECT_PERSON": "Sélectionner une personne",
                 "NO_PERSON_SELECTED": "Personne de sélectionné",
+                "ACTIVE": "Actif",
+                "INACTIVE": "Inactif",
+                "CLOSED": "Fermé",
                 "REMOVE_REPORT": {
                     "TITLE": "Supprimer le Rapport",
                     "DESCRIPTION": "Êtes-vous sûr de vouloir retirer ce rapport du mandat?"
@@ -791,6 +816,10 @@
                     "PLACEHOLDER": "Saisir le titre de l'infraction",
                     "DESCRIPTION_PLACEHOLDER": "Saisir la description..."
                 },
+                "EDIT_OFFENCE": {
+                    "TITLE": "Modifier l'infraction",
+                    "DESCRIPTION": "Modifier les détails de l'infraction"
+                },
                 "SET_JAILTIME": {
                     "TITLE": "Peine Recommandé",
                     "DESCRIPTION": "Définir la durée de la peine recommandé pour l'infraction",
@@ -809,6 +838,11 @@
                 "ADD_CATEGORY": {
                     "TITLE": "Ajouter Catégorie",
                     "DESCRIPTION": "Ajouter une nouvelle catégorie à la liste des infractions",
+                    "PLACEHOLDER": "Saisir le nom de la catégorie"
+                },
+                "EDIT_CATEGORY": {
+                    "TITLE": "Modifier la catégorie",
+                    "DESCRIPTION": "Modifier les détails de la catégorie",
                     "PLACEHOLDER": "Saisir le nom de la catégorie"
                 },
                 "DELETE_CATEGORY": {
@@ -1092,6 +1126,10 @@
                 "DISMISS": "Rejeter",
                 "VIEW_IN_TABLET": "Voir sur Tablette",
                 "SET_WAYPOINT": "Définir le point du GPS",
+                "OLD_NOTIFICATION": "{count} ancienne notification",
+                "OLD_NOTIFICATIONS": "{count} anciennes notifications",
+                "NEW_NOTIFICATION": "{count} nouvelle notification",
+                "NEW_NOTIFICATIONS": "{count} nouvelles notifications",
 
                 "PRIORITY": {
                     "HIGH": "Haute",
@@ -1433,6 +1471,10 @@
         "FONT_AND_COLOR": "Police et Couleure"
     },
     "MISC": {
+        "GENDERS": {
+            "MALE": "Homme",
+            "FEMALE": "Femme"
+        },
         "AIRPLANE_MODE_POPUP": {
             "TITLE": "Erreur",
             "DESCRIPTION": "Vous essayez d'effectuer une action qui nécessite un accès à Internet, désactivez le mode avion pour continuer..",
@@ -1505,6 +1547,10 @@
                     "TITLE": "Suppression d'une catégorie d'infraction",
                     "DESCRIPTION": "Supprimer la catégorie '{name}'"
                 },
+                "UPDATE_OFFENCE_CATEGORY": {
+                    "TITLE": "Mise à jour d'une catégorie d'infraction",
+                    "DESCRIPTION": "A renommer la catégorie '{oldName}' à {newName}"
+                },
                 "CREATE_OFFENCE": {
                     "TITLE": "Création d'une infaction",
                     "DESCRIPTION": "Création de l'infraction {class} '{name}' dans '{category}'"
@@ -1512,6 +1558,10 @@
                 "DELETE_OFFENCE": {
                     "TITLE": "Suppression d'une infraction",
                     "DESCRIPTION": "Suppression de l'infraction '{name}' dans '{category}'"
+                },
+                "UPDATE_OFFENCE": {
+                    "TITLE": "Mettre à jour l'infraction",
+                    "DESCRIPTION": "Mise à jour de l'infraction '{name}' dans '{category}'"
                 }
             }
         },
@@ -1551,6 +1601,10 @@
                     "TITLE": "Suppression d'une catégorie de condition",
                     "DESCRIPTION": "A supprimé la catégorie '{name}'"
                 },
+                "UPDATE_CONDITION_CATEGORY": {
+                    "TITLE": "Mise à jour d'une catégorie de conditions",
+                    "DESCRIPTION": "Renommer la catégorie de conditions de '{oldName}' a {newName}"
+                },
                 "CREATE_CONDITION": {
                     "TITLE": "Création d'une condition",
                     "DESCRIPTION": "A créé une condition {severity} nommé '{name}' dans '{category}'"
@@ -1558,6 +1612,10 @@
                 "DELETE_CONDITION": {
                     "TITLE": "Suppression d'une condition",
                     "DESCRIPTION": "A supprimé la conditon nommée '{name}' dans '{category}'"
+                },
+                "UPDATE_CONDITION": {
+                    "TITLE": "Mise à jour d'une condition",
+                    "DESCRIPTION": "A mis à jour de la condition '{name}' dans '{category}'"
                 },
                 "CREATE_BULLETIN": {
                     "TITLE": "Création d'un rapport",

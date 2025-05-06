@@ -29,8 +29,11 @@ if Config.Framework == "esx" then
 
     searchPropertiesQuery = selectPropertyQuery .. [[
         WHERE
-            CONCAT(u.firstname, ' ', u.lastname) LIKE ?
-            OR p.propertyid LIKE ?
+            (
+                CONCAT(u.firstname, ' ', u.lastname) LIKE ?
+                OR p.propertyid LIKE ?
+            )
+            {WHERE_FILTER}
 
         LIMIT ?, ?
     ]]
@@ -49,8 +52,11 @@ elseif Config.Framework == "qb" then
 
     searchPropertiesQuery = selectPropertyQuery .. [[
         WHERE
-            CONCAT(JSON_VALUE(u.charinfo, '$.firstname'), ' ', JSON_VALUE(u.charinfo, '$.lastname')) LIKE ?
-            OR p.propertyid LIKE ?
+            (
+                CONCAT(JSON_VALUE(u.charinfo, '$.firstname'), ' ', JSON_VALUE(u.charinfo, '$.lastname')) LIKE ?
+                OR p.propertyid LIKE ?
+            )
+            {WHERE_FILTER}
 
         LIMIT ?, ?
     ]]
@@ -92,13 +98,30 @@ end
 
 ---@param query string
 ---@param page? number
+---@param filter { tags?: number[] }
 ---@return table[]
-function SearchProperties(query, page)
-    query = "%" .. query .. "%"
+function SearchProperties(query, page, filter)
+
+    ---@type any[]
+    local params = { "%" .. query .. "%", "%" .. query .. "%" }
+    local where = ""
+    local searchQuery = searchPropertiesQuery
+
+    if filter.tags then
+        for i = 1, #filter.tags do
+            where = where .. " AND EXISTS (SELECT 1 FROM lbtablet_police_profile_tags ppt WHERE ppt.id = CONCAT('house:owner:', p.owner, ',id:', p.propertyid) AND ppt.tag_id = ?)"
+            params[#params+1] = filter.tags[i]
+        end
+    end
+
+    searchQuery = searchQuery:gsub("{WHERE_FILTER}", where)
+
+    params[#params+1] = (page or 0) * 10
+    params[#params+1] = 10
 
     local properties = MySQL.query.await(
-        searchPropertiesQuery,
-        { query, query, (page or 0) * 10, 10 }
+        searchQuery,
+        params
     )
 
     for i = 1, #properties do

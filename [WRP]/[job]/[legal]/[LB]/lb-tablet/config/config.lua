@@ -12,6 +12,7 @@ Config.OpenCommand = "tablet" -- the command to open the tablet. can be set to f
 Config.Logs = {}
 Config.Logs.Enabled = false
 Config.Logs.Service = "discord" -- fivemanage, discord or ox_lib. if discord, set your webhook in server/apiKeys.lua
+Config.Logs.Avatar = false -- attempt to get the player's avatar for discord logging?
 Config.Logs.Actions = {
     TakePhoto = true,
     Police = true,
@@ -45,6 +46,18 @@ Config.JailScript = "auto"
         * qbox: qbx_prison
         * rcore: rcore_prison
 ]]
+
+Config.Genders = "auto"
+-- Config.Genders = {
+--     {
+--         label = "Male",
+--         value = "m"
+--     },
+--     {
+--         label = "Female",
+--         value = "f"
+--     }
+-- }
 
 Config.Item = {}
 Config.Item.Require = true -- require a tablet item to use the tablet
@@ -282,6 +295,10 @@ Config.Locales = { -- If your desired language isn't here, you may contribute at
         locale = "ua",
         name = "Українська"
     },
+    {
+        locale = "cn",
+        name = "简体中文"
+    },
 }
 
 -- See https://docs.lbscripts.com/tablet/script-integration/custom-apps/
@@ -496,21 +513,23 @@ Config.Services.Companies = { -- the companies that are shown in the app
     },
 }
 
+
+
 --[[ POLICE APP OPTIONS ]] --
 Config.Police = {}
 
-Config.Police.DutyBlips = false -- show blips for police officers on duty?
+Config.Police.DutyBlips = true -- show blips for police officers on duty?
 
 Config.Police.Callsign = {}
-Config.Police.Callsign.AutoGenerate = false -- should a callsign be automatically generated when a police profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
-Config.Police.Callsign.Format = "A-000" --[[
+Config.Police.Callsign.AutoGenerate = true -- should a callsign be automatically generated when a police profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
+Config.Police.Callsign.Format = "11-1111" --[[
     Callsign format:
         * 1: number 0-9
         * A: uppercase letter A-Z
         * a: lowercase letter a-z
         * ^: escape character
 ]]
-Config.Police.Callsign.RequireTemplate = false -- Require users to follow the format of the callsign template?
+Config.Police.Callsign.RequireTemplate = true -- Require users to follow the format of the callsign template?
 Config.Police.Callsign.AllowChange = true
 
 Config.Police.Jail = {}
@@ -518,8 +537,42 @@ Config.Police.Jail.Refresh = false -- should jail_time be updated by the tablet 
 Config.Police.Jail.Interval = 60 -- how often (in seconds) to update the jail time
 Config.Police.Jail.CanUnjail = "auto" -- auto: true if supported jail script, otherwise false
 
-Config.Police.ShowIdentifier = false -- show identifier (citizenid) in user's profile?
-Config.Police.ShowFingerprint = false -- show fingerprint in user's profile?
+Config.Police.Profile = {}
+Config.Police.Profile.Fields = {
+    dob = true,
+    phoneNumber = true,
+    gender = true,
+    job = true,
+    identifier = false,
+    fingerprint = true,
+}
+
+-- Here you can add custom fields that will be shown in profiles in the police app.
+-- You can either edit the `Queries.Users.FetchProfile` query to return the data, or you can modify the `GetCustomFields` function
+Config.Police.Profile.CustomFields = {
+    -- {
+    --     label = "DNA",
+    --     value = "dna"
+    -- }
+}
+
+Config.Police.Vehicle = {}
+Config.Police.Vehicle.Fields = {
+    model = true,
+    plate = true,
+    color = true,
+    location = true,
+    owner = true,
+}
+
+-- Here you can add custom fields that will be shown in vehicles in the police app.
+-- You can modify the `GetCustomFields` function to return the data
+Config.Police.Vehicle.CustomFields = {
+    -- {
+    --     label = "Insurance",
+    --     value = "insurance"
+    -- }
+}
 
 Config.Police.AutoRegisterWeapons = {}
 Config.Police.AutoRegisterWeapons.Enabled = true -- automatically register weapons? this required a supported inventory (ox_inventory). Can be modified in server/custom/functions/registerWeapon.lua
@@ -1745,12 +1798,20 @@ Config.Ambulance.Header = {
     Subtitle = "Mobile Database Terminal"
 }
 
-Config.Ambulance.ShowIdentifier = false -- show identifier (citizenid) in user's profile?
-Config.Ambulance.ShowFingerprint = false -- show fingerprint in user's profile?
+Config.Ambulance.Profile = {}
+Config.Ambulance.Profile.Fields = {
+    dob = true,
+    phoneNumber = true,
+    gender = true,
+    height = true,
+    bloodType = true,
+    identifier = false,
+    fingerprint = false,
+}
 
 Config.Ambulance.Callsign = {}
-Config.Ambulance.Callsign.AutoGenerate = false -- should a callsign be automatically generated when a Ambulance profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
-Config.Ambulance.Callsign.Format = "11" --[[
+Config.Ambulance.Callsign.AutoGenerate = true -- should a callsign be automatically generated when a Ambulance profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
+Config.Ambulance.Callsign.Format = "11-1111" --[[
     Callsign format:
         * 1: number 0-9
         * A: uppercase letter A-Z
@@ -1990,6 +2051,12 @@ Config.KeyBinds = {  -- https://docs.fivem.net/docs/game-references/input-mapper
         description = "Toggle camera tip"
     }
 }
+
+-- You can customize the function in lb-phone/server/custom/functions/webrtc.lua
+-- You can set your api key in lb-phone/server/apiKeys.lua
+Config.DynamicWebRTC = {}
+Config.DynamicWebRTC.Enabled = false -- enable dynamic WebRTC? (this will allow you to generate new WebRTC credentials for each user)
+Config.DynamicWebRTC.Service = "cloudflare" -- supported by default: cloudflare
 
 -- ICE Servers for WebRTC (ig live, live video). If you don't know what you're doing, leave this as it is.
 -- see https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection

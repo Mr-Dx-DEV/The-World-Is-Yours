@@ -438,6 +438,7 @@
             "PROCEED": "Proceed",
             "YES": "Yes",
             "NO": "No",
+            "ALL": "All",
 
             "SEARCH": "Search",
             "SEARCH_FOR": "Search for {query} to get started",
@@ -475,8 +476,10 @@
 
             "DISPATCH": {
                 "TITLE": "Dispatch",
-                "TOGGLE_OFFICERS": "Toggle Officers",
-                "TOGGLE_ALARMS": "Toggle Alarms",
+                "SHOW_OFFICERS": "Show Officers",
+                "SHOW_EMPLOYEES": "Show Employees",
+                "SHOW_ALARMS": "Show Alarms",
+                "OPTIONS": "Options",
                 "OFFICERS": "Officers",
                 "ALARMS": "Alarms",
 
@@ -487,6 +490,12 @@
                 "DISMISS": "Dismiss",
                 "VIEW_IN_TABLET": "View in Tablet",
                 "SET_WAYPOINT": "Set Waypoint",
+                "LOS_SANTOS": "Los Santos",
+                "CAYO_PERICO": "Cayo Perico",
+                "OLD_NOTIFICATION": "{count} old notification",
+                "OLD_NOTIFICATIONS": "{count} old notifications",
+                "NEW_NOTIFICATION": "{count} new notification",
+                "NEW_NOTIFICATIONS": "{count} new notifications",
 
                 "PRIORITY": {
                     "HIGH": "High",
@@ -502,7 +511,9 @@
                     "DESCRIPTION": "Are you sure you want to remove the alarm? (This will remove the dispatch for all employees)",
                     "CANCEL": "Cancel",
                     "REMOVE": "Remove"
-                }
+                },
+                "REMOVE_FOR_YOURSELF": "Remove for yourself",
+                "REMOVE_FOR_EVERYONE": "Remove for everyone"
             },
 
             "PROFILES": {
@@ -558,7 +569,10 @@
                 "NO_WEAPONS": "No weapons",
                 "WARRANTS": "Warrants",
                 "NO_WARRANTS": "No Warrants",
-                "ACTIVE_WARRANTS": "Active Warrants"
+                "ACTIVE_WARRANTS": "Active Warrants",
+                "INVOLVED": "Involved",
+                "CHARGES": "Charges",
+                "NO_CHARGES": "No Charges"
             },
 
             "VEHICLES": {
@@ -691,6 +705,10 @@
                     "TITLE": "Remove Suspect",
                     "DESCRIPTION": "Are you sure you want to remove {name} from the report?"
                 },
+                "DELETE_REPORT": {
+                    "TITLE": "Delete Report",
+                    "DESCRIPTION": "Are you sure you want to delete this report?"
+                },
                 "ERROR": {
                     "TITLE": "Error",
                     "NO_TYPE": "You must select a report type",
@@ -735,10 +753,21 @@
                     "DESCRIPTION": "Are you sure you want to remove the criminal from the case?"
                 },
                 "ADD_CHARGE": "Add Charge",
-                "RECOMMENDED_FINE": "Recommended Fine ({currency})",
-                "RECOMMENDED_SENTENCE": "Recommended Sentence (in months)",
-                "FINE": "Fine ({currency})",
-                "SENTENCE": "Sentence (in months)",
+                "FINE": "Fine ({amount} recommended)",
+                "SENTENCE": "Sentence ({amount} months recommended)",
+                "SEND_FINE": {
+                    "TITLE": "Send Fine",
+                    "DESCRIPTION": "Do you want to send {fine} fine to {name}?"
+                },
+                "JAIL_PLAYER": {
+                    "TITLE": "Jail Player",
+                    "DESCRIPTION": "Do you want to send {name} to jail for {sentence} months?",
+                    "JAILED_DESCRIPTION": "Automatically jailed for {charges}"
+                },
+                "DELETE_CASE": {
+                    "TITLE": "Delete Case",
+                    "DESCRIPTION": "Are you sure you want to delete this case?"
+                },
 
                 "ERROR": {
                     "TITLE": "Error",
@@ -770,9 +799,16 @@
                 "NO_VEHICLE_SELECTED": "No Vehicle Selected",
                 "SELECT_PERSON": "Select Person",
                 "NO_PERSON_SELECTED": "No Person Selected",
+                "ACTIVE": "Active",
+                "INACTIVE": "Inactive",
+                "CLOSED": "Closed",
                 "REMOVE_REPORT": {
                     "TITLE": "Remove Report",
                     "DESCRIPTION": "Are you sure you want to remove the report from the warrant?"
+                },
+                "DELETE_WARRANT": {
+                    "TITLE": "Delete Warrant",
+                    "DESCRIPTION": "Are you sure you want to delete this warrant?"
                 },
                 "ERROR": {
                     "TITLE": "Error",
@@ -827,7 +863,11 @@
                     "DESCRIPTION": "Add a new category to the offences list",
                     "PLACEHOLDER": "Enter the category name"
                 },
-                "EDIT_CATEGORY": "Edit Category",
+                "EDIT_CATEGORY": {
+                    "TITLE": "Edit Category",
+                    "DESCRIPTION": "Edit the category details",
+                    "PLACEHOLDER": "Enter the new category name"
+                },
                 "DELETE_CATEGORY": {
                     "TITLE": "Delete Category",
                     "DESCRIPTION": "Are you sure you want to delete this category?"
@@ -1000,9 +1040,7 @@
                 "UPDATE_CASE_TITLE": "Updated a case",
                 "UPDATE_CASE_DESCRIPTION": "Updated the case with the title \"{title}\"",
                 "DELETE_CASE_TITLE": "Deleted a case",
-                "DELETE_CASE_DESCRIPTION": "Deleted a case with the id {id}",
-                "DELETE_WEAPON_TITLE": "Deleted a weapon",
-                "DELETE_WEAPON_DESCRIPTION": "Deleted the weapon with serial number {serial}"
+                "DELETE_CASE_DESCRIPTION": "Deleted a case with the id {id}"
             },
 
             "TAGS": {
@@ -1111,6 +1149,10 @@
                 "DISMISS": "Dismiss",
                 "VIEW_IN_TABLET": "View in Tablet",
                 "SET_WAYPOINT": "Set Waypoint",
+                "OLD_NOTIFICATION": "{count} old notification",
+                "OLD_NOTIFICATIONS": "{count} old notifications",
+                "NEW_NOTIFICATION": "{count} new notification",
+                "NEW_NOTIFICATIONS": "{count} new notifications",
 
                 "PRIORITY": {
                     "HIGH": "High",
@@ -1361,6 +1403,9 @@
                 "MISSING_FIELDS": "You're missing the following fields: {fields}",
                 "OK": "OK"
             }
+        },
+        "MAPS": {
+            "GO": "Go"
         }
     },
     "COMPONENTS": {
@@ -1452,6 +1497,10 @@
         "FONT_AND_COLOR": "Font & Color"
     },
     "MISC": {
+        "GENDERS": {
+            "MALE": "Male",
+            "FEMALE": "Female"
+        },
         "AIRPLANE_MODE_POPUP": {
             "TITLE": "Error",
             "DESCRIPTION": "You're trying to perform a action that requires internet access, disable airplane mode to continue.",

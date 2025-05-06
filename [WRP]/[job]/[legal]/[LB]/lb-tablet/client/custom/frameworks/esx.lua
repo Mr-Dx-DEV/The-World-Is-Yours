@@ -339,6 +339,10 @@ function GetWeaponsList()
         end
     end
 
+    table.sort(weaponList, function(a, b)
+        return a.label < b.label
+    end)
+
     return weaponList
 end
 

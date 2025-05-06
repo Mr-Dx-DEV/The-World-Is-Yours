@@ -1,17 +1,42 @@
+---@type { [string]: { [string]: boolean } }
+local busyActions = {}
+
 ---@param event string
 ---@param callback fun(data: any) : ...
 ---@param defaultReturn any
-function ReactCallback(event, callback, defaultReturn)
+---@param antiSpam? string[] | true
+---@param ignoreAntiSpam? string[]
+function ReactCallback(event, callback, defaultReturn, antiSpam, ignoreAntiSpam)
+    if antiSpam then
+        busyActions[event] = {}
+    end
+
     if defaultReturn == nil then
         defaultReturn = false
     end
 
     RegisterNUICallback(event, function(data, nuiCallback)
         local eventTitle = event
+        local isAntiSpam = false
+        local action
 
         if type(data) == "table" then
             if data.action then
-                eventTitle = event .. ":" .. data.action
+                action = data.action
+                eventTitle = event .. ":" .. action
+
+                if antiSpam and (antiSpam == true or table.contains(antiSpam, action)) and (not ignoreAntiSpam or not table.contains(ignoreAntiSpam, action)) then
+                    isAntiSpam = true
+
+                    if busyActions[event][action] then
+                        debugprint("Ignoring NUI callback", eventTitle, "because it is already busy")
+                        nuiCallback(defaultReturn)
+
+                        return
+                    else
+                        busyActions[event][action] = true
+                    end
+                end
             end
 
             if data.data then
@@ -22,7 +47,7 @@ function ReactCallback(event, callback, defaultReturn)
         end
 
         local startTime = GetGameTimer()
-        local result = callback(data)
+        local success, result = pcall(callback, data)
         local finishTime = GetGameTimer()
         local ms = finishTime - startTime
 
@@ -30,9 +55,19 @@ function ReactCallback(event, callback, defaultReturn)
             result = defaultReturn
         end
 
-        nuiCallback(result)
+        if success then
+            nuiCallback(result)
+            debugprint(("NUI callback ^5%s^7 took %ims"):format(eventTitle, ms))
+        else
+            local stackTrace = Citizen.InvokeNative(`FORMAT_STACK_TRACE` & 0xFFFFFFFF, nil, 0, Citizen.ResultAsString())
 
-        debugprint(("NUI callback ^5%s^7 took %ims"):format(eventTitle, ms))
+            print(("^1SCRIPT ERROR: NUI Callback '%s' failed: %s^7\n%s"):format(eventTitle, result or "", stackTrace or ""))
+            nuiCallback(defaultReturn)
+        end
+
+        if isAntiSpam and busyActions[event][action] then
+            busyActions[event][action] = nil
+        end
     end)
 end
 
