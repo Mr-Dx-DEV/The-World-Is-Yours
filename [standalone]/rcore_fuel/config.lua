@@ -329,6 +329,20 @@ Config.SpawnObject = {
         renderDistance = 100.0,
         isMission = false,
     },
+    {
+        model = "prop_gas_pump_1b",
+        pos = vector3(2791.84, 4791.45, 45.83),
+        heading = 112.93,
+        renderDistance = 100.0,
+        isMission = false,
+    },
+    {
+        model = "prop_gas_pump_1b",
+        pos = vector3(-3132.61, 1460.81, 19.63),
+        heading = 339.76,
+        renderDistance = 100.0,
+        isMission = false,
+    },
 }
 
 -- do not touch
