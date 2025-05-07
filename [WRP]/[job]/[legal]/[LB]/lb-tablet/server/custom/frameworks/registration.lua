@@ -226,7 +226,14 @@ end
 local licenses = {
     { type = "driver", label = "Driver's License" },
     { type = "weapon", label = "Weapon License" },
+
+    { type = "class3weaponlicense", label = "Class III weapons License" },
+    { type = "cdllicense", label = "CDL License" },
+    { type = "waterslicense", label = "Waters License" },
+    { type = "fishinglicense", label = "Fishing License" },
+    { type = "huntinglicense", label = "Hunting License" },
 }
+
 
 ---@param licenseType string
 ---@return string
