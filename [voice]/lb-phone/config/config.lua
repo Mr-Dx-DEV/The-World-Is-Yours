@@ -129,6 +129,138 @@ Config.Companies.Services = {
         -- end
     },
     {
+        job = "lspd",
+        name = "LSPD",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canCall = true,
+        canMessage = true,
+        bossRanks = {"boss", "lieutenant"},
+        location = {
+            name = "Mission Row",
+            coords = { x = 428.9, y = -984.5 }
+        }
+    },
+    {
+        job = "bcso",
+        name = "BCSO",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canCall = true,
+        canMessage = true,
+        bossRanks = {"boss", "lieutenant"},
+        location = {
+            name = "Sandy Shores Station",
+            coords = { x = 1853.0, y = 3687.5 }
+        }
+    },
+    {
+        job = "sahp",
+        name = "SAHP",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canCall = true,
+        canMessage = true,
+        bossRanks = {"boss", "lieutenant"},
+        location = {
+            name = "Paleto Bay HQ",
+            coords = { x = -448.4, y = 6012.7 }
+        }
+    },
+    {
+        job = "lsso",
+        name = "LSSO",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canCall = true,
+        canMessage = true,
+        bossRanks = {"boss", "lieutenant"},
+        location = {
+            name = "La Mesa Station",
+            coords = { x = 825.4, y = -1290.7 }
+        }
+    },
+    {
+        job = "safw",
+        name = "SAFW",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canCall = true,
+        canMessage = true,
+        bossRanks = {"boss", "lieutenant"},
+        location = {
+            name = "SAFW HQ",
+            coords = { x = -1600.0, y = -1000.0 }
+        }
+    },
+    {
+        job = "sadoc",
+        name = "SADOC",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canCall = true,
+        canMessage = true,
+        bossRanks = {"boss", "lieutenant"},
+        location = {
+            name = "Bolingbroke Penitentiary",
+            coords = { x = 1840.5, y = 2585.0 }
+        }
+    },
+    {
+        job = "usms",
+        name = "USMS",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canCall = true,
+        canMessage = true,
+        bossRanks = {"boss", "lieutenant"},
+        location = {
+            name = "U.S. Marshals HQ",
+            coords = { x = -75.0, y = -819.0 }
+        }
+    },
+    {
+        job = "fbi",
+        name = "FBI",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canCall = true,
+        canMessage = true,
+        bossRanks = {"boss", "lieutenant"},
+        location = {
+            name = "FIB Building",
+            coords = { x = 135.0, y = -749.0 }
+        }
+    },
+    {
+        job = "dhs",
+        name = "DHS",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canCall = true,
+        canMessage = true,
+        bossRanks = {"boss", "lieutenant"},
+        location = {
+            name = "DHS HQ",
+            coords = { x = -500.0, y = -300.0 }
+        }
+    },
+    {
+        job = "ss",
+        name = "Secret Service",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canCall = true,
+        canMessage = true,
+        bossRanks = {"boss", "lieutenant"},
+        location = {
+            name = "Secret Service Office",
+            coords = { x = -150.0, y = -600.0 }
+        }
+    },
+    {
+        job = "salsa",
+        name = "SALSA",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canCall = true,
+        canMessage = true,
+        bossRanks = {"boss", "lieutenant"},
+        location = {
+            name = "SALSA HQ",
+            coords = { x = -200.0, y = -1000.0 }
+        }
+    },
+    {
         job = "ambulance",
         name = "Ambulance",
         icon = "https://cdn-icons-png.flaticon.com/128/1032/1032989.png",
