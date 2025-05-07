@@ -354,6 +354,16 @@ Config.Services.Companies = { -- the companies that are shown in the app
         }
     },
     {
+        job = "doj",
+        name = "DOJ",
+        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+        canMessage = true,
+        location = {
+            name = "City Hall",
+            coords = { x = 408.9, y = -4.5 },
+        }
+    },
+    {
         job = "lspd",
         name = "LSPD",
         icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
@@ -642,6 +652,96 @@ Config.Police.Permissions = {
     --]]
 
     ["lspd"] = {
+        home = {
+            view = 0,
+        },
+        dispatch = {
+            view = 0,
+            delete = 3,
+        },
+        profile = {
+            edit = 3,
+            view = 0
+        },
+        vehicle = {
+            edit = 3,
+            view = 0
+        },
+        property = {
+            edit = 3,
+            view = 0,
+        },
+        weapon = {
+            create = 3,
+            delete = 3,
+            edit = 3,
+            view = 0,
+        },
+        report = {
+            create = 3,
+            edit = 3,
+            delete = 3,
+            view = 0
+        },
+        case = {
+            create = 3,
+            edit = 3,
+            delete = 3,
+            view = 0
+        },
+        warrant = {
+            create = 3,
+            edit = 3,
+            delete = 3,
+            view = 0
+        },
+        offence = {
+            create = 3,
+            edit = 3,
+            delete = 3,
+            view = 0
+        },
+        employee = {
+            view = 0,
+        },
+        chat = {
+            -- The creator is always able to edit, kick and invite
+            create = 3,
+            edit = 3,
+            kick = 3,
+            invite = 3,
+            view = 0
+        },
+        jail = {
+            create = 3,
+            edit = 3,
+            unjail = 3,
+            view = 0
+        },
+        logs = {
+            view = 3,
+        },
+
+        tag = {
+            create = 3,
+            delete = 3,
+        },
+        license = {
+            revoke = 3,
+            add = 3,
+            view = 0
+        },
+        bulletin = {
+            create = 3,
+            pin = 3,
+            delete = 3, -- you are always able to delete your own bulletins
+            view = 0
+        },
+        stash = {
+            view = 2,
+        }
+    },
+    ["doj"] = {
         home = {
             view = 0,
         },
