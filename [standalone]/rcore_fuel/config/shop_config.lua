@@ -24,6 +24,314 @@ Config.MaximumOwnedCompanyPerPlayer = 2
 
 -- you can view all AlignTypes/FuelType in const.lua
 Config.ShopList = {
+    ["sta"] = {
+        -- blip on minimap/full map position
+        enableBlip = false,
+        blipScale = 1.0,
+        blipPosition = vec3(-3131.713135, 1461.935669, 19.625238),
+        blipSprite = 361,
+        blipName = "Fuel pump",
+    
+        -- boss marker for the owner of the company
+        companyMenuMarkerPos = vec3(-3133.613525, 1463.667725, 20.625238),
+    
+         -- boss menu marker style
+        companyMenuMarkerStyle = {
+            size = vector3(1.0, 1.0, 1.0),
+            rotate = true,
+            faceCamera = false,
+            color = { r = 255, g = 255, b = 255, a = 100 },
+            type = 31,
+        },
+    
+        -- marker where player can buy the company
+        buyCompanyMarker = vec3(-3132.836670, 1466.232300, 20.625238),
+    
+        -- buy marker style
+        buyCompanyMarkerStyle = {
+            size = vector3(1.0, 1.0, 1.0),
+            rotate = true,
+            faceCamera = false,
+            color = { r = 0, g = 255, b = 0, a = 100 },
+            type = 29,
+        },
+    
+        -- Enable/Disable buying of the station?
+        EnableBuyingCompany = false,
+    
+        -- when player buy the company where should the camera be rendered at
+        buyCompanyCameraPosition = {
+            pos = vec3(-3130.736816, 1463.000000, 21.632240),
+            rot = vec3(-18.724081, -0.000000, 140.735199),
+        },
+    
+        -- Society info
+        EnableSociety = false,
+        SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
+    
+        Job = "jobName",
+        Data = { type = "private", },
+    
+        -- works only for ESX this option
+        ESX_BossOption = {
+            withdraw = true,
+            deposit = true,
+            wash = false,
+            employees = true,
+            grades = true,
+        },
+    
+        -- fuel pump position where player can fuel his car
+        pumpPosition =  {
+        [1] = {
+            align = AlignTypes.LEFT,
+            pos = vec3(-3132.610107, 1460.810059, 19.629999),
+            hash = 1694452750,
+            fuelTypeList = { FuelType.DIESEL,  },
+            fuelType = -1
+        }
+    },
+    
+        -- spawn info of the mission vehicle
+        tipTruckSpawnPosition = {
+            -- position of the spawn
+            pos = vec3(-3119.301025, 1456.124268, 20.255264),
+    
+            -- heading of the vehicle
+            heading = 57.935424804688,
+        },
+    
+        -- Tanker scaleform + blip mission
+        tankerScaleform = {
+            -- Mission blip on minimap where player have to drive after picking up phantom
+            missionBlipPosition = vec3(-3131.719727, 1466.217163, 20.625238),
+    
+            -- position of the scaleform
+            pos = vec3(-3134.888916, 1470.795410, 21.095560),
+    
+            -- rotation of the scaleform
+            heading = 61.999992370605,
+    
+            -- This is actually TV object hidden so we can display the nice 3D UI
+            model = 1340914825,
+        },
+    
+        -- this is the tap where player will attach the nozzle from phantom
+        tankerTapPosition = {
+            -- position of the tap
+            pos = vec3(-3133.685547, 1467.573120, 19.565559),
+    
+            -- heading of the tap
+            heading = 61.999992370605,
+    
+            -- render distance of the tap
+            renderDistance = 100.0,
+        },
+    
+        -- current capacity the tanker has
+        -- do not change
+        capacity = {
+        [FuelType.DIESEL] = 10000
+    },
+    
+        -- default prices of the fuel per liter
+        -- for example if you set here 50$ then one liter of fuel will cost 50$
+        gasPrices = {
+        [FuelType.DIESEL] = 20
+    },
+    
+        -- maximum capacity the tanker can have
+        maxCapacity = {
+        [FuelType.DIESEL] = 10000
+    },
+    
+        -- Hourly income is how much money the gas station will make every hour so there is passive income. So location far away from town where no player is have at least a chance to make something
+        -- by setting value to "0" there wont be any passive income.
+        hourlyIncome = 1000,
+    
+        -- do not change
+        -- you will have to change this value in game not in config this is just placeholder for default value
+        price = 520000,
+    
+        -- do not change
+        open = true,
+    
+        -- do not change, will also not work unless society is enabled
+        fuel_only_employee = false,
+    
+        -- do not change
+        for_sale = true,
+    
+        -- do not change
+        -- keep also default value "none"
+        owner_identifier = "none",
+    
+        -- spawner object for this specific fuel station
+        objectSpawner = {
+        [1] = {
+            pos = vec3(-3078.39, 1460.97, 20.77),
+            renderDistance = 100.0,
+            model = 'prop_storagetank_03b',
+            heading = 255.0
+        }
+    },
+    },
+            
+    ["pdFuel"] = {
+        -- blip on minimap/full map position
+        enableBlip = false,
+        blipScale = 1.0,
+        blipPosition = vec3(2790.902832, 4790.258301, 45.831261),
+        blipSprite = 361,
+        blipName = "Fuel pump",
+    
+        -- boss marker for the owner of the company
+        companyMenuMarkerPos = vec3(2793.450928, 4785.027344, 46.831261),
+    
+         -- boss menu marker style
+        companyMenuMarkerStyle = {
+            size = vector3(1.0, 1.0, 1.0),
+            rotate = true,
+            faceCamera = false,
+            color = { r = 255, g = 255, b = 255, a = 100 },
+            type = 31,
+        },
+    
+        -- marker where player can buy the company
+        buyCompanyMarker = vec3(2791.749512, 4787.289062, 46.831261),
+    
+        -- buy marker style
+        buyCompanyMarkerStyle = {
+            size = vector3(1.0, 1.0, 1.0),
+            rotate = true,
+            faceCamera = false,
+            color = { r = 0, g = 255, b = 0, a = 100 },
+            type = 29,
+        },
+    
+        -- Enable/Disable buying of the station?
+        EnableBuyingCompany = false,
+    
+        -- when player buy the company where should the camera be rendered at
+        buyCompanyCameraPosition = {
+            pos = vec3(2789.236328, 4790.488281, 48.057446),
+            rot = vec3(-26.636024, -0.000000, -84.360558),
+        },
+    
+        -- Society info
+        EnableSociety = false,
+        SocietyLabel = "My awesome society name",
+        --SocietyName = "society_jobname",
+    
+        Job = "jobName",
+        Data = { type = "private", },
+    
+        -- works only for ESX this option
+        ESX_BossOption = {
+            withdraw = true,
+            deposit = true,
+            wash = false,
+            employees = true,
+            grades = true,
+        },
+    
+        -- fuel pump position where player can fuel his car
+        pumpPosition =  {
+        [1] = {
+            align = AlignTypes.LEFT,
+            fuelTypeList = { FuelType.DIESEL,  },
+            fuelType = -1,
+            hash = 1694452750,
+            pos = vec3(2791.840088, 4791.450195, 45.830002)
+        }
+    },
+    
+        -- spawn info of the mission vehicle
+        tipTruckSpawnPosition = {
+            -- position of the spawn
+            pos = vec3(2814.507080, 4812.206055, 47.904881),
+    
+            -- heading of the vehicle
+            heading = 14.176449775696,
+        },
+    
+        -- Tanker scaleform + blip mission
+        tankerScaleform = {
+            -- Mission blip on minimap where player have to drive after picking up phantom
+            missionBlipPosition = vec3(2800.417236, 4813.260254, 46.407700),
+    
+            -- position of the scaleform
+            pos = vec3(2799.029785, 4817.263672, 46.388744),
+    
+            -- rotation of the scaleform
+            heading = 80.999992370605,
+    
+            -- This is actually TV object hidden so we can display the nice 3D UI
+            model = 1340914825,
+        },
+    
+        -- this is the tap where player will attach the nozzle from phantom
+        tankerTapPosition = {
+            -- position of the tap
+            pos = vec3(2806.447266, 4815.106934, 46.298405),
+    
+            -- heading of the tap
+            heading = 80.999992370605,
+    
+            -- render distance of the tap
+            renderDistance = 100.0,
+        },
+    
+        -- current capacity the tanker has
+        -- do not change
+        capacity = {
+        [FuelType.DIESEL] = 10000
+    },
+    
+        -- default prices of the fuel per liter
+        -- for example if you set here 50$ then one liter of fuel will cost 50$
+        gasPrices = {
+        [FuelType.DIESEL] = 50
+    },
+    
+        -- maximum capacity the tanker can have
+        maxCapacity = {
+        [FuelType.DIESEL] = 10000
+    },
+    
+        -- Hourly income is how much money the gas station will make every hour so there is passive income. So location far away from town where no player is have at least a chance to make something
+        -- by setting value to "0" there wont be any passive income.
+        hourlyIncome = 1000,
+    
+        -- do not change
+        -- you will have to change this value in game not in config this is just placeholder for default value
+        price = 520000,
+    
+        -- do not change
+        open = true,
+    
+        -- do not change, will also not work unless society is enabled
+        fuel_only_employee = false,
+    
+        -- do not change
+        for_sale = true,
+    
+        -- do not change
+        -- keep also default value "none"
+        owner_identifier = "none",
+    
+        -- spawner object for this specific fuel station
+        objectSpawner = {
+        [1] = {
+            model = 'prop_storagetank_03b',
+            renderDistance = 100.0,
+            heading = 0.0,
+            pos = vec3(2795.793945, 4817.079102, 45.074764)
+        }
+    },
+    },
+            
     ["Must be unique string key!"] = {
         -- blip on minimap/full map position
         enableBlip = false,
