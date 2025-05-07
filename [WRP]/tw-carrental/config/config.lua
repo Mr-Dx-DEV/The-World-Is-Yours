@@ -128,13 +128,11 @@ Config.Locations            = {
     },
     ['two'] = {
         ['vehicleLabel'] = 'Rent you',
-        ['testdrivecoords'] = vector4(1855.49, 2571.32, 45.49, 266.89),
-        ['coords'] = vector4(1852.37, 2582.12, 45.67, 270.72),
+        ['testdrivecoords'] = vector4(1876.74, 2584.83, 45.67, 86.66),
+        ['coords'] = vector4(1885.42, 2584.21, 45.67, 88.53),
         ['carspawn'] = {
-            vector4(1855.78, 2578.98, 45.49, 271.03),
-            vector4(1870.12, 2577.93, 45.49, 90.15),
-            vector4(1870.33, 2570.86, 45.49, 91.36),
-            vector4(1855.49, 2571.32, 45.49, 266.89),
+            vector4(1876.74, 2584.83, 45.67, 86.66),
+           
         },
         ['ped'] = 's_m_m_highsec_02',
         ['scenario'] = 'WORLD_HUMAN_STAND_MOBILE',
