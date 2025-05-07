@@ -84,6 +84,22 @@ RegisterNetEvent('qb-cityhall:server:requestId', function(item, hall)
         info.gender = Player.PlayerData.charinfo.gender
         info.nationality = Player.PlayerData.charinfo.nationality
         info.type = "Class One Weapon License"
+    elseif item == "class3weaponlicense" then
+        info.citizenid = Player.PlayerData.citizenid
+        info.firstname = Player.PlayerData.charinfo.firstname
+        info.lastname = Player.PlayerData.charinfo.lastname
+        info.birthdate = Player.PlayerData.charinfo.birthdate
+        info.gender = Player.PlayerData.charinfo.gender
+        info.nationality = Player.PlayerData.charinfo.nationality
+        info.type = "Class III weapons License"
+    elseif item == "cdllicense" then
+        info.citizenid = Player.PlayerData.citizenid
+        info.firstname = Player.PlayerData.charinfo.firstname
+        info.lastname = Player.PlayerData.charinfo.lastname
+        info.birthdate = Player.PlayerData.charinfo.birthdate
+        info.gender = Player.PlayerData.charinfo.gender
+        info.nationality = Player.PlayerData.charinfo.nationality
+        info.type = "CDL License"    
     elseif item == "huntinglicense" then
         info.citizenid = Player.PlayerData.citizenid
         info.firstname = Player.PlayerData.charinfo.firstname

@@ -202,6 +202,76 @@ cfg.cards = {
             }
         }
     },
+    ['cdllicense'] = {
+        command = false, -- or 'showidcard' -- Shows the card in the information of the person using the command
+        item = 'cdllicense', -- or false
+        useItemInfo = false,
+        cardBackground = 'card',
+        title = 'CDL License',
+        titleColor = 'red',
+        canShow = function(src)
+            local player = QBCore.Functions.GetPlayer(src);
+            if not player then return false end
+            return player.PlayerData.metadata["licences"]["weapon"]
+        end,
+        fields = {
+            [1] = {
+                title = cfg.locales[cfg.locale]['name'],
+                editableFunctionName = 'getName',
+            },
+            [2] = {
+                title = cfg.locales[cfg.locale]['surname'],
+                editableFunctionName = 'getSurname',
+            },
+            [3] = {
+                title = cfg.locales[cfg.locale]['dob'],
+                editableFunctionName = 'getDOB',
+            },
+            [4] = {
+                title = cfg.locales[cfg.locale]['gender'],
+                editableFunctionName = 'getGender',
+            },
+            [5] = {
+                title = cfg.locales[cfg.locale]['signature'],
+                editableFunctionName = 'getSignature'
+            }
+        }
+    },
+    ['class3weaponlicense'] = {
+        command = false, -- or 'showidcard' -- Shows the card in the information of the person using the command
+        item = 'class3weaponlicense', -- or false
+        useItemInfo = false,
+        cardBackground = 'card',
+        title = 'Class III weapons License',
+        titleColor = 'red',
+        canShow = function(src)
+            local player = QBCore.Functions.GetPlayer(src);
+            if not player then return false end
+            return player.PlayerData.metadata["licences"]["weapon"]
+        end,
+        fields = {
+            [1] = {
+                title = cfg.locales[cfg.locale]['name'],
+                editableFunctionName = 'getName',
+            },
+            [2] = {
+                title = cfg.locales[cfg.locale]['surname'],
+                editableFunctionName = 'getSurname',
+            },
+            [3] = {
+                title = cfg.locales[cfg.locale]['dob'],
+                editableFunctionName = 'getDOB',
+            },
+            [4] = {
+                title = cfg.locales[cfg.locale]['gender'],
+                editableFunctionName = 'getGender',
+            },
+            [5] = {
+                title = cfg.locales[cfg.locale]['signature'],
+                editableFunctionName = 'getSignature'
+            }
+        }
+    },
     ['airplane'] = {
         command = false, -- or 'showidcard' -- Shows the card in the information of the person using the command
         item = 'airplane', -- or false

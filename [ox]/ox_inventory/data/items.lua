@@ -14465,6 +14465,28 @@ description = 'Can store personal data'
 			image = "huntinglicense.png",
 		}
 	},
+	["class3weaponlicense"] = {
+		label = "Class III weapons License",
+		weight = 1,
+		stack = false,
+		allowArmed = true,
+		close = false,
+		description = ".",
+		client = {
+			image = "weapon_license.png",
+		}
+	},
+	["cdllicense"] = {
+		label = "CDL License",
+		weight = 1,
+		stack = false,
+		allowArmed = true,
+		close = false,
+		description = ".",
+		client = {
+			image = "weapon_license.png",
+		}
+	},
 
 	["skin_mtlion"] = {
 		label = "Mt Lion Hide",

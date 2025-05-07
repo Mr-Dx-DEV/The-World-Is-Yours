@@ -38,6 +38,16 @@ Config.Cityhalls = {
                 cost = 50,
                 metadata = "weapon"
             },
+            ["class3weaponlicense"] = {
+                label = "Class III weapons License",
+                cost = 50,
+                metadata = "weapon"
+            },
+            ["cdllicense"] = {
+                label = "CDL License",
+                cost = 50,
+                metadata = "weapon"
+            },
             ["waterslicense"] = {
                 label = "Waters License",
                 cost = 2500,
