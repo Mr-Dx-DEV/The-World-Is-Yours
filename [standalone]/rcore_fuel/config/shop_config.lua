@@ -132,19 +132,22 @@ Config.ShopList = {
         -- current capacity the tanker has
         -- do not change
         capacity = {
-        [FuelType.DIESEL] = 10000
-    },
-    
-        -- default prices of the fuel per liter
-        -- for example if you set here 50$ then one liter of fuel will cost 50$
-        gasPrices = {
-        [FuelType.DIESEL] = 20
-    },
-    
-        -- maximum capacity the tanker can have
-        maxCapacity = {
-        [FuelType.DIESEL] = 10000
-    },
+            [FuelType.NATURAL] = 10000,
+            [FuelType.DIESEL] = 10000
+        },
+        
+            -- default prices of the fuel per liter
+            -- for example if you set here 50$ then one liter of fuel will cost 50$
+            gasPrices = {
+            [FuelType.NATURAL] = 50,
+            [FuelType.DIESEL] = 50
+        },
+        
+            -- maximum capacity the tanker can have
+            maxCapacity = {
+            [FuelType.NATURAL] = 10000,
+            [FuelType.DIESEL] = 10000
+        },
     
         -- Hourly income is how much money the gas station will make every hour so there is passive income. So location far away from town where no player is have at least a chance to make something
         -- by setting value to "0" there wont be any passive income.
@@ -286,19 +289,22 @@ Config.ShopList = {
         -- current capacity the tanker has
         -- do not change
         capacity = {
-        [FuelType.DIESEL] = 10000
-    },
-    
-        -- default prices of the fuel per liter
-        -- for example if you set here 50$ then one liter of fuel will cost 50$
-        gasPrices = {
-        [FuelType.DIESEL] = 50
-    },
-    
-        -- maximum capacity the tanker can have
-        maxCapacity = {
-        [FuelType.DIESEL] = 10000
-    },
+            [FuelType.NATURAL] = 10000,
+            [FuelType.DIESEL] = 10000
+        },
+        
+            -- default prices of the fuel per liter
+            -- for example if you set here 50$ then one liter of fuel will cost 50$
+            gasPrices = {
+            [FuelType.NATURAL] = 50,
+            [FuelType.DIESEL] = 50
+        },
+        
+            -- maximum capacity the tanker can have
+            maxCapacity = {
+            [FuelType.NATURAL] = 10000,
+            [FuelType.DIESEL] = 10000
+        },
     
         -- Hourly income is how much money the gas station will make every hour so there is passive income. So location far away from town where no player is have at least a chance to make something
         -- by setting value to "0" there wont be any passive income.
@@ -332,7 +338,7 @@ Config.ShopList = {
     },
     },
             
-    ["Must be unique string key!"] = {
+    ["fuel3"] = {
         -- blip on minimap/full map position
         enableBlip = false,
         blipScale = 1.0,
