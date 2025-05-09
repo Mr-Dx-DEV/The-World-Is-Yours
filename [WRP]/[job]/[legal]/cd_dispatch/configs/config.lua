@@ -181,7 +181,7 @@ Config.PanicButton = {
     ENABLE = true, --Do you want to allow dispatch users to use the built-in panic button?
     command = 'panic', --The chat command.
     key = '', --The key press. This is not used by default. You can choose keys here - https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/.
-    job_table = {'police', 'ambulance', }, --A list of jobs who can use the panic button. (every job in this list will be notified if a panic button is pressed).
+    job_table = {'police', 'ambulance','lspd', 'bcso','sahp', 'lsso', 'safw', 'sadoc', 'usms', 'fbi', 'dhs', 'ss', 'salsa', }, --A list of jobs who can use the panic button. (every job in this list will be notified if a panic button is pressed).
     cooldown = 10, --(in seconds) This cooldown is to prevent a player spamming the panic button.
     play_sound_in_distance = true --Do you want the panic button sound to play to all nearby players?
 }
@@ -214,7 +214,7 @@ Config.Ping = {
 Config.PoliceAlerts = {
     ENABLE = true, --Do you want to use the built in police alerts?
     police_jobs = {'police', }, --The jobs who will be notified from these police alerts.
-    whitelisted_jobs = {'police', 'ambulance', }, --These jobs will NOT trigger these police alerts.
+    whitelisted_jobs = {'police', 'ambulance',}, --These jobs will NOT trigger these police alerts.
     cooldown = 30, --(in seconds) This cooldown is to prevent alerts from being spammed by the same player.
     add_bolos = true, --(requires cd_radar) Do you want to add a bolo for the vehicle that was used in the crime?
     require_witness_peds = {
@@ -263,7 +263,7 @@ Config.PoliceAlerts = {
 
     --[[SPEEDTRAP CONFIG]]--
     SpeedTrap = {
-        ENABLE = true, ----Do you want speeding vehicles to alert police?
+        ENABLE = false, ----Do you want speeding vehicles to alert police?
         check_owner_for_fine = true, --Do you want players to only be fined in vehicles they own? (if enabled, players in stolen cars will not be fined).
 
         Blip = {
@@ -280,15 +280,15 @@ Config.PoliceAlerts = {
             --distance: The distance a player must be from the 'coords^' to alert the speed trap. 
             --speed_limit: The minimum speed to alert the speed trap (in MPH). 
             --fine_amount: The amount the player will be fined (set to 0 to not fine a player).
-            [1] = {coords = vector3(1051.42, 331.11, 84.00), distance = 9, speed_limit = 150, fine_amount = 500 }, --LS Freeway.
-            [2] = {coords = vector3(544.43, -373.24, 33.14), distance = 9, speed_limit = 150, fine_amount = 5000 }, --Into Legion.
-            [3] = {coords = vector3(-2612.10, 2940.81, 16.67), distance = 15, speed_limit = 150, fine_amount = 1000 }, --Zancuda.
-            [4] = {coords = vector3(287.94, -517.44, 42.89), distance = 15, speed_limit = 100, fine_amount = 500 }, --Pillbox.
-            [5] = {coords = vector3(2792.73, 4407.68, 48.44), distance = 24, speed_limit = 150, fine_amount = 1000 }, --Sandy Freeway.
-            [6] = {coords = vector3(577.11, -1028.32, 37.07), distance = 15, speed_limit = 100, fine_amount = 1000 }, --Mission Row.
-            [7] = {coords = vector3(114.83, -797.89, 30.97), distance = 15, speed_limit = 100, fine_amount = 2000 }, --Legion Square.
-            [8] = {coords = vector3(74.33, -163.30, 54.67), distance = 15, speed_limit = 100, fine_amount = 4000 }, --Pink Cage.
-            [9] = {coords = vector3(28.19, -971.05, 28.96), distance = 15, speed_limit = 100, fine_amount = 1000 }, --PDM.
+        --    [1] = {coords = vector3(1051.42, 331.11, 84.00), distance = 9, speed_limit = 150, fine_amount = 500 }, --LS Freeway.
+         --   [2] = {coords = vector3(544.43, -373.24, 33.14), distance = 9, speed_limit = 150, fine_amount = 5000 }, --Into Legion.
+         --   [3] = {coords = vector3(-2612.10, 2940.81, 16.67), distance = 15, speed_limit = 150, fine_amount = 1000 }, --Zancuda.
+         --   [4] = {coords = vector3(287.94, -517.44, 42.89), distance = 15, speed_limit = 100, fine_amount = 500 }, --Pillbox.
+         --   [5] = {coords = vector3(2792.73, 4407.68, 48.44), distance = 24, speed_limit = 150, fine_amount = 1000 }, --Sandy Freeway.
+          --  [6] = {coords = vector3(577.11, -1028.32, 37.07), distance = 15, speed_limit = 100, fine_amount = 1000 }, --Mission Row.
+          --  [7] = {coords = vector3(114.83, -797.89, 30.97), distance = 15, speed_limit = 100, fine_amount = 2000 }, --Legion Square.
+          --  [8] = {coords = vector3(74.33, -163.30, 54.67), distance = 15, speed_limit = 100, fine_amount = 4000 }, --Pink Cage.
+          --  [9] = {coords = vector3(28.19, -971.05, 28.96), distance = 15, speed_limit = 100, fine_amount = 1000 }, --PDM.
             --[10] = {coords = vector3(0, 0, 0), distance = 15, speed_limit = 50, fine_amount = 1000 },
         }
     },
