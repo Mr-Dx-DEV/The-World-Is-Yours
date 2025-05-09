@@ -108,7 +108,7 @@ Config.RequireDutyDispatch = true -- require being on duty to see dispatch notif
 
 Config.DispatchEnabled = true -- enable dispatch?
 Config.DispatchVisible = true -- should the dispatch be visible? If false, you will only see dispatch in the MDT apps
-Config.DispatchPosition = "right" -- position of the dispatch notifications (left / right)
+Config.DispatchPosition = "left" -- position of the dispatch notifications (left / right)
 Config.DispatchCompatibility = true -- add dispatch exports & events from other dispatch/mdt scripts? (note: this may not work with all scripts, we strongly recommend using the lb-tablet exports directly)
 Config.AllowClientDispatch = true -- add client-sided exports for dispatch? (note: this allows modders to trigger dispatches, but may be needed for some scripts)
 Config.ShowDispatchWithoutItem = true -- show dispatch even if the player doesn't have a tablet item?
@@ -125,7 +125,7 @@ Config.DispatchBlip = {
     }
 }
 
-Config.RealTime = true -- if true, the time will use real life time depending on where the user lives, if false, the time will be the ingame time.
+Config.RealTime = false -- if true, the time will use real life time depending on where the user lives, if false, the time will be the ingame time.
 Config.CustomTime = false -- NOTE: set Config.RealTime to false if using this. you can set this to a function that returns custom time, as a table: { hour = 0-23, minute = 0-59 }
 
 Config.FrameColor = "#39334d" -- This is the color of the tablet frame. Default (#39334d) is purple.
@@ -531,7 +531,7 @@ Config.Police = {}
 Config.Police.DutyBlips = true -- show blips for police officers on duty?
 
 Config.Police.Callsign = {}
-Config.Police.Callsign.AutoGenerate = true -- should a callsign be automatically generated when a police profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
+Config.Police.Callsign.AutoGenerate = false -- should a callsign be automatically generated when a police profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
 Config.Police.Callsign.Format = "11-1111" --[[
     Callsign format:
         * 1: number 0-9
@@ -539,7 +539,7 @@ Config.Police.Callsign.Format = "11-1111" --[[
         * a: lowercase letter a-z
         * ^: escape character
 ]]
-Config.Police.Callsign.RequireTemplate = true -- Require users to follow the format of the callsign template?
+Config.Police.Callsign.RequireTemplate = false -- Require users to follow the format of the callsign template?
 Config.Police.Callsign.AllowChange = true
 
 Config.Police.Jail = {}
@@ -554,7 +554,7 @@ Config.Police.Profile.Fields = {
     gender = true,
     job = true,
     identifier = false,
-    fingerprint = true,
+    fingerprint = false,
 }
 
 -- Here you can add custom fields that will be shown in profiles in the police app.
@@ -1910,7 +1910,7 @@ Config.Ambulance.Profile.Fields = {
 }
 
 Config.Ambulance.Callsign = {}
-Config.Ambulance.Callsign.AutoGenerate = true -- should a callsign be automatically generated when a Ambulance profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
+Config.Ambulance.Callsign.AutoGenerate = false -- should a callsign be automatically generated when a Ambulance profile is created? please note that if you enable this after profiles have been created, the callsigns will not be updated
 Config.Ambulance.Callsign.Format = "11-1111" --[[
     Callsign format:
         * 1: number 0-9
@@ -1918,7 +1918,7 @@ Config.Ambulance.Callsign.Format = "11-1111" --[[
         * a: lowercase letter a-z
         * ^: escape character
 ]]
-Config.Ambulance.Callsign.RequireTemplate = true -- Require users to follow the format of the callsign template?
+Config.Ambulance.Callsign.RequireTemplate = false -- Require users to follow the format of the callsign template?
 Config.Ambulance.Callsign.AllowChange = true
 
 Config.Ambulance.Notifications = {
