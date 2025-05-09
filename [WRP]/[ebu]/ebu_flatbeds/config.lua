@@ -37,7 +37,7 @@ Config.NotiBlockedMessage           = "Unloading zone blocked"
 Config.NotiFBBlockedMessage         = "Flatbed blocked or occupied"
 
 --========Target System========--
-Config.UseTarget                    = true          --Enable Target system. Set up in utils.lua. Supports qb-target by default
+Config.UseTarget                    = false          --Enable Target system. Set up in utils.lua. Supports qb-target by default
 
 --If the below are disabled, it is recommened to set Config.ShowMarkers and Config.ShowHelp to false
 Config.DisableExtKeyControls        = false          --Disable key controls for bed control. Attach/Detach from inside vehicle separate
@@ -239,20 +239,20 @@ Config.Trucks = {
         MaxPos = 0.33
 
     },
-    [GetHashKey('f550rbc')] = {
+    [GetHashKey('kittysflatbed')] = {
         type = 'rolling',
-        staticBed = false,
-        boneName = 'misc_z',
+        boneName = 'misc_b',
         hasBedControl = true,
         MaxUnwindDistance  = 10.0,
-        BedControl = {vector3(-1.8,-4.75,-0.55),vector3(1.8,-4.75,-0.55)},
-        carPosition = vector3(0.0, -0.0, 0.0),
-        carHeightOffset = -0.2,
-        winchBone = 'attach_male',
+        BedControl = {vector3(-1.8,-5.5,-0.55),vector3(1.8,-5.5,-0.55)},
+        unloadPos = {vector3(-2.0,-2.0,-0.55)},
+        carPosition = vector3(0.0, 0.4, -0.1),
+        carHeightOffset = -0.1,
+        winchBone = 'misc_a',
         winchDistCheck = 5.0, -- How far from winchOffset to check for a vehicle
         winchOffset = 8.0, --How far backwards from the winch bone to check from
-        MinPos = 0.00,
-        MaxPos = 0.33
+        MinPos = 0.028,
+        MaxPos = 0.26
     },
     [GetHashKey('20ramrbc')] = {
         type = 'rolling',
@@ -268,8 +268,7 @@ Config.Trucks = {
         winchOffset = 8.0, --How far backwards from the winch bone to check from
         MinPos = 0.00,
         MaxPos = 0.33
-
-    },
+},
 
     --https://www.gta5-mods.com/vehicles/freightliner-m2-crew-cab-flatbed-add-on-script-beta [[VEHICLE ONLY]]
     [GetHashKey('flatbedm2')] = {
