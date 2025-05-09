@@ -866,7 +866,7 @@ local Vehicles = {
 { model = 'Ambulance_Dodge_RAM',       name = 'dodge ram ambulance',    brand = 'Generic',    price = 30000, category = 'emergency',         type = 'automobile', shop = 'emergency' },
 { model = 'ambulance1',                name = 'ambulance 1',            brand = 'Generic',    price = 30000, category = 'emergency',         type = 'automobile', shop = 'emergency' },
 { model = 'wheelchair',                name = 'wheelchair',             brand = 'Generic',    price = 30000, category = 'emergency',     type = 'automobile', shop = 'emergency' },
-{ model = 'lpchopper2',                name = 'lp chopper 2',           brand = 'Generic',    price = 30000, category = 'emergency',   type = 'heli',       shop = 'emergency' },
+{ model = 'lpchopper2',                name = 'lp chopper 2',           brand = 'Generic',    price = 30000, category = 'oneoften',   type = 'automobile',       shop = 'WIY' },
 { model = 'newsvan',                   name = 'news van',               brand = 'Generic',    price = 30000, category = 'emergency',     type = 'automobile', shop = 'emergency' },
 { model = 'hexerz2',                   name = 'hexerz2',                brand = 'Generic',    price = 30000, category = 'emergency',   type = 'automobile', shop = 'emergency' },
 
@@ -1111,6 +1111,7 @@ local Vehicles = {
 { model = 'van_club77',        name = 'Van Club 77',         brand = 'Generic',         price = 1,   category = 'business',     type = 'automobile', shop = 'WIY' },
 { model = 'van_galaxy',        name = 'Van Galaxy',          brand = 'Generic',         price = 1,   category = 'business',     type = 'automobile', shop = 'WIY' },
 { model = 'ckdrivingschool',   name = 'CK Driving School',   brand = 'Generic',         price = 1,   category = 'business',     type = 'automobile', shop = 'WIY' },
+{ model = 'kittysflatbed',   name = 'Kittys Flat Bed',   brand = 'Generic',         price = 1,   category = 'business',     type = 'automobile', shop = 'WIY' },
 
 
 { model = '2ncsbmwm8',         name = '2NCS BMW M8',         brand = 'BMW',             price = 1000000,   category = 'dealership',   type = 'automobile', shop = 'WIY' },

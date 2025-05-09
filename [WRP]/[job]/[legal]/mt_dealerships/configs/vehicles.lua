@@ -871,10 +871,9 @@ local vehicles = { -- Vehicle list, credits to qb-core!
 { model = 'amrvan',                    name = 'amr van',                brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
 { model = 'Ambulance_Dodge_RAM',       name = 'dodge ram ambulance',    brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
 { model = 'ambulance1',                name = 'ambulance 1',            brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
-{ model = 'wheelchair',                name = 'wheelchair',             brand = 'Generic',    price = 30000, category = 'emergency',      shop = 'emergency' },
-{ model = 'lpchopper2',                name = 'lp chopper 2',           brand = 'Generic',    price = 30000, category = 'emergency',   shop = 'emergency' },
-{ model = 'newsvan',                   name = 'news van',               brand = 'Generic',    price = 30000, category = 'emergency',      shop = 'emergency' },
-{ model = 'hexerz2',                   name = 'hexerz2',                brand = 'Generic',    price = 30000, category = 'emergency',    shop = 'emergency' },
+{ model = 'wheelchair',                name = 'wheelchair',             brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'newsvan',                   name = 'news van',               brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
+{ model = 'hexerz2',                   name = 'hexerz2',                brand = 'Generic',    price = 30000, category = 'emergency',          shop = 'emergency' },
 
 
     
@@ -984,8 +983,7 @@ local vehicles = { -- Vehicle list, credits to qb-core!
 { model = 'TTSTO',            name = 'TT STO',               brand = 'Audi',        price = 1,   category = 'oneofone',        shop = { 'wiy' } },
 { model = 'venatus',          name = 'Venatus',              brand = 'Mansory',     price = 1,   category = 'oneofone',        shop = { 'wiy' } },
 { model = 'wmfenyr',          name = 'WM Fenyr',             brand = 'W Motors',    price = 1,   category = 'oneofone',        shop = { 'wiy' } },
-
-
+{ model = 'lpchopper2',       name = 'lp chopper 2',         brand = 'Generic',     price = 1,   category = 'oneoften',        shop = { 'wiy' } },
 
 
 { model = '18performante',         name = '18 Performante',           brand = 'Lamborghini',  price = 1,   category = 'oneoffive',        shop = { 'wiy' } },
@@ -1118,7 +1116,7 @@ local vehicles = { -- Vehicle list, credits to qb-core!
 { model = 'van_club77',        name = 'Van Club 77',         brand = 'Generic',         price = 1,   category = 'business',     shop = { 'wiy' } },
 { model = 'van_galaxy',        name = 'Van Galaxy',          brand = 'Generic',         price = 1,   category = 'business',     shop = { 'wiy' } },
 { model = 'ckdrivingschool',   name = 'CK Driving School',   brand = 'Generic',         price = 1,   category = 'business',     shop = { 'wiy' } },
-
+{ model = 'kittysflatbed',     name = 'Kittys Flat Bed',     brand = 'Generic',         price = 1,   category = 'business',     shop = { 'wiy' } },
 
 { model = '2ncsbmwm8',         name = '2NCS BMW M8',         brand = 'BMW',             price = 1000000,   category = 'dealership',   shop = { 'wiy' } },
 { model = '6x6',               name = '6x6',                brand = 'Mercedes',        price = 1000000,   category = 'dealership',   shop = { 'wiy' } },
