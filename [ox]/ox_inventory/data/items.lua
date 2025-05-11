@@ -4978,26 +4978,21 @@ description = 'Can store personal data'
 		label = 'Radio',
 		weight = 1000,
 		allowArmed = true,
-		consume = 0,
-		client = {
-			event = 'mm_radio:client:use'
-		}
+		consume = 0
+		
 	},
 	
 	['jammer'] = {
 		label = 'Radio Jammer',
 		weight = 10000,
-		allowArmed = true,
-		client = {
-			event = 'mm_radio:client:usejammer'
-		}
+		allowArmed = true
+		
 	},
 	
 	['radiocell'] = {
 		label = 'AAA Cells',
 		weight = 1000,
 		stack = true,
-		allowArmed = true,
 		allowArmed = true,
 		client = {
 			event = 'mm_radio:client:recharge'
