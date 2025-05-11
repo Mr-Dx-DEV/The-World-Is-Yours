@@ -4977,17 +4977,12 @@ description = 'Can store personal data'
 	['radio'] = {
 		label = 'Radio',
 		weight = 1000,
-		allowArmed = true,
-		consume = 0
-		
+		degrade = 43200,
+		decay = true,
+		stack = false,
+		allowArmed = true
 	},
 	
-	['jammer'] = {
-		label = 'Radio Jammer',
-		weight = 10000,
-		allowArmed = true
-		
-	},
 	
 	['radiocell'] = {
 		label = 'AAA Cells',
