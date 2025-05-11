@@ -88,7 +88,7 @@ Config.ShopList = {
             align = AlignTypes.LEFT,
             pos = vec3(-3132.610107, 1460.810059, 19.629999),
             hash = 1694452750,
-            fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, },
+            fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, FuelType.AVIATION, },
             fuelType = -1
         }
     },
@@ -243,7 +243,7 @@ Config.ShopList = {
         pumpPosition =  {
         [1] = {
             align = AlignTypes.LEFT,
-            fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, },
+            fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, FuelType.AVIATION, },
             fuelType = -1,
             hash = 1694452750,
             pos = vec3(2791.840088, 4791.450195, 45.830002)
@@ -403,7 +403,7 @@ Config.ShopList = {
             pos = vec3(-3089.047607, 1433.305664, 19.782055),
             fuelType = -1,
             hash = 1339433404,
-            fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL,  }
+            fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, FuelType.AVIATION, }
         }
     },
     
