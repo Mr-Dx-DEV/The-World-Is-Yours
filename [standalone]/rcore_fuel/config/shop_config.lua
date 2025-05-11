@@ -88,7 +88,7 @@ Config.ShopList = {
             align = AlignTypes.LEFT,
             pos = vec3(-3132.610107, 1460.810059, 19.629999),
             hash = 1694452750,
-            fuelTypeList = { FuelType.DIESEL,  },
+            fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, },
             fuelType = -1
         }
     },
@@ -243,7 +243,7 @@ Config.ShopList = {
         pumpPosition =  {
         [1] = {
             align = AlignTypes.LEFT,
-            fuelTypeList = { FuelType.DIESEL,  },
+            fuelTypeList = { FuelType.NATURAL, FuelType.DIESEL, },
             fuelType = -1,
             hash = 1694452750,
             pos = vec3(2791.840088, 4791.450195, 45.830002)
