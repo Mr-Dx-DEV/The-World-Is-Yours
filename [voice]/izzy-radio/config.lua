@@ -15,19 +15,56 @@ Config.jobChannels = { -- channels where only designated jobs can participate
             "2",
             "3",
             "4",
-            "5"
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
         },
         jobs = {
+            "lspd",
+            "bcso",
+            "sahp",
+            "lsso",
+            "safw",
+            "sadoc",
+            "usms",
+            "fbi",
+            "dhs",
+            "ss",
             "police",
-            "bcso"
+            "salsa"
         }
+
     },
     [2] = {
         frequency = {
-            "2.0"
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
         },
         jobs = {
-            "ambulance"
+            "ambulance",
+            "lspd",
+            "bcso",
+            "sahp",
+            "lsso",
+            "safw",
+            "sadoc",
+            "usms",
+            "fbi",
+            "dhs",
+            "ss",
+            "police",
+            "salsa"
         }
     }
 }
