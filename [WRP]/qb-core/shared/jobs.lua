@@ -680,7 +680,7 @@ QBShared.Jobs = {
                 isboss = true,
             },
             ['6'] = {
-                name = 'Judge',
+                name = 'President Judge',
                 payment = 3500,
                 isboss = true,
             },
@@ -810,7 +810,7 @@ QBShared.Jobs = {
                 payment = 75,
             },
             ["4"] = {
-                name = "Chief",
+                name = "Chief of Staff",
                 payment = 150,
                 isboss = true,
             },
@@ -1515,7 +1515,7 @@ QBShared.Jobs = {
         offDutyPay = false,
         grades = {
             ["2"] = {
-                name = "Senior",
+                name = "Senior Agent",
                 payment = 1800,
             },
             ["1"] = {
@@ -1533,7 +1533,7 @@ QBShared.Jobs = {
                 isboss = true,
             },
             ["0"] = {
-                name = "Canadet",
+                name = "Recruit",
                 payment = 1000,
             },
         }

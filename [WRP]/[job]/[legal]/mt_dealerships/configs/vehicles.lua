@@ -1297,6 +1297,7 @@ local vehicles = { -- Vehicle list, credits to qb-core!
 
 
 { model = 'Urus_Stretch_6',   name = 'Urus Stretch 6',   brand = 'Lamborghini',   price = 1,   category = 'adminonly',   shop = { 'wiy' } },
+{ model = 'nathan22hc',   name = 'Demons1of1',   brand = 'Chevy',   price = 1,   category = 'adminonly',   type = 'automobile', shop = { 'wiy' } },
 
 
 
