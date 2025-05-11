@@ -4,8 +4,8 @@ Config = {}
 Config.UseESX = false
 
 -- What should the price of jerry cans be?
-Config.JerryCanCost = 100
-Config.RefillCost = 50 -- If it is missing half of it capacity, this amount will be divided in half, and so on.
+Config.JerryCanCost = 50
+Config.RefillCost = 15 -- If it is missing half of it capacity, this amount will be divided in half, and so on.
 
 -- Fuel decor - No need to change this, just leave it.
 Config.FuelDecor = "_FUEL_LEVEL"
@@ -14,30 +14,31 @@ Config.FuelDecor = "_FUEL_LEVEL"
 Config.DisableKeys = {0, 22, 23, 24, 29, 30, 31, 37, 44, 56, 82, 140, 166, 167, 168, 170, 288, 289, 311, 323}
 
 -- Want to use the HUD? Turn this to true.
-Config.EnableHUD = true
+Config.EnableHUD = false
 
 -- Configure blips here. Turn both to false to disable blips all together.
-Config.ShowNearestGasStationOnly = true
-Config.ShowAllGasStations = false
+Config.ShowNearestGasStationOnly = false
+Config.ShowAllGasStations = true
 
 -- Configure the strings as you wish here.
 Config.Strings = {
-	ExitVehicle = "Exit the vehicle to refuel",
-	EToRefuel = "Press ~g~E ~w~to refuel vehicle",
-	JerryCanEmpty = "Jerry can is empty",
-	FullTank = "Tank is full",
-	PurchaseJerryCan = "Press ~g~E ~w~to purchase a jerry can for ~g~$" .. Config.JerryCanCost,
-	CancelFuelingPump = "Press ~g~E ~w~to cancel the fueling",
-	CancelFuelingJerryCan = "Press ~g~E ~w~to cancel the fueling",
-	NotEnoughCash = "Not enough cash",
-	RefillJerryCan = "Press ~g~E ~w~ to refill the jerry can for ",
-	NotEnoughCashJerryCan = "Not enough cash to refill jerry can",
-	JerryCanFull = "Jerry can is full"
+	ExitVehicle = "You must be outside the vehicle to fill up with gas",
+	EToRefuel = "[~g~E~w~] Fill Gas ",
+	JerryCanEmpty = "Bin Empty",
+	FullTank = "The vehicle's tank is full",
+	PurchaseJerryCan = " ~g~E ~w~ Press and buy bin. Price : ~g~$" .. Config.JerryCanCost,
+	CancelFuelingPump = "[~r~E~w~] Stop stuffing",
+	CancelFuelingJerryCan = " ~g~E ~w~ Cancel Fill",
+	NotEnoughCash = "You don't have Enough Money",
+	RefillJerryCan = " ~g~E ~w~ Fill the can",
+	NotEnoughCashJerryCan = "You don't have Enough Money",
+	JerryCanFull = "Bin Full..",
+	TotalCost = " Cost",
 }
 
 if not Config.UseESX then
-	Config.Strings.PurchaseJerryCan = "Press ~g~E ~w~to grab a jerry can"
-	Config.Strings.RefillJerryCan = "Press ~g~E ~w~ to refill the jerry can"
+	Config.Strings.PurchaseJerryCan = " ~g~E ~w~ Press and buy bin"
+	Config.Strings.RefillJerryCan = " ~g~E ~w~ Fill bin"
 end
 
 Config.PumpModels = {
@@ -54,6 +55,68 @@ Config.PumpModels = {
 Config.Blacklist = {
 	--"Adder",
 	--276773164
+	-- Boats
+	1033245328,
+	276773164,
+	509498602,
+	867467158,
+	861409633,
+	-1043459709,
+	-1030275036,
+	-616331036,
+	-311022263,
+	231083307,
+	437538602,
+	400514754,
+	771711535,
+	-1066334226,
+	-282946103,
+	1070967343,
+	908897389,
+	290013743,
+	1448677353,
+	-2100640717,
+
+	-- Helicopters
+	837858166,
+	788747387,
+	745926877,
+	-50547061,
+	1621617168,
+	1394036463,
+	2025593404,
+	744705981,
+	1949211328,
+	-1660661558,
+	-82626025,
+	1044954915,
+	710198397,
+	-1671539132,
+	-339587598,
+	1075432268,
+	-1600252419,
+	1543134283,
+	-1845487887,
+	"polas350",
+	"emsaw139",
+
+	-- Wheelchair
+	1304664290,
+
+	-- Electric vehicles
+	1560980623,
+	-1130810103,
+	1682114128,
+	544021352,
+	-1622444098,
+	989294410,
+	"tezeract",
+	"cyclone",
+	"neon",
+	"raiden",
+	"khamelion",
+	"surge",
+	"npwheelchair"
 }
 
 -- Do you want the HUD removed from showing in blacklisted vehicles?
@@ -87,14 +150,14 @@ Config.Classes = {
 
 -- The left part is at percentage RPM, and the right is how much fuel (divided by 10) you want to remove from the tank every second
 Config.FuelUsage = {
-	[1.0] = 1.4,
-	[0.9] = 1.2,
-	[0.8] = 1.0,
-	[0.7] = 0.9,
-	[0.6] = 0.8,
-	[0.5] = 0.7,
-	[0.4] = 0.5,
-	[0.3] = 0.4,
+	[1.0] = 0.6,
+	[0.9] = 0.5,
+	[0.8] = 0.4,
+	[0.7] = 0.45,
+	[0.6] = 0.40,
+	[0.5] = 0.35,
+	[0.4] = 0.3,
+	[0.3] = 0.25,
 	[0.2] = 0.2,
 	[0.1] = 0.1,
 	[0.0] = 0.0,
