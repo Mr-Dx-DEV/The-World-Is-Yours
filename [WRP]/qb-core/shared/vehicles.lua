@@ -1294,6 +1294,7 @@ local Vehicles = {
 
 { model = 'Urus_Stretch_6',   name = 'Urus Stretch 6',   brand = 'Lamborghini',   price = 1,   category = 'adminonly',   type = 'automobile', shop = 'WIY' },
 { model = 'nathan22hc',       name = 'Demons1of1',   brand = 'Chevy',   price = 0,   category = 'adminonly',   type = 'automobile', shop = 'WIY' },
+{ model = 'hellspawn',            name = 'Kittys 1of 1Bike',            brand = 'Custom',        price = 1,   category = 'adminonly',   shop = { 'wiy' } },
 
 
 
