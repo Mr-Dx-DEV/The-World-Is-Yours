@@ -154,9 +154,11 @@ Config = {
 		},
 		["Trade"] = {
 			{ amount = 1, itemGive = 1, Min = 1, Max = 1, },
-			{ amount = 10, itemGive = 1, Min = 2, Max = 5, },
-			{ amount = 100, itemGive = 6, Min = 5, Max = 14, },
-			{ amount = 1000, itemGive = 8, Min = 10, Max = 28, },
+			{ amount = 10, itemGive = 6, Min = 2, Max = 5, },
+			{ amount = 50, itemGive = 8, Min = 8, Max = 15, },
+			{ amount = 100, itemGive = 10, Min = 15, Max = 20, },
+			{ amount = 500, itemGive = 10, Min = 15, Max = 20, },
+			{ amount = 1000, itemGive = 10, Min = 20, Max = 20, },
 		},
 	}
 }
