@@ -65,7 +65,7 @@ Config.SkinChangerType = SkinChangerType.AUTOMATIC
 -- 4 = OX Target
 -- 5 = sleepless
 -- 6 = is interaction
-Config.TargetZoneType = 0
+Config.TargetZoneType = 3
 
 -- key for ALT? ( for target resources )
 Config.KeyForTargetSystem = 19
