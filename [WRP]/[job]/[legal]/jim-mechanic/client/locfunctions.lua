@@ -151,7 +151,7 @@ function makeLocs()
 					for l, b in pairs(loc.stash) do local name = "MechSafe: "..k..l
 						local options = {
 							{ action = function()
-								openStash({ job = loc.job, stash = repairStashName, stashOptions = { slots = 100, maxweight = 40000000 }} ) end,
+								openStash({ job = loc.job, stash = repairStashName, stashOptions = { slots = 200, maxweight = 40000000 }} ) end,
 								icon = "fas fa-cogs",
 								label = Loc[Config.Lan]["repair"].browse,
 								job = loc.job
