@@ -4,7 +4,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local KeysList = {}
 local isTakingKeys = false
-local isCarjacking = false
+local isCarjacking = true
 local canCarjack = true
 local AlertSend = false
 local lastPickedVehicle = nil
@@ -259,7 +259,7 @@ RegisterNetEvent('QBCore:Client:VehicleInfo', function(data)
 end)
 
 RegisterNetEvent('qb-weapons:client:DrawWeapon', function()
-    Wait(2000)
+    Wait(1000)
     robKeyLoop()
 end)
 
