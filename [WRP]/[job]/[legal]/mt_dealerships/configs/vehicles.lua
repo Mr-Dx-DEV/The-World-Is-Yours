@@ -1103,6 +1103,7 @@ local vehicles = { -- Vehicle list, credits to qb-core!
 { model = 'RoyalCustomKawasakiSH2',name = 'Royal Custom Kawasaki SH2',brand = 'Kawasaki',     price = 1,   category = 'oneoftenbikes',   shop = { 'wiy' } },
 { model = 'yzfr7',                 name = 'YZF R7',                  brand = 'Yamaha',        price = 1,   category = 'oneoftenbikes',   shop = { 'wiy' } },
 { model = 'lpchopper2',            name = 'LP Chopper 2',            brand = 'Custom',        price = 1,   category = 'oneoftenbikes',   shop = { 'wiy' } },
+{ model = 'hellspawn',            name = 'Kittys 1of 1Bike',            brand = 'Custom',        price = 1,   category = 'adminonly',   shop = { 'wiy' } },
 
 
 { model = 'f450c',             name = 'F450 C',              brand = 'Ford',            price = 1,   category = 'business',     shop = { 'wiy' } },
