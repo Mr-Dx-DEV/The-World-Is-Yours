@@ -309,7 +309,7 @@ Config.CCTVCameras = { -- CCTV Cameras
 
 Config.RadarPosts = {           -- Radar posts for speed detection
 
-    enabled = true,             -- Enable radar posts (Shows option in job menu for approved jobs)?
+    enabled = false,             -- Enable radar posts (Shows option in job menu for approved jobs)?
     saveToDatabase = true,      -- Save radar data to database? (If false, data will be stored in server memory/reset on server restarts)
 
     disableCameraFlash = false, -- Disable camera flash effect when player is caught speeding?

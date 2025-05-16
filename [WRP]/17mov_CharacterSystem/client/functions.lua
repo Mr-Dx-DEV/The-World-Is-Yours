@@ -170,7 +170,7 @@ if Skin.EnableRefreshSkinCommand then
     local isCommandBlocked = false
     local lastCommandTime = 0
     local commandCooldown = 5000
-    RegisterCommand("refreshSkin", function()
+    RegisterCommand("refreshskin", function()
         local currentTime = GetGameTimer()
         if isCommandBlocked or currentTime - lastCommandTime < commandCooldown then
             return Notify(_L("Skin.RefreshSkinCommand.Unavalible"))

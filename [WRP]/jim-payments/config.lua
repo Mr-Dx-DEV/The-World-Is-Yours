@@ -23,10 +23,10 @@ Config = {
 
 	ApGov = true, -- Toggle support for AP-Goverment Tax
 
-	List = true, -- "true" to use nearby player list feature in the cash registers, "false" for manual id entry
+	List = false, -- "true" to use nearby player list feature in the cash registers, "false" for manual id entry
 	PaymentRadius = 15, -- This is how far the playerlist will check for nearby players (based on the person charging)
 
-	Peds = true, -- "true" to enable peds spawning in banks
+	Peds = false, -- "true" to enable peds spawning in banks
 	PedPool = {
 		`IG_Bankman`,
 		`U_M_M_BankMan`,
@@ -58,7 +58,7 @@ Config = {
 	CashInLocation = vector4(252.23, 223.11, 106.29, 159.2), -- Default Third Window along in Pacific Bank
 
 	TicketSystem = true, -- Enable this if you want to use the ticket system false
-	TicketSystemAll = true, -- Enable this to give tickets to all workers clocked in
+	TicketSystemAll = false, -- Enable this to give tickets to all workers clocked in
 
 	Commission = true, -- Set this to true to enable Commissions and give the person charging a percentage of the total
 	CommissionAll = false, -- Set this to true to give commission to workers clocked in
@@ -70,37 +70,45 @@ Config = {
 	-- PayPerTicket should never be higher than MinAmountforTicket
 	-- Commission is a percentage eg "0.10" becomes 10%
 	Jobs = {
-		-- Jim Businesses | https://jimathy666.tebex.io/
-		['bakery'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['beanmachine'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+		['upnatom'] = { MinAmountforTicket = 50, PayPerTicket = 50 , Commission = 0.30, },
 		['burgershot'] = { MinAmountforTicket = 50, PayPerTicket = 50 , Commission = 0.10, },
-		['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['henhouse'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['pizzathis'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['popsdiner'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['vanilla'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['upnatom'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['hornys'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+		['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.30, },
+		['pizzeria'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.30, },
+		['vanilla'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['lustresort'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+		['countymechanic'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.15, },
+		['urbanmechanic'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+		['bahamas'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.25, },
+		['mechanicrsun'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['mechanicautos'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.25, },
+		['mechanicredline'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.30, },
+		['bennys'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.25, },
+		['galaxy'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+		['whitewidow'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['skyclub'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+		['ppp'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.30, },
+		['blazeit'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.30, },
+		['hornys'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.25, },
+		['coffeecontainer'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['koi'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['doj'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.15, },
+		['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.25, },
+		['mechanicnos'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.40, },
+		['mechanical'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.40, },
+		['mechanicamotors'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.40, },
+		['beanmachine'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['lsbeanmachine'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['mirror'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['rexdiner'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['kawaiicafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['pkart'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['lplucker'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.25, },
+		['costalclove'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['customcaffe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.25, },
+		['vapeshop'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.30, },
+		['collectors'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
+		['radioshop'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.20, },
 
-		-- JixelTay Businesses | https://jixeltay.tebex.io/
-		['cigarbar'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['cluckinbell'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['smokeshop'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['pearls'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['kois'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['whitewidow'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['bestbuds'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-
-		-- Jim Mechanic | https://jimathy666.tebex.io/
-		['mechanic'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.10, },
-		['tuners'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.10, },
-		['ottos'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.10, },
-		['lscustoms'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.10, },
-		['bennys'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.10, },
-		['kittys'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.10, },
-		-- Gangs | Example of a gang being supported
-		['lostmc'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, gang = true, },
 	},
 
 	------------------------------
@@ -109,10 +117,22 @@ Config = {
 	-- This adds the ability to add multiple locations for each job
 	-- Basically adding ready made locations, all you need to a vector4 and to confrim if you need a new prop in that location
     CustomCashRegisters = {
-		-- ["jobname"] = { -- Player job role restriction
-		-- 	{ coords = vector4(0, 0, 0, 0), prop = true, }, -- vector4 to place the till and the way it faces
-		-- 	{ coords = vector4(0, 0, 0, 0), prop = true, }, -- "prop = true" spawns a prop at the coords
-		-- },
+		["bahamas"] = { -- Player job role restriction
+			{ coords = vector4(-1402.86, -602.57, 30.45, 303.0), prop = false, }, 
+			{ coords = vector4(-1398.86, -600.12, 30.45, 155.63310241699), prop = false, }, 
+	  	},
+		["pkart"] = { -- Player job role restriction
+		  { coords = vector4(-2264.38, 219.64, 169.67, 356), prop = true, }, 
+		},
+		["mirror"] = { -- Player job role restriction
+		  { coords = vector4(-1341.41, -1070.55, 6.75, 30.30), prop = true, }, 
+		},
+		["vapeshop"] = { -- Player job role restriction
+		  { coords = vector4(-498.4538269043, 282.31268310547, 83.316009521484, 90.0), prop = false, }, 
+		},
+		["beanmachine"] = { -- Player job role restriction
+		  { coords = vector4(122.12, -1036.4, 29.28, 340.0), prop = false, }, 
+		},
 	},
 
 	-- The /polcharge command requires specific jobs to be set
@@ -132,7 +152,24 @@ Config = {
 		['dhs'] = { Commission = 0.25 },
 		['ss'] = { Commission = 0.25 }
 	},
-	
+	PolFineJobs = {
+		['police'] = { Commission = 0.25 },
+		['ambulance'] = { Commission = 0.25 },
+		['lspd'] = { Commission = 0.25 },
+		['bcso'] = { Commission = 0.25 },
+		['sahp'] = { Commission = 0.25 },
+		['salsa'] = { Commission = 0.25 },
+		['lsso'] = { Commission = 0.25 },
+		['safw'] = { Commission = 0.25 },
+		['sadoc'] = { Commission = 0.25 },
+		['usms'] = { Commission = 0.25 },
+		['fbi'] = { Commission = 0.25 },
+		['dhs'] = { Commission = 0.25 },
+		['ss'] = { Commission = 0.25 }
+	},
+	EmsFineJobs = {
+		['ambulance'] = { Commission = 0.25, },
+	},
 	FineJobConfirmation = false, --"true" makes it so fines need confirmation, "false" skips this ands just removes the money
 	FineJobList = true, -- "true" to use nearby player list feature in the cash registers, "false" for manual id entry
 

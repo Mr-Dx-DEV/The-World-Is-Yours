@@ -60,7 +60,7 @@ end)
 RegisterNetEvent('jim-payments:client:Charge', function(data, outside)
 	--Check if player is using /cashregister command
 	local dialog
-	if not outside and not onDuty and data.gang == nil then triggerNotify(nil, Loc[Config.Lan].error["not_onduty"], "error") return end
+	if not outside and not onDuty and data.gang == nil then triggerNotify("Error", Loc[Config.Lan].error["not_onduty"], "error") return end
 	local newinputs = {} -- Begin qb-input creation here.
 	if Config.List then -- If nearby player list is wanted:
 		--Retrieve a list of nearby players from server
@@ -79,7 +79,7 @@ RegisterNetEvent('jim-payments:client:Charge', function(data, outside)
 			end
 		end
 		--If list is empty(no one nearby) show error and stop
-		if not nearbyList[1] then triggerNotify(nil, Loc[Config.Lan].error["no_one"], "error") return end
+		if not nearbyList[1] then triggerNotify("Error", Loc[Config.Lan].error["no_one"], "error") return end
 		newinputs[#newinputs+1] = { text = " ", name = "citizen", label = Loc[Config.Lan].menu["cus_id"], type = "select", options = nearbyList }
 	else -- If Config.List is false, create input text box for ID's
 		if Config.Menu == "qb" then
@@ -131,8 +131,8 @@ end)
 RegisterNetEvent('jim-payments:client:PolCharge', function()
 	--Check if player is allowed to use /cashregister command
 	local allowed = false
-	for k in pairs(Config.FineJobs) do if k == PlayerJob.name then allowed = true end end
-	if not allowed then triggerNotify(nil, Loc[Config.Lan].error["no_job"], "error") return end
+	for k in pairs(Config.PolFineJobs) do if k == PlayerJob.name then allowed = true end end
+	if not allowed then triggerNotify("Error", Loc[Config.Lan].error["no_job"], "error") return end
 
 	local newinputs = {} -- Begin qb-input creation here.
 	if Config.FineJobList then -- If nearby player list is wanted:
@@ -152,9 +152,10 @@ RegisterNetEvent('jim-payments:client:PolCharge', function()
 			end
 		end
 		--If list is empty(no one nearby) show error and stop
-		if not nearbyList[1] then triggerNotify(nil, Loc[Config.Lan].error["no_one"], "error") return end
+		if not nearbyList[1] then triggerNotify("Error", Loc[Config.Lan].error["no_one"], "error") return end
 		newinputs[#newinputs+1] = { text = " ", name = "citizen", type = "select", options = nearbyList }
 	else -- If Config.List is false, create input text box for ID's
+		print('1')
 		newinputs[#newinputs+1] = { type = 'text', isRequired = true, required = true, name = 'citizen', label = Loc[Config.Lan].menu["person_id"], text = Loc[Config.Lan].menu["person_id"] }
 	end
 	--Continue adding payment options to qb-input
@@ -178,7 +179,62 @@ RegisterNetEvent('jim-payments:client:PolCharge', function()
             price = dialog.price or dialog[2],
         }
         if not inputs.citizen or not inputs.price then return end
-		TriggerServerEvent('jim-payments:server:PolCharge', dialog.citizen, dialog.price)
+		TriggerServerEvent('jim-payments:server:PolCharge', inputs.citizen, inputs.price)
+    end
+end)
+
+RegisterNetEvent('jim-payments:client:EmsCharge', function()
+	--Check if player is allowed to use /cashregister command
+	local allowed = false
+	for k in pairs(Config.EmsFineJobs) do if k == PlayerJob.name then allowed = true end end
+	if not allowed then triggerNotify("Error", Loc[Config.Lan].error["no_job"], "error") return end
+
+	local newinputs = {} -- Begin qb-input creation here.
+	if Config.FineJobList then -- If nearby player list is wanted:
+		--Retrieve a list of nearby players from server
+		local p = promise.new() QBCore.Functions.TriggerCallback('jim-payments:MakePlayerList', function(cb) p:resolve(cb) end)
+		local onlineList = Citizen.Await(p)
+		local nearbyList = {}
+		--Convert list of players nearby into one qb-input understands + add distance info
+		for _, v in pairs(QBCore.Functions.GetPlayersFromCoords(GetEntityCoords(PlayerPedId()), Config.PaymentRadius)) do
+			local dist = #(GetEntityCoords(GetPlayerPed(v)) - GetEntityCoords(PlayerPedId()))
+			for i = 1, #onlineList do
+				if onlineList[i].value == GetPlayerServerId(v) then
+					if v ~= PlayerId() or Config.Debug then
+						nearbyList[#nearbyList+1] = { value = onlineList[i].value, text = onlineList[i].text..' ('..math.floor(dist+0.05)..'m)', label = onlineList[i].text..' ('..math.floor(dist+0.05)..'m)' }
+					end
+				end
+			end
+		end
+		--If list is empty(no one nearby) show error and stop
+		if not nearbyList[1] then triggerNotify("Error", Loc[Config.Lan].error["no_one"], "error") return end
+		newinputs[#newinputs+1] = { text = " ", name = "citizen", type = "select", options = nearbyList }
+	else -- If Config.List is false, create input text box for ID's
+		print('1')
+		newinputs[#newinputs+1] = { type = 'text', isRequired = true, required = true, name = 'citizen', label = Loc[Config.Lan].menu["person_id"], text = Loc[Config.Lan].menu["person_id"] }
+	end
+	--Continue adding payment options to qb-input
+	if Config.Menu == "qb" then
+	newinputs[#newinputs+1] = { type = 'number', isRequired = true, name = 'price', text = Loc[Config.Lan].menu["amount_charge"] }
+	elseif Config.Menu == "ox" then
+		newinputs[#newinputs+1] = {type = 'number', required = true, label = Loc[Config.Lan].menu["amount_charge"], text = Loc[Config.Lan].menu["amount_charge"] }
+	end
+	--Grab Player Job name or Gang Name if needed
+	local label = PlayerJob.label
+	local gang = false
+	local dialog  
+	if Config.Menu == "qb" then
+		dialog = exports['qb-input']:ShowInput({ header = label..Loc[Config.Lan].menu["charge"], submitText = Loc[Config.Lan].menu["send"], inputs = newinputs})
+	elseif Config.Menu == "ox" then
+		dialog = exports.ox_lib:inputDialog(label..Loc[Config.Lan].menu["charge"], newinputs)
+	end
+	if dialog then
+        local inputs = {
+            citizen = dialog.citizen or dialog[1],
+            price = dialog.price or dialog[2],
+        }
+        if not inputs.citizen or not inputs.price then return end
+		TriggerServerEvent('jim-payments:server:EmsCharge', inputs.citizen, inputs.price)
     end
 end)
 

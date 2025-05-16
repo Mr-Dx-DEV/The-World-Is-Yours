@@ -33,7 +33,7 @@ return {
         version = false,
         -- Once a store robbery has succesfully started a cooldown begins
         -- This is per-player and not a global cooldown (cooldown is in seconds)
-        cooldown = 600,
+        cooldown = 0,
         -- By default, the player-based cooldowns are overridden by this global cooldown
         -- This will prevent robberies at all stores by any player until the cooldown expires
         -- If you prefer a more flexible player-based cooldown option, just disable global
@@ -47,7 +47,7 @@ return {
 
     police = {
         -- How many police must be online in order to start a robbery?
-        count = 2,
+        count = 0,
         -- Add your police job(s) below
         jobs = {
             "lspd",

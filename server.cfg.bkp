@@ -19,7 +19,10 @@ sets tags "roleplay, rp, theworldisyours, semi-realistic, usa, bd, uk, pakistan,
 
 ## You MAY edit the following:
 
+cl_drawfps 1
 
+discord_app_id "YOUR_APP_ID"
+sv_discordRichPresence true
 
 # Maximum number of players
 
@@ -96,6 +99,7 @@ setr voice_defaultCycle "GRAVE"
 setr voice_defaultVolume 0.5
 setr voice_enableRadioAnim 1
 setr voice_syncData 1
+setr voice_enableSubmix 1
 
 # QBCore locale config
 setr qb_locale "en"
@@ -120,7 +124,7 @@ setr inventory:imagepath "nui://ox_inventory/web/images"
 setr inventory:autoreload false
 setr inventory:keys ["TAB", "F2", "Z"]
 setr inventory:screenblur true
-setr inventory:slots 54
+setr inventory:slots 64
 setr inventory:weight 180000
 setr inventory:aimedfiring false
 setr inventory:weaponanims true
@@ -196,7 +200,7 @@ ensure [voice]
 ensure [WRP]
 ensure [job]
 
-
+stop Dx-RadioList
 
 
 setr profile_fpsFieldOfView 38.0

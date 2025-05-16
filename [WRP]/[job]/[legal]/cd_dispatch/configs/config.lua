@@ -80,7 +80,7 @@ Config.NotifyStatusChange = true --Do you want players to be notified when anoth
 
 
 Config.PauseMenuBlips = {
-    ENABLE = true, --Do you want to use the built in player blips (on the pause menu & mini-map)?
+    ENABLE = false, --Do you want to use the built in player blips (on the pause menu & mini-map)?
     data_update_timer = 1, --(in seconds) How many seconds should the blip data from the server side be sent to the client side to be updated?
     blip_type = 'auto', --You can choose 3 different methods for displaying the player blips.
     --'static' = Players will all have the same standard player blip.
@@ -121,7 +121,7 @@ Config.BlipData = { --You need to add all the jobs that will be able to use the 
 
 
 Config.Dispatcher = {
-    ENABLE = true, --Do you want to use the build in dispatcher system? (this is optional)
+    ENABLE = false, --Do you want to use the build in dispatcher system? (this is optional)
     notify_activity = true, --Do you want players to be notified when a dispatcher comes online/goes offline? 
 
     Perms = { --A list of jobs and the minimum job grade for those who are allowed to use the dispatcher features.
@@ -131,7 +131,7 @@ Config.Dispatcher = {
     },
 
     AutoRefreshBlips = {
-        ENABLE = true, --Do you want the player blips on the dispatch UI map to be auto refreshed for the dispatchers?.
+        ENABLE = false, --Do you want the player blips on the dispatch UI map to be auto refreshed for the dispatchers?.
         refresh_timer = 5, --(in seconds) The amount of time it takes to refresh the player blips (the lower the number the higher the resource usage).
     },
 
@@ -148,7 +148,7 @@ Config.Dispatcher = {
 
 
 Config.JobCallCommands = { 
-    ENABLE = true,--Do you want to use the job chat commands eg., /911 to send a notification to the police.
+    ENABLE = false,--Do you want to use the job chat commands eg., /911 to send a notification to the police.
 
     --label: The job display label.
     --command: The chat command.
@@ -196,7 +196,7 @@ Config.PanicButton = {
 
 
 Config.Ping = {
-    ENABLE = true, --Do you want to allow players who have access to the dispatch to ping their location to other players of the same job?
+    ENABLE = false, --Do you want to allow players who have access to the dispatch to ping their location to other players of the same job?
     command = 'dispatchping', --The chat command.
     key = 'up', --The key press. You can choose other keys here - https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/.
     cooldown = 10, --(in seconds) This cooldown is to prevent a player spamming pings.
@@ -212,7 +212,7 @@ Config.Ping = {
 
 
 Config.PoliceAlerts = {
-    ENABLE = true, --Do you want to use the built in police alerts?
+    ENABLE = false, --Do you want to use the built in police alerts?
     police_jobs = {'police', }, --The jobs who will be notified from these police alerts.
     whitelisted_jobs = {'police', 'ambulance',}, --These jobs will NOT trigger these police alerts.
     cooldown = 30, --(in seconds) This cooldown is to prevent alerts from being spammed by the same player.
@@ -224,7 +224,7 @@ Config.PoliceAlerts = {
 
     --[[GUNSHOTS CONFIG]]--
     GunShots = {
-        ENABLE = true, ---Do you want gunshots to alert police?
+        ENABLE = false, ---Do you want gunshots to alert police?
         
         WhitelistedZones = { --Shooting in whitelisted areas doesn't alert police.
             [1] = {coords = vector3(13.98, -1098.05, 29.8), distance = 20}, --Legion gunrange.
