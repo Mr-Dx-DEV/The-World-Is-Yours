@@ -125,7 +125,7 @@ Config.DispatchBlip = {
     }
 }
 
-Config.RealTime = false -- if true, the time will use real life time depending on where the user lives, if false, the time will be the ingame time.
+Config.RealTime = true -- if true, the time will use real life time depending on where the user lives, if false, the time will be the ingame time.
 Config.CustomTime = false -- NOTE: set Config.RealTime to false if using this. you can set this to a function that returns custom time, as a table: { hour = 0-23, minute = 0-59 }
 
 Config.FrameColor = "#39334d" -- This is the color of the tablet frame. Default (#39334d) is purple.
