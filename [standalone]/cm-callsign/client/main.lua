@@ -2,19 +2,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterCommand('setcallsign', function(source, args, rawCommand)
     QBCore.Functions.GetPlayerData(function(PlayerData)
-        if PlayerData.job.type == "leo"
-            or PlayerData.job.type == "lspd"
-            or PlayerData.job.type == "bcso"
-            or PlayerData.job.type == "sahp"
-            or PlayerData.job.type == "lsso"
-            or PlayerData.job.type == "safw"
-            or PlayerData.job.type == "sadoc"
-            or PlayerData.job.type == "usms"
-            or PlayerData.job.type == "fbi"
-            or PlayerData.job.type == "dhs"
-            or PlayerData.job.type == "ss"
-            or PlayerData.job.type == "police"
-            or PlayerData.job.type == "salsa" then
+        if PlayerData.job.type == "leo" then
             local playerPed = PlayerPedId()
             local vehicle
 
@@ -55,19 +43,7 @@ end)
 
 RegisterCommand('removecallsign', function(source, args, rawCommand)
     QBCore.Functions.GetPlayerData(function(PlayerData)
-        if PlayerData.job.type == "leo" 
-or PlayerData.job.type == "lspd" 
-or PlayerData.job.type == "bcso" 
-or PlayerData.job.type == "sahp" 
-or PlayerData.job.type == "lsso" 
-or PlayerData.job.type == "safw" 
-or PlayerData.job.type == "sadoc" 
-or PlayerData.job.type == "usms" 
-or PlayerData.job.type == "fbi" 
-or PlayerData.job.type == "dhs" 
-or PlayerData.job.type == "ss" 
-or PlayerData.job.type == "police" 
-or PlayerData.job.type == "salsa" then
+        if PlayerData.job.type == "leo" then
             local playerPed = PlayerPedId()
             local vehicle
 
@@ -98,19 +74,7 @@ end)
 RegisterCommand('setcallsigncolor', function(source, args, rawCommand)
     local PlayerData = QBCore.Functions.GetPlayerData()
 
-    if PlayerData.job.type == "leo" 
-or PlayerData.job.type == "lspd" 
-or PlayerData.job.type == "bcso" 
-or PlayerData.job.type == "sahp" 
-or PlayerData.job.type == "lsso" 
-or PlayerData.job.type == "safw" 
-or PlayerData.job.type == "sadoc" 
-or PlayerData.job.type == "usms" 
-or PlayerData.job.type == "fbi" 
-or PlayerData.job.type == "dhs" 
-or PlayerData.job.type == "ss" 
-or PlayerData.job.type == "police" 
-or PlayerData.job.type == "salsa" then
+    if PlayerData.job.type == "leo" then
         local playerPed = PlayerPedId()
         local vehicle = GetVehiclePedIsIn(playerPed, false)
 

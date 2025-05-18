@@ -58,3 +58,9 @@ end)
 QBCore.Functions.CreateCallback('smallresources:server:GetCurrentPlayers', function(_, cb)
     cb(#GetPlayers())
 end)
+
+
+-- Server side:
+QBCore.Functions.CreateUseableItem("nightvision", function(source)
+    TriggerClientEvent("nightvision:UseNightvision", source)
+end)

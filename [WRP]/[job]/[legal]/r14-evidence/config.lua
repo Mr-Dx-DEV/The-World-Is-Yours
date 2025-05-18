@@ -489,7 +489,7 @@ alerts, and will need to modified to work with a thirdparty alert script!
 --]]----------------------------------------------------------------------------------------------------------
 
 Config.Alerts = { -- you can add custom code here to trigger your alert script
-    Active = true, -- set to false if you don't want to use these
+    Active = false, -- set to false if you don't want to use these
     Timeout = 10000, -- specify how long before the script will generate a second alert of that type
     ShotsFired = function() 
         if math.random(1, 100) > 50 then   

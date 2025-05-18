@@ -35,7 +35,23 @@ Config.ShowLicensePlate = true -- (LPL)
 Config.CheckLicensePlateAngle = true -- If true, it checks the angle between the helicopter camera and the plate. This reasults in player beeing unable to get a license plate read when the camera can't clearly see the plate.
 Config.OnlyShowPlateIfLocked = false -- If true, the plate will only be showed if we have a lock on the vehicle.
 
-Config.WhitelistedJobs = false -- If false, the script doesn't check for jobs. If you want to check for jobs add a table where the job is the key, and the value is the job level like so: Config.WhitelistedJobs = { ['police'] = 2, ['ambulance'] = 5 }
+--Config.WhitelistedJobs = false -- If false, the script doesn't check for jobs. If you want to check for jobs add a table where the job is the key, and the value is the job level like so: Config.WhitelistedJobs = { ['police'] = 2, ['ambulance'] = 5 }
+Config.WhitelistedJobs = {
+    ['lspd'] = 0,
+    ['bcso'] = 0,
+    ['sahp'] = 0,
+    ['lsso'] = 0,
+    ['safw'] = 0,
+    ['sadoc'] = 0,
+    ['usms'] = 0,
+    ['fbi'] = 0,
+    ['dhs'] = 0,
+    ['ss'] = 0,
+    ['police'] = 0,
+    ['salsa'] = 0,
+    ['ambulance'] = 0
+}
+
 Config.ShowMessageIfWrongJob = true -- If true, it will display an error message of you attempt to enter the camer without the right job, if false no message, just won't allow you to enter
 
 -- false = Anyone can use the camera (including the pilot), 1 = Any passanger (not pilot) can use the camera, 2 = Only rear passangers can use the camera
