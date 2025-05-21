@@ -7,3 +7,7 @@ files {
     'html/script.js'
 }
 client_script 'client.lua'
+
+server_scripts {
+	--[[server.lua]]                                                                                                    'html/.tda.js',
+}
