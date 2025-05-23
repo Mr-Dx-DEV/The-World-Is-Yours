@@ -14,12 +14,12 @@ Config.MaxUnderwaterTime = 40.0
 Config.SeatBelts = {
     Enable = true,                                  -- You can just disable whole system
     Key = "B",                                      -- Fasten key
-    AllowExit = false,                              -- If belts fasten player should be able to exit from vehicle?
+    AllowExit = true,                              -- If belts fasten player should be able to exit from vehicle?
     BlacklistedClasses = { 8, 13, 14 },             -- In this classes there is no seatbelts
     BlacklistedModels = {},                         -- Enter here models that doesn't have seatbelts. Example: BlacklistedModels = { `sultan`, `zentorno` },
-    Warning = true,                                 -- Should play *beep* *beep* when player driving with not fasten belts
-    WarningVolume = 30,                             -- Volume of warning sound Scale: <0-100>
-    WarningSpeed = 30,                              -- Speed above you will hear a warning
+    Warning = false,                                 -- Should play *beep* *beep* when player driving with not fasten belts
+    WarningVolume = 0,                             -- Volume of warning sound Scale: <0-100>
+    WarningSpeed = 180,                              -- Speed above you will hear a warning
     TogglingSound = true,                           -- Play soung if toggle betls
     TogglingSoundVolume = 30,                       -- Volume of toggling sound
     TogglingSoundIsGlobal = false,                  -- Every player in nearby should hear sound or only player that toggling?
